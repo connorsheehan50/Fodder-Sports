@@ -1,0 +1,18 @@
+{
+  "updated": "2026-11-04T18:00:00Z",
+  "week": 9,
+  "season": 2026,
+  "note": "Consensus of major national power rankings",
+  "teams": [
+    { "name": "Kansas City Chiefs",    "rank": 1, "prev": 1, "move": 0  },
+    { "name": "Philadelphia Eagles",   "rank": 2, "prev": 3, "move": 1  },
+    { "name": "Detroit Lions",         "rank": 3, "prev": 2, "move": -1 },
+    { "name": "Seattle Seahawks",      "rank": 4, "prev": 5, "move": 1  },
+    { "name": "Chicago Bears",         "rank": 5, "prev": 6, "move": 1  },
+    { "name": "San Francisco 49ers",   "rank": 6, "prev": 4, "move": -2 },
+    { "name": "Buffalo Bills",         "rank": 7, "prev": 7, "move": 0  },
+    { "name": "Baltimore Ravens",      "rank": 8, "prev": 8, "move": 0  },
+    { "name": "Green Bay Packers",     "rank": 9, "prev": 10,"move": 1  },
+    { "name": "Houston Texans",        "rank": 10,"prev": 9, "move": -1 }
+  ]
+}

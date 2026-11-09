@@ -1,0 +1,9 @@
+{
+  "updated": "2026-11-09T00:00:00Z",
+  "week": 9,
+  "games": [
+    { "away": "Bears",    "home": "Seahawks", "date": "Mon, Nov. 2",  "time": "8:15 PM ET", "tv": "MNF", "url": "pages/matchup-chi-sea-w8.html" },
+    { "away": "Bills",    "home": "Ravens",   "date": "Sun, Nov. 8",  "time": "4:25 PM ET", "tv": "CBS",  "url": "#" },
+    { "away": "Eagles",   "home": "Cowboys",  "date": "Sun, Nov. 8",  "time": "8:20 PM ET", "tv": "NBC",  "url": "#" }
+  ]
+}

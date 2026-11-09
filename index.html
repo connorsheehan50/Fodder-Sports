@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fodder Sports — Every Side of the Story</title>
+  <meta name="description" content="NFL coverage from every market. See how each side's media feels — not just your team's take.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ── Header ── -->
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-word">FODDER<span>.</span></span>
+        <span class="logo-sub">Sports</span>
+      </a>
+      <span class="header-tagline">Every Side of the Story</span>
+    </div>
+  </div>
+</header>
+
+<!-- ── Sport Nav ── -->
+<nav class="sport-nav">
+  <div class="container">
+    <div class="sport-nav-inner">
+      <a href="nfl/index.html" class="sport-tab active">NFL</a>
+      <span class="sport-tab">NBA <span class="badge">SOON</span></span>
+      <span class="sport-tab">MLB <span class="badge">SOON</span></span>
+      <span class="sport-tab">NHL <span class="badge">SOON</span></span>
+      <span class="sport-tab">CFB <span class="badge">SOON</span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ── Hero ── -->
+<div style="background: var(--ink); border-bottom: 1px solid #222; padding: 40px 0 36px;">
+  <div class="container">
+    <p style="font-family: var(--font-head); font-size: 11px; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px;">NFL · 2026 Season</p>
+    <h1 style="font-family: var(--font-display); font-size: clamp(32px, 6vw, 56px); color: var(--off-white); line-height: 1.1; max-width: 640px; margin-bottom: 14px;">Multiple Perspectives.<br>One Insight.</h1>
+    <p style="font-family: var(--font-body); font-size: 16px; color: var(--slate); max-width: 540px; line-height: 1.6;">We read coverage from every market — your team's, your opponent's, and the national press — and show you how each side actually feels.</p>
+    <a href="nfl/index.html" style="display: inline-flex; align-items: center; gap: 8px; margin-top: 20px; font-family: var(--font-head); font-size: 13px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; background: var(--orange); color: #fff; padding: 12px 24px; border-radius: 4px; transition: opacity 0.15s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">Go to NFL →</a>
+  </div>
+</div>
+
+<!-- ── Latest Updates ── -->
+<div class="container">
+  <div class="layout-main">
+    <main>
+      <div class="section-label">
+        Latest
+        <a href="nfl/index.html">All NFL →</a>
+      </div>
+
+      <!-- Feed populated by JS from data/feed.json -->
+      <div class="feed" id="homepage-feed">
+        <div style="font-family: var(--font-body); font-size: 14px; color: var(--slate); padding: 20px 0;">Loading feed…</div>
+      </div>
+    </main>
+
+    <aside class="sidebar">
+      <!-- Power Rankings Widget -->
+      <div class="sidebar-widget">
+        <div class="widget-header">
+          <div>
+            <div class="widget-label">NFL / Top 10</div>
+            <div class="widget-title">Power Rankings</div>
+          </div>
+          <span class="widget-icon">🏆</span>
+        </div>
+        <div id="rankings-widget">
+          <div style="font-family: var(--font-body); font-size: 13px; color: var(--slate); padding: 16px;">Loading…</div>
+        </div>
+      </div>
+
+      <!-- Week at a Glance -->
+      <div class="sidebar-widget">
+        <div class="widget-header">
+          <div>
+            <div class="widget-label">NFL · This Week</div>
+            <div class="widget-title">On the Schedule</div>
+          </div>
+        </div>
+        <div id="schedule-widget">
+          <div style="font-family: var(--font-body); font-size: 13px; color: var(--slate); padding: 16px;">Loading…</div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <span class="footer-label">Fodder Sports · Pilot</span>
+      <p class="footer-note">Summaries written from published coverage. Not affiliated with the NFL or any team.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+{
+  "updated": "2026-11-09T00:00:00Z",
+  "week": 9,
+  "season": 2026,
+  "items": [
+    {
+      "id": "trade-simmons-20261029",
+      "type": "trade",
+      "date": "Oct. 29",
+      "teams": ["CHI", "TEN"],
+      "teams_full": ["Chicago Bears", "Tennessee Titans"],
+      "title": "Bears Go All-In for Jeffery Simmons as Titans Restart the Rebuild",
+      "desc": "Chicago sent two first-round picks to Tennessee for the All-Pro defensive tackle, and each side got exactly what it wanted.",
+      "url": "pages/trade-simmons-20261029.html",
+      "because": null
+    },
+    {
+      "id": "preview-chi-sea-w8",
+      "type": "preview",
+      "date": "Mon, Nov. 2 · MNF",
+      "teams": ["CHI", "SEA"],
+      "teams_full": ["Chicago Bears", "Seattle Seahawks"],
+      "title": "Bears Bring New Star Jeffery Simmons Into Seattle's Defensive Fortress",
+      "desc": "Chicago went all in for an All-Pro tackle days before facing the defending champs, who just added Quenton Nelson to fix their own line.",
+      "url": "pages/matchup-chi-sea-w8.html",
+      "because": "Because you follow the Bears"
+    },
+    {
+      "id": "rankings-w9",
+      "type": "rankings",
+      "date": "Nov. 4",
+      "teams": [],
+      "teams_full": [],
+      "title": "Week 9 Power Rankings: Who's Still Standing?",
+      "desc": "The consensus of major national power rankings, updated through Week 9.",
+      "url": "nfl/power-rankings.html",
+      "because": null
+    }
+  ]
+}

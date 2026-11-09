@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NFL Power Rankings — Fodder Sports</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-word">FODDER<span>.</span></span>
+        <span class="logo-sub">Sports</span>
+      </a>
+      <span class="header-tagline">Every Side of the Story</span>
+    </div>
+  </div>
+</header>
+
+<div class="container" style="padding-top:28px;">
+  <a href="index.html" class="back-link">← Back to NFL</a>
+  <p style="font-family:var(--font-head);font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin-bottom:6px;">Fodder Sports · Power Rankings · Week 9</p>
+  <h1 style="font-family:var(--font-display);font-size:clamp(28px,5vw,46px);line-height:1.1;margin-bottom:8px;">NFL Power Rankings, Week 9</h1>
+  <p class="article-lead">A consensus of the major national power rankings, updated every Tuesday.</p>
+
+  <div id="rankings-full" style="margin-top:20px;">
+    <div style="font-family:var(--font-body);font-size:13px;color:var(--slate);padding:16px 0;">Loading rankings...</div>
+  </div>
+
+  <p style="font-family:var(--font-body);font-size:12px;color:var(--slate-light);margin-top:16px;padding-top:16px;border-top:1px solid var(--rule);">Fodder Sports · Pilot · Rankings are a consensus of published national rankings. Not affiliated with the NFL.</p>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <span class="footer-label">Fodder Sports · Pilot</span>
+      <p class="footer-note">Summaries written from published coverage. Not affiliated with the NFL or any team.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script>
+async function initRankings() {
+  const el = document.getElementById('rankings-full');
+  const data = await fetchJSON('data/nfl/power-rankings.json');
+  if (!data || !data.teams) {
+    el.innerHTML = '<div style="color:var(--slate);font-family:var(--font-body);font-size:13px;">Rankings not yet available. Check back Tuesday.</div>';
+    return;
+  }
+  const note = data.note ? `<p style="font-family:var(--font-body);font-size:12px;color:var(--slate-light);margin-bottom:16px;">${data.note} · Updated ${data.updated ? new Date(data.updated).toLocaleDateString('en-US',{month:'short',day:'numeric'}) : ''}</p>` : '';
+  const rows = data.teams.map((t, i) => {
+    const move = t.move > 0 ? `<span style="color:#1A6B3A;">↑${t.move}</span>` : t.move < 0 ? `<span style="color:#9B1C1C;">↓${Math.abs(t.move)}</span>` : `<span style="color:var(--slate);">—</span>`;
+    return `<div class="ranking-row" style="padding:14px 0;border-bottom:1px solid var(--rule);">
+      <span class="rank-num" style="font-size:22px;">${String(i+1).padStart(2,'0')}</span>
+      <span class="rank-team" style="font-size:17px;flex:1;">${t.name}</span>
+      ${move}
+    </div>`;
+  }).join('');
+  el.innerHTML = note + rows;
+}
+document.addEventListener('DOMContentLoaded', initRankings);
+</script>
+</body>
+</html>
