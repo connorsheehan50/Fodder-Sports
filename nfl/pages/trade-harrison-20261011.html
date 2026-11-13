@@ -59,29 +59,34 @@
     .section-box{background:var(--card-bg);border:1px solid var(--rule);border-radius:var(--radius-lg);padding:24px;margin-bottom:24px;}
     .section-label{font-family:var(--font-head);font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--slate);border-bottom:1px solid var(--rule);padding-bottom:10px;margin-bottom:16px;}
     .section-label.orange{color:var(--orange);}
-    /* Sentiment bars */
-    .sentiment-row{margin-bottom:18px;}
+    /* Sentiment bars — center-anchored (Harsh left, Neutral center, Glowing right) */
+    .sentiment-row{margin-bottom:20px;}
     .sentiment-row:last-child{margin-bottom:0;}
-    .sentiment-market{font-family:var(--font-head);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-bottom:6px;display:flex;align-items:center;gap:10px;}
-    .sentiment-bar-track{height:8px;background:var(--rule);border-radius:4px;overflow:hidden;display:flex;}
-    .sentiment-pos{background:#22c55e;height:100%;}
-    .sentiment-neu{background:#f59e0b;height:100%;}
-    .sentiment-neg{background:#ef4444;height:100%;}
-    .sentiment-legend{display:flex;gap:14px;margin-top:5px;}
-    .sentiment-legend span{font-family:var(--font-body);font-size:11px;color:var(--slate);display:flex;align-items:center;gap:4px;}
-    .sentiment-legend span::before{content:'';width:8px;height:8px;border-radius:2px;display:inline-block;}
-    .sentiment-legend .leg-pos::before{background:#22c55e;}
-    .sentiment-legend .leg-neu::before{background:#f59e0b;}
-    .sentiment-legend .leg-neg::before{background:#ef4444;}
+    .sentiment-market{font-family:var(--font-head);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-bottom:8px;display:flex;align-items:center;gap:10px;}
+    .sentiment-track-wrap{position:relative;max-width:100%;overflow:hidden;}
+    .sentiment-track{position:relative;height:8px;background:var(--rule);border-radius:4px;overflow:hidden;}
+    .sentiment-fill{position:absolute;top:0;height:100%;border-radius:4px;}
+    .sentiment-fill.positive{background:var(--orange);}
+    .sentiment-fill.negative{background:#ef4444;}
+    .sentiment-track::after{content:'';position:absolute;top:-2px;bottom:-2px;left:50%;width:2px;background:var(--ink);opacity:.35;transform:translateX(-50%);z-index:1;border-radius:1px;}
+    .sentiment-axis{display:flex;justify-content:space-between;margin-top:5px;}
+    .sentiment-axis span{font-family:var(--font-body);font-size:10px;color:var(--slate-light);letter-spacing:.04em;}
+    .sentiment-footnote{font-family:var(--font-body);font-size:11px;color:var(--slate);margin-top:14px;padding-top:14px;border-top:1px solid var(--rule);font-style:italic;line-height:1.5;}
     /* Bullets */
     .summary-bullets{list-style:none;margin:0;padding:0;}
-    .summary-bullets li{font-family:var(--font-body);font-size:15px;line-height:1.6;color:var(--ink);padding:8px 0 8px 22px;border-bottom:1px solid var(--rule);position:relative;}
+    .summary-bullets li{font-family:var(--font-body);font-size:16px;line-height:1.65;color:var(--ink);padding:9px 0 9px 24px;border-bottom:1px solid var(--rule);position:relative;}
     .summary-bullets li:last-child{border-bottom:none;}
-    .summary-bullets li::before{content:'▸';position:absolute;left:0;color:var(--orange);font-size:12px;top:11px;}
+    .summary-bullets li::before{content:'▸';position:absolute;left:0;color:var(--orange);font-size:12px;top:13px;}
     /* Viewpoint sections */
     .viewpoint-logo{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
     .viewpoint-label{font-family:var(--font-head);font-size:16px;font-weight:800;letter-spacing:.04em;color:var(--ink);}
-    .body-text{font-family:var(--font-body);font-size:15px;line-height:1.75;color:var(--ink);margin-bottom:14px;}
+    .body-text{font-family:var(--font-body);font-size:16px;line-height:1.75;color:var(--ink);margin-bottom:14px;}
+    /* Viewpoint bullet lists */
+    .viewpoint-bullets{list-style:none;margin:0;padding:0;}
+    .viewpoint-bullets li{font-family:var(--font-body);font-size:16px;line-height:1.65;color:var(--ink);padding:9px 0 9px 24px;border-bottom:1px solid var(--rule);position:relative;}
+    .viewpoint-bullets li:last-child{border-bottom:none;}
+    .viewpoint-bullets li::before{content:'▸';position:absolute;left:0;color:var(--orange);font-size:12px;top:13px;}
+    .viewpoint-source{font-family:var(--font-head);font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:2px;}
     .body-text:last-child{margin-bottom:0;}
     /* Grades table */
     .grades-table{width:100%;border-collapse:collapse;}
@@ -220,37 +225,38 @@
     
       <div class="sentiment-row">
         <div class="sentiment-market"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/hou.png" alt="HOU" width="24" height="24" style="border-radius:50%;object-fit:cover;"> Houston Media</div>
-        <div class="sentiment-bar-track">
-          <div class="sentiment-pos" style="width:45%"></div>
-          <div class="sentiment-neu" style="width:25%"></div>
-          <div class="sentiment-neg" style="width:30%"></div>
-        </div>
-        <div class="sentiment-legend">
-          <span class="leg-pos">45% positive</span>
-          <span class="leg-neu">25% neutral</span>
-          <span class="leg-neg">30% negative</span>
+        <div class="sentiment-track-wrap">
+          <div class="sentiment-track">
+            <div class="sentiment-fill positive" style="left:50%;width:7.5%"></div>
+          </div>
+          <div class="sentiment-axis">
+            <span>Harsh</span>
+            <span>Neutral</span>
+            <span>Glowing</span>
+          </div>
         </div>
       </div>
     
       <div class="sentiment-row">
         <div class="sentiment-market"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/ari.png" alt="ARI" width="24" height="24" style="border-radius:50%;object-fit:cover;"> Arizona Media</div>
-        <div class="sentiment-bar-track">
-          <div class="sentiment-pos" style="width:52%"></div>
-          <div class="sentiment-neu" style="width:28%"></div>
-          <div class="sentiment-neg" style="width:20%"></div>
-        </div>
-        <div class="sentiment-legend">
-          <span class="leg-pos">52% positive</span>
-          <span class="leg-neu">28% neutral</span>
-          <span class="leg-neg">20% negative</span>
+        <div class="sentiment-track-wrap">
+          <div class="sentiment-track">
+            <div class="sentiment-fill positive" style="left:50%;width:16.0%"></div>
+          </div>
+          <div class="sentiment-axis">
+            <span>Harsh</span>
+            <span>Neutral</span>
+            <span>Glowing</span>
+          </div>
         </div>
       </div>
+    <p class="sentiment-footnote">Each bar shows the overall tone of that market's coverage. Bar extends right for positive/glowing, left for negative/harsh.</p>
   </div>
 
   <!-- Summary bullets -->
   <div class="section-box">
     <div class="section-label">THE QUICK TAKE</div>
-    <ul class="summary-bullets"><li>Harrison, the No. 4 overall pick in the 2025 NFL Draft, was traded just 18 months into his NFL career after a rocky sophomore start in Arizona.</li><li>Houston gave up a second-round pick and a seventh — a price that most analysts called too high for an unproven young receiver.</li><li>Arizona received draft capital but raised immediate questions about the organization's patience with young talent.</li><li>Harrison caught 72 passes for 847 yards and 6 touchdowns as a rookie but had cooled through the first six weeks of Year 2.</li><li>The prevailing theory: Houston wanted him as a deep threat, Arizona wanted picks, and both sides settled for a deal that left something to be desired for each.</li></ul>
+    <ul class="summary-bullets"><li>Harrison, the No. 4 overall pick in the 2025 NFL Draft, was traded just 18 months into his NFL career after a rocky sophomore start in Arizona.</li><li>Houston gave up a second-round pick and a seventh, a price that most analysts called too high for an unproven young receiver.</li><li>Arizona received draft capital but raised immediate questions about the organization's patience with young talent.</li><li>Harrison caught 72 passes for 847 yards and 6 touchdowns as a rookie but had cooled through the first six weeks of Year 2.</li><li>The prevailing theory: Houston wanted him as a deep threat, Arizona wanted picks, and both sides settled for a deal that left something to be desired for each.</li></ul>
   </div>
 
   <!-- City 1 viewpoint -->
@@ -259,7 +265,7 @@
       <img src="https://a.espncdn.com/i/teamlogos/nfl/500/hou.png" alt="HOU" width="44" height="44" style="border-radius:50%;object-fit:cover;">
       <div class="viewpoint-label">What Houston Media Is Saying About the Houston Texans</div>
     </div>
-    <p class="body-text">Houston coverage was cautiously optimistic but not enthusiastic. The Texans gave up real draft capital for a player who had not yet established himself at the NFL level. Local analysts pointed out that a second-round pick is significant, and that the bar for justifying this trade is high.</p><p class="body-text">Some outlets noted the scheme fit — Houston's offense has the structure to use a vertical threat effectively, and Harrison's size and speed profile suggests upside. But the universal caveat was that this was a bet on potential, not production.</p>
+    <p class="body-text">Houston coverage was cautiously optimistic but not enthusiastic. The Texans gave up real draft capital for a player who had not yet established himself at the NFL level. Local analysts pointed out that a second-round pick is significant, and that the bar for justifying this trade is high.</p><p class="body-text">Some outlets noted the scheme fit; Houston's offense has the structure to use a vertical threat effectively, and Harrison's size and speed profile suggests upside. But the universal caveat was that this was a bet on potential, not production.</p>
   </div>
 
   <!-- City 2 viewpoint -->
@@ -268,7 +274,7 @@
       <img src="https://a.espncdn.com/i/teamlogos/nfl/500/ari.png" alt="ARI" width="44" height="44" style="border-radius:50%;object-fit:cover;">
       <div class="viewpoint-label">What Arizona Media Is Saying About the Arizona Cardinals</div>
     </div>
-    <p class="body-text">Arizona coverage was complicated. The Cardinals drafted Harrison in the top five — moving him just 18 months later sends a signal about either his trajectory or the organization's direction. The fan base was not happy.</p><p class="body-text">The analytical case for Arizona: a second-round pick is real value, the team is rebuilding, and cutting ties early is better than holding too long. The emotional case against: you just traded your highest-profile skill player without giving him real time.</p>
+    <p class="body-text">Arizona coverage was complicated. The Cardinals drafted Harrison in the top five, moving him just 18 months later, sending a signal about either his trajectory or the organization's direction. The fan base was not happy.</p><p class="body-text">The analytical case for Arizona: a second-round pick is real value, the team is rebuilding, and cutting ties early is better than holding too long. The emotional case against: you just traded your highest-profile skill player without giving him real time.</p>
   </div>
 
   <!-- National --><div class='section-box'><div class='section-label'>WHAT EVERYONE ELSE IS SAYING</div><p class="body-text">National coverage was largely skeptical of Houston's side. NFL Network called it 'a high price for a question mark.' ESPN's Mel Kiper noted Harrison's collegiate production was elite but NFL transitions vary for wide receivers. The consensus: Arizona made a defensible business decision; Houston took a swing that may not pay off.</p></div>

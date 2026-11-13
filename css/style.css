@@ -531,9 +531,21 @@ img { display: block; max-width: 100%; }
   color: var(--ink);
 }
 .rank-arrow {
-  font-size: 12px;
-  color: var(--slate-light);
+  font-family: var(--font-head);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 26px;
+  height: 18px;
+  border-radius: 9px;
+  padding: 0 5px;
 }
+.rank-arrow.up { background: #DCFCE7; color: #15803D; }
+.rank-arrow.down { background: #FEE2E2; color: #B91C1C; }
+.rank-arrow.flat { background: var(--rule); color: var(--slate); }
 
 /* ── Trade Box ── */
 .trade-box {

@@ -59,29 +59,34 @@
     .section-box{background:var(--card-bg);border:1px solid var(--rule);border-radius:var(--radius-lg);padding:24px;margin-bottom:24px;}
     .section-label{font-family:var(--font-head);font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--slate);border-bottom:1px solid var(--rule);padding-bottom:10px;margin-bottom:16px;}
     .section-label.orange{color:var(--orange);}
-    /* Sentiment bars */
-    .sentiment-row{margin-bottom:18px;}
+    /* Sentiment bars — center-anchored (Harsh left, Neutral center, Glowing right) */
+    .sentiment-row{margin-bottom:20px;}
     .sentiment-row:last-child{margin-bottom:0;}
-    .sentiment-market{font-family:var(--font-head);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-bottom:6px;display:flex;align-items:center;gap:10px;}
-    .sentiment-bar-track{height:8px;background:var(--rule);border-radius:4px;overflow:hidden;display:flex;}
-    .sentiment-pos{background:#22c55e;height:100%;}
-    .sentiment-neu{background:#f59e0b;height:100%;}
-    .sentiment-neg{background:#ef4444;height:100%;}
-    .sentiment-legend{display:flex;gap:14px;margin-top:5px;}
-    .sentiment-legend span{font-family:var(--font-body);font-size:11px;color:var(--slate);display:flex;align-items:center;gap:4px;}
-    .sentiment-legend span::before{content:'';width:8px;height:8px;border-radius:2px;display:inline-block;}
-    .sentiment-legend .leg-pos::before{background:#22c55e;}
-    .sentiment-legend .leg-neu::before{background:#f59e0b;}
-    .sentiment-legend .leg-neg::before{background:#ef4444;}
+    .sentiment-market{font-family:var(--font-head);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-bottom:8px;display:flex;align-items:center;gap:10px;}
+    .sentiment-track-wrap{position:relative;max-width:100%;overflow:hidden;}
+    .sentiment-track{position:relative;height:8px;background:var(--rule);border-radius:4px;overflow:hidden;}
+    .sentiment-fill{position:absolute;top:0;height:100%;border-radius:4px;}
+    .sentiment-fill.positive{background:var(--orange);}
+    .sentiment-fill.negative{background:#ef4444;}
+    .sentiment-track::after{content:'';position:absolute;top:-2px;bottom:-2px;left:50%;width:2px;background:var(--ink);opacity:.35;transform:translateX(-50%);z-index:1;border-radius:1px;}
+    .sentiment-axis{display:flex;justify-content:space-between;margin-top:5px;}
+    .sentiment-axis span{font-family:var(--font-body);font-size:10px;color:var(--slate-light);letter-spacing:.04em;}
+    .sentiment-footnote{font-family:var(--font-body);font-size:11px;color:var(--slate);margin-top:14px;padding-top:14px;border-top:1px solid var(--rule);font-style:italic;line-height:1.5;}
     /* Bullets */
     .summary-bullets{list-style:none;margin:0;padding:0;}
-    .summary-bullets li{font-family:var(--font-body);font-size:15px;line-height:1.6;color:var(--ink);padding:8px 0 8px 22px;border-bottom:1px solid var(--rule);position:relative;}
+    .summary-bullets li{font-family:var(--font-body);font-size:16px;line-height:1.65;color:var(--ink);padding:9px 0 9px 24px;border-bottom:1px solid var(--rule);position:relative;}
     .summary-bullets li:last-child{border-bottom:none;}
-    .summary-bullets li::before{content:'▸';position:absolute;left:0;color:var(--orange);font-size:12px;top:11px;}
+    .summary-bullets li::before{content:'▸';position:absolute;left:0;color:var(--orange);font-size:12px;top:13px;}
     /* Viewpoint sections */
     .viewpoint-logo{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
     .viewpoint-label{font-family:var(--font-head);font-size:16px;font-weight:800;letter-spacing:.04em;color:var(--ink);}
-    .body-text{font-family:var(--font-body);font-size:15px;line-height:1.75;color:var(--ink);margin-bottom:14px;}
+    .body-text{font-family:var(--font-body);font-size:16px;line-height:1.75;color:var(--ink);margin-bottom:14px;}
+    /* Viewpoint bullet lists */
+    .viewpoint-bullets{list-style:none;margin:0;padding:0;}
+    .viewpoint-bullets li{font-family:var(--font-body);font-size:16px;line-height:1.65;color:var(--ink);padding:9px 0 9px 24px;border-bottom:1px solid var(--rule);position:relative;}
+    .viewpoint-bullets li:last-child{border-bottom:none;}
+    .viewpoint-bullets li::before{content:'▸';position:absolute;left:0;color:var(--orange);font-size:12px;top:13px;}
+    .viewpoint-source{font-family:var(--font-head);font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:2px;}
     .body-text:last-child{margin-bottom:0;}
     /* Grades table */
     .grades-table{width:100%;border-collapse:collapse;}
@@ -220,37 +225,38 @@
     
       <div class="sentiment-row">
         <div class="sentiment-market"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/bal.png" alt="BAL" width="24" height="24" style="border-radius:50%;object-fit:cover;"> Baltimore Media</div>
-        <div class="sentiment-bar-track">
-          <div class="sentiment-pos" style="width:50%"></div>
-          <div class="sentiment-neu" style="width:30%"></div>
-          <div class="sentiment-neg" style="width:20%"></div>
-        </div>
-        <div class="sentiment-legend">
-          <span class="leg-pos">50% positive</span>
-          <span class="leg-neu">30% neutral</span>
-          <span class="leg-neg">20% negative</span>
+        <div class="sentiment-track-wrap">
+          <div class="sentiment-track">
+            <div class="sentiment-fill positive" style="left:50%;width:15.0%"></div>
+          </div>
+          <div class="sentiment-axis">
+            <span>Harsh</span>
+            <span>Neutral</span>
+            <span>Glowing</span>
+          </div>
         </div>
       </div>
     
       <div class="sentiment-row">
         <div class="sentiment-market"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/ari.png" alt="ARI" width="24" height="24" style="border-radius:50%;object-fit:cover;"> Arizona Media</div>
-        <div class="sentiment-bar-track">
-          <div class="sentiment-pos" style="width:82%"></div>
-          <div class="sentiment-neu" style="width:12%"></div>
-          <div class="sentiment-neg" style="width:6%"></div>
-        </div>
-        <div class="sentiment-legend">
-          <span class="leg-pos">82% positive</span>
-          <span class="leg-neu">12% neutral</span>
-          <span class="leg-neg">6% negative</span>
+        <div class="sentiment-track-wrap">
+          <div class="sentiment-track">
+            <div class="sentiment-fill positive" style="left:50%;width:38.0%"></div>
+          </div>
+          <div class="sentiment-axis">
+            <span>Harsh</span>
+            <span>Neutral</span>
+            <span>Glowing</span>
+          </div>
         </div>
       </div>
+    <p class="sentiment-footnote">Each bar shows the overall tone of that market's coverage. Bar extends right for positive/glowing, left for negative/harsh.</p>
   </div>
 
   <!-- Summary bullets -->
   <div class="section-box">
     <div class="section-label">THE QUICK TAKE</div>
-    <ul class="summary-bullets"><li>Jackson (fractured rib) and Huntley (shoulder) both left the Ravens' Week 8 loss to the Bills, leaving Baltimore without a credentialed backup on the roster.</li><li>Brissett, 29, started 11 games for Cleveland in 2022 and has been a reliable NFL backup for seven seasons.</li><li>Arizona received a fourth-round pick and a seventh — excellent value for a backup quarterback — and also sent a fifth back to Baltimore to even the compensation.</li><li>Baltimore's situation is critical: they're 5-3 and battling for the AFC's top seed. The quarterback situation needed to be addressed immediately.</li><li>Ravens analysts debated whether Brissett gives Baltimore a realistic path to the playoffs without Jackson, with most concluding the team can survive short-term if the defense holds.</li></ul>
+    <ul class="summary-bullets"><li>Jackson (fractured rib) and Huntley (shoulder) both left the Ravens' Week 8 loss to the Bills, leaving Baltimore without a credentialed backup on the roster.</li><li>Brissett, 29, started 11 games for Cleveland in 2022 and has been a reliable NFL backup for seven seasons.</li><li>Arizona received a fourth-round pick and a seventh, excellent value for a backup quarterback, and also sent a fifth back to Baltimore to even the compensation.</li><li>Baltimore's situation is critical: they're 5-3 and battling for the AFC's top seed. The quarterback situation needed to be addressed immediately.</li><li>Ravens analysts debated whether Brissett gives Baltimore a realistic path to the playoffs without Jackson, with most concluding the team can survive short-term if the defense holds.</li></ul>
   </div>
 
   <!-- City 1 viewpoint -->
@@ -259,7 +265,7 @@
       <img src="https://a.espncdn.com/i/teamlogos/nfl/500/bal.png" alt="BAL" width="44" height="44" style="border-radius:50%;object-fit:cover;">
       <div class="viewpoint-label">What Baltimore Media Is Saying About the Baltimore Ravens</div>
     </div>
-    <p class="body-text">Baltimore coverage was tense but pragmatic. Brissett is not Lamar Jackson — nobody is — but he's a competent NFL quarterback who can manage a game when needed. The prevailing tone was relief that the Ravens had addressed the position, mixed with real anxiety about the injury timeline.</p><p class="body-text">Local analysts debated two questions: how long is Jackson actually out, and can Brissett keep this team above water in the interim? Most felt cautiously optimistic about the former and uncertain about the latter.</p>
+    <p class="body-text">Baltimore coverage was tense but pragmatic. Brissett is not Lamar Jackson, but he's a competent NFL quarterback who can manage a game when needed. The prevailing tone was relief that the Ravens had addressed the position, mixed with real anxiety about the injury timeline.</p><p class="body-text">Local analysts debated two questions: how long is Jackson actually out, and can Brissett keep this team above water in the interim? Most felt cautiously optimistic about the former and uncertain about the latter.</p>
   </div>
 
   <!-- City 2 viewpoint -->
@@ -268,7 +274,7 @@
       <img src="https://a.espncdn.com/i/teamlogos/nfl/500/ari.png" alt="ARI" width="44" height="44" style="border-radius:50%;object-fit:cover;">
       <div class="viewpoint-label">What Arizona Media Is Saying About the Arizona Cardinals</div>
     </div>
-    <p class="body-text">Arizona media called this a clean transaction. The Cardinals are rebuilding, Brissett was clearly not in their long-term plans, and getting a fourth-round pick — plus the swap arrangement — is a strong return.</p><p class="body-text">Arizona's front office has had a strong run of trades this season from a pure draft-capital perspective. This one fits that pattern.</p>
+    <p class="body-text">Arizona media called this a clean transaction. The Cardinals are rebuilding, Brissett was clearly not in their long-term plans, and getting a fourth-round pick, including the swap arrangement, is a strong return.</p><p class="body-text">Arizona's front office has had a strong run of trades this season from a pure draft-capital perspective. This one fits that pattern.</p>
   </div>
 
   <!-- National --><div class='section-box'><div class='section-label'>WHAT EVERYONE ELSE IS SAYING</div><p class="body-text">Nationally, the focus was on Baltimore's situation rather than the trade mechanics. How much time is Jackson out? Can a Brissett-led Ravens team win in the AFC? Most analysts gave Baltimore a middling grade because the trade itself was reasonable but the situation that created it is genuinely concerning.</p></div>

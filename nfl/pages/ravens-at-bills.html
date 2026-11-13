@@ -59,29 +59,34 @@
     .section-box{background:var(--card-bg);border:1px solid var(--rule);border-radius:var(--radius-lg);padding:24px;margin-bottom:24px;}
     .section-label{font-family:var(--font-head);font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--slate);border-bottom:1px solid var(--rule);padding-bottom:10px;margin-bottom:16px;}
     .section-label.orange{color:var(--orange);}
-    /* Sentiment bars */
-    .sentiment-row{margin-bottom:18px;}
+    /* Sentiment bars — center-anchored (Harsh left, Neutral center, Glowing right) */
+    .sentiment-row{margin-bottom:20px;}
     .sentiment-row:last-child{margin-bottom:0;}
-    .sentiment-market{font-family:var(--font-head);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-bottom:6px;display:flex;align-items:center;gap:10px;}
-    .sentiment-bar-track{height:8px;background:var(--rule);border-radius:4px;overflow:hidden;display:flex;}
-    .sentiment-pos{background:#22c55e;height:100%;}
-    .sentiment-neu{background:#f59e0b;height:100%;}
-    .sentiment-neg{background:#ef4444;height:100%;}
-    .sentiment-legend{display:flex;gap:14px;margin-top:5px;}
-    .sentiment-legend span{font-family:var(--font-body);font-size:11px;color:var(--slate);display:flex;align-items:center;gap:4px;}
-    .sentiment-legend span::before{content:'';width:8px;height:8px;border-radius:2px;display:inline-block;}
-    .sentiment-legend .leg-pos::before{background:#22c55e;}
-    .sentiment-legend .leg-neu::before{background:#f59e0b;}
-    .sentiment-legend .leg-neg::before{background:#ef4444;}
+    .sentiment-market{font-family:var(--font-head);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-bottom:8px;display:flex;align-items:center;gap:10px;}
+    .sentiment-track-wrap{position:relative;max-width:100%;overflow:hidden;}
+    .sentiment-track{position:relative;height:8px;background:var(--rule);border-radius:4px;overflow:hidden;}
+    .sentiment-fill{position:absolute;top:0;height:100%;border-radius:4px;}
+    .sentiment-fill.positive{background:var(--orange);}
+    .sentiment-fill.negative{background:#ef4444;}
+    .sentiment-track::after{content:'';position:absolute;top:-2px;bottom:-2px;left:50%;width:2px;background:var(--ink);opacity:.35;transform:translateX(-50%);z-index:1;border-radius:1px;}
+    .sentiment-axis{display:flex;justify-content:space-between;margin-top:5px;}
+    .sentiment-axis span{font-family:var(--font-body);font-size:10px;color:var(--slate-light);letter-spacing:.04em;}
+    .sentiment-footnote{font-family:var(--font-body);font-size:11px;color:var(--slate);margin-top:14px;padding-top:14px;border-top:1px solid var(--rule);font-style:italic;line-height:1.5;}
     /* Bullets */
     .summary-bullets{list-style:none;margin:0;padding:0;}
-    .summary-bullets li{font-family:var(--font-body);font-size:15px;line-height:1.6;color:var(--ink);padding:8px 0 8px 22px;border-bottom:1px solid var(--rule);position:relative;}
+    .summary-bullets li{font-family:var(--font-body);font-size:16px;line-height:1.65;color:var(--ink);padding:9px 0 9px 24px;border-bottom:1px solid var(--rule);position:relative;}
     .summary-bullets li:last-child{border-bottom:none;}
-    .summary-bullets li::before{content:'▸';position:absolute;left:0;color:var(--orange);font-size:12px;top:11px;}
+    .summary-bullets li::before{content:'▸';position:absolute;left:0;color:var(--orange);font-size:12px;top:13px;}
     /* Viewpoint sections */
     .viewpoint-logo{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
     .viewpoint-label{font-family:var(--font-head);font-size:16px;font-weight:800;letter-spacing:.04em;color:var(--ink);}
-    .body-text{font-family:var(--font-body);font-size:15px;line-height:1.75;color:var(--ink);margin-bottom:14px;}
+    .body-text{font-family:var(--font-body);font-size:16px;line-height:1.75;color:var(--ink);margin-bottom:14px;}
+    /* Viewpoint bullet lists */
+    .viewpoint-bullets{list-style:none;margin:0;padding:0;}
+    .viewpoint-bullets li{font-family:var(--font-body);font-size:16px;line-height:1.65;color:var(--ink);padding:9px 0 9px 24px;border-bottom:1px solid var(--rule);position:relative;}
+    .viewpoint-bullets li:last-child{border-bottom:none;}
+    .viewpoint-bullets li::before{content:'▸';position:absolute;left:0;color:var(--orange);font-size:12px;top:13px;}
+    .viewpoint-source{font-family:var(--font-head);font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:2px;}
     .body-text:last-child{margin-bottom:0;}
     /* Grades table */
     .grades-table{width:100%;border-collapse:collapse;}
@@ -189,8 +194,8 @@
     <div style="text-align:center;"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/buf.png" alt="BUF" width="64" height="64" style="border-radius:50%;object-fit:cover;"><div style="font-family:var(--font-head);font-size:16px;font-weight:800;margin-top:8px;">Buffalo Bills</div></div>
   </div>
   <div class="section-box"><div class="section-label">THE BREAKDOWN</div><p class="body-text">This game carries AFC playoff seeding implications. The Ravens came in at 5-2 looking to prove they belong with the AFC's elite; the Bills entered as the No. 1 seed at 6-1 and looking to impose their identity on the conference.</p><p class="body-text">The matchup centered on Baltimore's ability to protect Lamar Jackson against Buffalo's league-leading pass rush, and on the Ravens' own defense limiting Josh Allen's ability to extend plays.</p></div>
-  <div class="section-box"><div class="viewpoint-logo"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/bal.png" alt="BAL" width="44" height="44" style="border-radius:50%;object-fit:cover;"><div class="viewpoint-label">What Baltimore Ravens Media Is Saying</div></div><p class="body-text">Baltimore coverage was measured before this game — aware of the challenge but not deferential to it. The Ravens have beaten contenders all season and arrived in Buffalo believing they had the schematic answers.</p><p class="body-text">The local focus: Lamar Jackson's mobility is always a factor, and the Bills have had trouble with quarterbacks who can extend plays. Baltimore's confidence going into the game was reflected across the local beat coverage.</p></div>
-  <div class="section-box"><div class="viewpoint-logo"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/buf.png" alt="BUF" width="44" height="44" style="border-radius:50%;object-fit:cover;"><div class="viewpoint-label">What Buffalo Bills Media Is Saying</div></div><p class="body-text">Buffalo coverage was straightforward: this was a chance to send a message. The Bills' defense wanted to prove it could stop Jackson when it mattered. The offense wanted to show it could move the ball against Baltimore's elite defensive front.</p><p class="body-text">The prevailing local sentiment: the Bills have been the AFC's best team and this game was an opportunity to cement that standing.</p></div>
+  <div class="section-box"><div class="viewpoint-logo"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/bal.png" alt="BAL" width="44" height="44" style="border-radius:50%;object-fit:cover;"><div class="viewpoint-label">What Ravens's coverage is saying about the Baltimore Ravens:</div></div><ul class="viewpoint-bullets"><li>Baltimore coverage was measured before this game, aware of the challenge but not deferential to it. The Ravens have beaten contenders all season and arrived in Buffalo believing they had the schematic answers.</li><li>The local focus: Lamar Jackson's mobility is always a factor, and the Bills have had trouble with quarterbacks who can extend plays. Baltimore's confidence going into the game was reflected across the local beat coverage.</li></ul></div>
+  <div class="section-box"><div class="viewpoint-logo"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/buf.png" alt="BUF" width="44" height="44" style="border-radius:50%;object-fit:cover;"><div class="viewpoint-label">What Bills's coverage is saying about the Buffalo Bills:</div></div><ul class="viewpoint-bullets"><li>Buffalo coverage was straightforward: this was a chance to send a message. The Bills' defense wanted to prove it could stop Jackson when it mattered. The offense wanted to show it could move the ball against Baltimore's elite defensive front.</li><li>The prevailing local sentiment: the Bills have been the AFC's best team and this game was an opportunity to cement that standing.</li></ul></div>
 </div>
 
 <script>

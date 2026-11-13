@@ -138,13 +138,19 @@ function buildRankingsWidget(rankings) {
   }
   const note = rankings.note ? `<div style="padding:8px 16px 0;font-family:var(--font-body);font-size:11px;color:var(--slate-light);">${escHtml(rankings.note)}</div>` : '';
   const rows = rankings.teams.slice(0, 10).map((t, i) => {
-    const move = t.move > 0 ? '↑' : t.move < 0 ? '↓' : '—';
-    const moveColor = t.move > 0 ? '#1A6B3A' : t.move < 0 ? '#9B1C1C' : 'var(--slate)';
+    let arrowCls, arrowTxt;
+    if (t.move > 0) {
+      arrowCls = 'up'; arrowTxt = `▲${t.move}`;
+    } else if (t.move < 0) {
+      arrowCls = 'down'; arrowTxt = `▼${Math.abs(t.move)}`;
+    } else {
+      arrowCls = 'flat'; arrowTxt = '–';
+    }
     return `
     <div class="ranking-row">
       <span class="rank-num">${String(i + 1).padStart(2, '0')}</span>
       <span class="rank-team">${escHtml(t.name)}</span>
-      <span class="rank-arrow" style="color:${moveColor};">${move}</span>
+      <span class="rank-arrow ${arrowCls}">${arrowTxt}</span>
     </div>`;
   }).join('');
   return note + rows;

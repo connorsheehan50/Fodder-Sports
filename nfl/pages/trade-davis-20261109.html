@@ -59,29 +59,34 @@
     .section-box{background:var(--card-bg);border:1px solid var(--rule);border-radius:var(--radius-lg);padding:24px;margin-bottom:24px;}
     .section-label{font-family:var(--font-head);font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--slate);border-bottom:1px solid var(--rule);padding-bottom:10px;margin-bottom:16px;}
     .section-label.orange{color:var(--orange);}
-    /* Sentiment bars */
-    .sentiment-row{margin-bottom:18px;}
+    /* Sentiment bars — center-anchored (Harsh left, Neutral center, Glowing right) */
+    .sentiment-row{margin-bottom:20px;}
     .sentiment-row:last-child{margin-bottom:0;}
-    .sentiment-market{font-family:var(--font-head);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-bottom:6px;display:flex;align-items:center;gap:10px;}
-    .sentiment-bar-track{height:8px;background:var(--rule);border-radius:4px;overflow:hidden;display:flex;}
-    .sentiment-pos{background:#22c55e;height:100%;}
-    .sentiment-neu{background:#f59e0b;height:100%;}
-    .sentiment-neg{background:#ef4444;height:100%;}
-    .sentiment-legend{display:flex;gap:14px;margin-top:5px;}
-    .sentiment-legend span{font-family:var(--font-body);font-size:11px;color:var(--slate);display:flex;align-items:center;gap:4px;}
-    .sentiment-legend span::before{content:'';width:8px;height:8px;border-radius:2px;display:inline-block;}
-    .sentiment-legend .leg-pos::before{background:#22c55e;}
-    .sentiment-legend .leg-neu::before{background:#f59e0b;}
-    .sentiment-legend .leg-neg::before{background:#ef4444;}
+    .sentiment-market{font-family:var(--font-head);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-bottom:8px;display:flex;align-items:center;gap:10px;}
+    .sentiment-track-wrap{position:relative;max-width:100%;overflow:hidden;}
+    .sentiment-track{position:relative;height:8px;background:var(--rule);border-radius:4px;overflow:hidden;}
+    .sentiment-fill{position:absolute;top:0;height:100%;border-radius:4px;}
+    .sentiment-fill.positive{background:var(--orange);}
+    .sentiment-fill.negative{background:#ef4444;}
+    .sentiment-track::after{content:'';position:absolute;top:-2px;bottom:-2px;left:50%;width:2px;background:var(--ink);opacity:.35;transform:translateX(-50%);z-index:1;border-radius:1px;}
+    .sentiment-axis{display:flex;justify-content:space-between;margin-top:5px;}
+    .sentiment-axis span{font-family:var(--font-body);font-size:10px;color:var(--slate-light);letter-spacing:.04em;}
+    .sentiment-footnote{font-family:var(--font-body);font-size:11px;color:var(--slate);margin-top:14px;padding-top:14px;border-top:1px solid var(--rule);font-style:italic;line-height:1.5;}
     /* Bullets */
     .summary-bullets{list-style:none;margin:0;padding:0;}
-    .summary-bullets li{font-family:var(--font-body);font-size:15px;line-height:1.6;color:var(--ink);padding:8px 0 8px 22px;border-bottom:1px solid var(--rule);position:relative;}
+    .summary-bullets li{font-family:var(--font-body);font-size:16px;line-height:1.65;color:var(--ink);padding:9px 0 9px 24px;border-bottom:1px solid var(--rule);position:relative;}
     .summary-bullets li:last-child{border-bottom:none;}
-    .summary-bullets li::before{content:'▸';position:absolute;left:0;color:var(--orange);font-size:12px;top:11px;}
+    .summary-bullets li::before{content:'▸';position:absolute;left:0;color:var(--orange);font-size:12px;top:13px;}
     /* Viewpoint sections */
     .viewpoint-logo{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
     .viewpoint-label{font-family:var(--font-head);font-size:16px;font-weight:800;letter-spacing:.04em;color:var(--ink);}
-    .body-text{font-family:var(--font-body);font-size:15px;line-height:1.75;color:var(--ink);margin-bottom:14px;}
+    .body-text{font-family:var(--font-body);font-size:16px;line-height:1.75;color:var(--ink);margin-bottom:14px;}
+    /* Viewpoint bullet lists */
+    .viewpoint-bullets{list-style:none;margin:0;padding:0;}
+    .viewpoint-bullets li{font-family:var(--font-body);font-size:16px;line-height:1.65;color:var(--ink);padding:9px 0 9px 24px;border-bottom:1px solid var(--rule);position:relative;}
+    .viewpoint-bullets li:last-child{border-bottom:none;}
+    .viewpoint-bullets li::before{content:'▸';position:absolute;left:0;color:var(--orange);font-size:12px;top:13px;}
+    .viewpoint-source{font-family:var(--font-head);font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:2px;}
     .body-text:last-child{margin-bottom:0;}
     /* Grades table */
     .grades-table{width:100%;border-collapse:collapse;}
@@ -183,7 +188,7 @@
 
   <div class="article-eyebrow">NFL TRADE · Nov. 9, 2026</div>
   <h1 class="article-title">Jaguars Make First Move: Jordan Davis from Philly</h1>
-  <p class="article-subtitle">Jacksonville kicked off a three-trade deadline run by landing Eagles defensive tackle Jordan Davis — the first of three significant acquisitions before the Nov. 10 deadline.</p>
+  <p class="article-subtitle">Jacksonville kicked off a three-trade deadline run by landing Eagles defensive tackle Jordan Davis, the first of three significant acquisitions before the Nov. 10 deadline.</p>
 
   
 
@@ -220,37 +225,38 @@
     
       <div class="sentiment-row">
         <div class="sentiment-market"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/jax.png" alt="JAX" width="24" height="24" style="border-radius:50%;object-fit:cover;"> Jacksonville Media</div>
-        <div class="sentiment-bar-track">
-          <div class="sentiment-pos" style="width:74%"></div>
-          <div class="sentiment-neu" style="width:18%"></div>
-          <div class="sentiment-neg" style="width:8%"></div>
-        </div>
-        <div class="sentiment-legend">
-          <span class="leg-pos">74% positive</span>
-          <span class="leg-neu">18% neutral</span>
-          <span class="leg-neg">8% negative</span>
+        <div class="sentiment-track-wrap">
+          <div class="sentiment-track">
+            <div class="sentiment-fill positive" style="left:50%;width:33.0%"></div>
+          </div>
+          <div class="sentiment-axis">
+            <span>Harsh</span>
+            <span>Neutral</span>
+            <span>Glowing</span>
+          </div>
         </div>
       </div>
     
       <div class="sentiment-row">
         <div class="sentiment-market"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/phi.png" alt="PHI" width="24" height="24" style="border-radius:50%;object-fit:cover;"> Philadelphia Media</div>
-        <div class="sentiment-bar-track">
-          <div class="sentiment-pos" style="width:82%"></div>
-          <div class="sentiment-neu" style="width:12%"></div>
-          <div class="sentiment-neg" style="width:6%"></div>
-        </div>
-        <div class="sentiment-legend">
-          <span class="leg-pos">82% positive</span>
-          <span class="leg-neu">12% neutral</span>
-          <span class="leg-neg">6% negative</span>
+        <div class="sentiment-track-wrap">
+          <div class="sentiment-track">
+            <div class="sentiment-fill positive" style="left:50%;width:38.0%"></div>
+          </div>
+          <div class="sentiment-axis">
+            <span>Harsh</span>
+            <span>Neutral</span>
+            <span>Glowing</span>
+          </div>
         </div>
       </div>
+    <p class="sentiment-footnote">Each bar shows the overall tone of that market's coverage. Bar extends right for positive/glowing, left for negative/harsh.</p>
   </div>
 
   <!-- Summary bullets -->
   <div class="section-box">
     <div class="section-label">THE QUICK TAKE</div>
-    <ul class="summary-bullets"><li>Davis, 25, was the 13th overall pick in the 2022 NFL Draft and developed into a space-eating run-stuffer in Philadelphia's defensive system.</li><li>Philadelphia received a first-round pick plus a future second — a commanding return for a player who had not yet been a consistent high-level performer.</li><li>Jacksonville paid premium draft capital because Davis fits the team's rebuilding defensive structure and his age keeps his upside intact.</li><li>This was the first of three Jacksonville trades executed in a 24-hour window, with the Jaguars also acquiring Jessie Bates from Atlanta and Davon Godchaux from New Orleans.</li><li>The Eagles' A grade reflects excellent return for a player they were content to move; Jacksonville's B+ reflects enthusiasm for the player balanced against the significant cost.</li></ul>
+    <ul class="summary-bullets"><li>Davis, 25, was the 13th overall pick in the 2022 NFL Draft and developed into a space-eating run-stuffer in Philadelphia's defensive system.</li><li>Philadelphia received a first-round pick plus a future second, a commanding return for a player who had not yet been a consistent high-level performer.</li><li>Jacksonville paid premium draft capital because Davis fits the team's rebuilding defensive structure and his age keeps his upside intact.</li><li>This was the first of three Jacksonville trades executed in a 24-hour window, with the Jaguars also acquiring Jessie Bates from Atlanta and Davon Godchaux from New Orleans.</li><li>The Eagles' A grade reflects excellent return for a player they were content to move; Jacksonville's B+ reflects enthusiasm for the player balanced against the significant cost.</li></ul>
   </div>
 
   <!-- City 1 viewpoint -->
@@ -302,7 +308,7 @@
   <!-- Win-win -->
   <div class="section-box">
     <div class="section-label">WIN-WIN OR FLEECED?</div>
-    <p class="body-text">Philadelphia wins outright. A first-round pick for a player in his third year of his second contract, who had never reached his ceiling, is excellent return. Jacksonville paid premium capital for upside — it's a reasonable bet, but it's a bet.</p>
+    <p class="body-text">Philadelphia wins outright. A first-round pick for a player in his third year of his second contract, who had never reached his ceiling, is excellent return. Jacksonville paid premium capital for upside; it's a reasonable bet, but it's a bet.</p>
   </div>
 
   <!-- References --><div class='section-box'><div class='section-label'>REFERENCES</div><ul class='references-list'><li><a href="https://www.nfl.com/transactions/" target="_blank">NFL.com Transaction Records</a></li></ul></div>
