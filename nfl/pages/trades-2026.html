@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026 NFL Trade Tracker</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <style>
+    .header-actions{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+    .btn-signin{font-family:var(--font-head);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate-light);padding:6px 14px;border:1px solid #333;border-radius:3px;cursor:pointer;background:none;transition:color .15s,border-color .15s;}
+    .btn-signin:hover{color:var(--off-white);border-color:#666;}
+    .btn-signup{font-family:var(--font-head);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff;padding:7px 16px;background:var(--orange);border:none;border-radius:3px;cursor:pointer;transition:opacity .15s;}
+    .btn-signup:hover{opacity:.85;}
+    .btn-account{font-family:var(--font-head);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--off-white);padding:6px 14px;border:1px solid #444;border-radius:3px;cursor:pointer;background:none;display:none;align-items:center;gap:7px;transition:border-color .15s;white-space:nowrap;}
+    .btn-account:hover{border-color:var(--orange);}
+    .btn-account .account-dot{width:7px;height:7px;background:var(--orange);border-radius:50%;display:inline-block;}
+    .primary-nav{background:var(--off-white);border-bottom:1px solid var(--rule);position:sticky;top:60px;z-index:90;}
+    .primary-nav-inner{display:flex;align-items:center;gap:0;overflow-x:auto;scrollbar-width:none;}
+    .primary-nav-inner::-webkit-scrollbar{display:none;}
+    .nav-item{position:relative;flex-shrink:0;}
+    .nav-link{display:flex;align-items:center;gap:4px;font-family:var(--font-head);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);padding:14px 18px;border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap;transition:color .15s,border-color .15s;text-decoration:none;background:none;border-top:none;border-left:none;border-right:none;}
+    .nav-link:hover{color:var(--ink);}
+    .nav-link.active{color:var(--ink);border-bottom-color:var(--orange);}
+    .nav-link .caret{font-size:8px;color:var(--slate-light);margin-left:1px;transition:transform .15s;}
+    .nav-item:hover .caret{transform:rotate(180deg);}
+    .nav-dropdown{position:absolute;top:100%;left:0;background:var(--card-bg);border:1px solid var(--rule);border-top:2px solid var(--orange);border-radius:0 0 var(--radius-lg) var(--radius-lg);min-width:190px;box-shadow:0 8px 24px rgba(0,0,0,.12);display:none;z-index:200;flex-direction:column;padding:6px 0;}
+    .nav-item:hover .nav-dropdown{display:flex;}
+    .nav-dropdown a{display:block;font-family:var(--font-head);font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--slate);padding:10px 18px;transition:background .1s,color .1s;}
+    .nav-dropdown a:hover{background:var(--page-bg);color:var(--ink);}
+    .nav-dropdown .dropdown-divider{height:1px;background:var(--rule);margin:4px 12px;}
+    .account-menu{position:absolute;top:calc(100% + 8px);right:0;background:var(--card-bg);border:1px solid var(--rule);border-radius:var(--radius-lg);box-shadow:0 8px 24px rgba(0,0,0,.12);min-width:200px;display:none;z-index:300;padding:8px 0;}
+    .account-menu.open{display:block;}
+    .account-wrapper{position:relative;}
+
+    /* Hub styles */
+    .hub-wrap{max-width:900px;margin:0 auto;padding:0 var(--gutter) 64px;}
+    .hub-header{padding:28px 0 20px;}
+    .hub-eyebrow{font-family:var(--font-head);font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--orange);margin-bottom:10px;}
+    .hub-title{font-family:var(--font-display);font-size:clamp(28px,4vw,44px);line-height:1.1;color:var(--ink);margin-bottom:12px;}
+    .hub-subtitle{font-family:var(--font-body);font-size:16px;color:var(--slate);line-height:1.6;margin-bottom:0;}
+    .hub-meta{font-family:var(--font-head);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);border-top:1px solid var(--rule);padding-top:16px;margin-top:16px;}
+    .trades-count-bar{display:flex;gap:24px;padding:16px 0 24px;border-bottom:1px solid var(--rule);margin-bottom:28px;flex-wrap:wrap;}
+    .count-chip{background:var(--card-bg);border:1px solid var(--rule);border-radius:6px;padding:10px 16px;text-align:center;}
+    .count-num{font-family:var(--font-display);font-size:28px;color:var(--orange);line-height:1;}
+    .count-label{font-family:var(--font-head);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin-top:4px;}
+
+    /* Trade rows */
+    .trade-row{background:var(--card-bg);border:1px solid var(--rule);border-radius:var(--radius-lg);padding:18px 20px;margin-bottom:12px;display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;text-decoration:none;transition:border-color .15s,box-shadow .15s;}
+    .trade-row:hover{border-color:var(--orange);box-shadow:0 2px 12px rgba(255,77,0,.08);}
+    .trade-row.voided{opacity:.6;}
+    .trade-logos{display:flex;align-items:center;gap:-4px;}
+    .trade-logos img{width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid var(--page-bg);}
+    .trade-logos img:last-child{margin-left:-12px;}
+    .trade-info{}
+    .trade-row-title{font-family:var(--font-head);font-size:15px;font-weight:800;color:var(--ink);line-height:1.3;margin-bottom:4px;}
+    .trade-row-desc{font-family:var(--font-body);font-size:13px;color:var(--slate);line-height:1.4;}
+    .trade-row-date{font-family:var(--font-head);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--slate-light);white-space:nowrap;}
+    .grade-badges{display:flex;gap:6px;align-items:center;flex-shrink:0;}
+    .grade-badge{display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-head);font-size:13px;font-weight:800;min-width:30px;height:30px;border-radius:5px;padding:0 5px;}
+    .grade-a-plus{background:#166534;color:#bbf7d0;}
+    .grade-a{background:#14532d;color:#bbf7d0;}
+    .grade-a-minus{background:#15803d;color:#dcfce7;}
+    .grade-b-plus{background:#1e3a5f;color:#bfdbfe;}
+    .grade-b{background:#1e40af;color:#dbeafe;}
+    .grade-b-minus{background:#1d4ed8;color:#eff6ff;}
+    .grade-c-plus{background:#78350f;color:#fde68a;}
+    .grade-c{background:#92400e;color:#fef3c7;}
+    .grade-d{background:#7f1d1d;color:#fee2e2;}
+    .voided-badge{font-family:var(--font-head);font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;background:#7f1d1d;color:#fee2e2;border-radius:4px;padding:3px 7px;}
+
+    .section-divider{display:flex;align-items:center;gap:14px;margin:28px 0 16px;}
+    .section-divider-label{font-family:var(--font-head);font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--orange);white-space:nowrap;}
+    .section-divider-line{flex:1;height:1px;background:var(--rule);}
+
+    @media(max-width:580px){
+      .trade-row{grid-template-columns:auto 1fr;gap:12px;}
+      .grade-badges{display:none;}
+      .trade-row-date{font-size:10px;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="../../index.html" class="logo">
+        <span class="logo-word">FODDER<span>.</span></span>
+        <span class="logo-sub">Sports</span>
+      </a>
+      <div class="header-actions">
+        <button class="btn-signin" onclick="openModal('signin')">Sign In</button>
+        <button class="btn-signup" id="btn-signup-header" onclick="openModal('signup')">Sign Up Free</button>
+        <div class="account-wrapper">
+          <button class="btn-account" id="btn-account" onclick="toggleAccountMenu()">
+            <span class="account-dot"></span>
+            <span id="account-label">My Account</span>
+          </button>
+          <div class="account-menu" id="account-menu">
+            <div style="padding:12px 16px 10px;border-bottom:1px solid var(--rule);">
+              <div style="font-size:13px;color:var(--slate);" id="account-email"></div>
+            </div>
+            <a href="../../index.html?tab=myfeed">My Feed</a>
+            <button onclick="signOut()" style="color:#c0392b;">Sign Out</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Primary Nav -->
+<nav class="primary-nav">
+  <div class="container">
+    <div class="primary-nav-inner">
+      <div class="nav-item"><a href="../../index.html" class="nav-link">Home</a></div>
+      <div class="nav-item"><a href="../../index.html?tab=myfeed" class="nav-link">My Feed</a></div>
+      <div class="nav-item">
+        <a href="../index.html" class="nav-link active">NFL <span class="caret">▾</span></a>
+        <div class="nav-dropdown">
+          <a href="../index.html">All NFL Stories</a>
+          <div class="dropdown-divider"></div>
+          <a href="../power-rankings.html">Power Rankings</a>
+          <a href="../index.html?tab=preview">Game Previews</a>
+          <a href="../index.html?tab=recap">Game Recaps</a>
+          <a href="../index.html?tab=trade">Trades</a>
+          <a href="trades-2026.html">All 2026 Trades</a>
+        </div>
+      </div>
+      <div class="nav-item"><a href="#" class="nav-link">NBA</a></div>
+      <div class="nav-item"><a href="#" class="nav-link">MLB</a></div>
+      <div class="nav-item"><a href="#" class="nav-link">NHL</a></div>
+    </div>
+  </div>
+</nav>
+
+<div class="hub-wrap">
+  <div class="hub-header">
+    <div class="hub-eyebrow">NFL TRADE TRACKER</div>
+    <h1 class="hub-title">Every 2026 NFL Trade, Graded</h1>
+    <p class="hub-subtitle">Every meaningful move from the 2026 NFL season in one place. Short and sweet on each deal — grades, the key detail, and a link to the full breakdown. Updated as trades happen.</p>
+    <div class="hub-meta">Last updated: November 13, 2026 · 18 trades tracked · 1 voided</div>
+  </div>
+
+  <div class="trades-count-bar">
+    <div class="count-chip"><div class="count-num">18</div><div class="count-label">Trades</div></div>
+    <div class="count-chip"><div class="count-num">6</div><div class="count-label">Nov. 10 Deadline</div></div>
+    <div class="count-chip"><div class="count-num">3</div><div class="count-label">JAX Acquired</div></div>
+    <div class="count-chip"><div class="count-num">1</div><div class="count-label">Voided</div></div>
+  </div>
+
+  <!-- NOVEMBER 10 DEADLINE -->
+  <div class="section-divider">
+    <div class="section-divider-label">November 10 Deadline</div>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <a href="trade-cousins-20261110.html" class="trade-row">
+    <div class="trade-logos">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/min.png" alt="MIN">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/lv.png" alt="LV">
+    </div>
+    <div class="trade-info">
+      <div class="trade-row-title">Kirk Cousins Returns to Minnesota</div>
+      <div class="trade-row-desc">Vikings get QB Kirk Cousins from Las Vegas · Raiders get 2027 3rd</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
+      <div class="trade-row-date">Nov. 10</div>
+      <div class="grade-badges">
+        <div class="grade-badge grade-b">B</div>
+        <div class="grade-badge grade-a-plus">A+</div>
+      </div>
+    </div>
+  </a>
+
+  <a href="trade-hooker-20261110.html" class="trade-row">
+    <div class="trade-logos">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/buf.png" alt="BUF">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/ten.png" alt="TEN">
+    </div>
+    <div class="trade-info">
+      <div class="trade-row-title">Bills Land Amani Hooker from Tennessee</div>
+      <div class="trade-row-desc">Bills get S Amani Hooker + 2027 5th · Titans get 2027 2nd</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
+      <div class="trade-row-date">Nov. 10</div>
+      <div class="grade-badges">
+        <div class="grade-badge grade-a">A</div>
+        <div class="grade-badge grade-a-plus">A+</div>
+      </div>
+    </div>
+  </a>
+
+  <a href="trade-downs-20261110.html" class="trade-row">
+    <div class="trade-logos">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/kc.png" alt="KC">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/ind.png" alt="IND">
+    </div>
+    <div class="trade-info">
+      <div class="trade-row-title">Chiefs Add Josh Downs from Indianapolis</div>
+      <div class="trade-row-desc">Chiefs get WR Josh Downs + 2027 7th · Colts get 2027 4th + 2027 5th</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
+      <div class="trade-row-date">Nov. 10</div>
+      <div class="grade-badges">
+        <div class="grade-badge grade-a">A</div>
+        <div class="grade-badge grade-a">A</div>
+      </div>
+    </div>
+  </a>
+
+  <a href="trade-allen-20261110.html" class="trade-row">
+    <div class="trade-logos">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/sf.png" alt="SF">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/ind.png" alt="IND">
+    </div>
+    <div class="trade-info">
+      <div class="trade-row-title">49ers Pick Up Keenan Allen</div>
+      <div class="trade-row-desc">49ers get WR Keenan Allen · Colts get 2027 6th</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
+      <div class="trade-row-date">Nov. 10</div>
+      <div class="grade-badges">
+        <div class="grade-badge grade-b">B</div>
+        <div class="grade-badge grade-a">A</div>
+      </div>
+    </div>
+  </a>
+
+  <a href="trade-neuzil-20261110.html" class="trade-row">
+    <div class="trade-logos">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/bal.png" alt="BAL">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/atl.png" alt="ATL">
+    </div>
+    <div class="trade-info">
+      <div class="trade-row-title">Ravens Complete Line Overhaul: Ryan Neuzil</div>
+      <div class="trade-row-desc">Ravens get C Ryan Neuzil · Falcons get OL Andrew Vorhees + 2028 6th</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
+      <div class="trade-row-date">Nov. 10</div>
+      <div class="grade-badges">
+        <div class="grade-badge grade-c">C</div>
+        <div class="grade-badge grade-c-plus">C+</div>
+      </div>
+    </div>
+  </a>
+
+  <!-- NOVEMBER 9 -->
+  <div class="section-divider">
+    <div class="section-divider-label">November 9</div>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <a href="trade-davis-20261109.html" class="trade-row">
+    <div class="trade-logos">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/jax.png" alt="JAX">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/phi.png" alt="PHI">
+    </div>
+    <div class="trade-info">
+      <div class="trade-row-title">Jaguars Land Jordan Davis from Eagles</div>
+      <div class="trade-row-desc">Jaguars get DT Jordan Davis · Eagles get 2027 1st + 2029 2nd</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
+      <div class="trade-row-date">Nov. 9</div>
+      <div class="grade-badges">
+        <div class="grade-badge grade-b-plus">B+</div>
+        <div class="grade-badge grade-a">A</div>
+      </div>
+    </div>
+  </a>
+
+  <a href="trade-bates-20261109.html" class="trade-row">
+    <div class="trade-logos">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/jax.png" alt="JAX">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/atl.png" alt="ATL">
+    </div>
+    <div class="trade-info">
+      <div class="trade-row-title">Jaguars Add Jessie Bates III from Atlanta</div>
+      <div class="trade-row-desc">Jaguars get S Jessie Bates III · Falcons get 2027 2nd + 2028 5th</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
+      <div class="trade-row-date">Nov. 9</div>
+      <div class="grade-badges">
+        <div class="grade-badge grade-b-plus">B+</div>
+        <div class="grade-badge grade-a">A</div>
+      </div>
+    </div>
+  </a>
+
+  <a href="trade-godchaux-20261109.html" class="trade-row">
+    <div class="trade-logos">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/jax.png" alt="JAX">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/no.png" alt="NO">
+    </div>
+    <div class="trade-info">
+      <div class="trade-row-title">Jaguars Complete 3-Trade Run: Davon Godchaux</div>
+      <div class="trade-row-desc">Jaguars get DT Davon Godchaux · Saints get 2028 conditional 6th</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
+      <div class="trade-row-date">Nov. 9</div>
+      <div class="grade-badges">
+        <div class="grade-badge grade-b">B</div>
+        <div class="grade-badge grade-b-minus">B-</div>
+      </div>
+    </div>
+  </a>
+
+  <a href="trade-cisco-20261109.html" class="trade-row">
+    <div class="trade-logos">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/det.png" alt="DET">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/nyj.png" alt="NYJ">
+    </div>
+    <div class="trade-info">
+      <div class="trade-row-title">Lions Acquire Safety Andre Cisco from Jets</div>
+      <div class="trade-row-desc">Lions get S Andre Cisco · Jets get 2028 6th</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
+      <div class="trade-row-date">Nov. 9</div>
+      <div class="grade-badges">
+        <div class="grade-badge grade-b-minus">B-</div>
+        <div class="grade-badge grade-b">B</div>
+      </div>
+    </div>
+  </a>
+
+  <!-- NOVEMBER 4-6 -->
+  <div class="section-divider">
+    <div class="section-divider-label">November 4–6</div>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <a href="trade-brissett-20261104.html" class="trade-row">
+    <div class="trade-logos">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/bal.png" alt="BAL">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/ari.png" alt="ARI">
+    </div>
+    <div class="trade-info">
+      <div class="trade-row-title">Ravens Acquire Jacoby Brissett at QB</div>
+      <div class="trade-row-desc">Ravens get QB Brissett + 2027 5th · Cardinals get 2027 4th + 2028 7th</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
+      <div class="trade-row-date">Nov. 4</div>
+      <div class="grade-badges">
+        <div class="grade-badge grade-b-minus">B-</div>
+        <div class="grade-badge grade-a">A</div>
+      </div>
+    </div>
+  </a>
+
+  <!-- VOIDED -->
+  <a href="trade-henley-20261111.html" class="trade-row voided">
+    <div class="trade-logos">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/lac.png" alt="LAC">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/den.png" alt="DEN">
+    </div>
+    <div class="trade-info">
+      <div class="trade-row-title">⚠ VOIDED: Daiyan Henley LAC→DEN (Failed Physical)</div>
+      <div class="trade-row-desc">Announced Nov. 10 · Voided Nov. 11 · Knee issue · Henley returned to Chargers</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
+      <div class="trade-row-date">Nov. 10–11</div>
+      <div class="grade-badges">
+        <span class="voided-badge">VOIDED</span>
+      </div>
+    </div>
+  </a>
+
+  <!-- OCTOBER 29 -->
+  <div class="section-divider">
+    <div class="section-divider-label">October 27–29</div>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <a href="trade-simmons-20261029.html" class="trade-row">
+    <div class="trade-logos">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/chi.png" alt="CHI">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/ten.png" alt="TEN">
+    </div>
+    <div class="trade-info">
+      <div class="trade-row-title">Bears Go All-In: Jeffery Simmons from Tennessee</div>
+      <div class="trade-row-desc">Bears get DT Simmons + 2028 5th · Titans get 2027 1st + 2027 4th + 2028 1st</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
+      <div class="trade-row-date">Oct. 29</div>
+      <div class="grade-badges">
+        <div class="grade-badge grade-a-plus">A+</div>
+        <div class="grade-badge grade-a">A</div>
+      </div>
+    </div>
+  </a>
+
+  <a href="trade-nelson-20261027.html" class="trade-row">
+    <div class="trade-logos">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/sea.png" alt="SEA">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/ind.png" alt="IND">
+    </div>
+    <div class="trade-info">
+      <div class="trade-row-title">Seahawks Get Quenton Nelson from Colts</div>
+      <div class="trade-row-desc">Seahawks get G Quenton Nelson · Colts get 2027 3rd + 2028 5th</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
+      <div class="trade-row-date">Oct. 27</div>
+      <div class="grade-badges">
+        <div class="grade-badge grade-a">A</div>
+        <div class="grade-badge grade-b">B</div>
+      </div>
+    </div>
+  </a>
+
+  <a href="trade-buckner-20261027.html" class="trade-row">
+    <div class="trade-logos">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/sf.png" alt="SF">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/ind.png" alt="IND">
+    </div>
+    <div class="trade-info">
+      <div class="trade-row-title">49ers Bring Back DeForest Buckner</div>
+      <div class="trade-row-desc">49ers get DT DeForest Buckner · Colts get 2027 4th</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
+      <div class="trade-row-date">Oct. 27</div>
+      <div class="grade-badges">
+        <div class="grade-badge grade-a-minus">A-</div>
+        <div class="grade-badge grade-b-plus">B+</div>
+      </div>
+    </div>
+  </a>
+
+  <!-- OCTOBER 7-12 -->
+  <div class="section-divider">
+    <div class="section-divider-label">October 7–12</div>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <a href="trade-harrison-20261011.html" class="trade-row">
+    <div class="trade-logos">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/hou.png" alt="HOU">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/ari.png" alt="ARI">
+    </div>
+    <div class="trade-info">
+      <div class="trade-row-title">Cardinals Move Marvin Harrison Jr. to Houston</div>
+      <div class="trade-row-desc">Texans get WR Marvin Harrison Jr. + 2027 6th · Cardinals get 2027 2nd + 2027 7th</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
+      <div class="trade-row-date">Oct. 12</div>
+      <div class="grade-badges">
+        <div class="grade-badge grade-c">C-</div>
+        <div class="grade-badge grade-b-minus">B-</div>
+      </div>
+    </div>
+  </a>
+
+  <a href="trade-jurgens-20261007.html" class="trade-row">
+    <div class="trade-logos">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/bal.png" alt="BAL">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/phi.png" alt="PHI">
+    </div>
+    <div class="trade-info">
+      <div class="trade-row-title">Ravens Add Cam Jurgens from Philadelphia</div>
+      <div class="trade-row-desc">Ravens get C Cam Jurgens + 2027 7th · Eagles get 2027 5th + 2028 2nd</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
+      <div class="trade-row-date">Oct. 7</div>
+      <div class="grade-badges">
+        <div class="grade-badge grade-b">B</div>
+        <div class="grade-badge grade-c-plus">C+</div>
+      </div>
+    </div>
+  </a>
+
+  <!-- SEPTEMBER -->
+  <div class="section-divider">
+    <div class="section-divider-label">September</div>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <a href="trade-porter-20260930.html" class="trade-row">
+    <div class="trade-logos">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/dal.png" alt="DAL">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/pit.png" alt="PIT">
+    </div>
+    <div class="trade-info">
+      <div class="trade-row-title">Cowboys Acquire Joey Porter Jr. from Pittsburgh</div>
+      <div class="trade-row-desc">Cowboys get CB Joey Porter Jr. · Steelers get 2027 6th + 2028 2nd</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
+      <div class="trade-row-date">Sept. 30</div>
+      <div class="grade-badges">
+        <div class="grade-badge grade-b-minus">B-</div>
+        <div class="grade-badge grade-b">B</div>
+      </div>
+    </div>
+  </a>
+
+  <a href="trade-mccarthy-20260928.html" class="trade-row">
+    <div class="trade-logos">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/nyg.png" alt="NYG">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/min.png" alt="MIN">
+    </div>
+    <div class="trade-info">
+      <div class="trade-row-title">Giants Get JJ McCarthy for a Fifth-Round Pick</div>
+      <div class="trade-row-desc">Giants get QB JJ McCarthy · Vikings get 2027 5th</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
+      <div class="trade-row-date">Sept. 28</div>
+      <div class="grade-badges">
+        <div class="grade-badge grade-b-minus">B-</div>
+        <div class="grade-badge grade-d">D</div>
+      </div>
+    </div>
+  </a>
+
+  <div style="margin-top:36px;padding-top:24px;border-top:1px solid var(--rule);font-family:var(--font-body);font-size:13px;color:var(--slate);line-height:1.6;">
+    <strong style="color:var(--ink);">About the grades:</strong> Grades represent the consensus of national NFL analysts shortly after each trade was made. Left grade = team listed first; right grade = team listed second. All grades and analysis are editorial — not predictions of outcomes.
+  </div>
+</div>
+
+<footer style="background:var(--ink);border-top:3px solid var(--orange);padding:32px 0 24px;margin-top:64px;">
+  <div class="container" style="text-align:center;">
+    <div class="logo-word" style="font-family:var(--font-display);font-size:20px;color:var(--off-white);">FODDER<span style="color:var(--orange);">.</span></div>
+    <p style="font-family:var(--font-head);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin-top:8px;">Coverage from every market. No spin.</p>
+  </div>
+</footer>
+
+<script>
+function getAccount(){try{return JSON.parse(localStorage.getItem('fs_account')||'null');}catch(e){return null;}}
+function applyAccountState(){
+  var a=getAccount();
+  var su=document.getElementById('btn-signup-header');
+  var si=document.querySelector('.btn-signin');
+  var ac=document.getElementById('btn-account');
+  if(a){
+    if(su)su.style.display='none';
+    if(si)si.style.display='none';
+    if(ac){ac.style.display='flex';document.getElementById('account-label').textContent=a.email.split('@')[0];}
+    var em=document.getElementById('account-email');if(em)em.textContent=a.email;
+  }else{
+    if(su)su.style.display='';
+    if(si)si.style.display='';
+    if(ac)ac.style.display='none';
+  }
+}
+function toggleAccountMenu(){var m=document.getElementById('account-menu');if(m)m.classList.toggle('open');}
+function openModal(p){}
+function signOut(){localStorage.removeItem('fs_account');location.reload();}
+document.addEventListener('click',function(e){
+  var w=document.querySelector('.account-wrapper');
+  if(w&&!w.contains(e.target)){var m=document.getElementById('account-menu');if(m)m.classList.remove('open');}
+});
+document.addEventListener('DOMContentLoaded',applyAccountState);
+</script>
+</body>
+</html>

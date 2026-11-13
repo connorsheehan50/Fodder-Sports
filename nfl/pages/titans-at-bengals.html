@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../../css/style.css">
+  <style>
+    /* ── Header Buttons ── */
+    .header-actions{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+    .btn-signin{font-family:var(--font-head);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate-light);padding:6px 14px;border:1px solid #333;border-radius:3px;cursor:pointer;background:none;transition:color .15s,border-color .15s;}
+    .btn-signin:hover{color:var(--off-white);border-color:#666;}
+    .btn-signup{font-family:var(--font-head);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff;padding:7px 16px;background:var(--orange);border:none;border-radius:3px;cursor:pointer;transition:opacity .15s;}
+    .btn-signup:hover{opacity:.85;}
+    .btn-account{font-family:var(--font-head);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--off-white);padding:6px 14px;border:1px solid #444;border-radius:3px;cursor:pointer;background:none;display:none;align-items:center;gap:7px;transition:border-color .15s;white-space:nowrap;}
+    .btn-account:hover{border-color:var(--orange);}
+    .btn-account .account-dot{width:7px;height:7px;background:var(--orange);border-radius:50%;display:inline-block;}
+    @media(max-width:540px){.btn-signin{display:none;}}
+    /* ── Primary Nav ── */
+    .primary-nav{background:var(--off-white);border-bottom:1px solid var(--rule);position:sticky;top:60px;z-index:90;}
+    .primary-nav-inner{display:flex;align-items:center;gap:0;overflow-x:auto;scrollbar-width:none;}
+    .primary-nav-inner::-webkit-scrollbar{display:none;}
+    .nav-item{position:relative;flex-shrink:0;}
+    .nav-link{display:flex;align-items:center;gap:4px;font-family:var(--font-head);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);padding:14px 18px;border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap;transition:color .15s,border-color .15s;text-decoration:none;background:none;border-top:none;border-left:none;border-right:none;}
+    .nav-link:hover{color:var(--ink);}
+    .nav-link.active{color:var(--ink);border-bottom-color:var(--orange);}
+    .nav-link .caret{font-size:8px;color:var(--slate-light);margin-left:1px;transition:transform .15s;}
+    .nav-item:hover .caret{transform:rotate(180deg);}
+    .nav-dropdown{position:absolute;top:100%;left:0;background:var(--card-bg);border:1px solid var(--rule);border-top:2px solid var(--orange);border-radius:0 0 var(--radius-lg) var(--radius-lg);min-width:190px;box-shadow:0 8px 24px rgba(0,0,0,.12);display:none;z-index:200;flex-direction:column;padding:6px 0;}
+    .nav-item:hover .nav-dropdown{display:flex;}
+    .nav-dropdown a{display:block;font-family:var(--font-head);font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--slate);padding:10px 18px;transition:background .1s,color .1s;}
+    .nav-dropdown a:hover{background:var(--page-bg);color:var(--ink);}
+    .nav-dropdown .dropdown-divider{height:1px;background:var(--rule);margin:4px 12px;}
+    /* ── Account Dropdown ── */
+    .account-menu{position:absolute;top:calc(100% + 8px);right:0;background:var(--card-bg);border:1px solid var(--rule);border-radius:var(--radius-lg);box-shadow:0 8px 24px rgba(0,0,0,.12);min-width:200px;display:none;z-index:300;padding:8px 0;}
+    .account-menu.open{display:block;}
+    .account-wrapper{position:relative;}
+    /* ── Trade page styles ── */
+    .article-wrap{max-width:800px;margin:0 auto;padding:0 var(--gutter) 64px;}
+    .breadcrumb{font-family:var(--font-head);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);padding:20px 0 0;}
+    .breadcrumb a{color:var(--slate);text-decoration:none;}
+    .breadcrumb a:hover{color:var(--orange);}
+    .breadcrumb span{margin:0 6px;color:var(--slate-light);}
+    .article-eyebrow{font-family:var(--font-head);font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--orange);margin:24px 0 10px;}
+    .article-title{font-family:var(--font-display);font-size:clamp(28px,4vw,44px);line-height:1.1;color:var(--ink);margin-bottom:14px;}
+    .article-subtitle{font-family:var(--font-body);font-size:17px;line-height:1.6;color:var(--slate);margin-bottom:28px;}
+    /* Trade summary box */
+    .trade-box{display:grid;grid-template-columns:1fr 1fr;gap:0;border:2px solid var(--rule);border-radius:var(--radius-lg);overflow:hidden;margin:28px 0 36px;background:var(--card-bg);}
+    .trade-col{padding:20px 24px;}
+    .trade-col:first-child{border-right:2px solid var(--rule);}
+    .trade-col-head{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+    .trade-col-label{font-family:var(--font-head);font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;}
+    .trade-col-label.gets{color:var(--orange);}
+    .trade-col-label.gives{color:var(--blue);}
+    .trade-item{font-family:var(--font-head);font-size:14px;font-weight:700;color:var(--ink);line-height:1.4;padding:4px 0;border-bottom:1px solid var(--rule);}
+    .trade-item:last-child{border-bottom:none;}
+    .trade-item.pick{color:var(--slate);font-size:13px;font-weight:600;}
+    @media(max-width:580px){.trade-box{grid-template-columns:1fr;}.trade-col:first-child{border-right:none;border-bottom:2px solid var(--rule);}}
+    /* Section boxes */
+    .section-box{background:var(--card-bg);border:1px solid var(--rule);border-radius:var(--radius-lg);padding:24px;margin-bottom:24px;}
+    .section-label{font-family:var(--font-head);font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--slate);border-bottom:1px solid var(--rule);padding-bottom:10px;margin-bottom:16px;}
+    .section-label.orange{color:var(--orange);}
+    /* Sentiment bars */
+    .sentiment-row{margin-bottom:18px;}
+    .sentiment-row:last-child{margin-bottom:0;}
+    .sentiment-market{font-family:var(--font-head);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-bottom:6px;display:flex;align-items:center;gap:10px;}
+    .sentiment-bar-track{height:8px;background:var(--rule);border-radius:4px;overflow:hidden;display:flex;}
+    .sentiment-pos{background:#22c55e;height:100%;}
+    .sentiment-neu{background:#f59e0b;height:100%;}
+    .sentiment-neg{background:#ef4444;height:100%;}
+    .sentiment-legend{display:flex;gap:14px;margin-top:5px;}
+    .sentiment-legend span{font-family:var(--font-body);font-size:11px;color:var(--slate);display:flex;align-items:center;gap:4px;}
+    .sentiment-legend span::before{content:'';width:8px;height:8px;border-radius:2px;display:inline-block;}
+    .sentiment-legend .leg-pos::before{background:#22c55e;}
+    .sentiment-legend .leg-neu::before{background:#f59e0b;}
+    .sentiment-legend .leg-neg::before{background:#ef4444;}
+    /* Bullets */
+    .summary-bullets{list-style:none;margin:0;padding:0;}
+    .summary-bullets li{font-family:var(--font-body);font-size:15px;line-height:1.6;color:var(--ink);padding:8px 0 8px 22px;border-bottom:1px solid var(--rule);position:relative;}
+    .summary-bullets li:last-child{border-bottom:none;}
+    .summary-bullets li::before{content:'▸';position:absolute;left:0;color:var(--orange);font-size:12px;top:11px;}
+    /* Viewpoint sections */
+    .viewpoint-logo{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
+    .viewpoint-label{font-family:var(--font-head);font-size:16px;font-weight:800;letter-spacing:.04em;color:var(--ink);}
+    .body-text{font-family:var(--font-body);font-size:15px;line-height:1.75;color:var(--ink);margin-bottom:14px;}
+    .body-text:last-child{margin-bottom:0;}
+    /* Grades table */
+    .grades-table{width:100%;border-collapse:collapse;}
+    .grades-table th{font-family:var(--font-head);font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);padding:8px 12px;text-align:left;border-bottom:2px solid var(--rule);}
+    .grades-table td{font-family:var(--font-body);font-size:14px;padding:12px 12px;border-bottom:1px solid var(--rule);vertical-align:middle;}
+    .grades-table tr:last-child td{border-bottom:none;}
+    .grade-pill{display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-head);font-size:16px;font-weight:800;min-width:36px;height:36px;border-radius:6px;padding:0 6px;}
+    .grade-a-plus{background:#166534;color:#bbf7d0;}
+    .grade-a{background:#14532d;color:#bbf7d0;}
+    .grade-a-minus{background:#15803d;color:#dcfce7;}
+    .grade-b-plus{background:#1e3a5f;color:#bfdbfe;}
+    .grade-b{background:#1e40af;color:#dbeafe;}
+    .grade-b-minus{background:#1d4ed8;color:#eff6ff;}
+    .grade-c-plus{background:#78350f;color:#fde68a;}
+    .grade-c{background:#92400e;color:#fef3c7;}
+    .grade-d{background:#7f1d1d;color:#fee2e2;}
+    .team-cell{display:flex;align-items:center;gap:10px;}
+    /* References */
+    .references-list{list-style:none;margin:0;padding:0;}
+    .references-list li{font-family:var(--font-body);font-size:13px;color:var(--slate);padding:5px 0;border-bottom:1px solid var(--rule);}
+    .references-list li:last-child{border-bottom:none;}
+    .references-list a{color:var(--blue);text-decoration:none;}
+    .references-list a:hover{text-decoration:underline;}
+    /* Hub link banner */
+    .hub-banner{background:var(--card-bg);border:2px solid var(--orange);border-radius:var(--radius-lg);padding:16px 20px;margin-bottom:28px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+    .hub-banner-text{font-family:var(--font-body);font-size:14px;color:var(--slate);line-height:1.4;}
+    .hub-banner-text strong{color:var(--ink);}
+    .hub-banner-link{font-family:var(--font-head);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--orange);text-decoration:none;white-space:nowrap;}
+    .hub-banner-link:hover{text-decoration:underline;}
+    @media(max-width:540px){.hub-banner{flex-direction:column;align-items:flex-start;}}
+  </style>
+</head>
+<body>
+
+<!-- ── Header ── -->
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="../../index.html" class="logo">
+        <span class="logo-word">FODDER<span>.</span></span>
+        <span class="logo-sub">Sports</span>
+      </a>
+      <div class="header-actions">
+        <button class="btn-signin" onclick="openModal('signin')">Sign In</button>
+        <button class="btn-signup" id="btn-signup-header" onclick="openModal('signup')">Sign Up Free</button>
+        <div class="account-wrapper">
+          <button class="btn-account" id="btn-account" onclick="toggleAccountMenu()">
+            <span class="account-dot"></span>
+            <span id="account-label">My Account</span>
+          </button>
+          <div class="account-menu" id="account-menu">
+            <div style="padding:12px 16px 10px;border-bottom:1px solid var(--rule);">
+              <div style="font-size:13px;color:var(--slate);" id="account-email"></div>
+              <div style="font-size:12px;font-family:var(--font-head);font-weight:700;" id="account-team-display"></div>
+            </div>
+            <a href="../../index.html?tab=myfeed">My Feed</a>
+            <button onclick="openModal('account')">Edit Preferences</button>
+            <button class="sign-out" style="color:#c0392b;" onclick="signOut()">Sign Out</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ── Primary Nav ── -->
+<nav class="primary-nav">
+  <div class="container">
+    <div class="primary-nav-inner">
+      <div class="nav-item"><a href="../../index.html" class="nav-link">Home</a></div>
+      <div class="nav-item"><a href="../../index.html?tab=myfeed" class="nav-link" id="nav-myfeed">My Feed</a></div>
+      <div class="nav-item">
+        <a href="../../nfl/index.html" class="nav-link active">NFL <span class="caret">▾</span></a>
+        <div class="nav-dropdown">
+          <a href="../../nfl/index.html">All NFL Stories</a>
+          <div class="dropdown-divider"></div>
+          <a href="../../nfl/power-rankings.html">Power Rankings</a>
+          <a href="../../nfl/index.html?tab=preview">Game Previews</a>
+          <a href="../../nfl/index.html?tab=recap">Game Recaps</a>
+          <a href="../../nfl/index.html?tab=trade">Trades</a>
+          <a href="../../nfl/pages/trades-2026.html">All 2026 Trades</a>
+        </div>
+      </div>
+      <div class="nav-item"><a href="#" class="nav-link">NBA</a></div>
+      <div class="nav-item"><a href="#" class="nav-link">MLB</a></div>
+      <div class="nav-item"><a href="#" class="nav-link">NHL</a></div>
+    </div>
+  </div>
+</nav>
+
+
+<div class="article-wrap">
+  <div class="breadcrumb">
+    <a href="../../index.html">Fodder Sports</a><span>·</span>
+    <a href="../index.html">NFL</a><span>·</span>
+    Game Previews
+  </div>
+  <div class="article-eyebrow">NFL GAME PREVIEW · Fri. Oct. 31, 2026 · Week 8</div>
+  <h1 class="article-title">Titans at Bengals</h1>
+  <p class="article-subtitle">Tennessee visits Cincinnati. What both fan bases are saying heading in.</p>
+  
+  <div style="display:flex;gap:24px;align-items:center;justify-content:center;padding:28px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin-bottom:28px;">
+    <div style="text-align:center;"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/ten.png" alt="TEN" width="64" height="64" style="border-radius:50%;object-fit:cover;"><div style="font-family:var(--font-head);font-size:16px;font-weight:800;margin-top:8px;">Tennessee Titans</div></div>
+    <div style="font-family:var(--font-display);font-size:28px;color:var(--slate);">AT</div>
+    <div style="text-align:center;"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/cin.png" alt="CIN" width="64" height="64" style="border-radius:50%;object-fit:cover;"><div style="font-family:var(--font-head);font-size:16px;font-weight:800;margin-top:8px;">Cincinnati Bengals</div></div>
+  </div>
+  <div class="section-box"><div class="section-label">THE BREAKDOWN</div><p class="body-text">A rebuilding Titans team faces Cincinnati on the road. The Bengals entered the week at .500 and looking for a statement win at home in Week 8.</p></div>
+  <div class="section-box"><div class="viewpoint-logo"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/ten.png" alt="TEN" width="44" height="44" style="border-radius:50%;object-fit:cover;"><div class="viewpoint-label">What Tennessee Titans Media Is Saying</div></div><p class="body-text">Tennessee coverage was realistic — the Titans are rebuilding and this game represents a data point more than a must-win.</p></div>
+  <div class="section-box"><div class="viewpoint-logo"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/cin.png" alt="CIN" width="44" height="44" style="border-radius:50%;object-fit:cover;"><div class="viewpoint-label">What Cincinnati Bengals Media Is Saying</div></div><p class="body-text">Cincinnati coverage was looking for consistency. The Bengals have been up and down through the first seven weeks and needed this home game.</p></div>
+</div>
+
+<script>
+function getAccount(){try{return JSON.parse(localStorage.getItem('fs_account')||'null');}catch(e){return null;}}
+function applyAccountState(){
+  var a=getAccount();
+  var su=document.getElementById('btn-signup-header');
+  var si=document.querySelector('.btn-signin');
+  var ac=document.getElementById('btn-account');
+  if(a){
+    if(su)su.style.display='none';
+    if(si)si.style.display='none';
+    if(ac){ac.style.display='flex';document.getElementById('account-label').textContent=a.email.split('@')[0];}
+    var em=document.getElementById('account-email');if(em)em.textContent=a.email;
+    var td=document.getElementById('account-team-display');if(td&&a.nfl_team)td.textContent='Following: '+a.nfl_team;
+  }else{
+    if(su)su.style.display='';
+    if(si)si.style.display='';
+    if(ac)ac.style.display='none';
+  }
+}
+function toggleAccountMenu(){var m=document.getElementById('account-menu');if(m)m.classList.toggle('open');}
+function openModal(p){}
+function signOut(){localStorage.removeItem('fs_account');location.reload();}
+document.addEventListener('click',function(e){
+  var w=document.querySelector('.account-wrapper');
+  if(w&&!w.contains(e.target)){var m=document.getElementById('account-menu');if(m)m.classList.remove('open');}
+});
+document.addEventListener('DOMContentLoaded',applyAccountState);
+</script>
+
+<footer style="background:var(--ink);border-top:3px solid var(--orange);padding:32px 0 24px;margin-top:64px;">
+  <div class="container" style="text-align:center;">
+    <div class="logo-word" style="font-family:var(--font-display);font-size:20px;color:var(--off-white);">FODDER<span style="color:var(--orange);">.</span></div>
+    <p style="font-family:var(--font-head);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin-top:8px;">Coverage from every market. No spin.</p>
+  </div>
+</footer>
+</body>
+</html>
