@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Fodder Sports Titans at Bengals</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#f3f4f6; --surface:#ffffff; --ink:#151a24; --muted:#5b6474; --line:#d9dde4;
+  --nat:#4a5568; --nat-soft:#e6e9ee;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f131a; --surface:#171c25; --ink:#e7eaf0; --muted:#9aa3b2; --line:#2a3140;
+  --nat:#a7b1c2; --nat-soft:#222935; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f131a; --surface:#171c25; --ink:#e7eaf0; --muted:#9aa3b2; --line:#2a3140;
+  --nat:#a7b1c2; --nat-soft:#222935; color-scheme:dark}
+
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 56px}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
+a{color:inherit;text-decoration-color:var(--muted);text-underline-offset:2px}
+a:hover{text-decoration-color:currentColor}
+a:focus-visible{outline:2px solid var(--a);outline-offset:2px;border-radius:2px}
+h1,h2,h3{font-family:var(--display);font-weight:700;text-wrap:balance;margin:0;letter-spacing:.01em}
+h1{font-size:clamp(1.9rem,5vw,2.6rem);line-height:1.05}
+h2{font-size:1.5rem;text-transform:uppercase}
+h3{font-size:1.05rem;text-transform:uppercase;letter-spacing:.05em}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.a{color:var(--a)} .b{color:var(--b)} .nat{color:var(--nat)}
+section{display:flex;flex-direction:column;gap:14px}
+.note{font-size:.88rem;color:var(--muted)}
+ul.bul{margin:0;padding-left:1.15em;display:flex;flex-direction:column;gap:10px}
+ul.bul li::marker{color:var(--muted)}
+.dek{font-size:1.1rem;color:var(--muted)}
+
+.score{display:flex;align-items:stretch;border:1px solid var(--line);background:var(--surface)}
+.score .side{flex:1;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;min-width:0}
+.score .side + .side{border-left:1px solid var(--line)}
+.score .nm{font-family:var(--display);font-size:1.5rem;font-weight:700;text-transform:uppercase;line-height:1}
+.score .nm small{display:block;font-family:var(--mono);font-size:.72rem;font-weight:400;letter-spacing:.08em;color:var(--muted);margin-top:4px;text-transform:none}
+.score .pts{font-family:var(--display);font-size:2.6rem;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.score .lose .pts{opacity:.5}
+.score .meta{font-family:var(--mono);font-size:.8rem;color:var(--muted);text-align:right}
+
+.summary{background:var(--surface);border:1px solid var(--line);padding:22px 24px;display:flex;flex-direction:column;gap:14px}
+.views{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line)}
+.view{padding:18px 22px;display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--line)}
+.view:first-child{border-top:0}
+
+.tally{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.tally div{background:var(--surface);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.tally .big{font-family:var(--display);font-size:2rem;font-weight:700;line-height:1}
+
+.tbl-wrap{overflow-x:auto}
+table.t{width:100%;border-collapse:collapse;font-size:.92rem;min-width:480px}
+.t th{font-family:var(--mono);font-weight:500;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:8px 10px 8px 0;border-bottom:2px solid var(--ink)}
+.t td{padding:8px 10px 8px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.t td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap;font-size:.85rem}
+
+.coverage{background:var(--surface);border:1px solid var(--line);padding:18px 22px;display:flex;flex-direction:column;gap:16px}
+.covgrp{display:flex;flex-direction:column;gap:6px}
+.covgrp ul{margin:0;padding-left:1.1em;font-size:.88rem;display:flex;flex-direction:column;gap:4px}
+
+/* Sentiment: diverging bars, center = neutral */
+.sent{display:flex;flex-direction:column;gap:18px}
+.steam{display:flex;flex-direction:column;gap:8px}
+.srow{display:grid;grid-template-columns:110px 1fr 88px;align-items:center;gap:10px;font-size:.85rem}
+.srow .lbl{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;color:var(--muted)}
+.srow .val{font-family:var(--mono);font-size:.74rem;text-align:right;color:var(--muted)}
+.track.nocov{background:repeating-linear-gradient(45deg,var(--nat-soft) 0 6px,transparent 6px 12px)}
+.track.nocov::after{display:none}
+.track{position:relative;height:12px;background:var(--nat-soft);border-radius:6px}
+.track::after{content:"";position:absolute;left:50%;top:-3px;bottom:-3px;width:2px;background:var(--muted);transform:translateX(-1px)}
+.fill{position:absolute;top:0;bottom:0;border-radius:6px}
+.fill.pos{left:50%} .fill.neg{right:50%}
+.f-a{background:var(--a)} .f-b{background:var(--b)} .f-n{background:var(--nat)}
+.scale{display:grid;grid-template-columns:110px 1fr 88px;gap:10px;font-family:var(--mono);font-size:.68rem;color:var(--muted)}
+.scale span:nth-child(2){display:flex;justify-content:space-between}
+
+.grade{font-family:var(--display);font-weight:700;font-size:1.15rem}
+footer{border-top:1px solid var(--line);padding-top:18px;font-size:.85rem;color:var(--muted);display:flex;flex-direction:column;gap:8px}
+
+@media (max-width:560px){
+  .score{flex-direction:column}
+  .score .side + .side{border-left:0;border-top:1px solid var(--line)}
+  .tally{grid-template-columns:1fr}
+  .summary,.view,.coverage{padding-left:16px;padding-right:16px}
+  .srow,.scale{grid-template-columns:80px 1fr 76px}
+}
+
+.trend{margin:4px 0 0;font-size:.86rem}.trend b{font-weight:700}.trend.up span{color:#13803a}.trend.down span{color:#c81e1e}.trend.steady span,.trend.new span{color:var(--muted)}
+@media (prefers-color-scheme:dark){.trend.up span{color:#5fd38a}.trend.down span{color:#ff7b7b}}
+
+:root{--a:#0C2340;--b:#b33a0a}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--a:#7fb2ea;--b:#ff8a5c}}
+:root[data-theme="dark"]{--a:#7fb2ea;--b:#ff8a5c}
+
+.tlink{color:inherit;text-decoration:none;border-bottom:1px dotted currentColor}
+.tlink:hover{border-bottom-style:solid}
+
+.refjump{margin:6px 0 0} .refjump a{font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.scale-note{font-size:.72rem !important;line-height:1.45}
+.refl li{margin-bottom:8px}
+.mts{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:3px}
+.mt{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.mt-bar{position:relative;display:inline-block;width:64px;height:7px;background:var(--line);border-radius:2px}
+.mt-c{position:absolute;left:50%;top:-2px;bottom:-2px;width:1px;background:var(--muted)}
+.mt-f{position:absolute;top:0;bottom:0;border-radius:2px}
+details.srcs summary{font-size:.74rem !important}
+
+.refs .inner-src{display:flex;flex-direction:column;gap:14px;max-height:340px;overflow-y:auto;overscroll-behavior:contain}
+footer p{font-size:.72rem;line-height:1.45}
+.refjump a{font-family:var(--mono);font-size:.8rem;letter-spacing:.04em;text-transform:uppercase}
+.avg td.n{white-space:nowrap}
+
+details.srcs{border:1px solid var(--line);border-radius:2px}
+details.srcs summary{cursor:pointer;padding:10px 12px;font-family:var(--mono);font-size:.82rem;letter-spacing:.05em;text-transform:uppercase}
+details.srcs[open] summary{border-bottom:1px solid var(--line)}
+details.srcs .inner-src{padding:12px;display:flex;flex-direction:column;gap:14px}
+.src-out{color:var(--muted)}
+.eyebrow{font-size:.8rem} .note{font-size:.8rem;line-height:1.5} .srow .lbl{font-size:.8rem} .srow .val{font-size:.8rem;color:var(--ink)}
+</style>
+</head><body>
+<div class="wrap">
+<a href="./" style="align-self:flex-start;display:inline-block;font-family:var(--mono);font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;background:none;border:1px solid var(--ink);color:var(--ink);padding:7px 11px;border-radius:2px">&larr; Back to Fodder Sports</a>
+
+<header style="display:flex;flex-direction:column;gap:16px">
+  <span class="eyebrow">Fodder Sports · NFL Week 8 · Matchup</span>
+  <div class="score" role="img" aria-label="Tennessee Titans, 1 and 6, at Cincinnati Bengals, 4 and 2">
+    <div class="side"><span class="nm a"><a class="tlink" href="./#team-ten">Titans</a><small>1–6 · away</small></span><span class="meta">Sun, Nov. 1<br>1:00 p.m. ET</span></div>
+    <div class="side"><span class="nm b"><a class="tlink" href="./#team-cin">Bengals</a><small>4–2 · home</small></span><span class="meta">Paycor Stadium<br>CBS</span></div>
+  </div>
+  <h1>Titans Play First Game After Simmons Trade at Red-Hot Bengals</h1>
+  <p class="dek">Tennessee sold its best player for two first-round picks days before facing a Cincinnati team riding Joe Burrow and a 35-0 second half in Baltimore.</p>
+</header>
+
+<section class="coverage" aria-labelledby="cov-h">
+  <h2 id="cov-h">How the coverage feels</h2>
+  <p class="note">How each market feels about each team right now, read from the week's coverage. This is about the team vibes, not the odds of winning this game.</p>
+  <div class="sent">
+    <div class="steam">
+      <h3 class="a"><a class="tlink" href="./#team-ten">Titans</a></h3>
+      <div class="srow"><span class="lbl">Tennessee</span><div class="track"><span class="fill neg f-a" style="width:12.5%"></span></div><span class="val">Critical</span></div>
+      <div class="srow"><span class="lbl">Cincinnati</span><div class="track"><span class="fill neg f-b" style="width:20.0%"></span></div><span class="val">Critical</span></div>
+      <div class="srow"><span class="lbl">National</span><div class="track"><span class="fill neg f-n" style="width:17.5%"></span></div><span class="val">Critical</span></div>
+      <p class="trend new"><span aria-hidden="true">•</span> <b>First reading.</b> The Simmons trade has Tennessee grading the rebuild well while doubting the present, with Ward's development the central worry.</p>
+    </div>
+    <div class="steam">
+      <h3 class="b"><a class="tlink" href="./#team-cin">Bengals</a></h3>
+      <div class="srow"><span class="lbl">Cincinnati</span><div class="track"><span class="fill pos f-b" style="width:27.5%"></span></div><span class="val">Positive</span></div>
+      <div class="srow"><span class="lbl">Tennessee</span><div class="track"><span class="fill pos f-a" style="width:27.5%"></span></div><span class="val">Positive</span></div>
+      <div class="srow"><span class="lbl">National</span><div class="track"><span class="fill pos f-n" style="width:27.5%"></span></div><span class="val">Positive</span></div>
+      <p class="trend new"><span aria-hidden="true">•</span> <b>First reading.</b> Burrow's second half in Baltimore has Cincinnati feeling like a contender, with tight end depth and third-down defense the only real concerns.</p>
+    </div>
+    <div class="scale"><span></span><span><span>Harsh</span><span>Neutral</span><span>Glowing</span></span><span></span></div><p class="note scale-note">Each bar shows the overall tone of that group&#39;s coverage toward the team. Bars to the right of center are favorable, bars to the left are critical, and longer bars mean stronger tone. &ldquo;No coverage&rdquo; means that group published nothing about the team in this window.</p>
+  </div>
+  <p>Tennessee's media is gloomy about the present but split on the future: the Jeffery Simmons trade is graded as smart business, while Cam Ward's struggles and a 1-6 record keep the mood low. Cincinnati feels great about its team after the comeback in Baltimore, and it treats the Titans as a depleted, rebuilding opponent. National coverage matches both views, praising Tennessee's return in the trade and calling Cincinnati's offense one of the league's best.</p>
+  <p class="refjump"><a href="#refs">See all the articles we referenced for this summary</a></p>
+</section>
+
+<section class="summary" aria-labelledby="sum-h">
+  <h2 id="sum-h">The summary</h2>
+  <ul class="bul">
+      <li>The Titans (1-6) traded defensive tackle Jeffery Simmons and a 2028 fifth-round pick to Chicago on Oct. 29 for the Bears' 2027 and 2028 first-round picks and a 2027 fourth. Tennessee now holds four first-round picks over the next two drafts.</li>
+      <li>Tennessee lost 27-24 to Cleveland on a last-second field goal after leading 14-0. The Titans average 15.4 points per game, second-fewest in the NFL, and have gone 65 games without back-to-back wins.</li>
+      <li>Titans quarterback Cam Ward is 4-20 as a starter, with 1,179 yards, four touchdowns, and five interceptions this season. He has thrown an interception in five straight games.</li>
+      <li>The Bengals (4-2) scored 35 unanswered second-half points to beat Baltimore 35-13. Bengals quarterback Joe Burrow threw four touchdowns in that half and was named AFC Offensive Player of the Week.</li>
+      <li>Cincinnati leads the NFL in third-down offense and is tied for the league lead with 21 sacks. Tennessee allows 131.1 rushing yards per game and has lost its best interior pass rusher.</li>
+      <li>Tennessee is without wide receiver Carnell Tate, running back Tyjae Spears, and punter Tommy Townsend, which leaves running back Tony Pollard to carry the offense after his 129-yard, three-touchdown game against Cleveland.</li>
+  </ul>
+</section>
+
+<section class="views" aria-label="What each side is saying">
+  <div class="view">
+    <h2 class="a">What the Tennessee media is saying about the Titans</h2>
+    <ul class="bul">
+      <li>Gloomy. Nashville coverage describes a franchise at 13-55 since November 2022, 2-19 in its last 21 home games, and losing in the same ways week after week, with the second quarter (outscored 72-3) a running sore.</li>
+      <li>The Simmons trade is seen as the right call that still hurts. Titans coach Robert Saleh said, "It sucks. Everything about it sucks, unfortunately necessary," and general manager Mike Borgonzi called it "a really hard decision."</li>
+      <li>The bigger worry is whether the front office turns the picks into players, given a thin draft record and little so far from first-round defensive end Keldric Faulk.</li>
+      <li>Ward is the debate. He called his footwork "very good," and Tennessee's media questions that confidence, with some calling for backup Mitch Trubisky. Saleh said the trade "has nothing to do with Cam."</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="b">What the Cincinnati media is saying about the Titans</h2>
+    <ul class="bul">
+      <li>Cincinnati's media sees the Titans as badly weakened by the Simmons trade and a bleak injury report, saying Tennessee got much worse and has few ways to compete.</li>
+      <li>It is dismissive of Ward, calling him an overrated No. 1 pick, and points to a defense that allows 364.1 yards per game and has given up 100-yard games to three different receivers.</li>
+      <li>It still respects what Simmons meant. Bengals coach Zac Taylor said before the trade, "He's arguably up there with all of the top guys," and Cincinnati notes he sacked Burrow three times in the 2021 playoffs.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="b">What the Cincinnati media is saying about the Bengals</h2>
+    <ul class="bul">
+      <li>Rolling. Cincinnati coverage sees a team that found itself in the second half at Baltimore, with Burrow throwing eight touchdowns over the last two games.</li>
+      <li>Bengals wide receivers Ja'Marr Chase and Tee Higgins are celebrated as one of the great tandems in NFL history. Higgins is on pace for about 1,600 yards and said, "We've built something special here."</li>
+      <li>The defensive moves look smart. Bengals defensive tackle Dexter Lawrence II and edge rusher Boye Mafe lead a pass rush tied for the NFL lead in sacks, and Cincinnati's media calls the Lawrence trade a masterstroke.</li>
+      <li>The worries are tight end depth after Erick All Jr.'s torn ACL and Tanner Hudson's season-ending pectoral injury, plus a third-down defense ranked 30th. Burrow called the tight end losses "two huge losses for us."</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="a">What the Tennessee media is saying about the Bengals</h2>
+    <ul class="bul">
+      <li>Tennessee's media sees Burrow as heating up at the worst possible time for a Titans pass defense that allows 69.2% completions, second-worst in the NFL.</li>
+      <li>It calls Cincinnati's offense one of the league's best, noting 30 or more points in each of the last two weeks and Chase and Higgins accounting for most of the Bengals' big plays.</li>
+      <li>The opening it sees is on the ground: the Bengals allow 116.3 rushing yards per game, and Tennessee wants Pollard to control the clock.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="nat">What everyone else is saying about this game</h2>
+    <ul class="bul">
+      <li><b class="a">Titans:</b> National coverage gives Tennessee high marks for the Simmons trade as a deliberate rebuilding move, with the return described as one of the best for an in-season trade in about 20 years.</li>
+      <li><b class="a">Titans:</b> Inside the building, Saleh told the team directly, saying, "We just traded Jeff," and the Titans responded with one of their best practices of the season.</li>
+      <li><b class="b">Bengals:</b> National coverage frames Cincinnati as the better team at nearly every position, led by Burrow's 110.4 passer rating and Lawrence's interior pass rush.</li>
+      <li><b class="b">Bengals:</b> Bengals defensive end Shemar Stewart, a 2025 first-round pick, was a healthy scratch in Baltimore, and Taylor shut down trade talk: "We really like our guys."</li>
+      <li><b class="a">Titans:</b> The Titans are No. 31 in our consensus power rankings, and the Bengals are No. 9.</li>
+    </ul>
+  </div>
+</section>
+
+<section aria-labelledby="inj-h">
+  <h2 id="inj-h">Who's out</h2>
+  <ul class="bul">
+    <li><b class="a">Out:</b> Titans running back Tyjae Spears (knee), wide receiver Carnell Tate (shoulder), and punter Tommy Townsend (left knee).</li>
+    <li><b class="a">Questionable:</b> Titans defensive lineman John Franklin-Myers (groin, back), cornerback Jaylon Jones (knee), wide receiver Calvin Ridley (hip), and linebacker Dorian Mausi (foot). Mausi is in his return window and must be activated to play.</li>
+    <li><b class="a">In:</b> Titans running back Tony Pollard (rest) has no designation.</li>
+    <li><b class="b">Out:</b> Bengals safety Kyle Dugger (quadricep).</li>
+    <li><b class="b">Questionable:</b> Bengals linebacker Joe Giles-Harris (calf).</li>
+    <li><b class="b">Out for season:</b> Bengals tight end Erick All Jr. (knee, torn ACL), on injured reserve, and tight end Tanner Hudson (pectoral).</li>
+    <li><b class="b">In:</b> Bengals wide receiver Ja'Marr Chase (ankle) and safety Jordan Battle (hamstring) have no designation.</li>
+  </ul>
+  <p class="note">Game statuses are from the teams' official injury reports, Friday, Oct. 30. Season-ending tight end injuries are from Cincinnati's local coverage.</p>
+</section>
+
+<section aria-labelledby="line-h">
+  <h2 id="line-h">The line and the history</h2>
+  <div class="tbl-wrap">
+    <table class="t">
+      <thead><tr><th>Line</th><th>Spread</th><th>Moneyline</th><th>Total</th></tr></thead>
+      <tbody><tr><td>DraftKings, Oct. 28</td><td class="n">CIN −10</td><td class="n">CIN −500 / TEN +380</td><td class="n">46.5</td></tr></tbody>
+    </table>
+  </div>
+  <h3>Who the public is picking</h3>
+  <ul class="bul">
+    <li><b>The media:</b> Every published score prediction we found takes the Bengals. The average is Bengals 31, Titans 16. Bleacher Report's panel has 71% on the Bengals.</li>
+    <li><b>The betting public:</b> As of Friday, one sportsbook had moved the line to Bengals −12.5, with 61% of spread bets on Cincinnati and 94% of moneyline bets on the Bengals.</li>
+  </ul>
+  <div class="tbl-wrap avg">
+    <table class="t">
+      <thead><tr><th>Whose picks</th><th>Pick the Titans</th><th>Pick the Bengals</th><th>Average score</th></tr></thead>
+      <tbody><tr><td>Tennessee media</td><td class="n">0%</td><td class="n">100%</td><td class="n">Bengals 31, Titans 14</td></tr><tr><td>National media</td><td class="n">0%</td><td class="n">100%</td><td class="n">Bengals 31, Titans 17</td></tr><tr><td><b>All media</b></td><td class="n">0%</td><td class="n">100%</td><td class="n"><b>Bengals 31, Titans 16</b></td></tr></tbody>
+    </table>
+  </div>
+  <p class="note">Share of published score predictions picking each team, and the average predicted score. Each pick is tracked for our predictor standings.</p>
+</section>
+
+<section id="refs" class="refs" aria-labelledby="refs-h">
+  <h2 id="refs-h">References</h2>
+  <details class="srcs"><summary>Show the articles behind this page</summary><div class="inner-src">
+  <p class="note">Each bar shows that article's tone toward the team named next to it.</p>
+  <div class="covgrp"><span class="eyebrow a">Tennessee</span><ul class="refl"><li><a href="https://www.tennesseetitans.com/news/titans-trade-dt-jeffery-simmons-to-the-chicago-bears-in-exchange-for-two-first-round-picks">Titans trade Jeffery Simmons to Bears for two first-round picks</a> <span class="src-out">- TennesseeTitans.com</span><span class="mts"><span class="mt"><span class="mt-n">Titans</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.tennesseetitans.com/news/titans-say-they-got-an-offer-they-couldn-t-refuse-for-dt-jeffery-simmons">Titans say they got an offer they couldn't refuse</a> <span class="src-out">- TennesseeTitans.com</span><span class="mts"><span class="mt"><span class="mt-n">Titans</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://www.tennesseetitans.com/news/tuesday-mailbag-jim-wyatt-answers-questions-from-titans-fans-after-loss-to-the-browns">Mailbag after the Browns loss</a> <span class="src-out">- TennesseeTitans.com</span><span class="mts"><span class="mt"><span class="mt-n">Titans</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:28%;width:22%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.tennesseetitans.com/news/titans-qb-cam-ward-looking-to-nix-offensive-lulls">Cam Ward looking to nix offensive lulls</a> <span class="src-out">- TennesseeTitans.com</span><span class="mts"><span class="mt"><span class="mt-n">Titans</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:40%;width:10%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.tennesseetitans.com/news/quick-hits-on-the-titans-from-thursday-of-bengals-week-x1270">Quick hits from Thursday of Bengals week</a> <span class="src-out">- TennesseeTitans.com</span><span class="mts"><span class="mt"><span class="mt-n">Titans</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://www.tennesseetitans.com/news/weekend-mailbag-jim-wyatt-answers-questions-from-titans-fans-ahead-of-sunday-s-game-at-the-bengals">Weekend mailbag before the Bengals game</a> <span class="src-out">- TennesseeTitans.com</span><span class="mts"><span class="mt"><span class="mt-n">Titans</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:35%;width:15%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.si.com/nfl/titans/onsi/titans-players-shocked-by-simmons-trade-why-their-week-8-response-could-define-2026-season-01m66n7ppyed">Players shocked by Simmons trade; Week 8 response could define season</a> <span class="src-out">- Titans On SI</span><span class="mts"><span class="mt"><span class="mt-n">Titans</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:5%"></span></span><span class="mt-w">Neutral</span></span><span class="mt"><span class="mt-n">Bengals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:28%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.si.com/nfl/titans/onsi/winners-and-losers-titans-move-star-dt-jeffery-simmons-to-bears-in-blockbuster-deal-01m640tg6erz">Winners and losers of the Simmons trade</a> <span class="src-out">- Titans On SI</span><span class="mts"><span class="mt"><span class="mt-n">Titans</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:10%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.si.com/nfl/titans/onsi/how-jeffery-simmons-trade-begs-a-brutal-question-about-cam-ward-s-future-with-titans-01m64ek1ym4k">Simmons trade begs a brutal question about Cam Ward</a> <span class="src-out">- Titans On SI</span><span class="mts"><span class="mt"><span class="mt-n">Titans</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:28%;width:22%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.si.com/nfl/titans/onsi/weighing-bold-changes-to-fix-titans-offense-mitch-trubisky-question-gets-real-brian-daboll-must-adjust-01m61pscpyht">Bold changes to fix the offense, including Trubisky</a> <span class="src-out">- Titans On SI</span><span class="mts"><span class="mt"><span class="mt-n">Titans</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:12%;width:38%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.si.com/nfl/titans/onsi/3-keys-to-a-surprise-titans-win-over-the-bengals-in-week-8-01m6800j7v36">3 keys to a surprise Titans win</a> <span class="src-out">- Titans On SI</span><span class="mts"><span class="mt"><span class="mt-n">Titans</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:42%;width:8%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Bengals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:30%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.paulkuharsky.com/news/news-titans-trade-jeffery-simmons-bears-first-round-picks">Titans trade Simmons in major bet on their future</a> <span class="src-out">- PaulKuharsky.com</span><span class="mts"><span class="mt"><span class="mt-n">Titans</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:32%;width:18%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.paulkuharsky.com/news/news-titans-jeffery-simmons-trade-draft-picks-mike-borgonzi">Titans got the picks, now have to get the players</a> <span class="src-out">- PaulKuharsky.com</span><span class="mts"><span class="mt"><span class="mt-n">Titans</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:30%;width:20%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.paulkuharsky.com/news/news-titans-cam-ward-confidence-footwork-accountability">Ward's confidence harder to reconcile with reality</a> <span class="src-out">- PaulKuharsky.com</span><span class="mts"><span class="mt"><span class="mt-n">Titans</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:25%;width:25%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.paulkuharsky.com/news/news-titans-john-franklin-myers-jeffery-simmons-trade-pressure">Titans need more from Franklin-Myers with Simmons gone</a> <span class="src-out">- PaulKuharsky.com</span><span class="mts"><span class="mt"><span class="mt-n">Titans</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:35%;width:15%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://atozsports.com/nfl/tennessee-titans-news/grading-trade-titans-jeffery-simmons-deal-rewards-mike-borgonzis-sober-decision-bears-nightmare-could-make-perfect/">Grading the Simmons trade: A-</a> <span class="src-out">- A to Z Sports</span><span class="mts"><span class="mt"><span class="mt-n">Titans</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://atozsports.com/nfl/tennessee-titans-news/cam-wards-status-with-titans-in-serious-danger-at-trade-deadline-crossroads-after-browns-loss-drops-tennessee-to-1-6/">Ward's status in danger after Browns loss</a> <span class="src-out">- A to Z Sports</span><span class="mts"><span class="mt"><span class="mt-n">Titans</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:22%;width:28%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://atozsports.com/nfl/tennessee-titans-news/ran-carthon-warns-of-jeffery-simmons-trade-shockwaves-inside-titans-locker-room-and-offers-ornery-fans-a/">Ex-GM Carthon warns of Simmons trade shockwaves</a> <span class="src-out">- A to Z Sports</span><span class="mts"><span class="mt"><span class="mt-n">Titans</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:42%;width:8%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://titansized.com/titans-fully-embrace-the-rebuild-with-blockbuster-jeffery-simmons-trade">Titans fully embrace the rebuild</a> <span class="src-out">- Titan Sized (FanSided)</span><span class="mts"><span class="mt"><span class="mt-n">Titans</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:45%;width:5%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://titansized.com/4-glaring-reasons-why-the-titans-offense-is-a-total-nightmare-right-now">4 reasons the offense is a total nightmare</a> <span class="src-out">- Titan Sized (FanSided)</span><span class="mts"><span class="mt"><span class="mt-n">Titans</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:10%;width:40%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://sports.yahoo.com/articles/tennessee-titans-vs-cincinnati-bengals-091045047.html">3 key matchups for Titans vs. Bengals</a> <span class="src-out">- Titans Wire</span><span class="mts"><span class="mt"><span class="mt-n">Titans</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:45%;width:5%"></span></span><span class="mt-w">Neutral</span></span><span class="mt"><span class="mt-n">Bengals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:25%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/tennessee-titans-vs-cincinnati-bengals-124214400.html">Titans Wire staff picks</a> <span class="src-out">- Titans Wire</span><span class="mts"><span class="mt"><span class="mt-n">Titans</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:20%;width:30%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Bengals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:25%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://titansized.com/bengals-qb-joe-burrow-is-heating-up-just-in-time-to-face-titans-feeble-defense">Burrow heating up just in time for Titans' feeble defense</a> <span class="src-out">- Titan Sized (FanSided)</span><span class="mts"><span class="mt"><span class="mt-n">Bengals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:32%"></span></span><span class="mt-w">Glowing</span></span></span></li></ul></div><div class="covgrp"><span class="eyebrow b">Cincinnati</span><ul class="refl"><li><a href="https://www.bengals.com/news/game-preview-2026-week-8-bengals-titans">What to watch for: Titans vs. Bengals</a> <span class="src-out">- Bengals.com</span><span class="mts"><span class="mt"><span class="mt-n">Titans</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:25%;width:25%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Bengals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:32%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://www.bengals.com/news/quick-hits-ja-marr-chase-tee-higgins-troy-walters-running-the-routes-of-greatest-tandems-ever-as-numbers-pile-up">Quick hits: Chase-Higgins among greatest tandems</a> <span class="src-out">- Bengals.com</span><span class="mts"><span class="mt"><span class="mt-n">Titans</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:32%;width:18%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Bengals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:40%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://www.bengals.com/news/game-within-the-game-tennessee-tee-higgins-mr-basketball-finalist-nfl-hottest-wide-receiver">Tennessee native Tee Higgins feature</a> <span class="src-out">- Bengals.com</span><span class="mts"><span class="mt"><span class="mt-n">Titans</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span><span class="mt"><span class="mt-n">Bengals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:38%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://stripehype.com/bleak-titans-injury-report-has-them-running-out-of-ways-to-compete-vs-bengals">Bleak Titans injury report</a> <span class="src-out">- Stripe Hype (FanSided)</span><span class="mts"><span class="mt"><span class="mt-n">Titans</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:8%;width:42%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Bengals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:30%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://stripehype.com/the-jeffery-simmons-trade-has-bengals-flying-even-higher-entering-week-8">Simmons trade has Bengals flying higher</a> <span class="src-out">- Stripe Hype (FanSided)</span><span class="mts"><span class="mt"><span class="mt-n">Titans</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:15%;width:35%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Bengals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:35%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://sports.yahoo.com/articles/zac-taylors-reaction-bengals-avoiding-182819294.html">Zac Taylor's reaction to avoiding Simmons</a> <span class="src-out">- A to Z Sports (Bengals)</span><span class="mts"><span class="mt"><span class="mt-n">Titans</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:35%;width:15%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Bengals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://atozsports.com/nfl/cincinnati-bengals-news/bengals-friday-injury-report-vs-titans-nfl-week-8-kyle-dugger-carnell-tate-out/">Bengals Friday injury report vs. Titans</a> <span class="src-out">- A to Z Sports (Bengals)</span><span class="mts"><span class="mt"><span class="mt-n">Titans</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:42%;width:8%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Bengals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:5%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://www.bengals.com/news/bengals-week-8-2026-nfl-power-rankings-roundup">Week 8 power rankings roundup</a> <span class="src-out">- Bengals.com</span><span class="mts"><span class="mt"><span class="mt-n">Bengals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:30%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://stripehype.com/heres-where-the-bengals-rank-entering-week-8-and-where-they-should-be-ranked">Where the Bengals rank entering Week 8</a> <span class="src-out">- Stripe Hype (FanSided)</span><span class="mts"><span class="mt"><span class="mt-n">Bengals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:38%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://stripehype.com/bengals-must-go-all-in-on-boye-mafe-after-dazzling-week-7-effort">Bengals must go all-in on Boye Mafe</a> <span class="src-out">- Stripe Hype (FanSided)</span><span class="mts"><span class="mt"><span class="mt-n">Bengals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:30%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/two-huge-losses-us-joe-213112751.html">Burrow addresses TE injuries</a> <span class="src-out">- Cincinnati Enquirer</span><span class="mts"><span class="mt"><span class="mt-n">Bengals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://sports.yahoo.com/articles/bengals-top-10-team-now-115116822.html">Are the Bengals a top-10 team now?</a> <span class="src-out">- Cincinnati Enquirer</span><span class="mts"><span class="mt"><span class="mt-n">Bengals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:28%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.fox19.com/2026/10/28/joe-burrow-named-afc-offensive-player-week/">Burrow named AFC Offensive Player of the Week</a> <span class="src-out">- FOX19 (WXIX)</span><span class="mts"><span class="mt"><span class="mt-n">Bengals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:35%"></span></span><span class="mt-w">Glowing</span></span></span></li></ul></div><div class="covgrp"><span class="eyebrow nat">National</span><ul class="refl"><li><a href="https://www.si.com/nfl/trade-deadline/jeffery-simmons-trade-grades-bears-go-all-in-to-land-star-defensive-tackle-from-titans">Simmons trade grades: Titans A</a> <span class="src-out">- Sports Illustrated</span><span class="mts"><span class="mt"><span class="mt-n">Titans</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:20%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.si.com/nfl/albert-breer-how-two-former-roommates-put-jeffery-simmons-trade-together">Breer: how former roommates built the Simmons trade</a> <span class="src-out">- Sports Illustrated</span><span class="mts"><span class="mt"><span class="mt-n">Titans</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:12%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.espn.com/nfl/story/_/id/50288293/nfl-power-rankings-week-8-teams-best-offseason-additions">ESPN power rankings: Titans 31st</a> <span class="src-out">- ESPN</span><span class="mts"><span class="mt"><span class="mt-n">Titans</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:38%;width:12%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Bengals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:25%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.si.com/betting/titans-vs-bengals-prediction-odds-spread-injuries-trends-for-nfl-week-8-2026">Titans vs. Bengals prediction and odds</a> <span class="src-out">- SI Betting</span><span class="mts"><span class="mt"><span class="mt-n">Titans</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:8%;width:42%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Bengals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:35%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://www.covers.com/nfl/titans-vs-bengals-prediction-picks-odds-early-leans-week-8-2026">Covers early leans: Titans vs. Bengals</a> <span class="src-out">- Covers</span><span class="mts"><span class="mt"><span class="mt-n">Titans</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:20%;width:30%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Bengals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:30%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/6-break-players-turn-bengals-134000418.html">6 make-or-break players in Bengals-Titans</a> <span class="src-out">- Athlon Sports</span><span class="mts"><span class="mt"><span class="mt-n">Titans</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:30%;width:20%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Bengals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:30%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.yardbarker.com/nfl/articles/5_biggest_things_you_need_to_know_about_bengals_vs_titans_week_8/s1_17615_44498953">5 biggest things to know: Bengals vs. Titans</a> <span class="src-out">- Athlon Sports (via Yardbarker)</span><span class="mts"><span class="mt"><span class="mt-n">Titans</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:25%;width:25%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Bengals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:25%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.espn.com/nfl/story/_/id/50311866/shemar-stewart-focused-giving-bengals-confidence-play-him">Stewart making progress after healthy scratch</a> <span class="src-out">- ESPN</span><span class="mts"><span class="mt"><span class="mt-n">Bengals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:15%"></span></span><span class="mt-w">Positive</span></span></span></li></ul></div>
+  </div></details>
+</section>
+
+<footer>
+  <span class="eyebrow">Fodder Sports · pilot</span>
+  <p>Summaries are written in our own words from the coverage listed above. Odds from <a href="https://www.espn.com/espn/betting/story/_/id/50250750/2026-nfl-week-8-schedule-odds-point-spreads-totals">ESPN's Week 8 odds report</a>. Not affiliated with the NFL, the Tennessee Titans, or the Cincinnati Bengals.</p>
+</footer>
+
+</div>
+<script>try{if('scrollRestoration' in history)history.scrollRestoration='manual';if(!location.hash)window.scrollTo(0,0);}catch(e){}</script>
+</body></html>

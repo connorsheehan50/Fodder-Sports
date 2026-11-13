@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Fodder Sports Chiefs at Broncos</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#f3f4f6; --surface:#ffffff; --ink:#151a24; --muted:#5b6474; --line:#d9dde4;
+  --nat:#4a5568; --nat-soft:#e6e9ee;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f131a; --surface:#171c25; --ink:#e7eaf0; --muted:#9aa3b2; --line:#2a3140;
+  --nat:#a7b1c2; --nat-soft:#222935; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f131a; --surface:#171c25; --ink:#e7eaf0; --muted:#9aa3b2; --line:#2a3140;
+  --nat:#a7b1c2; --nat-soft:#222935; color-scheme:dark}
+
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 56px}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
+a{color:inherit;text-decoration-color:var(--muted);text-underline-offset:2px}
+a:hover{text-decoration-color:currentColor}
+a:focus-visible{outline:2px solid var(--a);outline-offset:2px;border-radius:2px}
+h1,h2,h3{font-family:var(--display);font-weight:700;text-wrap:balance;margin:0;letter-spacing:.01em}
+h1{font-size:clamp(1.9rem,5vw,2.6rem);line-height:1.05}
+h2{font-size:1.5rem;text-transform:uppercase}
+h3{font-size:1.05rem;text-transform:uppercase;letter-spacing:.05em}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.a{color:var(--a)} .b{color:var(--b)} .nat{color:var(--nat)}
+section{display:flex;flex-direction:column;gap:14px}
+.note{font-size:.88rem;color:var(--muted)}
+ul.bul{margin:0;padding-left:1.15em;display:flex;flex-direction:column;gap:10px}
+ul.bul li::marker{color:var(--muted)}
+.dek{font-size:1.1rem;color:var(--muted)}
+
+.score{display:flex;align-items:stretch;border:1px solid var(--line);background:var(--surface)}
+.score .side{flex:1;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;min-width:0}
+.score .side + .side{border-left:1px solid var(--line)}
+.score .nm{font-family:var(--display);font-size:1.5rem;font-weight:700;text-transform:uppercase;line-height:1}
+.score .nm small{display:block;font-family:var(--mono);font-size:.72rem;font-weight:400;letter-spacing:.08em;color:var(--muted);margin-top:4px;text-transform:none}
+.score .pts{font-family:var(--display);font-size:2.6rem;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.score .lose .pts{opacity:.5}
+.score .meta{font-family:var(--mono);font-size:.8rem;color:var(--muted);text-align:right}
+
+.summary{background:var(--surface);border:1px solid var(--line);padding:22px 24px;display:flex;flex-direction:column;gap:14px}
+.views{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line)}
+.view{padding:18px 22px;display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--line)}
+.view:first-child{border-top:0}
+
+.tally{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.tally div{background:var(--surface);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.tally .big{font-family:var(--display);font-size:2rem;font-weight:700;line-height:1}
+
+.tbl-wrap{overflow-x:auto}
+table.t{width:100%;border-collapse:collapse;font-size:.92rem;min-width:480px}
+.t th{font-family:var(--mono);font-weight:500;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:8px 10px 8px 0;border-bottom:2px solid var(--ink)}
+.t td{padding:8px 10px 8px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.t td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap;font-size:.85rem}
+
+.coverage{background:var(--surface);border:1px solid var(--line);padding:18px 22px;display:flex;flex-direction:column;gap:16px}
+.covgrp{display:flex;flex-direction:column;gap:6px}
+.covgrp ul{margin:0;padding-left:1.1em;font-size:.88rem;display:flex;flex-direction:column;gap:4px}
+
+/* Sentiment: diverging bars, center = neutral */
+.sent{display:flex;flex-direction:column;gap:18px}
+.steam{display:flex;flex-direction:column;gap:8px}
+.srow{display:grid;grid-template-columns:110px 1fr 88px;align-items:center;gap:10px;font-size:.85rem}
+.srow .lbl{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;color:var(--muted)}
+.srow .val{font-family:var(--mono);font-size:.74rem;text-align:right;color:var(--muted)}
+.track.nocov{background:repeating-linear-gradient(45deg,var(--nat-soft) 0 6px,transparent 6px 12px)}
+.track.nocov::after{display:none}
+.track{position:relative;height:12px;background:var(--nat-soft);border-radius:6px}
+.track::after{content:"";position:absolute;left:50%;top:-3px;bottom:-3px;width:2px;background:var(--muted);transform:translateX(-1px)}
+.fill{position:absolute;top:0;bottom:0;border-radius:6px}
+.fill.pos{left:50%} .fill.neg{right:50%}
+.f-a{background:var(--a)} .f-b{background:var(--b)} .f-n{background:var(--nat)}
+.scale{display:grid;grid-template-columns:110px 1fr 88px;gap:10px;font-family:var(--mono);font-size:.68rem;color:var(--muted)}
+.scale span:nth-child(2){display:flex;justify-content:space-between}
+
+.grade{font-family:var(--display);font-weight:700;font-size:1.15rem}
+footer{border-top:1px solid var(--line);padding-top:18px;font-size:.85rem;color:var(--muted);display:flex;flex-direction:column;gap:8px}
+
+@media (max-width:560px){
+  .score{flex-direction:column}
+  .score .side + .side{border-left:0;border-top:1px solid var(--line)}
+  .tally{grid-template-columns:1fr}
+  .summary,.view,.coverage{padding-left:16px;padding-right:16px}
+  .srow,.scale{grid-template-columns:80px 1fr 76px}
+}
+
+.trend{margin:4px 0 0;font-size:.86rem}.trend b{font-weight:700}.trend.up span{color:#13803a}.trend.down span{color:#c81e1e}.trend.steady span,.trend.new span{color:var(--muted)}
+@media (prefers-color-scheme:dark){.trend.up span{color:#5fd38a}.trend.down span{color:#ff7b7b}}
+
+:root{--a:#B5122B;--b:#002244}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--a:#ff7a7a;--b:#ff9a5c}}
+:root[data-theme="dark"]{--a:#ff7a7a;--b:#ff9a5c}
+
+.tlink{color:inherit;text-decoration:none;border-bottom:1px dotted currentColor}
+.tlink:hover{border-bottom-style:solid}
+
+.refjump{margin:6px 0 0} .refjump a{font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.scale-note{font-size:.72rem !important;line-height:1.45}
+.refl li{margin-bottom:8px}
+.mts{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:3px}
+.mt{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.mt-bar{position:relative;display:inline-block;width:64px;height:7px;background:var(--line);border-radius:2px}
+.mt-c{position:absolute;left:50%;top:-2px;bottom:-2px;width:1px;background:var(--muted)}
+.mt-f{position:absolute;top:0;bottom:0;border-radius:2px}
+details.srcs summary{font-size:.74rem !important}
+
+.refs .inner-src{display:flex;flex-direction:column;gap:14px;max-height:340px;overflow-y:auto;overscroll-behavior:contain}
+footer p{font-size:.72rem;line-height:1.45}
+.refjump a{font-family:var(--mono);font-size:.8rem;letter-spacing:.04em;text-transform:uppercase}
+.avg td.n{white-space:nowrap}
+
+details.srcs{border:1px solid var(--line);border-radius:2px}
+details.srcs summary{cursor:pointer;padding:10px 12px;font-family:var(--mono);font-size:.82rem;letter-spacing:.05em;text-transform:uppercase}
+details.srcs[open] summary{border-bottom:1px solid var(--line)}
+details.srcs .inner-src{padding:12px;display:flex;flex-direction:column;gap:14px}
+.src-out{color:var(--muted)}
+.eyebrow{font-size:.8rem} .note{font-size:.8rem;line-height:1.5} .srow .lbl{font-size:.8rem} .srow .val{font-size:.8rem;color:var(--ink)}
+</style>
+</head><body>
+<div class="wrap">
+<a href="./" style="align-self:flex-start;display:inline-block;font-family:var(--mono);font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;background:none;border:1px solid var(--ink);color:var(--ink);padding:7px 11px;border-radius:2px">&larr; Back to Fodder Sports</a>
+
+<header style="display:flex;flex-direction:column;gap:16px">
+  <span class="eyebrow">Fodder Sports · NFL Week 8 · Matchup</span>
+  <div class="score" role="img" aria-label="Kansas City Chiefs, 5 and 1, at Denver Broncos, 5 and 2">
+    <div class="side"><span class="nm a"><a class="tlink" href="./#team-kc">Chiefs</a><small>5–1 · away</small></span><span class="meta">Sun, Nov. 1<br>4:25 p.m. ET</span></div>
+    <div class="side"><span class="nm b"><a class="tlink" href="./#team-den">Broncos</a><small>5–2 · home</small></span><span class="meta">Empower Field at Mile High<br>CBS</span></div>
+  </div>
+  <h1>Chiefs Visit Broncos With the AFC West Lead on the Line</h1>
+  <p class="dek">Kansas City tries to shake off a 20-3 loss in Seattle, while Denver brings a three-game win streak and a perfect home record into the rematch.</p>
+</header>
+
+<section class="coverage" aria-labelledby="cov-h">
+  <h2 id="cov-h">How the coverage feels</h2>
+  <p class="note">How each market feels about each team right now, read from the week's coverage. This is about the team vibes, not the odds of winning this game.</p>
+  <div class="sent">
+    <div class="steam">
+      <h3 class="a"><a class="tlink" href="./#team-kc">Chiefs</a></h3>
+      <div class="srow"><span class="lbl">Kansas City</span><div class="track"><span class="fill pos f-a" style="width:7.5%"></span></div><span class="val">Neutral</span></div>
+      <div class="srow"><span class="lbl">Denver</span><div class="track"><span class="fill pos f-b" style="width:7.5%"></span></div><span class="val">Neutral</span></div>
+      <div class="srow"><span class="lbl">National</span><div class="track"><span class="fill pos f-n" style="width:5.0%"></span></div><span class="val">Neutral</span></div>
+      <p class="trend new"><span aria-hidden="true">•</span> <b>First reading.</b> The 20-3 loss in Seattle, the kicking competition, and Rice's return are shaping how Kansas City feels this week.</p>
+    </div>
+    <div class="steam">
+      <h3 class="b"><a class="tlink" href="./#team-den">Broncos</a></h3>
+      <div class="srow"><span class="lbl">Denver</span><div class="track"><span class="fill pos f-b" style="width:22.5%"></span></div><span class="val">Positive</span></div>
+      <div class="srow"><span class="lbl">Kansas City</span><div class="track"><span class="fill pos f-a" style="width:2.5%"></span></div><span class="val">Neutral</span></div>
+      <div class="srow"><span class="lbl">National</span><div class="track"><span class="fill pos f-n" style="width:12.5%"></span></div><span class="val">Positive</span></div>
+      <p class="trend new"><span aria-hidden="true">•</span> <b>First reading.</b> A three-game win streak, a perfect home record, and Payton's chase for 200 wins have Denver feeling good about its team.</p>
+    </div>
+    <div class="scale"><span></span><span><span>Harsh</span><span>Neutral</span><span>Glowing</span></span><span></span></div><p class="note scale-note">Each bar shows the overall tone of that group&#39;s coverage toward the team. Bars to the right of center are favorable, bars to the left are critical, and longer bars mean stronger tone. &ldquo;No coverage&rdquo; means that group published nothing about the team in this window.</p>
+  </div>
+  <p>Kansas City's media is uneasy after the Seattle loss, focused on the kicking problems, a quiet pass rush, and the episode involving Chiefs left tackle Josh Simmons, but it still sees a division leader with a quarterback who wins on the road. Denver's coverage is the brightest in the matchup, built on home dominance, Broncos coach Sean Payton's milestone, and a defense that has carried the team, while Kansas City's market respects that defense and doubts the Broncos' offense. National coverage lands in the middle on both teams: it rates Kansas City's defense and run game and keeps asking whether Broncos quarterback Bo Nix can carry Denver's offense.</p>
+  <p class="refjump"><a href="#refs">See all the articles we referenced for this summary</a></p>
+</section>
+
+<section class="summary" aria-labelledby="sum-h">
+  <h2 id="sum-h">The summary</h2>
+  <ul class="bul">
+      <li>The Chiefs (5-1) lost 20-3 at Seattle, scoring their fewest points and gaining their second-fewest yards in Chiefs quarterback Patrick Mahomes's 153 starts. They won the Week 1 meeting 31-10 at Arrowhead.</li>
+      <li>The Broncos (5-2) have won three straight and are 3-0 at home. A win would put Denver in first place in the AFC West and give Payton his 200th career win in his 300th regular-season game.</li>
+      <li>Chiefs wide receiver Rashee Rice returns from a hamstring injury that kept him out since Week 4. Kansas City receivers caught six passes for 39 yards at Seattle.</li>
+      <li>Kicking is a storyline in Kansas City. Chiefs kicker Harrison Butker is 11-for-16 on field goals, and the team signed kicker Justin Tucker to its practice squad. Chiefs coach Andy Reid said Butker will kick Sunday.</li>
+      <li>Denver's offense ranks 30th in yards (270 per game) and converts 31.1% of third downs, 31st in the league. Its defense is tied for the NFL lead with 21 sacks.</li>
+      <li>Chiefs running back Kenneth Walker III ran for 173 yards in Week 1, and Denver missed 19 tackles that day. Broncos cornerback Pat Surtain II returns after missing three games, while running back RJ Harvey and safety Talanoa Hufanga are out.</li>
+  </ul>
+</section>
+
+<section class="views" aria-label="What each side is saying">
+  <div class="view">
+    <h2 class="a">What the Kansas City media is saying about the Chiefs</h2>
+    <ul class="bul">
+      <li>Rattled, not panicking. Kansas City coverage treats the Seattle loss as a wake-up call: no red zone trips, 3-for-11 on third down, and Mahomes pressured on 19 of 36 dropbacks. Mahomes said, "If you don't come ready to play, you can get your tail kicked in this league."</li>
+      <li>The kicking situation is the loudest worry. Butker has missed 10 field goals and five extra points since the start of last season, and the Tucker signing is framed as real competition. Reid said, "Butker gets it. He knows that's part of the business."</li>
+      <li>The Simmons report, that Reid and Mahomes told the injured left tackle to leave a team meeting, drew attention as a rare leak. Mahomes said, "We've had the right conversations now. We're moving in the right direction."</li>
+      <li>The bright spots are Rice's return and Mahomes's 20-3 record in division road games. Local coverage expects the offense to look more like itself with Rice and a healthy Chiefs tight end Travis Kelce.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="b">What the Denver media is saying about the Chiefs</h2>
+    <ul class="bul">
+      <li>Denver's media sees a Chiefs team with cracks: a kicker under pressure, a thin receiver room, and a pass rush it calls ineffective, with Chiefs defensive tackle Chris Jones and edge George Karlaftis managing little.</li>
+      <li>The fear is Walker. Denver coverage keeps returning to his 173-yard opener and the Broncos' tackling that day, and it expects Reid and Mahomes to be sharp after Seattle.</li>
+      <li>Broncos players speak about Kansas City with respect. Nix said, "They just know how to win. They built a great culture of winning."</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="b">What the Denver media is saying about the Broncos</h2>
+    <ul class="bul">
+      <li>Confident. Denver coverage sees a better team than the one blown out in Week 1: five wins in six games, an 11-1 regular-season home record since 2025, and the division lead within reach.</li>
+      <li>Nix's 222 passing yards and 62-yard touchdown run at Arizona eased weeks of criticism. Payton said, "he's our guy."</li>
+      <li>Payton's 200th win and the home crowd are big themes. Broncos outside linebacker Nik Bonitto said, "I think it's a huge advantage."</li>
+      <li>The worries are injuries and run defense. Harvey and Hufanga are out, wide receiver Jaylen Waddle is questionable, and the Broncos' run defense and tackling are the main concerns heading into the rematch.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="a">What the Kansas City media is saying about the Broncos</h2>
+    <ul class="bul">
+      <li>Kansas City's media respects Denver's defense, which leads the league in sacks and has allowed 18.3 points per game over its last six games.</li>
+      <li>It doubts the offense: 30th in yards, 31st on third down, and only one of Denver's five wins by more than one possession.</li>
+      <li>The returns of Surtain and Broncos defensive end Jonathan Cooper are seen as real upgrades for Denver.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="nat">What everyone else is saying about this game</h2>
+    <ul class="bul">
+      <li><b class="a">Chiefs:</b> National coverage still rates Kansas City's defense and run game near the top of the league, but it flagged Mahomes's career-worst game at Seattle and Butker's misses.</li>
+      <li><b class="a">Chiefs:</b> The Simmons meeting dispute and the Tucker signing drew national attention, and coverage kept it factual while noting the controversy around both.</li>
+      <li><b class="b">Broncos:</b> Payton's run toward 200 wins is treated as a landmark, and national writers credit him with reviving the franchise in his fourth season.</li>
+      <li><b class="b">Broncos:</b> Nix's numbers are the national knock: 26th in QBR and 31st in air yards per attempt, even after his best game of the season in Arizona.</li>
+      <li><b class="b">Broncos:</b> Denver's defense gets steady praise, led by Bonitto's pass rush and Broncos linebacker Alex Singleton, who leads the NFL with 87 tackles.</li>
+    </ul>
+  </div>
+</section>
+
+<section aria-labelledby="inj-h">
+  <h2 id="inj-h">Who's out</h2>
+  <ul class="bul">
+    <li><b class="a">Out:</b> Chiefs defensive tackle Omarr Norman-Lott (knee).</li>
+    <li><b class="a">Questionable:</b> Chiefs cornerbacks L'Jarius Sneed (knee) and Mansoor Delane (shoulder), and defensive end R Mason Thomas (personal, not injury). Reid said Thomas will meet the team in Denver.</li>
+    <li><b class="a">In:</b> Chiefs wide receiver Rashee Rice (hamstring/knee) carries no designation and returns after missing two games.</li>
+    <li><b class="b">Out:</b> Broncos running back RJ Harvey (knee) and safety Talanoa Hufanga (ankle).</li>
+    <li><b class="b">Questionable:</b> Broncos wide receiver Jaylen Waddle (chest), defensive lineman Zach Allen (hamstring), tackle Garett Bolles (hip), and safety Brandon Jones (hamstring).</li>
+    <li><b class="b">In:</b> Broncos cornerback Pat Surtain II (ankle) was a full participant and returns after missing three games.</li>
+  </ul>
+  <p class="note">Game statuses from the Week 8 injury report posted on Chiefs.com, which lists both teams, Friday, Oct. 30. They match the Broncos' Friday report.</p>
+</section>
+
+<section aria-labelledby="line-h">
+  <h2 id="line-h">The line and the history</h2>
+  <div class="tbl-wrap">
+    <table class="t">
+      <thead><tr><th>Line</th><th>Spread</th><th>Moneyline</th><th>Total</th></tr></thead>
+      <tbody><tr><td>DraftKings, Oct. 28</td><td class="n">KC −1.5</td><td class="n">KC −118 / DEN −102</td><td class="n">40.5</td></tr></tbody>
+    </table>
+  </div>
+  <ul class="bul">
+    <li>Kansas City won the Week 1 meeting 31–10.</li>
+  </ul>
+  <h3>Who the public is picking</h3>
+  <ul class="bul">
+    <li><b>The media:</b> 52% of the published score predictions we found take the Broncos. The average is Broncos 21, Chiefs 21. Bleacher Report's panel has 57% on the Chiefs.</li>
+    <li><b>The betting public:</b> As of Friday, one sportsbook's splits showed 58% of spread bets on the Chiefs and 60% of bets on the under.</li>
+  </ul>
+  <div class="tbl-wrap avg">
+    <table class="t">
+      <thead><tr><th>Whose picks</th><th>Pick the Chiefs</th><th>Pick the Broncos</th><th>Average score</th></tr></thead>
+      <tbody><tr><td>Denver media</td><td class="n">10%</td><td class="n">90%</td><td class="n">Broncos 23, Chiefs 21</td></tr><tr><td>National media</td><td class="n">77%</td><td class="n">23%</td><td class="n">Chiefs 21, Broncos 19</td></tr><tr><td><b>All media</b></td><td class="n">48%</td><td class="n">52%</td><td class="n"><b>Chiefs 21, Broncos 21</b></td></tr></tbody>
+    </table>
+  </div>
+  <p class="note">Share of published score predictions picking each team, and the average predicted score. Each pick is tracked for our predictor standings.</p>
+</section>
+
+<section id="refs" class="refs" aria-labelledby="refs-h">
+  <h2 id="refs-h">References</h2>
+  <details class="srcs"><summary>Show the articles behind this page</summary><div class="inner-src">
+  <p class="note">Each bar shows that article's tone toward the team named next to it.</p>
+  <div class="covgrp"><span class="eyebrow a">Kansas City</span><ul class="refl"><li><a href="https://sports.yahoo.com/articles/andy-reid-explains-chiefs-signing-185601676.html">Reid explains signing Justin Tucker; Butker likely kicks in Denver</a> <span class="src-out">- Kansas City Star</span><span class="mts"><span class="mt"><span class="mt-n">Chiefs</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:42%;width:8%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://sports.yahoo.com/articles/chiefs-patrick-mahomes-had-josh-110000957.html">Mahomes addresses the Josh Simmons meeting dispute</a> <span class="src-out">- Kansas City Star</span><span class="mts"><span class="mt"><span class="mt-n">Chiefs</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:45%;width:5%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://www.kctv5.com/2026/10/30/kctv-sports-huddle-preview-predictions-chiefs-look-bounce-back-against-broncos/">KCTV Sports Huddle: can the Chiefs bounce back in Denver?</a> <span class="src-out">- KCTV5</span><span class="mts"><span class="mt"><span class="mt-n">Chiefs</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span><span class="mt"><span class="mt-n">Broncos</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.kctv5.com/2026/10/28/weve-had-right-conversations-mahomes-discusses-report-chiefs-kicked-simmons-meeting/">Mahomes: 'We've had the right conversations' on Simmons report</a> <span class="src-out">- KCTV5</span><span class="mts"><span class="mt"><span class="mt-n">Chiefs</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://www.kshb.com/sports/football/chiefs/he-gets-it-chiefs-andy-reid-on-harrison-butker-and-signing-of-justin-tucker">'He gets it': Reid on Butker and the Tucker signing (AP)</a> <span class="src-out">- KSHB 41</span><span class="mts"><span class="mt"><span class="mt-n">Chiefs</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:48%;width:2%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://www.chiefs.com/news/five-things-to-watch-on-sunday-chiefs-vs-broncos-x5242">Five things to watch: Chiefs at Broncos</a> <span class="src-out">- Chiefs.com</span><span class="mts"><span class="mt"><span class="mt-n">Chiefs</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Broncos</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:5%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://sports.yahoo.com/articles/chiefs-broncos-5-things-watch-170000384.html">5 things to watch in Chiefs-Broncos</a> <span class="src-out">- Arrowhead Pride (via Yahoo Sports)</span><span class="mts"><span class="mt"><span class="mt-n">Chiefs</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:42%;width:8%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Broncos</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:45%;width:5%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://sports.yahoo.com/articles/chiefs-news-third-downs-significant-130000937.html">Third downs will be significant in Broncos rematch</a> <span class="src-out">- Arrowhead Pride (via Yahoo Sports)</span><span class="mts"><span class="mt"><span class="mt-n">Chiefs</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:40%;width:10%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Broncos</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://sports.yahoo.com/articles/chiefs-broncos-week-8-game-170000441.html">Arrowhead Pride staff predictions for Week 8</a> <span class="src-out">- Arrowhead Pride (via Yahoo Sports)</span><span class="mts"><span class="mt"><span class="mt-n">Chiefs</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:10%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Broncos</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://sports.yahoo.com/articles/chiefs-broncos-week-8-final-191500491.html">Final injury report: Rashee Rice returning</a> <span class="src-out">- Arrowhead Pride (via Yahoo Sports)</span><span class="mts"><span class="mt"><span class="mt-n">Chiefs</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:12%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/kansas-city-chiefs-caught-huge-002039628.html">Chiefs caught a huge break with Rice news</a> <span class="src-out">- Chiefs Wire (via Yahoo Sports)</span><span class="mts"><span class="mt"><span class="mt-n">Chiefs</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/chiefs-fans-ignore-noise-ugly-184710855.html">Chiefs fans should ignore the noise after Seattle</a> <span class="src-out">- Gameday Kansas City (via Yahoo Sports)</span><span class="mts"><span class="mt"><span class="mt-n">Chiefs</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:25%"></span></span><span class="mt-w">Positive</span></span></span></li></ul></div><div class="covgrp"><span class="eyebrow b">Denver</span><ul class="refl"><li><a href="https://sports.yahoo.com/articles/broncos-vs-chiefs-5-things-140109609.html">5 things Denver fans should know about KC</a> <span class="src-out">- Broncos Wire (via Yahoo Sports)</span><span class="mts"><span class="mt"><span class="mt-n">Chiefs</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:42%;width:8%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://sports.yahoo.com/articles/3-matchups-watch-broncos-face-190115960.html">3 matchups to watch when Broncos face Chiefs</a> <span class="src-out">- Broncos Wire (via Yahoo Sports)</span><span class="mts"><span class="mt"><span class="mt-n">Chiefs</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:45%;width:5%"></span></span><span class="mt-w">Neutral</span></span><span class="mt"><span class="mt-n">Broncos</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:15%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/3-causes-concern-broncos-host-170054234.html">3 causes for concern when Broncos host Chiefs</a> <span class="src-out">- Broncos Wire (via Yahoo Sports)</span><span class="mts"><span class="mt"><span class="mt-n">Chiefs</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:20%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Broncos</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:42%;width:8%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.denverbroncos.com/news/with-focus-on-afc-west-goal-broncos-embrace-next-game-mentality-in-matchup-vs-chiefs">Broncos embrace 'next-game mentality' vs. Chiefs</a> <span class="src-out">- DenverBroncos.com</span><span class="mts"><span class="mt"><span class="mt-n">Chiefs</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:25%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Broncos</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:25%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.denvergazette.com/2026/10/30/with-rj-harvey-out-broncos-jonah-coleman-ready-for-bigger-role/">With Harvey out, Coleman ready vs. Chiefs (Payton on KC)</a> <span class="src-out">- Denver Gazette</span><span class="mts"><span class="mt"><span class="mt-n">Chiefs</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:20%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Broncos</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:15%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.si.com/nfl/broncos/onsi/mile-high-roundtable-predictions-picks-broncos-chiefs-rematch-week-8">Mile High Roundtable picks for the rematch</a> <span class="src-out">- Broncos On SI (Mile High Huddle)</span><span class="mts"><span class="mt"><span class="mt-n">Chiefs</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:5%"></span></span><span class="mt-w">Neutral</span></span><span class="mt"><span class="mt-n">Broncos</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:30%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/broncos-odds-winning-afc-west-230000051.html">Broncos' AFC West odds would skyrocket with a win</a> <span class="src-out">- Mile High Report (via Yahoo Sports)</span><span class="mts"><span class="mt"><span class="mt-n">Chiefs</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:12%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Broncos</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://predominantlyorange.com/nfl-power-rankings-week-8-broncos-ascending-in-latest-afc-west-rankings">Week 8 AFC West power rankings: Broncos ascending</a> <span class="src-out">- Predominantly Orange</span><span class="mts"><span class="mt"><span class="mt-n">Chiefs</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:28%;width:22%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Broncos</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:35%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://denversports.com/nfl/denver-broncos/sean-payton-says-bo-nix-is-our-guy-and-confidence-inside-the-building-never-changed">Payton: Bo Nix is 'our guy'</a> <span class="src-out">- Denver Sports (104.3)</span><span class="mts"><span class="mt"><span class="mt-n">Broncos</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:30%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.denverbroncos.com/news/in-a-game-like-this-it-s-significant-broncos-relish-home-field-advantage-ahead-of-week-8-matchup-with-chiefs">Broncos relish home-field edge ahead of Chiefs</a> <span class="src-out">- DenverBroncos.com</span><span class="mts"><span class="mt"><span class="mt-n">Broncos</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:32%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://www.denverbroncos.com/news/ahead-of-chance-to-earn-200th-overall-win-in-300th-regular-season-game-hc-sean-payton-credits-a-lot-of-good-teams-with-good-players-while-keeping-focus-on-matchup-vs-chiefs">Payton chases 200th win in 300th regular-season game</a> <span class="src-out">- DenverBroncos.com</span><span class="mts"><span class="mt"><span class="mt-n">Broncos</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:35%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://www.denverbroncos.com/news/injuryreport/injury-report-pat-surtain-ii-improves-to-full-participant-3-broncos-do-not-practice-ahead-of-week-8-game-vs-chiefs">Wednesday injury report: Surtain full; three don't practice</a> <span class="src-out">- DenverBroncos.com</span><span class="mts"><span class="mt"><span class="mt-n">Broncos</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:10%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.si.com/nfl/broncos/onsi/broncos-rule-out-rj-harvey-knee-chiefs">Final injury report: Harvey out, Waddle questionable</a> <span class="src-out">- Broncos On SI (Mile High Huddle)</span><span class="mts"><span class="mt"><span class="mt-n">Broncos</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:5%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://sports.yahoo.com/articles/nfl-predictions-broncos-vs-chiefs-130000035.html">Broncos vs. Chiefs score predictions</a> <span class="src-out">- Mile High Report (via Yahoo Sports)</span><span class="mts"><span class="mt"><span class="mt-n">Broncos</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:32%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://milehighsports.com/afc-west-roundup-kansas-city-chiefs-denver-broncos-prepare-for-showdown-on-sunday/">AFC West roundup: Chiefs, Broncos prepare for showdown</a> <span class="src-out">- Mile High Sports</span><span class="mts"><span class="mt"><span class="mt-n">Broncos</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span></span></li></ul></div><div class="covgrp"><span class="eyebrow nat">National</span><ul class="refl"><li><a href="https://www.cbssports.com/nfl/news/broncos-chiefs-where-to-watch-prediction/">Broncos host rival Chiefs in game that could decide AFC West</a> <span class="src-out">- CBS Sports</span><span class="mts"><span class="mt"><span class="mt-n">Chiefs</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:10%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Broncos</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:12%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://heavy.com/sports/nfl/kansas-city-chiefs/patrick-mahomes-puts-chiefs-on-notice-after-career-worst-performance/">Mahomes puts Chiefs on notice after career-worst game</a> <span class="src-out">- Heavy</span><span class="mts"><span class="mt"><span class="mt-n">Chiefs</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:32%;width:18%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.espn.com/nfl/story/_/id/50319759/kansas-city-chiefs-denver-broncos-afc-west-division-lead">Keys to the next chapter of Chiefs-Broncos</a> <span class="src-out">- ESPN</span><span class="mts"><span class="mt"><span class="mt-n">Chiefs</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:5%"></span></span><span class="mt-w">Neutral</span></span><span class="mt"><span class="mt-n">Broncos</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:5%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://www.espn.com/nfl/story/_/id/50329594/chiefs-get-rashee-rice-back-injury-broncos-game">Chiefs get Rashee Rice back for Broncos game</a> <span class="src-out">- ESPN</span><span class="mts"><span class="mt"><span class="mt-n">Chiefs</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:15%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/report-andy-reid-and-patrick-mahomes-told-josh-simmons-to-leave-a-team-meeting">Report: Reid, Mahomes told Josh Simmons to leave a meeting</a> <span class="src-out">- ProFootballTalk (NBC Sports)</span><span class="mts"><span class="mt"><span class="mt-n">Chiefs</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:35%;width:15%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.nfl.com/news/justin-tucker-chiefs-signing-kicker-practice-squad">Chiefs signing Justin Tucker to practice squad</a> <span class="src-out">- NFL.com</span><span class="mts"><span class="mt"><span class="mt-n">Chiefs</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:45%;width:5%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://www.si.com/betting/chiefs-vs-broncos-score-prediction-for-nfl-week-8-can-kansas-city-sweep-series-with-denver-2026">Chiefs vs. Broncos score prediction: can KC sweep?</a> <span class="src-out">- Sports Illustrated</span><span class="mts"><span class="mt"><span class="mt-n">Chiefs</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Broncos</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:38%;width:12%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://sports.yahoo.com/articles/chiefs-hoping-move-seahawks-loss-180008045.html">Chiefs hoping to move on from Seattle loss</a> <span class="src-out">- Roundtable Sports (via Yahoo Sports)</span><span class="mts"><span class="mt"><span class="mt-n">Chiefs</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://sports.yahoo.com/articles/chiefs-announce-good-news-travis-121156256.html">Good news on Travis Kelce ahead of Broncos game</a> <span class="src-out">- Gridiron Heroics (via Yahoo Sports)</span><span class="mts"><span class="mt"><span class="mt-n">Chiefs</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:25%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://athlonsports.com/nfl/denver-broncos/broncos-chiefs-make-or-break-players-week-8">6 make-or-break players for Broncos-Chiefs</a> <span class="src-out">- Athlon Sports</span><span class="mts"><span class="mt"><span class="mt-n">Chiefs</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:10%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Broncos</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:18%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://athlonsports.com/nfl/denver-broncos/bo-nix-third-down-offense-woes-key-fix">Broncos need Bo Nix to fix a defining flaw (Locked On Broncos)</a> <span class="src-out">- Athlon Sports</span><span class="mts"><span class="mt"><span class="mt-n">Broncos</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/sean-payton-goes-for-his-200th-career-win-on-sunday">Sean Payton goes for his 200th career win</a> <span class="src-out">- ProFootballTalk (NBC Sports)</span><span class="mts"><span class="mt"><span class="mt-n">Broncos</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/denver-coach-could-landmark-win-131404557.html">Denver coach could get landmark win vs. Chiefs</a> <span class="src-out">- Roundtable Sports (via Yahoo Sports)</span><span class="mts"><span class="mt"><span class="mt-n">Broncos</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:28%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://clutchpoints.com/nfl/denver-broncos/broncos-news-jaylen-waddle-injury-update-chiefs-game-status-up-in-air">Jaylen Waddle's status for Chiefs game up in the air</a> <span class="src-out">- ClutchPoints</span><span class="mts"><span class="mt"><span class="mt-n">Broncos</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:15%"></span></span><span class="mt-w">Positive</span></span></span></li></ul></div>
+  </div></details>
+</section>
+
+<footer>
+  <span class="eyebrow">Fodder Sports · pilot</span>
+  <p>Summaries are written in our own words from the coverage listed above. Odds from <a href="https://www.espn.com/espn/betting/story/_/id/50250750/2026-nfl-week-8-schedule-odds-point-spreads-totals">ESPN's Week 8 odds report</a>. Not affiliated with the NFL, the Kansas City Chiefs, or the Denver Broncos.</p>
+</footer>
+
+</div>
+<script>try{if('scrollRestoration' in history)history.scrollRestoration='manual';if(!location.hash)window.scrollTo(0,0);}catch(e){}</script>
+</body></html>

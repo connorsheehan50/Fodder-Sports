@@ -20,193 +20,289 @@
       "name": "Buffalo Bills",
       "rank": 1,
       "prev": 1,
-      "move": 0
+      "move": 0,
+      "average": 1.8,
+      "range_best": 1,
+      "range_worst": 3
     },
     {
       "name": "San Francisco 49ers",
       "rank": 2,
       "prev": 2,
-      "move": 0
+      "move": 0,
+      "average": 2.1,
+      "range_best": 1,
+      "range_worst": 4
     },
     {
       "name": "Jacksonville Jaguars",
       "rank": 3,
       "prev": 3,
-      "move": 0
+      "move": 0,
+      "average": 3.0,
+      "range_best": 1,
+      "range_worst": 6
     },
     {
       "name": "Chicago Bears",
       "rank": 4,
       "prev": 4,
-      "move": 0
+      "move": 0,
+      "average": 4.2,
+      "range_best": 2,
+      "range_worst": 7
     },
     {
       "name": "Denver Broncos",
       "rank": 5,
       "prev": 5,
-      "move": 0
+      "move": 0,
+      "average": 5.7,
+      "range_best": 2,
+      "range_worst": 12
     },
     {
       "name": "Kansas City Chiefs",
       "rank": 6,
       "prev": 7,
-      "move": 1
+      "move": 1,
+      "average": 6.7,
+      "range_best": 4,
+      "range_worst": 10
     },
     {
       "name": "Cincinnati Bengals",
       "rank": 7,
       "prev": 9,
-      "move": 2
+      "move": 2,
+      "average": 7.3,
+      "range_best": 4,
+      "range_worst": 14
     },
     {
       "name": "Detroit Lions",
       "rank": 8,
       "prev": 8,
-      "move": 0
+      "move": 0,
+      "average": 8.7,
+      "range_best": 6,
+      "range_worst": 13
     },
     {
       "name": "Green Bay Packers",
       "rank": 9,
       "prev": 13,
-      "move": 4
+      "move": 4,
+      "average": 9.2,
+      "range_best": 5,
+      "range_worst": 11
     },
     {
       "name": "Minnesota Vikings",
       "rank": 10,
       "prev": 6,
-      "move": -4
+      "move": -4,
+      "average": 9.7,
+      "range_best": 6,
+      "range_worst": 13
     },
     {
       "name": "Seattle Seahawks",
       "rank": 11,
       "prev": 10,
-      "move": -1
+      "move": -1,
+      "average": 10.6,
+      "range_best": 8,
+      "range_worst": 14
     },
     {
       "name": "Pittsburgh Steelers",
       "rank": 12,
       "prev": 12,
-      "move": 0
+      "move": 0,
+      "average": 10.8,
+      "range_best": 7,
+      "range_worst": 14
     },
     {
       "name": "Los Angeles Rams",
       "rank": 13,
       "prev": 14,
-      "move": 1
+      "move": 1,
+      "average": 13.6,
+      "range_best": 10,
+      "range_worst": 17
     },
     {
       "name": "New England Patriots",
       "rank": 13,
       "prev": 11,
-      "move": -2
+      "move": -2,
+      "average": 13.6,
+      "range_best": 10,
+      "range_worst": 16
     },
     {
       "name": "New York Giants",
       "rank": 15,
       "prev": 15,
-      "move": 0
+      "move": 0,
+      "average": 14.3,
+      "range_best": 11,
+      "range_worst": 20
     },
     {
       "name": "Tampa Bay Buccaneers",
       "rank": 16,
       "prev": 17,
-      "move": 1
+      "move": 1,
+      "average": 17.3,
+      "range_best": 11,
+      "range_worst": 24
     },
     {
       "name": "Cleveland Browns",
       "rank": 17,
       "prev": 16,
-      "move": -1
+      "move": -1,
+      "average": 17.5,
+      "range_best": 15,
+      "range_worst": 20
     },
     {
       "name": "Houston Texans",
       "rank": 18,
       "prev": 22,
-      "move": 4
+      "move": 4,
+      "average": 17.8,
+      "range_best": 16,
+      "range_worst": 22
     },
     {
       "name": "Carolina Panthers",
       "rank": 19,
       "prev": 19,
-      "move": 0
+      "move": 0,
+      "average": 20.3,
+      "range_best": 18,
+      "range_worst": 24
     },
     {
       "name": "Las Vegas Raiders",
       "rank": 20,
       "prev": 18,
-      "move": -2
+      "move": -2,
+      "average": 20.5,
+      "range_best": 17,
+      "range_worst": 24
     },
     {
       "name": "Dallas Cowboys",
       "rank": 21,
       "prev": 23,
-      "move": 2
+      "move": 2,
+      "average": 20.9,
+      "range_best": 18,
+      "range_worst": 27
     },
     {
       "name": "Atlanta Falcons",
       "rank": 22,
       "prev": 20,
-      "move": -2
+      "move": -2,
+      "average": 21.5,
+      "range_best": 18,
+      "range_worst": 24
     },
     {
       "name": "Baltimore Ravens",
       "rank": 23,
       "prev": 21,
-      "move": -2
+      "move": -2,
+      "average": 22.2,
+      "range_best": 18,
+      "range_worst": 28
     },
     {
       "name": "New Orleans Saints",
       "rank": 24,
       "prev": 26,
-      "move": 2
+      "move": 2,
+      "average": 22.9,
+      "range_best": 19,
+      "range_worst": 27
     },
     {
       "name": "Washington Commanders",
       "rank": 25,
       "prev": 25,
-      "move": 0
+      "move": 0,
+      "average": 25.5,
+      "range_best": 24,
+      "range_worst": 28
     },
     {
       "name": "Arizona Cardinals",
       "rank": 26,
       "prev": 24,
-      "move": -2
+      "move": -2,
+      "average": 25.7,
+      "range_best": 23,
+      "range_worst": 28
     },
     {
       "name": "New York Jets",
       "rank": 27,
       "prev": 27,
-      "move": 0
+      "move": 0,
+      "average": 28.1,
+      "range_best": 25,
+      "range_worst": 31
     },
     {
       "name": "Indianapolis Colts",
       "rank": 28,
       "prev": 29,
-      "move": 1
+      "move": 1,
+      "average": 28.2,
+      "range_best": 25,
+      "range_worst": 31
     },
     {
       "name": "Miami Dolphins",
       "rank": 28,
       "prev": 30,
-      "move": 2
+      "move": 2,
+      "average": 28.2,
+      "range_best": 17,
+      "range_worst": 31
     },
     {
       "name": "Philadelphia Eagles",
       "rank": 30,
       "prev": 28,
-      "move": -2
+      "move": -2,
+      "average": 29.0,
+      "range_best": 27,
+      "range_worst": 31
     },
     {
       "name": "Tennessee Titans",
       "rank": 31,
       "prev": 31,
-      "move": 0
+      "move": 0,
+      "average": 29.1,
+      "range_best": 24,
+      "range_worst": 31
     },
     {
       "name": "Los Angeles Chargers",
       "rank": 32,
       "prev": 32,
-      "move": 0
+      "move": 0,
+      "average": 32.0,
+      "range_best": 32,
+      "range_worst": 32
     }
   ]
 }

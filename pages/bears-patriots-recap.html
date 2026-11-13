@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Fodder Sports Week 7 Recap</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#f3f4f6; --surface:#ffffff; --ink:#151a24; --muted:#5b6474; --line:#d9dde4;
+  --nat:#4a5568; --nat-soft:#e6e9ee;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f131a; --surface:#171c25; --ink:#e7eaf0; --muted:#9aa3b2; --line:#2a3140;
+  --nat:#a7b1c2; --nat-soft:#222935; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f131a; --surface:#171c25; --ink:#e7eaf0; --muted:#9aa3b2; --line:#2a3140;
+  --nat:#a7b1c2; --nat-soft:#222935; color-scheme:dark}
+
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 56px}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
+a{color:inherit;text-decoration-color:var(--muted);text-underline-offset:2px}
+a:hover{text-decoration-color:currentColor}
+a:focus-visible{outline:2px solid var(--a);outline-offset:2px;border-radius:2px}
+h1,h2,h3{font-family:var(--display);font-weight:700;text-wrap:balance;margin:0;letter-spacing:.01em}
+h1{font-size:clamp(1.9rem,5vw,2.6rem);line-height:1.05}
+h2{font-size:1.5rem;text-transform:uppercase}
+h3{font-size:1.05rem;text-transform:uppercase;letter-spacing:.05em}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.a{color:var(--a)} .b{color:var(--b)} .nat{color:var(--nat)}
+section{display:flex;flex-direction:column;gap:14px}
+.note{font-size:.88rem;color:var(--muted)}
+ul.bul{margin:0;padding-left:1.15em;display:flex;flex-direction:column;gap:10px}
+ul.bul li::marker{color:var(--muted)}
+.dek{font-size:1.1rem;color:var(--muted)}
+
+.score{display:flex;align-items:stretch;border:1px solid var(--line);background:var(--surface)}
+.score .side{flex:1;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;min-width:0}
+.score .side + .side{border-left:1px solid var(--line)}
+.score .nm{font-family:var(--display);font-size:1.5rem;font-weight:700;text-transform:uppercase;line-height:1}
+.score .nm small{display:block;font-family:var(--mono);font-size:.72rem;font-weight:400;letter-spacing:.08em;color:var(--muted);margin-top:4px;text-transform:none}
+.score .pts{font-family:var(--display);font-size:2.6rem;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.score .lose .pts{opacity:.5}
+.score .meta{font-family:var(--mono);font-size:.8rem;color:var(--muted);text-align:right}
+
+.summary{background:var(--surface);border:1px solid var(--line);padding:22px 24px;display:flex;flex-direction:column;gap:14px}
+.views{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line)}
+.view{padding:18px 22px;display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--line)}
+.view:first-child{border-top:0}
+
+.tally{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.tally div{background:var(--surface);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.tally .big{font-family:var(--display);font-size:2rem;font-weight:700;line-height:1}
+
+.tbl-wrap{overflow-x:auto}
+table.t{width:100%;border-collapse:collapse;font-size:.92rem;min-width:480px}
+.t th{font-family:var(--mono);font-weight:500;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:8px 10px 8px 0;border-bottom:2px solid var(--ink)}
+.t td{padding:8px 10px 8px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.t td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap;font-size:.85rem}
+
+.coverage{background:var(--surface);border:1px solid var(--line);padding:18px 22px;display:flex;flex-direction:column;gap:16px}
+.covgrp{display:flex;flex-direction:column;gap:6px}
+.covgrp ul{margin:0;padding-left:1.1em;font-size:.88rem;display:flex;flex-direction:column;gap:4px}
+
+/* Sentiment: diverging bars, center = neutral */
+.sent{display:flex;flex-direction:column;gap:18px}
+.steam{display:flex;flex-direction:column;gap:8px}
+.srow{display:grid;grid-template-columns:110px 1fr 88px;align-items:center;gap:10px;font-size:.85rem}
+.srow .lbl{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;color:var(--muted)}
+.srow .val{font-family:var(--mono);font-size:.74rem;text-align:right;color:var(--muted)}
+.track.nocov{background:repeating-linear-gradient(45deg,var(--nat-soft) 0 6px,transparent 6px 12px)}
+.track.nocov::after{display:none}
+.track{position:relative;height:12px;background:var(--nat-soft);border-radius:6px}
+.track::after{content:"";position:absolute;left:50%;top:-3px;bottom:-3px;width:2px;background:var(--muted);transform:translateX(-1px)}
+.fill{position:absolute;top:0;bottom:0;border-radius:6px}
+.fill.pos{left:50%} .fill.neg{right:50%}
+.f-a{background:var(--a)} .f-b{background:var(--b)} .f-n{background:var(--nat)}
+.scale{display:grid;grid-template-columns:110px 1fr 88px;gap:10px;font-family:var(--mono);font-size:.68rem;color:var(--muted)}
+.scale span:nth-child(2){display:flex;justify-content:space-between}
+
+.grade{font-family:var(--display);font-weight:700;font-size:1.15rem}
+footer{border-top:1px solid var(--line);padding-top:18px;font-size:.85rem;color:var(--muted);display:flex;flex-direction:column;gap:8px}
+
+@media (max-width:560px){
+  .score{flex-direction:column}
+  .score .side + .side{border-left:0;border-top:1px solid var(--line)}
+  .tally{grid-template-columns:1fr}
+  .summary,.view,.coverage{padding-left:16px;padding-right:16px}
+  .srow,.scale{grid-template-columns:80px 1fr 76px}
+}
+
+.trend{margin:4px 0 0;font-size:.86rem}.trend b{font-weight:700}.trend.up span{color:#13803a}.trend.down span{color:#c81e1e}.trend.steady span,.trend.new span{color:var(--muted)}
+@media (prefers-color-scheme:dark){.trend.up span{color:#5fd38a}.trend.down span{color:#ff7b7b}}
+
+:root{--a:#c4440f;--b:#b0122f}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--a:#f2733b;--b:#f0506c}}
+:root[data-theme="dark"]{--a:#f2733b;--b:#f0506c}
+
+.tlink{color:inherit;text-decoration:none;border-bottom:1px dotted currentColor}
+.tlink:hover{border-bottom-style:solid}
+
+.refjump{margin:6px 0 0} .refjump a{font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.scale-note{font-size:.72rem !important;line-height:1.45}
+.refl li{margin-bottom:8px}
+.mts{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:3px}
+.mt{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.mt-bar{position:relative;display:inline-block;width:64px;height:7px;background:var(--line);border-radius:2px}
+.mt-c{position:absolute;left:50%;top:-2px;bottom:-2px;width:1px;background:var(--muted)}
+.mt-f{position:absolute;top:0;bottom:0;border-radius:2px}
+details.srcs summary{font-size:.74rem !important}
+
+.refs .inner-src{display:flex;flex-direction:column;gap:14px;max-height:340px;overflow-y:auto;overscroll-behavior:contain}
+footer p{font-size:.72rem;line-height:1.45}
+.refjump a{font-family:var(--mono);font-size:.8rem;letter-spacing:.04em;text-transform:uppercase}
+.avg td.n{white-space:nowrap}
+
+details.srcs{border:1px solid var(--line);border-radius:2px}
+details.srcs summary{cursor:pointer;padding:10px 12px;font-family:var(--mono);font-size:.82rem;letter-spacing:.05em;text-transform:uppercase}
+details.srcs[open] summary{border-bottom:1px solid var(--line)}
+details.srcs .inner-src{padding:12px;display:flex;flex-direction:column;gap:14px}
+.src-out{color:var(--muted)}
+.eyebrow{font-size:.8rem} .note{font-size:.8rem;line-height:1.5} .srow .lbl{font-size:.8rem} .srow .val{font-size:.8rem;color:var(--ink)}
+</style>
+</head><body>
+<div class="wrap">
+<a href="./" style="align-self:flex-start;display:inline-block;font-family:var(--mono);font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;background:none;border:1px solid var(--ink);color:var(--ink);padding:7px 11px;border-radius:2px">&larr; Back to Fodder Sports</a>
+
+<header style="display:flex;flex-direction:column;gap:16px">
+  <span class="eyebrow">Fodder Sports · NFL Week 7 · Final</span>
+  <div class="score" role="img" aria-label="Final score: Chicago Bears 30, New England Patriots 24">
+    <div class="side lose"><span class="nm b"><a class="tlink" href="./#team-ne">Patriots</a><small>4–3</small></span><span class="pts">24</span></div>
+    <div class="side"><span class="nm a"><a class="tlink" href="./#team-chi">Bears</a><small>5–2 · home</small></span><span class="pts">30</span></div>
+  </div>
+  <h1>Bears Hold Off Maye and the Patriots on a Career-Long Santos Kick</h1>
+  <p class="dek">Chicago never trailed, turned an end-zone interception into a touchdown drive before halftime, and answered a big night from Drake Maye at Soldier Field on Thursday.</p>
+</header>
+
+<section class="coverage" aria-labelledby="cov-h">
+  <h2 id="cov-h">How the coverage felt</h2>
+  <p class="note">Tone toward each team, local media versus national media. Pilot reading of the articles in References.</p>
+  <div class="sent">
+    <div class="steam">
+      <h3 class="a"><a class="tlink" href="./#team-chi">Bears</a></h3>
+      <div class="srow"><span class="lbl">Chicago</span><div class="track"><span class="fill pos f-a" style="width:15.0%"></span></div><span class="val">Positive</span></div>
+      <div class="srow"><span class="lbl">New England</span><div class="track"><span class="fill pos f-b" style="width:10.0%"></span></div><span class="val">Neutral</span></div>
+      <div class="srow"><span class="lbl">National</span><div class="track"><span class="fill pos f-n" style="width:32.5%"></span></div><span class="val">Positive</span></div>
+      <p class="trend new"><span aria-hidden="true">•</span> <b>First reading.</b> The trend starts with this team's next reading.</p>
+    </div>
+    <div class="steam">
+      <h3 class="b"><a class="tlink" href="./#team-ne">Patriots</a></h3>
+      <div class="srow"><span class="lbl">New England</span><div class="track"><span class="fill pos f-b" style="width:5.0%"></span></div><span class="val">Neutral</span></div>
+      <div class="srow"><span class="lbl">Chicago</span><div class="track"><span class="fill pos f-a" style="width:20.0%"></span></div><span class="val">Positive</span></div>
+      <div class="srow"><span class="lbl">National</span><div class="track"><span class="fill pos f-n" style="width:7.5%"></span></div><span class="val">Neutral</span></div>
+      <p class="trend new"><span aria-hidden="true">•</span> <b>First reading.</b> The trend starts with this team's next reading.</p>
+    </div>
+    <div class="scale"><span></span><span><span>Harsh</span><span>Neutral</span><span>Glowing</span></span><span></span></div><p class="note scale-note">Each bar shows the overall tone of that group&#39;s coverage toward the team. Bars to the right of center are favorable, bars to the left are critical, and longer bars mean stronger tone. &ldquo;No coverage&rdquo; means that group published nothing about the team in this window.</p>
+  </div>
+  <p>National coverage was warmer on the Bears than Chicago's own media, which spent more time on the defense than the win. Chicago writers were kinder to Maye than New England's.</p>
+  <p class="refjump"><a href="#refs">See all the articles we referenced for this summary</a></p>
+</section>
+
+
+<section class="summary" aria-labelledby="sum-h">
+  <h2 id="sum-h">The summary</h2>
+  <ul class="bul">
+    <li>The Bears beat the Patriots 30–24 to move to 5–2, ending New England's three-game winning streak.</li>
+    <li>The swing came late in the second quarter. With Chicago up 13–7 and New England at the Bears' 15, Bears linebacker D'Marco Jackson, starting for the injured T.J. Edwards, intercepted Maye in the end zone. The Bears then drove for a touchdown and a 20–7 lead.</li>
+    <li>Caleb Williams went 22 of 33 for 308 yards and two touchdowns with no turnovers, his second straight 300-yard game. Maye answered with 321 yards on 24 of 31 passing and three total touchdowns.</li>
+    <li>Bears receiver Luther Burden III caught all four of his targets for 130 yards and a touchdown, all before halftime. Chicago put up 405 yards against a defense that came in top six in the league in points and yards allowed.</li>
+    <li>New England's last real chance ended in a punt after a false start turned fourth-and-2 into fourth-and-7, with the Patriots down 27–21.</li>
+    <li>Ben Johnson first sent the punt team out, then changed his mind and sent out the field goal unit. Johnson said the Bears used the extra time while Patriots defensive tackle Christian Barmore was tended to on the field and felt confident in Bears kicker Cairo Santos, who said he wanted redemption after hitting the upright from 53. Santos made a career-long 58-yarder with 1:34 left.</li>
+  </ul>
+</section>
+
+<section class="views" aria-label="What each side is saying">
+  <div class="view">
+    <h2 class="a">What the Chicago media is saying about the Bears</h2>
+    <ul class="bul">
+      <li>Happy, with a little unease. The prevailing mood is that the Bears are good and keep finding ways to win close games, and that lapses like the 48-yard touchdown allowed before halftime are the part to clean up.</li>
+      <li>Williams gets the strongest praise. Chicago sees him growing into the quarterback Johnson envisioned, with Burden emerging as his favorite target.</li>
+      <li>The defense is the open question. It ranks last in the NFL in yards allowed per play but eighth in points allowed, and its takeaway pace is well behind last season's.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="b">What the New England media is saying about the Bears</h2>
+    <ul class="bul">
+      <li>The film-based reviews give Chicago real credit. Johnson's scheme was hard to prepare for on a short week, and Williams completed 14 of 18 passes against zone coverage.</li>
+      <li>Most of the instant reaction, though, centers on how the Bears capitalized on New England's mistakes.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="b">What the New England media is saying about the Patriots</h2>
+    <ul class="bul">
+      <li>Encouraged. A short-handed team rallied from 20–7 down on the road against a good opponent and had the ball late with a chance to win. Help is on the way as the roster gets healthier.</li>
+      <li>Running back Rhamondre Stevenson is the standout, with 93 receiving yards and a touchdown.</li>
+      <li>The fixes they name are penalties, missed tackles, and the end-zone interception, Maye's eighth of the season. Receiver A.J. Brown, still looking for his first Patriots touchdown, is the storyline to watch.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="a">What the Chicago media is saying about the Patriots</h2>
+    <ul class="bul">
+      <li>Chicago is sold on Maye. One Bears beat writer called it "one of the best games of his career."</li>
+      <li>Maye, more than any scheme, gets the credit for keeping New England in it against the Bears defense.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="nat">What everyone else is saying about this game</h2>
+    <ul class="bul">
+      <li><b class="a">Bears:</b> Williams's late throws, including a third-and-9 strike to Rome Odunze, set up the winning kick. Next Gen Stats gave the 58-yarder about a 28% chance.</li>
+      <li><b class="a">Bears:</b> Burden owned the first half, and Odunze took over after halftime.</li>
+      <li><b class="b">Patriots:</b> Maye played well enough to win. Two early drives that came up empty, a fourth-down sack on the opening possession and the end-zone interception, made the difference.</li>
+      <li><b class="b">Patriots:</b> The receivers had a quiet night, combining for seven catches behind New England's 10th offensive line combination of the season.</li>
+    </ul>
+  </div>
+</section>
+
+<section aria-labelledby="chk-h">
+  <h2 id="chk-h">Checking back in on pre-game coverage</h2>
+  <p>Leading up to the game, both Chicago and New England coverage expected a Bears win and pointed to New England's patched offensive line as the matchup to watch. Both were right. Chicago sacked Maye twice and the line was flagged four times, though Maye beat several blitzes with quick throws.</p>
+  <p>The biggest disagreement was about Maye. Leading up to the game, Chicago coverage called him inconsistent, judging him on his first three weeks (six interceptions) rather than the three before this game (10 touchdowns, one interception). New England coverage said he was playing his best football. His 117.8 passer rating backed New England, while the interception that decided the half backed Chicago's turnover concern.</p>
+  <p>On Chicago's run game, New England coverage expected more from it than Chicago did. Chicago's read held up: without the injured Kyle Monangai, Bears running back D'Andre Swift carried 22 times for 78 yards. The Bears still controlled the clock, running 66 plays to New England's 50.</p>
+  <p>Chicago had its way through the air against a New England defense where other offenses had struggled, with 308 passing yards and 130 to Burden before halftime.</p>
+</section>
+
+<section aria-labelledby="pred-h">
+  <h2 id="pred-h">How the score predictions did</h2>
+  <p>The average published score prediction was Bears 27, Patriots 23, within three points of the final margin and four of the final total.</p>
+  <div class="tally">
+    <div><span class="eyebrow">Chicago writers</span><span class="big a">100%</span><span class="note">picked the Bears</span></div>
+    <div><span class="eyebrow">New England writers</span><span class="big b">40%</span><span class="note">picked the Bears</span></div>
+    <div><span class="eyebrow">National and independent</span><span class="big nat">67%</span><span class="note">picked the Bears</span></div>
+  </div>
+  <ul class="bul">
+    <li><b>Nailed it:</b> Chad Finn of the Boston Globe (Bears 31&ndash;24) and Scoop Jackson of the Chicago Sun-Times (Bears 28&ndash;24) were each within two points of the final margin and the total.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="bold-h">
+  <h2 id="bold-h">Bold predictions that hit</h2>
+  <ul class="bul">
+    <li><b>Jason Lieser</b> predicted Bears kicker Cairo Santos would kick the winner late. Santos made a career-long 58-yarder with 1:34 left to seal it.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="next-h">
+  <h2 id="next-h">Up next</h2>
+  <ul class="bul">
+    <li><b class="a">Bears (5–2)</b> at the Seattle Seahawks, Monday, Nov. 2, Monday Night Football.</li>
+    <li><b class="b">Patriots (4–3)</b> at the Miami Dolphins, Sunday, Nov. 1.</li>
+    <li><b>Injury update:</b> Bears tight end Cole Kmet, hurt late in this game, is out for the season with a knee injury.</li>
+  </ul>
+</section>
+
+
+<section id="refs" class="refs" aria-labelledby="refs-h">
+  <h2 id="refs-h">References</h2>
+  <details class="srcs"><summary>Show the articles behind this page</summary><div class="inner-src"><div class="covgrp">
+    <span class="eyebrow a">Chicago</span>
+    <ul>
+      <li><a href="https://chicago.suntimes.com/bears/2026/10/22/bears-inactives-vs-patriots-lb-t-j-edwards-out-with-hamstring-injury">Bears hang on to beat Patriots 30–24</a> <span class="src-out">- Chicago Sun-Times</span></li>
+      <li><a href="https://chicago.suntimes.com/bears/2026/10/22/bears-patriots-chicago-caleb-williams-luther-burden-ben-johnson-cubs-white-sox-blackhawks-bulls">Chicago sports seems to be having a moment</a> <span class="src-out">- Chicago Sun-Times</span></li>
+      <li><a href="https://chicago.suntimes.com/bears/2026/10/22/bears-grades-patriots-chicago-new-england-caleb-williams-drake-maye-ben-johnson-soldier-field">Bears' grades are in</a> <span class="src-out">- Chicago Sun-Times</span></li>
+      <li><a href="https://chicago.suntimes.com/bears/2026/10/24/chicago-bears-lucky-patriots-caleb-williams-ben-johnson-seahawks-lions-packers-nfl">Must the Bears always dance with danger?</a> <span class="src-out">- Chicago Sun-Times</span></li>
+      <li><a href="https://chicago.suntimes.com/bears/2026/10/25/bears-defense-looks-great-one-moment-shaky-the-next-so-what-exactly-is-this-group">Bears' defense looks great one moment, shaky the next</a> <span class="src-out">- Chicago Sun-Times</span></li>
+    </ul>
+  </div>
+  <div class="covgrp">
+    <span class="eyebrow b">New England</span>
+    <ul>
+      <li><a href="https://www.bostonglobe.com/2026/10/23/sports/nfl-patriots-bears-instant-analysis/">The loss was sloppy but it still bodes well</a> <span class="src-out">- Boston Globe</span></li>
+      <li><a href="https://www.bostonglobe.com/2026/10/23/sports/patriots-bears-opportunities-loss-bears/">Patriots pay price for missed opportunities</a> <span class="src-out">- Boston Globe</span></li>
+      <li><a href="https://www.bostonglobe.com/2026/10/23/sports/dan-shaughnessy-patriots-bears-game/">Patriots are where we thought they'd be</a> <span class="src-out">- Boston Globe</span></li>
+      <li><a href="https://www.boston.com/sports/new-england-patriots/2026/10/22/patriots-bears-takeaways-chicago-new-england-drake-maye-rhamondre-stevenson/">10 takeaways from Patriots' loss to Bears</a> <span class="src-out">- Boston.com</span></li>
+      <li><a href="https://www.nbcsportsboston.com/nfl/new-england-patriots/live-updates-bears-highlights-score-thursday-night-football/808914/">Too many mistakes for Pats in 30–24 loss</a> <span class="src-out">- NBC Sports Boston</span></li>
+      <li><a href="https://www.patriots.com/news/game-observations-8-takeaways-from-the-patriots-loss-to-the-bears-on-thursday-night-football-in-week-7">Game Observations: 8 takeaways</a> <span class="src-out">- Patriots.com</span></li>
+    </ul>
+  </div>
+  <div class="covgrp">
+    <span class="eyebrow nat">National</span>
+    <ul>
+      <li><a href="https://www.nfl.com/news/patriots-bears-on-thursday-night-football-what-we-learned-from-chicago-s-30-24">What we learned from Chicago's 30–24 win</a> <span class="src-out">- NFL.com</span></li>
+      <li><a href="https://www.cbssports.com/nfl/news/bears-vs-patriots-live-updates-score-highlights/live/">Caleb Williams leads Chicago to 30–24 win</a> <span class="src-out">- CBS Sports</span></li>
+      <li><a href="https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/thursday-night-football-bears-fend-off-patriots-30-24">Bears fend off Patriots 30–24</a> <span class="src-out">- ProFootballTalk</span></li>
+    </ul>
+  </div>
+  <p class="note">Stats also from the <a href="https://www.pro-football-reference.com/boxscores/202610220chi.htm">Pro-Football-Reference box score</a>.</p>
+</div></details>
+</section>
+
+<footer>
+  <span class="eyebrow">Fodder Sports · pilot</span>
+  <p>Summaries are written in our own words from the coverage listed above. Not affiliated with the NFL, the Chicago Bears, or the New England Patriots.</p>
+</footer>
+
+</div>
+<script>try{if('scrollRestoration' in history)history.scrollRestoration='manual';if(!location.hash)window.scrollTo(0,0);}catch(e){}</script>
+</body></html>

@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Fodder Sports Raiders at Jets</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#f3f4f6; --surface:#ffffff; --ink:#151a24; --muted:#5b6474; --line:#d9dde4;
+  --nat:#4a5568; --nat-soft:#e6e9ee;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f131a; --surface:#171c25; --ink:#e7eaf0; --muted:#9aa3b2; --line:#2a3140;
+  --nat:#a7b1c2; --nat-soft:#222935; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f131a; --surface:#171c25; --ink:#e7eaf0; --muted:#9aa3b2; --line:#2a3140;
+  --nat:#a7b1c2; --nat-soft:#222935; color-scheme:dark}
+
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 56px}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
+a{color:inherit;text-decoration-color:var(--muted);text-underline-offset:2px}
+a:hover{text-decoration-color:currentColor}
+a:focus-visible{outline:2px solid var(--a);outline-offset:2px;border-radius:2px}
+h1,h2,h3{font-family:var(--display);font-weight:700;text-wrap:balance;margin:0;letter-spacing:.01em}
+h1{font-size:clamp(1.9rem,5vw,2.6rem);line-height:1.05}
+h2{font-size:1.5rem;text-transform:uppercase}
+h3{font-size:1.05rem;text-transform:uppercase;letter-spacing:.05em}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.a{color:var(--a)} .b{color:var(--b)} .nat{color:var(--nat)}
+section{display:flex;flex-direction:column;gap:14px}
+.note{font-size:.88rem;color:var(--muted)}
+ul.bul{margin:0;padding-left:1.15em;display:flex;flex-direction:column;gap:10px}
+ul.bul li::marker{color:var(--muted)}
+.dek{font-size:1.1rem;color:var(--muted)}
+
+.score{display:flex;align-items:stretch;border:1px solid var(--line);background:var(--surface)}
+.score .side{flex:1;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;min-width:0}
+.score .side + .side{border-left:1px solid var(--line)}
+.score .nm{font-family:var(--display);font-size:1.5rem;font-weight:700;text-transform:uppercase;line-height:1}
+.score .nm small{display:block;font-family:var(--mono);font-size:.72rem;font-weight:400;letter-spacing:.08em;color:var(--muted);margin-top:4px;text-transform:none}
+.score .pts{font-family:var(--display);font-size:2.6rem;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.score .lose .pts{opacity:.5}
+.score .meta{font-family:var(--mono);font-size:.8rem;color:var(--muted);text-align:right}
+
+.summary{background:var(--surface);border:1px solid var(--line);padding:22px 24px;display:flex;flex-direction:column;gap:14px}
+.views{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line)}
+.view{padding:18px 22px;display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--line)}
+.view:first-child{border-top:0}
+
+.tally{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.tally div{background:var(--surface);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.tally .big{font-family:var(--display);font-size:2rem;font-weight:700;line-height:1}
+
+.tbl-wrap{overflow-x:auto}
+table.t{width:100%;border-collapse:collapse;font-size:.92rem;min-width:480px}
+.t th{font-family:var(--mono);font-weight:500;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:8px 10px 8px 0;border-bottom:2px solid var(--ink)}
+.t td{padding:8px 10px 8px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.t td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap;font-size:.85rem}
+
+.coverage{background:var(--surface);border:1px solid var(--line);padding:18px 22px;display:flex;flex-direction:column;gap:16px}
+.covgrp{display:flex;flex-direction:column;gap:6px}
+.covgrp ul{margin:0;padding-left:1.1em;font-size:.88rem;display:flex;flex-direction:column;gap:4px}
+
+/* Sentiment: diverging bars, center = neutral */
+.sent{display:flex;flex-direction:column;gap:18px}
+.steam{display:flex;flex-direction:column;gap:8px}
+.srow{display:grid;grid-template-columns:110px 1fr 88px;align-items:center;gap:10px;font-size:.85rem}
+.srow .lbl{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;color:var(--muted)}
+.srow .val{font-family:var(--mono);font-size:.74rem;text-align:right;color:var(--muted)}
+.track.nocov{background:repeating-linear-gradient(45deg,var(--nat-soft) 0 6px,transparent 6px 12px)}
+.track.nocov::after{display:none}
+.track{position:relative;height:12px;background:var(--nat-soft);border-radius:6px}
+.track::after{content:"";position:absolute;left:50%;top:-3px;bottom:-3px;width:2px;background:var(--muted);transform:translateX(-1px)}
+.fill{position:absolute;top:0;bottom:0;border-radius:6px}
+.fill.pos{left:50%} .fill.neg{right:50%}
+.f-a{background:var(--a)} .f-b{background:var(--b)} .f-n{background:var(--nat)}
+.scale{display:grid;grid-template-columns:110px 1fr 88px;gap:10px;font-family:var(--mono);font-size:.68rem;color:var(--muted)}
+.scale span:nth-child(2){display:flex;justify-content:space-between}
+
+.grade{font-family:var(--display);font-weight:700;font-size:1.15rem}
+footer{border-top:1px solid var(--line);padding-top:18px;font-size:.85rem;color:var(--muted);display:flex;flex-direction:column;gap:8px}
+
+@media (max-width:560px){
+  .score{flex-direction:column}
+  .score .side + .side{border-left:0;border-top:1px solid var(--line)}
+  .tally{grid-template-columns:1fr}
+  .summary,.view,.coverage{padding-left:16px;padding-right:16px}
+  .srow,.scale{grid-template-columns:80px 1fr 76px}
+}
+
+.trend{margin:4px 0 0;font-size:.86rem}.trend b{font-weight:700}.trend.up span{color:#13803a}.trend.down span{color:#c81e1e}.trend.steady span,.trend.new span{color:var(--muted)}
+@media (prefers-color-scheme:dark){.trend.up span{color:#5fd38a}.trend.down span{color:#ff7b7b}}
+
+:root{--a:#3a3a3a;--b:#125740}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--a:#c0c6cc;--b:#5fc493}}
+:root[data-theme="dark"]{--a:#c0c6cc;--b:#5fc493}
+
+.tlink{color:inherit;text-decoration:none;border-bottom:1px dotted currentColor}
+.tlink:hover{border-bottom-style:solid}
+
+.refjump{margin:6px 0 0} .refjump a{font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.scale-note{font-size:.72rem !important;line-height:1.45}
+.refl li{margin-bottom:8px}
+.mts{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:3px}
+.mt{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.mt-bar{position:relative;display:inline-block;width:64px;height:7px;background:var(--line);border-radius:2px}
+.mt-c{position:absolute;left:50%;top:-2px;bottom:-2px;width:1px;background:var(--muted)}
+.mt-f{position:absolute;top:0;bottom:0;border-radius:2px}
+details.srcs summary{font-size:.74rem !important}
+
+.refs .inner-src{display:flex;flex-direction:column;gap:14px;max-height:340px;overflow-y:auto;overscroll-behavior:contain}
+footer p{font-size:.72rem;line-height:1.45}
+.refjump a{font-family:var(--mono);font-size:.8rem;letter-spacing:.04em;text-transform:uppercase}
+.avg td.n{white-space:nowrap}
+
+details.srcs{border:1px solid var(--line);border-radius:2px}
+details.srcs summary{cursor:pointer;padding:10px 12px;font-family:var(--mono);font-size:.82rem;letter-spacing:.05em;text-transform:uppercase}
+details.srcs[open] summary{border-bottom:1px solid var(--line)}
+details.srcs .inner-src{padding:12px;display:flex;flex-direction:column;gap:14px}
+.src-out{color:var(--muted)}
+.eyebrow{font-size:.8rem} .note{font-size:.8rem;line-height:1.5} .srow .lbl{font-size:.8rem} .srow .val{font-size:.8rem;color:var(--ink)}
+</style>
+</head><body>
+<div class="wrap">
+<a href="./" style="align-self:flex-start;display:inline-block;font-family:var(--mono);font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;background:none;border:1px solid var(--ink);color:var(--ink);padding:7px 11px;border-radius:2px">&larr; Back to Fodder Sports</a>
+
+<header style="display:flex;flex-direction:column;gap:16px">
+  <span class="eyebrow">Fodder Sports · NFL Week 8 · Matchup</span>
+  <div class="score" role="img" aria-label="Las Vegas Raiders, 3 and 4, at New York Jets, 2 and 5">
+    <div class="side"><span class="nm a"><a class="tlink" href="./#team-lv">Raiders</a><small>3–4 · away</small></span><span class="meta">Sun, Nov. 1<br>1:00 p.m. ET</span></div>
+    <div class="side"><span class="nm b"><a class="tlink" href="./#team-nyj">Jets</a><small>2–5 · home</small></span><span class="meta">MetLife Stadium<br>FOX</span></div>
+  </div>
+  <h1>Geno Smith Faces the Raiders He Left as Two Slumping Teams Meet at MetLife</h1>
+  <p class="dek">Las Vegas has lost four straight after a 3-0 start, and the Jets just lost to winless Miami, so somebody's slide ends Sunday.</p>
+</header>
+
+<section class="coverage" aria-labelledby="cov-h">
+  <h2 id="cov-h">How the coverage feels</h2>
+  <p class="note">How each market feels about each team right now, read from the week's coverage. This is about the team vibes, not the odds of winning this game.</p>
+  <div class="sent">
+    <div class="steam">
+      <h3 class="a"><a class="tlink" href="./#team-lv">Raiders</a></h3>
+      <div class="srow"><span class="lbl">Las Vegas</span><div class="track"><span class="fill neg f-a" style="width:12.5%"></span></div><span class="val">Critical</span></div>
+      <div class="srow"><span class="lbl">New York</span><div class="track"><span class="fill neg f-b" style="width:2.5%"></span></div><span class="val">Neutral</span></div>
+      <div class="srow"><span class="lbl">National</span><div class="track"><span class="fill neg f-n" style="width:7.5%"></span></div><span class="val">Neutral</span></div>
+      <p class="trend new"><span aria-hidden="true">•</span> <b>First reading.</b> A four-game skid, a 31st-ranked run game, and the growing Mendoza question have Las Vegas fearing the season is slipping away.</p>
+    </div>
+    <div class="steam">
+      <h3 class="b"><a class="tlink" href="./#team-nyj">Jets</a></h3>
+      <div class="srow"><span class="lbl">New York</span><div class="track"><span class="fill neg f-b" style="width:2.5%"></span></div><span class="val">Neutral</span></div>
+      <div class="srow"><span class="lbl">Las Vegas</span><div class="track"><span class="fill pos f-a" style="width:10.0%"></span></div><span class="val">Neutral</span></div>
+      <div class="srow"><span class="lbl">National</span><div class="track"><span class="fill neg f-n" style="width:20.0%"></span></div><span class="val">Critical</span></div>
+      <p class="trend new"><span aria-hidden="true">•</span> <b>First reading.</b> The home loss to winless Miami put Glenn's job at the center of everything, even as rookies like Cooper give New York reasons to keep watching.</p>
+    </div>
+    <div class="scale"><span></span><span><span>Harsh</span><span>Neutral</span><span>Glowing</span></span><span></span></div><p class="note scale-note">Each bar shows the overall tone of that group&#39;s coverage toward the team. Bars to the right of center are favorable, bars to the left are critical, and longer bars mean stronger tone. &ldquo;No coverage&rdquo; means that group published nothing about the team in this window.</p>
+  </div>
+  <p>Las Vegas coverage is frustrated but not hopeless: the offense can score, and quarterback Kirk Cousins is producing, but the run game, the defense, and the question of rookie quarterback Fernando Mendoza dominate the talk. New York's media is split between excitement about rookie wide receiver Omar Cooper Jr. and anger over coach Aaron Glenn's job after the Miami loss, while it treats the Raiders with respect for their passing game and doubt about their defense. National coverage is cool on both teams, harsher on the Jets' direction and the Raiders' defense.</p>
+  <p class="refjump"><a href="#refs">See all the articles we referenced for this summary</a></p>
+</section>
+
+<section class="summary" aria-labelledby="sum-h">
+  <h2 id="sum-h">The summary</h2>
+  <ul class="bul">
+      <li>The Raiders (3-4) have lost four straight after a 3-0 start, most recently 35-21 to the Rams, and have allowed 30 or more points in each loss.</li>
+      <li>Raiders coach Klint Kubiak says there is "no controversy" at quarterback: 38-year-old Kirk Cousins starts, and No. 1 overall pick Fernando Mendoza "is going to play at some point, but it's not going to be this week." Cousins leads the NFL with 16 touchdown passes and has 1,877 yards and five interceptions.</li>
+      <li>The Jets (2-5) lost 28-25 at home to previously winless Miami. Jets coach Aaron Glenn is 5-19 overall and 0-8 against the AFC East, and the Jets own the NFL's longest playoff drought at 15 years.</li>
+      <li>Jets quarterback Geno Smith faces the team he played for in 2025. He is completing 70% of his passes with 10 touchdowns, two interceptions, and a 105.2 rating.</li>
+      <li>The matchup on the ground favors New York on paper: the Raiders run for 74.7 yards per game (31st), Raiders running back Ashton Jeanty averages 3.1 yards per carry, and Las Vegas allows 143.6 rushing yards per game. Jeanty stirred things up by saying some Jets defenders "don't really want to tackle."</li>
+      <li>The Jets are without defensive lineman T'Vondre Sweat, edge rusher Joseph Ossai, and offensive lineman Max Mitchell, and rookie edge rusher David Bailey, their sack leader with 5.5, is doubtful.</li>
+  </ul>
+</section>
+
+<section class="views" aria-label="What each side is saying">
+  <div class="view">
+    <h2 class="a">What the Las Vegas media is saying about the Raiders</h2>
+    <ul class="bul">
+      <li>Frustrated. Las Vegas coverage says the 3-0 start came against weak teams, and a fifth straight loss would all but end the playoff hopes and could push the Raiders to sell before the Nov. 10 deadline.</li>
+      <li>The run game is the biggest worry. The Raiders managed 48 rushing yards against the Rams, and Raiders center Tyler Linderbaum summed up the fix as "Block better."</li>
+      <li>The defense is the other problem: 199 rushing yards allowed to the Rams, a pass rush that has four sacks in the last three games, and Raiders defensive end Maxx Crosby without a sack since Week 4.</li>
+      <li>The Mendoza meter keeps climbing. Local coverage is divided between wanting the rookie now and worrying that the weak run game would leave him exposed. Crosby's message: "You can't lose confidence in who you are because of noise."</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="b">What the New York media is saying about the Raiders</h2>
+    <ul class="bul">
+      <li>New York's media respects the Raiders' passing game. Glenn said Cousins is "tough to stop" once he gets going, and Jets linebacker Demario Davis called Raiders tight end Brock Bowers "one of the top tight ends in our game, hands down."</li>
+      <li>It sees a Raiders defense that can be attacked, allowing 28.1 points and 373.7 yards per game, and a run game ranked 31st.</li>
+      <li>Jeanty's tackling comment was shrugged off. Davis called it "bulletin board material," and Jets safety Minkah Fitzpatrick said he gives "110 percent effort, no matter who I'm playing against."</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="b">What the New York media is saying about the Jets</h2>
+    <ul class="bul">
+      <li>Torn. New York coverage is excited about young players, led by rookie wide receiver Omar Cooper Jr., who has back-to-back 100-yard games with touchdowns, and running back Braelon Allen, who has 357 rushing yards in four starts.</li>
+      <li>The Miami loss stung. Local voices call it a new low for the Glenn era and debate whether he can save his job, though the market expects him to finish the season.</li>
+      <li>Smith's accuracy is a positive, but the offense still struggles to finish. Jets wide receiver Garrett Wilson had three targets against Miami, and Glenn said, "We all have to get better, from coaching to playing to everything that we're doing."</li>
+      <li>The long view is hopeful: the Jets own three 2027 first-round picks, including Indianapolis's, which could climb as the Colts sell.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="a">What the Las Vegas media is saying about the Jets</h2>
+    <ul class="bul">
+      <li>Las Vegas's media sees a much more competitive Jets team, with four of its five losses by one score and a pass defense ranked fifth.</li>
+      <li>It expects Smith to be hard to rattle behind a talented line led by Jets right tackle Armand Membou, though it notes Smith has taken 21 sacks.</li>
+      <li>The Jets' injuries at defensive line and edge are seen as a real opening, especially with running back Breece Hall and guard Dylan Parham possibly returning to boost the Jets' run game.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="nat">What everyone else is saying about this game</h2>
+    <ul class="bul">
+      <li><b class="a">Raiders:</b> National coverage says Cousins has been the least of the Raiders' problems. Since Week 4, Las Vegas allows 35.8 points and 416.5 yards per game.</li>
+      <li><b class="a">Raiders:</b> The Raiders are only the third team in 10 seasons to start 3-0 or better and then lose four straight, and the Mendoza debate is a national story.</li>
+      <li><b class="b">Jets:</b> Glenn's job is the national Jets story. National insiders expect him to finish the season, while the 0-8 division record and late-game failures drive the doubts.</li>
+      <li><b class="b">Jets:</b> The Jets' run defense has slipped to 31st since Week 3, allowing 153 yards per game, and it loses Sweat to a knee injury.</li>
+      <li><b class="a">Raiders:</b> The Raiders are No. 21 in our consensus power rankings, and the Jets are No. 28.</li>
+    </ul>
+  </div>
+</section>
+
+<section aria-labelledby="inj-h">
+  <h2 id="inj-h">Who's out</h2>
+  <ul class="bul">
+    <li><b class="a">Out:</b> Raiders defensive end Patrick Johnson (stinger) and tight end Carter Runyon (foot).</li>
+    <li><b class="a">Questionable:</b> Raiders wide receiver Jack Bech (forearm), activated from injured reserve Oct. 31, and guard Jackson Powers-Johnson (back), the listed starter at right guard.</li>
+    <li><b class="a">In:</b> Raiders tight end Brock Bowers (calf), defensive tackle Folorunso Fatukasi (shoulder), tackle DJ Glaze (ankle), cornerback Eric Stokes (illness), tight end Ian Thomas (shoulder), and linebacker Quay Walker (chest) have no game status.</li>
+    <li><b class="b">Out:</b> Jets defensive lineman T'Vondre Sweat (knee), edge rusher Joseph Ossai (ankle), and offensive lineman Max Mitchell (concussion). Sweat was moved to injured reserve.</li>
+    <li><b class="b">Doubtful:</b> Jets edge rusher David Bailey (groin). He did not practice Friday.</li>
+    <li><b class="b">Questionable:</b> Jets running back Breece Hall (quad) and offensive lineman Dylan Parham (knee). Both were limited Friday.</li>
+    <li><b class="b">In:</b> Jets running back Braelon Allen (ankle) has no game status after a full practice.</li>
+  </ul>
+  <p class="note">Game statuses from the teams' official injury reports, Friday, Oct. 30. Bech's activation is from the Raiders' Oct. 31 transaction.</p>
+</section>
+
+<section aria-labelledby="line-h">
+  <h2 id="line-h">The line and the history</h2>
+  <div class="tbl-wrap">
+    <table class="t">
+      <thead><tr><th>Line</th><th>Spread</th><th>Moneyline</th><th>Total</th></tr></thead>
+      <tbody><tr><td>DraftKings, Oct. 28</td><td class="n">NYJ −1.5</td><td class="n">NYJ −122 / LV +102</td><td class="n">45.5</td></tr></tbody>
+    </table>
+  </div>
+  <h3>Who the public is picking</h3>
+  <ul class="bul">
+    <li><b>The media:</b> 60% of the published score predictions we found take the Raiders. The average is Raiders 21, Jets 20. Bleacher Report's panel has 57% on the Jets.</li>
+    <li><b>The betting public:</b> As of Friday, one sportsbook's splits showed 69% of spread bets and 74% of moneyline bets on the Raiders.</li>
+  </ul>
+  <div class="tbl-wrap avg">
+    <table class="t">
+      <thead><tr><th>Whose picks</th><th>Pick the Raiders</th><th>Pick the Jets</th><th>Average score</th></tr></thead>
+      <tbody><tr><td>Las Vegas media</td><td class="n">100%</td><td class="n">0%</td><td class="n">Raiders 23, Jets 19</td></tr><tr><td>National media</td><td class="n">50%</td><td class="n">50%</td><td class="n">Jets 21, Raiders 20</td></tr><tr><td><b>All media</b></td><td class="n">60%</td><td class="n">40%</td><td class="n"><b>Raiders 21, Jets 20</b></td></tr></tbody>
+    </table>
+  </div>
+  <p class="note">Share of published score predictions picking each team, and the average predicted score. Each pick is tracked for our predictor standings.</p>
+</section>
+
+<section id="refs" class="refs" aria-labelledby="refs-h">
+  <h2 id="refs-h">References</h2>
+  <details class="srcs"><summary>Show the articles behind this page</summary><div class="inner-src">
+  <p class="note">Each bar shows that article's tone toward the team named next to it.</p>
+  <div class="covgrp"><span class="eyebrow a">Las Vegas</span><ul class="refl"><li><a href="https://www.raiders.com/news/game-recap-raiders-drop-to-3-4-with-loss-to-rams-pointing-the-finger-at-themselves-in-midst-of-losing-streak">Recap: Raiders drop to 3-4 with loss to Rams</a> <span class="src-out">- Raiders.com</span><span class="mts"><span class="mt"><span class="mt-n">Raiders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:32%;width:18%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.raiders.com/news/gutierrez-the-raiders-need-more-than-flashes-they-need-consistency">Gutierrez: Raiders need consistency, not flashes</a> <span class="src-out">- Raiders.com</span><span class="mts"><span class="mt"><span class="mt-n">Raiders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:42%;width:8%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.raiders.com/news/by-the-numbers-a-few-familiar-trends-surfaced-in-the-raiders-week-7-defeat">By the numbers: familiar trends in Week 7 loss</a> <span class="src-out">- Raiders.com</span><span class="mts"><span class="mt"><span class="mt-n">Raiders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://www.raiders.com/news/game-preview-raiders-prepare-for-competitive-road-game-against-improved-jets-roster">Raiders prepare for road game vs. improved Jets</a> <span class="src-out">- Raiders.com</span><span class="mts"><span class="mt"><span class="mt-n">Raiders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span><span class="mt"><span class="mt-n">Jets</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:20%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.raiders.com/news/key-matchups-raiders-defenders-face-big-challenge-in-keeping-jets-combo-in-check-nfl">Key matchups: Raiders defenders vs. the Jets' combo</a> <span class="src-out">- Raiders.com</span><span class="mts"><span class="mt"><span class="mt-n">Raiders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:15%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Jets</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:18%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://justblogbaby.com/mendoza-meter-end-of-the-kirk-cousins-era-is-closer-than-ever-after-week-7">Mendoza Meter: end of the Cousins era closer than ever</a> <span class="src-out">- Just Blog Baby</span><span class="mts"><span class="mt"><span class="mt-n">Raiders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:15%;width:35%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://justblogbaby.com/raiders-run-game-issues-may-be-whats-keeping-fernando-mendoza-on-the-bench">Run-game issues may keep Mendoza on the bench</a> <span class="src-out">- Just Blog Baby</span><span class="mts"><span class="mt"><span class="mt-n">Raiders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:40%;width:10%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://justblogbaby.com/getting-after-geno-smith-will-be-no-easy-task-for-raiders-defensive-front">Getting after Geno Smith no easy task for Raiders' front</a> <span class="src-out">- Just Blog Baby</span><span class="mts"><span class="mt"><span class="mt-n">Raiders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:25%;width:25%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Jets</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:20%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://justblogbaby.com/raiders-cant-be-lulled-to-sleep-jets-loaded-initial-injury-report">Raiders can't be lulled by Jets' injury report</a> <span class="src-out">- Just Blog Baby</span><span class="mts"><span class="mt"><span class="mt-n">Raiders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Jets</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://justblogbaby.com/raiders-ashton-jeanty-just-wrote-a-check-that-he-better-cash-against-jets">Jeanty wrote a check he'd better cash vs. Jets</a> <span class="src-out">- Just Blog Baby</span><span class="mts"><span class="mt"><span class="mt-n">Raiders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:25%;width:25%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Jets</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:15%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://justblogbaby.com/post-week-7-afc-playoff-picture-raiders-fall-further-out-of-the-equation">Post-Week 7 AFC playoff picture</a> <span class="src-out">- Just Blog Baby</span><span class="mts"><span class="mt"><span class="mt-n">Raiders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:25%;width:25%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.ktnv.com/sports/raiders/raiders-head-coach-klint-kubiak-shuts-down-quarterback-controversy">Kubiak shuts down QB controversy</a> <span class="src-out">- KTNV (Channel 13)</span><span class="mts"><span class="mt"><span class="mt-n">Raiders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:42%;width:8%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://news3lv.com/newsletter-daily/kubiak-says-cousins-remains-raiders-starter-there-is-no-controversy">Kubiak: Cousins remains starter</a> <span class="src-out">- KSNV (News 3 Las Vegas)</span><span class="mts"><span class="mt"><span class="mt-n">Raiders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:40%;width:10%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.si.com/nfl/raiders/onsi/las-vegas-jets-3-key-matchups-watch-sunday">Raiders vs. Jets: 3 key matchups</a> <span class="src-out">- Raiders On SI</span><span class="mts"><span class="mt"><span class="mt-n">Raiders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:42%;width:8%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Jets</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:45%;width:5%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://www.si.com/nfl/raiders/onsi/las-vegas-3-reasons-why-need-win-week-8">3 reasons the Raiders need a win in Week 8</a> <span class="src-out">- Raiders On SI</span><span class="mts"><span class="mt"><span class="mt-n">Raiders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:28%;width:22%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.yardbarker.com/nfl/articles/3_big_issues_raiders_may_not_resolve_this_season/s1_16640_44479243">3 big issues Raiders may not resolve this season</a> <span class="src-out">- Raiders On SI</span><span class="mts"><span class="mt"><span class="mt-n">Raiders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:38%;width:12%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.yardbarker.com/nfl/articles/knee_jerk_reactions_to_raiders_fourth_straight_loss/s1_16460_44475075">Knee-jerk reactions to fourth straight loss</a> <span class="src-out">- The Raider Ramble</span><span class="mts"><span class="mt"><span class="mt-n">Raiders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:22%;width:28%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.raiders.com/news/what-the-jets-are-saying-about-the-raiders-ahead-of-the-week-8-matchup">What the Jets are saying about the Raiders</a> <span class="src-out">- Raiders.com</span><span class="mts"><span class="mt"><span class="mt-n">Jets</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span></span></li></ul></div><div class="covgrp"><span class="eyebrow b">New York</span><ul class="refl"><li><a href="https://www.newyorkjets.com/news/jets-vs-raiders-week-8-nfl-geno-smith-kirk-cousins-10-28-2026">Jets set for Week 8 clash with Raiders</a> <span class="src-out">- NewYorkJets.com</span><span class="mts"><span class="mt"><span class="mt-n">Raiders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:45%;width:5%"></span></span><span class="mt-w">Neutral</span></span><span class="mt"><span class="mt-n">Jets</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.newyorkjets.com/news/harrison-phillips-jets-looking-forward-to-raiders-qb-kirk-cousins-10-28-2026">Harrison Phillips wants a sack of old friend Kirk Cousins</a> <span class="src-out">- NewYorkJets.com</span><span class="mts"><span class="mt"><span class="mt-n">Raiders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:10%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Jets</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:15%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.newyorkjets.com/news/jets-veterans-minkah-fitzpatrick-demario-davis-looking-ahead-to-raiders-matchup-10-29-2026">Jets veterans react to Jeanty's 'bulletin board' comments</a> <span class="src-out">- NewYorkJets.com</span><span class="mts"><span class="mt"><span class="mt-n">Raiders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:38%;width:12%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Jets</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:18%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.newyorkjets.com/news/the-most-intriguing-jets-raiders-matchup-10-30-2026">What's the most intriguing Jets-Raiders matchup?</a> <span class="src-out">- NewYorkJets.com</span><span class="mts"><span class="mt"><span class="mt-n">Raiders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:40%;width:10%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Jets</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.newyorkjets.com/news/notebook-tvondre-sweat-out-rookie-david-bailey-doubtful-against-raiders-on-sunday-10-30-2026">Jets notebook: Sweat out, Bailey doubtful</a> <span class="src-out">- NewYorkJets.com</span><span class="mts"><span class="mt"><span class="mt-n">Raiders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Jets</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:15%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.newyorkjets.com/news/jets-vs-raiders-game-preview-geno-smith-kirk-cousins-week-8-nfl-11-1-2026">Jets-Raiders game preview: how slim the margins are</a> <span class="src-out">- NewYorkJets.com</span><span class="mts"><span class="mt"><span class="mt-n">Raiders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:48%;width:2%"></span></span><span class="mt-w">Neutral</span></span><span class="mt"><span class="mt-n">Jets</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:12%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.amny.com/sports/jets-fernando-mendoza-10-27-26-raiders/">Raiders stick with Cousins vs. Jets</a> <span class="src-out">- amNewYork</span><span class="mts"><span class="mt"><span class="mt-n">Raiders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:15%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Jets</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:25%;width:25%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://sports.yahoo.com/articles/5-things-watch-jets-face-125000826.html">5 things to watch as Jets face Raiders</a> <span class="src-out">- SNY</span><span class="mts"><span class="mt"><span class="mt-n">Raiders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:38%;width:12%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Jets</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:40%;width:10%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.jetnation.com/2026/10/28/nfl-power-rankings-jets-fall-vikings-at-top/">NFL power rankings: Jets fall</a> <span class="src-out">- JetNation</span><span class="mts"><span class="mt"><span class="mt-n">Raiders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:35%;width:15%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Jets</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:28%;width:22%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.newyorkjets.com/news/geno-smith-focused-jets-improvement-raiders-game-10-29-2026">Geno Smith focused on improvement ahead of Raiders game</a> <span class="src-out">- NewYorkJets.com</span><span class="mts"><span class="mt"><span class="mt-n">Jets</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:20%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.newyorkjets.com/news/aaron-glenn-sunday-cannot-get-here-fast-enough-10-26-2026">Glenn: 'Sunday can't get here fast enough'</a> <span class="src-out">- NewYorkJets.com</span><span class="mts"><span class="mt"><span class="mt-n">Jets</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.jetnation.com/2026/10/29/can-aaron-glenn-do-anything-to-save-his-job/">Can Aaron Glenn do anything to save his job?</a> <span class="src-out">- JetNation</span><span class="mts"><span class="mt"><span class="mt-n">Jets</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:20%;width:30%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.jetnation.com/2026/10/29/three-first-round-picks-give-the-jets-options-no-excuses/">Three first-round picks give the Jets options and no excuses</a> <span class="src-out">- JetNation</span><span class="mts"><span class="mt"><span class="mt-n">Jets</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:12%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.jetnation.com/2026/10/25/aaron-glenn-era-hits-new-low-as-jets-fall-to-lowly-dolphins/">Glenn era hits new low as Jets fall to Dolphins</a> <span class="src-out">- JetNation</span><span class="mts"><span class="mt"><span class="mt-n">Jets</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:12%;width:38%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.jetnation.com/2026/10/29/when-should-the-jets-give-cade-klubnik-a-look/">When should the Jets give Cade Klubnik a look?</a> <span class="src-out">- JetNation</span><span class="mts"><span class="mt"><span class="mt-n">Jets</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:45%;width:5%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://www.jetnation.com/2026/10/30/jets-news-roundup-for-october-30-2026/">Jets news roundup, Oct. 30</a> <span class="src-out">- JetNation</span><span class="mts"><span class="mt"><span class="mt-n">Jets</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span></span></li></ul></div><div class="covgrp"><span class="eyebrow nat">National</span><ul class="refl"><li><a href="https://abc7news.com/post/raiders-kubiak-says-everything-table-including-switch-mendoza/19979612/">Kubiak on switching to Mendoza: 'thinking about everything'</a> <span class="src-out">- ESPN</span><span class="mts"><span class="mt"><span class="mt-n">Raiders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:20%;width:30%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.tsn.ca/nfl/article/cousins-to-remain-raiders-starting-qb-vs-jets-kubiak-says-n1-50289866/">Cousins to remain Raiders' starter vs. Jets</a> <span class="src-out">- ESPN</span><span class="mts"><span class="mt"><span class="mt-n">Raiders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:45%;width:5%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://www.nfl.com/news/raiders-klint-kubiak-sticking-with-kirk-cousins-as-starting-qb-for-week-8-game-vs-jets">Kubiak sticking with Cousins</a> <span class="src-out">- NFL.com</span><span class="mts"><span class="mt"><span class="mt-n">Raiders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://wmbdradio.com/2026/10/26/raiders-streaking-wrong-way-will-stick-with-kirk-cousins-at-qb/">Raiders, streaking wrong way, stick with Cousins</a> <span class="src-out">- Field Level Media</span><span class="mts"><span class="mt"><span class="mt-n">Raiders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:35%;width:15%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://clutchpoints.com/nfl/las-vegas-raiders/raiders-mendoza-cousins-time-to-make-a-change-klint-kubiak">Time for Raiders to start Mendoza</a> <span class="src-out">- ClutchPoints</span><span class="mts"><span class="mt"><span class="mt-n">Raiders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:10%;width:40%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.sportsgrid.com/nfl/article/raiders-cannot-complete-mad-dash-as-rams-push-losing-streak-to-four">Raiders can't complete comeback as Rams push skid to four</a> <span class="src-out">- SportsGrid</span><span class="mts"><span class="mt"><span class="mt-n">Raiders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:28%;width:22%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://atozsports.com/?p=507758">Raiders have 2 glaring problems to fix</a> <span class="src-out">- A to Z Sports</span><span class="mts"><span class="mt"><span class="mt-n">Raiders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:35%;width:15%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.espn.com/nfl/story/_/id/50312157/week-8-picks-predictions-schedule-fantasy-odds-2026">ESPN Week 8 guide: Raiders at Jets</a> <span class="src-out">- ESPN</span><span class="mts"><span class="mt"><span class="mt-n">Raiders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:35%;width:15%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Jets</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://www.si.com/betting/raiders-vs-jets-prediction-odds-spread-injuries-trends-for-nfl-week-8-01m5x142k9w6">Raiders vs. Jets prediction, odds, trends</a> <span class="src-out">- Sports Illustrated</span><span class="mts"><span class="mt"><span class="mt-n">Raiders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:12%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Jets</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:20%;width:30%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.sharpfootballanalysis.com/fantasy/raiders-jets-week-8-fantasy-football-preview-nfl-worksheet-rich-hribar-2026/amp/">Raiders-Jets fantasy worksheet</a> <span class="src-out">- Sharp Football Analysis</span><span class="mts"><span class="mt"><span class="mt-n">Raiders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:42%;width:8%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Jets</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:45%;width:5%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://www.covers.com/nfl/raiders-vs-jets-prediction-picks-odds-early-leans-week-8-2026">Raiders vs. Jets early leans</a> <span class="src-out">- Covers</span><span class="mts"><span class="mt"><span class="mt-n">Raiders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:20%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Jets</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:22%;width:28%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.footballnationusa.com/post/tvondre-sweat-joseph-ossai-jets-dst-week-8-impact">Sweat, Ossai and the Jets D/ST in Week 8</a> <span class="src-out">- Football Nation</span><span class="mts"><span class="mt"><span class="mt-n">Raiders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Jets</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:35%;width:15%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.yourvalley.net/stories/aaron-glenns-seat-heating-up-as-jets-fall-to-2-5-after-loss-to-winless-dolphins,734642">Glenn's seat heating up after loss to winless Dolphins</a> <span class="src-out">- Associated Press</span><span class="mts"><span class="mt"><span class="mt-n">Jets</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:12%;width:38%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.cbssports.com/nfl/news/garrett-wilson-geno-smith-heated-jets-sideline-exchange/">Wilson explains heated sideline moment</a> <span class="src-out">- CBS Sports</span><span class="mts"><span class="mt"><span class="mt-n">Jets</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:25%;width:25%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.espn.com/nfl/story/_/id/50322007/jets-jarvis-brownlee-says-was-benched-missing-meetings">Brownlee says he was benched for missing meetings</a> <span class="src-out">- ESPN</span><span class="mts"><span class="mt"><span class="mt-n">Jets</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:40%;width:10%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://bleacherreport.com/articles/25521494-new-jets-rumors-aaron-glenns-hot-seat-hc-after-loss-dolphins-2-5-start-2026-nfl-season">Glenn's hot seat after loss to Dolphins</a> <span class="src-out">- Bleacher Report</span><span class="mts"><span class="mt"><span class="mt-n">Jets</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:28%;width:22%"></span></span><span class="mt-w">Critical</span></span></span></li></ul></div>
+  </div></details>
+</section>
+
+<footer>
+  <span class="eyebrow">Fodder Sports · pilot</span>
+  <p>Summaries are written in our own words from the coverage listed above. Odds from <a href="https://www.espn.com/espn/betting/story/_/id/50250750/2026-nfl-week-8-schedule-odds-point-spreads-totals">ESPN's Week 8 odds report</a>. Not affiliated with the NFL, the Las Vegas Raiders, or the New York Jets.</p>
+</footer>
+
+</div>
+<script>try{if('scrollRestoration' in history)history.scrollRestoration='manual';if(!location.hash)window.scrollTo(0,0);}catch(e){}</script>
+</body></html>

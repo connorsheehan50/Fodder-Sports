@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Fodder Sports Nelson Trade</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#f3f4f6; --surface:#ffffff; --ink:#151a24; --muted:#5b6474; --line:#d9dde4;
+  --nat:#4a5568; --nat-soft:#e6e9ee;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f131a; --surface:#171c25; --ink:#e7eaf0; --muted:#9aa3b2; --line:#2a3140;
+  --nat:#a7b1c2; --nat-soft:#222935; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f131a; --surface:#171c25; --ink:#e7eaf0; --muted:#9aa3b2; --line:#2a3140;
+  --nat:#a7b1c2; --nat-soft:#222935; color-scheme:dark}
+
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 56px}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
+a{color:inherit;text-decoration-color:var(--muted);text-underline-offset:2px}
+a:hover{text-decoration-color:currentColor}
+a:focus-visible{outline:2px solid var(--a);outline-offset:2px;border-radius:2px}
+h1,h2,h3{font-family:var(--display);font-weight:700;text-wrap:balance;margin:0;letter-spacing:.01em}
+h1{font-size:clamp(1.9rem,5vw,2.6rem);line-height:1.05}
+h2{font-size:1.5rem;text-transform:uppercase}
+h3{font-size:1.05rem;text-transform:uppercase;letter-spacing:.05em}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.a{color:var(--a)} .b{color:var(--b)} .nat{color:var(--nat)}
+section{display:flex;flex-direction:column;gap:14px}
+.note{font-size:.88rem;color:var(--muted)}
+ul.bul{margin:0;padding-left:1.15em;display:flex;flex-direction:column;gap:10px}
+ul.bul li::marker{color:var(--muted)}
+.dek{font-size:1.1rem;color:var(--muted)}
+
+.score{display:flex;align-items:stretch;border:1px solid var(--line);background:var(--surface)}
+.score .side{flex:1;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;min-width:0}
+.score .side + .side{border-left:1px solid var(--line)}
+.score .nm{font-family:var(--display);font-size:1.5rem;font-weight:700;text-transform:uppercase;line-height:1}
+.score .nm small{display:block;font-family:var(--mono);font-size:.72rem;font-weight:400;letter-spacing:.08em;color:var(--muted);margin-top:4px;text-transform:none}
+.score .pts{font-family:var(--display);font-size:2.6rem;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.score .lose .pts{opacity:.5}
+.score .meta{font-family:var(--mono);font-size:.8rem;color:var(--muted);text-align:right}
+
+.summary{background:var(--surface);border:1px solid var(--line);padding:22px 24px;display:flex;flex-direction:column;gap:14px}
+.views{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line)}
+.view{padding:18px 22px;display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--line)}
+.view:first-child{border-top:0}
+
+.tally{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.tally div{background:var(--surface);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.tally .big{font-family:var(--display);font-size:2rem;font-weight:700;line-height:1}
+
+.tbl-wrap{overflow-x:auto}
+table.t{width:100%;border-collapse:collapse;font-size:.92rem;min-width:480px}
+.t th{font-family:var(--mono);font-weight:500;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:8px 10px 8px 0;border-bottom:2px solid var(--ink)}
+.t td{padding:8px 10px 8px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.t td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap;font-size:.85rem}
+
+.coverage{background:var(--surface);border:1px solid var(--line);padding:18px 22px;display:flex;flex-direction:column;gap:16px}
+.covgrp{display:flex;flex-direction:column;gap:6px}
+.covgrp ul{margin:0;padding-left:1.1em;font-size:.88rem;display:flex;flex-direction:column;gap:4px}
+
+/* Sentiment: diverging bars, center = neutral */
+.sent{display:flex;flex-direction:column;gap:18px}
+.steam{display:flex;flex-direction:column;gap:8px}
+.srow{display:grid;grid-template-columns:110px 1fr 88px;align-items:center;gap:10px;font-size:.85rem}
+.srow .lbl{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;color:var(--muted)}
+.srow .val{font-family:var(--mono);font-size:.74rem;text-align:right;color:var(--muted)}
+.track.nocov{background:repeating-linear-gradient(45deg,var(--nat-soft) 0 6px,transparent 6px 12px)}
+.track.nocov::after{display:none}
+.track{position:relative;height:12px;background:var(--nat-soft);border-radius:6px}
+.track::after{content:"";position:absolute;left:50%;top:-3px;bottom:-3px;width:2px;background:var(--muted);transform:translateX(-1px)}
+.fill{position:absolute;top:0;bottom:0;border-radius:6px}
+.fill.pos{left:50%} .fill.neg{right:50%}
+.f-a{background:var(--a)} .f-b{background:var(--b)} .f-n{background:var(--nat)}
+.scale{display:grid;grid-template-columns:110px 1fr 88px;gap:10px;font-family:var(--mono);font-size:.68rem;color:var(--muted)}
+.scale span:nth-child(2){display:flex;justify-content:space-between}
+
+.grade{font-family:var(--display);font-weight:700;font-size:1.15rem}
+footer{border-top:1px solid var(--line);padding-top:18px;font-size:.85rem;color:var(--muted);display:flex;flex-direction:column;gap:8px}
+
+@media (max-width:560px){
+  .score{flex-direction:column}
+  .score .side + .side{border-left:0;border-top:1px solid var(--line)}
+  .tally{grid-template-columns:1fr}
+  .summary,.view,.coverage{padding-left:16px;padding-right:16px}
+  .srow,.scale{grid-template-columns:80px 1fr 76px}
+}
+
+.trend{margin:4px 0 0;font-size:.86rem}.trend b{font-weight:700}.trend.up span{color:#13803a}.trend.down span{color:#c81e1e}.trend.steady span,.trend.new span{color:var(--muted)}
+@media (prefers-color-scheme:dark){.trend.up span{color:#5fd38a}.trend.down span{color:#ff7b7b}}
+
+:root{--a:#002244;--b:#002C5F}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--a:#7fc98d;--b:#8fb4e8}}
+:root[data-theme="dark"]{--a:#7fc98d;--b:#8fb4e8}
+
+.tlink{color:inherit;text-decoration:none;border-bottom:1px dotted currentColor}
+.tlink:hover{border-bottom-style:solid}
+
+.refjump{margin:6px 0 0} .refjump a{font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.scale-note{font-size:.72rem !important;line-height:1.45}
+.refl li{margin-bottom:8px}
+.mts{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:3px}
+.mt{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.mt-bar{position:relative;display:inline-block;width:64px;height:7px;background:var(--line);border-radius:2px}
+.mt-c{position:absolute;left:50%;top:-2px;bottom:-2px;width:1px;background:var(--muted)}
+.mt-f{position:absolute;top:0;bottom:0;border-radius:2px}
+details.srcs summary{font-size:.74rem !important}
+
+.refs .inner-src{display:flex;flex-direction:column;gap:14px;max-height:340px;overflow-y:auto;overscroll-behavior:contain}
+footer p{font-size:.72rem;line-height:1.45}
+.refjump a{font-family:var(--mono);font-size:.8rem;letter-spacing:.04em;text-transform:uppercase}
+.avg td.n{white-space:nowrap}
+
+details.srcs{border:1px solid var(--line);border-radius:2px}
+details.srcs summary{cursor:pointer;padding:10px 12px;font-family:var(--mono);font-size:.82rem;letter-spacing:.05em;text-transform:uppercase}
+details.srcs[open] summary{border-bottom:1px solid var(--line)}
+details.srcs .inner-src{padding:12px;display:flex;flex-direction:column;gap:14px}
+.src-out{color:var(--muted)}
+.eyebrow{font-size:.8rem} .note{font-size:.8rem;line-height:1.5} .srow .lbl{font-size:.8rem} .srow .val{font-size:.8rem;color:var(--ink)}
+</style>
+</head><body>
+<div class="wrap">
+<a href="./" style="align-self:flex-start;display:inline-block;font-family:var(--mono);font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;background:none;border:1px solid var(--ink);color:var(--ink);padding:7px 11px;border-radius:2px">&larr; Back to Fodder Sports</a>
+
+<header style="display:flex;flex-direction:column;gap:16px">
+  <span class="eyebrow">Fodder Sports · Trade · Oct. 27, 2026</span>
+  <div class="score" role="img" aria-label="Trade terms: Seahawks receive guard Quenton Nelson. Colts receive a 2027 third-round pick and a 2028 fifth-round pick.">
+    <div class="side"><span class="nm a"><a class="tlink" href="./#team-sea">Seahawks</a> get<small>G Quenton Nelson</small></span></div>
+    <div class="side"><span class="nm b"><a class="tlink" href="./#team-ind">Colts</a> get<small>2027 third-round pick<br>2028 fifth-round pick</small></span></div>
+  </div>
+  <h1>Seattle Adds an Eight-Time Pro Bowl Guard on an Expiring Deal</h1>
+  <p class="dek">The defending champions get stronger up front, and Indianapolis starts its rebuild with the first of two big trades on the same day.</p>
+</header>
+
+<section class="coverage" aria-labelledby="cov-h">
+  <h2 id="cov-h">How the coverage felt</h2>
+  <p class="note">Tone toward each team's side of the deal. Coverage published in the first 24 hours after the trade was confirmed on Oct. 27.</p>
+  <div class="sent">
+    <div class="steam">
+      <h3 class="a"><a class="tlink" href="./#team-sea">Seahawks</a>' side</h3>
+      <div class="srow"><span class="lbl">Seattle</span><div class="track"><span class="fill pos f-a" style="width:45.0%"></span></div><span class="val">Glowing</span></div>
+      <div class="srow"><span class="lbl">Indianapolis</span><div class="track nocov"></div><span class="val">No coverage</span></div>
+      <div class="srow"><span class="lbl">National</span><div class="track"><span class="fill pos f-n" style="width:35.0%"></span></div><span class="val">Positive</span></div>
+      <p class="trend new"><span aria-hidden="true">•</span> <b>First reading.</b> The trend starts with this team's next reading.</p>
+    </div>
+    <div class="steam">
+      <h3 class="b"><a class="tlink" href="./#team-ind">Colts</a>' side</h3>
+      <div class="srow"><span class="lbl">Indianapolis</span><div class="track"><span class="fill pos f-b" style="width:0.0%"></span></div><span class="val">Neutral</span></div>
+      <div class="srow"><span class="lbl">Seattle</span><div class="track"><span class="fill neg f-a" style="width:12.5%"></span></div><span class="val">Critical</span></div>
+      <div class="srow"><span class="lbl">National</span><div class="track"><span class="fill neg f-n" style="width:2.5%"></span></div><span class="val">Neutral</span></div>
+      <p class="trend new"><span aria-hidden="true">•</span> <b>First reading.</b> The trend starts with this team's next reading.</p>
+    </div>
+    <div class="scale"><span></span><span><span>Harsh</span><span>Neutral</span><span>Glowing</span></span><span></span></div><p class="note scale-note">Each bar shows the overall tone of that group&#39;s coverage toward the team. Bars to the right of center are favorable, bars to the left are critical, and longer bars mean stronger tone. &ldquo;No coverage&rdquo; means that group published nothing about the team in this window.</p>
+  </div>
+  <p>Seattle's media is glowing, and the national outlets agree Seattle did well. Indianapolis coverage did not weigh in on Seattle's side at all; it focused on the rebuild. Seattle writers were the hardest on the Colts' return.</p>
+  <p class="refjump"><a href="#refs">See all the articles we referenced for this summary</a></p>
+</section>
+
+
+<section class="summary" aria-labelledby="sum-h">
+  <h2 id="sum-h">The summary</h2>
+  <ul class="bul">
+    <li>The Seahawks acquired guard Quenton Nelson from the Colts on Oct. 27 for a 2027 third-round pick and a 2028 fifth-round pick, pending a physical.</li>
+    <li>Nelson, 30, is an eight-time Pro Bowler and the No. 6 pick of the 2018 draft who has not missed a game since 2021. He is in the final year of his contract, which makes him a rental: Seattle has no guarantee it can re-sign him, and that is part of why the price was a third and a fifth.</li>
+    <li>Seattle's run game averages 3.9 yards per carry, 23rd in the league, and left tackle Charles Cross is expected to miss time with an ankle injury.</li>
+    <li>Nelson could debut Monday night when Seattle hosts the Bears.</li>
+    <li>The 2–5 Colts fired general manager Chris Ballard last week. Hours later, they also traded defensive tackle DeForest Buckner to San Francisco.</li>
+  </ul>
+</section>
+
+<section class="views" aria-label="What each side is saying">
+  <div class="view">
+    <h2 class="a">What the Seattle media is saying</h2>
+    <ul class="bul">
+      <li>A steal. Local radio called the price a bargain for a player of Nelson's caliber.</li>
+      <li>A rental with a path to more. Seattle coverage points to general manager John Schneider's habit of adding veterans on expiring contracts at midseason and then signing them long-term.</li>
+      <li>Low risk either way. Seattle has extra picks, and if Nelson leaves in free agency, a compensatory pick could offset much of the cost.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="b">What the Indianapolis media is saying</h2>
+    <ul class="bul">
+      <li>"The Colts have begun their teardown." Indianapolis coverage frames the trade as the first of many, with running back Jonathan Taylor named as the biggest asset left.</li>
+      <li>Colts coach Shane Steichen called the day "hard, definitely hard" and said he has "so much respect for those guys." He declined to say whether Nelson had asked for a trade.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="nat">What everyone else is saying about this trade</h2>
+    <ul class="bul">
+      <li><b class="a">Seahawks:</b> National coverage sees an immediate upgrade at a position of need. Nelson has only played left guard, so Grey Zabel would likely move to the right side.</li>
+      <li><b class="a">Seahawks:</b> With running backs Jadarian Price and Zach Charbonnet both returning, Monday night could be the first look at Seattle's full rushing attack.</li>
+      <li><b class="b">Colts:</b> Indianapolis had little leverage once the league knew it was selling. Some writers were surprised it could not get a second-round pick, while others noted the return beats what a compensatory pick would have brought.</li>
+    </ul>
+  </div>
+</section>
+
+<section aria-labelledby="gr-h">
+  <h2 id="gr-h">The trade grades</h2>
+  <ul class="bul">
+    <li><b class="a">Seahawks:</b> grades ranged from B+ to A+ across seven national outlets, for an average of A. The Athletic was highest (A+); Yahoo Sports was lowest (B+).</li>
+    <li><b class="b">Colts:</b> grades ranged from C+ to B+, for an average of B−. The Athletic and ESPN gave B+; CBS Sports, Sports Illustrated, and Yahoo Sports gave C+.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="ver-h">
+  <h2 id="ver-h">Win-win or fleeced?</h2>
+  <p>Seattle won the trade by consensus, but no national outlet called it a fleecing. Seattle-side writers did. For Indianapolis, the national view is that the Colts got a fair price for an expiring contract from a position of weakness.</p>
+</section>
+
+
+<section id="refs" class="refs" aria-labelledby="refs-h">
+  <h2 id="refs-h">References</h2>
+  <details class="srcs"><summary>Show the articles behind this page</summary><div class="inner-src"><div class="covgrp">
+    <span class="eyebrow a">Seattle</span>
+    <ul>
+      <li><a href="https://sports.mynorthwest.com/nfl/seattle-seahawks/report-seahawks-trade-colts-for-8-time-pro-bowl-guard-quenton-nelson">Seahawks trade for eight-time Pro Bowl guard Quenton Nelson</a> <span class="src-out">- Seattle Sports</span></li>
+      <li><a href="https://www.seahawks.com/news/seahawks-acquire-all-pro-guard-quenton-nelson-in-trade-with-colts-pending-physical">Seahawks acquire All-Pro guard Quenton Nelson</a> <span class="src-out">- Seahawks.com</span></li>
+      <li><a href="https://www.si.com/nfl/seahawks/onsi/instant-grade-seattle-seahawks-trade-indianapolis-colts-quenton-nelson">Instant grade: Seahawks trade for Nelson</a> <span class="src-out">- Seahawks On SI</span></li>
+      <li><a href="https://www.si.com/nfl/seahawks/onsi/3-reasons-why-seattle-seahawks-fleeced-colts-quenton-nelson-trade">3 reasons Seattle fleeced the Colts</a> <span class="src-out">- Seahawks On SI</span></li>
+    </ul>
+  </div>
+  <div class="covgrp">
+    <span class="eyebrow b">Indianapolis</span>
+    <ul>
+      <li><a href="https://sports.yahoo.com/articles/colts-trade-pro-g-quenton-164153211.html">Colts trade All-Pro G Quenton Nelson to Seattle</a> <span class="src-out">- IndyStar</span></li>
+      <li><a href="https://sports.yahoo.com/articles/nfl-trade-grades-did-indianapolis-210028701.html">Trade grades: did the Colts win the trade?</a> <span class="src-out">- IndyStar</span></li>
+      <li><a href="https://sports.yahoo.com/articles/colts-coach-shane-steichen-declines-180720526.html">Steichen declines to answer trade-request questions</a> <span class="src-out">- IndyStar</span></li>
+    </ul>
+  </div>
+  <div class="covgrp">
+    <span class="eyebrow nat">National</span>
+    <ul>
+      <li><a href="https://www.espn.com/nfl/story/_/id/50299293/nfl-trade-seahawks-quenton-nelson-colts-deadline">Why did the Seahawks trade for Nelson?</a> <span class="src-out">- ESPN</span></li>
+      <li><a href="https://www.espn.com/nfl/story/_/id/50298913/sources-seahawks-get-pro-bowl-guard-nelson-trade-colts">Seahawks get Pro Bowl guard Nelson in trade with Colts</a> <span class="src-out">- ESPN</span></li>
+      <li><a href="https://www.cbssports.com/nfl/news/quenton-nelson-trade-seahawks-colts-nfl-draft-picks/">Seahawks acquire All-Pro guard from Colts</a> <span class="src-out">- CBS Sports</span></li>
+      <li><a href="https://www.nfl.com/news/nfl-trade-grades-evaluating-every-deal-made-ahead-of-the-2026-deadline">Trade grades: every deal ahead of the deadline</a> <span class="src-out">- NFL.com</span></li>
+      <li><a href="https://sports.yahoo.com/nfl/article/2026-nfl-trade-deadline-tracker-grades-analysis-and-details-from-every-key-deal-233619744.html">Trade deadline tracker with grades</a> <span class="src-out">- Yahoo Sports</span></li>
+    </ul>
+  </div>
+</div></details>
+</section>
+
+<footer>
+  <span class="eyebrow">Fodder Sports · pilot</span>
+  <p>Summaries are written in our own words from the coverage listed above. Not affiliated with the NFL, the Seattle Seahawks, or the Indianapolis Colts.</p>
+</footer>
+
+</div>
+<script>try{if('scrollRestoration' in history)history.scrollRestoration='manual';if(!location.hash)window.scrollTo(0,0);}catch(e){}</script>
+</body></html>

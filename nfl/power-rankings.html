@@ -78,6 +78,115 @@
       color: var(--slate-light);
       margin-top: 8px;
     }
+    .chart-tooltip {
+      position: absolute;
+      pointer-events: none;
+      background: var(--ink);
+      color: var(--off-white);
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity .1s;
+      z-index: 10;
+    }
+    .chart-canvas-wrap { position: relative; }
+    .rankings-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+    }
+    .rankings-table th {
+      font-family: var(--font-head);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--slate);
+      padding: 8px 12px;
+      text-align: left;
+      border-bottom: 2px solid var(--rule);
+    }
+    .rankings-table th.num { text-align: right; width: 44px; }
+    .rankings-table th.avg { text-align: right; width: 56px; }
+    .rankings-table th.range { text-align: right; width: 64px; }
+    .rankings-table td {
+      font-family: var(--font-head);
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .rankings-table tr:last-child td { border-bottom: none; }
+    .rankings-table td.rank-col {
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--slate);
+      text-align: right;
+      width: 44px;
+      padding-right: 8px;
+    }
+    .rankings-table td.team-col {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--ink);
+      flex: 1;
+    }
+    .rankings-table td.move-col {
+      width: 28px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .rankings-table td.avg-col {
+      text-align: right;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink);
+      width: 56px;
+    }
+    .rankings-table td.range-col {
+      text-align: right;
+      font-size: 12px;
+      color: var(--slate);
+      width: 64px;
+    }
+    .week-nav {
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid var(--rule);
+    }
+    .week-nav-label {
+      font-family: var(--font-head);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-bottom: 10px;
+    }
+    .week-nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .week-nav-links a {
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--orange);
+      text-decoration: none;
+      padding: 4px 10px;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+    }
+    .week-nav-links a:hover { background: var(--card-bg); }
+    .week-nav-links a.current {
+      background: var(--orange);
+      color: #fff;
+      border-color: var(--orange);
+    }
   </style>
 </head>
 <body>
@@ -98,7 +207,7 @@
   <a href="index.html" class="back-link">← Back to NFL</a>
   <p style="font-family:var(--font-head);font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin-bottom:6px;">Fodder Sports · Power Rankings · Week 10</p>
   <h1 style="font-family:var(--font-display);font-size:clamp(28px,5vw,46px);line-height:1.1;margin-bottom:8px;">NFL Power Rankings, Week 10</h1>
-  <p class="article-lead">A consensus of 10 major national power rankings, updated every Tuesday.</p>
+  <p class="article-lead">One ranking from the whole national conversation: the consensus of major national power rankings. Arrows show movement from last week's consensus.</p>
 
   <!-- Season chart -->
   <div class="chart-container">
@@ -111,6 +220,7 @@
     </div>
     <div class="chart-canvas-wrap">
       <canvas id="rankChart"></canvas>
+      <div id="chartTooltip" class="chart-tooltip"></div>
     </div>
     <p class="chart-note">Select up to 4 teams. Lower rank = better. Data from Week 1 through Week 10.</p>
   </div>
@@ -118,6 +228,23 @@
   <!-- Full rankings list -->
   <div id="rankings-full" style="margin-top:20px;">
     <div style="font-family:var(--font-body);font-size:13px;color:var(--slate);padding:16px 0;">Loading rankings...</div>
+  </div>
+
+  <!-- Week navigation -->
+  <div class="week-nav">
+    <div class="week-nav-label">Previous weeks</div>
+    <div class="week-nav-links">
+      <a href="power-rankings-w1.html">Week 1</a>
+      <a href="power-rankings-w2.html">Week 2</a>
+      <a href="power-rankings-w3.html">Week 3</a>
+      <a href="power-rankings-w4.html">Week 4</a>
+      <a href="power-rankings-w5.html">Week 5</a>
+      <a href="power-rankings-w6.html">Week 6</a>
+      <a href="power-rankings-w7.html">Week 7</a>
+      <a href="power-rankings-w8.html">Week 8</a>
+      <a href="power-rankings-w9.html">Week 9</a>
+      <a href="power-rankings.html" class="current">Week 10</a>
+    </div>
   </div>
 
   <p style="font-family:var(--font-body);font-size:12px;color:var(--slate-light);margin-top:16px;padding-top:16px;border-top:1px solid var(--rule);">Fodder Sports · Pilot · Rankings are a consensus of published national rankings from NFL.com, CBS Sports, PFT, USA Today, Fox Sports, ESPN, Bleacher Report, Sports Illustrated, Pro Football Network, and Kalshi. Not affiliated with the NFL.</p>
@@ -264,7 +391,67 @@ function drawChart() {
   ctx.shadowBlur = 0;
 }
 
+// ── Tooltip ───────────────────────────────────────────────────
+function setupTooltip() {
+  const canvas = document.getElementById('rankChart');
+  const tip = document.getElementById('chartTooltip');
+  if (!canvas || !tip) return;
+
+  const pad = { top: 16, right: 16, bottom: 32, left: 36 };
+
+  function getHit(mx, my) {
+    const W = canvas.clientWidth;
+    const H = 300;
+    const cw = W - pad.left - pad.right;
+    const ch = H - pad.top - pad.bottom;
+    const yMin = 1, yMax = 32;
+
+    function xPos(w) { return pad.left + (w - 1) / (WEEKS.length - 1) * cw; }
+    function yPos(r) { return pad.top + (r - yMin) / (yMax - yMin) * ch; }
+
+    const SNAP = 14; // px radius
+    let best = null, bestDist = SNAP;
+
+    selectedTeams.forEach((abbr, si) => {
+      if (!abbr || !RANK_HISTORY[abbr]) return;
+      WEEKS.forEach(w => {
+        const rank = RANK_HISTORY[abbr][w];
+        if (rank === undefined) return;
+        const px = xPos(w), py = yPos(rank);
+        const d = Math.sqrt((mx - px) ** 2 + (my - py) ** 2);
+        if (d < bestDist) { bestDist = d; best = { abbr, w, rank, color: SLOT_COLORS[si] }; }
+      });
+    });
+    return best;
+  }
+
+  function onMove(e) {
+    const rect = canvas.getBoundingClientRect();
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    const mx = clientX - rect.left;
+    const my = clientY - rect.top;
+    const hit = getHit(mx, my);
+    if (hit) {
+      tip.textContent = `Week ${hit.w} · Rank ${hit.rank}`;
+      tip.style.opacity = '1';
+      tip.style.left = (mx + 12) + 'px';
+      tip.style.top = (my - 24) + 'px';
+      tip.style.background = hit.color;
+    } else {
+      tip.style.opacity = '0';
+    }
+  }
+
+  canvas.addEventListener('mousemove', onMove);
+  canvas.addEventListener('touchmove', onMove, { passive: true });
+  canvas.addEventListener('mouseleave', () => { tip.style.opacity = '0'; });
+}
+
 // ── Selectors ──────────────────────────────────────────────────
+// Sort alphabetically by team name
+const SORTED_ABBRS = [...TEAM_ABBRS].sort((a,b) => TEAM_NAMES_MAP[a].localeCompare(TEAM_NAMES_MAP[b]));
+
 function buildSelectors() {
   const container = document.getElementById('team-selectors');
   if (!container) return;
@@ -277,29 +464,28 @@ function buildSelectors() {
     dot.style.background = color;
     const sel = document.createElement('select');
     sel.setAttribute('aria-label', 'Team ' + (i+1));
+    sel.dataset.slot = i;
 
-    // Options
     const noneOpt = document.createElement('option');
     noneOpt.value = '';
-    noneOpt.textContent = i === 0 ? 'Team 1' : i === 1 ? 'Team 2' : i === 2 ? 'Team 3' : 'Team 4';
+    noneOpt.textContent = 'Team ' + (i+1);
     sel.appendChild(noneOpt);
 
-    // Sort by current rank
-    const sorted = [...TEAM_ABBRS].sort((a,b) => {
-      const ra = RANK_HISTORY[a][10] || 99;
-      const rb = RANK_HISTORY[b][10] || 99;
-      return ra - rb;
-    });
-    sorted.forEach(abbr => {
+    SORTED_ABBRS.forEach(abbr => {
       const opt = document.createElement('option');
       opt.value = abbr;
       opt.textContent = TEAM_NAMES_MAP[abbr];
       if (abbr === selectedTeams[i]) opt.selected = true;
+      // Disable if selected in another slot
+      const otherSlots = selectedTeams.filter((_, j) => j !== i);
+      if (otherSlots.includes(abbr)) opt.disabled = true;
       sel.appendChild(opt);
     });
 
     sel.addEventListener('change', () => {
       selectedTeams[i] = sel.value;
+      // Rebuild all selectors to update disabled states
+      buildSelectors();
       drawChart();
     });
 
@@ -317,24 +503,53 @@ async function initRankings() {
     el.innerHTML = '<div style="color:var(--slate);font-family:var(--font-body);font-size:13px;">Rankings not yet available. Check back Tuesday.</div>';
     return;
   }
-  const note = data.note ? `<p style="font-family:var(--font-body);font-size:12px;color:var(--slate-light);margin-bottom:16px;">${data.note} · Updated ${data.updated ? new Date(data.updated).toLocaleDateString('en-US',{month:'short',day:'numeric'}) : ''}</p>` : '';
+
+  // Updated date only — no outlet count sentence
+  const updatedStr = data.updated ? new Date(data.updated).toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'}) : '';
+  const updatedLine = updatedStr ? `<p style="font-family:var(--font-body);font-size:12px;color:var(--slate);margin-bottom:16px;">Updated ${updatedStr}</p>` : '';
+
+  const hasAvg = data.teams.some(t => t.average !== undefined);
+  const hasRange = data.teams.some(t => t.range_best !== undefined || t.range_worst !== undefined);
+
+  const headerAvg = hasAvg ? '<th class="num avg">Avg</th>' : '';
+  const headerRange = hasRange ? '<th class="num range">Range</th>' : '';
+
   const rows = data.teams.map((t, i) => {
-    const move = t.move > 0 ? `<span style="color:#1A6B3A;">↑${t.move}</span>` : t.move < 0 ? `<span style="color:#9B1C1C;">↓${Math.abs(t.move)}</span>` : `<span style="color:var(--slate);">—</span>`;
-    return `<div class="ranking-row" style="padding:14px 0;border-bottom:1px solid var(--rule);">
-      <span class="rank-num" style="font-size:22px;">${String(i+1).padStart(2,'0')}</span>
-      <span class="rank-team" style="font-size:17px;flex:1;">${t.name}</span>
-      ${move}
-    </div>`;
+    const moveVal = t.move > 0 ? '↑' : t.move < 0 ? '↓' : '—';
+    const moveColor = t.move > 0 ? '#1A6B3A' : t.move < 0 ? '#9B1C1C' : 'var(--slate)';
+    const avgCell = hasAvg ? `<td class="avg-col">${t.average !== undefined ? t.average.toFixed(1) : '—'}</td>` : '';
+    const rangeCell = hasRange ? `<td class="range-col">${t.range_best !== undefined ? t.range_best + '–' + t.range_worst : '—'}</td>` : '';
+    return `<tr>
+      <td class="rank-col">${String(i+1).padStart(2,'0')}</td>
+      <td class="team-col">${escHtml(t.name)}</td>
+      <td class="move-col" style="color:${moveColor};">${moveVal}</td>
+      ${avgCell}
+      ${rangeCell}
+    </tr>`;
   }).join('');
-  el.innerHTML = note + rows;
+
+  el.innerHTML = updatedLine + `
+    <table class="rankings-table">
+      <thead>
+        <tr>
+          <th class="num" style="width:44px;">#</th>
+          <th>Team</th>
+          <th style="width:28px;"></th>
+          ${headerAvg}
+          ${headerRange}
+        </tr>
+      </thead>
+      <tbody>${rows}</tbody>
+    </table>`;
 }
 
 // ── Init ──────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   buildSelectors();
   drawChart();
+  setupTooltip();
   initRankings();
-  window.addEventListener('resize', drawChart);
+  window.addEventListener('resize', () => { drawChart(); setupTooltip(); });
 });
 </script>
 </body>

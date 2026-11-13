@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Fodder Sports Patriots at Dolphins</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#f3f4f6; --surface:#ffffff; --ink:#151a24; --muted:#5b6474; --line:#d9dde4;
+  --nat:#4a5568; --nat-soft:#e6e9ee;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f131a; --surface:#171c25; --ink:#e7eaf0; --muted:#9aa3b2; --line:#2a3140;
+  --nat:#a7b1c2; --nat-soft:#222935; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f131a; --surface:#171c25; --ink:#e7eaf0; --muted:#9aa3b2; --line:#2a3140;
+  --nat:#a7b1c2; --nat-soft:#222935; color-scheme:dark}
+
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 56px}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
+a{color:inherit;text-decoration-color:var(--muted);text-underline-offset:2px}
+a:hover{text-decoration-color:currentColor}
+a:focus-visible{outline:2px solid var(--a);outline-offset:2px;border-radius:2px}
+h1,h2,h3{font-family:var(--display);font-weight:700;text-wrap:balance;margin:0;letter-spacing:.01em}
+h1{font-size:clamp(1.9rem,5vw,2.6rem);line-height:1.05}
+h2{font-size:1.5rem;text-transform:uppercase}
+h3{font-size:1.05rem;text-transform:uppercase;letter-spacing:.05em}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.a{color:var(--a)} .b{color:var(--b)} .nat{color:var(--nat)}
+section{display:flex;flex-direction:column;gap:14px}
+.note{font-size:.88rem;color:var(--muted)}
+ul.bul{margin:0;padding-left:1.15em;display:flex;flex-direction:column;gap:10px}
+ul.bul li::marker{color:var(--muted)}
+.dek{font-size:1.1rem;color:var(--muted)}
+
+.score{display:flex;align-items:stretch;border:1px solid var(--line);background:var(--surface)}
+.score .side{flex:1;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;min-width:0}
+.score .side + .side{border-left:1px solid var(--line)}
+.score .nm{font-family:var(--display);font-size:1.5rem;font-weight:700;text-transform:uppercase;line-height:1}
+.score .nm small{display:block;font-family:var(--mono);font-size:.72rem;font-weight:400;letter-spacing:.08em;color:var(--muted);margin-top:4px;text-transform:none}
+.score .pts{font-family:var(--display);font-size:2.6rem;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.score .lose .pts{opacity:.5}
+.score .meta{font-family:var(--mono);font-size:.8rem;color:var(--muted);text-align:right}
+
+.summary{background:var(--surface);border:1px solid var(--line);padding:22px 24px;display:flex;flex-direction:column;gap:14px}
+.views{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line)}
+.view{padding:18px 22px;display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--line)}
+.view:first-child{border-top:0}
+
+.tally{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.tally div{background:var(--surface);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.tally .big{font-family:var(--display);font-size:2rem;font-weight:700;line-height:1}
+
+.tbl-wrap{overflow-x:auto}
+table.t{width:100%;border-collapse:collapse;font-size:.92rem;min-width:480px}
+.t th{font-family:var(--mono);font-weight:500;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:8px 10px 8px 0;border-bottom:2px solid var(--ink)}
+.t td{padding:8px 10px 8px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.t td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap;font-size:.85rem}
+
+.coverage{background:var(--surface);border:1px solid var(--line);padding:18px 22px;display:flex;flex-direction:column;gap:16px}
+.covgrp{display:flex;flex-direction:column;gap:6px}
+.covgrp ul{margin:0;padding-left:1.1em;font-size:.88rem;display:flex;flex-direction:column;gap:4px}
+
+/* Sentiment: diverging bars, center = neutral */
+.sent{display:flex;flex-direction:column;gap:18px}
+.steam{display:flex;flex-direction:column;gap:8px}
+.srow{display:grid;grid-template-columns:110px 1fr 88px;align-items:center;gap:10px;font-size:.85rem}
+.srow .lbl{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;color:var(--muted)}
+.srow .val{font-family:var(--mono);font-size:.74rem;text-align:right;color:var(--muted)}
+.track.nocov{background:repeating-linear-gradient(45deg,var(--nat-soft) 0 6px,transparent 6px 12px)}
+.track.nocov::after{display:none}
+.track{position:relative;height:12px;background:var(--nat-soft);border-radius:6px}
+.track::after{content:"";position:absolute;left:50%;top:-3px;bottom:-3px;width:2px;background:var(--muted);transform:translateX(-1px)}
+.fill{position:absolute;top:0;bottom:0;border-radius:6px}
+.fill.pos{left:50%} .fill.neg{right:50%}
+.f-a{background:var(--a)} .f-b{background:var(--b)} .f-n{background:var(--nat)}
+.scale{display:grid;grid-template-columns:110px 1fr 88px;gap:10px;font-family:var(--mono);font-size:.68rem;color:var(--muted)}
+.scale span:nth-child(2){display:flex;justify-content:space-between}
+
+.grade{font-family:var(--display);font-weight:700;font-size:1.15rem}
+footer{border-top:1px solid var(--line);padding-top:18px;font-size:.85rem;color:var(--muted);display:flex;flex-direction:column;gap:8px}
+
+@media (max-width:560px){
+  .score{flex-direction:column}
+  .score .side + .side{border-left:0;border-top:1px solid var(--line)}
+  .tally{grid-template-columns:1fr}
+  .summary,.view,.coverage{padding-left:16px;padding-right:16px}
+  .srow,.scale{grid-template-columns:80px 1fr 76px}
+}
+
+.trend{margin:4px 0 0;font-size:.86rem}.trend b{font-weight:700}.trend.up span{color:#13803a}.trend.down span{color:#c81e1e}.trend.steady span,.trend.new span{color:var(--muted)}
+@media (prefers-color-scheme:dark){.trend.up span{color:#5fd38a}.trend.down span{color:#ff7b7b}}
+
+:root{--a:#002244;--b:#00707a}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--a:#8fb4e8;--b:#4fc3d4}}
+:root[data-theme="dark"]{--a:#8fb4e8;--b:#4fc3d4}
+
+.tlink{color:inherit;text-decoration:none;border-bottom:1px dotted currentColor}
+.tlink:hover{border-bottom-style:solid}
+
+.refjump{margin:6px 0 0} .refjump a{font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.scale-note{font-size:.72rem !important;line-height:1.45}
+.refl li{margin-bottom:8px}
+.mts{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:3px}
+.mt{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.mt-bar{position:relative;display:inline-block;width:64px;height:7px;background:var(--line);border-radius:2px}
+.mt-c{position:absolute;left:50%;top:-2px;bottom:-2px;width:1px;background:var(--muted)}
+.mt-f{position:absolute;top:0;bottom:0;border-radius:2px}
+details.srcs summary{font-size:.74rem !important}
+
+.refs .inner-src{display:flex;flex-direction:column;gap:14px;max-height:340px;overflow-y:auto;overscroll-behavior:contain}
+footer p{font-size:.72rem;line-height:1.45}
+.refjump a{font-family:var(--mono);font-size:.8rem;letter-spacing:.04em;text-transform:uppercase}
+.avg td.n{white-space:nowrap}
+
+details.srcs{border:1px solid var(--line);border-radius:2px}
+details.srcs summary{cursor:pointer;padding:10px 12px;font-family:var(--mono);font-size:.82rem;letter-spacing:.05em;text-transform:uppercase}
+details.srcs[open] summary{border-bottom:1px solid var(--line)}
+details.srcs .inner-src{padding:12px;display:flex;flex-direction:column;gap:14px}
+.src-out{color:var(--muted)}
+.eyebrow{font-size:.8rem} .note{font-size:.8rem;line-height:1.5} .srow .lbl{font-size:.8rem} .srow .val{font-size:.8rem;color:var(--ink)}
+</style>
+</head><body>
+<div class="wrap">
+<a href="./" style="align-self:flex-start;display:inline-block;font-family:var(--mono);font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;background:none;border:1px solid var(--ink);color:var(--ink);padding:7px 11px;border-radius:2px">&larr; Back to Fodder Sports</a>
+
+<header style="display:flex;flex-direction:column;gap:16px">
+  <span class="eyebrow">Fodder Sports · NFL Week 8 · Matchup</span>
+  <div class="score" role="img" aria-label="New England Patriots, 4 and 3, at Miami Dolphins, 1 and 5">
+    <div class="side"><span class="nm a"><a class="tlink" href="./#team-ne">Patriots</a><small>4–3 · away</small></span><span class="meta">Sun, Nov. 1<br>4:25 p.m. ET</span></div>
+    <div class="side"><span class="nm b"><a class="tlink" href="./#team-mia">Dolphins</a><small>1–5 · home</small></span><span class="meta">Hard Rock Stadium<br>CBS</span></div>
+  </div>
+  <h1>Patriots Head to Miami Without A.J. Brown, Facing a Rebuilt Dolphins</h1>
+  <p class="dek">New England tries to bounce back from a Thursday loss in Chicago, while Miami looks to build on Jeff Hafley's first win.</p>
+</header>
+
+<section class="coverage" aria-labelledby="cov-h">
+  <h2 id="cov-h">How the coverage feels</h2>
+  <p class="note">How each market feels about each team right now, read from the week's coverage. This is about the team vibes, not the odds of winning this game.</p>
+  <div class="sent">
+    <div class="steam">
+      <h3 class="a"><a class="tlink" href="./#team-ne">Patriots</a></h3>
+      <div class="srow"><span class="lbl">New England</span><div class="track"><span class="fill pos f-a" style="width:5.0%"></span></div><span class="val">Neutral</span></div>
+      <div class="srow"><span class="lbl">Miami</span><div class="track"><span class="fill pos f-b" style="width:7.5%"></span></div><span class="val">Neutral</span></div>
+      <div class="srow"><span class="lbl">National</span><div class="track"><span class="fill pos f-n" style="width:10.0%"></span></div><span class="val">Neutral</span></div>
+      <p class="trend new"><span aria-hidden="true">•</span> <b>First reading.</b> The loss in Chicago and Brown's knee have Boston uneasy, even as Maye's play keeps hopes high.</p>
+    </div>
+    <div class="steam">
+      <h3 class="b"><a class="tlink" href="./#team-mia">Dolphins</a></h3>
+      <div class="srow"><span class="lbl">Miami</span><div class="track"><span class="fill pos f-b" style="width:10.0%"></span></div><span class="val">Neutral</span></div>
+      <div class="srow"><span class="lbl">New England</span><div class="track"><span class="fill neg f-a" style="width:5.0%"></span></div><span class="val">Neutral</span></div>
+      <div class="srow"><span class="lbl">National</span><div class="track"><span class="fill pos f-n" style="width:0.0%"></span></div><span class="val">Neutral</span></div>
+      <p class="trend new"><span aria-hidden="true">•</span> <b>First reading.</b> Hafley's first win and a young roster that keeps competing have Miami feeling better than its record.</p>
+    </div>
+    <div class="scale"><span></span><span><span>Harsh</span><span>Neutral</span><span>Glowing</span></span><span></span></div><p class="note scale-note">Each bar shows the overall tone of that group&#39;s coverage toward the team. Bars to the right of center are favorable, bars to the left are critical, and longer bars mean stronger tone. &ldquo;No coverage&rdquo; means that group published nothing about the team in this window.</p>
+  </div>
+  <p>Boston coverage likes Patriots quarterback Drake Maye and the tight ends but is uneasy about missed tackles, turnovers, and a receiver room thinned again by Patriots wide receiver A.J. Brown's knee. Miami's media is warmer on its own team than the 1-5 record suggests, focused on growth under Dolphins coach Jeff Hafley, while it sees New England as the stronger, if uneven, team. National coverage is clearly higher on the Patriots and treats the Dolphins as an improving rebuild that is not ready for a contender.</p>
+  <p class="refjump"><a href="#refs">See all the articles we referenced for this summary</a></p>
+</section>
+
+<section class="summary" aria-labelledby="sum-h">
+  <h2 id="sum-h">The summary</h2>
+  <ul class="bul">
+      <li>The Patriots (4-3) lost 30-24 at Chicago on Thursday Night Football, committing 10 penalties and missing 17 tackles. That ended a three-game win streak.</li>
+      <li>The Dolphins (1-5) won their first game of the season, 28-25 at the Jets. It was Hafley's first win as an NFL head coach.</li>
+      <li>Brown (ankle/knee) and Patriots running back TreVeyon Henderson (illness) were downgraded to out. Only three wide receivers remain on New England's 53-man roster: DeMario Douglas, Kyle Williams, and Efton Chism III.</li>
+      <li>Maye has 14 touchdown passes and two interceptions over his last four games. Miami's pass defense ranks last in passer rating allowed (116.8) and last in sacks with six.</li>
+      <li>Miami has run for 100 or more yards in five straight games behind Dolphins running back Ollie Gordon II. New England's run defense ranks eighth, allowing 95.3 yards per game.</li>
+      <li>New England has 14 giveaways and has not won the turnover battle in any game. The Patriots are 18-43 all-time in South Florida.</li>
+  </ul>
+</section>
+
+<section class="views" aria-label="What each side is saying">
+  <div class="view">
+    <h2 class="a">What the New England media is saying about the Patriots</h2>
+    <ul class="bul">
+      <li>Uneasy. Boston coverage likes Maye's form but calls the team sloppy, pointing to 25 missed tackles over two weeks and the worst passer rating allowed in zone coverage. Patriots coach Mike Vrabel said, "The tackling wasn't good enough, not against this team."</li>
+      <li>Brown's knee is the biggest worry. New England traded a 2028 first-round pick for him in June, and he has nine catches for 101 yards in three games. Brown had said, "None of that stuff even matters. I'm out here, so I'm going."</li>
+      <li>Patriots tight ends Hunter Henry and Eli Raridon are the bright spot, with 29 catches, 361 yards, and three touchdowns over four games against a Miami defense that struggles with tight ends.</li>
+      <li>Patriots cornerback Carlton Davis III returns from a neck injury in his hometown. He said, "So, it's a full-circle moment for me."</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="b">What the Miami media is saying about the Patriots</h2>
+    <ul class="bul">
+      <li>Miami's media sees New England as the better team, crediting a defense that ranks 10th in yards allowed and a pass rush led by Patriots linebacker Elijah Ponder's 5.5 sacks.</li>
+      <li>It also sees cracks: Maye leads the league with eight interceptions, and coverage calls the Patriots a little uneven. Brown and Henderson's absences are framed as a break for Miami.</li>
+      <li>Dolphins players speak with respect. Dolphins edge Chop Robinson said of Maye, "He's a great quarterback."</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="b">What the Miami media is saying about the Dolphins</h2>
+    <ul class="bul">
+      <li>Encouraged. Miami's coverage calls the Jets win a big deal for a young team, praising Dolphins quarterback Malik Willis (208 yards, two passing touchdowns, and a rushing score) and the physical run game.</li>
+      <li>The local focus is growth, not the standings. Hafley said, "Division games are important, and I think it's important for a young team to understand that."</li>
+      <li>Injuries on the line and in the secondary are the main worries. Dolphins guard Kadyn Proctor (concussion) is out, and cornerback JuJu Brents is questionable after concussion protocol.</li>
+      <li>Willis facing Vrabel, his former Titans coach, is a storyline. Willis said, "You play the team, you don't play the coach, you know what I mean?"</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="a">What the New England media is saying about the Dolphins</h2>
+    <ul class="bul">
+      <li>Boston's media sees a rebuilding roster with an NFL-high 15 rookies, a pass defense that ranks 30th in yards per attempt allowed, and a quarterback with a 77.1 passer rating.</li>
+      <li>It respects Miami's effort and running game, which has averaged 131.5 rushing yards over the last three games despite losing running back De'Von Achane to a torn ACL.</li>
+      <li>Patriots players are not overlooking Miami. Vrabel said, "They play extremely hard. I have a lot of respect for what Jeff's done."</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="nat">What everyone else is saying about this game</h2>
+    <ul class="bul">
+      <li><b class="a">Patriots:</b> National coverage treats New England as a top AFC contender, crediting Maye and a passing game that ranks fifth in dropback EPA.</li>
+      <li><b class="a">Patriots:</b> Brown's injury drew wide national attention, with coverage noting he averages 8.3 yards per catch since returning, against 15.3 for his career.</li>
+      <li><b class="a">Patriots:</b> National coverage also flags the Patriots' 14 giveaways and their history of strange losses in Miami.</li>
+      <li><b class="b">Dolphins:</b> Miami is seen as an improving rebuild that is not ready for a contender, though Hafley drew praise for the win in New York and his fourth-down call to seal it.</li>
+      <li><b class="b">Dolphins:</b> The Dolphins' run game and Robinson's pass rush are the national bright spots, with Robinson ranking second among edge rushers in pass rush win rate.</li>
+    </ul>
+  </div>
+</section>
+
+<section aria-labelledby="inj-h">
+  <h2 id="inj-h">Who's out</h2>
+  <ul class="bul">
+    <li><b class="a">Out:</b> Patriots wide receiver A.J. Brown (ankle/knee), running back TreVeyon Henderson (illness), and offensive tackle Marcus Bryant (ankle, not activated from injured reserve). Brown and Henderson were downgraded from questionable Saturday.</li>
+    <li><b class="a">Questionable:</b> Patriots linebacker Christian Elliss (chest) and cornerback Carlton Davis III (neck).</li>
+    <li><b class="b">Out:</b> Dolphins guard/tackle Kadyn Proctor (concussion).</li>
+    <li><b class="b">Questionable:</b> Dolphins cornerbacks JuJu Brents (neck/concussion) and Reese Taylor (quad). Both were full participants Friday.</li>
+  </ul>
+  <p class="note">Game statuses from the Week 8 injury report posted on Patriots.com, which lists both teams, Friday, Oct. 30, updated with the Patriots' Saturday, Oct. 31 downgrades of Brown, Henderson, and Bryant.</p>
+</section>
+
+<section aria-labelledby="line-h">
+  <h2 id="line-h">The line and the history</h2>
+  <div class="tbl-wrap">
+    <table class="t">
+      <thead><tr><th>Line</th><th>Spread</th><th>Moneyline</th><th>Total</th></tr></thead>
+      <tbody><tr><td>DraftKings, Oct. 28</td><td class="n">NE −7</td><td class="n">NE −310 / MIA +250</td><td class="n">43.5</td></tr></tbody>
+    </table>
+  </div>
+  <ul class="bul">
+    <li>New England is 14–25 all-time at Hard Rock Stadium.</li>
+  </ul>
+  <h3>Who the public is picking</h3>
+  <ul class="bul">
+    <li><b>The media:</b> 92% of the published score predictions we found take the Patriots. The average is Patriots 26, Dolphins 18. Bleacher Report's panel has 100% on the Patriots.</li>
+    <li><b>The betting public:</b> As of Friday, one sportsbook's splits showed about two-thirds of spread bets on the Patriots at −7 and 61% on the over.</li>
+  </ul>
+  <div class="tbl-wrap avg">
+    <table class="t">
+      <thead><tr><th>Whose picks</th><th>Pick the Patriots</th><th>Pick the Dolphins</th><th>Average score</th></tr></thead>
+      <tbody><tr><td>New England media</td><td class="n">100%</td><td class="n">0%</td><td class="n">Patriots 27, Dolphins 14</td></tr><tr><td>Miami media</td><td class="n">60%</td><td class="n">40%</td><td class="n">Patriots 23, Dolphins 21</td></tr><tr><td>National media</td><td class="n">100%</td><td class="n">0%</td><td class="n">Patriots 27, Dolphins 18</td></tr><tr><td><b>All media</b></td><td class="n">92%</td><td class="n">8%</td><td class="n"><b>Patriots 26, Dolphins 18</b></td></tr></tbody>
+    </table>
+  </div>
+  <p class="note">Share of published score predictions picking each team, and the average predicted score. Each pick is tracked for our predictor standings.</p>
+</section>
+
+<section id="refs" class="refs" aria-labelledby="refs-h">
+  <h2 id="refs-h">References</h2>
+  <details class="srcs"><summary>Show the articles behind this page</summary><div class="inner-src">
+  <p class="note">Each bar shows that article's tone toward the team named next to it.</p>
+  <div class="covgrp"><span class="eyebrow a">New England</span><ul class="refl"><li><a href="https://www.patriots.com/news/game-preview-patriots-at-dolphins-nfl-week-8">Game preview: Patriots at Dolphins</a> <span class="src-out">- Patriots.com</span><span class="mts"><span class="mt"><span class="mt-n">Patriots</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:25%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Dolphins</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:30%;width:20%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.patriots.com/news/patriots-gameplan-self-scouting-the-pats-through-seven-games-and-prepping-for-the-dolphins-in-week-8">Patriots Gameplan: self-scouting through seven games</a> <span class="src-out">- Patriots.com</span><span class="mts"><span class="mt"><span class="mt-n">Patriots</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Dolphins</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:45%;width:5%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://www.patriots.com/news/3-to-watch-patriots-target-third-afc-east-win-in-miami">3 to watch: Patriots target third AFC East win in Miami</a> <span class="src-out">- Patriots.com</span><span class="mts"><span class="mt"><span class="mt-n">Patriots</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Dolphins</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:10%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.patriots.com/news/expert-predictions-week-8-picks-for-patriots-at-dolphins">Expert predictions: Week 8 picks for Patriots at Dolphins</a> <span class="src-out">- Patriots.com</span><span class="mts"><span class="mt"><span class="mt-n">Patriots</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:25%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.patriots.com/news/transcript-head-coach-mike-vrabel-press-conference-10-30">Transcript: Vrabel press conference, Oct. 30</a> <span class="src-out">- Patriots.com</span><span class="mts"><span class="mt"><span class="mt-n">Patriots</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:12%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.nbcsportsboston.com/nfl/new-england-patriots/dolphins-week-8-preview-keys-victory-prediction/810374/">Patriots-Dolphins Week 8 preview: keys and prediction</a> <span class="src-out">- NBC Sports Boston</span><span class="mts"><span class="mt"><span class="mt-n">Patriots</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:5%"></span></span><span class="mt-w">Neutral</span></span><span class="mt"><span class="mt-n">Dolphins</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:18%;width:32%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.nbcsportsboston.com/nfl/new-england-patriots/dolphins-matchup-preview-prediction-week-8/810412/">Why Patriots-Dolphins could be closer than you expect</a> <span class="src-out">- NBC Sports Boston</span><span class="mts"><span class="mt"><span class="mt-n">Patriots</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:12%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Dolphins</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:40%;width:10%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.nbcsportsboston.com/nfl/new-england-patriots/patriots-tight-ends-hunter-henry-eli-raridon-stats-dolphins/809606/">Patriots tight ends Henry, Raridon stepping up</a> <span class="src-out">- NBC Sports Boston</span><span class="mts"><span class="mt"><span class="mt-n">Patriots</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:15%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Dolphins</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:40%;width:10%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.nbcsportsboston.com/nfl/new-england-patriots/mike-vrabel-not-happy-nfl-fine-leaked-to-media/809407/">Vrabel unhappy his $250,000 fine was leaked</a> <span class="src-out">- NBC Sports Boston</span><span class="mts"><span class="mt"><span class="mt-n">Patriots</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://www.boston.com/sports/new-england-patriots/2026/10/30/patriots-dolphins-predictions-score/">Winning in Miami is almost never easy (Finn prediction)</a> <span class="src-out">- Boston.com</span><span class="mts"><span class="mt"><span class="mt-n">Patriots</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:45%;width:5%"></span></span><span class="mt-w">Neutral</span></span><span class="mt"><span class="mt-n">Dolphins</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:35%;width:15%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.boston.com/sports/new-england-patriots/2026/10/29/new-england-patriots-dolphins-matchup-preview-drake-maye-raridon-nfl-football/">3 matchups that will decide Patriots vs. Dolphins</a> <span class="src-out">- Boston.com</span><span class="mts"><span class="mt"><span class="mt-n">Patriots</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:15%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Dolphins</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:35%;width:15%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.boston.com/sports/new-england-patriots/2026/10/29/a-j-brown-injury-knee-update-practice-new-england-patriots-dolphins/">Time to panic over A.J. Brown's 'flared-up' knee?</a> <span class="src-out">- Boston.com</span><span class="mts"><span class="mt"><span class="mt-n">Patriots</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:38%;width:12%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.boston.com/sports/new-england-patriots/2026/10/28/patriots-carlton-davis-neck-injury-dolphins-comments/">Carlton Davis's return vs. hometown Dolphins a 'full circle' moment</a> <span class="src-out">- Boston.com</span><span class="mts"><span class="mt"><span class="mt-n">Patriots</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.si.com/nfl/patriots/onsi/patriots-secondary-not-taking-dolphins-wrs-lightly-ahead-of-divisional-matchup">Patriots secondary not taking Dolphins WRs lightly</a> <span class="src-out">- Patriots On SI</span><span class="mts"><span class="mt"><span class="mt-n">Patriots</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:18%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Dolphins</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:15%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.patriots.com/news/roster-analysis-patriots-downgrade-wr-a-j-brown-rb-treveyon-henderson-to-out-for-week-8-vs-dolphins">Roster analysis: Brown, Henderson downgraded to out</a> <span class="src-out">- Patriots.com</span><span class="mts"><span class="mt"><span class="mt-n">Patriots</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:42%;width:8%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.bostonglobe.com/2026/10/31/sports/patriots-aj-brown-treveyon-henderson-out-dolphins/">Patriots offense without Brown, Henderson in Miami</a> <span class="src-out">- Boston Globe</span><span class="mts"><span class="mt"><span class="mt-n">Patriots</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:40%;width:10%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://bostonglobe.com/2026/10/31/sports/dolphins-patriots-jeff-hafley">Hafley has the no-name Dolphins playing hard</a> <span class="src-out">- Boston Globe</span><span class="mts"><span class="mt"><span class="mt-n">Patriots</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:5%"></span></span><span class="mt-w">Neutral</span></span><span class="mt"><span class="mt-n">Dolphins</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:15%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/patriots-week-8-injury-report-215223301.html">Patriots Week 8 injury report: good news, bad news</a> <span class="src-out">- Patriots Wire (via Yahoo Sports)</span><span class="mts"><span class="mt"><span class="mt-n">Patriots</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:45%;width:5%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://www.boston25news.com/news/local/aj-brown-playing-sunday-patriots-what-mike-vrabel-revealed-ahead-dolphins-game/UGNRADFYCZES3A2GMZN4GRJEKI/">Is A.J. Brown playing Sunday? What Vrabel revealed</a> <span class="src-out">- Boston 25 News</span><span class="mts"><span class="mt"><span class="mt-n">Patriots</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:48%;width:2%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://whdh.com/sports/patriots-rule-out-a-j-brown-treveyon-henderson-and-marcus-bryant-vs-dolphins/">Patriots rule out Brown, Henderson and Bryant (AP)</a> <span class="src-out">- WHDH 7News Boston</span><span class="mts"><span class="mt"><span class="mt-n">Patriots</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:40%;width:10%"></span></span><span class="mt-w">Mixed</span></span></span></li></ul></div><div class="covgrp"><span class="eyebrow b">Miami</span><ul class="refl"><li><a href="https://www.miamidolphins.com/news/top-quotes-dolphins-finding-their-identity-as-patriots-come-to-town">Top quotes: Dolphins finding identity as Patriots come to town</a> <span class="src-out">- MiamiDolphins.com</span><span class="mts"><span class="mt"><span class="mt-n">Patriots</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:25%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Dolphins</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.si.com/nfl/dolphins/onsi/thursday-injury-update-big-names-could-be-missing-from-dolphins-patriots-matchup-01m64mnwj0dx">Thursday injury update: big names could miss Dolphins-Patriots</a> <span class="src-out">- Dolphins On SI</span><span class="mts"><span class="mt"><span class="mt-n">Patriots</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:42%;width:8%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Dolphins</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://www.si.com/nfl/dolphins/onsi/dolphins-week-8-power-rankings-roundup-how-big-of-a-move-up-after-first-win-01m619t7jjfv">Dolphins Week 8 power rankings roundup</a> <span class="src-out">- Dolphins On SI</span><span class="mts"><span class="mt"><span class="mt-n">Patriots</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:15%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Dolphins</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:15%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/dolphins-patriots-predictions-miami-pull-114700048.html">Dolphins-Patriots predictions from the Sun Sentinel staff</a> <span class="src-out">- South Florida Sun Sentinel (via Yahoo Sports)</span><span class="mts"><span class="mt"><span class="mt-n">Patriots</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:20%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Dolphins</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/edge-dolphins-vs-patriots-coming-122500982.html">Who has the edge? Dolphins vs. Patriots</a> <span class="src-out">- South Florida Sun Sentinel (via Yahoo Sports)</span><span class="mts"><span class="mt"><span class="mt-n">Patriots</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:10%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Dolphins</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:15%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/five-things-watch-miami-dolphins-193300776.html">Five things to watch in Dolphins-Patriots</a> <span class="src-out">- South Florida Sun Sentinel (via Yahoo Sports)</span><span class="mts"><span class="mt"><span class="mt-n">Patriots</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:42%;width:8%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Dolphins</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:42%;width:8%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://sports.yahoo.com/articles/dolphins-luck-week-8-patriots-203107100.html">Dolphins luck out as Patriots rule out two weapons</a> <span class="src-out">- Dolphins Wire (via Yahoo Sports)</span><span class="mts"><span class="mt"><span class="mt-n">Patriots</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:40%;width:10%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Dolphins</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:12%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://phinphanatic.com/miami-dolphins-malik-wills-has-a-golden-opportunity-to-prove-mike-vrabel-wrong-01m66k8vysxd">Willis has a golden opportunity to prove Vrabel wrong</a> <span class="src-out">- Phin Phanatic</span><span class="mts"><span class="mt"><span class="mt-n">Patriots</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:10%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Dolphins</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:15%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/malik-willis-face-former-coach-222845286.html">Malik Willis to face former coach Mike Vrabel</a> <span class="src-out">- Palm Beach Post (via Yahoo Sports)</span><span class="mts"><span class="mt"><span class="mt-n">Patriots</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Dolphins</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/dolphins-coaches-assess-team-young-202543003.html">Dolphins coaches assess young DBs; Brents questionable</a> <span class="src-out">- Miami Herald (via Yahoo Sports)</span><span class="mts"><span class="mt"><span class="mt-n">Patriots</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Dolphins</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.miamidolphins.com/news/fins-weekly-new-england-new-challenge">Fins Weekly: New England, new challenge</a> <span class="src-out">- MiamiDolphins.com</span><span class="mts"><span class="mt"><span class="mt-n">Dolphins</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:18%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.si.com/nfl/dolphins/onsi/poup-s-perspective-why-this-first-dolphins-win-indeed-was-a-very-big-deal-01m5wcw4dtjg">Poup's Perspective: why the first win was a very big deal</a> <span class="src-out">- Dolphins On SI</span><span class="mts"><span class="mt"><span class="mt-n">Dolphins</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:25%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.si.com/nfl/dolphins/onsi/dolphins-week-7-report-card-a-big-step-forward-01m5yqq2arv3">Dolphins Week 7 report card: a big step forward</a> <span class="src-out">- Dolphins On SI</span><span class="mts"><span class="mt"><span class="mt-n">Dolphins</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.si.com/nfl/dolphins/onsi/why-the-dolphins-could-be-very-quiet-at-the-nfl-trade-deadline-01m66e8s8ma4">Why the Dolphins could be (very) quiet at the trade deadline</a> <span class="src-out">- Dolphins On SI</span><span class="mts"><span class="mt"><span class="mt-n">Dolphins</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:12%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/miami-dolphins-rookie-left-guard-145034657.html">Rookie LG Kadyn Proctor unlikely vs. Patriots</a> <span class="src-out">- Palm Beach Post (via Yahoo Sports)</span><span class="mts"><span class="mt"><span class="mt-n">Dolphins</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:10%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/dolphins-2-roster-moves-catch-201533693.html">Dolphins make 2 roster moves and catch a break</a> <span class="src-out">- Miami Herald (via Yahoo Sports)</span><span class="mts"><span class="mt"><span class="mt-n">Dolphins</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:15%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://phinphanatic.com/miami-dolphins-get-bad-news-on-two-starters-who-may-be-in-danger-of-missing-week-8-01m61t3pf3jk">Two starters in danger of missing Week 8</a> <span class="src-out">- Phin Phanatic</span><span class="mts"><span class="mt"><span class="mt-n">Dolphins</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:45%;width:5%"></span></span><span class="mt-w">Neutral</span></span></span></li></ul></div><div class="covgrp"><span class="eyebrow nat">National</span><ul class="refl"><li><a href="https://www.cbssports.com/nfl/news/nfl-week-8-injury-report-lamar-jackson-aj-brown-emeka-egbuka-more/">Week 8 final injury report: Patriots' A.J. Brown ruled out</a> <span class="src-out">- CBS Sports</span><span class="mts"><span class="mt"><span class="mt-n">Patriots</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:40%;width:10%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Dolphins</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://www.espn.com/nfl/story/_/id/50337296/patriots-rule-aj-brown-treveyon-henderson-vs-dolphins">Patriots rule out A.J. Brown, TreVeyon Henderson vs. Dolphins</a> <span class="src-out">- ESPN</span><span class="mts"><span class="mt"><span class="mt-n">Patriots</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:42%;width:8%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.espn.com/nfl/story/_/id/50312157/week-8-picks-predictions-schedule-fantasy-odds-2026">ESPN's Week 8 guide: Patriots at Dolphins</a> <span class="src-out">- ESPN</span><span class="mts"><span class="mt"><span class="mt-n">Patriots</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:12%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Dolphins</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:5%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://www.nfl.com/news/nfl-picks-week-8-2026-nfl-season">NFL.com Week 8 picks: Patriots at Dolphins</a> <span class="src-out">- NFL.com</span><span class="mts"><span class="mt"><span class="mt-n">Patriots</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:20%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Dolphins</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:40%;width:10%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.nfl.com/news/patriots-rule-out-wr-a-j-brown-ankle-knee-rb-treveyon-henderson-illness-for-sunday-vs-dolphins">Patriots rule out Brown, Henderson for Sunday</a> <span class="src-out">- NFL.com</span><span class="mts"><span class="mt"><span class="mt-n">Patriots</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:45%;width:5%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://www.si.com/betting/patriots-vs-dolphins-prediction-odds-spread-injuries-trends-for-nfl-week-8-2026">Patriots vs. Dolphins prediction, odds and trends</a> <span class="src-out">- Sports Illustrated</span><span class="mts"><span class="mt"><span class="mt-n">Patriots</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:25%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Dolphins</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:25%;width:25%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://clutchpoints.com/nfl/nfl-stories/patriots-vs-dolphins-bold-predictions-afc-east-clash-nfl-week-8">Patriots vs. Dolphins bold predictions</a> <span class="src-out">- ClutchPoints</span><span class="mts"><span class="mt"><span class="mt-n">Patriots</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:25%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Dolphins</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:20%;width:30%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://heavy.com/sports/nfl/new-england-patriots/patriots-drake-maye-clark-phillips-helmet-hit-fine/">Bears DB fined for hit on Drake Maye</a> <span class="src-out">- Heavy</span><span class="mts"><span class="mt"><span class="mt-n">Patriots</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://heavy.com/sports/nfl/miami-dolphins/unexpected-injury-development-patriots-game/">Dolphins get unexpected injury development before Patriots game</a> <span class="src-out">- Heavy</span><span class="mts"><span class="mt"><span class="mt-n">Patriots</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:10%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Dolphins</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:42%;width:8%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.pressherald.com/2026/10/31/patriots-try-to-bounce-back-against-young-dolphins/">Patriots try to bounce back against young Dolphins (AP)</a> <span class="src-out">- Associated Press (via Portland Press Herald)</span><span class="mts"><span class="mt"><span class="mt-n">Patriots</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:10%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Dolphins</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:10%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://abcnews.com/Sports/wireStory/malik-willis-sparks-dolphins-win-holding-off-late-137557688">Willis sparks Dolphins' first win, 28-25 at Jets (AP)</a> <span class="src-out">- Associated Press (via ABC News)</span><span class="mts"><span class="mt"><span class="mt-n">Dolphins</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:25%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/dolphins-jeff-hafley-gets-long-003450724.html">Hafley gets long-term endorsement from NFL insider</a> <span class="src-out">- ClutchPoints (via Yahoo Sports)</span><span class="mts"><span class="mt"><span class="mt-n">Dolphins</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:30%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/three-decisions-d-love-miami-025351687.html">Three decisions for Hafley against the Patriots</a> <span class="src-out">- Athlon Sports (via Yahoo Sports)</span><span class="mts"><span class="mt"><span class="mt-n">Dolphins</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:10%"></span></span><span class="mt-w">Positive</span></span></span></li></ul></div>
+  </div></details>
+</section>
+
+<footer>
+  <span class="eyebrow">Fodder Sports · pilot</span>
+  <p>Summaries are written in our own words from the coverage listed above. Odds from <a href="https://www.espn.com/espn/betting/story/_/id/50250750/2026-nfl-week-8-schedule-odds-point-spreads-totals">ESPN's Week 8 odds report</a>. Not affiliated with the NFL, the New England Patriots, or the Miami Dolphins.</p>
+</footer>
+
+</div>
+<script>try{if('scrollRestoration' in history)history.scrollRestoration='manual';if(!location.hash)window.scrollTo(0,0);}catch(e){}</script>
+</body></html>

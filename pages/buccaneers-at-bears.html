@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Fodder Sports Buccaneers at Bears</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#f3f4f6; --surface:#ffffff; --ink:#151a24; --muted:#5b6474; --line:#d9dde4;
+  --nat:#4a5568; --nat-soft:#e6e9ee;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f131a; --surface:#171c25; --ink:#e7eaf0; --muted:#9aa3b2; --line:#2a3140;
+  --nat:#a7b1c2; --nat-soft:#222935; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f131a; --surface:#171c25; --ink:#e7eaf0; --muted:#9aa3b2; --line:#2a3140;
+  --nat:#a7b1c2; --nat-soft:#222935; color-scheme:dark}
+
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 56px}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
+a{color:inherit;text-decoration-color:var(--muted);text-underline-offset:2px}
+a:hover{text-decoration-color:currentColor}
+a:focus-visible{outline:2px solid var(--a);outline-offset:2px;border-radius:2px}
+h1,h2,h3{font-family:var(--display);font-weight:700;text-wrap:balance;margin:0;letter-spacing:.01em}
+h1{font-size:clamp(1.9rem,5vw,2.6rem);line-height:1.05}
+h2{font-size:1.5rem;text-transform:uppercase}
+h3{font-size:1.05rem;text-transform:uppercase;letter-spacing:.05em}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.a{color:var(--a)} .b{color:var(--b)} .nat{color:var(--nat)}
+section{display:flex;flex-direction:column;gap:14px}
+.note{font-size:.88rem;color:var(--muted)}
+ul.bul{margin:0;padding-left:1.15em;display:flex;flex-direction:column;gap:10px}
+ul.bul li::marker{color:var(--muted)}
+.dek{font-size:1.1rem;color:var(--muted)}
+
+.score{display:flex;align-items:stretch;border:1px solid var(--line);background:var(--surface)}
+.score .side{flex:1;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;min-width:0}
+.score .side + .side{border-left:1px solid var(--line)}
+.score .nm{font-family:var(--display);font-size:1.5rem;font-weight:700;text-transform:uppercase;line-height:1}
+.score .nm small{display:block;font-family:var(--mono);font-size:.72rem;font-weight:400;letter-spacing:.08em;color:var(--muted);margin-top:4px;text-transform:none}
+.score .pts{font-family:var(--display);font-size:2.6rem;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.score .lose .pts{opacity:.5}
+.score .meta{font-family:var(--mono);font-size:.8rem;color:var(--muted);text-align:right}
+
+.summary{background:var(--surface);border:1px solid var(--line);padding:22px 24px;display:flex;flex-direction:column;gap:14px}
+.views{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line)}
+.view{padding:18px 22px;display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--line)}
+.view:first-child{border-top:0}
+
+.tally{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.tally div{background:var(--surface);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.tally .big{font-family:var(--display);font-size:2rem;font-weight:700;line-height:1}
+
+.tbl-wrap{overflow-x:auto}
+table.t{width:100%;border-collapse:collapse;font-size:.92rem;min-width:480px}
+.t th{font-family:var(--mono);font-weight:500;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:8px 10px 8px 0;border-bottom:2px solid var(--ink)}
+.t td{padding:8px 10px 8px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.t td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap;font-size:.85rem}
+
+.coverage{background:var(--surface);border:1px solid var(--line);padding:18px 22px;display:flex;flex-direction:column;gap:16px}
+.covgrp{display:flex;flex-direction:column;gap:6px}
+.covgrp ul{margin:0;padding-left:1.1em;font-size:.88rem;display:flex;flex-direction:column;gap:4px}
+
+/* Sentiment: diverging bars, center = neutral */
+.sent{display:flex;flex-direction:column;gap:18px}
+.steam{display:flex;flex-direction:column;gap:8px}
+.srow{display:grid;grid-template-columns:110px 1fr 88px;align-items:center;gap:10px;font-size:.85rem}
+.srow .lbl{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;color:var(--muted)}
+.srow .val{font-family:var(--mono);font-size:.74rem;text-align:right;color:var(--muted)}
+.track.nocov{background:repeating-linear-gradient(45deg,var(--nat-soft) 0 6px,transparent 6px 12px)}
+.track.nocov::after{display:none}
+.track{position:relative;height:12px;background:var(--nat-soft);border-radius:6px}
+.track::after{content:"";position:absolute;left:50%;top:-3px;bottom:-3px;width:2px;background:var(--muted);transform:translateX(-1px)}
+.fill{position:absolute;top:0;bottom:0;border-radius:6px}
+.fill.pos{left:50%} .fill.neg{right:50%}
+.f-a{background:var(--a)} .f-b{background:var(--b)} .f-n{background:var(--nat)}
+.scale{display:grid;grid-template-columns:110px 1fr 88px;gap:10px;font-family:var(--mono);font-size:.68rem;color:var(--muted)}
+.scale span:nth-child(2){display:flex;justify-content:space-between}
+
+.grade{font-family:var(--display);font-weight:700;font-size:1.15rem}
+footer{border-top:1px solid var(--line);padding-top:18px;font-size:.85rem;color:var(--muted);display:flex;flex-direction:column;gap:8px}
+
+@media (max-width:560px){
+  .score{flex-direction:column}
+  .score .side + .side{border-left:0;border-top:1px solid var(--line)}
+  .tally{grid-template-columns:1fr}
+  .summary,.view,.coverage{padding-left:16px;padding-right:16px}
+  .srow,.scale{grid-template-columns:80px 1fr 76px}
+}
+
+.trend{margin:4px 0 0;font-size:.86rem}.trend b{font-weight:700}.trend.up span{color:#13803a}.trend.down span{color:#c81e1e}.trend.steady span,.trend.new span{color:var(--muted)}
+@media (prefers-color-scheme:dark){.trend.up span{color:#5fd38a}.trend.down span{color:#ff7b7b}}
+
+:root{--a:#34302B;--b:#c4440f}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--a:#c9b99a;--b:#f2733b}}
+:root[data-theme="dark"]{--a:#c9b99a;--b:#f2733b}
+
+.tlink{color:inherit;text-decoration:none;border-bottom:1px dotted currentColor}
+.tlink:hover{border-bottom-style:solid}
+
+.refjump{margin:6px 0 0} .refjump a{font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.scale-note{font-size:.72rem !important;line-height:1.45}
+.refl li{margin-bottom:8px}
+.mts{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:3px}
+.mt{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.mt-bar{position:relative;display:inline-block;width:64px;height:7px;background:var(--line);border-radius:2px}
+.mt-c{position:absolute;left:50%;top:-2px;bottom:-2px;width:1px;background:var(--muted)}
+.mt-f{position:absolute;top:0;bottom:0;border-radius:2px}
+details.srcs summary{font-size:.74rem !important}
+
+.refs .inner-src{display:flex;flex-direction:column;gap:14px;max-height:340px;overflow-y:auto;overscroll-behavior:contain}
+footer p{font-size:.72rem;line-height:1.45}
+.refjump a{font-family:var(--mono);font-size:.8rem;letter-spacing:.04em;text-transform:uppercase}
+.avg td.n{white-space:nowrap}
+
+details.srcs{border:1px solid var(--line);border-radius:2px}
+details.srcs summary{cursor:pointer;padding:10px 12px;font-family:var(--mono);font-size:.82rem;letter-spacing:.05em;text-transform:uppercase}
+details.srcs[open] summary{border-bottom:1px solid var(--line)}
+details.srcs .inner-src{padding:12px;display:flex;flex-direction:column;gap:14px}
+.src-out{color:var(--muted)}
+.eyebrow{font-size:.8rem} .note{font-size:.8rem;line-height:1.5} .srow .lbl{font-size:.8rem} .srow .val{font-size:.8rem;color:var(--ink)}
+</style>
+</head><body>
+<div class="wrap">
+<a href="./" style="align-self:flex-start;display:inline-block;font-family:var(--mono);font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;background:none;border:1px solid var(--ink);color:var(--ink);padding:7px 11px;border-radius:2px">&larr; Back to Fodder Sports</a>
+
+<header style="display:flex;flex-direction:column;gap:16px">
+  <span class="eyebrow">Fodder Sports · NFL Week 9 · Matchup</span>
+  <div class="score" role="img" aria-label="Tampa Bay Buccaneers, 3 and 5, at Chicago Bears, 6 and 2">
+    <div class="side"><span class="nm a"><a class="tlink" href="./#team-tb">Buccaneers</a><small>3–5 · away</small></span><span class="meta">Sun, Nov. 8<br>8:20 p.m. ET</span></div>
+    <div class="side"><span class="nm b"><a class="tlink" href="./#team-chi">Bears</a><small>6–2 · home</small></span><span class="meta">Soldier Field<br>Sunday Night Football</span></div>
+  </div>
+  <h1>Bucs Bring a Record Run Game Into Soldier Field to Face Rolling Bears</h1>
+  <p class="dek">Tampa Bay won twice in a row while barely throwing, and now it visits a 6-2 Chicago team fresh off a statement win in Seattle.</p>
+</header>
+
+<section class="coverage" aria-labelledby="cov-h">
+  <h2 id="cov-h">How the coverage feels</h2>
+  <p class="note">How each market feels about each team right now, read from the week's coverage. This is about the team vibes, not the odds of winning this game.</p>
+  <div class="sent">
+    <div class="steam">
+      <h3 class="a"><a class="tlink" href="./#team-tb">Buccaneers</a></h3>
+      <div class="srow"><span class="lbl">Tampa Bay</span><div class="track"><span class="fill pos f-a" style="width:20.0%"></span></div><span class="val">Positive</span></div>
+      <div class="srow"><span class="lbl">Chicago</span><div class="track"><span class="fill pos f-b" style="width:0.0%"></span></div><span class="val">Neutral</span></div>
+      <div class="srow"><span class="lbl">National</span><div class="track"><span class="fill pos f-n" style="width:10.0%"></span></div><span class="val">Neutral</span></div>
+      <p class="trend steady"><span aria-hidden="true">▬</span> <b>Holding steady.</b> Back-to-back division wins on a record run game have lifted the mood in Tampa, but the missing passing game keeps the overall read where it was.</p>
+    </div>
+    <div class="steam">
+      <h3 class="b"><a class="tlink" href="./#team-chi">Bears</a></h3>
+      <div class="srow"><span class="lbl">Chicago</span><div class="track"><span class="fill pos f-b" style="width:37.5%"></span></div><span class="val">Glowing</span></div>
+      <div class="srow"><span class="lbl">Tampa Bay</span><div class="track"><span class="fill pos f-a" style="width:27.5%"></span></div><span class="val">Positive</span></div>
+      <div class="srow"><span class="lbl">National</span><div class="track"><span class="fill pos f-n" style="width:37.5%"></span></div><span class="val">Glowing</span></div>
+      <p class="trend up"><span aria-hidden="true">▲</span> <b>Trending up.</b> The 34-17 win in Seattle and Simmons' debut pushed coverage of the Bears to its warmest reading yet.</p>
+    </div>
+    <div class="scale"><span></span><span><span>Harsh</span><span>Neutral</span><span>Glowing</span></span><span></span></div><p class="note scale-note">Each bar shows the overall tone of that group&#39;s coverage toward the team. Bars to the right of center are favorable, bars to the left are critical, and longer bars mean stronger tone. &ldquo;No coverage&rdquo; means that group published nothing about the team in this window.</p>
+  </div>
+  <p>Chicago's media is as warm on the Bears as it has been all season, and Tampa Bay's media and national coverage share that view of a complete, rising team. The Bucs get a more guarded read. Tampa's own market likes the ground game and the defense but keeps asking about the passing game, and Chicago's media mostly sees a run-only team that can be stopped.</p>
+  <p class="refjump"><a href="#refs">See all the articles we referenced for this summary</a></p>
+</section>
+
+<section class="summary" aria-labelledby="sum-h">
+  <h2 id="sum-h">The summary</h2>
+  <ul class="bul">
+      <li>The Bears (6-2) have won three straight, capped by a 34-17 win over the defending champion Seahawks on Monday night. A win would give Ben Johnson more wins than George Halas has on the Bears' all-time coaching list, trailing only Ralph Jones.</li>
+      <li>The Buccaneers (3-5) have won three of four after an 0-4 start. They beat Atlanta 16-0 in a storm with a team-record 324 rushing yards and no completed passes, and they lead the NFL at 168.6 rushing yards per game.</li>
+      <li>Bucs running backs Bucky Irving (728 yards) and Kenneth Gainwell carry the offense, while Tampa Bay ranks last in passing at 131.4 yards per game. Quarterback Baker Mayfield has a right thumb injury that the Chicago Tribune says may not fully heal until after the season.</li>
+      <li>Bears defensive tackle Jeffery Simmons, acquired from Tennessee on Oct. 29, had a sack, six tackles, and drew 13 double teams in his debut. Bucs coach Todd Bowles and Mayfield both singled him out this week.</li>
+      <li>Bears quarterback Caleb Williams is completing about 71% of his passes, second in the NFL, and Chicago leads the league in rushing touchdowns. Tampa Bay's defense leads the NFL in interceptions and is tied for the fewest rushing touchdowns allowed.</li>
+      <li>Chicago has a bye after this game. The Bucs are tied with Atlanta, half a game behind Carolina in the NFC South.</li>
+  </ul>
+</section>
+
+<section class="views" aria-label="What each side is saying">
+  <div class="view">
+    <h2 class="a">What the Tampa Bay media is saying about the Buccaneers</h2>
+    <ul class="bul">
+      <li>Encouraged. Tampa coverage loves the new identity: the offensive line of Graham Barton, Ben Bredeson, and Cody Mauch is opening holes, and Irving and Gainwell, whom Bowles calls a "1A, 1B" pair, just set the team rushing record.</li>
+      <li>The defense gets just as much credit, with 10 sacks and nine interceptions since Week 5 and a league-high 12 interceptions overall. Coverage that questioned Bowles' job earlier this season now credits him for the turnaround.</li>
+      <li>The worry is the passing game. The Bucs went 15 straight drives without a completion, Mayfield's thumb is still an issue, and Tampa writers are skeptical of Bowles' talk of winning 9-3 games "from a field goal standpoint."</li>
+      <li>Tampa's media treats Sunday as a measuring stick and the toughest test of the season, and expects the Bucs to need more than the run in clear weather in Chicago.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="b">What the Chicago media is saying about the Buccaneers</h2>
+    <ul class="bul">
+      <li>Chicago coverage respects the run game but doubts the rest. It points out that the Bucs have scored 20 or fewer points five times and cannot win if they have to throw.</li>
+      <li>Chicago writers call Tampa Bay's defensive numbers inflated by weak offenses and bad weather, while conceding Bowles is a crafty play caller. Some flag the matchup as a possible trap game.</li>
+      <li>Bears defensive coordinator Dennis Allen gave the Bucs their due: "They're running the ball better than anybody else in the league right now."</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="b">What the Chicago media is saying about the Bears</h2>
+    <ul class="bul">
+      <li>Fired up. Chicago coverage is full of contender talk after the Seattle win, the best start since 2012, and the team beating both of last season's Super Bowl teams in one season for the first time.</li>
+      <li>Williams gets most of the praise. Since returning from his hamstring injury he has completed 73.8% for 860 yards, four touchdowns, and no interceptions, and he calls the Bears "a smashmouth football team."</li>
+      <li>Simmons is already treated as a difference maker. Allen says he "raises the level of everybody on the field," and his presence freed defensive end Montez Sweat for one-on-one rushes.</li>
+      <li>The concerns are depth and the run game. Running back Kyle Monangai has missed four games with turf toe, backup Zavier Scott went to injured reserve, and Chicago has gained no more than 3.5 yards per carry in any of the last three games despite running back D'Andre Swift's 10 rushing touchdowns.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="a">What the Tampa Bay media is saying about the Bears</h2>
+    <ul class="bul">
+      <li>Tampa's media calls the Bears one of the NFL's most complete teams, with the third-ranked offense, the top third-down defense, and the league lead in time of possession.</li>
+      <li>Bucs writers see openings in Williams' 7.6% sack rate, the Bears' seven lost fumbles, and a Chicago secondary whose cornerbacks grade near the bottom in coverage.</li>
+      <li>The key matchup in Tampa coverage is Ben Johnson against Bowles. Bowles called Johnson's offense hard to prepare for: "He slows the tempo, he speeds the tempo... He uses everybody in the offense."</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="nat">What everyone else is saying about this game</h2>
+    <ul class="bul">
+      <li><b class="b">Bears:</b> National coverage now treats Chicago as a serious contender after the win in Seattle, with credit spread across Johnson's coaching, Williams, and Simmons.</li>
+      <li><b class="b">Bears:</b> National writers credit Simmons and Williams for the Seattle win: Williams threw for 247 yards with no turnovers, and Seattle went 1 of 11 on third down.</li>
+      <li><b class="a">Buccaneers:</b> The 16-0 win drew national attention as one of the strangest of recent seasons: the Bucs were the first team since the 1974 Bills to finish with zero completions.</li>
+      <li><b class="a">Buccaneers:</b> National views of the Bucs split. Some see a ground game that can wear down contenders and carry Tampa Bay to a division title, while others say they are not believers until Mayfield throws again.</li>
+      <li><b class="a">Buccaneers:</b> National coverage flags Simmons against Bucs center Graham Barton as a key matchup, and notes the Bears have not allowed a 100-yard rusher since Week 2.</li>
+    </ul>
+  </div>
+</section>
+
+<section aria-labelledby="inj-h">
+  <h2 id="inj-h">Who's out</h2>
+  <ul class="bul">
+    <li><b class="a">Out:</b> Bucs outside linebacker Yaya Diaby (knee).</li>
+    <li><b class="a">Questionable:</b> Bucs wide receiver Emeka Egbuka (foot). He was a full participant Thursday.</li>
+    <li><b class="a">In:</b> Bucs tackle Tristan Wirfs (toe) and quarterback Baker Mayfield (right thumb) carry no game status. Wirfs was limited Friday after missing Thursday.</li>
+    <li><b class="b">Out:</b> Bears running back Zavier Scott (thumb) is on injured reserve.</li>
+    <li><b class="b">Questionable:</b> Bears running back Kyle Monangai (toe), cornerback Tyrique Stevenson (thumb), and cornerback Malik Muhammad (toe). Monangai practiced for the first time in over a month, but Chicago coverage expects his return after the bye.</li>
+  </ul>
+  <p class="note">Bucs game statuses from the team's official injury report, Friday, Nov. 6. Bears game statuses from NFL.com's Week 9 injury report, checked against Chicago coverage, because ChicagoBears.com had not posted a Friday report we could read.</p>
+</section>
+
+<section aria-labelledby="line-h">
+  <h2 id="line-h">The line and the history</h2>
+  <div class="tbl-wrap">
+    <table class="t">
+      <thead><tr><th>Line</th><th>Spread</th><th>Moneyline</th><th>Total</th></tr></thead>
+      <tbody><tr><td>DraftKings, via ESPN, Nov. 6</td><td class="n">CHI −6</td><td class="n">Not listed</td><td class="n">47.5</td></tr></tbody>
+    </table>
+  </div>
+  <ul class="bul">
+    <li>Chicago leads the all-time regular-season series 40–22, and the teams have never met in the playoffs.</li>
+    <li>The last meeting, in 2023, ended Buccaneers 27, Bears 17 in Tampa.</li>
+  </ul>
+  <h3>Who the public is picking</h3>
+  <ul class="bul">
+    <li><b>The media:</b> 87% of the published score predictions we found take the Bears. The average is Bears 28, Buccaneers 18.</li>
+  </ul>
+  <div class="tbl-wrap avg">
+    <table class="t">
+      <thead><tr><th>Whose picks</th><th>Pick the Buccaneers</th><th>Pick the Bears</th><th>Average score</th></tr></thead>
+      <tbody><tr><td>Tampa Bay media</td><td class="n">100%</td><td class="n">0%</td><td class="n">Buccaneers 23, Bears 20</td></tr><tr><td>Chicago media</td><td class="n">0%</td><td class="n">100%</td><td class="n">Bears 30, Buccaneers 17</td></tr><tr><td>National media</td><td class="n">14%</td><td class="n">86%</td><td class="n">Bears 26, Buccaneers 19</td></tr><tr><td><b>All media</b></td><td class="n">13%</td><td class="n">87%</td><td class="n"><b>Bears 28, Buccaneers 18</b></td></tr></tbody>
+    </table>
+  </div>
+  <p class="note">Share of published score predictions picking each team, and the average predicted score. Each pick is tracked for our predictor standings.</p>
+</section>
+
+<section id="refs" class="refs" aria-labelledby="refs-h">
+  <h2 id="refs-h">References</h2>
+  <details class="srcs"><summary>Show the articles behind this page</summary><div class="inner-src">
+  <p class="note">Each bar shows that article's tone toward the team named next to it.</p>
+  <div class="covgrp"><span class="eyebrow a">Tampa Bay</span><ul class="refl"><li><a href="https://www.joebucsfan.com/2026/11/theyll-fight-early-and-the-bears-will-run-away-with-it-late/">Talib: Bucs fight early, Bears run away late</a> <span class="src-out">- JoeBucsFan</span><span class="mts"><span class="mt"><span class="mt-n">Buccaneers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:35%;width:15%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.joebucsfan.com/2026/11/report-of-baker-throwing-dimes-todd-bowles-thinking-of-winning-a-field-goal-battle/">Bowles' field-goal mindset questioned</a> <span class="src-out">- JoeBucsFan</span><span class="mts"><span class="mt"><span class="mt-n">Buccaneers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:42%;width:8%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.joebucsfan.com/2026/11/espn-trade-chris-godwin/">ESPN floats Godwin trade; Bucs haven't completed a pass in 15 drives</a> <span class="src-out">- JoeBucsFan</span><span class="mts"><span class="mt"><span class="mt-n">Buccaneers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:30%;width:20%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.joebucsfan.com/2026/11/emergence-of-kenny-gainwell-mirrors-bucs-run-game-resurgence/">Gainwell's rise mirrors run-game resurgence</a> <span class="src-out">- JoeBucsFan</span><span class="mts"><span class="mt"><span class="mt-n">Buccaneers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.joebucsfan.com/2026/11/tristan-wirfs-pops-up-on-injury-report/">Wirfs (toe) did not practice Thursday</a> <span class="src-out">- JoeBucsFan</span><span class="mts"><span class="mt"><span class="mt-n">Buccaneers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://www.joebucsfan.com/2026/11/friday-edition-bobby-fenton-thinks-we-are-in-the-midst-of-one-of-the-weirdest-seasons-in-buccaneers-history-and-it-could-get-weirder-that-and-an-snf-preview-on-this-weeks-free-stretch/">Fenton: weirdest season in Bucs history</a> <span class="src-out">- JoeBucsFan</span><span class="mts"><span class="mt"><span class="mt-n">Buccaneers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:5%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://www.si.com/nfl/buccaneers/onsi/buccaneers-bears-matchup-biggest-advantage-biggest-fear-2026">Bucs-Bears: biggest advantage, biggest fear</a> <span class="src-out">- Bucs On SI</span><span class="mts"><span class="mt"><span class="mt-n">Buccaneers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:20%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.si.com/nfl/buccaneers/onsi/3-ways-the-buccaneers-upset-the-bears-on-sunday-night-football-2026">3 ways the Bucs upset the Bears</a> <span class="src-out">- Bucs On SI</span><span class="mts"><span class="mt"><span class="mt-n">Buccaneers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:15%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.si.com/nfl/buccaneers/onsi/buccaneers-not-worried-about-lack-of-passing-game-2026">Bucs not worried about lack of passing game</a> <span class="src-out">- Bucs On SI</span><span class="mts"><span class="mt"><span class="mt-n">Buccaneers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:18%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.si.com/nfl/buccaneers/onsi/buccaneers-biggest-strength-is-finally-becoming-their-biggest-weapon-2026">Offensive line becoming a weapon</a> <span class="src-out">- Bucs On SI</span><span class="mts"><span class="mt"><span class="mt-n">Buccaneers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:32%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://www.si.com/nfl/buccaneers/onsi/week-8-nfc-south-standings-what-are-the-buccaneers-playoff-chances-2026">NFC South standings and playoff odds</a> <span class="src-out">- Bucs On SI</span><span class="mts"><span class="mt"><span class="mt-n">Buccaneers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.si.com/nfl/buccaneers/onsi/the-good-bad-and-ugly-from-buccaneers-16-0-shutout-victory-over-the-falcons-2026">Good, bad and ugly from 16-0 shutout</a> <span class="src-out">- Bucs On SI</span><span class="mts"><span class="mt"><span class="mt-n">Buccaneers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:35%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://www.buccaneers.com/news/creating-balance-on-offense-stout-coverage-mccollum-and-parrish-bucs-blitz">Bucs Blitz: balance on offense, stout coverage</a> <span class="src-out">- Buccaneers.com</span><span class="mts"><span class="mt"><span class="mt-n">Buccaneers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:30%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.buccaneers.com/news/2026-game-preview-buccaneers-bears-week-9">Game preview: Bucs at Bears, Week 9</a> <span class="src-out">- Buccaneers.com</span><span class="mts"><span class="mt"><span class="mt-n">Buccaneers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:25%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Bears</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:25%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.tampabay.com/sports/bucs/2026/11/04/kenny-gainwell-bucky-irving-panthers-falcons-bears-jeffery-simmons-baker-mayfield/">Gainwell, Irving show Bucs what they envisioned</a> <span class="src-out">- Tampa Bay Times</span><span class="mts"><span class="mt"><span class="mt-n">Buccaneers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:30%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://thepewterplank.com/3-bold-predictions-buccaneers-bears-sunday-night-football-week-9">3 bold predictions for Bucs-Bears</a> <span class="src-out">- The Pewter Plank</span><span class="mts"><span class="mt"><span class="mt-n">Buccaneers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:30%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://thepewterplank.com/buccaneers-franchise-record-falcons-bucky-irving-kenny-gainwell">Historic rushing performance left Falcons in dust</a> <span class="src-out">- The Pewter Plank</span><span class="mts"><span class="mt"><span class="mt-n">Buccaneers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:38%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://www.buccaneers.com/news/2026-bucs-nfl-power-rankings-week-9">Bucs in the Week 9 power rankings</a> <span class="src-out">- Buccaneers.com</span><span class="mts"><span class="mt"><span class="mt-n">Bears</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:32%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://www.buccaneers.com/news/buccaneers-bears-top-storylines-key-matchups-in-week-nine">Top storylines and key matchups in Week 9</a> <span class="src-out">- Buccaneers.com</span><span class="mts"><span class="mt"><span class="mt-n">Bears</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:30%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/buccaneers-vs-bears-preview-tampa-160000168.html">Tampa Bay has a blueprint to beat Chicago under the lights</a> <span class="src-out">- AtoZ Sports (Tampa Bay), via Yahoo</span><span class="mts"><span class="mt"><span class="mt-n">Bears</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.yardbarker.com/nfl/articles/bucs_at_bears_pewter_reports_pick_6_preview/s1_17102_44515575">Pewter Report's Pick-6 preview: Bucs at Bears</a> <span class="src-out">- Pewter Report (via Yardbarker)</span><span class="mts"><span class="mt"><span class="mt-n">Bears</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:28%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.yardbarker.com/nfl/articles/pewter_reports_fab_5_bucky_irving_bucs_are_running_for_more_records/s1_17102_44524859">SR's Fab 5: Irving and Bucs running for records</a> <span class="src-out">- Pewter Report (via Yardbarker)</span><span class="mts"><span class="mt"><span class="mt-n">Bears</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:25%"></span></span><span class="mt-w">Positive</span></span></span></li></ul></div><div class="covgrp"><span class="eyebrow b">Chicago</span><ul class="refl"><li><a href="https://chicago.suntimes.com/bears/2026/11/04/chicago-bears-super-bowl-seahawks-caleb-williams-jeffery-simmons-colston-loveland-buccaneers-bucky-irving-soldier-field">Super Bowl or bust? Bears cross the Rubicon</a> <span class="src-out">- Chicago Sun-Times</span><span class="mts"><span class="mt"><span class="mt-n">Buccaneers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:5%"></span></span><span class="mt-w">Neutral</span></span><span class="mt"><span class="mt-n">Bears</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:50%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://chicago.suntimes.com/bears/2026/11/05/bears-buccaneers-sunday-night-football-picks-predictions-odds-point-spread-nfl">Sun-Times Bears predictions vs Bucs</a> <span class="src-out">- Chicago Sun-Times</span><span class="mts"><span class="mt"><span class="mt-n">Buccaneers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:38%;width:12%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://chicago.suntimes.com/nfl/2026/11/01/buccaneers-falcons-zero-completions-bears-next-opponent">Bears' Week 9 opponent completes zero passes, still wins</a> <span class="src-out">- Chicago Sun-Times</span><span class="mts"><span class="mt"><span class="mt-n">Buccaneers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:18%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/5-things-watch-chicago-bears-120000506.html">Tribune: 5 things to watch vs Bucs, plus picks</a> <span class="src-out">- Chicago Tribune</span><span class="mts"><span class="mt"><span class="mt-n">Buccaneers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Bears</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:38%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://sports.yahoo.com/articles/3-reasons-optimism-bears-face-162916603.html">Bears Wire: reasons for optimism vs Bucs</a> <span class="src-out">- Bears Wire (USA Today Network via Yahoo)</span><span class="mts"><span class="mt"><span class="mt-n">Buccaneers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:35%;width:15%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.si.com/nfl/bears/onsi/donte-whitner-picks-bucs-to-serve-caleb-williams-bears-humble-pie-in-week-9">Whitner picks Bucs to upset Bears; Bears On SI pushes back</a> <span class="src-out">- Bears On SI</span><span class="mts"><span class="mt"><span class="mt-n">Buccaneers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:40%;width:10%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Bears</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:25%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/nfl-week-9-chicago-bears-180000408.html">Windy City Gridiron: Bears game preview vs Bucs</a> <span class="src-out">- SB Nation Windy City Gridiron (via Yahoo)</span><span class="mts"><span class="mt"><span class="mt-n">Buccaneers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://chicago.suntimes.com/bears/2026/11/03/new-dt-jeffery-simmons-bears-debut-was-everything-both-sides-dreamed-of-in-34-17-win-over-seahawks">Simmons' Bears debut in 34-17 win over Seattle</a> <span class="src-out">- Chicago Sun-Times</span><span class="mts"><span class="mt"><span class="mt-n">Bears</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:48%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://chicago.suntimes.com/bears/2026/11/06/bears-qb-caleb-williams-refining-his-potential-by-embracing-simplicity-delivering-efficiency">Caleb Williams refining his game through simplicity</a> <span class="src-out">- Chicago Sun-Times</span><span class="mts"><span class="mt"><span class="mt-n">Bears</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:45%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://chicago.suntimes.com/bears/2026/11/06/bears-buccaneers-rome-odunze-wide-receiver-maniac-block-production-yards-career-year-nfl">Rome Odunze trending toward best season</a> <span class="src-out">- Chicago Sun-Times</span><span class="mts"><span class="mt"><span class="mt-n">Bears</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:40%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://chicago.suntimes.com/bears/2026/11/06/bears-report-rb-kyle-monangai-practices-for-first-time-in-more-than-a-month">Monangai practices for first time in over a month</a> <span class="src-out">- Chicago Sun-Times</span><span class="mts"><span class="mt"><span class="mt-n">Bears</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:18%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://chicago.suntimes.com/bears/2026/11/04/bears-ben-johnson-coach-masters-art-turning-page-seahawks-film-study-nfl">Ben Johnson has mastered turning the page</a> <span class="src-out">- Chicago Sun-Times</span><span class="mts"><span class="mt"><span class="mt-n">Bears</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:45%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://chicago.suntimes.com/bears/2026/11/03/bears-sehawks-dandre-swift-gets-hard-yards-3-tds-running-back-ben-johnson-monday-nfl">D'Andre Swift gets hard yards and three TDs</a> <span class="src-out">- Chicago Sun-Times</span><span class="mts"><span class="mt"><span class="mt-n">Bears</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:42%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://www.chicagobears.com/news/bears-dc-dennis-allen-expects-jeffery-simmons-to-be-gift-that-keeps-on-giving">Dennis Allen expects Simmons to keep giving</a> <span class="src-out">- ChicagoBears.com</span><span class="mts"><span class="mt"><span class="mt-n">Bears</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:45%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://www.chicagobears.com/news/bears-quick-starts-have-fueled-three-game-win-streak">Quick starts have fueled three-game win streak</a> <span class="src-out">- ChicagoBears.com</span><span class="mts"><span class="mt"><span class="mt-n">Bears</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:42%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://www.si.com/nfl/bears/onsi/bears-running-game-schedule-opponents">Bears running game needs a jolt against tough defenses</a> <span class="src-out">- Bears On SI</span><span class="mts"><span class="mt"><span class="mt-n">Bears</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:15%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.si.com/nfl/bears/onsi/bears-seahawks-dennis-allen-tyrique-stevenson-jaxon-smith-njigba">Allen regrets leaving Stevenson one-on-one with Smith-Njigba</a> <span class="src-out">- Bears On SI</span><span class="mts"><span class="mt"><span class="mt-n">Bears</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.si.com/nfl/bears/onsi/caleb-williams-ben-johnson-playbook-calls-offense">Williams says Johnson scraps plays he doesn't like</a> <span class="src-out">- Bears On SI</span><span class="mts"><span class="mt"><span class="mt-n">Bears</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:42%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://bearstalk.com/2026/11/04/bears-nfl-power-rankings-week-9-2026">Bears jump to No. 3 in NFL.com power rankings</a> <span class="src-out">- BearsTalk</span><span class="mts"><span class="mt"><span class="mt-n">Bears</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:40%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://www.si.com/nfl/bears/onsi/tom-brady-bears-week-8-seahawks-win">Brady moves Bears to No. 1 in his power rankings</a> <span class="src-out">- Bears On SI</span><span class="mts"><span class="mt"><span class="mt-n">Bears</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:48%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://www.fox32chicago.com/sports/how-watch-chicago-bears-vs-tampa-bay-buccaneers-tv-channel-live-stream-info-start-time">How to watch Bears vs. Buccaneers</a> <span class="src-out">- FOX 32 Chicago</span><span class="mts"><span class="mt"><span class="mt-n">Bears</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:42%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://ontapsportsnet.com/nfl/chicago-bears/chicago-bears-week-9-preview-vs-tampa-bay-buccaneers/">Bears Week 9 preview vs. Buccaneers</a> <span class="src-out">- On Tap Sports Net</span><span class="mts"><span class="mt"><span class="mt-n">Bears</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:40%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://www.si.com/nfl/bears/onsi/bears-backfield-another-hit-rb-placed-ir-kyle-monangai">Backup RB Zavier Scott placed on IR</a> <span class="src-out">- Bears On SI</span><span class="mts"><span class="mt"><span class="mt-n">Bears</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:5%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://www.si.com/nfl/bears/onsi/bears-biggest-roadblock-khalil-mack-trade-not-chargers-after-all">Biggest roadblock to a Khalil Mack reunion may be Mack himself</a> <span class="src-out">- Bears On SI</span><span class="mts"><span class="mt"><span class="mt-n">Bears</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:10%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.si.com/nfl/bears/onsi/did-the-bears-get-a-steal-in-jeffery-simmons-other-teams-say-they-would-have-paid-more">Did the Bears get a steal in Simmons?</a> <span class="src-out">- Bears On SI</span><span class="mts"><span class="mt"><span class="mt-n">Bears</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:40%"></span></span><span class="mt-w">Glowing</span></span></span></li></ul></div><div class="covgrp"><span class="eyebrow nat">National</span><ul class="refl"><li><a href="https://www.wusf.org/sports/2026-11-01/bucs-run-through-rain-for-324-yards-ground-falcons-16-0-without-completing-a-pass">AP: Bucs run for 324, beat Falcons 16-0 without a completion</a> <span class="src-out">- Associated Press (via WUSF)</span><span class="mts"><span class="mt"><span class="mt-n">Buccaneers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:32%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://athlonsports.com/nfl/tampa-bay-buccaneers/baker-mayfield-bucky-irving-kenny-gainwell-buccaneers-falcons-324">Mayfield 0-for-3, Irving and Gainwell power record 324</a> <span class="src-out">- Athlon Sports</span><span class="mts"><span class="mt"><span class="mt-n">Buccaneers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:28%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://athlonsports.com/nfl/tampa-bay-buccaneers/tampa-bay-buccaneers-bucky-irving-kenneth-gainwell-chicago-bears-run-defense">Bucs' ground game faces its toughest test</a> <span class="src-out">- Athlon Sports</span><span class="mts"><span class="mt"><span class="mt-n">Buccaneers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.yardbarker.com/nfl/articles/espn_nfl_analyst_has_high_hopes_for_buccaneers_rb_bucky_irving/s1_13132_44510792">ESPN's Solak: Bucs' run game could carry them to NFC South title</a> <span class="src-out">- Yardbarker</span><span class="mts"><span class="mt"><span class="mt-n">Buccaneers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:30%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.cbssports.com/nfl/news/nfl-week-9-picks-odds-best-bets-expert-picks/">CBS: Bears beat down Bucs (Week 9 expert picks)</a> <span class="src-out">- CBS Sports</span><span class="mts"><span class="mt"><span class="mt-n">Buccaneers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:30%;width:20%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.si.com/betting/buccaneers-vs-bears-prediction-odds-spread-injuries-trends-for-nfl-week-9-01m6hsqswvbd">SI Betting: Bucs +220 vs Bears</a> <span class="src-out">- Sports Illustrated</span><span class="mts"><span class="mt"><span class="mt-n">Buccaneers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:10%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://clutchpoints.com/nfl/nfl-stories/buccaneers-vs-bears-bold-predictions-for-nfl-week-9">ClutchPoints bold predictions: Bears 34, Bucs 20</a> <span class="src-out">- ClutchPoints</span><span class="mts"><span class="mt"><span class="mt-n">Buccaneers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:40%;width:10%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.fanduel.com/research/bears-vs-buccaneers-predictions-odds-picks-best-bets-for-nfl-week-9-2026">FanDuel Research: Bears vs Bucs picks</a> <span class="src-out">- FanDuel Research</span><span class="mts"><span class="mt"><span class="mt-n">Buccaneers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://www.nfl.com/news/nfl-power-rankings-week-9-2026-nfl-season">NFL Power Rankings Week 9: Bears vault into top three</a> <span class="src-out">- NFL.com</span><span class="mts"><span class="mt"><span class="mt-n">Bears</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:42%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://www.wftv.com/sports/caleb-williams/53RBHR525M6OVNWMWZUFGTFR5U/?outputType=amp">Williams, Simmons lead Bears past Seahawks 34-17</a> <span class="src-out">- Associated Press</span><span class="mts"><span class="mt"><span class="mt-n">Bears</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:45%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://newsweek.com/sports/nfl/bears-qb-caleb-williams-reveals-jeffery-simmons-nickname-after-seahawks-win-12657056">Williams reveals Simmons nickname after Seahawks win</a> <span class="src-out">- Newsweek</span><span class="mts"><span class="mt"><span class="mt-n">Bears</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:45%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://sports.yahoo.com/articles/nfl-power-rankings-roundup-where-143216812.html">Where the Bears rank in Week 9 power rankings roundup</a> <span class="src-out">- Bears Wire (USA Today Sports Media Group, via Yahoo)</span><span class="mts"><span class="mt"><span class="mt-n">Bears</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:40%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://sports.yahoo.com/articles/game-wrecker-baker-mayfield-says-165314629.html">Mayfield: Bucs must know where Simmons is at all times</a> <span class="src-out">- Athlon Sports (via Yahoo)</span><span class="mts"><span class="mt"><span class="mt-n">Bears</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:25%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://clutchpoints.com/nfl/nfl-stories/buccaneers-defense-best-nfl-time-ultimate-test-bears">Bucs' defense faces major test vs. Bears</a> <span class="src-out">- ClutchPoints</span><span class="mts"><span class="mt"><span class="mt-n">Bears</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:30%"></span></span><span class="mt-w">Positive</span></span></span></li></ul></div>
+  </div></details>
+</section>
+
+<footer>
+  <span class="eyebrow">Fodder Sports · pilot</span>
+  <p>Summaries are written in our own words from the coverage listed above. Odds from <a href="https://www.espn.com/nfl/story/_/id/50381724/week-9-picks-predictions-schedule-fantasy-odds-2026">ESPN's Week 9 picks and odds report</a>. Not affiliated with the NFL, the Tampa Bay Buccaneers, or the Chicago Bears.</p>
+</footer>
+
+</div>
+<script>try{if('scrollRestoration' in history)history.scrollRestoration='manual';if(!location.hash)window.scrollTo(0,0);}catch(e){}</script>
+</body></html>

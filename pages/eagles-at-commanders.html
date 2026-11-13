@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Fodder Sports Eagles at Commanders</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#f3f4f6; --surface:#ffffff; --ink:#151a24; --muted:#5b6474; --line:#d9dde4;
+  --nat:#4a5568; --nat-soft:#e6e9ee;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f131a; --surface:#171c25; --ink:#e7eaf0; --muted:#9aa3b2; --line:#2a3140;
+  --nat:#a7b1c2; --nat-soft:#222935; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f131a; --surface:#171c25; --ink:#e7eaf0; --muted:#9aa3b2; --line:#2a3140;
+  --nat:#a7b1c2; --nat-soft:#222935; color-scheme:dark}
+
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 56px}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
+a{color:inherit;text-decoration-color:var(--muted);text-underline-offset:2px}
+a:hover{text-decoration-color:currentColor}
+a:focus-visible{outline:2px solid var(--a);outline-offset:2px;border-radius:2px}
+h1,h2,h3{font-family:var(--display);font-weight:700;text-wrap:balance;margin:0;letter-spacing:.01em}
+h1{font-size:clamp(1.9rem,5vw,2.6rem);line-height:1.05}
+h2{font-size:1.5rem;text-transform:uppercase}
+h3{font-size:1.05rem;text-transform:uppercase;letter-spacing:.05em}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.a{color:var(--a)} .b{color:var(--b)} .nat{color:var(--nat)}
+section{display:flex;flex-direction:column;gap:14px}
+.note{font-size:.88rem;color:var(--muted)}
+ul.bul{margin:0;padding-left:1.15em;display:flex;flex-direction:column;gap:10px}
+ul.bul li::marker{color:var(--muted)}
+.dek{font-size:1.1rem;color:var(--muted)}
+
+.score{display:flex;align-items:stretch;border:1px solid var(--line);background:var(--surface)}
+.score .side{flex:1;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;min-width:0}
+.score .side + .side{border-left:1px solid var(--line)}
+.score .nm{font-family:var(--display);font-size:1.5rem;font-weight:700;text-transform:uppercase;line-height:1}
+.score .nm small{display:block;font-family:var(--mono);font-size:.72rem;font-weight:400;letter-spacing:.08em;color:var(--muted);margin-top:4px;text-transform:none}
+.score .pts{font-family:var(--display);font-size:2.6rem;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.score .lose .pts{opacity:.5}
+.score .meta{font-family:var(--mono);font-size:.8rem;color:var(--muted);text-align:right}
+
+.summary{background:var(--surface);border:1px solid var(--line);padding:22px 24px;display:flex;flex-direction:column;gap:14px}
+.views{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line)}
+.view{padding:18px 22px;display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--line)}
+.view:first-child{border-top:0}
+
+.tally{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.tally div{background:var(--surface);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.tally .big{font-family:var(--display);font-size:2rem;font-weight:700;line-height:1}
+
+.tbl-wrap{overflow-x:auto}
+table.t{width:100%;border-collapse:collapse;font-size:.92rem;min-width:480px}
+.t th{font-family:var(--mono);font-weight:500;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:8px 10px 8px 0;border-bottom:2px solid var(--ink)}
+.t td{padding:8px 10px 8px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.t td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap;font-size:.85rem}
+
+.coverage{background:var(--surface);border:1px solid var(--line);padding:18px 22px;display:flex;flex-direction:column;gap:16px}
+.covgrp{display:flex;flex-direction:column;gap:6px}
+.covgrp ul{margin:0;padding-left:1.1em;font-size:.88rem;display:flex;flex-direction:column;gap:4px}
+
+/* Sentiment: diverging bars, center = neutral */
+.sent{display:flex;flex-direction:column;gap:18px}
+.steam{display:flex;flex-direction:column;gap:8px}
+.srow{display:grid;grid-template-columns:110px 1fr 88px;align-items:center;gap:10px;font-size:.85rem}
+.srow .lbl{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;color:var(--muted)}
+.srow .val{font-family:var(--mono);font-size:.74rem;text-align:right;color:var(--muted)}
+.track.nocov{background:repeating-linear-gradient(45deg,var(--nat-soft) 0 6px,transparent 6px 12px)}
+.track.nocov::after{display:none}
+.track{position:relative;height:12px;background:var(--nat-soft);border-radius:6px}
+.track::after{content:"";position:absolute;left:50%;top:-3px;bottom:-3px;width:2px;background:var(--muted);transform:translateX(-1px)}
+.fill{position:absolute;top:0;bottom:0;border-radius:6px}
+.fill.pos{left:50%} .fill.neg{right:50%}
+.f-a{background:var(--a)} .f-b{background:var(--b)} .f-n{background:var(--nat)}
+.scale{display:grid;grid-template-columns:110px 1fr 88px;gap:10px;font-family:var(--mono);font-size:.68rem;color:var(--muted)}
+.scale span:nth-child(2){display:flex;justify-content:space-between}
+
+.grade{font-family:var(--display);font-weight:700;font-size:1.15rem}
+footer{border-top:1px solid var(--line);padding-top:18px;font-size:.85rem;color:var(--muted);display:flex;flex-direction:column;gap:8px}
+
+@media (max-width:560px){
+  .score{flex-direction:column}
+  .score .side + .side{border-left:0;border-top:1px solid var(--line)}
+  .tally{grid-template-columns:1fr}
+  .summary,.view,.coverage{padding-left:16px;padding-right:16px}
+  .srow,.scale{grid-template-columns:80px 1fr 76px}
+}
+
+.trend{margin:4px 0 0;font-size:.86rem}.trend b{font-weight:700}.trend.up span{color:#13803a}.trend.down span{color:#c81e1e}.trend.steady span,.trend.new span{color:var(--muted)}
+@media (prefers-color-scheme:dark){.trend.up span{color:#5fd38a}.trend.down span{color:#ff7b7b}}
+
+:root{--a:#00606b;--b:#7a1a2e}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--a:#4fb3bf;--b:#e0627a}}
+:root[data-theme="dark"]{--a:#4fb3bf;--b:#e0627a}
+
+.tlink{color:inherit;text-decoration:none;border-bottom:1px dotted currentColor}
+.tlink:hover{border-bottom-style:solid}
+
+.refjump{margin:6px 0 0} .refjump a{font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.scale-note{font-size:.72rem !important;line-height:1.45}
+.refl li{margin-bottom:8px}
+.mts{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:3px}
+.mt{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.mt-bar{position:relative;display:inline-block;width:64px;height:7px;background:var(--line);border-radius:2px}
+.mt-c{position:absolute;left:50%;top:-2px;bottom:-2px;width:1px;background:var(--muted)}
+.mt-f{position:absolute;top:0;bottom:0;border-radius:2px}
+details.srcs summary{font-size:.74rem !important}
+
+.refs .inner-src{display:flex;flex-direction:column;gap:14px;max-height:340px;overflow-y:auto;overscroll-behavior:contain}
+footer p{font-size:.72rem;line-height:1.45}
+.refjump a{font-family:var(--mono);font-size:.8rem;letter-spacing:.04em;text-transform:uppercase}
+.avg td.n{white-space:nowrap}
+
+details.srcs{border:1px solid var(--line);border-radius:2px}
+details.srcs summary{cursor:pointer;padding:10px 12px;font-family:var(--mono);font-size:.82rem;letter-spacing:.05em;text-transform:uppercase}
+details.srcs[open] summary{border-bottom:1px solid var(--line)}
+details.srcs .inner-src{padding:12px;display:flex;flex-direction:column;gap:14px}
+.src-out{color:var(--muted)}
+.eyebrow{font-size:.8rem} .note{font-size:.8rem;line-height:1.5} .srow .lbl{font-size:.8rem} .srow .val{font-size:.8rem;color:var(--ink)}
+</style>
+</head><body>
+<div class="wrap">
+<a href="./" style="align-self:flex-start;display:inline-block;font-family:var(--mono);font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;background:none;border:1px solid var(--ink);color:var(--ink);padding:7px 11px;border-radius:2px">&larr; Back to Fodder Sports</a>
+
+<header style="display:flex;flex-direction:column;gap:16px">
+  <span class="eyebrow">Fodder Sports · NFL Week 8 · Matchup</span>
+  <div class="score" role="img" aria-label="Philadelphia Eagles, 2 and 5, at Washington Commanders, 1 and 4 and 1">
+    <div class="side"><span class="nm a"><a class="tlink" href="./#team-phi">Eagles</a><small>2–5 · away</small></span><span class="meta">Sun, Nov. 1<br>8:20 p.m. ET</span></div>
+    <div class="side"><span class="nm b"><a class="tlink" href="./#team-was">Commanders</a><small>1–4–1 · home</small></span><span class="meta">Northwest Stadium<br>NBC</span></div>
+  </div>
+  <h1>Two Hot Seats Meet on Sunday Night as Eagles and Commanders Collide</h1>
+  <p class="dek">The 2-5 Eagles, on a five-game skid without Jalen Hurts, visit the 1-4-1 Commanders in a game both coaches badly need.</p>
+</header>
+
+<section class="coverage" aria-labelledby="cov-h">
+  <h2 id="cov-h">How the coverage feels</h2>
+  <p class="note">How each market feels about each team right now, read from the week's coverage. This is about the team vibes, not the odds of winning this game.</p>
+  <div class="sent">
+    <div class="steam">
+      <h3 class="a"><a class="tlink" href="./#team-phi">Eagles</a></h3>
+      <div class="srow"><span class="lbl">Philadelphia</span><div class="track"><span class="fill neg f-a" style="width:12.5%"></span></div><span class="val">Critical</span></div>
+      <div class="srow"><span class="lbl">Washington</span><div class="track"><span class="fill neg f-b" style="width:27.5%"></span></div><span class="val">Critical</span></div>
+      <div class="srow"><span class="lbl">National</span><div class="track"><span class="fill neg f-n" style="width:25.0%"></span></div><span class="val">Critical</span></div>
+      <p class="trend new"><span aria-hidden="true">•</span> <b>First reading.</b> Hurts' season-ending blood clots and a defense that collapsed against Dallas have Philadelphia's coverage talking about selling, not saving, the season.</p>
+    </div>
+    <div class="steam">
+      <h3 class="b"><a class="tlink" href="./#team-was">Commanders</a></h3>
+      <div class="srow"><span class="lbl">Washington</span><div class="track"><span class="fill neg f-b" style="width:5.0%"></span></div><span class="val">Neutral</span></div>
+      <div class="srow"><span class="lbl">Philadelphia</span><div class="track"><span class="fill neg f-a" style="width:10.0%"></span></div><span class="val">Neutral</span></div>
+      <div class="srow"><span class="lbl">National</span><div class="track"><span class="fill neg f-n" style="width:5.0%"></span></div><span class="val">Neutral</span></div>
+      <p class="trend new"><span aria-hidden="true">•</span> <b>First reading.</b> A 1-4-1 start, mounting injuries on the defensive line, and pressure on Quinn have Washington treating Sunday as a must-win.</p>
+    </div>
+    <div class="scale"><span></span><span><span>Harsh</span><span>Neutral</span><span>Glowing</span></span><span></span></div><p class="note scale-note">Each bar shows the overall tone of that group&#39;s coverage toward the team. Bars to the right of center are favorable, bars to the left are critical, and longer bars mean stronger tone. &ldquo;No coverage&rdquo; means that group published nothing about the team in this window.</p>
+  </div>
+  <p>Philadelphia coverage is grim: with Hurts out for the season and the defense collapsing, the market talks about selling at the deadline and questions Nick Sirianni's grip on the team. Washington's media is just as anxious about its own club, calling this a must-win for Dan Quinn, while describing the Eagles as wounded and beatable. National coverage is down on both, with the Eagles drawing sharper criticism for a defense that has fallen apart and the Commanders seen as a team wasting Jayden Daniels' early years.</p>
+  <p class="refjump"><a href="#refs">See all the articles we referenced for this summary</a></p>
+</section>
+
+<section class="summary" aria-labelledby="sum-h">
+  <h2 id="sum-h">The summary</h2>
+  <ul class="bul">
+      <li>The Eagles are 2-5 and have lost five straight, their longest skid since 2016, after a 38-21 Monday night loss at Dallas. They won the Week 1 meeting 24-22.</li>
+      <li>Eagles quarterback Jalen Hurts is out for the season with blood clots, and quarterback Tanner McKee makes his third straight start. The NFL and the players' union are reviewing how the diagnosis was handled.</li>
+      <li>The Commanders are 1-4-1 coming off a bye. Quarterback Jayden Daniels is back from a left elbow injury but is 0-7-1 in his last eight starts.</li>
+      <li>Philadelphia's defense allowed 204 rushing yards to Dallas with no sacks, tackles for loss, or takeaways. It has eight sacks and three takeaways all season.</li>
+      <li>Washington allows touchdowns on 81.8% of red zone trips, worst in the NFL, but is plus-six in turnovers.</li>
+      <li>Both teams are short-handed: the Eagles are without wide receivers DeVonta Smith and Dontayvion Wicks, while the Commanders lost defensive tackles Daron Payne and Javon Kinlaw and are without wide receiver Terry McLaurin for the season. Eagles running back Saquon Barkley is expected to play through hamstring and back injuries.</li>
+  </ul>
+</section>
+
+<section class="views" aria-label="What each side is saying">
+  <div class="view">
+    <h2 class="a">What the Philadelphia media is saying about the Eagles</h2>
+    <ul class="bul">
+      <li>Gloomy. Philadelphia's media treats 2026 as a lost season and talks openly about selling at the Nov. 10 trade deadline, with cornerback Riq Woolen's name in rumors.</li>
+      <li>The defense is the biggest disappointment: Dallas ran for 204 yards, defensive coordinator Vic Fangio said he 'didn't have them ready,' and defensive tackle Jalen Carter called his own play 'trash.'</li>
+      <li>The offense ranks 31st in yards with McKee, a thin receiver group, and a backfield where five running backs have been hurt. Barkley playing is seen by some as a desperation move.</li>
+      <li>There are bright spots: rookie right tackle Markel Bell has not allowed a sack since his debut, and the locker room insists nobody is quitting.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="b">What the Washington media is saying about the Eagles</h2>
+    <ul class="bul">
+      <li>Washington's media sees a vulnerable, wounded Eagles team and calls this the best chance the Commanders will get to save their season.</li>
+      <li>It points to the Eagles' second-half scoring drought (37 points after halftime in seven games) and a run defense that ranks last in EPA per rush.</li>
+      <li>Commanders cornerback Amik Robertson guaranteed a win, and the coverage frames a home loss to a 2-5 team as unthinkable.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="b">What the Washington media is saying about the Commanders</h2>
+    <ul class="bul">
+      <li>Anxious. Washington coverage calls Sunday a must-win and a possible last straw for Quinn, with the team 6-16-1 since its 2024 NFC Championship run.</li>
+      <li>The worries are a defense allowing 28.7 points per game (31st), the league's worst third-down offense, and new injuries to defensive tackles Payne and Kinlaw, plus left tackle Laremy Tunsil's torn triceps.</li>
+      <li>Hope rests on Daniels, who has no turnovers this season, along with rookie linebacker Sonny Styles and rookie wide receiver Antonio Williams stepping in for McLaurin.</li>
+      <li>The bye brought changes: a simplified offense, Steve Wilks added to help with defensive game plans, and a push to play all four quarters.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="a">What the Philadelphia media is saying about the Commanders</h2>
+    <ul class="bul">
+      <li>Philadelphia's media is dismissive of Washington, calling the roster thin around Daniels and the season a waste of his rookie-contract years.</li>
+      <li>It sees openings in a pass defense that ranks 28th, a red zone defense that ranks last, and a line missing Tunsil.</li>
+      <li>It still respects Daniels as the one thing Washington has that the Eagles do not: a healthy franchise quarterback.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="nat">What everyone else is saying about this game</h2>
+    <ul class="bul">
+      <li><b class="a">Eagles:</b> National coverage calls the Eagles' defense one of the league's biggest letdowns, noting its first game without a sack, takeaway, or tackle for loss since 2012.</li>
+      <li><b class="a">Eagles:</b> Sirianni's handling of Barkley's return from a hamstring strain drew criticism, with questions about whether the trade deadline played a role.</li>
+      <li><b class="b">Commanders:</b> Nationally, Washington is seen as squandering Daniels' strong play, with Quinn's seat among the hottest in the league.</li>
+      <li><b class="b">Commanders:</b> Washington's run game, led by Daniels' 8.5 yards per carry, and its plus-six turnover margin are the strengths national previews highlight.</li>
+    </ul>
+  </div>
+</section>
+
+<section aria-labelledby="inj-h">
+  <h2 id="inj-h">Who's out</h2>
+  <ul class="bul">
+    <li><b class="a">Out for season:</b> Eagles quarterback Jalen Hurts (blood clots). On injured reserve.</li>
+    <li><b class="a">Out:</b> Eagles wide receivers DeVonta Smith (hamstring), Dontayvion Wicks (ankle), and Britain Covey (knee), linebacker Jihaad Campbell (hamstring/quad), and cornerback Jonathan Jones (hamstring).</li>
+    <li><b class="a">Questionable:</b> Eagles cornerback Jakorian Bennett (knee). Must be activated from injured reserve to play.</li>
+    <li><b class="a">In:</b> Eagles running back Saquon Barkley (hamstring/back) has no game status and is expected to play.</li>
+    <li><b class="b">Out for season:</b> Commanders wide receiver Terry McLaurin (torn patellar tendon) and left tackle Laremy Tunsil (torn triceps). Both on injured reserve.</li>
+    <li><b class="b">Out:</b> Commanders defensive tackles Daron Payne (foot) and Javon Kinlaw (knee). Payne was downgraded Friday night and is reported to have a season-ending fracture.</li>
+    <li><b class="b">Questionable:</b> Commanders defensive tackle Jer'Zhan Newton (pectoral), tight end John Bates (shoulder), and wide receiver Treylon Burks (foot). Newton must be activated from injured reserve.</li>
+  </ul>
+  <p class="note">Game statuses from the teams' official injury reports, Friday, Oct. 30. Payne's downgrade to out was reported Friday night after Commanders.com listed him as questionable, and Bennett's questionable tag comes from the Friday report as relayed by Philadelphia outlets.</p>
+</section>
+
+<section aria-labelledby="line-h">
+  <h2 id="line-h">The line and the history</h2>
+  <div class="tbl-wrap">
+    <table class="t">
+      <thead><tr><th>Line</th><th>Spread</th><th>Moneyline</th><th>Total</th></tr></thead>
+      <tbody><tr><td>FanDuel, Oct. 26</td><td class="n">WAS −3.5</td><td class="n">WAS −200 / PHI +168</td><td class="n">40.5</td></tr><tr><td>DraftKings, Oct. 28 (ESPN)</td><td class="n">WAS −5.5</td><td class="n">WAS −238 / PHI +195</td><td class="n">40.5</td></tr><tr><td>DraftKings, Oct. 29</td><td class="n">WAS −6</td><td class="n">WAS −230 / PHI +190</td><td class="n">40.5</td></tr></tbody>
+    </table>
+  </div>
+  <ul class="bul">
+    <li>Philadelphia won the Week 1 meeting 24–22.</li>
+  </ul>
+  <h3>Who the public is picking</h3>
+  <ul class="bul">
+    <li><b>The media:</b> 85% of the published score predictions we found take the Commanders. The average is Commanders 23, Eagles 17. Bleacher Report's seven-person expert panel has 57% on the Eagles.</li>
+    <li><b>The betting public:</b> As of Friday, one sportsbook's splits showed 47% of spread bets on the Eagles at +6 and 74% of bets on the over.</li>
+  </ul>
+  <div class="tbl-wrap avg">
+    <table class="t">
+      <thead><tr><th>Whose picks</th><th>Pick the Eagles</th><th>Pick the Commanders</th><th>Average score</th></tr></thead>
+      <tbody><tr><td>National media</td><td class="n">15%</td><td class="n">85%</td><td class="n">Commanders 23, Eagles 17</td></tr><tr><td><b>All media</b></td><td class="n">15%</td><td class="n">85%</td><td class="n"><b>Commanders 23, Eagles 17</b></td></tr></tbody>
+    </table>
+  </div>
+  <p class="note">Share of published score predictions picking each team, and the average predicted score. Each pick is tracked for our predictor standings.</p>
+</section>
+
+<section id="refs" class="refs" aria-labelledby="refs-h">
+  <h2 id="refs-h">References</h2>
+  <details class="srcs"><summary>Show the articles behind this page</summary><div class="inner-src">
+  <p class="note">Each bar shows that article's tone toward the team named next to it.</p>
+  <div class="covgrp"><span class="eyebrow a">Philadelphia</span><ul class="refl"><li><a href="https://www.philadelphiaeagles.com/news/game-preview-eagles-at-commanders-6-storylines-to-follow-tanner-mckee-jayden-daniels-2026-nfl-week-8-sunday-night-football">Spadaro game preview: 6 storylines at Commanders</a> <span class="src-out">- PhiladelphiaEagles.com</span><span class="mts"><span class="mt"><span class="mt-n">Eagles</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:15%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Commanders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:18%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.philadelphiaeagles.com/news/saquon-barkley-landon-dickerson-as-adversity-hits-new-voices-emerge-in-eagles-locker-room">Spadaro: As adversity hits, new voices emerge in the locker room</a> <span class="src-out">- PhiladelphiaEagles.com</span><span class="mts"><span class="mt"><span class="mt-n">Eagles</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:20%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.philadelphiaeagles.com/news/eagles-at-commanders-injury-report-2026-nfl-week-8-sunday-night-football-saquon-barkley-devonta-smith">Eagles at Commanders injury report</a> <span class="src-out">- PhiladelphiaEagles.com</span><span class="mts"><span class="mt"><span class="mt-n">Eagles</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://www.nbcsportsphiladelphia.com/nfl/philadelphia-eagles/eagles-commanders-matchups-to-watch-in-week-8/762754/">Eagles-Commanders matchups to watch</a> <span class="src-out">- NBC Sports Philadelphia</span><span class="mts"><span class="mt"><span class="mt-n">Eagles</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:30%;width:20%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Commanders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:42%;width:8%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.nbcsportsphiladelphia.com/nfl/philadelphia-eagles/jaydon-blue-saquon-barkley-eagles-running-backs-injuries/762824/">With five RBs hurt, Jaydon Blue may get his turn</a> <span class="src-out">- NBC Sports Philadelphia</span><span class="mts"><span class="mt"><span class="mt-n">Eagles</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:5%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://www.nbcsportsphiladelphia.com/nfl/philadelphia-eagles/markel-bell-eagles-right-tackle-lane-johnson-jordan-mailata/762816/">Rookie Markel Bell finding his way at right tackle</a> <span class="src-out">- NBC Sports Philadelphia</span><span class="mts"><span class="mt"><span class="mt-n">Eagles</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:20%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.nbcsportsphiladelphia.com/nfl/philadelphia-eagles/riq-woolen-deals-trade-rumors-nfl-deadline-value-seahawks/762693/">How Riq Woolen handles trade rumors</a> <span class="src-out">- NBC Sports Philadelphia</span><span class="mts"><span class="mt"><span class="mt-n">Eagles</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:40%;width:10%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.inquirer.com/eagles/eagles-commanders-nfl-week-8-sunday-night-football-nfc-east-20261031.html">Eagles vs. Commanders: predictions, odds, injuries and what everyone is talking about</a> <span class="src-out">- Philadelphia Inquirer</span><span class="mts"><span class="mt"><span class="mt-n">Eagles</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:20%;width:30%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Commanders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://www.inquirer.com/eagles/week-8-predictions-commanders-jayden-daniels-tanner-mckee-20261030.html">Inquirer writers pick Eagles vs. Commanders</a> <span class="src-out">- Philadelphia Inquirer</span><span class="mts"><span class="mt"><span class="mt-n">Eagles</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:28%;width:22%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Commanders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://www.inquirer.com/eagles/eagles-commanders-week-8-odds-prop-bets-20261029.html">Eagles open as underdogs; Super Bowl odds plummet</a> <span class="src-out">- Philadelphia Inquirer</span><span class="mts"><span class="mt"><span class="mt-n">Eagles</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:22%;width:28%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.inquirer.com/eagles/nfl-week-8-power-rankings-roundup-commanders-20261027.html">Week 8 power rankings roundup: Eagles keep falling</a> <span class="src-out">- Philadelphia Inquirer</span><span class="mts"><span class="mt"><span class="mt-n">Eagles</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:12%;width:38%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.fox29.com/news/eagles-drop-fifth-straight-loss-dallas-cowboys-longest-winless-streak-since-2016">Eagles drop fifth straight, longest skid since 2016</a> <span class="src-out">- FOX 29 Philadelphia (AP story)</span><span class="mts"><span class="mt"><span class="mt-n">Eagles</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:12%;width:38%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.fox29.com/sports/jalen-hurts-blood-clot-diagnosis-sparks-joint-review-nfl-players-union-report">NFL and NFLPA open joint review of Hurts blood-clot handling</a> <span class="src-out">- FOX 29 Philadelphia</span><span class="mts"><span class="mt"><span class="mt-n">Eagles</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:40%;width:10%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://sports.yahoo.com/articles/saquon-barkley-play-vs-commanders-195428413.html">Saquon Barkley to play; five others ruled out</a> <span class="src-out">- Eagles Wire (USA TODAY)</span><span class="mts"><span class="mt"><span class="mt-n">Eagles</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:10%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/five-eagles-under-pressure-deliver-182236734.html">Five Eagles under pressure to deliver vs. Commanders</a> <span class="src-out">- Eagles Wire (USA TODAY)</span><span class="mts"><span class="mt"><span class="mt-n">Eagles</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:35%;width:15%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://sports.yahoo.com/articles/eagles-vs-commanders-edge-position-170820916.html">Eagles vs. Commanders: who has the edge at each position</a> <span class="src-out">- Eagles Wire (USA TODAY)</span><span class="mts"><span class="mt"><span class="mt-n">Eagles</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span><span class="mt"><span class="mt-n">Commanders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:12%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/eagles-vs-commanders-7-things-170048154.html">Eagles vs. Commanders: 7 things to know</a> <span class="src-out">- Eagles Wire (USA TODAY)</span><span class="mts"><span class="mt"><span class="mt-n">Eagles</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:5%"></span></span><span class="mt-w">Neutral</span></span><span class="mt"><span class="mt-n">Commanders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:38%;width:12%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.phillyvoice.com/eagles-commanders-week-8-injury-report-analysis-2026/">Eagles-Commanders Week 8 injury report, with analysis</a> <span class="src-out">- PhillyVoice</span><span class="mts"><span class="mt"><span class="mt-n">Eagles</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:42%;width:8%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Commanders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:32%;width:18%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.phillyvoice.com/eagles-commanders-preview-5-things-watch-2026-week-8-jayden-daniels/">Eagles-Commanders preview: 5 things to watch</a> <span class="src-out">- PhillyVoice</span><span class="mts"><span class="mt"><span class="mt-n">Eagles</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:5%;width:45%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Commanders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:10%;width:40%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://sports.yahoo.com/articles/eagles-jalen-carter-calls-play-104417747.html">Jalen Carter calls his play 'trash'; he wasn't the only one</a> <span class="src-out">- Delaware Online / The News Journal</span><span class="mts"><span class="mt"><span class="mt-n">Eagles</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:20%;width:30%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.inquirer.com/eagles/commanders-dan-quinn-eagles-battle-sunday-night-football-20261030.html">Here's what Dan Quinn and the Commanders are saying about the Eagles</a> <span class="src-out">- Philadelphia Inquirer</span><span class="mts"><span class="mt"><span class="mt-n">Commanders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:35%;width:15%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://sports.yahoo.com/articles/eagles-commanders-game-preview-5-164429419.html">Eagles at Commanders preview: 5 questions with the enemy</a> <span class="src-out">- Bleeding Green Nation (SB Nation)</span><span class="mts"><span class="mt"><span class="mt-n">Commanders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:22%;width:28%"></span></span><span class="mt-w">Critical</span></span></span></li></ul></div><div class="covgrp"><span class="eyebrow b">Washington</span><ul class="refl"><li><a href="https://www.commanders.com/news/commanders-vs-eagles-preview-week-8-2026">Commanders vs. Eagles preview: a primetime division battle</a> <span class="src-out">- Commanders.com</span><span class="mts"><span class="mt"><span class="mt-n">Eagles</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:35%;width:15%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Commanders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:5%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://www.commanders.com/news/three-keys-commanders-eagles-week-8">3 keys to Commanders vs. Eagles</a> <span class="src-out">- Commanders.com</span><span class="mts"><span class="mt"><span class="mt-n">Eagles</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:30%;width:20%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Commanders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:10%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.commanders.com/news/nfc-east-roundup-commanders-eagles-sunday-night-football">NFC East roundup: Commanders prepare for primetime</a> <span class="src-out">- Commanders.com</span><span class="mts"><span class="mt"><span class="mt-n">Eagles</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:20%;width:30%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Commanders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:10%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.si.com/nfl/commanders/onsi/commanders-eagles-week-8-running-game">The Eagles look vulnerable; Washington may not get a better chance</a> <span class="src-out">- Commanders On SI</span><span class="mts"><span class="mt"><span class="mt-n">Eagles</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:18%;width:32%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Commanders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:40%;width:10%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.si.com/nfl/commanders/onsi/commanders-eagles-second-half-defense">The Eagles have a second-half scoring problem</a> <span class="src-out">- Commanders On SI</span><span class="mts"><span class="mt"><span class="mt-n">Eagles</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:28%;width:22%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Commanders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:42%;width:8%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.si.com/nfl/commanders/onsi/commanders-eagles-week-8-rematch-nfc-east">Commanders face a different Eagles team</a> <span class="src-out">- Commanders On SI</span><span class="mts"><span class="mt"><span class="mt-n">Eagles</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:25%;width:25%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Commanders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:42%;width:8%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://riggosrag.com/amik-robertson-eagles-guarantee-puts-washington-commanders-pride-line">Amik Robertson's Eagles guarantee puts Commanders' pride on the line</a> <span class="src-out">- Riggo's Rag</span><span class="mts"><span class="mt"><span class="mt-n">Eagles</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:22%;width:28%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Commanders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://riggosrag.com/8-washington-commanders-hot-seat-entering-do-or-die-clash-against-eagles">8 Commanders on the hot seat entering do-or-die Eagles game</a> <span class="src-out">- Riggo's Rag</span><span class="mts"><span class="mt"><span class="mt-n">Eagles</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:25%;width:25%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Commanders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:32%;width:18%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://sports.yahoo.com/articles/washington-commanders-vs-philadelphia-eagles-120000997.html">Five questions with Bleeding Green Nation</a> <span class="src-out">- Hogs Haven (SB Nation)</span><span class="mts"><span class="mt"><span class="mt-n">Eagles</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:12%;width:38%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://sports.yahoo.com/articles/breaking-down-key-matchups-commanders-100000723.html">Breaking down key matchups in Commanders-Eagles rematch</a> <span class="src-out">- Hogs Haven (SB Nation)</span><span class="mts"><span class="mt"><span class="mt-n">Eagles</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:20%;width:30%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Commanders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:45%;width:5%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://sports.yahoo.com/articles/washington-commanders-vs-philadelphia-eagles-130148750.html">3 reasons for optimism vs. the Eagles</a> <span class="src-out">- Commanders Wire (USA TODAY)</span><span class="mts"><span class="mt"><span class="mt-n">Eagles</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:25%;width:25%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Commanders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:10%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/two-nfc-east-coaches-firmly-110303080.html">Two NFC East coaches firmly on the hot seat</a> <span class="src-out">- Commanders Wire (USA TODAY)</span><span class="mts"><span class="mt"><span class="mt-n">Eagles</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:25%;width:25%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Commanders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:28%;width:22%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://riggosrag.com/dan-quinn-risks-giving-washington-commanders-firing-calls-weight-eagles-loss">Quinn risks giving firing calls weight with an Eagles loss</a> <span class="src-out">- Riggo's Rag</span><span class="mts"><span class="mt"><span class="mt-n">Eagles</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:20%;width:30%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Commanders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:25%;width:25%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.commanders.com/news/dan-quinn-commanders-injury-updates-steve-wilks-eagles-game">Final thoughts: Commanders' reset after the bye</a> <span class="src-out">- Commanders.com</span><span class="mts"><span class="mt"><span class="mt-n">Commanders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:12%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.commanders.com/news/game-status-commanders-eagles-week-8">Game status: Daron Payne questionable for SNF</a> <span class="src-out">- Commanders.com</span><span class="mts"><span class="mt"><span class="mt-n">Commanders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:45%;width:5%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://www.si.com/nfl/commanders/onsi/commanders-quinn-warner-jayden-daniels-criticism">Quinn partly agrees with Kurt Warner's Daniels criticism</a> <span class="src-out">- Commanders On SI</span><span class="mts"><span class="mt"><span class="mt-n">Commanders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://www.si.com/nfl/commanders/onsi/commanders-eagles-final-injury-report-defensive-line">Commanders' final injury report takes a serious turn</a> <span class="src-out">- Commanders On SI</span><span class="mts"><span class="mt"><span class="mt-n">Commanders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:35%;width:15%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://riggosrag.com/dan-quinn-final-chance-fix-washington-commanders-culture-promised-transform">Dan Quinn's final chance to fix the culture he promised to transform</a> <span class="src-out">- Riggo's Rag</span><span class="mts"><span class="mt"><span class="mt-n">Commanders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:15%;width:35%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.si.com/nfl/commanders/onsi/commanders-nfl-power-rankings-week-8">Power rankings deliver a harsh reminder ahead of the Eagles rematch</a> <span class="src-out">- Commanders On SI</span><span class="mts"><span class="mt"><span class="mt-n">Commanders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:20%;width:30%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://sports.yahoo.com/articles/10-commanders-quotes-reveal-washington-183848198.html">10 Commanders quotes reveal what changed before the Eagles rematch</a> <span class="src-out">- Commanders On SI</span><span class="mts"><span class="mt"><span class="mt-n">Commanders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:10%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.si.com/nfl/commanders/onsi/commanders-daron-payne-barkley-eagles">Daron Payne out as Washington faces Barkley without its starting DTs</a> <span class="src-out">- Commanders On SI</span><span class="mts"><span class="mt"><span class="mt-n">Commanders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:32%;width:18%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://sports.yahoo.com/articles/commanders-rookie-wr-antonio-williams-130212420.html">Rookie WR Antonio Williams on stepping up vs. Eagles</a> <span class="src-out">- Commanders Wire (USA TODAY)</span><span class="mts"><span class="mt"><span class="mt-n">Commanders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:12%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/sunday-night-vs-eagles-either-100000748.html">Sunday night either opens the door to trade additions or slams it shut</a> <span class="src-out">- Hogs Haven (SB Nation)</span><span class="mts"><span class="mt"><span class="mt-n">Commanders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:35%;width:15%"></span></span><span class="mt-w">Mixed</span></span></span></li></ul></div><div class="covgrp"><span class="eyebrow nat">National</span><ul class="refl"><li><a href="https://espn.com/nfl/story/_/id/50312157/week-8-picks-predictions-schedule-fantasy-odds-2026">ESPN guide to every Week 8 game</a> <span class="src-out">- ESPN</span><span class="mts"><span class="mt"><span class="mt-n">Eagles</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:25%;width:25%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Commanders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:42%;width:8%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.si.com/nfl/biggest-question-every-game-week-8">The biggest question for every Week 8 game</a> <span class="src-out">- Sports Illustrated</span><span class="mts"><span class="mt"><span class="mt-n">Eagles</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:22%;width:28%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Commanders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:28%;width:22%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.si.com/betting/eagles-vs-commanders-prediction-odds-spread-injuries-trends-for-nfl-week-8-01m5zknjrzj7">Eagles vs. Commanders prediction, odds and trends</a> <span class="src-out">- Sports Illustrated</span><span class="mts"><span class="mt"><span class="mt-n">Eagles</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:38%;width:12%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Commanders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:35%;width:15%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://cbssports.com/nfl/news/commanders-vs-eagles-where-to-watch-prediction">Commanders vs. Eagles: struggling NFC East squads face off</a> <span class="src-out">- CBS Sports</span><span class="mts"><span class="mt"><span class="mt-n">Eagles</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:40%;width:10%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Commanders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:35%;width:15%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/nick-sirianni-on-saquon-barkley-we-tried-to-be-smart-with-him">Sirianni on Barkley: 'We tried to be smart with him'</a> <span class="src-out">- ProFootballTalk (NBC Sports)</span><span class="mts"><span class="mt"><span class="mt-n">Eagles</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:25%;width:25%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://heavy.com/sports/nfl/philadelphia-eagles/vic-fangio-assigns-blame-defensive-downfall/">Vic Fangio bluntly assigns blame for defensive collapse</a> <span class="src-out">- Heavy</span><span class="mts"><span class="mt"><span class="mt-n">Eagles</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:18%;width:32%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://sports.yahoo.com/articles/jalen-carter-makes-curious-admission-215840544.html">Jalen Carter makes curious admission amid defensive struggles</a> <span class="src-out">- Athlon Sports</span><span class="mts"><span class="mt"><span class="mt-n">Eagles</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:18%;width:32%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://sports.yahoo.com/articles/4-bold-predictions-commanders-showdown-170000489.html">4 bold predictions for Commanders-Eagles</a> <span class="src-out">- Athlon Sports</span><span class="mts"><span class="mt"><span class="mt-n">Eagles</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:22%;width:28%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Commanders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:20%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://heavy.com/sports/nfl/washington-commanders/historic-news-on-commanders-qb-jayden-daniels-emerges-before-eagles-game/">Historic note on Daniels emerges before Eagles game</a> <span class="src-out">- Heavy</span><span class="mts"><span class="mt"><span class="mt-n">Commanders</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:5%"></span></span><span class="mt-w">Neutral</span></span></span></li></ul></div>
+  </div></details>
+</section>
+
+<footer>
+  <span class="eyebrow">Fodder Sports · pilot</span>
+  <p>Summaries are written in our own words from the coverage listed above. Odds from <a href="https://www.espn.com/espn/betting/story/_/id/50250750/2026-nfl-week-8-schedule-odds-point-spreads-totals">ESPN's Week 8 odds report</a>. Not affiliated with the NFL, the Philadelphia Eagles, or the Washington Commanders.</p>
+</footer>
+
+</div>
+<script>try{if('scrollRestoration' in history)history.scrollRestoration='manual';if(!location.hash)window.scrollTo(0,0);}catch(e){}</script>
+</body></html>

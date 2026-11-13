@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Fodder Sports Ravens at Bills</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#f3f4f6; --surface:#ffffff; --ink:#151a24; --muted:#5b6474; --line:#d9dde4;
+  --nat:#4a5568; --nat-soft:#e6e9ee;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f131a; --surface:#171c25; --ink:#e7eaf0; --muted:#9aa3b2; --line:#2a3140;
+  --nat:#a7b1c2; --nat-soft:#222935; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f131a; --surface:#171c25; --ink:#e7eaf0; --muted:#9aa3b2; --line:#2a3140;
+  --nat:#a7b1c2; --nat-soft:#222935; color-scheme:dark}
+
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 56px}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
+a{color:inherit;text-decoration-color:var(--muted);text-underline-offset:2px}
+a:hover{text-decoration-color:currentColor}
+a:focus-visible{outline:2px solid var(--a);outline-offset:2px;border-radius:2px}
+h1,h2,h3{font-family:var(--display);font-weight:700;text-wrap:balance;margin:0;letter-spacing:.01em}
+h1{font-size:clamp(1.9rem,5vw,2.6rem);line-height:1.05}
+h2{font-size:1.5rem;text-transform:uppercase}
+h3{font-size:1.05rem;text-transform:uppercase;letter-spacing:.05em}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.a{color:var(--a)} .b{color:var(--b)} .nat{color:var(--nat)}
+section{display:flex;flex-direction:column;gap:14px}
+.note{font-size:.88rem;color:var(--muted)}
+ul.bul{margin:0;padding-left:1.15em;display:flex;flex-direction:column;gap:10px}
+ul.bul li::marker{color:var(--muted)}
+.dek{font-size:1.1rem;color:var(--muted)}
+
+.score{display:flex;align-items:stretch;border:1px solid var(--line);background:var(--surface)}
+.score .side{flex:1;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;min-width:0}
+.score .side + .side{border-left:1px solid var(--line)}
+.score .nm{font-family:var(--display);font-size:1.5rem;font-weight:700;text-transform:uppercase;line-height:1}
+.score .nm small{display:block;font-family:var(--mono);font-size:.72rem;font-weight:400;letter-spacing:.08em;color:var(--muted);margin-top:4px;text-transform:none}
+.score .pts{font-family:var(--display);font-size:2.6rem;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.score .lose .pts{opacity:.5}
+.score .meta{font-family:var(--mono);font-size:.8rem;color:var(--muted);text-align:right}
+
+.summary{background:var(--surface);border:1px solid var(--line);padding:22px 24px;display:flex;flex-direction:column;gap:14px}
+.views{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line)}
+.view{padding:18px 22px;display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--line)}
+.view:first-child{border-top:0}
+
+.tally{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.tally div{background:var(--surface);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.tally .big{font-family:var(--display);font-size:2rem;font-weight:700;line-height:1}
+
+.tbl-wrap{overflow-x:auto}
+table.t{width:100%;border-collapse:collapse;font-size:.92rem;min-width:480px}
+.t th{font-family:var(--mono);font-weight:500;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:8px 10px 8px 0;border-bottom:2px solid var(--ink)}
+.t td{padding:8px 10px 8px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.t td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap;font-size:.85rem}
+
+.coverage{background:var(--surface);border:1px solid var(--line);padding:18px 22px;display:flex;flex-direction:column;gap:16px}
+.covgrp{display:flex;flex-direction:column;gap:6px}
+.covgrp ul{margin:0;padding-left:1.1em;font-size:.88rem;display:flex;flex-direction:column;gap:4px}
+
+/* Sentiment: diverging bars, center = neutral */
+.sent{display:flex;flex-direction:column;gap:18px}
+.steam{display:flex;flex-direction:column;gap:8px}
+.srow{display:grid;grid-template-columns:110px 1fr 88px;align-items:center;gap:10px;font-size:.85rem}
+.srow .lbl{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;color:var(--muted)}
+.srow .val{font-family:var(--mono);font-size:.74rem;text-align:right;color:var(--muted)}
+.track.nocov{background:repeating-linear-gradient(45deg,var(--nat-soft) 0 6px,transparent 6px 12px)}
+.track.nocov::after{display:none}
+.track{position:relative;height:12px;background:var(--nat-soft);border-radius:6px}
+.track::after{content:"";position:absolute;left:50%;top:-3px;bottom:-3px;width:2px;background:var(--muted);transform:translateX(-1px)}
+.fill{position:absolute;top:0;bottom:0;border-radius:6px}
+.fill.pos{left:50%} .fill.neg{right:50%}
+.f-a{background:var(--a)} .f-b{background:var(--b)} .f-n{background:var(--nat)}
+.scale{display:grid;grid-template-columns:110px 1fr 88px;gap:10px;font-family:var(--mono);font-size:.68rem;color:var(--muted)}
+.scale span:nth-child(2){display:flex;justify-content:space-between}
+
+.grade{font-family:var(--display);font-weight:700;font-size:1.15rem}
+footer{border-top:1px solid var(--line);padding-top:18px;font-size:.85rem;color:var(--muted);display:flex;flex-direction:column;gap:8px}
+
+@media (max-width:560px){
+  .score{flex-direction:column}
+  .score .side + .side{border-left:0;border-top:1px solid var(--line)}
+  .tally{grid-template-columns:1fr}
+  .summary,.view,.coverage{padding-left:16px;padding-right:16px}
+  .srow,.scale{grid-template-columns:80px 1fr 76px}
+}
+
+.trend{margin:4px 0 0;font-size:.86rem}.trend b{font-weight:700}.trend.up span{color:#13803a}.trend.down span{color:#c81e1e}.trend.steady span,.trend.new span{color:var(--muted)}
+@media (prefers-color-scheme:dark){.trend.up span{color:#5fd38a}.trend.down span{color:#ff7b7b}}
+
+:root{--a:#5b2a9e;--b:#00338D}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--a:#b79cf0;--b:#8fb0ff}}
+:root[data-theme="dark"]{--a:#b79cf0;--b:#8fb0ff}
+
+.tlink{color:inherit;text-decoration:none;border-bottom:1px dotted currentColor}
+.tlink:hover{border-bottom-style:solid}
+
+.refjump{margin:6px 0 0} .refjump a{font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.scale-note{font-size:.72rem !important;line-height:1.45}
+.refl li{margin-bottom:8px}
+.mts{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:3px}
+.mt{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.mt-bar{position:relative;display:inline-block;width:64px;height:7px;background:var(--line);border-radius:2px}
+.mt-c{position:absolute;left:50%;top:-2px;bottom:-2px;width:1px;background:var(--muted)}
+.mt-f{position:absolute;top:0;bottom:0;border-radius:2px}
+details.srcs summary{font-size:.74rem !important}
+
+.refs .inner-src{display:flex;flex-direction:column;gap:14px;max-height:340px;overflow-y:auto;overscroll-behavior:contain}
+footer p{font-size:.72rem;line-height:1.45}
+.refjump a{font-family:var(--mono);font-size:.8rem;letter-spacing:.04em;text-transform:uppercase}
+.avg td.n{white-space:nowrap}
+
+details.srcs{border:1px solid var(--line);border-radius:2px}
+details.srcs summary{cursor:pointer;padding:10px 12px;font-family:var(--mono);font-size:.82rem;letter-spacing:.05em;text-transform:uppercase}
+details.srcs[open] summary{border-bottom:1px solid var(--line)}
+details.srcs .inner-src{padding:12px;display:flex;flex-direction:column;gap:14px}
+.src-out{color:var(--muted)}
+.eyebrow{font-size:.8rem} .note{font-size:.8rem;line-height:1.5} .srow .lbl{font-size:.8rem} .srow .val{font-size:.8rem;color:var(--ink)}
+</style>
+</head><body>
+<div class="wrap">
+<a href="./" style="align-self:flex-start;display:inline-block;font-family:var(--mono);font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;background:none;border:1px solid var(--ink);color:var(--ink);padding:7px 11px;border-radius:2px">&larr; Back to Fodder Sports</a>
+
+<header style="display:flex;flex-direction:column;gap:16px">
+  <span class="eyebrow">Fodder Sports · NFL Week 8 · Matchup</span>
+  <div class="score" role="img" aria-label="Baltimore Ravens, 4 and 3, at Buffalo Bills, 5 and 1">
+    <div class="side"><span class="nm a"><a class="tlink" href="./#team-bal">Ravens</a><small>4–3 · away</small></span><span class="meta">Sun, Nov. 1<br>1:00 p.m. ET</span></div>
+    <div class="side"><span class="nm b"><a class="tlink" href="./#team-buf">Bills</a><small>5–1 · home</small></span><span class="meta">Highmark Stadium<br>CBS</span></div>
+  </div>
+  <h1>Lamar Jackson Returns as Reeling Ravens Visit Rested Bills</h1>
+  <p class="dek">Baltimore gets its two-time MVP back after a historic second-half collapse, and Buffalo comes off its bye with the NFL's top-scoring offense and a leaky defense.</p>
+</header>
+
+<section class="coverage" aria-labelledby="cov-h">
+  <h2 id="cov-h">How the coverage feels</h2>
+  <p class="note">How each market feels about each team right now, read from the week's coverage. This is about the team vibes, not the odds of winning this game.</p>
+  <div class="sent">
+    <div class="steam">
+      <h3 class="a"><a class="tlink" href="./#team-bal">Ravens</a></h3>
+      <div class="srow"><span class="lbl">Baltimore</span><div class="track"><span class="fill neg f-a" style="width:7.5%"></span></div><span class="val">Neutral</span></div>
+      <div class="srow"><span class="lbl">Buffalo</span><div class="track"><span class="fill pos f-b" style="width:10.0%"></span></div><span class="val">Neutral</span></div>
+      <div class="srow"><span class="lbl">National</span><div class="track"><span class="fill neg f-n" style="width:7.5%"></span></div><span class="val">Neutral</span></div>
+      <p class="trend new"><span aria-hidden="true">•</span> <b>First reading.</b> A historic second-half collapse has Baltimore questioning its leadership and coaching, with Jackson's return the one big source of hope.</p>
+    </div>
+    <div class="steam">
+      <h3 class="b"><a class="tlink" href="./#team-buf">Bills</a></h3>
+      <div class="srow"><span class="lbl">Buffalo</span><div class="track"><span class="fill pos f-b" style="width:15.0%"></span></div><span class="val">Positive</span></div>
+      <div class="srow"><span class="lbl">Baltimore</span><div class="track"><span class="fill pos f-a" style="width:22.5%"></span></div><span class="val">Positive</span></div>
+      <div class="srow"><span class="lbl">National</span><div class="track"><span class="fill pos f-n" style="width:17.5%"></span></div><span class="val">Positive</span></div>
+      <p class="trend new"><span aria-hidden="true">•</span> <b>First reading.</b> A 5-1 start and a healthy bye have Buffalo confident in Allen and the offense, with a leaky defense the main worry.</p>
+    </div>
+    <div class="scale"><span></span><span><span>Harsh</span><span>Neutral</span><span>Glowing</span></span><span></span></div><p class="note scale-note">Each bar shows the overall tone of that group&#39;s coverage toward the team. Bars to the right of center are favorable, bars to the left are critical, and longer bars mean stronger tone. &ldquo;No coverage&rdquo; means that group published nothing about the team in this window.</p>
+  </div>
+  <p>Baltimore's media is frustrated with its own team after back-to-back division losses and a 35-0 second half against Cincinnati, and it pins most of its hope on Lamar Jackson's ankle. Buffalo's coverage feels good about the Bills, with worries centered on the defense, and it treats the Ravens with wary respect for Jackson and Derrick Henry while poking at their late-game collapses. National coverage mirrors that split: harsh on Baltimore's coaching and blown leads, and upbeat about Josh Allen and Buffalo's offense.</p>
+  <p class="refjump"><a href="#refs">See all the articles we referenced for this summary</a></p>
+</section>
+
+<section class="summary" aria-labelledby="sum-h">
+  <h2 id="sum-h">The summary</h2>
+  <ul class="bul">
+      <li>The Ravens (4-3) have lost two straight AFC North games and sit last in the division. They led Cincinnati 13-0 at halftime on Oct. 25 and lost 35-13, becoming the first team in 76 years to lead by 13 or more at the half and lose by 20 or more.</li>
+      <li>Ravens quarterback Lamar Jackson returns from a high left ankle sprain after missing three games. Baltimore went 3-1 in his starts and 1-2 without him, and he says the ankle is "bearable."</li>
+      <li>Baltimore owns the NFL's best first-half point differential (+65) and its worst after halftime (-70). The Ravens have not scored a second-half point in two straight games.</li>
+      <li>The Bills (5-1) come off their bye with the NFL's top-scoring offense at 32.8 points per game. Their only loss was 29-26 to New England in Week 4. Allen is 8-0 after a bye, and Buffalo has won its first game after the bye 11 straight seasons.</li>
+      <li>Buffalo's defense allows 28.5 points per game, third-most in the NFL, and has given up at least 29 in five of six games. Bills safety C.J. Gardner-Johnson is suspended, so safety Damar Hamlin starts.</li>
+      <li>Buffalo won the last two meetings by a combined three points, including a 41-40 comeback last season after trailing 40-25 in the fourth quarter. The Ravens have lost their last three games in Buffalo.</li>
+  </ul>
+</section>
+
+<section class="views" aria-label="What each side is saying">
+  <div class="view">
+    <h2 class="a">What the Baltimore media is saying about the Ravens</h2>
+    <ul class="bul">
+      <li>Frustrated. Baltimore coverage calls the Bengals collapse a "doom spiral" and says it is not too early for alarm, with the defense's 35-point second half called unacceptable no matter who played quarterback.</li>
+      <li>The flaws go past Jackson's absence. Baltimore's media lists the NFL's most offensive penalties (38), Ravens running back Derrick Henry going 2-for-9 on short-yardage runs, deep passes allowed at 12.8 yards per attempt, and a red-zone defense on pace for the worst mark in franchise history.</li>
+      <li>Leadership is the theme of the week. Ravens coach Jesse Minter said, "Right now, we're too much of a momentum team," Henry said, "The leaders have to lead," and players met after the loss on their own.</li>
+      <li>Jackson is the hope. He said, "The sense of urgency is extremely high," and Baltimore's media frames Buffalo as a reset game and a chance for the team's best win of the year.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="b">What the Buffalo media is saying about the Ravens</h2>
+    <ul class="bul">
+      <li>Buffalo's media respects Jackson as one of the league's elite players. Bills coach Joe Brady said, "There's a reason he's one of the best players in the world," and Hamlin called him "one of one."</li>
+      <li>It is skeptical of the Ravens as a team, calling them slumping and pointing to a league-leading 17 blown double-digit second-half leads since 2020, two of them against Buffalo.</li>
+      <li>The worry is the matchup: Henry has averaged 103.9 rushing yards against the Bills, and Buffalo's coverage says Jackson's return makes a struggling Bills secondary's job much harder.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="b">What the Buffalo media is saying about the Bills</h2>
+    <ul class="bul">
+      <li>Confident. Buffalo coverage sees a 5-1 team that used the bye to self-scout and get healthy, and Brady said the team should "not feel like everything's broken."</li>
+      <li>The offense is the pride: Allen leads the NFL with eight rushing touchdowns and is the subject of goal-line history, and Bills wide receiver Keon Coleman is catching about 80% of his targets with a team-best three touchdowns.</li>
+      <li>The worry is the defense. Bills defensive coordinator Jim Leonhard said, "We're not a very good defense at overcoming adversity in the form of penalties right now," after late collapses against the Rams and Raiders.</li>
+      <li>Health is the other storyline. Bills wide receiver DJ Moore (shoulder) and tight end Dalton Kincaid (chest) are questionable, defensive tackle Ed Oliver returns from a knee injury, and Gardner-Johnson's suspension leaves Hamlin in the lineup.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="a">What the Baltimore media is saying about the Bills</h2>
+    <ul class="bul">
+      <li>Baltimore's media sees Buffalo's offense and Allen as the biggest threat on the schedule. Ravens defensive coordinator Anthony Weaver said, "It's a big play waiting to happen," when Allen runs.</li>
+      <li>It sees openings on defense: Buffalo ranks 31st in yards allowed (386.8 per game) and 26th on third down, and gives up 12 points per game in the fourth quarter.</li>
+      <li>It also flags ball security, with Allen at eight fumbles over two seasons and Bills running back James Cook at 10 since last season.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="nat">What everyone else is saying about this game</h2>
+    <ul class="bul">
+      <li><b class="a">Ravens:</b> National coverage piles on the Bengals collapse, framing Minter's late-game decisions and the blown leads as a consistency problem that goes beyond Jackson's absence.</li>
+      <li><b class="a">Ravens:</b> Jackson's return is the national headline, with Baltimore 76-35 in his starts since 2019 against 7-14 without him.</li>
+      <li><b class="b">Bills:</b> Allen draws praise as perhaps the best goal-line runner ever, scoring on 81.1% of his carries from the 1- or 2-yard line, while national coverage flags Buffalo's defense as a real weakness.</li>
+      <li><b class="b">Bills:</b> Bills defensive back Sam Franklin Jr. had his one-game suspension reduced to a fine and can play, with Brady publicly defending him.</li>
+      <li><b class="a">Ravens:</b> The Ravens are No. 16 in our consensus power rankings, and the Bills are No. 3.</li>
+    </ul>
+  </div>
+</section>
+
+<section aria-labelledby="inj-h">
+  <h2 id="inj-h">Who's out</h2>
+  <ul class="bul">
+    <li><b class="a">Out:</b> Ravens guard Olaivavega Ioane (knee) and safety Jaylinn Hawkins (knee).</li>
+    <li><b class="a">Questionable:</b> Ravens running back Adam Randall (neck) and cornerback T.J. Tampa Jr. (knee). Tampa was activated from injured reserve on Oct. 31.</li>
+    <li><b class="a">Out for season:</b> Ravens tight end Durham Smythe.</li>
+    <li><b class="a">In:</b> Ravens quarterback Lamar Jackson (ankle) has no designation and will start after missing three games.</li>
+    <li><b class="b">Questionable:</b> Bills wide receiver DJ Moore (shoulder), tight end Dalton Kincaid (chest), cornerback Dee Alford (ankle), defensive lineman Greg Gaines (lower body), right tackle Spencer Brown (back), and outside linebacker TJ Parker (knee).</li>
+    <li><b class="b">In:</b> Bills defensive tackle Ed Oliver (knee) has no designation and is expected to play for the first time since Week 4.</li>
+  </ul>
+  <p class="note">Game statuses are from the teams' official injury reports, Friday, Oct. 30, plus the Ravens' Oct. 31 roster moves. Bills safety C.J. Gardner-Johnson is suspended, not injured.</p>
+</section>
+
+<section aria-labelledby="line-h">
+  <h2 id="line-h">The line and the history</h2>
+  <div class="tbl-wrap">
+    <table class="t">
+      <thead><tr><th>Line</th><th>Spread</th><th>Moneyline</th><th>Total</th></tr></thead>
+      <tbody><tr><td>DraftKings, Oct. 28</td><td class="n">BUF −3</td><td class="n">BUF −175 / BAL +145</td><td class="n">54.5</td></tr></tbody>
+    </table>
+  </div>
+  <h3>Who the public is picking</h3>
+  <ul class="bul">
+    <li><b>The media:</b> 92% of the published score predictions we found take the Bills. The average is Bills 33, Ravens 28. Bleacher Report's seven-person panel has 71% on the Bills.</li>
+    <li><b>The betting public:</b> As of Friday, one sportsbook's splits showed 73% of spread bets on the Bills at −3 and 75% on the over at 54.5.</li>
+  </ul>
+  <div class="tbl-wrap avg">
+    <table class="t">
+      <thead><tr><th>Whose picks</th><th>Pick the Ravens</th><th>Pick the Bills</th><th>Average score</th></tr></thead>
+      <tbody><tr><td>National media</td><td class="n">8%</td><td class="n">92%</td><td class="n">Bills 33, Ravens 28</td></tr><tr><td><b>All media</b></td><td class="n">8%</td><td class="n">92%</td><td class="n"><b>Bills 33, Ravens 28</b></td></tr></tbody>
+    </table>
+  </div>
+  <p class="note">Share of published score predictions picking each team, and the average predicted score. Each pick is tracked for our predictor standings.</p>
+</section>
+
+<section id="refs" class="refs" aria-labelledby="refs-h">
+  <h2 id="refs-h">References</h2>
+  <details class="srcs"><summary>Show the articles behind this page</summary><div class="inner-src">
+  <p class="note">Each bar shows that article's tone toward the team named next to it.</p>
+  <div class="covgrp"><span class="eyebrow a">Baltimore</span><ul class="refl"><li><a href="https://www.baltimoreravens.com/news/ravens-bengals-blowout-loss-ravens-second-half-collapse-week-7-jesse-minter-tyler-huntley-lamar-jackson-misses-third-game">The Breakdown: another second half goes wrong</a> <span class="src-out">- BaltimoreRavens.com</span><span class="mts"><span class="mt"><span class="mt-n">Ravens</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:20%;width:30%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.baltimoreravens.com/news/ravens-make-playoffs-marlon-humphrey-jakobi-lane-quentin-nelson-trade-2026">Mailbag: why the Ravens can still make the playoffs</a> <span class="src-out">- BaltimoreRavens.com</span><span class="mts"><span class="mt"><span class="mt-n">Ravens</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://www.baltimoreravens.com/news/derrick-henry-ronnie-stanley-say-ravens-leaders-must-step-forward-open-competition-to-play-right-guard-against-bills">Derrick Henry says Ravens 'leaders have to lead'</a> <span class="src-out">- BaltimoreRavens.com</span><span class="mts"><span class="mt"><span class="mt-n">Ravens</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:42%;width:8%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.baltimoreravens.com/news/ravens-bills-game-preview-lamar-jackson-returns-week-8-2026">Everything you need to know: Ravens vs. Bills</a> <span class="src-out">- BaltimoreRavens.com</span><span class="mts"><span class="mt"><span class="mt-n">Ravens</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Bills</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:25%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.baltimoreravens.com/news/lamar-jackson-urgency-extremely-high-jesse-minter-ankle-injury">Lamar Jackson says Ravens' 'urgency is extremely high'</a> <span class="src-out">- BaltimoreRavens.com</span><span class="mts"><span class="mt"><span class="mt-n">Ravens</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:12%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.baltimoreravens.com/news/lamar-jackson-ravens-bills-set-to-play-2026">Lamar Jackson set to play vs. Bills</a> <span class="src-out">- BaltimoreRavens.com</span><span class="mts"><span class="mt"><span class="mt-n">Ravens</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:20%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.baltimoreravens.com/news/ravens-look-to-reboot-with-lamar-jackson-returning-50-words-week-8-buffalo-bills">50 Words or Less: Ravens look to reboot with Jackson back</a> <span class="src-out">- BaltimoreRavens.com</span><span class="mts"><span class="mt"><span class="mt-n">Ravens</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:10%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Bills</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.thebanner.com/sports/ravens-nfl/ravens-bengals-first-half-second-half-lamar-jackson-joe-burrow-jesse-minter-defense-WQX4OAUQEFB37KTWITAV6FYAAI/">Ravens prove they are a one-half team</a> <span class="src-out">- Baltimore Banner</span><span class="mts"><span class="mt"><span class="mt-n">Ravens</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:15%;width:35%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.thebanner.com/sports/ravens-nfl/ravens-bills-film-penalties-pass-defense-lamar-jackson-derrick-henry-YXLGWEZO7JF4RH5QP3B3BNQZDI/">Ravens need Lamar back and to fix five flaws</a> <span class="src-out">- Baltimore Banner</span><span class="mts"><span class="mt"><span class="mt-n">Ravens</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:25%;width:25%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.thebanner.com/sports/ravens-nfl/ravens-jesse-minter-momentum-problem-B5Y7N23QLND5LA4SHXMWKWN4HU/">Minter says Ravens are 'too much of a momentum team'</a> <span class="src-out">- Baltimore Banner</span><span class="mts"><span class="mt"><span class="mt-n">Ravens</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:35%;width:15%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.thebanner.com/sports/ravens-nfl/ravens-bills-game-predictions-BPTENX74JVDZVIXZYUCMACU7RY/">Banner expert picks for Ravens at Bills</a> <span class="src-out">- Baltimore Banner</span><span class="mts"><span class="mt"><span class="mt-n">Ravens</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:40%;width:10%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Bills</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:20%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://foxbaltimore.com/sports/sports-unlimited/lamar-jackson-return-injury-baltimore-ravens-nfl-buffalo-bills">Lamar Jackson to return and start vs. Bills</a> <span class="src-out">- FOX45 Baltimore (WBFF)</span><span class="mts"><span class="mt"><span class="mt-n">Ravens</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:5%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://sports.yahoo.com/articles/ravens-lamar-jackson-back-lose-191916641.html">Ravens get Jackson back but lose two for Bills game</a> <span class="src-out">- Ravens Wire</span><span class="mts"><span class="mt"><span class="mt-n">Ravens</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/lamar-jackson-sends-strong-message-194541617.html">Lamar Jackson sends strong message about ankle</a> <span class="src-out">- Ravens Wire</span><span class="mts"><span class="mt"><span class="mt-n">Ravens</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:15%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://92q.com/5919023/ravens-look-for-redemption-against-bills-with-lamar-jackson-back-under-center/">Ravens look for redemption with Jackson back</a> <span class="src-out">- 92Q (Baltimore radio)</span><span class="mts"><span class="mt"><span class="mt-n">Ravens</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:10%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Bills</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.si.com/nfl/ravens/onsi/ravens-allow-35-unanswered-points-to-bengals-key-takeaways-for-a-team-on-the-brink-01m5ta6hkqb2">Ravens allow 35 unanswered: a team on the brink</a> <span class="src-out">- Ravens On SI</span><span class="mts"><span class="mt"><span class="mt-n">Ravens</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:5%;width:45%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://ebonybird.com/buffalo-bills-decade-long-post-bye-streak-presents-baltimore-ravens-with-daunting-challenge">Bills' post-bye streak a daunting challenge</a> <span class="src-out">- Ebony Bird (FanSided)</span><span class="mts"><span class="mt"><span class="mt-n">Ravens</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:35%;width:15%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Bills</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:28%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.baltimoreravens.com/news/five-things-to-know-buffalo-bills-ravens-opponent-preview-week-8">Five things to know about the Bills</a> <span class="src-out">- BaltimoreRavens.com</span><span class="mts"><span class="mt"><span class="mt-n">Bills</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span></span></li></ul></div><div class="covgrp"><span class="eyebrow b">Buffalo</span><ul class="refl"><li><a href="https://sports.yahoo.com/articles/bills-preview-return-ravens-lamar-165009538.html">Bills preview return of 'one of the best players in the world'</a> <span class="src-out">- Bills Wire</span><span class="mts"><span class="mt"><span class="mt-n">Ravens</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:30%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Bills</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:12%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.buffalobills.com/news/we-know-the-type-of-talent-they-have-the-bills-look-ahead-to-their-matchup-against-the-baltimore-ravens">Bills: 'We know the type of talent they have'</a> <span class="src-out">- BuffaloBills.com</span><span class="mts"><span class="mt"><span class="mt-n">Ravens</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:25%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Bills</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:25%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.buffalobills.com/news/top-game-storylines-for-bills-vs-ravens-week-8">Top storylines for Bills vs. Ravens</a> <span class="src-out">- BuffaloBills.com</span><span class="mts"><span class="mt"><span class="mt-n">Ravens</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:30%;width:20%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Bills</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.si.com/nfl/bills/onsi/week-8-five-key-things-to-know-about-bills-vs-ravens">Five key things to know about Bills vs. Ravens</a> <span class="src-out">- Bills On SI</span><span class="mts"><span class="mt"><span class="mt-n">Ravens</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:30%;width:20%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Bills</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:28%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.si.com/nfl/bills/onsi/opponents-will-lamar-jackson-return-vs-bills-in-week-8-buffalo-on-crash-course-to-face">Bills on crash course with Lamar Jackson</a> <span class="src-out">- Bills On SI</span><span class="mts"><span class="mt"><span class="mt-n">Ravens</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Bills</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:40%;width:10%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://buffalowdown.com/bills-face-potential-lamar-jackson-return-in-week-8-that-could-change-everything-01m5t41zc402">Bills face potential Jackson return that could change everything</a> <span class="src-out">- BuffaLowDown (FanSided)</span><span class="mts"><span class="mt"><span class="mt-n">Ravens</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Bills</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://buffalowdown.com/bills-get-final-word-on-if-lamar-jackson-is-playing-in-week-8-01m670enhnxa">Bills get final word on Jackson playing</a> <span class="src-out">- BuffaLowDown (FanSided)</span><span class="mts"><span class="mt"><span class="mt-n">Ravens</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span><span class="mt"><span class="mt-n">Bills</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:20%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://buffalowdown.com/3-massive-concerns-for-bills-heading-into-week-8-clash-vs-ravens-01m64synh24b">3 massive concerns for Bills vs. Ravens</a> <span class="src-out">- BuffaLowDown (FanSided)</span><span class="mts"><span class="mt"><span class="mt-n">Ravens</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:15%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Bills</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:10%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.buffalobills.com/news/buffalo-bills-injury-report-vs-ravens-week-8">Bills injury report vs. Ravens</a> <span class="src-out">- BuffaloBills.com</span><span class="mts"><span class="mt"><span class="mt-n">Bills</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:15%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.buffalobills.com/news/tre-davious-white-s-homecoming-tyrell-shavers-return-and-spencer-brown-s-status">Tre'Davious White's homecoming, Shavers' return, Brown's status</a> <span class="src-out">- BuffaloBills.com</span><span class="mts"><span class="mt"><span class="mt-n">Bills</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:20%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.buffalobills.com/news/bills-open-21-day-practice-window-for-tyrell-shavers-while-dj-moore-ed-oliver-spotted-at-wednesday-practice">Shavers window opens; Moore and Oliver back at practice</a> <span class="src-out">- BuffaloBills.com</span><span class="mts"><span class="mt"><span class="mt-n">Bills</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://si.com/nfl/bills/onsi/injuries-week-8-bills-friday-practice-update-questions-remain-for-dalton-kincaid-dj-moore-vs-ravens">Questions remain for Kincaid and Moore</a> <span class="src-out">- Bills On SI</span><span class="mts"><span class="mt"><span class="mt-n">Bills</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:10%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.niagara-gazette.com/sports/early-season-success-is-strengthening-trust-the-bills-have-in-keon-coleman/article_0aaaf4de-4398-447a-927f-724310bf9f73.html">Success strengthening trust in Keon Coleman</a> <span class="src-out">- Niagara Gazette</span><span class="mts"><span class="mt"><span class="mt-n">Bills</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:25%"></span></span><span class="mt-w">Positive</span></span></span></li></ul></div><div class="covgrp"><span class="eyebrow nat">National</span><ul class="refl"><li><a href="https://www.espn.com/nfl/story/_/id/50329330/ravens-qb-lamar-jackson-expected-return-vs-bills">Jackson to return for marquee Bills clash</a> <span class="src-out">- ESPN</span><span class="mts"><span class="mt"><span class="mt-n">Ravens</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:12%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.nfl.com/news/ravens-qb-lamar-jackson-ankle-play-bills-three-game-absence">Jackson (ankle) will return Sunday vs. Bills</a> <span class="src-out">- NFL.com</span><span class="mts"><span class="mt"><span class="mt-n">Ravens</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:12%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.cbssports.com/nfl/news/ravens-lamar-jackson-injury-update-bills/">Minter confirms Jackson will start vs. Bills</a> <span class="src-out">- CBS Sports</span><span class="mts"><span class="mt"><span class="mt-n">Ravens</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Bills</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:45%;width:5%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://athlonsports.com/nfl/trending/ravens-historic-collapse-bengals-loss-jesse-minter">Ravens suffer historic collapse</a> <span class="src-out">- Athlon Sports</span><span class="mts"><span class="mt"><span class="mt-n">Ravens</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:20%;width:30%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://sports.yahoo.com/articles/ravens-lamar-jackson-move-bills-150724544.html">Ravens make Lamar Jackson move before Bills game</a> <span class="src-out">- Athlon Sports</span><span class="mts"><span class="mt"><span class="mt-n">Ravens</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:10%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/jesse-minter-puts-ravens-notice-014600926.html">Jesse Minter puts Ravens on notice</a> <span class="src-out">- Heavy</span><span class="mts"><span class="mt"><span class="mt-n">Ravens</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:28%;width:22%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://clutchpoints.com/nfl/baltimore-ravens/ravens-news-jesse-minter-said-appalling-collapse-bengals-have-baltimore-questioning">Minter on 'appalling' collapse vs. Bengals</a> <span class="src-out">- ClutchPoints</span><span class="mts"><span class="mt"><span class="mt-n">Ravens</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:22%;width:28%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.profootballnetwork.com/nfl-fans-mock-jesse-minter-ravens-bengals/">Fans mock Jesse Minter after Bengals loss</a> <span class="src-out">- Pro Football Network</span><span class="mts"><span class="mt"><span class="mt-n">Ravens</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:12%;width:38%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.espn.com/nfl/story/_/id/50288293/nfl-power-rankings-week-8-teams-best-offseason-additions">ESPN power rankings: Ravens 13th</a> <span class="src-out">- ESPN</span><span class="mts"><span class="mt"><span class="mt-n">Ravens</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:42%;width:8%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Bills</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:32%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://www.si.com/betting/ravens-vs-bills-prediction-odds-spread-injuries-trends-for-nfl-week-8-01m5wyc6vhrv">Ravens vs. Bills prediction and odds</a> <span class="src-out">- SI Betting</span><span class="mts"><span class="mt"><span class="mt-n">Ravens</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Bills</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:5%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://www.si.com/betting/major-lamar-jackson-injury-update-shifts-ravens-vs-bills-odds-for-nfl-week-8-towards-baltimore">Jackson update shifts odds toward Baltimore</a> <span class="src-out">- SI Betting</span><span class="mts"><span class="mt"><span class="mt-n">Ravens</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:15%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.covers.com/nfl/ravens-vs-bills-prediction-picks-odds-early-leans-week-8-2026">Covers early leans: Ravens vs. Bills</a> <span class="src-out">- Covers</span><span class="mts"><span class="mt"><span class="mt-n">Ravens</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:40%;width:10%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Bills</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.espn.com/nfl/story/_/id/50288152/bills-josh-allen-greatest-td-rusher">Is Josh Allen the best goal-line rusher ever?</a> <span class="src-out">- ESPN</span><span class="mts"><span class="mt"><span class="mt-n">Bills</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:38%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://www.espn.com/nfl/story/_/id/50311224/bills-sam-franklin-ready-play-ban-reduced-fine">Bills' Franklin cleared to play after ban reduced to fine</a> <span class="src-out">- ESPN</span><span class="mts"><span class="mt"><span class="mt-n">Bills</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:10%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://heavy.com/sports/nfl/buffalo-bills/josh-allen-shares-personal-news-before-ravens-game/">Josh Allen shares personal news before Ravens game</a> <span class="src-out">- Heavy</span><span class="mts"><span class="mt"><span class="mt-n">Bills</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:20%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.yardbarker.com/nfl/articles/bills_josh_allen_makes_personal_announcement_before_week_8/s1_17355_44487655">Allen talks bye week, offense cleanup</a> <span class="src-out">- Viral Sports News (via Yardbarker)</span><span class="mts"><span class="mt"><span class="mt-n">Bills</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span></span></li></ul></div>
+  </div></details>
+</section>
+
+<footer>
+  <span class="eyebrow">Fodder Sports · pilot</span>
+  <p>Summaries are written in our own words from the coverage listed above. Odds from <a href="https://www.espn.com/espn/betting/story/_/id/50250750/2026-nfl-week-8-schedule-odds-point-spreads-totals">ESPN's Week 8 odds report</a>. Not affiliated with the NFL, the Baltimore Ravens, or the Buffalo Bills.</p>
+</footer>
+
+</div>
+<script>try{if('scrollRestoration' in history)history.scrollRestoration='manual';if(!location.hash)window.scrollTo(0,0);}catch(e){}</script>
+</body></html>

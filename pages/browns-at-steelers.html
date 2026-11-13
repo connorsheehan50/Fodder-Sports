@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Fodder Sports Browns at Steelers</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#f3f4f6; --surface:#ffffff; --ink:#151a24; --muted:#5b6474; --line:#d9dde4;
+  --nat:#4a5568; --nat-soft:#e6e9ee;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f131a; --surface:#171c25; --ink:#e7eaf0; --muted:#9aa3b2; --line:#2a3140;
+  --nat:#a7b1c2; --nat-soft:#222935; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f131a; --surface:#171c25; --ink:#e7eaf0; --muted:#9aa3b2; --line:#2a3140;
+  --nat:#a7b1c2; --nat-soft:#222935; color-scheme:dark}
+
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 56px}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
+a{color:inherit;text-decoration-color:var(--muted);text-underline-offset:2px}
+a:hover{text-decoration-color:currentColor}
+a:focus-visible{outline:2px solid var(--a);outline-offset:2px;border-radius:2px}
+h1,h2,h3{font-family:var(--display);font-weight:700;text-wrap:balance;margin:0;letter-spacing:.01em}
+h1{font-size:clamp(1.9rem,5vw,2.6rem);line-height:1.05}
+h2{font-size:1.5rem;text-transform:uppercase}
+h3{font-size:1.05rem;text-transform:uppercase;letter-spacing:.05em}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.a{color:var(--a)} .b{color:var(--b)} .nat{color:var(--nat)}
+section{display:flex;flex-direction:column;gap:14px}
+.note{font-size:.88rem;color:var(--muted)}
+ul.bul{margin:0;padding-left:1.15em;display:flex;flex-direction:column;gap:10px}
+ul.bul li::marker{color:var(--muted)}
+.dek{font-size:1.1rem;color:var(--muted)}
+
+.score{display:flex;align-items:stretch;border:1px solid var(--line);background:var(--surface)}
+.score .side{flex:1;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;min-width:0}
+.score .side + .side{border-left:1px solid var(--line)}
+.score .nm{font-family:var(--display);font-size:1.5rem;font-weight:700;text-transform:uppercase;line-height:1}
+.score .nm small{display:block;font-family:var(--mono);font-size:.72rem;font-weight:400;letter-spacing:.08em;color:var(--muted);margin-top:4px;text-transform:none}
+.score .pts{font-family:var(--display);font-size:2.6rem;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.score .lose .pts{opacity:.5}
+.score .meta{font-family:var(--mono);font-size:.8rem;color:var(--muted);text-align:right}
+
+.summary{background:var(--surface);border:1px solid var(--line);padding:22px 24px;display:flex;flex-direction:column;gap:14px}
+.views{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line)}
+.view{padding:18px 22px;display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--line)}
+.view:first-child{border-top:0}
+
+.tally{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.tally div{background:var(--surface);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.tally .big{font-family:var(--display);font-size:2rem;font-weight:700;line-height:1}
+
+.tbl-wrap{overflow-x:auto}
+table.t{width:100%;border-collapse:collapse;font-size:.92rem;min-width:480px}
+.t th{font-family:var(--mono);font-weight:500;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:8px 10px 8px 0;border-bottom:2px solid var(--ink)}
+.t td{padding:8px 10px 8px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.t td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap;font-size:.85rem}
+
+.coverage{background:var(--surface);border:1px solid var(--line);padding:18px 22px;display:flex;flex-direction:column;gap:16px}
+.covgrp{display:flex;flex-direction:column;gap:6px}
+.covgrp ul{margin:0;padding-left:1.1em;font-size:.88rem;display:flex;flex-direction:column;gap:4px}
+
+/* Sentiment: diverging bars, center = neutral */
+.sent{display:flex;flex-direction:column;gap:18px}
+.steam{display:flex;flex-direction:column;gap:8px}
+.srow{display:grid;grid-template-columns:110px 1fr 88px;align-items:center;gap:10px;font-size:.85rem}
+.srow .lbl{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;color:var(--muted)}
+.srow .val{font-family:var(--mono);font-size:.74rem;text-align:right;color:var(--muted)}
+.track.nocov{background:repeating-linear-gradient(45deg,var(--nat-soft) 0 6px,transparent 6px 12px)}
+.track.nocov::after{display:none}
+.track{position:relative;height:12px;background:var(--nat-soft);border-radius:6px}
+.track::after{content:"";position:absolute;left:50%;top:-3px;bottom:-3px;width:2px;background:var(--muted);transform:translateX(-1px)}
+.fill{position:absolute;top:0;bottom:0;border-radius:6px}
+.fill.pos{left:50%} .fill.neg{right:50%}
+.f-a{background:var(--a)} .f-b{background:var(--b)} .f-n{background:var(--nat)}
+.scale{display:grid;grid-template-columns:110px 1fr 88px;gap:10px;font-family:var(--mono);font-size:.68rem;color:var(--muted)}
+.scale span:nth-child(2){display:flex;justify-content:space-between}
+
+.grade{font-family:var(--display);font-weight:700;font-size:1.15rem}
+footer{border-top:1px solid var(--line);padding-top:18px;font-size:.85rem;color:var(--muted);display:flex;flex-direction:column;gap:8px}
+
+@media (max-width:560px){
+  .score{flex-direction:column}
+  .score .side + .side{border-left:0;border-top:1px solid var(--line)}
+  .tally{grid-template-columns:1fr}
+  .summary,.view,.coverage{padding-left:16px;padding-right:16px}
+  .srow,.scale{grid-template-columns:80px 1fr 76px}
+}
+
+.trend{margin:4px 0 0;font-size:.86rem}.trend b{font-weight:700}.trend.up span{color:#13803a}.trend.down span{color:#c81e1e}.trend.steady span,.trend.new span{color:var(--muted)}
+@media (prefers-color-scheme:dark){.trend.up span{color:#5fd38a}.trend.down span{color:#ff7b7b}}
+
+:root{--a:#9a3d0a;--b:#8a6a00}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--a:#f08a4b;--b:#ffb612}}
+:root[data-theme="dark"]{--a:#f08a4b;--b:#ffb612}
+
+.tlink{color:inherit;text-decoration:none;border-bottom:1px dotted currentColor}
+.tlink:hover{border-bottom-style:solid}
+
+.refjump{margin:6px 0 0} .refjump a{font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.scale-note{font-size:.72rem !important;line-height:1.45}
+.refl li{margin-bottom:8px}
+.mts{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:3px}
+.mt{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.mt-bar{position:relative;display:inline-block;width:64px;height:7px;background:var(--line);border-radius:2px}
+.mt-c{position:absolute;left:50%;top:-2px;bottom:-2px;width:1px;background:var(--muted)}
+.mt-f{position:absolute;top:0;bottom:0;border-radius:2px}
+details.srcs summary{font-size:.74rem !important}
+
+.refs .inner-src{display:flex;flex-direction:column;gap:14px;max-height:340px;overflow-y:auto;overscroll-behavior:contain}
+footer p{font-size:.72rem;line-height:1.45}
+.refjump a{font-family:var(--mono);font-size:.8rem;letter-spacing:.04em;text-transform:uppercase}
+.avg td.n{white-space:nowrap}
+
+details.srcs{border:1px solid var(--line);border-radius:2px}
+details.srcs summary{cursor:pointer;padding:10px 12px;font-family:var(--mono);font-size:.82rem;letter-spacing:.05em;text-transform:uppercase}
+details.srcs[open] summary{border-bottom:1px solid var(--line)}
+details.srcs .inner-src{padding:12px;display:flex;flex-direction:column;gap:14px}
+.src-out{color:var(--muted)}
+.eyebrow{font-size:.8rem} .note{font-size:.8rem;line-height:1.5} .srow .lbl{font-size:.8rem} .srow .val{font-size:.8rem;color:var(--ink)}
+</style>
+</head><body>
+<div class="wrap">
+<a href="./" style="align-self:flex-start;display:inline-block;font-family:var(--mono);font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;background:none;border:1px solid var(--ink);color:var(--ink);padding:7px 11px;border-radius:2px">&larr; Back to Fodder Sports</a>
+
+<header style="display:flex;flex-direction:column;gap:16px">
+  <span class="eyebrow">Fodder Sports · NFL Week 8 · Matchup</span>
+  <div class="score" role="img" aria-label="Cleveland Browns, 5 and 2, at Pittsburgh Steelers, 5 and 2">
+    <div class="side"><span class="nm a"><a class="tlink" href="./#team-cle">Browns</a><small>5–2 · away</small></span><span class="meta">Sun, Nov. 1<br>1:00 p.m. ET</span></div>
+    <div class="side"><span class="nm b"><a class="tlink" href="./#team-pit">Steelers</a><small>5–2 · home</small></span><span class="meta">Acrisure Stadium<br>CBS</span></div>
+  </div>
+  <h1>Browns Chase a Sweep and a 23-Year First in Pittsburgh</h1>
+  <p class="dek">Both teams are 5-2, and the winner leaves Sunday alone atop the AFC North after a week of trash talk.</p>
+</header>
+
+<section class="coverage" aria-labelledby="cov-h">
+  <h2 id="cov-h">How the coverage feels</h2>
+  <p class="note">How each market feels about each team right now, read from the week's coverage. This is about the team vibes, not the odds of winning this game.</p>
+  <div class="sent">
+    <div class="steam">
+      <h3 class="a"><a class="tlink" href="./#team-cle">Browns</a></h3>
+      <div class="srow"><span class="lbl">Cleveland</span><div class="track"><span class="fill pos f-a" style="width:22.5%"></span></div><span class="val">Positive</span></div>
+      <div class="srow"><span class="lbl">Pittsburgh</span><div class="track"><span class="fill pos f-b" style="width:2.5%"></span></div><span class="val">Neutral</span></div>
+      <div class="srow"><span class="lbl">National</span><div class="track"><span class="fill pos f-n" style="width:7.5%"></span></div><span class="val">Neutral</span></div>
+      <p class="trend new"><span aria-hidden="true">•</span> <b>First reading.</b> A five-game run of late wins and a shot at the franchise's first win in Pittsburgh since 2003 have Cleveland feeling better about its team than it has in years.</p>
+    </div>
+    <div class="steam">
+      <h3 class="b"><a class="tlink" href="./#team-pit">Steelers</a></h3>
+      <div class="srow"><span class="lbl">Pittsburgh</span><div class="track"><span class="fill pos f-b" style="width:22.5%"></span></div><span class="val">Positive</span></div>
+      <div class="srow"><span class="lbl">Cleveland</span><div class="track"><span class="fill pos f-a" style="width:10.0%"></span></div><span class="val">Neutral</span></div>
+      <div class="srow"><span class="lbl">National</span><div class="track"><span class="fill pos f-n" style="width:12.5%"></span></div><span class="val">Positive</span></div>
+      <p class="trend new"><span aria-hidden="true">•</span> <b>First reading.</b> Three straight wins behind a top defense and a strong run game have Pittsburgh confident, with red zone struggles the main worry.</p>
+    </div>
+    <div class="scale"><span></span><span><span>Harsh</span><span>Neutral</span><span>Glowing</span></span><span></span></div><p class="note scale-note">Each bar shows the overall tone of that group&#39;s coverage toward the team. Bars to the right of center are favorable, bars to the left are critical, and longer bars mean stronger tone. &ldquo;No coverage&rdquo; means that group published nothing about the team in this window.</p>
+  </div>
+  <p>Cleveland coverage is the warmest it has been in years: the young Browns are winning close games under Todd Monken, and the market sees a team that has outgrown its history. Pittsburgh's media respects that late-game knack but doubts the offense and expects the Steelers' defense to reset the division. National coverage sits in between, crediting Cleveland's defense and nerve while questioning an offense that has given up the most sacks in the league, and treating Pittsburgh as the steadier team.</p>
+  <p class="refjump"><a href="#refs">See all the articles we referenced for this summary</a></p>
+</section>
+
+<section class="summary" aria-labelledby="sum-h">
+  <h2 id="sum-h">The summary</h2>
+  <ul class="bul">
+      <li>Both teams are 5-2. Cleveland holds the AFC North lead on the tiebreaker after a 27-24 Week 4 win, sealed by Andre Szmyt's 56-yard field goal with 10 seconds left.</li>
+      <li>The Browns have lost 22 straight regular-season games in Pittsburgh, last winning there in 2003. A win would give them their first season sweep of the Steelers since 1988.</li>
+      <li>Every Browns win has come on a game-winning score late, but quarterback Deshaun Watson has been sacked a league-high 25 times. Steelers quarterback Aaron Rodgers is second with 22.</li>
+      <li>Pittsburgh has won three straight, including a 16-10 win over the Saints in Paris, and has a bye next week. Its defense allows 19.7 points per game, fifth in the NFL, but the offense has one rushing touchdown all season.</li>
+      <li>Browns defensive end Jared Verse called the Steelers 'dirty' after the first game. Steelers defensive tackle Cam Heyward answered that the comments 'will be addressed' on Sunday.</li>
+      <li>Browns right tackle Tytus Howard (concussion) is questionable after missing practice all week, though he has been reported as cleared. The Steelers are without cornerback Brandin Echols and defensive back Doneiko Slaughter, which thins the secondary behind the starters.</li>
+  </ul>
+</section>
+
+<section class="views" aria-label="What each side is saying">
+  <div class="view">
+    <h2 class="a">What the Cleveland media is saying about the Browns</h2>
+    <ul class="bul">
+      <li>Believers. Cleveland's media sees a young team that does not carry the franchise's baggage, and frames a win in Pittsburgh as the moment the rest of the league has to take the Browns seriously.</li>
+      <li>The defense is the source of the confidence: first in the NFL in tackles for loss (46), five sacks and two interceptions of Rodgers in Week 4, and a defensive line at its healthiest since the first meeting with Mason Graham and Mike Hall Jr. back.</li>
+      <li>The worries are early holes and the run defense. The Browns have been outscored badly in first quarters, and they have allowed more 10-yard runs than any team, which matters against Steelers running back Jaylen Warren.</li>
+      <li>Verse's trash talk splits the room. Some see it as the nasty edge this team needed, others call it a bad look for a pass rusher who still has no sacks.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="b">What the Pittsburgh media is saying about the Browns</h2>
+    <ul class="bul">
+      <li>Pittsburgh's media respects the Browns' defense and their clutch finishes, but sees a fragile offense: league-worst sack rate, a 36% third-down rate, and six lost fumbles.</li>
+      <li>Verse's comments are being used as bulletin-board material in the Steelers' locker room, and the coverage expects Cleveland's run of last-minute wins to end at some point.</li>
+      <li>There is real credit for the future, with Browns rookies like wide receiver KC Concepcion and linebacker Carson Schwesinger seen as problems for years to come.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="b">What the Pittsburgh media is saying about the Steelers</h2>
+    <ul class="bul">
+      <li>Confident. Pittsburgh coverage sees a team rolling on three straight wins, the AFC's top overall defense, and a run game that just put up a season-high 148 yards in Paris.</li>
+      <li>Running back Jaylen Warren (561 rushing yards, 855 from scrimmage) is the engine, with Rico Dowdle back from injury, and linebacker Payton Wilson is being called on track for his best season.</li>
+      <li>The concerns are red zone offense, thin depth at cornerback with two players out, and Rodgers taking sacks on third down.</li>
+      <li>Players frame the Week 4 loss as a lesson in handling adversity and want to go 4-0 in this stretch before the bye.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="a">What the Cleveland media is saying about the Steelers</h2>
+    <ul class="bul">
+      <li>Cleveland's media treats Pittsburgh's defense as one of the league's best, especially at home, and sees Warren and Dowdle as the main threat to a shaky Browns run defense.</li>
+      <li>It is skeptical of the rest: Rodgers is seen as having lost some zip, the line has let him down at times, and the Steelers' three-game streak came against teams that are each 2-5.</li>
+      <li>Some Browns coverage sees a hidden edge in the Steelers' long flight home from Paris.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="nat">What everyone else is saying about this game</h2>
+    <ul class="bul">
+      <li><b class="a">Browns:</b> National coverage credits Monken for turning Watson into a steady late-game passer, but notes the Browns are the only AFC North team with a negative point differential and rank 28th in scoring.</li>
+      <li><b class="a">Browns:</b> The rivalry history leads most national previews: Pittsburgh has won 22 straight regular-season home games against Cleveland, second-longest such streak in NFL history.</li>
+      <li><b class="b">Steelers:</b> Pittsburgh is seen as the steadier team, with a top-five scoring defense and the better quarterback, but its offense ranks 27th in red zone scoring.</li>
+      <li><b class="b">Steelers:</b> Rodgers' 540th career touchdown pass moved him into third all-time, though national writers see too many flaws for a deep run.</li>
+    </ul>
+  </div>
+</section>
+
+<section aria-labelledby="inj-h">
+  <h2 id="inj-h">Who's out</h2>
+  <ul class="bul">
+    <li><b class="a">Questionable:</b> Browns offensive tackle Tytus Howard (concussion). Missed all three practices; reported cleared to play.</li>
+    <li><b class="a">Questionable:</b> Browns safety Daniel Thomas (ankle) and cornerback Myles Harden (hamstring).</li>
+    <li><b class="a">In:</b> Browns defensive end Jared Verse (knee), center Elgton Jenkins (knee), safety Grant Delpit (neck), and defensive tackles Mason Graham and Mike Hall Jr. (ankles) finished the week without a game status.</li>
+    <li><b class="b">Out:</b> Steelers cornerback Brandin Echols (hamstring) and defensive back Doneiko Slaughter (hamstring).</li>
+    <li><b class="b">Questionable:</b> Steelers wide receiver Ben Skowronek (calf).</li>
+    <li><b class="b">In:</b> Steelers cornerback Jalen Ramsey (wrist) and linebacker Alex Highsmith (groin) were full participants Friday with no status.</li>
+  </ul>
+  <p class="note">Game statuses from the Steelers' official Week 8 injury report, which lists both teams, Friday, Oct. 30. Howard's clearance was reported Saturday, Oct. 31.</p>
+</section>
+
+<section aria-labelledby="line-h">
+  <h2 id="line-h">The line and the history</h2>
+  <div class="tbl-wrap">
+    <table class="t">
+      <thead><tr><th>Line</th><th>Spread</th><th>Moneyline</th><th>Total</th></tr></thead>
+      <tbody><tr><td>Opening, Oct. 25</td><td class="n">PIT −4.5</td><td class="n">n/a</td><td class="n">n/a</td></tr><tr><td>DraftKings, Oct. 27</td><td class="n">PIT −3.5</td><td class="n">n/a</td><td class="n">38.5</td></tr><tr><td>DraftKings, Oct. 28</td><td class="n">PIT −3.5</td><td class="n">PIT −185 / CLE +154</td><td class="n">39.5</td></tr></tbody>
+    </table>
+  </div>
+  <ul class="bul">
+    <li>Pittsburgh leads the all-time series 83–65–1.</li>
+  </ul>
+  <h3>Who the public is picking</h3>
+  <ul class="bul">
+    <li><b>The media:</b> 85% of the published score predictions we found take the Steelers. The average is Steelers 22, Browns 18. Bleacher Report's seven-person expert panel has 57% on the Steelers.</li>
+    <li><b>The betting public:</b> As of Friday, one sportsbook's splits showed 66% of spread bets on the Browns at +3.5 and 58% of bets on the over.</li>
+  </ul>
+  <div class="tbl-wrap avg">
+    <table class="t">
+      <thead><tr><th>Whose picks</th><th>Pick the Browns</th><th>Pick the Steelers</th><th>Average score</th></tr></thead>
+      <tbody><tr><td>National media</td><td class="n">15%</td><td class="n">85%</td><td class="n">Steelers 22, Browns 18</td></tr><tr><td><b>All media</b></td><td class="n">15%</td><td class="n">85%</td><td class="n"><b>Steelers 22, Browns 18</b></td></tr></tbody>
+    </table>
+  </div>
+  <p class="note">Share of published score predictions picking each team, and the average predicted score. Each pick is tracked for our predictor standings.</p>
+</section>
+
+<section id="refs" class="refs" aria-labelledby="refs-h">
+  <h2 id="refs-h">References</h2>
+  <details class="srcs"><summary>Show the articles behind this page</summary><div class="inner-src">
+  <p class="note">Each bar shows that article's tone toward the team named next to it.</p>
+  <div class="covgrp"><span class="eyebrow a">Cleveland</span><ul class="refl"><li><a href="https://www.clevelandbrowns.com/news/how-will-the-browns-contain-wr-dk-metcalf-burning-questions">3 burning questions: containing DK Metcalf and the Steelers run game</a> <span class="src-out">- ClevelandBrowns.com</span><span class="mts"><span class="mt"><span class="mt-n">Browns</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:30%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Steelers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/browns-think-not-winning-pittsburgh-142149229.html">What the Browns think about not winning in Pittsburgh in 23 years</a> <span class="src-out">- cleveland.com</span><span class="mts"><span class="mt"><span class="mt-n">Browns</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/browns-verse-fires-rivalry-ahead-100221132.html">Verse fires up the rivalry ahead of the rematch</a> <span class="src-out">- cleveland.com</span><span class="mts"><span class="mt"><span class="mt-n">Browns</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:28%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/browns-watson-face-defining-moment-200112750.html">Browns and Watson face a defining moment in Pittsburgh</a> <span class="src-out">- cleveland.com</span><span class="mts"><span class="mt"><span class="mt-n">Browns</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:25%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/monken-shrugs-off-browns-steelers-161704284.html">Monken shrugs off rivalry history ahead of Pittsburgh trip</a> <span class="src-out">- cleveland.com</span><span class="mts"><span class="mt"><span class="mt-n">Browns</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/browns-steelers-3-things-watch-121218491.html">Browns at Steelers: 3 things to watch</a> <span class="src-out">- cleveland.com</span><span class="mts"><span class="mt"><span class="mt-n">Browns</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/jared-verse-not-worried-steelers-164129032.html">Jared Verse 'not worried' about Steelers or Cam Heyward</a> <span class="src-out">- Akron Beacon Journal</span><span class="mts"><span class="mt"><span class="mt-n">Browns</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:15%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Steelers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:5%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://sports.yahoo.com/articles/browns-gain-1st-steelers-game-191909702.html">What can the Browns take from the first Steelers game?</a> <span class="src-out">- Akron Beacon Journal</span><span class="mts"><span class="mt"><span class="mt-n">Browns</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:12%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Steelers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:10%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.si.com/nfl/browns/onsi/browns-vs-steelers-5-key-matchups-that-could-decide-cleveland-s-week-8-showdown-01m64316bcc3">5 key matchups that could decide Week 8</a> <span class="src-out">- Browns On SI</span><span class="mts"><span class="mt"><span class="mt-n">Browns</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:25%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Steelers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:20%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.si.com/nfl/browns/onsi/can-the-browns-break-the-losing-streak-a-look-at-the-numbers-ahead-of-rivalry-matchup-01m676xwpawn">Can the Browns break the Pittsburgh losing streak? A look at the numbers</a> <span class="src-out">- Browns On SI</span><span class="mts"><span class="mt"><span class="mt-n">Browns</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:15%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Steelers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:25%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.si.com/nfl/browns/onsi/8-players-that-need-to-step-up-in-week-8-against-the-steelers-01m69nqk2w3q">8 Browns who need to step up against the Steelers</a> <span class="src-out">- Browns On SI</span><span class="mts"><span class="mt"><span class="mt-n">Browns</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:28%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.brownsnation.com/browns-may-have-a-hidden-edge-against-steelers/">Browns may have a hidden edge: Steelers' Paris travel</a> <span class="src-out">- Browns Nation</span><span class="mts"><span class="mt"><span class="mt-n">Browns</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:28%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Steelers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:45%;width:5%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://www.brownsnation.com/analyst-isnt-a-fan-of-jared-verses-steelers-comments/">Local radio host criticizes Verse's Steelers comments</a> <span class="src-out">- Browns Nation</span><span class="mts"><span class="mt"><span class="mt-n">Browns</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.brownsnation.com/insider-pushes-back-on-browns-narrative-ahead-of-steelers-game/">Insider pushes back on doubts about the Browns</a> <span class="src-out">- Browns Nation</span><span class="mts"><span class="mt"><span class="mt-n">Browns</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:30%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/3-bold-predictions-browns-against-201431868.html">3 bold predictions for Browns vs. Steelers</a> <span class="src-out">- Browns Wire (USA TODAY)</span><span class="mts"><span class="mt"><span class="mt-n">Browns</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:38%"></span></span><span class="mt-w">Glowing</span></span><span class="mt"><span class="mt-n">Steelers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:28%;width:22%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://sports.yahoo.com/articles/positions-browns-edge-over-steelers-150331820.html">Positions where the Browns have an edge over the Steelers</a> <span class="src-out">- Browns Wire (USA TODAY)</span><span class="mts"><span class="mt"><span class="mt-n">Browns</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:30%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Steelers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:40%;width:10%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://sports.yahoo.com/articles/week-8-versus-steelers-shouldn-130631897.html">Week 8 at Pittsburgh shouldn't be a litmus test for the Browns</a> <span class="src-out">- Dawgs By Nature (SB Nation)</span><span class="mts"><span class="mt"><span class="mt-n">Browns</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:20%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Steelers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:5%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://sports.yahoo.com/articles/cleveland-browns-vs-pittsburgh-steelers-212606498.html">Browns vs. Steelers: Week 8 need to know</a> <span class="src-out">- Dawgs By Nature (SB Nation)</span><span class="mts"><span class="mt"><span class="mt-n">Browns</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:32%"></span></span><span class="mt-w">Glowing</span></span><span class="mt"><span class="mt-n">Steelers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.brownsfilmbreakdown.com/p/opening-drive-1031-steelers-scouting">Steelers scouting report, round two: what's changed since Week 4</a> <span class="src-out">- Browns Film Breakdown</span><span class="mts"><span class="mt"><span class="mt-n">Browns</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:12%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Steelers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:12%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.brownszone.com/2026/10/26/next-up-for-browns-steelers-get-past-saints-in-paris-improve-to-5-2/">Next up for Browns: Steelers get past Saints in Paris, improve to 5-2</a> <span class="src-out">- BrownsZone</span><span class="mts"><span class="mt"><span class="mt-n">Steelers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:30%"></span></span><span class="mt-w">Positive</span></span></span></li></ul></div><div class="covgrp"><span class="eyebrow b">Pittsburgh</span><ul class="refl"><li><a href="https://www.steelers.com/news/week-8-blog-it-s-afc-north-football">Week 8 blog: AFC North football is 'a feel'</a> <span class="src-out">- Steelers.com</span><span class="mts"><span class="mt"><span class="mt-n">Browns</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:20%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Steelers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:38%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://www.steelers.com/news/matt-s-stats-week-8-vs-browns">Matt's Stats: Week 8 vs. Browns</a> <span class="src-out">- Steelers.com</span><span class="mts"><span class="mt"><span class="mt-n">Browns</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:38%;width:12%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Steelers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:32%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://sports.yahoo.com/articles/steelers-using-browns-trash-talk-180345629.html">Steelers are using Browns' trash talk as bulletin-board material</a> <span class="src-out">- Steelers Now</span><span class="mts"><span class="mt"><span class="mt-n">Browns</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:42%;width:8%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Steelers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:20%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/steelers-star-words-browns-star-203347600.html">Heyward on Verse's 'dirty' claim: 'They will be addressed'</a> <span class="src-out">- PennLive</span><span class="mts"><span class="mt"><span class="mt-n">Browns</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:45%;width:5%"></span></span><span class="mt-w">Neutral</span></span><span class="mt"><span class="mt-n">Steelers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:20%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/browns-huge-injury-news-week-182202275.html">Browns get huge injury news: Tytus Howard cleared</a> <span class="src-out">- Steelers Wire (USA TODAY)</span><span class="mts"><span class="mt"><span class="mt-n">Browns</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/steelers-vs-browns-4-bold-183632414.html">Steelers vs. Browns: 4 bold predictions</a> <span class="src-out">- Steelers Wire (USA TODAY)</span><span class="mts"><span class="mt"><span class="mt-n">Browns</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span><span class="mt"><span class="mt-n">Steelers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/steelers-vs-browns-week-8-151918912.html">Steelers vs. Browns: Week 8 staff picks</a> <span class="src-out">- Behind the Steel Curtain (SB Nation)</span><span class="mts"><span class="mt"><span class="mt-n">Browns</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:15%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Steelers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:25%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/steelers-keys-victory-vs-browns-191726822.html">Steelers keys to victory vs. Browns</a> <span class="src-out">- SportsNet Pittsburgh</span><span class="mts"><span class="mt"><span class="mt-n">Browns</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:5%"></span></span><span class="mt-w">Neutral</span></span><span class="mt"><span class="mt-n">Steelers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://steelers.com/news/week-8-injury-report-browns-x7058">Week 8 injury report (Browns)</a> <span class="src-out">- Steelers.com</span><span class="mts"><span class="mt"><span class="mt-n">Steelers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:15%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.steelers.com/news/asked-and-answered-oct-29-x2786">Asked and Answered: Oct. 29</a> <span class="src-out">- Steelers.com</span><span class="mts"><span class="mt"><span class="mt-n">Steelers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:25%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://community.triblive.com/news/4170352">Feats of Strength: Rodgers' footwork, ILB combos and run game power Paris win</a> <span class="src-out">- TribLive</span><span class="mts"><span class="mt"><span class="mt-n">Steelers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:28%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.si.com/nfl/steelers/onsi/pittsburgh-steelers-injury-situation-finally-trending-right-direction">Steelers' injury situation finally trending the right way</a> <span class="src-out">- Steelers On SI</span><span class="mts"><span class="mt"><span class="mt-n">Steelers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:30%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.si.com/nfl/steelers/onsi/pittsburgh-steelers-lose-two-cornerbacks-injury-browns-week-8">Steelers lose two cornerbacks to injury for Browns game</a> <span class="src-out">- Steelers On SI</span><span class="mts"><span class="mt"><span class="mt-n">Steelers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:20%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/steelers-rule-two-defenders-week-080249533.html">Steelers rule two defenders out for Week 8</a> <span class="src-out">- Steelers Wire (USA TODAY)</span><span class="mts"><span class="mt"><span class="mt-n">Steelers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.yardbarker.com/nfl/articles/steelers_mike_mccarthy_shocked_a_lot_of_people_with_offensive_decision_in_win_over_the_saints/s1_17101_44486591">McCarthy surprised with six-lineman package in Paris win</a> <span class="src-out">- SteelerNation</span><span class="mts"><span class="mt"><span class="mt-n">Steelers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span></span></li></ul></div><div class="covgrp"><span class="eyebrow nat">National</span><ul class="refl"><li><a href="https://www.tsn.ca/nfl/article/browns-chase-afc-north-lead-in-pittsburgh-skip-steelers-rivalry-lessons/">Browns chase AFC North lead in Pittsburgh, shrug off rivalry history</a> <span class="src-out">- The Associated Press (via TSN)</span><span class="mts"><span class="mt"><span class="mt-n">Browns</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:20%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Steelers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:15%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.si.com/nfl/browns-steelers-week-8-showdown-more-intriguing-than-what-meets-the-eye">Browns-Steelers showdown more intriguing than it looks</a> <span class="src-out">- Sports Illustrated</span><span class="mts"><span class="mt"><span class="mt-n">Browns</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:5%"></span></span><span class="mt-w">Neutral</span></span><span class="mt"><span class="mt-n">Steelers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:10%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.cbssports.com/nfl/news/steelers-vs-browns-where-to-watch-prediction/">Steelers vs. Browns: first place on the line</a> <span class="src-out">- CBS Sports</span><span class="mts"><span class="mt"><span class="mt-n">Browns</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span><span class="mt"><span class="mt-n">Steelers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://espn.com/nfl/story/_/id/50312157/week-8-picks-predictions-schedule-fantasy-odds-2026">ESPN guide to every Week 8 game</a> <span class="src-out">- ESPN</span><span class="mts"><span class="mt"><span class="mt-n">Browns</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:10%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Steelers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:12%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.nfl.com/news/cam-heyward-jared-verse-browns-steelers-rematch-bring-it-on">Heyward chirps back at Verse: 'Bring it on'</a> <span class="src-out">- NFL.com</span><span class="mts"><span class="mt"><span class="mt-n">Browns</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:12%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Steelers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:15%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.si.com/nfl/biggest-question-every-game-week-8">The biggest question for every Week 8 game</a> <span class="src-out">- Sports Illustrated</span><span class="mts"><span class="mt"><span class="mt-n">Browns</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span><span class="mt"><span class="mt-n">Steelers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:5%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://heavy.com/sports/nfl/cleveland-browns/steelers-heyward-jared-verse-words-clash/">Steelers star has words for Browns DE Jared Verse</a> <span class="src-out">- Heavy</span><span class="mts"><span class="mt"><span class="mt-n">Browns</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:15%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/browns-jared-verse-dirty-steelers-134728771.html">Verse's 'dirty' trash talk raises stakes, but will he play?</a> <span class="src-out">- ClutchPoints</span><span class="mts"><span class="mt"><span class="mt-n">Browns</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://sports.yahoo.com/articles/pittsburgh-ours-browns-star-called-164718133.html">Browns star who called Steelers 'dirty' sends another message</a> <span class="src-out">- The Comeback</span><span class="mts"><span class="mt"><span class="mt-n">Browns</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Steelers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://sports.yahoo.com/articles/afc-north-preview-week-8-174559440.html">AFC North preview, Week 8: first place on the line</a> <span class="src-out">- SB Nation (Baltimore Beatdown)</span><span class="mts"><span class="mt"><span class="mt-n">Browns</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:20%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Steelers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:15%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.covers.com/nfl/browns-vs-steelers-prediction-picks-odds-early-leans-week-8-2026">Browns vs. Steelers prediction and early leans</a> <span class="src-out">- Covers</span><span class="mts"><span class="mt"><span class="mt-n">Browns</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span><span class="mt"><span class="mt-n">Steelers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://sports.yahoo.com/articles/cleveland-browns-pittsburgh-steelers-week-142630334.html">Browns at Steelers: Week 8 predictions</a> <span class="src-out">- Roundtable Sports</span><span class="mts"><span class="mt"><span class="mt-n">Browns</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Steelers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:20%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/steelers-23-history-continue-against-120034213.html">Steelers need 23-year home history to continue vs. Browns</a> <span class="src-out">- Roundtable Sports</span><span class="mts"><span class="mt"><span class="mt-n">Browns</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://sports.yahoo.com/articles/steelers-aaron-rodgers-named-17th-172127492.html">Rodgers named 17th-best QB heading into Week 8</a> <span class="src-out">- Roundtable Sports</span><span class="mts"><span class="mt"><span class="mt-n">Steelers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:10%"></span></span><span class="mt-w">Positive</span></span></span></li></ul></div>
+  </div></details>
+</section>
+
+<footer>
+  <span class="eyebrow">Fodder Sports · pilot</span>
+  <p>Summaries are written in our own words from the coverage listed above. Odds from <a href="https://www.espn.com/espn/betting/story/_/id/50250750/2026-nfl-week-8-schedule-odds-point-spreads-totals">ESPN's Week 8 odds report</a>. Not affiliated with the NFL, the Cleveland Browns, or the Pittsburgh Steelers.</p>
+</footer>
+
+</div>
+<script>try{if('scrollRestoration' in history)history.scrollRestoration='manual';if(!location.hash)window.scrollTo(0,0);}catch(e){}</script>
+</body></html>

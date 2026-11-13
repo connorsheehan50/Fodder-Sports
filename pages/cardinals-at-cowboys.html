@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Fodder Sports Cardinals at Cowboys</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#f3f4f6; --surface:#ffffff; --ink:#151a24; --muted:#5b6474; --line:#d9dde4;
+  --nat:#4a5568; --nat-soft:#e6e9ee;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f131a; --surface:#171c25; --ink:#e7eaf0; --muted:#9aa3b2; --line:#2a3140;
+  --nat:#a7b1c2; --nat-soft:#222935; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f131a; --surface:#171c25; --ink:#e7eaf0; --muted:#9aa3b2; --line:#2a3140;
+  --nat:#a7b1c2; --nat-soft:#222935; color-scheme:dark}
+
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 56px}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
+a{color:inherit;text-decoration-color:var(--muted);text-underline-offset:2px}
+a:hover{text-decoration-color:currentColor}
+a:focus-visible{outline:2px solid var(--a);outline-offset:2px;border-radius:2px}
+h1,h2,h3{font-family:var(--display);font-weight:700;text-wrap:balance;margin:0;letter-spacing:.01em}
+h1{font-size:clamp(1.9rem,5vw,2.6rem);line-height:1.05}
+h2{font-size:1.5rem;text-transform:uppercase}
+h3{font-size:1.05rem;text-transform:uppercase;letter-spacing:.05em}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.a{color:var(--a)} .b{color:var(--b)} .nat{color:var(--nat)}
+section{display:flex;flex-direction:column;gap:14px}
+.note{font-size:.88rem;color:var(--muted)}
+ul.bul{margin:0;padding-left:1.15em;display:flex;flex-direction:column;gap:10px}
+ul.bul li::marker{color:var(--muted)}
+.dek{font-size:1.1rem;color:var(--muted)}
+
+.score{display:flex;align-items:stretch;border:1px solid var(--line);background:var(--surface)}
+.score .side{flex:1;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;min-width:0}
+.score .side + .side{border-left:1px solid var(--line)}
+.score .nm{font-family:var(--display);font-size:1.5rem;font-weight:700;text-transform:uppercase;line-height:1}
+.score .nm small{display:block;font-family:var(--mono);font-size:.72rem;font-weight:400;letter-spacing:.08em;color:var(--muted);margin-top:4px;text-transform:none}
+.score .pts{font-family:var(--display);font-size:2.6rem;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.score .lose .pts{opacity:.5}
+.score .meta{font-family:var(--mono);font-size:.8rem;color:var(--muted);text-align:right}
+
+.summary{background:var(--surface);border:1px solid var(--line);padding:22px 24px;display:flex;flex-direction:column;gap:14px}
+.views{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line)}
+.view{padding:18px 22px;display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--line)}
+.view:first-child{border-top:0}
+
+.tally{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.tally div{background:var(--surface);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.tally .big{font-family:var(--display);font-size:2rem;font-weight:700;line-height:1}
+
+.tbl-wrap{overflow-x:auto}
+table.t{width:100%;border-collapse:collapse;font-size:.92rem;min-width:480px}
+.t th{font-family:var(--mono);font-weight:500;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:8px 10px 8px 0;border-bottom:2px solid var(--ink)}
+.t td{padding:8px 10px 8px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.t td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap;font-size:.85rem}
+
+.coverage{background:var(--surface);border:1px solid var(--line);padding:18px 22px;display:flex;flex-direction:column;gap:16px}
+.covgrp{display:flex;flex-direction:column;gap:6px}
+.covgrp ul{margin:0;padding-left:1.1em;font-size:.88rem;display:flex;flex-direction:column;gap:4px}
+
+/* Sentiment: diverging bars, center = neutral */
+.sent{display:flex;flex-direction:column;gap:18px}
+.steam{display:flex;flex-direction:column;gap:8px}
+.srow{display:grid;grid-template-columns:110px 1fr 88px;align-items:center;gap:10px;font-size:.85rem}
+.srow .lbl{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;color:var(--muted)}
+.srow .val{font-family:var(--mono);font-size:.74rem;text-align:right;color:var(--muted)}
+.track.nocov{background:repeating-linear-gradient(45deg,var(--nat-soft) 0 6px,transparent 6px 12px)}
+.track.nocov::after{display:none}
+.track{position:relative;height:12px;background:var(--nat-soft);border-radius:6px}
+.track::after{content:"";position:absolute;left:50%;top:-3px;bottom:-3px;width:2px;background:var(--muted);transform:translateX(-1px)}
+.fill{position:absolute;top:0;bottom:0;border-radius:6px}
+.fill.pos{left:50%} .fill.neg{right:50%}
+.f-a{background:var(--a)} .f-b{background:var(--b)} .f-n{background:var(--nat)}
+.scale{display:grid;grid-template-columns:110px 1fr 88px;gap:10px;font-family:var(--mono);font-size:.68rem;color:var(--muted)}
+.scale span:nth-child(2){display:flex;justify-content:space-between}
+
+.grade{font-family:var(--display);font-weight:700;font-size:1.15rem}
+footer{border-top:1px solid var(--line);padding-top:18px;font-size:.85rem;color:var(--muted);display:flex;flex-direction:column;gap:8px}
+
+@media (max-width:560px){
+  .score{flex-direction:column}
+  .score .side + .side{border-left:0;border-top:1px solid var(--line)}
+  .tally{grid-template-columns:1fr}
+  .summary,.view,.coverage{padding-left:16px;padding-right:16px}
+  .srow,.scale{grid-template-columns:80px 1fr 76px}
+}
+
+.trend{margin:4px 0 0;font-size:.86rem}.trend b{font-weight:700}.trend.up span{color:#13803a}.trend.down span{color:#c81e1e}.trend.steady span,.trend.new span{color:var(--muted)}
+@media (prefers-color-scheme:dark){.trend.up span{color:#5fd38a}.trend.down span{color:#ff7b7b}}
+
+:root{--a:#97233F;--b:#003594}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--a:#f0647f;--b:#7fa8ff}}
+:root[data-theme="dark"]{--a:#f0647f;--b:#7fa8ff}
+
+.tlink{color:inherit;text-decoration:none;border-bottom:1px dotted currentColor}
+.tlink:hover{border-bottom-style:solid}
+
+.refjump{margin:6px 0 0} .refjump a{font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.scale-note{font-size:.72rem !important;line-height:1.45}
+.refl li{margin-bottom:8px}
+.mts{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:3px}
+.mt{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.mt-bar{position:relative;display:inline-block;width:64px;height:7px;background:var(--line);border-radius:2px}
+.mt-c{position:absolute;left:50%;top:-2px;bottom:-2px;width:1px;background:var(--muted)}
+.mt-f{position:absolute;top:0;bottom:0;border-radius:2px}
+details.srcs summary{font-size:.74rem !important}
+
+.refs .inner-src{display:flex;flex-direction:column;gap:14px;max-height:340px;overflow-y:auto;overscroll-behavior:contain}
+footer p{font-size:.72rem;line-height:1.45}
+.refjump a{font-family:var(--mono);font-size:.8rem;letter-spacing:.04em;text-transform:uppercase}
+.avg td.n{white-space:nowrap}
+
+details.srcs{border:1px solid var(--line);border-radius:2px}
+details.srcs summary{cursor:pointer;padding:10px 12px;font-family:var(--mono);font-size:.82rem;letter-spacing:.05em;text-transform:uppercase}
+details.srcs[open] summary{border-bottom:1px solid var(--line)}
+details.srcs .inner-src{padding:12px;display:flex;flex-direction:column;gap:14px}
+.src-out{color:var(--muted)}
+.eyebrow{font-size:.8rem} .note{font-size:.8rem;line-height:1.5} .srow .lbl{font-size:.8rem} .srow .val{font-size:.8rem;color:var(--ink)}
+</style>
+</head><body>
+<div class="wrap">
+<a href="./" style="align-self:flex-start;display:inline-block;font-family:var(--mono);font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;background:none;border:1px solid var(--ink);color:var(--ink);padding:7px 11px;border-radius:2px">&larr; Back to Fodder Sports</a>
+
+<header style="display:flex;flex-direction:column;gap:16px">
+  <span class="eyebrow">Fodder Sports · NFL Week 8 · Matchup</span>
+  <div class="score" role="img" aria-label="Arizona Cardinals, 2 and 5, at Dallas Cowboys, 3 and 4">
+    <div class="side"><span class="nm a"><a class="tlink" href="./#team-ari">Cardinals</a><small>2–5 · away</small></span><span class="meta">Sun, Nov. 1<br>1:00 p.m. ET</span></div>
+    <div class="side"><span class="nm b"><a class="tlink" href="./#team-dal">Cowboys</a><small>3–4 · home</small></span><span class="meta">AT&amp;T Stadium<br>FOX</span></div>
+  </div>
+  <h1>Cowboys Try to Finally Solve Their Cardinals Problem at Home</h1>
+  <p class="dek">Dallas brings a big win in Philadelphia into a game against a 2-5 Arizona team that has beaten it four straight times.</p>
+</header>
+
+<section class="coverage" aria-labelledby="cov-h">
+  <h2 id="cov-h">How the coverage feels</h2>
+  <p class="note">How each market feels about each team right now, read from the week's coverage. This is about the team vibes, not the odds of winning this game.</p>
+  <div class="sent">
+    <div class="steam">
+      <h3 class="a"><a class="tlink" href="./#team-ari">Cardinals</a></h3>
+      <div class="srow"><span class="lbl">Arizona</span><div class="track"><span class="fill neg f-a" style="width:15.0%"></span></div><span class="val">Critical</span></div>
+      <div class="srow"><span class="lbl">Dallas</span><div class="track"><span class="fill neg f-b" style="width:5.0%"></span></div><span class="val">Neutral</span></div>
+      <div class="srow"><span class="lbl">National</span><div class="track"><span class="fill neg f-n" style="width:12.5%"></span></div><span class="val">Critical</span></div>
+      <p class="trend new"><span aria-hidden="true">•</span> <b>First reading.</b> Arizona's mood is sinking on red-zone failures, the Brissett-or-Beck debate, and talk of selling before the deadline.</p>
+    </div>
+    <div class="steam">
+      <h3 class="b"><a class="tlink" href="./#team-dal">Cowboys</a></h3>
+      <div class="srow"><span class="lbl">Dallas</span><div class="track"><span class="fill pos f-b" style="width:10.0%"></span></div><span class="val">Neutral</span></div>
+      <div class="srow"><span class="lbl">Arizona</span><div class="track"><span class="fill pos f-a" style="width:7.5%"></span></div><span class="val">Neutral</span></div>
+      <div class="srow"><span class="lbl">National</span><div class="track"><span class="fill pos f-n" style="width:10.0%"></span></div><span class="val">Neutral</span></div>
+      <p class="trend new"><span aria-hidden="true">•</span> <b>First reading.</b> Dallas's mood rose after the Philadelphia win and its revived run game, but its defense and its Arizona history keep the optimism in check.</p>
+    </div>
+    <div class="scale"><span></span><span><span>Harsh</span><span>Neutral</span><span>Glowing</span></span><span></span></div><p class="note scale-note">Each bar shows the overall tone of that group&#39;s coverage toward the team. Bars to the right of center are favorable, bars to the left are critical, and longer bars mean stronger tone. &ldquo;No coverage&rdquo; means that group published nothing about the team in this window.</p>
+  </div>
+  <p>Arizona's own media is gloomy, focused on red-zone failures, a quarterback debate, and talk of selling at the deadline, and national coverage treats the Cardinals as one of the league's weaker teams. Dallas's media is upbeat after the Eagles win but wary of its defense and its history against Arizona. Arizona's market sees a Dallas offense that can hit big plays and a defense it can attack, while national coverage likes the Cowboys' offense and questions everything else.</p>
+  <p class="refjump"><a href="#refs">See all the articles we referenced for this summary</a></p>
+</section>
+
+<section class="summary" aria-labelledby="sum-h">
+  <h2 id="sum-h">The summary</h2>
+  <ul class="bul">
+      <li>Arizona (2-5) has lost five of six, including a 30-16 home loss to Denver. Dallas (3-4) beat the Eagles 38-21 in Philadelphia as Cowboys running back Javonte Williams ran for a career-high 155 yards. Arizona is No. 29 and Dallas No. 20 in our consensus power rankings.</li>
+      <li>History is the storyline. Arizona has won four straight in the series and is 4-0 at AT&amp;T Stadium. Cowboys receiver CeeDee Lamb has never beaten Arizona and said Dallas has been too relaxed. Coach Brian Schottenheimer disagreed: "So the ball is what this game is going to come down to."</li>
+      <li>Turnovers and the red zone decide it. Dallas has no turnovers in its three wins and at least one in each loss, and it is minus-11 in turnovers against Arizona since 2008. Arizona ranks last in red-zone touchdown rate (42.9%) and went 1-for-10 in the red zone over its last two games.</li>
+      <li>Cardinals running back Jeremiyah Love, the No. 3 overall pick, returns from an ankle injury. Defensive lineman Walter Nolen III and guard Jon Gaines II are out, and center Hjalte Froholdt is questionable.</li>
+      <li>The trade deadline is Nov. 10. Arizona is framed as a possible seller, and reports have linked Dallas to Cardinals linebacker Josh Sweat.</li>
+      <li>Cardinals tight end Trey McBride leads the NFL with 59 catches. He faces a Dallas defense that has given up a score on the opening drive in each of its last three games.</li>
+  </ul>
+</section>
+
+<section class="views" aria-label="What each side is saying">
+  <div class="view">
+    <h2 class="a">What the Arizona media is saying about the Cardinals</h2>
+    <ul class="bul">
+      <li>Gloomy. Arizona coverage is stuck on the red zone: the Cardinals are last in the league in touchdown rate there and failed on four tries from Denver's 1-yard line late in Week 7. Coach Mike LaFleur took the blame: "Again, I'll look in the mirror first and say it starts with me."</li>
+      <li>The quarterback debate is loud. Quarterback Jacoby Brissett will start after taking 13 hits against Denver, but local coverage argues a switch to rookie quarterback Carson Beck is coming. LaFleur would only say, "Not going to talk about role changes right now."</li>
+      <li>Arizona's media calls Dallas an early crossroads for LaFleur in his first season. It points to an injury-hit line without left tackle Paris Johnson Jr., a slow year from receiver Marvin Harrison Jr., a weak defense, and a team trending toward selling Sweat, safety Budda Baker, or its veteran quarterbacks.</li>
+      <li>There are bright spots. McBride is near franchise records, Love is back, and defensive lineman Darius Robinson already matches last season's pressure total: "I have nothing to lose, so I'm playing so free and I'm having so much fun."</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="b">What the Dallas media is saying about the Cardinals</h2>
+    <ul class="bul">
+      <li>Dallas coverage sees a struggling team and a possible seller, but it calls this a trap game because Arizona has owned the series, winning eight of the last nine meetings.</li>
+      <li>Dallas's media respects the Cardinals' offense. Brissett leads the NFL with 282 pass attempts, McBride is the focus, and Cardinals defensive coordinator Nick Rallis's disguised blitzes are the concern for the Cowboys' line.</li>
+      <li>It also sees openings: Arizona ranks 23rd against the run, has the second-lowest pressure rate on third-and-long, and allows 10.9 yards per pass attempt in those spots.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="b">What the Dallas media is saying about the Cowboys</h2>
+    <ul class="bul">
+      <li>Relieved. Dallas coverage loved the win in Philadelphia, praising Schottenheimer's play calls after a week of criticism. Quarterback Dak Prescott said his coach was "hungry and pissed off," and Prescott passed Roger Staubach for second-most wins by a Cowboys quarterback (86).</li>
+      <li>The run game has Dallas excited. The Cowboys topped 200 yards both rushing and passing, every offensive lineman got a game ball, and Schottenheimer said, "I thought the offensive line was just dynamite all night."</li>
+      <li>The defense is the worry. Opponents have scored on their opening drive in each of the last three games, third downs remain a problem, and defensive tackle Kenny Clark summed it up: "We fighting for consistency."</li>
+      <li>History hangs over the week. Local coverage blames self-inflicted mistakes for the Arizona losses, with 11 giveaways and one takeaway across the last five, and sees a soft stretch ahead: the next five opponents are a combined 13-22.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="a">What the Arizona media is saying about the Cowboys</h2>
+    <ul class="bul">
+      <li>Arizona coverage sees a Dallas offense that is among the league's best when it clicks, coming off 38 points in Philadelphia, paired with a defense it calls porous.</li>
+      <li>The Cardinals' team site singles out new Cowboys cornerback Joey Porter Jr., who has allowed an 18.2% completion rate, Lamb's 93 receiving yards per game, and kicker Brandon Aubrey.</li>
+      <li>Arizona's media enjoyed Lamb's admission that the Cardinals "punched us in the mouth every single time," and it notes Dallas has never beaten Arizona at AT&amp;T Stadium.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="nat">What everyone else is saying about this game</h2>
+    <ul class="bul">
+      <li><b class="a">Cardinals:</b> National coverage treats Arizona as one of the league's weaker teams. The Cardinals are last in scoring defense (29.7 points per game), and Brissett is 3-16 as Arizona's starter across two seasons.</li>
+      <li><b class="a">Cardinals:</b> National writers credit McBride and the Cardinals' long, clock-eating drives, but they see a passing game that cannot finish: Brissett has 1,600 yards, 10 touchdowns, and six interceptions.</li>
+      <li><b class="b">Cowboys:</b> National coverage says the Eagles win put Dallas back in the NFC East hunt, behind the 4-2-1 Giants. It still notes questions about the defense and Schottenheimer's 9-13-1 record.</li>
+      <li><b class="b">Cowboys:</b> Lamb's admission about Arizona became a national story, and the national framing is that Dallas has to stop beating itself with turnovers.</li>
+      <li><b class="b">Cowboys:</b> National analysis flags slow defensive starts and says Dallas cannot treat a 2-5 opponent as a soft landing.</li>
+    </ul>
+  </div>
+</section>
+
+<section aria-labelledby="inj-h">
+  <h2 id="inj-h">Who's out</h2>
+  <ul class="bul">
+    <li><b class="a">Out:</b> Cardinals defensive lineman Walter Nolen III (ankle) and guard Jon Gaines II (ankle). Hayden Conner is the next man up on the line.</li>
+    <li><b class="a">Questionable:</b> Cardinals center Hjalte Froholdt (knee), cornerback Max Melton (knee), and safety Andrew Wingard (knee). Froholdt has not missed a game since 2023.</li>
+    <li><b class="a">In:</b> Cardinals running back Jeremiyah Love (ankle) returns after missing two games. Receiver Michael Wilson (ribs) will play.</li>
+    <li><b class="a">Out for season:</b> Cardinals left tackle Paris Johnson Jr. (torn biceps) and receiver Jalen Brooks (wrist).</li>
+    <li><b class="b">Out:</b> Cowboys receiver KaVontae Turpin (ribs) and linebacker Dee Winters (calf).</li>
+    <li><b class="b">Questionable:</b> Cowboys receiver George Pickens (shoulder, hamstring), defensive tackles Kenny Clark (back) and Jonathan Bullard (calf), linebacker Marist Liufau (forearm), safety P.J. Locke (foot), and tight end Luke Schoonmaker (groin). Schottenheimer expects Pickens to play.</li>
+    <li><b class="b">In:</b> Cowboys defensive tackle Quinnen Williams (hamstring) and safety Caleb Downs (ankle) practiced fully Friday.</li>
+  </ul>
+  <p class="note">Cowboys statuses come from the team's official injury report, Friday, Oct. 30. Cardinals statuses come from the Friday, Oct. 30 report as published by ArizonaSports.com, and Schoonmaker's listing comes from that same report.</p>
+</section>
+
+<section aria-labelledby="line-h">
+  <h2 id="line-h">The line and the history</h2>
+  <div class="tbl-wrap">
+    <table class="t">
+      <thead><tr><th>Line</th><th>Spread</th><th>Moneyline</th><th>Total</th></tr></thead>
+      <tbody><tr><td>DraftKings, Oct. 28</td><td class="n">DAL −7</td><td class="n">DAL −355 / ARI +280</td><td class="n">54.5</td></tr></tbody>
+    </table>
+  </div>
+  <ul class="bul">
+    <li>Arizona has won the last four meetings.</li>
+  </ul>
+  <h3>Who the public is picking</h3>
+  <ul class="bul">
+    <li><b>The media:</b> Every published score prediction we found takes the Cowboys. The average is Cowboys 30, Cardinals 23. Bleacher Report's panel has 57% on the Cardinals.</li>
+    <li><b>The betting public:</b> As of Friday, one sportsbook's splits showed 58% of spread bets on the Cardinals at +7, but 81% of moneyline bets on the Cowboys.</li>
+  </ul>
+  <div class="tbl-wrap avg">
+    <table class="t">
+      <thead><tr><th>Whose picks</th><th>Pick the Cardinals</th><th>Pick the Cowboys</th><th>Average score</th></tr></thead>
+      <tbody><tr><td>Arizona media</td><td class="n">0%</td><td class="n">100%</td><td class="n">Cowboys 34, Cardinals 27</td></tr><tr><td>Dallas media</td><td class="n">0%</td><td class="n">100%</td><td class="n">Cowboys 30, Cardinals 20</td></tr><tr><td>National media</td><td class="n">0%</td><td class="n">100%</td><td class="n">Cowboys 30, Cardinals 24</td></tr><tr><td><b>All media</b></td><td class="n">0%</td><td class="n">100%</td><td class="n"><b>Cowboys 30, Cardinals 23</b></td></tr></tbody>
+    </table>
+  </div>
+  <p class="note">Share of published score predictions picking each team, and the average predicted score. Each pick is tracked for our predictor standings.</p>
+</section>
+
+<section id="refs" class="refs" aria-labelledby="refs-h">
+  <h2 id="refs-h">References</h2>
+  <details class="srcs"><summary>Show the articles behind this page</summary><div class="inner-src">
+  <p class="note">Each bar shows that article's tone toward the team named next to it.</p>
+  <div class="covgrp"><span class="eyebrow a">Arizona</span><ul class="refl"><li><a href="https://www.azcardinals.com/news/3x3-week-8-cardinals-vs-cowboys">3x3: Week 8 Cardinals vs. Cowboys</a> <span class="src-out">- AZCardinals.com</span><span class="mts"><span class="mt"><span class="mt-n">Cardinals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Cowboys</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:15%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://raisingzona.com/cardinals-cowboys-week-8-watch-injury-news-storylines-prediction">Cardinals vs. Cowboys Week 8: how to watch, injuries, storylines, prediction</a> <span class="src-out">- Raising Zona</span><span class="mts"><span class="mt"><span class="mt-n">Cardinals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:22%;width:28%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Cowboys</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:12%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://arizonasports.com/dan-bickley/cardinals-cowboys-early-crossroads-mike-lafleur">Cardinals' trip to Dallas feels like an early crossroads for Mike LaFleur</a> <span class="src-out">- ArizonaSports.com</span><span class="mts"><span class="mt"><span class="mt-n">Cardinals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:18%;width:32%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Cowboys</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://arizonasports.com/nfl/arizona-cardinals/cardinals-jeremiyah-love-will-return-vs-cowboys-walter-nolen-iii-ruled-out">Jeremiyah Love will return vs. Cowboys, Walter Nolen III ruled out</a> <span class="src-out">- ArizonaSports.com</span><span class="mts"><span class="mt"><span class="mt-n">Cardinals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://arizonasports.com/arizona-cardinals-injury-report/cardinals-cowboys-week-8-injury-report-jeremiyah-will-play">Cardinals-Cowboys Week 8 injury report: Love slated to play</a> <span class="src-out">- ArizonaSports.com</span><span class="mts"><span class="mt"><span class="mt-n">Cardinals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://arizonasports.com/nfl/arizona-cardinals/josh-sweat-headlines-most-movable-cardinals-ahead-of-nfl-trade-deadline">Josh Sweat headlines most movable Cardinals ahead of trade deadline</a> <span class="src-out">- ArizonaSports.com</span><span class="mts"><span class="mt"><span class="mt-n">Cardinals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:28%;width:22%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.si.com/nfl/cardinals/onsi/arizona-cardinals-jacoby-brissett-decision-only-delaying-inevitable">Cardinals' Jacoby Brissett decision only delaying the inevitable</a> <span class="src-out">- Cardinals On SI</span><span class="mts"><span class="mt"><span class="mt-n">Cardinals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:15%;width:35%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.si.com/nfl/cardinals/onsi/arizona-cardinals-can-no-longer-ignore-their-biggest-problem">Cardinals can no longer ignore their red-zone problem</a> <span class="src-out">- Cardinals On SI</span><span class="mts"><span class="mt"><span class="mt-n">Cardinals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:20%;width:30%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.si.com/nfl/cardinals/onsi/arizona-cardinals-big-losers-nfl-week-8-power-rankings">Cardinals big losers in Week 8 power rankings</a> <span class="src-out">- Cardinals On SI</span><span class="mts"><span class="mt"><span class="mt-n">Cardinals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:12%;width:38%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://arizonasports.com/nfl/arizona-cardinals/is-carson-becks-role-cardinals-about-to-change">Is Carson Beck's role with the Cardinals about to change?</a> <span class="src-out">- ArizonaSports.com</span><span class="mts"><span class="mt"><span class="mt-n">Cardinals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:32%;width:18%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://sports.yahoo.com/articles/dallas-cowboys-wr-ceedee-lamb-124022268.html">CeeDee Lamb said something wild about the Cardinals</a> <span class="src-out">- Cards Wire (USA Today Network)</span><span class="mts"><span class="mt"><span class="mt-n">Cardinals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:30%;width:20%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Cowboys</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span></span></li></ul></div><div class="covgrp"><span class="eyebrow b">Dallas</span><ul class="refl"><li><a href="https://www.si.com/nfl/cowboys/onsi/everything-dallas-cowboys-must-fear-about-arizona-cardinals-nfl-week-8">Everything the Cowboys have to fear about the Cardinals</a> <span class="src-out">- Cowboys On SI</span><span class="mts"><span class="mt"><span class="mt-n">Cardinals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:38%;width:12%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.si.com/nfl/cowboys/onsi/3-bold-predictions-dallas-cowboys-cardinals-nfl-week-8">3 bold predictions for Cowboys vs. Cardinals</a> <span class="src-out">- Cowboys On SI</span><span class="mts"><span class="mt"><span class="mt-n">Cardinals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:28%;width:22%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Cowboys</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:20%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.dallascowboys.com/news/here-we-goooo-3-things-the-cowboys-must-do-to-beat-the-cardinals">3 things the Cowboys must do to beat the Cardinals</a> <span class="src-out">- DallasCowboys.com</span><span class="mts"><span class="mt"><span class="mt-n">Cardinals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:5%"></span></span><span class="mt-w">Neutral</span></span><span class="mt"><span class="mt-n">Cowboys</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:12%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.dallascowboys.com/news/big-picture-10-cowboys-cardinals-storylines-x6792">Big Picture: 10 Cowboys-Cardinals storylines</a> <span class="src-out">- DallasCowboys.com</span><span class="mts"><span class="mt"><span class="mt-n">Cardinals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:42%;width:8%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Cowboys</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://insidethestar.com/can-the-cowboys-finally-end-the-cardinals-perfect-record-at-att-stadium">Can the Cowboys end the Cardinals' perfect record at AT&amp;T Stadium?</a> <span class="src-out">- Inside The Star</span><span class="mts"><span class="mt"><span class="mt-n">Cardinals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Cowboys</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://sports.yahoo.com/articles/dallas-cowboys-biggest-problem-week-145723326.html">The Cowboys' biggest problem in Week 8 and a score prediction</a> <span class="src-out">- A to Z Sports</span><span class="mts"><span class="mt"><span class="mt-n">Cardinals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:45%;width:5%"></span></span><span class="mt-w">Neutral</span></span><span class="mt"><span class="mt-n">Cowboys</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:5%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://www.dallascowboys.com/news/eatman-the-play-caller-fired-back-with-schotts">Eatman: The play-caller fired back with Schotts</a> <span class="src-out">- DallasCowboys.com</span><span class="mts"><span class="mt"><span class="mt-n">Cowboys</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:38%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://www.dallascowboys.com/news/updates-october-2026">Cowboys updates: Downs limited, Pickens and Clark questionable</a> <span class="src-out">- DallasCowboys.com</span><span class="mts"><span class="mt"><span class="mt-n">Cowboys</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:10%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.dallascowboys.com/news/ceedee-lamb-s-added-motivation-to-defeat-the-cardinals-i-ve-never-done-it">CeeDee Lamb's added motivation vs. the Cardinals: 'I've never done it'</a> <span class="src-out">- DallasCowboys.com</span><span class="mts"><span class="mt"><span class="mt-n">Cowboys</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.dallascowboys.com/news/gut-feeling-staff-predictions-for-cowboys-cardinals">Gut Feeling: staff predictions for Cowboys-Cardinals</a> <span class="src-out">- DallasCowboys.com</span><span class="mts"><span class="mt"><span class="mt-n">Cowboys</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:18%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://insidethestar.com/dallas-we-have-a-problem-6-issues-against-arizona">Dallas, we have a problem: 6 issues against Arizona</a> <span class="src-out">- Inside The Star</span><span class="mts"><span class="mt"><span class="mt-n">Cowboys</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:28%;width:22%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://sports.yahoo.com/articles/dallas-cowboys-vs-arizona-cardinals-110550911.html">Cowboys vs. Cardinals Week 8 betting odds and preview</a> <span class="src-out">- Cowboys On SI</span><span class="mts"><span class="mt"><span class="mt-n">Cowboys</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:10%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.yardbarker.com/nfl/articles/kenny_clark_says_cowboys_are_fighting_for_consistency_before_cardinals_visit/s1_17810_44494508">Kenny Clark says Cowboys are 'fighting for consistency' before Cardinals visit</a> <span class="src-out">- Dallas Sports Journal</span><span class="mts"><span class="mt"><span class="mt-n">Cowboys</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://dallassportsjournal.com/cowboys-offensive-line-game-balls-schottenheimer-eagles/">Schottenheimer: whole Cowboys offensive line earned game balls</a> <span class="src-out">- Dallas Sports Journal</span><span class="mts"><span class="mt"><span class="mt-n">Cowboys</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:32%"></span></span><span class="mt-w">Glowing</span></span></span></li></ul></div><div class="covgrp"><span class="eyebrow nat">National</span><ul class="refl"><li><a href="https://www.cbssports.com/nfl/news/cowboys-ceedee-lamb-long-haunted-cardinals/">CeeDee Lamb says the Cardinals are Dallas's boogeyman</a> <span class="src-out">- CBS Sports</span><span class="mts"><span class="mt"><span class="mt-n">Cardinals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:38%;width:12%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Cowboys</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:40%;width:10%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/ceedee-lamb-on-cardinals-dominance-over-cowboys-its-crazy">CeeDee Lamb on Cardinals' dominance over Cowboys: 'It's crazy'</a> <span class="src-out">- ProFootballTalk (NBC Sports)</span><span class="mts"><span class="mt"><span class="mt-n">Cardinals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:40%;width:10%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Cowboys</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:38%;width:12%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://athlonsports.com/nfl/dallas-cowboys/dallas-cowboys-defense-problem-arizona-cardinals-week-8">The early-game problem the Cardinals can exploit</a> <span class="src-out">- Athlon Sports</span><span class="mts"><span class="mt"><span class="mt-n">Cardinals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:5%"></span></span><span class="mt-w">Neutral</span></span><span class="mt"><span class="mt-n">Cowboys</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:40%;width:10%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.si.com/betting/cardinals-vs-cowboys-prediction-odds-spread-injuries-trends-for-nfl-week-8-2026">Cardinals vs. Cowboys prediction, odds, spread, injuries, trends</a> <span class="src-out">- Sports Illustrated</span><span class="mts"><span class="mt"><span class="mt-n">Cardinals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:30%;width:20%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Cowboys</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:15%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.si.com/betting/nfl-week-8-survivor-pool-picks-cowboys-over-cardinals-surging-afc-north-squad-highlight-top-predictions-2026">Week 8 survivor picks: Cowboys over Cardinals</a> <span class="src-out">- Sports Illustrated</span><span class="mts"><span class="mt"><span class="mt-n">Cardinals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:20%;width:30%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.footballnationusa.com/post/cardinals-at-cowboys-week-8-guide-matchup-fantasy-odds-and-prediction">Cardinals at Cowboys Week 8 guide</a> <span class="src-out">- Football Nation</span><span class="mts"><span class="mt"><span class="mt-n">Cardinals</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:40%;width:10%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://athlonsports.com/nfl/trending/george-pickens-brian-schottenheimer-injury-update-cardinals-game">Cowboys expect Pickens, Quinnen Williams, Downs to play</a> <span class="src-out">- Athlon Sports</span><span class="mts"><span class="mt"><span class="mt-n">Cowboys</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.yardbarker.com/nfl/articles/dak_prescott_names_dallas_cowboys_huge_advantage_ahead_of_week_8_game_vs_cardinals/s1_17664_44494077">Dak Prescott names Cowboys' 'huge advantage' ahead of Cardinals game</a> <span class="src-out">- HITC</span><span class="mts"><span class="mt"><span class="mt-n">Cowboys</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.espn.com/nfl/story/_/id/50294687/prsecott-cowboys-keep-pace-nfc-east-road-win-eagles">Cowboys keep pace in NFC East with road win over Eagles</a> <span class="src-out">- ESPN</span><span class="mts"><span class="mt"><span class="mt-n">Cowboys</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.yardbarker.com/nfl/articles/dak_prescott_hints_hungry_brian_schottenheimer_wanted_to_send_a_message_via_cowboys_win_over_eagles/s1_13132_44478877">Prescott hints 'hungry' Schottenheimer wanted to send a message vs. Eagles</a> <span class="src-out">- Yardbarker</span><span class="mts"><span class="mt"><span class="mt-n">Cowboys</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://heavy.com/sports/nfl/dallas-cowboys/ceedee-lamb-telling-confession-cardinals-showdown/">CeeDee Lamb's telling confession before Cardinals showdown</a> <span class="src-out">- Heavy</span><span class="mts"><span class="mt"><span class="mt-n">Cowboys</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:20%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/cowboys-ceedee-lamb-seeking-revenge-015410221.html">CeeDee Lamb is seeking revenge on the Cardinals</a> <span class="src-out">- ClutchPoints</span><span class="mts"><span class="mt"><span class="mt-n">Cowboys</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:5%"></span></span><span class="mt-w">Neutral</span></span></span></li></ul></div>
+  </div></details>
+</section>
+
+<footer>
+  <span class="eyebrow">Fodder Sports · pilot</span>
+  <p>Summaries are written in our own words from the coverage listed above. Odds from <a href="https://www.espn.com/espn/betting/story/_/id/50250750/2026-nfl-week-8-schedule-odds-point-spreads-totals">ESPN's Week 8 odds report</a>. Not affiliated with the NFL, the Arizona Cardinals, or the Dallas Cowboys.</p>
+</footer>
+
+</div>
+<script>try{if('scrollRestoration' in history)history.scrollRestoration='manual';if(!location.hash)window.scrollTo(0,0);}catch(e){}</script>
+</body></html>

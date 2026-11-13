@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Fodder Sports Panthers at Packers</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#f3f4f6; --surface:#ffffff; --ink:#151a24; --muted:#5b6474; --line:#d9dde4;
+  --nat:#4a5568; --nat-soft:#e6e9ee;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f131a; --surface:#171c25; --ink:#e7eaf0; --muted:#9aa3b2; --line:#2a3140;
+  --nat:#a7b1c2; --nat-soft:#222935; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f131a; --surface:#171c25; --ink:#e7eaf0; --muted:#9aa3b2; --line:#2a3140;
+  --nat:#a7b1c2; --nat-soft:#222935; color-scheme:dark}
+
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 56px}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
+a{color:inherit;text-decoration-color:var(--muted);text-underline-offset:2px}
+a:hover{text-decoration-color:currentColor}
+a:focus-visible{outline:2px solid var(--a);outline-offset:2px;border-radius:2px}
+h1,h2,h3{font-family:var(--display);font-weight:700;text-wrap:balance;margin:0;letter-spacing:.01em}
+h1{font-size:clamp(1.9rem,5vw,2.6rem);line-height:1.05}
+h2{font-size:1.5rem;text-transform:uppercase}
+h3{font-size:1.05rem;text-transform:uppercase;letter-spacing:.05em}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.a{color:var(--a)} .b{color:var(--b)} .nat{color:var(--nat)}
+section{display:flex;flex-direction:column;gap:14px}
+.note{font-size:.88rem;color:var(--muted)}
+ul.bul{margin:0;padding-left:1.15em;display:flex;flex-direction:column;gap:10px}
+ul.bul li::marker{color:var(--muted)}
+.dek{font-size:1.1rem;color:var(--muted)}
+
+.score{display:flex;align-items:stretch;border:1px solid var(--line);background:var(--surface)}
+.score .side{flex:1;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;min-width:0}
+.score .side + .side{border-left:1px solid var(--line)}
+.score .nm{font-family:var(--display);font-size:1.5rem;font-weight:700;text-transform:uppercase;line-height:1}
+.score .nm small{display:block;font-family:var(--mono);font-size:.72rem;font-weight:400;letter-spacing:.08em;color:var(--muted);margin-top:4px;text-transform:none}
+.score .pts{font-family:var(--display);font-size:2.6rem;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.score .lose .pts{opacity:.5}
+.score .meta{font-family:var(--mono);font-size:.8rem;color:var(--muted);text-align:right}
+
+.summary{background:var(--surface);border:1px solid var(--line);padding:22px 24px;display:flex;flex-direction:column;gap:14px}
+.views{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line)}
+.view{padding:18px 22px;display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--line)}
+.view:first-child{border-top:0}
+
+.tally{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.tally div{background:var(--surface);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.tally .big{font-family:var(--display);font-size:2rem;font-weight:700;line-height:1}
+
+.tbl-wrap{overflow-x:auto}
+table.t{width:100%;border-collapse:collapse;font-size:.92rem;min-width:480px}
+.t th{font-family:var(--mono);font-weight:500;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:8px 10px 8px 0;border-bottom:2px solid var(--ink)}
+.t td{padding:8px 10px 8px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.t td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap;font-size:.85rem}
+
+.coverage{background:var(--surface);border:1px solid var(--line);padding:18px 22px;display:flex;flex-direction:column;gap:16px}
+.covgrp{display:flex;flex-direction:column;gap:6px}
+.covgrp ul{margin:0;padding-left:1.1em;font-size:.88rem;display:flex;flex-direction:column;gap:4px}
+
+/* Sentiment: diverging bars, center = neutral */
+.sent{display:flex;flex-direction:column;gap:18px}
+.steam{display:flex;flex-direction:column;gap:8px}
+.srow{display:grid;grid-template-columns:110px 1fr 88px;align-items:center;gap:10px;font-size:.85rem}
+.srow .lbl{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;color:var(--muted)}
+.srow .val{font-family:var(--mono);font-size:.74rem;text-align:right;color:var(--muted)}
+.track.nocov{background:repeating-linear-gradient(45deg,var(--nat-soft) 0 6px,transparent 6px 12px)}
+.track.nocov::after{display:none}
+.track{position:relative;height:12px;background:var(--nat-soft);border-radius:6px}
+.track::after{content:"";position:absolute;left:50%;top:-3px;bottom:-3px;width:2px;background:var(--muted);transform:translateX(-1px)}
+.fill{position:absolute;top:0;bottom:0;border-radius:6px}
+.fill.pos{left:50%} .fill.neg{right:50%}
+.f-a{background:var(--a)} .f-b{background:var(--b)} .f-n{background:var(--nat)}
+.scale{display:grid;grid-template-columns:110px 1fr 88px;gap:10px;font-family:var(--mono);font-size:.68rem;color:var(--muted)}
+.scale span:nth-child(2){display:flex;justify-content:space-between}
+
+.grade{font-family:var(--display);font-weight:700;font-size:1.15rem}
+footer{border-top:1px solid var(--line);padding-top:18px;font-size:.85rem;color:var(--muted);display:flex;flex-direction:column;gap:8px}
+
+@media (max-width:560px){
+  .score{flex-direction:column}
+  .score .side + .side{border-left:0;border-top:1px solid var(--line)}
+  .tally{grid-template-columns:1fr}
+  .summary,.view,.coverage{padding-left:16px;padding-right:16px}
+  .srow,.scale{grid-template-columns:80px 1fr 76px}
+}
+
+.trend{margin:4px 0 0;font-size:.86rem}.trend b{font-weight:700}.trend.up span{color:#13803a}.trend.down span{color:#c81e1e}.trend.steady span,.trend.new span{color:var(--muted)}
+@media (prefers-color-scheme:dark){.trend.up span{color:#5fd38a}.trend.down span{color:#ff7b7b}}
+
+:root{--a:#0a6ea8;--b:#2E6B47}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--a:#5ab8f0;--b:#7fbf8f}}
+:root[data-theme="dark"]{--a:#5ab8f0;--b:#7fbf8f}
+
+.tlink{color:inherit;text-decoration:none;border-bottom:1px dotted currentColor}
+.tlink:hover{border-bottom-style:solid}
+
+.refjump{margin:6px 0 0} .refjump a{font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.scale-note{font-size:.72rem !important;line-height:1.45}
+.refl li{margin-bottom:8px}
+.mts{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:3px}
+.mt{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.mt-bar{position:relative;display:inline-block;width:64px;height:7px;background:var(--line);border-radius:2px}
+.mt-c{position:absolute;left:50%;top:-2px;bottom:-2px;width:1px;background:var(--muted)}
+.mt-f{position:absolute;top:0;bottom:0;border-radius:2px}
+details.srcs summary{font-size:.74rem !important}
+
+.refs .inner-src{display:flex;flex-direction:column;gap:14px;max-height:340px;overflow-y:auto;overscroll-behavior:contain}
+footer p{font-size:.72rem;line-height:1.45}
+.refjump a{font-family:var(--mono);font-size:.8rem;letter-spacing:.04em;text-transform:uppercase}
+.avg td.n{white-space:nowrap}
+
+details.srcs{border:1px solid var(--line);border-radius:2px}
+details.srcs summary{cursor:pointer;padding:10px 12px;font-family:var(--mono);font-size:.82rem;letter-spacing:.05em;text-transform:uppercase}
+details.srcs[open] summary{border-bottom:1px solid var(--line)}
+details.srcs .inner-src{padding:12px;display:flex;flex-direction:column;gap:14px}
+.src-out{color:var(--muted)}
+.eyebrow{font-size:.8rem} .note{font-size:.8rem;line-height:1.5} .srow .lbl{font-size:.8rem} .srow .val{font-size:.8rem;color:var(--ink)}
+</style>
+</head><body>
+<div class="wrap">
+<a href="./" style="align-self:flex-start;display:inline-block;font-family:var(--mono);font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;background:none;border:1px solid var(--ink);color:var(--ink);padding:7px 11px;border-radius:2px">&larr; Back to Fodder Sports</a>
+
+<header style="display:flex;flex-direction:column;gap:16px">
+  <span class="eyebrow">Fodder Sports · NFL Week 8 · Matchup</span>
+  <div class="score" role="img" aria-label="Carolina Panthers, 3 and 3, at Green Bay Packers, 4 and 3">
+    <div class="side"><span class="nm a"><a class="tlink" href="./#team-car">Panthers</a><small>3–3 · away</small></span><span class="meta">Thu, Oct. 29<br>8:15 p.m. ET</span></div>
+    <div class="side"><span class="nm b"><a class="tlink" href="./#team-gb">Packers</a><small>4–3 · home</small></span><span class="meta">Lambeau Field<br>Prime Video</span></div>
+  </div>
+  <h1>Two Top Passing Offenses Meet at Lambeau, and Both Need a Bounce-Back</h1>
+  <p class="dek">Carolina still leads the NFC South despite a rough Sunday. Green Bay was one red-zone finish away from beating Detroit. Thursday night, one of them gets back on track.</p>
+</header>
+
+<section class="coverage" aria-labelledby="cov-h">
+  <h2 id="cov-h">How the coverage feels</h2>
+  <p class="note">Tone toward each team, local media versus national media. Pilot reading of the articles in References.</p>
+  <div class="sent">
+    <div class="steam">
+      <h3 class="a"><a class="tlink" href="./#team-car">Panthers</a></h3>
+      <div class="srow"><span class="lbl">Carolina</span><div class="track"><span class="fill pos f-a" style="width:0.0%"></span></div><span class="val">Neutral</span></div>
+      <div class="srow"><span class="lbl">Green Bay</span><div class="track"><span class="fill pos f-b" style="width:5.0%"></span></div><span class="val">Neutral</span></div>
+      <div class="srow"><span class="lbl">National</span><div class="track"><span class="fill neg f-n" style="width:5.0%"></span></div><span class="val">Neutral</span></div>
+      <p class="trend new"><span aria-hidden="true">•</span> <b>First reading.</b> The trend starts with this team's next reading.</p>
+    </div>
+    <div class="steam">
+      <h3 class="b"><a class="tlink" href="./#team-gb">Packers</a></h3>
+      <div class="srow"><span class="lbl">Green Bay</span><div class="track"><span class="fill pos f-b" style="width:10.0%"></span></div><span class="val">Neutral</span></div>
+      <div class="srow"><span class="lbl">Carolina</span><div class="track"><span class="fill pos f-a" style="width:25.0%"></span></div><span class="val">Positive</span></div>
+      <div class="srow"><span class="lbl">National</span><div class="track"><span class="fill pos f-n" style="width:17.5%"></span></div><span class="val">Positive</span></div>
+      <p class="trend new"><span aria-hidden="true">•</span> <b>First reading.</b> The trend starts with this team's next reading.</p>
+    </div>
+    <div class="scale"><span></span><span><span>Harsh</span><span>Neutral</span><span>Glowing</span></span><span></span></div><p class="note scale-note">Each bar shows the overall tone of that group&#39;s coverage toward the team. Bars to the right of center are favorable, bars to the left are critical, and longer bars mean stronger tone. &ldquo;No coverage&rdquo; means that group published nothing about the team in this window.</p>
+  </div>
+  <p>Carolina's media is warmer on the Packers than Green Bay's own coverage is, which is still stewing over the Detroit loss. Coverage of the Panthers is neutral everywhere: the Tampa Bay loss on one side, a first-place team on the other.</p>
+  <p class="refjump"><a href="#refs">See all the articles we referenced for this summary</a></p>
+</section>
+
+
+<section class="summary" aria-labelledby="sum-h">
+  <h2 id="sum-h">The summary</h2>
+  <ul class="bul">
+    <li>Both teams lost on Sunday. Green Bay fell 20–17 at Detroit after scoring seven points on four red-zone trips. Carolina lost 43–13 to Tampa Bay but still sits first in the NFC South at 3–3.</li>
+    <li>This is a meeting of two of the league's best passing offenses: Carolina ranks second in passing yards per game and Green Bay fifth.</li>
+    <li>The run game is the swing matchup. Green Bay has the league's lowest-ranked rushing offense, and Carolina allows the most rushing yards per game (153.2). Packers running back Josh Jacobs returned in Week 7.</li>
+    <li>Green Bay's defense leads the NFL with nine interceptions and 13 takeaways.</li>
+    <li>Green Bay is a 3.5-point favorite, and the total has climbed from 47.5 to 48.5 since it opened.</li>
+  </ul>
+</section>
+
+<section class="views" aria-label="What each side is saying">
+  <div class="view">
+    <h2 class="a">What the Carolina media is saying about the Panthers</h2>
+    <ul class="bul">
+      <li>Time to bounce back fast. Panthers quarterback Bryce Young owned the Tampa Bay loss, saying the turnovers were "always my fault," and coach Dave Canales says Young is "ready to rock" for Thursday.</li>
+      <li>The plan is quick throws. Young faces pressure on 44.3% of dropbacks against four or fewer rushers, the highest rate among qualified passers, so Carolina wants to get the ball out early.</li>
+      <li>The line is patched together. Right tackle Taylor Moton is out for the season, and rookie Monroe Freeling starts in his place. "It's one thing getting beat, but it's another thing beating yourself," Freeling said.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="b">What the Green Bay media is saying about the Panthers</h2>
+    <ul class="bul">
+      <li>Don't judge Carolina by one Sunday. Green Bay coverage points to wins over Detroit and Atlanta, and to Young's 12 touchdown passes against four interceptions.</li>
+      <li>Panthers receiver Tetairoa McMillan, last season's Offensive Rookie of the Year (511 yards in six games), and running back Chuba Hubbard (two 100-yard games) are the players to watch.</li>
+      <li>The new-look defense is getting attention too, led by linebacker Devin Lloyd, who has two interceptions.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="b">What the Green Bay media is saying about the Packers</h2>
+    <ul class="bul">
+      <li>The red zone, not the officiating, cost them in Detroit. Green Bay coverage counts three wasted chances inside the 20. "You gotta finish plays," Packers coach Matt LaFleur said.</li>
+      <li>The defense gets credit for a second straight strong week against a high-scoring offense.</li>
+      <li>Packers quarterback Jordan Love called for a better run game, and Carolina's run defense is the chance to find one. This is the last of three home games in 19 days before a trip to New England.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="a">What the Carolina media is saying about the Packers</h2>
+    <ul class="bul">
+      <li>Respect. Panthers safety Nick Scott called Green Bay "extremely talented, better in real life than they are on paper."</li>
+      <li>Carolina coverage expects a pass-heavy night: Green Bay throws on 66.9% of plays, the highest rate in the league, and is also the league's most penalized team.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="nat">What everyone else is saying about this game</h2>
+    <ul class="bul">
+      <li><b class="a">Panthers:</b> Tampa Bay ran for 258 yards on Sunday, and national previews expect Green Bay to test that run defense right away. Carolina needs Young to get the ball out fast and McMillan and defensive tackle Derrick Brown to win their matchups.</li>
+      <li><b class="b">Packers:</b> National coverage sees Love and pass rusher Lukas Van Ness as the matchup edge. Van Ness has 3.5 sacks, and Green Bay ranks fourth in pressure rate without blitzing.</li>
+      <li><b class="b">Packers:</b> Every national pick we found takes Green Bay, mostly by a touchdown or less.</li>
+    </ul>
+  </div>
+</section>
+
+<section aria-labelledby="inj-h">
+  <h2 id="inj-h">Who's out</h2>
+  <p class="note">Status from the final injury reports on Wednesday, Oct. 28.</p>
+  <ul class="bul">
+    <li><b class="a">Out:</b> Panthers pass rusher Jaelan Phillips (hamstring).</li>
+    <li><b class="a">Out:</b> Panthers right tackle Taylor Moton, placed on injured reserve after Week 7.</li>
+    <li><b class="a">Out:</b> Panthers cornerback Akayleb Evans (triceps, knee). Cornerback Jaycee Horn is also on injured reserve, leaving Carolina thin at the position.</li>
+    <li><b class="a">Out:</b> Panthers guard Damien Lewis.</li>
+    <li><b class="a">In:</b> Panthers quarterback Bryce Young (knee) and receiver Jalen Coker (shoulder) practiced fully and carry no designation.</li>
+    <li><b class="b">Out:</b> Packers pass rusher Micah Parsons remains on the PUP list. He could return to practice next week.</li>
+    <li><b class="b">Out:</b> Packers linebacker Zaire Franklin (shin).</li>
+    <li><b class="b">Out:</b> Packers center Sean Rhyan (high-ankle sprain).</li>
+    <li><b class="b">Uncertain:</b> Packers second-year receiver Matthew Golden (shoulder, foot) is questionable after a limited practice Wednesday. "I sure hope so," Packers coach Matt LaFleur said when asked if Golden will play.</li>
+    <li><b class="b">Uncertain:</b> Packers defensive tackle Devonte Wyatt is questionable.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="con-h">
+  <h2 id="con-h">Team connections</h2>
+  <ul class="bul">
+    <li><b>Rasheed Walker</b>, a former Packers draft pick, starts at left tackle for Carolina against his old team.</li>
+    <li><b>AJ Dillon</b>, a former Packers running back, is Carolina's backup running back.</li>
+    <li><b>Darrell Bevell</b>, Carolina's associate head coach, spent six seasons with the Packers.</li>
+    <li>Carolina won the last meeting 16–13 at Lambeau Field in November 2025, on a game-winning field goal by Panthers kicker Ryan Fitzgerald.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="line-h">
+  <h2 id="line-h">The line and the history</h2>
+  <div class="tbl-wrap">
+    <table class="t">
+      <thead><tr><th>Line</th><th>Spread</th><th>Moneyline</th><th>Total</th></tr></thead>
+      <tbody><tr><td>DraftKings, Oct. 26</td><td class="n">GB −3.5</td><td class="n">GB −192 / CAR +160</td><td class="n">47.5</td></tr><tr><td>DraftKings, Oct. 27</td><td class="n">GB −3.5</td><td class="n">GB −185 / CAR +154</td><td class="n">48.5</td></tr></tbody>
+    </table>
+  </div>
+  <ul class="bul">
+    <li>Green Bay leads the regular-season series 11–7. Eight of the last nine meetings were decided by one score.</li>
+    <li>This is the first Thursday meeting between the teams.</li>
+  </ul>
+  <h3>Who the public is picking</h3>
+  <ul class="bul">
+    <li><b>The media:</b> Every published score prediction we found takes Green Bay. The average is Packers 29, Panthers 23. Bleacher Report's seven-person expert panel has 57% on Carolina.</li>
+    <li><b>The betting public:</b> About 63% of spread bets and 83% of moneyline bets were on the Packers as of Thursday afternoon, and 54% of bets were on the over.</li>
+  </ul>
+  <div class="tbl-wrap avg">
+    <table class="t">
+      <thead><tr><th>Whose picks</th><th>Pick the Panthers</th><th>Pick the Packers</th><th>Average score</th></tr></thead>
+      <tbody><tr><td>National media</td><td class="n">0%</td><td class="n">100%</td><td class="n">Packers 29, Panthers 23</td></tr><tr><td><b>All media</b></td><td class="n">0%</td><td class="n">100%</td><td class="n"><b>Packers 29, Panthers 23</b></td></tr></tbody>
+    </table>
+  </div>
+  <p class="note">Share of published score predictions picking each team, and the average predicted score. Each pick is tracked for our predictor standings.</p>
+</section>
+
+<section aria-labelledby="bold-h">
+  <h2 id="bold-h">Bold predictions from the coverage</h2>
+  <p class="note">These are other writers' predictions, not ours. We'll check back after the game and list the ones that hit.</p>
+  <ul class="bul">
+    <li><b>Douglas Fritz, ClutchPoints:</b> Packers running back Josh Jacobs, behind the league's lowest-ranked run game, runs for 80-plus yards and two touchdowns.</li>
+    <li><b>James Hicks, Hall of Football:</b> Packers pass rusher Lukas Van Ness gets a couple of sacks, and Green Bay has its best rushing game of the season.</li>
+    <li><b>Matt Johnson, Sportsnaut:</b> Panthers receiver Tetairoa McMillan posts his third 100-yard game of the season, and Bryce Young is sacked at least three times.</li>
+  </ul>
+</section>
+
+
+<section id="refs" class="refs" aria-labelledby="refs-h">
+  <h2 id="refs-h">References</h2>
+  <details class="srcs"><summary>Show the articles behind this page</summary><div class="inner-src"><div class="covgrp">
+    <span class="eyebrow a">Carolina</span>
+    <ul>
+      <li><a href="https://sports.yahoo.com/articles/bryce-young-panthers-were-awful-090000168.html">Bryce Young, Panthers were awful. Time to bounce back fast</a> <span class="src-out">- Charlotte Observer</span></li>
+      <li><a href="https://www.panthers.com/news/5-things-to-watch-as-two-top-passing-offenses-in-panthers-and-packers-face-off-thursday-night-football">5 things to watch as two top passing offenses face off</a> <span class="src-out">- Panthers.com</span></li>
+      <li><a href="https://sports.yahoo.com/articles/carolina-panthers-vs-green-bay-212620320.html">Panthers vs. Packers Thursday Night Football preview</a> <span class="src-out">- Queen City News</span></li>
+    </ul>
+  </div>
+  <div class="covgrp">
+    <span class="eyebrow b">Green Bay</span>
+    <ul>
+      <li><a href="https://www.packers.com/news/rapid-reaction-red-zone-not-yellow-flags-lost-game-for-packers-week-7-2026">Red zone, not yellow flags, lost game for Packers</a> <span class="src-out">- Packers.com</span></li>
+      <li><a href="https://sports.yahoo.com/articles/packers-vs-panthers-5-things-145522332.html">5 things to know about Green Bay's Week 8 opponent</a> <span class="src-out">- Packers Wire</span></li>
+      <li><a href="https://www.packers.com/news/packers-host-panthers-on-thursday-night-week-8-2026">Packers host Panthers on Thursday night</a> <span class="src-out">- Packers.com</span></li>
+      <li><a href="https://lombardiave.com/packers-week-8-injury-updates-matthew-golden-uncertainty-micah-parsons-update">Packers Week 8 injury updates</a> <span class="src-out">- Lombardi Ave</span></li>
+    </ul>
+  </div>
+  <div class="covgrp">
+    <span class="eyebrow nat">National</span>
+    <ul>
+      <li><a href="https://athlonsports.com/nfl/carolina-panthers/panthers-packers-make-or-break-bryce-young-jordan-love">Love and Van Ness can break the Panthers unless Young gets the ball out fast</a> <span class="src-out">- Athlon Sports</span></li>
+      <li><a href="https://sports.yahoo.com/articles/tnf-week-8-preview-packers-133051671.html">Can the Packers finally run the ball?</a> <span class="src-out">- Last Word on Sports</span></li>
+      <li><a href="https://www.cbssports.com/nfl/news/pete-priscos-week-8-nfl-picks-odds-predictions/">Prisco's Week 8 picks</a> <span class="src-out">- CBS Sports</span></li>
+      <li><a href="https://www.si.com/nfl/panthers/onsi/nfl-week-8-expert-picks-paint-clear-picture-panthers-chances-packers">Week 8 expert picks for Panthers vs. Packers</a> <span class="src-out">- Panthers On SI</span></li>
+      <li><a href="https://clutchpoints.com/nfl/nfl-stories/panthers-vs-packers-bold-predictions-for-week-8-thursday-night-football">Bold predictions for Panthers vs. Packers</a> <span class="src-out">- ClutchPoints</span></li>
+      <li><a href="https://sportsnaut.com/nfl/thursday-night-football-preview-carolina-panthers-vs-green-bay-packers">Bold predictions for Panthers vs. Packers in Week 8</a> <span class="src-out">- Sportsnaut</span></li>
+      <li><a href="https://halloffootball.substack.com/p/tnf-pack-will-sack-young-panthers">TNF: Pack will sack Young, Panthers</a> <span class="src-out">- Hall of Football</span></li>
+      <li><a href="https://www.si.com/betting/panthers-vs-packers-score-prediction-for-nfl-week-8-bet-on-green-bay-to-handle-business-at-home-2026">Panthers vs. Packers score prediction</a> <span class="src-out">- SI Betting</span></li>
+      <li><a href="https://www.sportsbettingdime.com/news/nfl/panthers-vs-packers-public-betting-splits-sharp-money-for-tnf/">Panthers vs. Packers public betting splits</a> <span class="src-out">- Sports Betting Dime</span></li>
+      <li><a href="https://sports.yahoo.com/articles/matthew-golden-playing-tonight-injury-103152440.html">Is Matthew Golden playing tonight?</a> <span class="src-out">- USA Today</span></li>
+      <li><a href="https://sports.yahoo.com/articles/panthers-announce-bad-injury-news-211107062.html">Panthers rule out four for Thursday</a> <span class="src-out">- Heavy</span></li>
+      <li><a href="https://www.si.com/betting/panthers-vs-packers-prediction-odds-spread-injuries-trends-for-nfl-week-8-2026">Panthers vs. Packers odds and prediction</a> <span class="src-out">- SI Betting</span></li>
+          <li><a href="https://nflspinzone.com/2026-nfl-picks-score-predictions-for-every-week-8-game-01m5wvnsectd">Score predictions for every Week 8 game</a> <span class="src-out">- NFL Spin Zone</span></li>
+      <li><a href="https://bleacherreport.com/articles/25521342-bleacher-reports-expert-week-8-2026-nfl-picks">Bleacher Report's expert Week 8 picks</a> <span class="src-out">- Bleacher Report</span></li>
+    </ul>
+  </div>
+</div></details>
+</section>
+
+<footer>
+  <span class="eyebrow">Fodder Sports · pilot</span>
+  <p>Summaries are written in our own words from the coverage listed above. Not affiliated with the NFL, the Carolina Panthers, or the Green Bay Packers.</p>
+</footer>
+
+</div>
+<script>try{if('scrollRestoration' in history)history.scrollRestoration='manual';if(!location.hash)window.scrollTo(0,0);}catch(e){}</script>
+</body></html>

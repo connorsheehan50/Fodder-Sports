@@ -42,43 +42,43 @@ function buildCard(item) {
   const because = item.because ? `<div class="card-because">${escHtml(item.because)}</div>` : '';
   const desc = item.desc ? `<div class="card-desc">${escHtml(item.desc)}</div>` : '';
 
-  // Thumb color based on type
-  const thumbColors = {
-    preview: '#1a1a1a', recap: '#0D3B1E', trade: '#3D2F00',
-    breaking: '#7A1E00', story: '#2D1050', rankings: '#0A2660'
-  };
-  // For trades with teams, vary background by team abbr for visual differentiation
-  let bg = thumbColors[item.type] || '#1a1a1a';
-  if (item.type === 'trade' && teamA) {
-    // Hash team abbr to pick from a palette of dark backgrounds
-    const tradePalette = ['#1A3A5C','#2E1A5C','#1A4A2E','#4A1A1A','#2A3A1A','#1A2A4A','#3A1A3A','#1A3A3A','#4A3A1A','#1A4A4A'];
-    let hash = 0; for (let c of teamA) hash = (hash * 31 + c.charCodeAt(0)) & 0xff;
-    bg = tradePalette[hash % tradePalette.length];
+  // ESPN logo CDN — WAS uses 'wsh'
+  const espnAbbr = { 'WAS': 'wsh' };
+  function logoUrl(abbr) {
+    return `https://a.espncdn.com/i/teamlogos/nfl/500/${(espnAbbr[abbr] || abbr).toLowerCase()}.png`;
+  }
+
+  const thumbBg = { preview: '#0d1a2e', recap: '#0a1a10', trade: '#1a0d00', breaking: '#1a0505', story: '#0d0a1a', rankings: '#000d1a' }[item.type] || '#0d0d0d';
+  const bannerBg = { preview: '#1a4a8c', recap: '#0D3B1E', trade: '#5a3500', breaking: '#7A1E00', story: '#2D1050', rankings: '#0A2660' }[item.type] || '#333';
+  const bannerHtml = `<div style="position:absolute;top:0;left:0;font-family:var(--font-head);font-size:7px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:${bannerBg};padding:3px 6px;z-index:3;">${t.label}</div>`;
+
+  function logoCircle(abbr, sz) {
+    return `<div style="position:relative;width:${sz}px;height:${sz}px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+      <div style="position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at center,rgba(255,255,255,.18) 0%,rgba(255,255,255,.07) 45%,transparent 72%);"></div>
+      <img src="${logoUrl(abbr)}" alt="${escHtml(abbr)}" style="position:relative;width:${sz - 6}px;height:${sz - 6}px;object-fit:contain;filter:drop-shadow(0 1px 4px rgba(0,0,0,.55));z-index:1;" onerror="this.style.display='none'">
+    </div>`;
   }
 
   let thumbInner;
   if (teamA && teamB) {
-    thumbInner = `<div class="card-thumb-teams">${escHtml(teamA)}<span class="vs">vs</span>${escHtml(teamB)}</div>`;
-  } else if (item.type === 'trade' && teamA) {
-    // Single-team trade: show team abbr + arrow icon for visual differentiation
-    thumbInner = `<div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
-      <div style="font-family:var(--font-head);font-size:20px;font-weight:900;color:#fff;letter-spacing:0.04em;">${escHtml(teamA)}</div>
-      <div style="font-family:var(--font-head);font-size:9px;font-weight:800;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:0.1em;">TRADE</div>
-    </div>`;
+    thumbInner = `<div style="display:flex;align-items:center;justify-content:center;gap:4px;padding-top:6px;">${logoCircle(teamA, 40)}<div style="font-family:var(--font-head);font-size:7px;font-weight:900;color:rgba(255,255,255,.3);letter-spacing:.1em;">AT</div>${logoCircle(teamB, 40)}</div>`;
+  } else if (teamA) {
+    thumbInner = `<div style="display:flex;align-items:center;justify-content:center;padding-top:6px;">${logoCircle(teamA, 50)}</div>`;
   } else {
-    thumbInner = `<div style="font-family:var(--font-head);font-size:12px;font-weight:800;color:var(--slate);text-align:center;text-transform:uppercase;letter-spacing:0.08em;">${escHtml(item.sport || 'NFL')}</div>`;
+    thumbInner = `<div style="font-family:var(--font-head);font-size:11px;font-weight:800;color:rgba(255,255,255,.3);text-align:center;letter-spacing:.06em;">NFL</div>`;
   }
 
   return `
     <a href="${escHtml(item.url || '#')}" class="card">
-      <div class="card-thumb" style="background:${bg};">
+      <div class="card-thumb" style="background:${thumbBg};padding:14px 8px 10px;position:relative;">
+        ${bannerHtml}
         ${thumbInner}
       </div>
       <div class="card-body">
         <div class="card-meta">
           <span class="card-type ${t.cls}">${t.label}</span>
           <span class="card-date">${escHtml(item.date || '')}</span>
-          ${item.teams_full ? item.teams_full.map(t => `<span style="font-family:var(--font-head);font-size:10px;font-weight:800;background:var(--ink);color:var(--off-white);padding:2px 6px;border-radius:2px;">${escHtml(t)}</span>`).join('') : ''}
+          ${item.teams_full ? item.teams_full.map(tf => `<span style="font-family:var(--font-head);font-size:10px;font-weight:800;background:var(--ink);color:var(--off-white);padding:2px 6px;border-radius:2px;">${escHtml(tf)}</span>`).join('') : ''}
         </div>
         ${because}
         <div class="card-title">${escHtml(item.title)}</div>
@@ -137,12 +137,16 @@ function buildRankingsWidget(rankings) {
     return '<div style="padding:16px;font-family:var(--font-body);font-size:13px;color:var(--slate);">No rankings yet.</div>';
   }
   const note = rankings.note ? `<div style="padding:8px 16px 0;font-family:var(--font-body);font-size:11px;color:var(--slate-light);">${escHtml(rankings.note)}</div>` : '';
-  const rows = rankings.teams.slice(0, 10).map((t, i) => `
+  const rows = rankings.teams.slice(0, 10).map((t, i) => {
+    const move = t.move > 0 ? '↑' : t.move < 0 ? '↓' : '—';
+    const moveColor = t.move > 0 ? '#1A6B3A' : t.move < 0 ? '#9B1C1C' : 'var(--slate)';
+    return `
     <div class="ranking-row">
       <span class="rank-num">${String(i + 1).padStart(2, '0')}</span>
       <span class="rank-team">${escHtml(t.name)}</span>
-      <span class="rank-arrow">↗</span>
-    </div>`).join('');
+      <span class="rank-arrow" style="color:${moveColor};">${move}</span>
+    </div>`;
+  }).join('');
   return note + rows;
 }
 

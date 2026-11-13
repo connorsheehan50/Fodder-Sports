@@ -18,8 +18,12 @@
       "id": "trade-cousins-20261110",
       "type": "trade",
       "date": "Nov. 10",
-      "teams": ["MIN"],
-      "teams_full": ["Minnesota Vikings"],
+      "teams": [
+        "MIN"
+      ],
+      "teams_full": [
+        "Minnesota Vikings"
+      ],
       "title": "Kirk Cousins Returns to Minnesota",
       "desc": "The quarterback came back to the franchise where he spent four seasons, arriving on trade deadline day.",
       "url": "pages/trade-cousins-20261110.html",
@@ -29,8 +33,12 @@
       "id": "trade-hooker-20261110",
       "type": "trade",
       "date": "Nov. 10",
-      "teams": ["BUF"],
-      "teams_full": ["Buffalo Bills"],
+      "teams": [
+        "BUF"
+      ],
+      "teams_full": [
+        "Buffalo Bills"
+      ],
       "title": "Bills Add on Deadline Day",
       "desc": "Buffalo made a deadline-day acquisition as the AFC's top seed continues to build.",
       "url": "pages/trade-hooker-20261110.html",
@@ -40,8 +48,14 @@
       "id": "trade-downs-20261110",
       "type": "trade",
       "date": "Nov. 10",
-      "teams": ["KC", "IND"],
-      "teams_full": ["Kansas City Chiefs", "Indianapolis Colts"],
+      "teams": [
+        "KC",
+        "IND"
+      ],
+      "teams_full": [
+        "Kansas City Chiefs",
+        "Indianapolis Colts"
+      ],
       "title": "Chiefs Add Receiver Josh Downs from Colts",
       "desc": "Kansas City bolstered its receiver room on trade deadline day, acquiring the second-year wideout from Indianapolis.",
       "url": "pages/trade-downs-20261110.html",
@@ -51,8 +65,12 @@
       "id": "trade-allen-20261110",
       "type": "trade",
       "date": "Nov. 10",
-      "teams": ["SF"],
-      "teams_full": ["San Francisco 49ers"],
+      "teams": [
+        "SF"
+      ],
+      "teams_full": [
+        "San Francisco 49ers"
+      ],
       "title": "49ers Make Deadline-Day Move",
       "desc": "San Francisco added to its roster on the final day of the trading period.",
       "url": "pages/trade-allen-20261110.html",
@@ -62,8 +80,12 @@
       "id": "trade-neuzil-20261110",
       "type": "trade",
       "date": "Nov. 10",
-      "teams": ["BAL"],
-      "teams_full": ["Baltimore Ravens"],
+      "teams": [
+        "BAL"
+      ],
+      "teams_full": [
+        "Baltimore Ravens"
+      ],
       "title": "Ravens Complete Third Trade in Four Weeks",
       "desc": "Baltimore added a third piece before the deadline closed, continuing a mid-season roster overhaul.",
       "url": "pages/trade-neuzil-20261110.html",
@@ -73,8 +95,12 @@
       "id": "trade-henley-20261111",
       "type": "breaking",
       "date": "Nov. 11",
-      "teams": ["LAC"],
-      "teams_full": ["Los Angeles Chargers"],
+      "teams": [
+        "LAC"
+      ],
+      "teams_full": [
+        "Los Angeles Chargers"
+      ],
       "title": "Henley Trade Called Off After Failed Physical",
       "desc": "A deal announced Nov. 10 was voided the next day. The player returned to the Chargers after a reported knee issue.",
       "url": "pages/trade-henley-20261111.html",
@@ -84,8 +110,12 @@
       "id": "trade-cisco-20261109",
       "type": "trade",
       "date": "Nov. 9",
-      "teams": ["DET"],
-      "teams_full": ["Detroit Lions"],
+      "teams": [
+        "DET"
+      ],
+      "teams_full": [
+        "Detroit Lions"
+      ],
       "title": "Lions Acquire Safety Nasir Cisco",
       "desc": "Detroit added secondary depth a day before the trade deadline.",
       "url": "pages/trade-cisco-20261109.html",
@@ -95,8 +125,12 @@
       "id": "trade-davis-20261109",
       "type": "trade",
       "date": "Nov. 9",
-      "teams": ["JAX"],
-      "teams_full": ["Jacksonville Jaguars"],
+      "teams": [
+        "JAX"
+      ],
+      "teams_full": [
+        "Jacksonville Jaguars"
+      ],
       "title": "Jaguars Make First of Three Deadline Moves",
       "desc": "Jacksonville began a flurry of late-week trades by acquiring a new piece the day before the Nov. 10 deadline.",
       "url": "pages/trade-davis-20261109.html",
@@ -106,8 +140,12 @@
       "id": "trade-bates-20261109",
       "type": "trade",
       "date": "Nov. 9",
-      "teams": ["JAX"],
-      "teams_full": ["Jacksonville Jaguars"],
+      "teams": [
+        "JAX"
+      ],
+      "teams_full": [
+        "Jacksonville Jaguars"
+      ],
       "title": "Jaguars Continue Building, Add Bates",
       "desc": "Jacksonville's second acquisition in two days added more depth to a team surging up the power rankings.",
       "url": "pages/trade-bates-20261109.html",
@@ -117,8 +155,12 @@
       "id": "trade-godchaux-20261109",
       "type": "trade",
       "date": "Nov. 9",
-      "teams": ["JAX"],
-      "teams_full": ["Jacksonville Jaguars"],
+      "teams": [
+        "JAX"
+      ],
+      "teams_full": [
+        "Jacksonville Jaguars"
+      ],
       "title": "Jaguars Complete Third Move: Godchaux",
       "desc": "Jacksonville wrapped up a three-player acquisition run with one more addition before the deadline.",
       "url": "pages/trade-godchaux-20261109.html",
@@ -127,13 +169,375 @@
     {
       "id": "preview-tb-chi-w9",
       "type": "preview",
-      "date": "Sun, Nov. 8 · SNF",
-      "teams": ["TB", "CHI"],
-      "teams_full": ["Tampa Bay Buccaneers", "Chicago Bears"],
+      "date": "Sun, Nov. 8 \u00b7 SNF",
+      "teams": [
+        "TB",
+        "CHI"
+      ],
+      "teams_full": [
+        "Tampa Bay Buccaneers",
+        "Chicago Bears"
+      ],
       "title": "Buccaneers Bring a Historic Defense Into Chicago's Super Bowl Year",
       "desc": "Tampa Bay just shut out an NFL offense for the first time in franchise history. The Bears just traded for an All-Pro and blew out Seattle 34-17.",
       "url": "pages/matchup-tb-chi-w9.html",
       "because": "Because you follow the Bears"
+    },
+    {
+      "id": "preview-bal-buf-w8",
+      "type": "preview",
+      "date": "Oct. 31",
+      "teams": [
+        "BAL",
+        "BUF"
+      ],
+      "teams_full": [
+        "Baltimore Ravens",
+        "Buffalo Bills"
+      ],
+      "title": "Ravens at Bills: AFC Showdown",
+      "desc": "Baltimore heads to Buffalo in a marquee AFC matchup. Full breakdown from both markets.",
+      "url": "pages/ravens-at-bills.html"
+    },
+    {
+      "id": "preview-ten-cin-w8",
+      "type": "preview",
+      "date": "Oct. 31",
+      "teams": [
+        "TEN",
+        "CIN"
+      ],
+      "teams_full": [
+        "Tennessee Titans",
+        "Cincinnati Bengals"
+      ],
+      "title": "Titans at Bengals",
+      "desc": "Tennessee visits Cincinnati. What both fan bases are saying heading in.",
+      "url": "pages/titans-at-bengals.html"
+    },
+    {
+      "id": "preview-ari-dal-w8",
+      "type": "preview",
+      "date": "Oct. 31",
+      "teams": [
+        "ARI",
+        "DAL"
+      ],
+      "teams_full": [
+        "Arizona Cardinals",
+        "Dallas Cowboys"
+      ],
+      "title": "Cardinals at Cowboys",
+      "desc": "Arizona travels to Dallas. Coverage from both sides of this NFC matchup.",
+      "url": "pages/cardinals-at-cowboys.html"
+    },
+    {
+      "id": "preview-min-det-w8",
+      "type": "preview",
+      "date": "Oct. 31",
+      "teams": [
+        "MIN",
+        "DET"
+      ],
+      "teams_full": [
+        "Minnesota Vikings",
+        "Detroit Lions"
+      ],
+      "title": "Vikings at Lions: NFC North Battle",
+      "desc": "Minnesota visits Detroit in a pivotal NFC North divisional game.",
+      "url": "pages/vikings-at-lions.html"
+    },
+    {
+      "id": "preview-ind-jax-w8",
+      "type": "preview",
+      "date": "Oct. 31",
+      "teams": [
+        "IND",
+        "JAX"
+      ],
+      "teams_full": [
+        "Indianapolis Colts",
+        "Jacksonville Jaguars"
+      ],
+      "title": "Colts at Jaguars",
+      "desc": "Indianapolis heads to Jacksonville in an AFC South matchup.",
+      "url": "pages/colts-at-jaguars.html"
+    },
+    {
+      "id": "preview-lv-nyj-w8",
+      "type": "preview",
+      "date": "Oct. 31",
+      "teams": [
+        "LV",
+        "NYJ"
+      ],
+      "teams_full": [
+        "Las Vegas Raiders",
+        "New York Jets"
+      ],
+      "title": "Raiders at Jets",
+      "desc": "Las Vegas travels to New York to face the Jets.",
+      "url": "pages/raiders-at-jets.html"
+    },
+    {
+      "id": "preview-atl-tb-w8",
+      "type": "preview",
+      "date": "Oct. 31",
+      "teams": [
+        "ATL",
+        "TB"
+      ],
+      "teams_full": [
+        "Atlanta Falcons",
+        "Tampa Bay Buccaneers"
+      ],
+      "title": "Falcons at Buccaneers",
+      "desc": "Atlanta visits Tampa Bay in an NFC South divisional rivalry.",
+      "url": "pages/falcons-at-buccaneers.html"
+    },
+    {
+      "id": "preview-lac-lar-w8",
+      "type": "preview",
+      "date": "Oct. 31",
+      "teams": [
+        "LAC",
+        "LAR"
+      ],
+      "teams_full": [
+        "Los Angeles Chargers",
+        "Los Angeles Rams"
+      ],
+      "title": "Chargers at Rams: Battle of LA",
+      "desc": "The LA crosstown rivalry returns. Coverage from both Chargers and Rams fans.",
+      "url": "pages/chargers-at-rams.html"
+    },
+    {
+      "id": "preview-kc-den-w8",
+      "type": "preview",
+      "date": "Oct. 31",
+      "teams": [
+        "KC",
+        "DEN"
+      ],
+      "teams_full": [
+        "Kansas City Chiefs",
+        "Denver Broncos"
+      ],
+      "title": "Chiefs at Broncos",
+      "desc": "Kansas City travels to Denver. What AFC West watchers are saying.",
+      "url": "pages/chiefs-at-broncos.html"
+    },
+    {
+      "id": "preview-ne-mia-w8",
+      "type": "preview",
+      "date": "Oct. 31",
+      "teams": [
+        "NE",
+        "MIA"
+      ],
+      "teams_full": [
+        "New England Patriots",
+        "Miami Dolphins"
+      ],
+      "title": "Patriots at Dolphins",
+      "desc": "New England visits Miami in an AFC East divisional matchup.",
+      "url": "pages/patriots-at-dolphins.html"
+    },
+    {
+      "id": "recap-car-gb-w8",
+      "type": "recap",
+      "date": "Oct. 30",
+      "teams": [
+        "CAR",
+        "GB"
+      ],
+      "teams_full": [
+        "Carolina Panthers",
+        "Green Bay Packers"
+      ],
+      "title": "Packers Beat Panthers: Recap",
+      "desc": "Green Bay handles Carolina. What both markets said when it was over.",
+      "url": "pages/packers-panthers-recap.html"
+    },
+    {
+      "id": "preview-car-gb-w8-tnf",
+      "type": "preview",
+      "date": "Oct. 29",
+      "teams": [
+        "CAR",
+        "GB"
+      ],
+      "teams_full": [
+        "Carolina Panthers",
+        "Green Bay Packers"
+      ],
+      "title": "Panthers at Packers: Thursday Night Football",
+      "desc": "Carolina visits Lambeau on TNF. Coverage from both fan bases before kickoff.",
+      "url": "pages/panthers-at-packers.html"
+    },
+    {
+      "id": "preview-cle-pit-w8",
+      "type": "preview",
+      "date": "Oct. 28",
+      "teams": [
+        "CLE",
+        "PIT"
+      ],
+      "teams_full": [
+        "Cleveland Browns",
+        "Pittsburgh Steelers"
+      ],
+      "title": "Browns at Steelers: AFC North Rivalry",
+      "desc": "Cleveland travels to Pittsburgh in one of the NFL's oldest rivalries.",
+      "url": "pages/browns-at-steelers.html"
+    },
+    {
+      "id": "preview-phi-was-w8",
+      "type": "preview",
+      "date": "Oct. 28",
+      "teams": [
+        "PHI",
+        "WAS"
+      ],
+      "teams_full": [
+        "Philadelphia Eagles",
+        "Washington Commanders"
+      ],
+      "title": "Eagles at Commanders",
+      "desc": "Philadelphia visits Washington in an NFC East divisional game.",
+      "url": "pages/eagles-at-commanders.html"
+    },
+    {
+      "id": "rankings-w8",
+      "type": "rankings",
+      "date": "Oct. 27",
+      "teams": [],
+      "teams_full": [],
+      "title": "Week 8 Power Rankings",
+      "desc": "The national consensus heading into Week 8. How the outlets see it.",
+      "url": "nfl/power-rankings-w8.html"
+    },
+    {
+      "id": "story-min-top-w8",
+      "type": "story",
+      "date": "Oct. 27",
+      "teams": [
+        "MIN"
+      ],
+      "teams_full": [
+        "Minnesota Vikings"
+      ],
+      "title": "Vikings Atop the Rankings",
+      "desc": "Minnesota sits at or near the top of most national power rankings. What the writers are saying.",
+      "url": "#"
+    },
+    {
+      "id": "story-dal-phi-mnf-w8",
+      "type": "story",
+      "date": "Oct. 27",
+      "teams": [
+        "DAL",
+        "PHI"
+      ],
+      "teams_full": [
+        "Dallas Cowboys",
+        "Philadelphia Eagles"
+      ],
+      "title": "Cowboys Beat Eagles on Monday Night Football",
+      "desc": "Dallas edges Philadelphia in a prime-time NFC East game.",
+      "url": "#"
+    },
+    {
+      "id": "story-chi-monangai-w8",
+      "type": "story",
+      "date": "Oct. 27",
+      "teams": [
+        "CHI"
+      ],
+      "teams_full": [
+        "Chicago Bears"
+      ],
+      "title": "Bears' Monangai Turning Heads",
+      "desc": "Chicago's backfield is generating buzz nationally. What the coverage is saying.",
+      "url": "#"
+    },
+    {
+      "id": "recap-sea-kc-w7",
+      "type": "story",
+      "date": "Oct. 26",
+      "teams": [
+        "SEA",
+        "KC"
+      ],
+      "teams_full": [
+        "Seattle Seahawks",
+        "Kansas City Chiefs"
+      ],
+      "title": "Seahawks Upset Chiefs",
+      "desc": "Seattle pulls off a notable win over Kansas City. National reaction.",
+      "url": "#"
+    },
+    {
+      "id": "recap-cle-ten-w7",
+      "type": "story",
+      "date": "Oct. 26",
+      "teams": [
+        "CLE",
+        "TEN"
+      ],
+      "teams_full": [
+        "Cleveland Browns",
+        "Tennessee Titans"
+      ],
+      "title": "Browns Beat Titans",
+      "desc": "Cleveland handles Tennessee. What both markets said.",
+      "url": "#"
+    },
+    {
+      "id": "recap-pit-no-w7",
+      "type": "story",
+      "date": "Oct. 26",
+      "teams": [
+        "PIT",
+        "NO"
+      ],
+      "teams_full": [
+        "Pittsburgh Steelers",
+        "New Orleans Saints"
+      ],
+      "title": "Steelers Beat Saints in Paris",
+      "desc": "Pittsburgh wins the NFL's international game in Paris. National coverage.",
+      "url": "#"
+    },
+    {
+      "id": "story-sea-cross-w7",
+      "type": "story",
+      "date": "Oct. 26",
+      "teams": [
+        "SEA"
+      ],
+      "teams_full": [
+        "Seattle Seahawks"
+      ],
+      "title": "Seahawks' Cross Making a Statement",
+      "desc": "Seattle's receiver is drawing attention after a big performance.",
+      "url": "#"
+    },
+    {
+      "id": "recap-chi-ne-w7",
+      "type": "recap",
+      "date": "Oct. 25",
+      "teams": [
+        "CHI",
+        "NE"
+      ],
+      "teams_full": [
+        "Chicago Bears",
+        "New England Patriots"
+      ],
+      "title": "Bears Beat Patriots: Recap",
+      "desc": "Chicago gets a win over New England. What both sides are saying in the aftermath.",
+      "url": "pages/bears-patriots-recap.html"
     },
     {
       "id": "rankings-w9",
@@ -150,8 +554,12 @@
       "id": "trade-brissett-20261104",
       "type": "trade",
       "date": "Nov. 4",
-      "teams": ["BAL"],
-      "teams_full": ["Baltimore Ravens"],
+      "teams": [
+        "BAL"
+      ],
+      "teams_full": [
+        "Baltimore Ravens"
+      ],
       "title": "Ravens Add Jacoby Brissett at Quarterback",
       "desc": "Baltimore added veteran backup depth after Lamar Jackson and Tyler Huntley were both injured in a Week 8 loss to Buffalo.",
       "url": "pages/trade-brissett-20261104.html",
@@ -161,8 +569,14 @@
       "id": "trade-simmons-20261029",
       "type": "trade",
       "date": "Oct. 29",
-      "teams": ["CHI", "TEN"],
-      "teams_full": ["Chicago Bears", "Tennessee Titans"],
+      "teams": [
+        "CHI",
+        "TEN"
+      ],
+      "teams_full": [
+        "Chicago Bears",
+        "Tennessee Titans"
+      ],
       "title": "Bears Go All-In for Jeffery Simmons as Titans Restart the Rebuild",
       "desc": "Chicago sent two first-round picks to Tennessee for the All-Pro defensive tackle, and each side got exactly what it wanted.",
       "url": "pages/trade-simmons-20261029.html",
@@ -172,8 +586,14 @@
       "id": "trade-nelson-20261027",
       "type": "trade",
       "date": "Oct. 27",
-      "teams": ["SEA", "IND"],
-      "teams_full": ["Seattle Seahawks", "Indianapolis Colts"],
+      "teams": [
+        "SEA",
+        "IND"
+      ],
+      "teams_full": [
+        "Seattle Seahawks",
+        "Indianapolis Colts"
+      ],
       "title": "Seahawks Get Quenton Nelson to Fix Their Line",
       "desc": "Indianapolis moved the perennial All-Pro guard to Seattle, where he immediately became the anchor the defending champions needed.",
       "url": "pages/trade-nelson-20261027.html",
@@ -183,8 +603,14 @@
       "id": "trade-buckner-20261027",
       "type": "trade",
       "date": "Oct. 27",
-      "teams": ["SF", "IND"],
-      "teams_full": ["San Francisco 49ers", "Indianapolis Colts"],
+      "teams": [
+        "SF",
+        "IND"
+      ],
+      "teams_full": [
+        "San Francisco 49ers",
+        "Indianapolis Colts"
+      ],
       "title": "49ers Bring Back DeForest Buckner",
       "desc": "San Francisco reacquired the defensive tackle it originally traded away in 2020, reuniting with a former cornerstone of Kyle Shanahan's defense.",
       "url": "pages/trade-buckner-20261027.html",
@@ -193,9 +619,15 @@
     {
       "id": "preview-chi-sea-w8",
       "type": "preview",
-      "date": "Mon, Nov. 2 · MNF",
-      "teams": ["CHI", "SEA"],
-      "teams_full": ["Chicago Bears", "Seattle Seahawks"],
+      "date": "Mon, Nov. 2 \u00b7 MNF",
+      "teams": [
+        "CHI",
+        "SEA"
+      ],
+      "teams_full": [
+        "Chicago Bears",
+        "Seattle Seahawks"
+      ],
       "title": "Bears Bring New Star Jeffery Simmons Into Seattle's Defensive Fortress",
       "desc": "Chicago went all in for an All-Pro tackle days before facing the defending champs, who just added Quenton Nelson to fix their own line.",
       "url": "pages/matchup-chi-sea-w8.html",
@@ -205,8 +637,12 @@
       "id": "trade-jurgens-20261007",
       "type": "trade",
       "date": "Oct. 7",
-      "teams": ["BAL"],
-      "teams_full": ["Baltimore Ravens"],
+      "teams": [
+        "BAL"
+      ],
+      "teams_full": [
+        "Baltimore Ravens"
+      ],
       "title": "Ravens Add Interior Lineman Jurgens",
       "desc": "Baltimore made an early-October addition to its offensive line.",
       "url": "pages/trade-jurgens-20261007.html",
@@ -216,8 +652,14 @@
       "id": "trade-harrison-20261011",
       "type": "trade",
       "date": "Oct. 11",
-      "teams": ["HOU", "ARI"],
-      "teams_full": ["Houston Texans", "Arizona Cardinals"],
+      "teams": [
+        "HOU",
+        "ARI"
+      ],
+      "teams_full": [
+        "Houston Texans",
+        "Arizona Cardinals"
+      ],
       "title": "Cardinals Trade Marvin Harrison Jr. to Houston",
       "desc": "Arizona sent the second-year receiver to the Texans in a move that rattled the fan base and reshuffled the AFC South.",
       "url": "pages/trade-harrison-20261011.html",
@@ -227,8 +669,12 @@
       "id": "trade-porter-20260930",
       "type": "trade",
       "date": "Sept. 30",
-      "teams": ["DAL"],
-      "teams_full": ["Dallas Cowboys"],
+      "teams": [
+        "DAL"
+      ],
+      "teams_full": [
+        "Dallas Cowboys"
+      ],
       "title": "Cowboys Make Late-September Acquisition",
       "desc": "Dallas added to its roster in the final days of September.",
       "url": "pages/trade-porter-20260930.html",
@@ -238,8 +684,12 @@
       "id": "trade-mccarthy-20260928",
       "type": "trade",
       "date": "Sept. 28",
-      "teams": ["NYG"],
-      "teams_full": ["New York Giants"],
+      "teams": [
+        "NYG"
+      ],
+      "teams_full": [
+        "New York Giants"
+      ],
       "title": "Giants Make Early-Season Move",
       "desc": "New York added a piece in late September, one of the first significant trades of the 2026 season.",
       "url": "pages/trade-mccarthy-20260928.html",

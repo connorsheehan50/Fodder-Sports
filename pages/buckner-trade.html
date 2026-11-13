@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Fodder Sports Buckner Trade</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#f3f4f6; --surface:#ffffff; --ink:#151a24; --muted:#5b6474; --line:#d9dde4;
+  --nat:#4a5568; --nat-soft:#e6e9ee;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f131a; --surface:#171c25; --ink:#e7eaf0; --muted:#9aa3b2; --line:#2a3140;
+  --nat:#a7b1c2; --nat-soft:#222935; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f131a; --surface:#171c25; --ink:#e7eaf0; --muted:#9aa3b2; --line:#2a3140;
+  --nat:#a7b1c2; --nat-soft:#222935; color-scheme:dark}
+
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 56px}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
+a{color:inherit;text-decoration-color:var(--muted);text-underline-offset:2px}
+a:hover{text-decoration-color:currentColor}
+a:focus-visible{outline:2px solid var(--a);outline-offset:2px;border-radius:2px}
+h1,h2,h3{font-family:var(--display);font-weight:700;text-wrap:balance;margin:0;letter-spacing:.01em}
+h1{font-size:clamp(1.9rem,5vw,2.6rem);line-height:1.05}
+h2{font-size:1.5rem;text-transform:uppercase}
+h3{font-size:1.05rem;text-transform:uppercase;letter-spacing:.05em}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.a{color:var(--a)} .b{color:var(--b)} .nat{color:var(--nat)}
+section{display:flex;flex-direction:column;gap:14px}
+.note{font-size:.88rem;color:var(--muted)}
+ul.bul{margin:0;padding-left:1.15em;display:flex;flex-direction:column;gap:10px}
+ul.bul li::marker{color:var(--muted)}
+.dek{font-size:1.1rem;color:var(--muted)}
+
+.score{display:flex;align-items:stretch;border:1px solid var(--line);background:var(--surface)}
+.score .side{flex:1;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;min-width:0}
+.score .side + .side{border-left:1px solid var(--line)}
+.score .nm{font-family:var(--display);font-size:1.5rem;font-weight:700;text-transform:uppercase;line-height:1}
+.score .nm small{display:block;font-family:var(--mono);font-size:.72rem;font-weight:400;letter-spacing:.08em;color:var(--muted);margin-top:4px;text-transform:none}
+.score .pts{font-family:var(--display);font-size:2.6rem;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.score .lose .pts{opacity:.5}
+.score .meta{font-family:var(--mono);font-size:.8rem;color:var(--muted);text-align:right}
+
+.summary{background:var(--surface);border:1px solid var(--line);padding:22px 24px;display:flex;flex-direction:column;gap:14px}
+.views{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line)}
+.view{padding:18px 22px;display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--line)}
+.view:first-child{border-top:0}
+
+.tally{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.tally div{background:var(--surface);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.tally .big{font-family:var(--display);font-size:2rem;font-weight:700;line-height:1}
+
+.tbl-wrap{overflow-x:auto}
+table.t{width:100%;border-collapse:collapse;font-size:.92rem;min-width:480px}
+.t th{font-family:var(--mono);font-weight:500;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:8px 10px 8px 0;border-bottom:2px solid var(--ink)}
+.t td{padding:8px 10px 8px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.t td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap;font-size:.85rem}
+
+.coverage{background:var(--surface);border:1px solid var(--line);padding:18px 22px;display:flex;flex-direction:column;gap:16px}
+.covgrp{display:flex;flex-direction:column;gap:6px}
+.covgrp ul{margin:0;padding-left:1.1em;font-size:.88rem;display:flex;flex-direction:column;gap:4px}
+
+/* Sentiment: diverging bars, center = neutral */
+.sent{display:flex;flex-direction:column;gap:18px}
+.steam{display:flex;flex-direction:column;gap:8px}
+.srow{display:grid;grid-template-columns:110px 1fr 88px;align-items:center;gap:10px;font-size:.85rem}
+.srow .lbl{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;color:var(--muted)}
+.srow .val{font-family:var(--mono);font-size:.74rem;text-align:right;color:var(--muted)}
+.track.nocov{background:repeating-linear-gradient(45deg,var(--nat-soft) 0 6px,transparent 6px 12px)}
+.track.nocov::after{display:none}
+.track{position:relative;height:12px;background:var(--nat-soft);border-radius:6px}
+.track::after{content:"";position:absolute;left:50%;top:-3px;bottom:-3px;width:2px;background:var(--muted);transform:translateX(-1px)}
+.fill{position:absolute;top:0;bottom:0;border-radius:6px}
+.fill.pos{left:50%} .fill.neg{right:50%}
+.f-a{background:var(--a)} .f-b{background:var(--b)} .f-n{background:var(--nat)}
+.scale{display:grid;grid-template-columns:110px 1fr 88px;gap:10px;font-family:var(--mono);font-size:.68rem;color:var(--muted)}
+.scale span:nth-child(2){display:flex;justify-content:space-between}
+
+.grade{font-family:var(--display);font-weight:700;font-size:1.15rem}
+footer{border-top:1px solid var(--line);padding-top:18px;font-size:.85rem;color:var(--muted);display:flex;flex-direction:column;gap:8px}
+
+@media (max-width:560px){
+  .score{flex-direction:column}
+  .score .side + .side{border-left:0;border-top:1px solid var(--line)}
+  .tally{grid-template-columns:1fr}
+  .summary,.view,.coverage{padding-left:16px;padding-right:16px}
+  .srow,.scale{grid-template-columns:80px 1fr 76px}
+}
+
+.trend{margin:4px 0 0;font-size:.86rem}.trend b{font-weight:700}.trend.up span{color:#13803a}.trend.down span{color:#c81e1e}.trend.steady span,.trend.new span{color:var(--muted)}
+@media (prefers-color-scheme:dark){.trend.up span{color:#5fd38a}.trend.down span{color:#ff7b7b}}
+
+:root{--a:#AA0000;--b:#002C5F}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--a:#ff7a7a;--b:#8fb4e8}}
+:root[data-theme="dark"]{--a:#ff7a7a;--b:#8fb4e8}
+
+.tlink{color:inherit;text-decoration:none;border-bottom:1px dotted currentColor}
+.tlink:hover{border-bottom-style:solid}
+
+.refjump{margin:6px 0 0} .refjump a{font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.scale-note{font-size:.72rem !important;line-height:1.45}
+.refl li{margin-bottom:8px}
+.mts{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:3px}
+.mt{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.mt-bar{position:relative;display:inline-block;width:64px;height:7px;background:var(--line);border-radius:2px}
+.mt-c{position:absolute;left:50%;top:-2px;bottom:-2px;width:1px;background:var(--muted)}
+.mt-f{position:absolute;top:0;bottom:0;border-radius:2px}
+details.srcs summary{font-size:.74rem !important}
+
+.refs .inner-src{display:flex;flex-direction:column;gap:14px;max-height:340px;overflow-y:auto;overscroll-behavior:contain}
+footer p{font-size:.72rem;line-height:1.45}
+.refjump a{font-family:var(--mono);font-size:.8rem;letter-spacing:.04em;text-transform:uppercase}
+.avg td.n{white-space:nowrap}
+
+details.srcs{border:1px solid var(--line);border-radius:2px}
+details.srcs summary{cursor:pointer;padding:10px 12px;font-family:var(--mono);font-size:.82rem;letter-spacing:.05em;text-transform:uppercase}
+details.srcs[open] summary{border-bottom:1px solid var(--line)}
+details.srcs .inner-src{padding:12px;display:flex;flex-direction:column;gap:14px}
+.src-out{color:var(--muted)}
+.eyebrow{font-size:.8rem} .note{font-size:.8rem;line-height:1.5} .srow .lbl{font-size:.8rem} .srow .val{font-size:.8rem;color:var(--ink)}
+</style>
+</head><body>
+<div class="wrap">
+<a href="./" style="align-self:flex-start;display:inline-block;font-family:var(--mono);font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;background:none;border:1px solid var(--ink);color:var(--ink);padding:7px 11px;border-radius:2px">&larr; Back to Fodder Sports</a>
+
+<header style="display:flex;flex-direction:column;gap:16px">
+  <span class="eyebrow">Fodder Sports · Trade · Oct. 27, 2026</span>
+  <div class="score" role="img" aria-label="Trade terms: 49ers receive defensive tackle DeForest Buckner. Colts receive a 2027 fourth-round pick.">
+    <div class="side"><span class="nm a"><a class="tlink" href="./#team-sf">49ers</a> get<small>DT DeForest Buckner</small></span></div>
+    <div class="side"><span class="nm b"><a class="tlink" href="./#team-ind">Colts</a> get<small>2027 fourth-round pick</small></span></div>
+  </div>
+  <h1>DeForest Buckner Goes Home to San Francisco</h1>
+  <p class="dek">The 6–1 49ers bring back the defensive tackle they drafted in 2016, and the Colts' rebuild picks up speed.</p>
+</header>
+
+<section class="coverage" aria-labelledby="cov-h">
+  <h2 id="cov-h">How the coverage felt</h2>
+  <p class="note">Tone toward each team's side of the deal. Coverage published in the first 24 hours after the trade was reported on Oct. 27.</p>
+  <div class="sent">
+    <div class="steam">
+      <h3 class="a"><a class="tlink" href="./#team-sf">49ers</a>' side</h3>
+      <div class="srow"><span class="lbl">San Francisco</span><div class="track"><span class="fill pos f-a" style="width:40.0%"></span></div><span class="val">Glowing</span></div>
+      <div class="srow"><span class="lbl">Indianapolis</span><div class="track nocov"></div><span class="val">No coverage</span></div>
+      <div class="srow"><span class="lbl">National</span><div class="track"><span class="fill pos f-n" style="width:30.0%"></span></div><span class="val">Positive</span></div>
+      <p class="trend new"><span aria-hidden="true">•</span> <b>First reading.</b> The trend starts with this team's next reading.</p>
+    </div>
+    <div class="steam">
+      <h3 class="b"><a class="tlink" href="./#team-ind">Colts</a>' side</h3>
+      <div class="srow"><span class="lbl">Indianapolis</span><div class="track"><span class="fill neg f-b" style="width:5.0%"></span></div><span class="val">Neutral</span></div>
+      <div class="srow"><span class="lbl">San Francisco</span><div class="track nocov"></div><span class="val">No coverage</span></div>
+      <div class="srow"><span class="lbl">National</span><div class="track"><span class="fill pos f-n" style="width:7.5%"></span></div><span class="val">Neutral</span></div>
+      <p class="trend new"><span aria-hidden="true">•</span> <b>First reading.</b> The trend starts with this team's next reading.</p>
+    </div>
+    <div class="scale"><span></span><span><span>Harsh</span><span>Neutral</span><span>Glowing</span></span><span></span></div><p class="note scale-note">Each bar shows the overall tone of that group&#39;s coverage toward the team. Bars to the right of center are favorable, bars to the left are critical, and longer bars mean stronger tone. &ldquo;No coverage&rdquo; means that group published nothing about the team in this window.</p>
+  </div>
+  <p>Neither city covered the other side of this deal. San Francisco's coverage stayed on the reunion and the pass rush, and Indianapolis coverage stayed on the rebuild. National outlets were positive on both sides.</p>
+  <p class="refjump"><a href="#refs">See all the articles we referenced for this summary</a></p>
+</section>
+
+
+<section class="summary" aria-labelledby="sum-h">
+  <h2 id="sum-h">The summary</h2>
+  <ul class="bul">
+    <li>Hours after trading guard Quenton Nelson to Seattle, the Colts sent defensive tackle DeForest Buckner to the 49ers for a 2027 fourth-round pick. The trade was reported Oct. 27 and announced Oct. 28. San Francisco released cornerback Jack Jones to make room.</li>
+    <li>The 49ers drafted Buckner seventh overall in 2016 and traded him to Indianapolis in 2020 for a first-round pick.</li>
+    <li>Buckner, 32, has four sacks in seven games this season and is in the final year of his contract. He had 47 sacks in 95 games as a Colt and was a first-team All-Pro in 2020.</li>
+    <li>San Francisco's pressure rate with four or fewer rushers is 23%, second-worst in the league.</li>
+    <li>The 49ers are on their Week 8 bye and host the Raiders in Week 9. Pass rusher Nick Bosa is expected back from a calf injury after the bye.</li>
+  </ul>
+</section>
+
+<section class="views" aria-label="What each side is saying">
+  <div class="view">
+    <h2 class="a">What the San Francisco media is saying</h2>
+    <ul class="bul">
+      <li>An upgrade at a bargain price. San Francisco coverage notes the 49ers never found a lasting replacement after trading Buckner, and got him back for a fourth-round pick and the rest of his $7.9 million salary.</li>
+      <li>The bye week is good timing, giving Buckner time to learn defensive coordinator Raheem Morris's scheme before the Raiders game.</li>
+      <li>The risks: he is a rental on an expiring contract, missed 12 games over the past two seasons, and had neck surgery last year.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="b">What the Indianapolis media is saying</h2>
+    <ul class="bul">
+      <li>The fire sale is in high gear. Indianapolis coverage calls Buckner a franchise cornerstone who stayed partly on the promise of leading a contender's defense.</li>
+      <li>"All I care about is winning," Buckner said, adding, "I have no regrets or anything about coming to Indy."</li>
+      <li>Colts defensive lineman Adetomiwa Adebawore, who also has four sacks, is in line to take over Buckner's spot.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="nat">What everyone else is saying about this trade</h2>
+    <ul class="bul">
+      <li><b class="a">49ers:</b> National coverage sees a contender patching an injury-hit defensive line with a proven interior pass rusher. General manager John Lynch had called trading Buckner in 2020 the hardest decision of his tenure.</li>
+      <li><b class="b">Colts:</b> The national view is that Indianapolis got a fair return for an unhappy veteran headed for free agency. The deal leaves $10.8 million in dead money on the Colts' cap.</li>
+    </ul>
+  </div>
+</section>
+
+<section aria-labelledby="gr-h">
+  <h2 id="gr-h">The trade grades</h2>
+  <ul class="bul">
+    <li><b class="a">49ers:</b> an A− from all three national outlets that graded it (ESPN, NFL.com, and Yahoo Sports).</li>
+    <li><b class="b">Colts:</b> grades ranged from B− to B+, for an average of B. NFL.com was highest (B+).</li>
+  </ul>
+</section>
+
+<section aria-labelledby="ver-h">
+  <h2 id="ver-h">Win-win or fleeced?</h2>
+  <p>Win-win. San Francisco gets a proven starter for a mid-round pick, and Indianapolis gets value for a player who was likely to leave after the season. Nobody called it a fleecing.</p>
+</section>
+
+
+<section id="refs" class="refs" aria-labelledby="refs-h">
+  <h2 id="refs-h">References</h2>
+  <details class="srcs"><summary>Show the articles behind this page</summary><div class="inner-src"><div class="covgrp">
+    <span class="eyebrow a">San Francisco</span>
+    <ul>
+      <li><a href="https://www.49erswebzone.com/articles/204654-deforest-buckner-trade-upgrade-bargain/">Buckner trade: 49ers upgrade at bargain price</a> <span class="src-out">- 49ers Webzone</span></li>
+      <li><a href="https://www.nbcbayarea.com/news/sports/nfl/source-deforest-buckner-trade-colts/4165562/">49ers land Buckner for a fourth-round pick</a> <span class="src-out">- NBC Sports Bay Area</span></li>
+      <li><a href="https://www.49erswebzone.com/articles/204664-officially-announce-deforest-buckner-release/">49ers officially announce Buckner trade, release CB</a> <span class="src-out">- 49ers Webzone</span></li>
+    </ul>
+  </div>
+  <div class="covgrp">
+    <span class="eyebrow b">Indianapolis</span>
+    <ul>
+      <li><a href="https://sports.yahoo.com/articles/deforest-buckner-latest-colts-traded-205002312.html">Buckner is latest Colt to get traded; what it means</a> <span class="src-out">- IndyStar</span></li>
+      <li><a href="https://www.colts.com/news/colts-acquire-2027-fourth-round-pick-in-exchange-for-dt-deforest-buckner-in-trade-with-san-francisco-49ers">Colts acquire 2027 fourth-round pick for Buckner</a> <span class="src-out">- Colts.com</span></li>
+      <li><a href="https://sports.yahoo.com/articles/colts-coach-shane-steichen-declines-180720526.html">Steichen declines to answer trade-request questions</a> <span class="src-out">- IndyStar</span></li>
+    </ul>
+  </div>
+  <div class="covgrp">
+    <span class="eyebrow nat">National</span>
+    <ul>
+      <li><a href="https://www.espn.com/nfl/story/_/id/50301125/colts-trade-de-deforest-buckner-49ers">Colts trade Buckner to 49ers in another major move</a> <span class="src-out">- ESPN</span></li>
+      <li><a href="https://sports.yahoo.com/nfl/breaking-news/article/colts-trade-dt-deforest-buckner-215520579.html">Colts trade Buckner to 49ers hours after dealing Nelson</a> <span class="src-out">- Yahoo Sports</span></li>
+      <li><a href="https://www.nfl.com/news/nfl-trade-grades-evaluating-every-deal-made-ahead-of-the-2026-deadline">Trade grades: every deal ahead of the deadline</a> <span class="src-out">- NFL.com</span></li>
+      <li><a href="https://www.espn.com/nfl/story/_/id/50043542/2026-trade-deadline-grades-latest-best-worst-deals">Grading NFL deadline trades</a> <span class="src-out">- ESPN</span></li>
+    </ul>
+  </div>
+</div></details>
+</section>
+
+<footer>
+  <span class="eyebrow">Fodder Sports · pilot</span>
+  <p>Summaries are written in our own words from the coverage listed above. Not affiliated with the NFL, the San Francisco 49ers, or the Indianapolis Colts.</p>
+</footer>
+
+</div>
+<script>try{if('scrollRestoration' in history)history.scrollRestoration='manual';if(!location.hash)window.scrollTo(0,0);}catch(e){}</script>
+</body></html>

@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Fodder Sports Week 8 Recap</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#f3f4f6; --surface:#ffffff; --ink:#151a24; --muted:#5b6474; --line:#d9dde4;
+  --nat:#4a5568; --nat-soft:#e6e9ee;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f131a; --surface:#171c25; --ink:#e7eaf0; --muted:#9aa3b2; --line:#2a3140;
+  --nat:#a7b1c2; --nat-soft:#222935; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f131a; --surface:#171c25; --ink:#e7eaf0; --muted:#9aa3b2; --line:#2a3140;
+  --nat:#a7b1c2; --nat-soft:#222935; color-scheme:dark}
+
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 56px}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
+a{color:inherit;text-decoration-color:var(--muted);text-underline-offset:2px}
+a:hover{text-decoration-color:currentColor}
+a:focus-visible{outline:2px solid var(--a);outline-offset:2px;border-radius:2px}
+h1,h2,h3{font-family:var(--display);font-weight:700;text-wrap:balance;margin:0;letter-spacing:.01em}
+h1{font-size:clamp(1.9rem,5vw,2.6rem);line-height:1.05}
+h2{font-size:1.5rem;text-transform:uppercase}
+h3{font-size:1.05rem;text-transform:uppercase;letter-spacing:.05em}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.a{color:var(--a)} .b{color:var(--b)} .nat{color:var(--nat)}
+section{display:flex;flex-direction:column;gap:14px}
+.note{font-size:.88rem;color:var(--muted)}
+ul.bul{margin:0;padding-left:1.15em;display:flex;flex-direction:column;gap:10px}
+ul.bul li::marker{color:var(--muted)}
+.dek{font-size:1.1rem;color:var(--muted)}
+
+.score{display:flex;align-items:stretch;border:1px solid var(--line);background:var(--surface)}
+.score .side{flex:1;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;min-width:0}
+.score .side + .side{border-left:1px solid var(--line)}
+.score .nm{font-family:var(--display);font-size:1.5rem;font-weight:700;text-transform:uppercase;line-height:1}
+.score .nm small{display:block;font-family:var(--mono);font-size:.72rem;font-weight:400;letter-spacing:.08em;color:var(--muted);margin-top:4px;text-transform:none}
+.score .pts{font-family:var(--display);font-size:2.6rem;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.score .lose .pts{opacity:.5}
+.score .meta{font-family:var(--mono);font-size:.8rem;color:var(--muted);text-align:right}
+
+.summary{background:var(--surface);border:1px solid var(--line);padding:22px 24px;display:flex;flex-direction:column;gap:14px}
+.views{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line)}
+.view{padding:18px 22px;display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--line)}
+.view:first-child{border-top:0}
+
+.tally{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.tally div{background:var(--surface);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.tally .big{font-family:var(--display);font-size:2rem;font-weight:700;line-height:1}
+
+.tbl-wrap{overflow-x:auto}
+table.t{width:100%;border-collapse:collapse;font-size:.92rem;min-width:480px}
+.t th{font-family:var(--mono);font-weight:500;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:8px 10px 8px 0;border-bottom:2px solid var(--ink)}
+.t td{padding:8px 10px 8px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.t td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap;font-size:.85rem}
+
+.coverage{background:var(--surface);border:1px solid var(--line);padding:18px 22px;display:flex;flex-direction:column;gap:16px}
+.covgrp{display:flex;flex-direction:column;gap:6px}
+.covgrp ul{margin:0;padding-left:1.1em;font-size:.88rem;display:flex;flex-direction:column;gap:4px}
+
+/* Sentiment: diverging bars, center = neutral */
+.sent{display:flex;flex-direction:column;gap:18px}
+.steam{display:flex;flex-direction:column;gap:8px}
+.srow{display:grid;grid-template-columns:110px 1fr 88px;align-items:center;gap:10px;font-size:.85rem}
+.srow .lbl{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;color:var(--muted)}
+.srow .val{font-family:var(--mono);font-size:.74rem;text-align:right;color:var(--muted)}
+.track.nocov{background:repeating-linear-gradient(45deg,var(--nat-soft) 0 6px,transparent 6px 12px)}
+.track.nocov::after{display:none}
+.track{position:relative;height:12px;background:var(--nat-soft);border-radius:6px}
+.track::after{content:"";position:absolute;left:50%;top:-3px;bottom:-3px;width:2px;background:var(--muted);transform:translateX(-1px)}
+.fill{position:absolute;top:0;bottom:0;border-radius:6px}
+.fill.pos{left:50%} .fill.neg{right:50%}
+.f-a{background:var(--a)} .f-b{background:var(--b)} .f-n{background:var(--nat)}
+.scale{display:grid;grid-template-columns:110px 1fr 88px;gap:10px;font-family:var(--mono);font-size:.68rem;color:var(--muted)}
+.scale span:nth-child(2){display:flex;justify-content:space-between}
+
+.grade{font-family:var(--display);font-weight:700;font-size:1.15rem}
+footer{border-top:1px solid var(--line);padding-top:18px;font-size:.85rem;color:var(--muted);display:flex;flex-direction:column;gap:8px}
+
+@media (max-width:560px){
+  .score{flex-direction:column}
+  .score .side + .side{border-left:0;border-top:1px solid var(--line)}
+  .tally{grid-template-columns:1fr}
+  .summary,.view,.coverage{padding-left:16px;padding-right:16px}
+  .srow,.scale{grid-template-columns:80px 1fr 76px}
+}
+
+.trend{margin:4px 0 0;font-size:.86rem}.trend b{font-weight:700}.trend.up span{color:#13803a}.trend.down span{color:#c81e1e}.trend.steady span,.trend.new span{color:var(--muted)}
+@media (prefers-color-scheme:dark){.trend.up span{color:#5fd38a}.trend.down span{color:#ff7b7b}}
+
+:root{--a:#0a6ea8;--b:#2E6B47}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--a:#5ab8f0;--b:#7fbf8f}}
+:root[data-theme="dark"]{--a:#5ab8f0;--b:#7fbf8f}
+
+.tlink{color:inherit;text-decoration:none;border-bottom:1px dotted currentColor}
+.tlink:hover{border-bottom-style:solid}
+
+.refjump{margin:6px 0 0} .refjump a{font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.scale-note{font-size:.72rem !important;line-height:1.45}
+.refl li{margin-bottom:8px}
+.mts{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:3px}
+.mt{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.mt-bar{position:relative;display:inline-block;width:64px;height:7px;background:var(--line);border-radius:2px}
+.mt-c{position:absolute;left:50%;top:-2px;bottom:-2px;width:1px;background:var(--muted)}
+.mt-f{position:absolute;top:0;bottom:0;border-radius:2px}
+details.srcs summary{font-size:.74rem !important}
+
+.refs .inner-src{display:flex;flex-direction:column;gap:14px;max-height:340px;overflow-y:auto;overscroll-behavior:contain}
+footer p{font-size:.72rem;line-height:1.45}
+.refjump a{font-family:var(--mono);font-size:.8rem;letter-spacing:.04em;text-transform:uppercase}
+.avg td.n{white-space:nowrap}
+
+details.srcs{border:1px solid var(--line);border-radius:2px}
+details.srcs summary{cursor:pointer;padding:10px 12px;font-family:var(--mono);font-size:.82rem;letter-spacing:.05em;text-transform:uppercase}
+details.srcs[open] summary{border-bottom:1px solid var(--line)}
+details.srcs .inner-src{padding:12px;display:flex;flex-direction:column;gap:14px}
+.src-out{color:var(--muted)}
+.eyebrow{font-size:.8rem} .note{font-size:.8rem;line-height:1.5} .srow .lbl{font-size:.8rem} .srow .val{font-size:.8rem;color:var(--ink)}
+</style>
+</head><body>
+<div class="wrap">
+<a href="./" style="align-self:flex-start;display:inline-block;font-family:var(--mono);font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;background:none;border:1px solid var(--ink);color:var(--ink);padding:7px 11px;border-radius:2px">&larr; Back to Fodder Sports</a>
+
+<header style="display:flex;flex-direction:column;gap:16px">
+  <span class="eyebrow">Fodder Sports · NFL Week 8 · Final</span>
+  <div class="score" role="img" aria-label="Final score: Green Bay Packers 27, Carolina Panthers 19">
+    <div class="side lose"><span class="nm a"><a class="tlink" href="./#team-car">Panthers</a><small>3–4</small></span><span class="pts">19</span></div>
+    <div class="side"><span class="nm b"><a class="tlink" href="./#team-gb">Packers</a><small>5–3 · home</small></span><span class="pts">27</span></div>
+  </div>
+  <h1>Packers Sack Bryce Young Six Times, Hold Off Panthers 27-19</h1>
+  <p class="dek">Jordan Love threw three touchdowns and Green Bay's pass rush took over, but the run game stalled again, and Carolina fired its defensive coordinator the next morning.</p>
+</header>
+
+<section class="coverage" aria-labelledby="cov-h">
+  <h2 id="cov-h">How the coverage felt</h2>
+  <p class="note">How each market felt about each team afterward, read from all the coverage we could find.</p>
+  <div class="sent">
+    <div class="steam">
+      <h3 class="a"><a class="tlink" href="./#team-car">Panthers</a></h3>
+      <div class="srow"><span class="lbl">Carolina</span><div class="track"><span class="fill neg f-a" style="width:20.0%"></span></div><span class="val">Critical</span></div>
+      <div class="srow"><span class="lbl">Green Bay</span><div class="track"><span class="fill neg f-b" style="width:12.5%"></span></div><span class="val">Critical</span></div>
+      <div class="srow"><span class="lbl">National</span><div class="track"><span class="fill neg f-n" style="width:20.0%"></span></div><span class="val">Critical</span></div>
+      <p class="trend new"><span aria-hidden="true">•</span> <b>First reading.</b> An injury-wrecked offensive line, a pass rush with no sacks, and Friday's firing of Ejiro Evero have turned Carolina's coverage from neutral to grim.</p>
+    </div>
+    <div class="steam">
+      <h3 class="b"><a class="tlink" href="./#team-gb">Packers</a></h3>
+      <div class="srow"><span class="lbl">Green Bay</span><div class="track"><span class="fill pos f-b" style="width:15.0%"></span></div><span class="val">Positive</span></div>
+      <div class="srow"><span class="lbl">Carolina</span><div class="track"><span class="fill pos f-a" style="width:20.0%"></span></div><span class="val">Positive</span></div>
+      <div class="srow"><span class="lbl">National</span><div class="track"><span class="fill pos f-n" style="width:17.5%"></span></div><span class="val">Positive</span></div>
+      <p class="trend new"><span aria-hidden="true">•</span> <b>First reading.</b> Love and an aggressive defense are lifting the mood in Green Bay, while a broken run game and missed kicks keep the home market from fully enjoying the win.</p>
+    </div>
+    <div class="scale"><span></span><span><span>Harsh</span><span>Neutral</span><span>Glowing</span></span><span></span></div><p class="note scale-note">Each bar shows the overall tone of that group&#39;s coverage toward the team. Bars to the right of center are favorable, bars to the left are critical, and longer bars mean stronger tone. &ldquo;No coverage&rdquo; means that group published nothing about the team in this window.</p>
+  </div>
+  <p>Green Bay's own coverage is relieved and proud of Jordan Love, the pass rush, and Christian Watson's return from the hospital, but it is openly frustrated with a run game that keeps going nowhere and a kicker who keeps missing. Charlotte's media is more impressed with the Packers than Green Bay is, and national coverage is warmest of all, with Love's name coming up in MVP talk. The Panthers get little sympathy anywhere: Charlotte coverage is angry about the offensive line and the injury pile, Green Bay coverage treats them as an opponent that got exposed, and national coverage centers on Ejiro Evero's firing.</p>
+  <p class="refjump"><a href="#refs">See all the articles we referenced for this summary</a></p>
+</section>
+
+<section class="summary" aria-labelledby="sum-h">
+  <h2 id="sum-h">The summary</h2>
+  <ul class="bul">
+      <li>Green Bay won 27-19 at Lambeau Field and moved to 5-3. Carolina fell to 3-4, its first back-to-back losses this season, but it is still in the race for first place in the NFC South.</li>
+      <li>Packers quarterback Jordan Love went 30 of 41 for 288 yards, three touchdowns, and one interception, and he was not sacked. Packers receiver Christian Watson caught eight passes for 113 yards after a trip to the hospital with a broken rib.</li>
+      <li>Green Bay's defense sacked Panthers quarterback Bryce Young six times and hit him nine times. Young finished 23 of 41 for 209 yards, one touchdown, and one interception behind a line missing both starting tackles and its left guard.</li>
+      <li>Green Bay led 27-10 in the third quarter, then stalled. Carolina outgained the Packers 109-32 in the fourth quarter and got within 27-19 on Panthers receiver Jalen Coker's 26-yard touchdown, but the two-point try failed and the defense stopped a fourth-and-5 with 2:41 left.</li>
+      <li>The Packers' run game failed again against the league's worst run defense: 66 yards on 26 carries, with Packers running back Josh Jacobs at 39 yards on 21 carries. "We gotta figure it out, because it's not good enough," Packers coach Matt LaFleur said.</li>
+      <li>On Friday, Carolina fired defensive coordinator Ejiro Evero and defensive passing game coordinator Jonathan Cooley. Defensive line coach Todd Wash is the interim coordinator and will call the defense.</li>
+  </ul>
+</section>
+
+<section class="views" aria-label="What each side is saying">
+  <div class="view">
+    <h2 class="a">What the Carolina media is saying about the Panthers</h2>
+    <ul class="bul">
+      <li>Fed up. Charlotte coverage calls this another bad night and blames the offensive line first: Panthers left tackle Ikem Ekwonu, right tackle Taylor Moton (fractured fibula, injured reserve), and guard Damien Lewis were all out, and Young has now been sacked 11 times in two games.</li>
+      <li>The pass rush and the secondary are the other worries. Carolina had zero sacks and zero quarterback hits with pass rusher Jaelan Phillips out, and cornerback Will Lee III's hamstring injury left the team with almost no healthy corners.</li>
+      <li>There are bright spots. Panthers running back Chuba Hubbard had 119 yards from scrimmage, the run defense held Green Bay to 2.5 yards per carry, and rookie safety Zakee Wheatley got his first interception.</li>
+      <li>The mood is close to giving up on the season but not there yet. Charlotte's media notes the defense forced three turnovers and got only three points from them, and it read the Evero firing as a response to a defense that has failed all year.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="b">What the Green Bay media is saying about the Panthers</h2>
+    <ul class="bul">
+      <li>Green Bay coverage saw a Carolina offense that never got going: 87 yards in the first half, 3.7 yards per play, and 5 of 18 on third down. Coker's touchdown was the Panthers' only play longer than 20 yards.</li>
+      <li>It credits Carolina's front for slowing the run game, but it notes the Panthers were missing their best pass rusher and called their run defense the worst in the league coming in.</li>
+      <li>Young was effective when he had time and lost when he didn't. Green Bay coverage points out he was pressured on more than half his dropbacks.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="b">What the Green Bay media is saying about the Packers</h2>
+    <ul class="bul">
+      <li>Relieved. Green Bay coverage calls this an unsatisfying win: an opening-kickoff fumble by returner Coleman Owen, a missed extra point, and a fumble by Watson, all in the first 17 minutes, then a shaky fourth quarter.</li>
+      <li>Love is the reason it held. Green Bay's media calls him elite and says the offense is leaning on him too much, and Packers tight end Tucker Kraft (six catches, 53 yards, touchdown) and receiver Matthew Golden (seven catches, 79 yards, touchdown) helped carry it.</li>
+      <li>The defense is the excitement. Packers linebacker Ty'Ron Hopper had a sack, an interception, three passes defensed, and the game ball, and rookie pass rusher Dani Dennis-Sutton ended the game with a sack.</li>
+      <li>The worries are the run game, the drops, and the kicking. Packers kicker Trey Smack leads the league with eight missed kicks, and Green Bay coverage wants to know why guard Kevin Zeitler stayed on the bench while the line kept changing.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="a">What the Carolina media is saying about the Packers</h2>
+    <ul class="bul">
+      <li>Respect. Charlotte coverage credits Green Bay's stunts, four-man rushes, and overloaded fronts for six sacks and nine hits. "They schemed us up a little bit," Panthers guard Robert Hunt said.</li>
+      <li>It says Love picked apart a depleted secondary, with a wide-open Golden touchdown just before halftime, even though Carolina held the Packers' run game in check.</li>
+      <li>"They were better than us today, for sure. They deserve that win," Young said.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="nat">What everyone else is saying</h2>
+    <ul class="bul">
+      <li><b class="b">Packers:</b> National coverage is the most excited about Love, calling him an MVP candidate whose value grows as the run game fails. He is the first quarterback to pass 2,000 yards this season.</li>
+      <li><b class="b">Packers:</b> Watson's return from the hospital was the national story of the night. "It was super dramatic," Watson said, and safety Xavier McKinney said it "shows the love that he has for this team."</li>
+      <li><b class="b">Packers:</b> National analysis also flags the run game as a real problem: Green Bay ranks last in rushing efficiency, and LaFleur said he has little confidence it will improve soon.</li>
+      <li><b class="a">Panthers:</b> National coverage focuses on Carolina's protection and on Evero's firing. Under Evero since 2023, Carolina ranks 30th in points allowed and last against the run.</li>
+      <li><b class="a">Panthers:</b> Some national coverage has started asking whether Carolina should stay committed to Young, who went 7 of 17 for 41 yards under pressure Thursday.</li>
+    </ul>
+  </div>
+</section>
+
+<section aria-labelledby="chk-h">
+  <h2 id="chk-h">Checking back in on pre-game coverage</h2>
+  <p>The pregame coverage was right about the pass rush. Previews said Young needed to get the ball out fast against Green Bay's pressure, and he couldn't: six sacks, nine hits, and pressure on almost half his dropbacks. Packers pass rusher Lukas Van Ness had one of the six sacks. Most of the damage came from the depth of the rotation, with Hopper and Dennis-Sutton adding sacks of their own.</p>
+  <p>It was wrong about the run game. Green Bay coverage saw Carolina's league-worst run defense as the chance to finally fix the Packers' ground attack, and it got worse instead: 66 yards on 26 carries, and LaFleur called it "not good enough." Golden, questionable all week with shoulder and foot injuries, played and scored. Panthers receiver Tetairoa McMillan, one of the players Green Bay previews said to watch, was held to six catches for 58 yards.</p>
+  <p>The moods mostly held. Before the game, Green Bay's media was still stewing over the Detroit loss while Carolina's media was warmer on the Packers, and that is still true after a win that felt sloppier to Green Bay than to anyone else. Carolina's neutral pregame mood has turned sharply negative after the injuries, the protection breakdown, and a coordinator firing.</p>
+</section>
+
+<section aria-labelledby="pred-h">
+  <h2 id="pred-h">How the score predictions did</h2>
+  <p>The average published score prediction was Packers 28, Panthers 23: three points off the final margin and five off the final total.</p>
+  <div class="tally">
+    <div><span class="eyebrow">Score predictions</span><span class="big b">88%</span><span class="note">picked the Packers</span></div>
+    <div><span class="eyebrow">Bleacher Report panel</span><span class="big b">43%</span><span class="note">picked the Packers</span></div>
+    <div><span class="eyebrow">Betting public</span><span class="big nat">63%</span><span class="note">of spread bets on GB &minus;3.5, which covered</span></div>
+  </div>
+  <ul class="bul">
+    <li><b>Nailed it:</b> Peter Dewey of SI Betting (Packers 27&ndash;20) and Dan Parr of NFL.com (Packers 26&ndash;19) were each one point off the final margin and one off the total.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="bold-h">
+  <h2 id="bold-h">Bold predictions that hit</h2>
+  <ul class="bul">
+    <li><b>Bryce Young sacked at least three times.</b> It hit: Young was sacked six times. It was billed as bold, but it was not much of a reach. Young had been sacked five times the week before against Tampa Bay, and Carolina was playing without starting linemen Ikem Ekwonu and Damien Lewis.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="next-h">
+  <h2 id="next-h">Up next</h2>
+  <ul class="bul">
+      <li>Panthers: host the Denver Broncos at Bank of America Stadium on Sunday, Nov. 8, after a mini-bye, with Todd Wash calling the defense.</li>
+      <li>Packers: at the New England Patriots on Sunday, Nov. 8, after 10 days off.</li>
+  </ul>
+</section>
+
+<section id="refs" class="refs" aria-labelledby="refs-h">
+  <h2 id="refs-h">References</h2>
+  <details class="srcs"><summary>Show the articles behind this page</summary><div class="inner-src">
+  <p class="note">Each bar shows that article's tone toward the team named next to it.</p>
+  <div class="covgrp"><span class="eyebrow a">Carolina</span><ul class="refl"><li><a href="https://www.panthers.com/news/panthers-looking-for-solutions-to-pressure-problems">Panthers looking for solutions to pressure problems</a> <span class="src-out">- Panthers.com</span><span class="mts"><span class="mt"><span class="mt-n">Panthers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:38%;width:12%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Packers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:25%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.wsoctv.com/news/local/panthers-fall-below-500-after-loss-against-packers/2HEIJKMZLRFABBPKFHCVM4HYRU/">Panthers fall below .500 after loss to Packers</a> <span class="src-out">- WSOC-TV (Charlotte)</span><span class="mts"><span class="mt"><span class="mt-n">Panthers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:38%;width:12%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Packers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:20%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://myk104.com/6416/young-sacked-6-times-as-panthers-fall-to-packers-27-19-despite-late-comeback-attempt/">Young sacked 6 times as Panthers fall to Packers</a> <span class="src-out">- WFNZ (Charlotte), via K104</span><span class="mts"><span class="mt"><span class="mt-n">Panthers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:32%;width:18%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Packers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:20%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://catcrave.com/11-instant-reactions-carolina-panthers-dismal-loss-against-packers-week-8">Instant reactions from Panthers' dismal loss</a> <span class="src-out">- Cat Crave</span><span class="mts"><span class="mt"><span class="mt-n">Panthers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:22%;width:28%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://catcrave.com/damien-woody-hit-carolina-panthers-reality-check-after-packers-loss-right">Damien Woody hit Panthers with reality check</a> <span class="src-out">- Cat Crave</span><span class="mts"><span class="mt"><span class="mt-n">Panthers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:10%;width:40%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Packers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:20%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.si.com/nfl/panthers/onsi/panthers-stock-report-chuba-hubbard-rises-bryce-young-falls-after-packers-loss-01m66ym9vgp0">Panthers stock report: Hubbard rises, Young falls</a> <span class="src-out">- Panthers On SI</span><span class="mts"><span class="mt"><span class="mt-n">Panthers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:38%;width:12%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Packers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:18%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.si.com/nfl/panthers/onsi/overreaction-the-panthers-season-may-already-be-over-01m67yx1xv5a">Overreaction? Panthers' season may already be over</a> <span class="src-out">- Panthers On SI</span><span class="mts"><span class="mt"><span class="mt-n">Panthers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:22%;width:28%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Packers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:20%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/biggest-takeaways-panthers-ugly-week-054720827.html">Biggest takeaways from Panthers' ugly loss</a> <span class="src-out">- Panthers Wire (via Yahoo)</span><span class="mts"><span class="mt"><span class="mt-n">Panthers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:20%;width:30%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Packers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:18%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/studs-duds-panthers-week-8-060309214.html">Studs and duds from Panthers' Week 8 loss</a> <span class="src-out">- Panthers Wire (via Yahoo)</span><span class="mts"><span class="mt"><span class="mt-n">Panthers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:30%;width:20%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://sports.yahoo.com/articles/best-worst-pff-grades-panthers-141045330.html">Best and worst PFF grades from Week 8 loss</a> <span class="src-out">- Panthers Wire (via Yahoo)</span><span class="mts"><span class="mt"><span class="mt-n">Panthers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:38%;width:12%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://sports.yahoo.com/articles/panthers-fire-dc-ejiro-evero-142945030.html">Panthers fire DC Evero, name interim DC</a> <span class="src-out">- Cat Scratch Reader (SB Nation, via Yahoo)</span><span class="mts"><span class="mt"><span class="mt-n">Panthers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:25%;width:25%"></span></span><span class="mt-w">Critical</span></span></span></li></ul></div><div class="covgrp"><span class="eyebrow b">Green Bay</span><ul class="refl"><li><a href="https://www.packers.com/news/game-recap-5-takeaways-from-packers-victory-over-panthers-week-8-2026">5 takeaways from Packers' victory</a> <span class="src-out">- Packers.com</span><span class="mts"><span class="mt"><span class="mt-n">Panthers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:35%;width:15%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Packers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.si.com/nfl/packers/onsi/packers-report-card-big-win-over-panthers-comes-with-two-fs">Packers report card</a> <span class="src-out">- Packers On SI</span><span class="mts"><span class="mt"><span class="mt-n">Panthers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:35%;width:15%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Packers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:12%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.si.com/nfl/packers/onsi/snaps-studs-and-duds-analysis-from-packers-win-over-panthers">Snaps, studs and duds</a> <span class="src-out">- Packers On SI</span><span class="mts"><span class="mt"><span class="mt-n">Panthers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:32%;width:18%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Packers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/packers-numbers-stats-week-8-225755075.html">Packers by the numbers</a> <span class="src-out">- Acme Packing Company (SB Nation, via Yahoo)</span><span class="mts"><span class="mt"><span class="mt-n">Panthers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:40%;width:10%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Packers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:10%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://lombardiave.com/4-instant-reactions-packers-bounce-back-win-over-panthers-week-8">4 instant reactions</a> <span class="src-out">- Lombardi Ave</span><span class="mts"><span class="mt"><span class="mt-n">Panthers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:40%;width:10%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Packers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:5%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://www.yardbarker.com/nfl/articles/packers_the_good_bad_and_ugly_in_win_against_panthers/s1_17187_44492633">Good, bad and ugly in win over Panthers</a> <span class="src-out">- PackersTalk (via Yardbarker)</span><span class="mts"><span class="mt"><span class="mt-n">Panthers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:35%;width:15%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Packers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.packers.com/news/in-game-updates-week-8-panthers-2026">Packers defeat Panthers, 27-19 (game story)</a> <span class="src-out">- Packers.com</span><span class="mts"><span class="mt"><span class="mt-n">Packers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.packers.com/news/inbox-the-convergence-of-development-and-opportunity-is-on-display-oct-30-2026">Inbox: unsatisfying win, run game the biggest drag</a> <span class="src-out">- Packers.com</span><span class="mts"><span class="mt"><span class="mt-n">Packers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:15%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://packers.com/news/inbox-that-night-belonged-to-wisconsin-sports-fans-oct-31-2026">Inbox: Love 'has never played better considering the circumstances'</a> <span class="src-out">- Packers.com</span><span class="mts"><span class="mt"><span class="mt-n">Packers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:25%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://lombardiave.com/matt-lafleur-admits-packers-run-game-broken-3-possible-fixes">LaFleur admits run game is broken; 3 possible fixes</a> <span class="src-out">- Lombardi Ave</span><span class="mts"><span class="mt"><span class="mt-n">Packers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:35%;width:15%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://sports.yahoo.com/articles/packers-lb-tyron-hopper-gets-162947361.html">Hopper gets game ball</a> <span class="src-out">- Packers Wire (via Yahoo)</span><span class="mts"><span class="mt"><span class="mt-n">Packers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:25%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/packers-nfl-history-beating-panthers-042500525.html">Packers make NFL history: winning record with under 500 rush yards</a> <span class="src-out">- Packers Wire (via Yahoo)</span><span class="mts"><span class="mt"><span class="mt-n">Packers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/three-takeaways-packers-primetime-victory-033344089.html">Three takeaways from Packers' primetime victory</a> <span class="src-out">- Roundtable Sports (via Yahoo)</span><span class="mts"><span class="mt"><span class="mt-n">Packers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:20%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/5-stars-game-green-bay-132221118.html">5 stars of the game from 27-19 win</a> <span class="src-out">- Roundtable Sports (via Yahoo)</span><span class="mts"><span class="mt"><span class="mt-n">Packers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:30%"></span></span><span class="mt-w">Positive</span></span></span></li></ul></div><div class="covgrp"><span class="eyebrow nat">National</span><ul class="refl"><li><a href="https://www.espn.com/nfl/story/_/id/50325742/panthers-bryce-young-says-knee-fine-loss-packers">Young says knee 'fine' after six sacks</a> <span class="src-out">- ESPN</span><span class="mts"><span class="mt"><span class="mt-n">Panthers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:35%;width:15%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Packers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:20%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/panthers-dave-canales-promises-fix-054048746.html">Canales promises to fix flaw that gave Young no chance</a> <span class="src-out">- ClutchPoints (via Yahoo)</span><span class="mts"><span class="mt"><span class="mt-n">Panthers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:30%;width:20%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://sports.yahoo.com/articles/panthers-bryce-young-shared-most-110527659.html">Bryce Young's honest reason Panthers lost</a> <span class="src-out">- Gridiron Heroics (via Yahoo)</span><span class="mts"><span class="mt"><span class="mt-n">Panthers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:25%;width:25%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Packers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:20%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://athlonsports.com/nfl/carolina-panthers/non-existent-pass-rush-and-three-other-takeaways-from-panthers-thursday-night-loss-to-packers">Non-existent pass rush and three other takeaways</a> <span class="src-out">- Athlon Sports</span><span class="mts"><span class="mt"><span class="mt-n">Panthers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:22%;width:28%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://atozsports.com/nfl/carolina-panthers-news/panthers-winners-losers-week-8-packers-bryce-young-rasheed-walker/">3 winners and 5 losers from Panthers' loss</a> <span class="src-out">- A to Z Sports</span><span class="mts"><span class="mt"><span class="mt-n">Panthers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:18%;width:32%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.foxsports.com/stories/nfl/jordan-love-mvp-packers-panthers-takeaways">Jordan Love for MVP? 3 takeaways</a> <span class="src-out">- FOX Sports</span><span class="mts"><span class="mt"><span class="mt-n">Panthers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:25%;width:25%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Packers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:32%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/thursday-night-football-packers-hold-on-for-27-19-win-over-panthers">Packers hold on for 27-19 win</a> <span class="src-out">- ProFootballTalk (NBC Sports)</span><span class="mts"><span class="mt"><span class="mt-n">Panthers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:45%;width:5%"></span></span><span class="mt-w">Neutral</span></span><span class="mt"><span class="mt-n">Packers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.wbay.com/2026/10/30/love-throws-3-td-passes-packers-beat-panthers-27-19/">Love throws 3 TD passes as Packers beat Panthers (AP)</a> <span class="src-out">- Associated Press (via WBAY)</span><span class="mts"><span class="mt"><span class="mt-n">Panthers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:42%;width:8%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Packers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:18%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.unexpectedpoints.com/p/week-8-thursday-night-packers-panthers">Advanced review</a> <span class="src-out">- Unexpected Points (Kevin Cole)</span><span class="mts"><span class="mt"><span class="mt-n">Panthers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:28%;width:22%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Packers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:12%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.cbssports.com/nfl/news/panthers-fire-defensive-coordinator-ejiro-evero/">Panthers fire DC Ejiro Evero</a> <span class="src-out">- CBS Sports</span><span class="mts"><span class="mt"><span class="mt-n">Panthers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:30%;width:20%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Packers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/panthers-fire-dc-ejiro-evero-144142894.html">Panthers fire DC Evero, name Wash interim</a> <span class="src-out">- USA TODAY Sports (via Yahoo)</span><span class="mts"><span class="mt"><span class="mt-n">Panthers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:32%;width:18%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.foxnews.com/outkick-sports/panthers-fire-defensive-coordinator-ejiro-evero-losing-packers-major-shakeup">Panthers fire Evero in major shakeup</a> <span class="src-out">- OutKick (Fox News)</span><span class="mts"><span class="mt"><span class="mt-n">Panthers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:40%;width:10%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.profootballrumors.com/2026/10/panthers-fire-dc-ejiro-evero">Panthers fire DC Evero; Wash named interim</a> <span class="src-out">- Pro Football Rumors</span><span class="mts"><span class="mt"><span class="mt-n">Panthers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:30%;width:20%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://sports.yahoo.com/articles/panthers-fire-defensive-coordinator-ejiro-200258922.html">Panthers fire DC Evero after disappointing loss</a> <span class="src-out">- Easy Sportz (via Yahoo)</span><span class="mts"><span class="mt"><span class="mt-n">Panthers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:30%;width:20%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.thebiglead.com/panthers-part-ways-with-defensive-coach-after-packers-loss/">Panthers part ways with defensive coach after Packers loss</a> <span class="src-out">- The Big Lead</span><span class="mts"><span class="mt"><span class="mt-n">Panthers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:30%;width:20%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.nfl.com/news/christian-watson-s-dramatic-return-to-packers-win-over-panthers-felt-like-watching-wwe">Watson's dramatic return felt like 'watching WWE'</a> <span class="src-out">- NFL.com</span><span class="mts"><span class="mt"><span class="mt-n">Packers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:30%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.foxsports.com/live-blog/nfl/panthers-vs-packers-live-updates-score">Panthers vs. Packers highlights: Love throws 3 TDs</a> <span class="src-out">- FOX Sports</span><span class="mts"><span class="mt"><span class="mt-n">Packers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://bleacherreport.com/articles/25527078-jordan-love-matt-lafleur-react-christian-watsons-return-hospital-during-packers-win">Love, LaFleur react to Watson's return from hospital</a> <span class="src-out">- Bleacher Report</span><span class="mts"><span class="mt"><span class="mt-n">Packers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:25%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://athlonsports.com/nfl/green-bay-packers/good-and-not-so-good-things-packers-win-over-panthers">3 good and 2 not-so-good things from Packers' win</a> <span class="src-out">- Athlon Sports</span><span class="mts"><span class="mt"><span class="mt-n">Packers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:15%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/winners-losers-packers-27-19-040346320.html">Winners and losers from Packers' 27-19 win</a> <span class="src-out">- Athlon Sports (via Yahoo)</span><span class="mts"><span class="mt"><span class="mt-n">Packers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:22%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/matt-lafleur-makes-brutal-admission-142853391.html">LaFleur makes brutal admission on run game</a> <span class="src-out">- Heavy (via Yahoo)</span><span class="mts"><span class="mt"><span class="mt-n">Packers</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:38%;width:12%"></span></span><span class="mt-w">Mixed</span></span></span></li></ul></div>
+  </div></details>
+</section>
+
+<footer>
+  <span class="eyebrow">Fodder Sports · pilot</span>
+  <p>Summaries are written in our own words from the coverage listed above. Not affiliated with the NFL, the Green Bay Packers, or the Carolina Panthers.</p>
+</footer>
+
+</div>
+<script>try{if('scrollRestoration' in history)history.scrollRestoration='manual';if(!location.hash)window.scrollTo(0,0);}catch(e){}</script>
+</body></html>

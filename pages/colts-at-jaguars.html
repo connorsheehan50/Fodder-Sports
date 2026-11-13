@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Fodder Sports Colts at Jaguars</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#f3f4f6; --surface:#ffffff; --ink:#151a24; --muted:#5b6474; --line:#d9dde4;
+  --nat:#4a5568; --nat-soft:#e6e9ee;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f131a; --surface:#171c25; --ink:#e7eaf0; --muted:#9aa3b2; --line:#2a3140;
+  --nat:#a7b1c2; --nat-soft:#222935; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f131a; --surface:#171c25; --ink:#e7eaf0; --muted:#9aa3b2; --line:#2a3140;
+  --nat:#a7b1c2; --nat-soft:#222935; color-scheme:dark}
+
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 56px}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
+a{color:inherit;text-decoration-color:var(--muted);text-underline-offset:2px}
+a:hover{text-decoration-color:currentColor}
+a:focus-visible{outline:2px solid var(--a);outline-offset:2px;border-radius:2px}
+h1,h2,h3{font-family:var(--display);font-weight:700;text-wrap:balance;margin:0;letter-spacing:.01em}
+h1{font-size:clamp(1.9rem,5vw,2.6rem);line-height:1.05}
+h2{font-size:1.5rem;text-transform:uppercase}
+h3{font-size:1.05rem;text-transform:uppercase;letter-spacing:.05em}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.a{color:var(--a)} .b{color:var(--b)} .nat{color:var(--nat)}
+section{display:flex;flex-direction:column;gap:14px}
+.note{font-size:.88rem;color:var(--muted)}
+ul.bul{margin:0;padding-left:1.15em;display:flex;flex-direction:column;gap:10px}
+ul.bul li::marker{color:var(--muted)}
+.dek{font-size:1.1rem;color:var(--muted)}
+
+.score{display:flex;align-items:stretch;border:1px solid var(--line);background:var(--surface)}
+.score .side{flex:1;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;min-width:0}
+.score .side + .side{border-left:1px solid var(--line)}
+.score .nm{font-family:var(--display);font-size:1.5rem;font-weight:700;text-transform:uppercase;line-height:1}
+.score .nm small{display:block;font-family:var(--mono);font-size:.72rem;font-weight:400;letter-spacing:.08em;color:var(--muted);margin-top:4px;text-transform:none}
+.score .pts{font-family:var(--display);font-size:2.6rem;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.score .lose .pts{opacity:.5}
+.score .meta{font-family:var(--mono);font-size:.8rem;color:var(--muted);text-align:right}
+
+.summary{background:var(--surface);border:1px solid var(--line);padding:22px 24px;display:flex;flex-direction:column;gap:14px}
+.views{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line)}
+.view{padding:18px 22px;display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--line)}
+.view:first-child{border-top:0}
+
+.tally{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.tally div{background:var(--surface);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.tally .big{font-family:var(--display);font-size:2rem;font-weight:700;line-height:1}
+
+.tbl-wrap{overflow-x:auto}
+table.t{width:100%;border-collapse:collapse;font-size:.92rem;min-width:480px}
+.t th{font-family:var(--mono);font-weight:500;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:8px 10px 8px 0;border-bottom:2px solid var(--ink)}
+.t td{padding:8px 10px 8px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.t td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap;font-size:.85rem}
+
+.coverage{background:var(--surface);border:1px solid var(--line);padding:18px 22px;display:flex;flex-direction:column;gap:16px}
+.covgrp{display:flex;flex-direction:column;gap:6px}
+.covgrp ul{margin:0;padding-left:1.1em;font-size:.88rem;display:flex;flex-direction:column;gap:4px}
+
+/* Sentiment: diverging bars, center = neutral */
+.sent{display:flex;flex-direction:column;gap:18px}
+.steam{display:flex;flex-direction:column;gap:8px}
+.srow{display:grid;grid-template-columns:110px 1fr 88px;align-items:center;gap:10px;font-size:.85rem}
+.srow .lbl{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;color:var(--muted)}
+.srow .val{font-family:var(--mono);font-size:.74rem;text-align:right;color:var(--muted)}
+.track.nocov{background:repeating-linear-gradient(45deg,var(--nat-soft) 0 6px,transparent 6px 12px)}
+.track.nocov::after{display:none}
+.track{position:relative;height:12px;background:var(--nat-soft);border-radius:6px}
+.track::after{content:"";position:absolute;left:50%;top:-3px;bottom:-3px;width:2px;background:var(--muted);transform:translateX(-1px)}
+.fill{position:absolute;top:0;bottom:0;border-radius:6px}
+.fill.pos{left:50%} .fill.neg{right:50%}
+.f-a{background:var(--a)} .f-b{background:var(--b)} .f-n{background:var(--nat)}
+.scale{display:grid;grid-template-columns:110px 1fr 88px;gap:10px;font-family:var(--mono);font-size:.68rem;color:var(--muted)}
+.scale span:nth-child(2){display:flex;justify-content:space-between}
+
+.grade{font-family:var(--display);font-weight:700;font-size:1.15rem}
+footer{border-top:1px solid var(--line);padding-top:18px;font-size:.85rem;color:var(--muted);display:flex;flex-direction:column;gap:8px}
+
+@media (max-width:560px){
+  .score{flex-direction:column}
+  .score .side + .side{border-left:0;border-top:1px solid var(--line)}
+  .tally{grid-template-columns:1fr}
+  .summary,.view,.coverage{padding-left:16px;padding-right:16px}
+  .srow,.scale{grid-template-columns:80px 1fr 76px}
+}
+
+.trend{margin:4px 0 0;font-size:.86rem}.trend b{font-weight:700}.trend.up span{color:#13803a}.trend.down span{color:#c81e1e}.trend.steady span,.trend.new span{color:var(--muted)}
+@media (prefers-color-scheme:dark){.trend.up span{color:#5fd38a}.trend.down span{color:#ff7b7b}}
+
+:root{--a:#002C5F;--b:#006778}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--a:#8fb4e8;--b:#4fc3d4}}
+:root[data-theme="dark"]{--a:#8fb4e8;--b:#4fc3d4}
+
+.tlink{color:inherit;text-decoration:none;border-bottom:1px dotted currentColor}
+.tlink:hover{border-bottom-style:solid}
+
+.refjump{margin:6px 0 0} .refjump a{font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.scale-note{font-size:.72rem !important;line-height:1.45}
+.refl li{margin-bottom:8px}
+.mts{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:3px}
+.mt{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.mt-bar{position:relative;display:inline-block;width:64px;height:7px;background:var(--line);border-radius:2px}
+.mt-c{position:absolute;left:50%;top:-2px;bottom:-2px;width:1px;background:var(--muted)}
+.mt-f{position:absolute;top:0;bottom:0;border-radius:2px}
+details.srcs summary{font-size:.74rem !important}
+
+.refs .inner-src{display:flex;flex-direction:column;gap:14px;max-height:340px;overflow-y:auto;overscroll-behavior:contain}
+footer p{font-size:.72rem;line-height:1.45}
+.refjump a{font-family:var(--mono);font-size:.8rem;letter-spacing:.04em;text-transform:uppercase}
+.avg td.n{white-space:nowrap}
+
+details.srcs{border:1px solid var(--line);border-radius:2px}
+details.srcs summary{cursor:pointer;padding:10px 12px;font-family:var(--mono);font-size:.82rem;letter-spacing:.05em;text-transform:uppercase}
+details.srcs[open] summary{border-bottom:1px solid var(--line)}
+details.srcs .inner-src{padding:12px;display:flex;flex-direction:column;gap:14px}
+.src-out{color:var(--muted)}
+.eyebrow{font-size:.8rem} .note{font-size:.8rem;line-height:1.5} .srow .lbl{font-size:.8rem} .srow .val{font-size:.8rem;color:var(--ink)}
+</style>
+</head><body>
+<div class="wrap">
+<a href="./" style="align-self:flex-start;display:inline-block;font-family:var(--mono);font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;background:none;border:1px solid var(--ink);color:var(--ink);padding:7px 11px;border-radius:2px">&larr; Back to Fodder Sports</a>
+
+<header style="display:flex;flex-direction:column;gap:16px">
+  <span class="eyebrow">Fodder Sports · NFL Week 8 · Matchup</span>
+  <div class="score" role="img" aria-label="Indianapolis Colts, 2 and 5, at Jacksonville Jaguars, 4 and 2">
+    <div class="side"><span class="nm a"><a class="tlink" href="./#team-ind">Colts</a><small>2–5 · away</small></span><span class="meta">Sun, Nov. 1<br>1:00 p.m. ET</span></div>
+    <div class="side"><span class="nm b"><a class="tlink" href="./#team-jax">Jaguars</a><small>4–2 · home</small></span><span class="meta">EverBank Stadium<br>CBS</span></div>
+  </div>
+  <h1>Colts Sell Off Nelson and Buckner, Then Walk Into a Jacksonville House of Horrors</h1>
+  <p class="dek">Indianapolis traded two longtime captains days before visiting the AFC South leaders, where it has not won since 2014.</p>
+</header>
+
+<section class="coverage" aria-labelledby="cov-h">
+  <h2 id="cov-h">How the coverage feels</h2>
+  <p class="note">How each market feels about each team right now, read from the week's coverage. This is about the team vibes, not the odds of winning this game.</p>
+  <div class="sent">
+    <div class="steam">
+      <h3 class="a"><a class="tlink" href="./#team-ind">Colts</a></h3>
+      <div class="srow"><span class="lbl">Indianapolis</span><div class="track"><span class="fill neg f-a" style="width:7.5%"></span></div><span class="val">Neutral</span></div>
+      <div class="srow"><span class="lbl">Jacksonville</span><div class="track"><span class="fill neg f-b" style="width:25.0%"></span></div><span class="val">Critical</span></div>
+      <div class="srow"><span class="lbl">National</span><div class="track"><span class="fill neg f-n" style="width:20.0%"></span></div><span class="val">Critical</span></div>
+      <p class="trend new"><span aria-hidden="true">•</span> <b>First reading.</b> The Nelson and Buckner trades, a week after Ballard's firing, have Indianapolis talking rebuild, Steichen's job, and who goes next.</p>
+    </div>
+    <div class="steam">
+      <h3 class="b"><a class="tlink" href="./#team-jax">Jaguars</a></h3>
+      <div class="srow"><span class="lbl">Jacksonville</span><div class="track"><span class="fill pos f-b" style="width:25.0%"></span></div><span class="val">Positive</span></div>
+      <div class="srow"><span class="lbl">Indianapolis</span><div class="track"><span class="fill pos f-a" style="width:20.0%"></span></div><span class="val">Positive</span></div>
+      <div class="srow"><span class="lbl">National</span><div class="track"><span class="fill pos f-n" style="width:22.5%"></span></div><span class="val">Positive</span></div>
+      <p class="trend new"><span aria-hidden="true">•</span> <b>First reading.</b> A 2.5-game division lead and a rested roster coming off the bye have Jacksonville feeling like the AFC South is theirs to lose.</p>
+    </div>
+    <div class="scale"><span></span><span><span>Harsh</span><span>Neutral</span><span>Glowing</span></span><span></span></div><p class="note scale-note">Each bar shows the overall tone of that group&#39;s coverage toward the team. Bars to the right of center are favorable, bars to the left are critical, and longer bars mean stronger tone. &ldquo;No coverage&rdquo; means that group published nothing about the team in this window.</p>
+  </div>
+  <p>Indianapolis coverage is gloomy: the Nelson and Buckner trades read as the start of a rebuild, and the talk is about Colts head coach Shane Steichen's job, quarterback Daniel Jones, and who gets traded next. Jacksonville's media is confident and upbeat about its own team after the bye, and it treats the Colts as a franchise in a fire sale, though the Jaguars' staff warns the Colts have not quit. National coverage matches both moods, harsh on Indianapolis's direction and positive on Jacksonville's offense and defense.</p>
+  <p class="refjump"><a href="#refs">See all the articles we referenced for this summary</a></p>
+</section>
+
+<section class="summary" aria-labelledby="sum-h">
+  <h2 id="sum-h">The summary</h2>
+  <ul class="bul">
+      <li>The Colts (2-5) traded guard Quenton Nelson to Seattle for a 2027 third-round pick and a 2028 fifth on Oct. 27, then sent defensive tackle DeForest Buckner back to San Francisco for a 2027 fourth. Both were six-time captains on expiring contracts.</li>
+      <li>The trades came a week after owner Carlie Irsay-Gordon fired general manager Chris Ballard. Interim GM Ed Dodds now runs personnel, and Indianapolis does not own its 2027 first-round pick, which went to the Jets in the Sauce Gardner trade.</li>
+      <li>More moves may follow before the Nov. 10 deadline. Colts wide receiver Josh Downs has asked for a trade, and running back Jonathan Taylor, who leads the NFL with 8 rushing touchdowns, says he has not.</li>
+      <li>Colts rookie guard Jalen Farmer makes his first start at left guard in Nelson's place after three offensive snaps all season, and defensive tackle Adetomiwa Adebawore, who leads the Colts with 4 sacks, takes over for Buckner.</li>
+      <li>The Jaguars (4-2) lead the AFC South by 2.5 games after a 34-31 loss to Houston in London and a bye. Jaguars quarterback Trevor Lawrence has 14 touchdown passes and four interceptions in six games.</li>
+      <li>Indianapolis has lost three straight and 11 straight games in Jacksonville. The Jaguars lose safety Antonio Johnson (ankle), and the Colts are without wide receiver Anthony Gould and cornerback Justin Walley.</li>
+  </ul>
+</section>
+
+<section class="views" aria-label="What each side is saying">
+  <div class="view">
+    <h2 class="a">What the Indianapolis media is saying about the Colts</h2>
+    <ul class="bul">
+      <li>Deflated. Indianapolis coverage calls the trades a white flag on 2026 and the formal end of the Ballard era, with no playoff trip since 2020 and no division title since 2014.</li>
+      <li>The locker room is hurting but says it is still playing. Steichen called the departed pair "the definition of the standard," and Taylor said, "We're going out there trying to win."</li>
+      <li>The heat is on Steichen and Jones. Indianapolis's media wonders if a loss in Jacksonville could be Steichen's last game, and it questions Jones's 7 interceptions and the offense's turnover rate.</li>
+      <li>The bright side is youth. Farmer, Adebawore, and rookie Colts wide receiver Deion Burks are pitched as the core worth watching, and offensive line coach Tony Sparano Jr. said, "This is an opportunity for (Farmer) to begin his journey."</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="b">What the Jacksonville media is saying about the Colts</h2>
+    <ul class="bul">
+      <li>Jacksonville's media sees the Colts as a team in sell mode, calling them a mess and a fire sale that is punting on the season.</li>
+      <li>Jaguars coach Liam Coen pushed back on that idea: "It's two good players. We can't deny that." The Jaguars' own site warns that until a team gives up on a season it remains dangerous, pointing to the Colts' 16-10 loss to unbeaten Minnesota.</li>
+      <li>The local focus is on Jones's 10 turnovers in seven games and a defense expected to struggle without Buckner.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="b">What the Jacksonville media is saying about the Jaguars</h2>
+    <ul class="bul">
+      <li>Confident. Jacksonville coverage sees a clear path to the AFC South title and a chance to build a three-game lead at midseason.</li>
+      <li>Lawrence is playing at a high level, and second-year two-way player Travis Hunter is described as the start of something special after scoring a touchdown and making an interception in the same game against Houston.</li>
+      <li>The worries are the run defense after the Houston loss, a pass rush that ranks 24th in sack rate, Jaguars wide receiver Brian Thomas Jr., who has not caught a pass since Week 4, and a thin secondary without Johnson.</li>
+      <li>Coen is guarding against a letdown: "This has to all be about our improvements, us getting back on track."</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="a">What the Indianapolis media is saying about the Jaguars</h2>
+    <ul class="bul">
+      <li>Indianapolis's media respects Jacksonville as the team to beat in the division, well coached, with the best quarterback in the AFC South.</li>
+      <li>It points to a Jaguars defense with seven interceptions in six games and the NFL's best run defense, allowing 3.2 yards per carry, as the obstacle for Taylor.</li>
+      <li>The opening it sees is pressure: both Jacksonville losses came in games where Lawrence was blitzed heavily.</li>
+    </ul>
+  </div>
+  <div class="view">
+    <h2 class="nat">What everyone else is saying about this game</h2>
+    <ul class="bul">
+      <li><b class="a">Colts:</b> National coverage is harsh on the Colts' direction, describing the trades as the end of a failed era, with no playoff win since 2018 and 12 losses in 14 games.</li>
+      <li><b class="a">Colts:</b> Trade grades were mixed: the Buckner deal drew praise for the cap space and pick it returned, while the Nelson return was called underwhelming for a three-time All-Pro.</li>
+      <li><b class="b">Jaguars:</b> Jacksonville is viewed as a strong team: 25.7 points per game, 17.3 allowed, and a league-best +31 points off turnovers, with Lawrence leading the NFL in touchdown rate.</li>
+      <li><b class="b">Jaguars:</b> The national concern for the Jaguars is the pass defense, which has allowed 320 passing yards per game over its last three games.</li>
+      <li><b class="a">Colts:</b> The Colts are No. 27 in our consensus power rankings, and the Jaguars are No. 6.</li>
+    </ul>
+  </div>
+</section>
+
+<section aria-labelledby="inj-h">
+  <h2 id="inj-h">Who's out</h2>
+  <ul class="bul">
+    <li><b class="a">Out:</b> Colts wide receiver Anthony Gould (concussion) and cornerback Justin Walley (knee).</li>
+    <li><b class="a">Questionable:</b> Colts linebacker Bryce Boettcher (groin) and tight end Drew Ogletree (knee).</li>
+    <li><b class="a">In:</b> Colts cornerback Sauce Gardner (calf) and tight end Tyler Warren (groin). Both have no game status, and Steichen called them good to go.</li>
+    <li><b class="b">Out:</b> Jaguars safety Antonio Johnson (ankle). Left tackle Anton Harrison is on injured reserve with a torn ACL, and Walker Little replaces him.</li>
+    <li><b class="b">Questionable:</b> Jaguars wide receiver Jakobi Meyers (hamstring).</li>
+    <li><b class="b">In:</b> Jaguars cornerback Montaric Brown (hamstring) has no game status and is expected to play.</li>
+  </ul>
+  <p class="note">Game statuses from the teams' official injury reports, Friday, Oct. 30.</p>
+</section>
+
+<section aria-labelledby="line-h">
+  <h2 id="line-h">The line and the history</h2>
+  <div class="tbl-wrap">
+    <table class="t">
+      <thead><tr><th>Line</th><th>Spread</th><th>Moneyline</th><th>Total</th></tr></thead>
+      <tbody><tr><td>DraftKings, Oct. 28</td><td class="n">JAX −9.5</td><td class="n">JAX −485 / IND +370</td><td class="n">46.5</td></tr></tbody>
+    </table>
+  </div>
+  <ul class="bul">
+    <li>Indianapolis has lost 10 straight games in Jacksonville.</li>
+  </ul>
+  <h3>Who the public is picking</h3>
+  <ul class="bul">
+    <li><b>The media:</b> Every published score prediction we found takes the Jaguars. The average is Jaguars 30, Colts 16. Bleacher Report's panel has 100% on the Jaguars.</li>
+    <li><b>The betting public:</b> As of Friday, one sportsbook's splits were nearly even on the spread (53% on the Jaguars at −10), with 88% of moneyline bets on Jacksonville.</li>
+  </ul>
+  <div class="tbl-wrap avg">
+    <table class="t">
+      <thead><tr><th>Whose picks</th><th>Pick the Colts</th><th>Pick the Jaguars</th><th>Average score</th></tr></thead>
+      <tbody><tr><td>Jacksonville media</td><td class="n">0%</td><td class="n">100%</td><td class="n">Jaguars 31, Colts 14</td></tr><tr><td>National media</td><td class="n">0%</td><td class="n">100%</td><td class="n">Jaguars 29, Colts 18</td></tr><tr><td><b>All media</b></td><td class="n">0%</td><td class="n">100%</td><td class="n"><b>Jaguars 30, Colts 16</b></td></tr></tbody>
+    </table>
+  </div>
+  <p class="note">Share of published score predictions picking each team, and the average predicted score. Each pick is tracked for our predictor standings.</p>
+</section>
+
+<section id="refs" class="refs" aria-labelledby="refs-h">
+  <h2 id="refs-h">References</h2>
+  <details class="srcs"><summary>Show the articles behind this page</summary><div class="inner-src">
+  <p class="note">Each bar shows that article's tone toward the team named next to it.</p>
+  <div class="covgrp"><span class="eyebrow a">Indianapolis</span><ul class="refl"><li><a href="https://www.colts.com/news/colts-trade-g-quenton-nelson-to-seattle-seahawks-for-2-future-nfl-draft-picks">Colts trade Quenton Nelson to Seattle for two picks</a> <span class="src-out">- Colts.com</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:5%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://www.colts.com/news/after-trading-deforest-buckner-quenton-nelson-colts-focus-on-controllable-present-not-uncontrollable-future">After the trades, Colts focus on the present</a> <span class="src-out">- Colts.com</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.colts.com/news/colts-rb-jonathan-taylor-on-trade-rumors-i-can-t-control-that">Jonathan Taylor on trade rumors: 'I can't control that'</a> <span class="src-out">- Colts.com</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:10%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.colts.com/news/preparing-like-a-starter-rookie-guard-jalen-farmer-has-been-ready-for-this-moment-since-april">Rookie Jalen Farmer ready for first start at left guard</a> <span class="src-out">- Colts.com</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:20%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.colts.com/news/colts-jaguars-preview-deion-burks-jaylahn-tuimoloau-adetomiwa-adebawore-and-players-to-watch-in-week-8">Colts-Jaguars preview: young players to watch</a> <span class="src-out">- Colts.com</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:18%"></span></span><span class="mt-w">Positive</span></span><span class="mt"><span class="mt-n">Jaguars</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.colts.com/news/practice-notebook-colts-conduct-wednesday-walkthrough">Practice notebook: Wednesday walkthrough</a> <span class="src-out">- Colts.com</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://www.colts.com/news/colts-rule-out-wr-anthony-gould-cb-justin-walley-for-week-8-against-jaguars">Colts rule out Gould, Walley for Week 8</a> <span class="src-out">- Colts.com</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://sports.yahoo.com/articles/deforest-buckner-latest-colts-traded-205002312.html">DeForest Buckner is latest Colt traded; what it means</a> <span class="src-out">- IndyStar</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:28%;width:22%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://sports.yahoo.com/articles/colts-coach-shane-steichen-declines-180720526.html">Steichen won't say if Nelson, Buckner asked out</a> <span class="src-out">- IndyStar</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:45%;width:5%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://www.wishtv.com/sports/indianapolis-colts/colts-players-reflect-on-impact-quenton-nelson-deforest-buckner-had-on-the-team/">Colts players reflect on Nelson, Buckner impact</a> <span class="src-out">- WISH-TV</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://www.wishtv.com/news/colts-contributor-on-nelson-buckner-tradesnd-future-roster-shakeups/">Colts contributor weighs in on trades, future shakeups</a> <span class="src-out">- WISH-TV</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:30%;width:20%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://wibc.com/900514/colts-wednesday-notebook-josh-downs-open-to-trade/">Colts Wednesday notebook: Josh Downs open to trade</a> <span class="src-out">- WIBC / 107.5 The Fan</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:20%;width:30%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Jaguars</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:25%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://1075thefan.com/735190/matt-taylor-quenton-nelson-deforest-buckner-colts-trades/">Matt Taylor on the Colts losing Nelson and Buckner</a> <span class="src-out">- 107.5 The Fan</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://1075thefan.com/735020/ed-dodds-colts-rebuild-fans-ticket-prices/">The Colts are selling while fans pay full price</a> <span class="src-out">- 107.5 The Fan</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:25%;width:25%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://sports.yahoo.com/articles/colts-rebuild-underway-trades-nelson-035900335.html">Colts rebuild underway with trades of Nelson, Buckner</a> <span class="src-out">- The Herald Bulletin</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:5%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://sports.yahoo.com/articles/colts-steichen-addresses-deforest-buckner-170958380.html">Steichen addresses Buckner, Nelson trades</a> <span class="src-out">- Colts Wire</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:2%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://sports.yahoo.com/articles/anthony-richardson-addresses-colts-nelson-161521083.html">Anthony Richardson addresses Colts' trades</a> <span class="src-out">- Colts Wire</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://horseshoeheroes.com/colts-officially-wave-white-flag-by-trading-deforest-buckner">Colts officially wave white flag by trading Buckner</a> <span class="src-out">- Horseshoe Heroes</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:12%;width:38%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://horseshoeheroes.com/colts-need-solve-these-6-problems-win-week-8-save-their-season">Colts need to solve 6 problems to win in Week 8</a> <span class="src-out">- Horseshoe Heroes</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:35%;width:15%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Jaguars</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:25%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://horseshoeheroes.com/colts-fans-should-wonder-shane-steichen-recent-comments-could-be-his-last">Could Steichen's recent comments be his last?</a> <span class="src-out">- Horseshoe Heroes</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:18%;width:32%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://horseshoeheroes.com/colts-week-8-injury-report-delivers-good-news-fans-desperately-needed">Week 8 injury report brings good news</a> <span class="src-out">- Horseshoe Heroes</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:10%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://horseshoeheroes.com/afc-south-power-rankings-colts-cant-move-up-after-another-tough-loss">AFC South power rankings: Colts can't move up</a> <span class="src-out">- Horseshoe Heroes</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:25%;width:25%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Jaguars</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:30%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://horseshoeheroes.com/disastrous-chris-ballard-decisions-that-set-colts-back-years">5 Ballard decisions that set the Colts back</a> <span class="src-out">- Horseshoe Heroes</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:15%;width:35%"></span></span><span class="mt-w">Critical</span></span></span></li></ul></div><div class="covgrp"><span class="eyebrow b">Jacksonville</span><ul class="refl"><li><a href="https://www.jaguars.com/news/jaguars-wednesday-getting-back-on-track">Jaguars Wednesday: 'Getting back on track'</a> <span class="src-out">- Jaguars.com</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:45%;width:5%"></span></span><span class="mt-w">Neutral</span></span><span class="mt"><span class="mt-n">Jaguars</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:20%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.si.com/nfl/jaguars/onsi/trades-and-btj-3-most-important-things-jacksonville-liam-coen-said-about-week-8-colts-matchup">3 most important things Coen said about the Colts matchup</a> <span class="src-out">- Jaguars On SI (Jaguar Report)</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:38%;width:12%"></span></span><span class="mt-w">Mixed</span></span><span class="mt"><span class="mt-n">Jaguars</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:10%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.jaguars.com/news/opponent-focus-cbs4-fox59-sports-anchor-alexa-ross-looks-at-colts-roster-moves-and-key-players-before-week-8">Opponent Focus: Indy anchor on Colts' moves</a> <span class="src-out">- Jaguars.com</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:30%;width:20%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.jaguars.com/news/10-things-jaguars-must-do-to-beat-colts-in-week-8-ignore-the-noise">10 things Jaguars must do to beat the Colts</a> <span class="src-out">- Jaguars.com</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:45%;width:5%"></span></span><span class="mt-w">Neutral</span></span><span class="mt"><span class="mt-n">Jaguars</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:28%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.jaguars.com/news/jaguars-media-give-final-analysis-before-week-8-against-colts-at-everbank-stadium">Jaguars media final analysis before Week 8</a> <span class="src-out">- Jaguars.com</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:18%;width:32%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Jaguars</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:30%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://blackandteal.com/jaguars-dominant-winning-streak-vs-colts-won-t-change-liam-coen-s-approach-everbank">Jaguars' streak vs. Colts won't change Coen's approach</a> <span class="src-out">- Black and Teal</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:20%;width:30%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Jaguars</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:25%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://blackandteal.com/early-odds-and-bold-parker-washington-prediction-for-colts-vs-jaguars">Early odds and bold Parker Washington prediction</a> <span class="src-out">- Black and Teal</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:10%;width:40%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Jaguars</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:35%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://blackandteal.com/jaguars-facing-a-wild-weather-twist-vs-colts-and-they-re-preparing-accordingly-rain">Jaguars face weather twist vs. Colts</a> <span class="src-out">- Black and Teal</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:25%;width:25%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Jaguars</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:28%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.news4jax.com/sports/2026/10/30/news4jags-predictions-jaguars-will-keep-mastery-of-colts-alive-in-week-8/">News4JAGs predictions vs. Colts</a> <span class="src-out">- News4JAX (WJXT)</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:15%;width:35%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Jaguars</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:32%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://sports.yahoo.com/articles/colts-jaguars-predictions-jacksonville-slow-090119418.html">Colts at Jaguars predictions: Can Jacksonville slow Taylor?</a> <span class="src-out">- Florida Times-Union</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:15%;width:35%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Jaguars</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:30%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/colts-trade-away-2-top-135110801.html">Colts trade away 2 top players before Jaguars matchup</a> <span class="src-out">- Jaguars Wire</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:30%;width:20%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://sports.yahoo.com/articles/5-questions-stampede-blue-colts-133817881.html">5 Questions with Stampede Blue: the Colts' rebuild</a> <span class="src-out">- Big Cat Country (SB Nation)</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:22%;width:28%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://blackandteal.com/jaguars-rumored-trade-interest-in-josh-downs-doesn-t-make-any-sense-colts">Jaguars' rumored Josh Downs interest doesn't make sense</a> <span class="src-out">- Black and Teal</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:25%;width:25%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://jaguars.com/news/friday-quick-hits-johnson-ruled-out-for-sunday">Friday Quick Hits: Johnson ruled out</a> <span class="src-out">- Jaguars.com</span><span class="mts"><span class="mt"><span class="mt-n">Jaguars</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:20%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.jaguars.com/news/travis-hunter-talks-playing-physically-handling-doubters-on-the-o-zone-podcast">Travis Hunter on playing physically and handling doubters</a> <span class="src-out">- Jaguars.com</span><span class="mts"><span class="mt"><span class="mt-n">Jaguars</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:32%"></span></span><span class="mt-w">Glowing</span></span></span></li><li><a href="https://blackandteal.com/liam-coen-s-remarks-confirm-jaguars-urgently-need-montaric-brown-back-week-8-colts">Jaguars urgently need Montaric Brown back</a> <span class="src-out">- Black and Teal</span><span class="mts"><span class="mt"><span class="mt-n">Jaguars</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:20%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://blackandteal.com/jaguars-need-kaevon-merriweather-more-than-ever-amid-antonio-johnson-s-injury-colts">Jaguars need Kaevon Merriweather more than ever</a> <span class="src-out">- Black and Teal</span><span class="mts"><span class="mt"><span class="mt-n">Jaguars</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:15%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://blackandteal.com/jaguars-already-have-an-obvious-dt-pivot-after-deforest-buckner-trade-to-49ers-moro-ojomo">Jaguars' DT pivot after Buckner went to the 49ers</a> <span class="src-out">- Black and Teal</span><span class="mts"><span class="mt"><span class="mt-n">Jaguars</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span></span></li></ul></div><div class="covgrp"><span class="eyebrow nat">National</span><ul class="refl"><li><a href="https://www.ajc.com/news/2026/10/colts-send-all-pro-guard-quenton-nelson-to-seahawks-deforest-buckner-to-49ers-for-draft-picks/">Colts send Nelson to Seahawks, Buckner to 49ers</a> <span class="src-out">- Associated Press</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:28%;width:22%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.yourvalley.net/stories/colts-ready-to-look-ahead-to-jaguars-after-2-big-trades-hit-hard-and-shake-up-the-locker-room,735769">Colts look ahead to Jaguars after trades shake up locker room</a> <span class="src-out">- Associated Press</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:22%;width:28%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.espn.com/nfl/story/_/id/50302002/colts-deforest-buckner-quenton-nelson-jonathan-taylor">Buckner, Nelson trades signal Colts' rebuild</a> <span class="src-out">- ESPN</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:10%;width:40%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.cbssports.com/nfl/news/deforest-buckner-trade-grades-49ers-colts/">Buckner trade grades</a> <span class="src-out">- CBS Sports</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:8%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.si.com/nfl/trade-deadline/quenton-nelson-trade-grades-seahawks-land-star-offensive-lineman-from-colts">Quenton Nelson trade grades</a> <span class="src-out">- Sports Illustrated</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:38%;width:12%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.nfl.com/news/colts-wr-josh-downs-requests-trade">Josh Downs requests trade</a> <span class="src-out">- NFL.com</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:30%;width:20%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.nfl.com/news/jonathan-taylor-proud-to-be-with-colts-but-acknowledges-trade-possibility">Taylor 'proud to be' a Colt but acknowledges trade possibility</a> <span class="src-out">- NFL.com</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:35%;width:15%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://www.profootballrumors.com/2026/10/colts-deadline-strategy-still-uncertain-latest-on-rb-jonathan-taylor-other-trade-candidates">Colts deadline strategy uncertain</a> <span class="src-out">- Pro Football Rumors</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:40%;width:10%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://heavy.com/sports/nfl/indianapolis-colts/jonathan-taylor-trade-quenton-nelson-seahawks/">Colts could move Jonathan Taylor after Nelson trade</a> <span class="src-out">- Heavy</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:32%;width:18%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://clutchpoints.com/nfl/indianapolis-colts/colts-news-insider-teases-more-trades-after-quenton-nelson-deforest-buckner-trades">Insider teases more Colts trades</a> <span class="src-out">- ClutchPoints</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:38%;width:12%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://sports.yahoo.com/articles/liam-coen-expects-colts-screw-152200411.html">Coen expects Colts to say 'screw it, let's go play'</a> <span class="src-out">- Athlon Sports</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:25%;width:25%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Jaguars</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:20%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://athlonsports.com/nfl/jacksonville-jaguars/jaguars-colts-weaknesses-exploit-hide-week-8">3 Colts weaknesses the Jaguars can exploit</a> <span class="src-out">- Athlon Sports</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:18%;width:32%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Jaguars</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:18%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/josh-downs-play-trade-request-150000281.html">Will Josh Downs play after his trade request?</a> <span class="src-out">- Athlon Sports</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:35%;width:15%"></span></span><span class="mt-w">Mixed</span></span></span></li><li><a href="https://sports.yahoo.com/articles/colts-already-turned-down-second-154500683.html">Colts turned down a second-round pick for Taylor</a> <span class="src-out">- Athlon Sports</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:50%;width:5%"></span></span><span class="mt-w">Neutral</span></span></span></li><li><a href="https://sports.yahoo.com/articles/going-fired-well-3-time-084720487.html">Schlereth believes Steichen will be fired</a> <span class="src-out">- Pro Football Network</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:12%;width:38%"></span></span><span class="mt-w">Critical</span></span></span></li><li><a href="https://www.si.com/betting/colts-vs-jaguars-prediction-odds-spread-injuries-trends-for-nfl-week-8-01m5x10j3wbj">Colts vs. Jaguars prediction, odds, trends</a> <span class="src-out">- Sports Illustrated</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:30%;width:20%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Jaguars</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:15%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.sharpfootballanalysis.com/fantasy/colts-jaguars-week-8-fantasy-football-preview-nfl-worksheet-rich-hribar-2026/amp/">Colts-Jaguars fantasy worksheet</a> <span class="src-out">- Sharp Football Analysis</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:25%;width:25%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Jaguars</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:28%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://www.covers.com/nfl/colts-vs-jaguars-prediction-picks-odds-early-leans-week-8-2026">Colts vs. Jaguars early leans</a> <span class="src-out">- Covers</span><span class="mts"><span class="mt"><span class="mt-n">Colts</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-a" style="left:20%;width:30%"></span></span><span class="mt-w">Critical</span></span><span class="mt"><span class="mt-n">Jaguars</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:25%"></span></span><span class="mt-w">Positive</span></span></span></li><li><a href="https://sports.yahoo.com/articles/4-bold-predictions-jaguars-showdown-153500316.html">4 bold predictions for Jaguars vs. Colts</a> <span class="src-out">- Athlon Sports</span><span class="mts"><span class="mt"><span class="mt-n">Jaguars</span><span class="mt-bar" aria-hidden="true"><span class="mt-c"></span><span class="mt-f f-b" style="left:50%;width:25%"></span></span><span class="mt-w">Positive</span></span></span></li></ul></div>
+  </div></details>
+</section>
+
+<footer>
+  <span class="eyebrow">Fodder Sports · pilot</span>
+  <p>Summaries are written in our own words from the coverage listed above. Odds from <a href="https://www.espn.com/espn/betting/story/_/id/50250750/2026-nfl-week-8-schedule-odds-point-spreads-totals">ESPN's Week 8 odds report</a>. Not affiliated with the NFL, the Indianapolis Colts, or the Jacksonville Jaguars.</p>
+</footer>
+
+</div>
+<script>try{if('scrollRestoration' in history)history.scrollRestoration='manual';if(!location.hash)window.scrollTo(0,0);}catch(e){}</script>
+</body></html>
