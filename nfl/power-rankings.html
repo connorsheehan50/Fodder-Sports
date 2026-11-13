@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>NFL Power Rankings — Fodder Sports</title>
+  <title>Four NFC North Teams in the Top 10 — NFL Power Rankings, Week 10 — Fodder Sports</title>
   <link rel="stylesheet" href="../css/style.css">
   <style>
     .chart-container {
@@ -23,16 +23,16 @@
     .chart-title-block { flex: 1; min-width: 180px; }
     .chart-title {
       font-family: var(--font-head);
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: .08em;
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: .05em;
       text-transform: uppercase;
       color: var(--ink);
-      margin-bottom: 3px;
+      margin-bottom: 4px;
     }
     .chart-subtitle {
       font-family: var(--font-body);
-      font-size: 12px;
+      font-size: 13px;
       color: var(--slate);
     }
     .team-selectors {
@@ -99,6 +99,15 @@
       border-collapse: collapse;
       margin-top: 8px;
     }
+    .rankings-table {
+      position: relative;
+    }
+    .rankings-table thead {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      background: var(--card-bg);
+    }
     .rankings-table th {
       font-family: var(--font-head);
       font-size: 10px;
@@ -106,16 +115,17 @@
       letter-spacing: .1em;
       text-transform: uppercase;
       color: var(--slate);
-      padding: 8px 12px;
+      padding: 8px 10px;
       text-align: left;
       border-bottom: 2px solid var(--rule);
+      white-space: nowrap;
     }
-    .rankings-table th.num { text-align: right; width: 44px; }
-    .rankings-table th.avg { text-align: right; width: 56px; }
-    .rankings-table th.range { text-align: right; width: 64px; }
+    .rankings-table th.num { text-align: right; }
+    .rankings-table th.avg { text-align: right; width: 52px; }
+    .rankings-table th.range { text-align: right; width: 80px; }
     .rankings-table td {
       font-family: var(--font-head);
-      padding: 10px 12px;
+      padding: 10px 10px;
       border-bottom: 1px solid var(--rule);
     }
     .rankings-table tr:last-child td { border-bottom: none; }
@@ -124,33 +134,52 @@
       font-weight: 900;
       color: var(--slate);
       text-align: right;
-      width: 44px;
-      padding-right: 8px;
+      width: 36px;
+      padding-right: 4px;
+      white-space: nowrap;
+    }
+    .rankings-table td.move-col {
+      width: 56px;
+      text-align: left;
+      padding-left: 6px;
+      padding-right: 4px;
+      white-space: nowrap;
+    }
+    .move-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      font-family: var(--font-head);
+      font-size: 13px;
+      font-weight: 900;
+      border-radius: 4px;
+      padding: 2px 6px;
+    }
+    .move-badge.up { color: #0D5C2F; background: #D1FAE5; }
+    .move-badge.dn { color: #7F1D1D; background: #FEE2E2; }
+    .move-badge.flat { color: var(--slate); background: transparent; font-size: 11px; }
+    @media (prefers-color-scheme: dark) {
+      .move-badge.up { color: #6EE7B7; background: rgba(16,185,129,.15); }
+      .move-badge.dn { color: #FCA5A5; background: rgba(239,68,68,.15); }
     }
     .rankings-table td.team-col {
       font-size: 15px;
       font-weight: 800;
       color: var(--ink);
-      flex: 1;
-    }
-    .rankings-table td.move-col {
-      width: 28px;
-      text-align: center;
-      font-size: 13px;
-      font-weight: 800;
     }
     .rankings-table td.avg-col {
       text-align: right;
       font-size: 13px;
       font-weight: 700;
       color: var(--ink);
-      width: 56px;
+      width: 52px;
     }
     .rankings-table td.range-col {
       text-align: right;
       font-size: 12px;
       color: var(--slate);
-      width: 64px;
+      width: 80px;
+      white-space: nowrap;
     }
     .week-nav {
       margin-top: 32px;
@@ -205,8 +234,8 @@
 
 <div class="container" style="padding-top:28px;">
   <a href="index.html" class="back-link">← Back to NFL</a>
-  <p style="font-family:var(--font-head);font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin-bottom:6px;">Fodder Sports · Power Rankings · Week 10</p>
-  <h1 style="font-family:var(--font-display);font-size:clamp(28px,5vw,46px);line-height:1.1;margin-bottom:8px;">NFL Power Rankings, Week 10</h1>
+  <p style="font-family:var(--font-head);font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin-bottom:6px;">Fodder Sports · NFL Power Rankings · Week 10</p>
+  <h1 style="font-family:var(--font-display);font-size:clamp(28px,5vw,46px);line-height:1.1;margin-bottom:8px;">Four NFC North Teams in the Top 10</h1>
   <p class="article-lead">One ranking from the whole national conversation: the consensus of major national power rankings. Arrows show movement from last week's consensus.</p>
 
   <!-- Season chart -->
@@ -289,17 +318,17 @@ function drawChart() {
   const ctx = canvas.getContext('2d');
   ctx.scale(dpr, dpr);
 
-  // Layout
-  const pad = { top: 16, right: 16, bottom: 32, left: 36 };
+  // Layout — extra left/bottom padding for axis labels
+  const pad = { top: 20, right: 24, bottom: 44, left: 48 };
   const cw = W - pad.left - pad.right;
   const ch = H - pad.top - pad.bottom;
 
   // Dark mode detection
   const isDark = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim().startsWith('#1') ||
                  window.matchMedia('(prefers-color-scheme:dark)').matches;
-  const gridColor = isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.07)';
-  const labelColor = isDark ? 'rgba(255,255,255,0.45)' : 'rgba(0,0,0,0.4)';
-  const bgColor = isDark ? '#1a1a1a' : '#fff';
+  const gridColor = isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.08)';
+  const labelColor = isDark ? 'rgba(255,255,255,0.6)' : 'rgba(0,0,0,0.55)';
+  const axisLabelColor = isDark ? 'rgba(255,255,255,0.4)' : 'rgba(0,0,0,0.38)';
 
   ctx.clearRect(0, 0, W, H);
 
@@ -312,7 +341,20 @@ function drawChart() {
     return pad.left + (week - 1) / (WEEKS.length - 1) * cw;
   }
 
-  // Grid lines at ranks 1,5,10,15,20,25,30,32
+  // Axis labels
+  ctx.save();
+  ctx.font = 'bold 11px system-ui,sans-serif';
+  ctx.fillStyle = axisLabelColor;
+  ctx.textAlign = 'center';
+  // X axis label
+  ctx.fillText('Week', pad.left + cw / 2, H - 2);
+  // Y axis label (rotated)
+  ctx.translate(13, pad.top + ch / 2);
+  ctx.rotate(-Math.PI / 2);
+  ctx.fillText('Rank (lower = better)', 0, 0);
+  ctx.restore();
+
+  // Grid lines at ranks 1,5,10,15,20,25,32
   const gridRanks = [1,5,10,15,20,25,32];
   ctx.strokeStyle = gridColor;
   ctx.lineWidth = 1;
@@ -323,24 +365,24 @@ function drawChart() {
     ctx.lineTo(pad.left + cw, y);
     ctx.stroke();
     ctx.fillStyle = labelColor;
-    ctx.font = '10px system-ui,sans-serif';
+    ctx.font = 'bold 12px system-ui,sans-serif';
     ctx.textAlign = 'right';
-    ctx.fillText(r, pad.left - 5, y + 3);
+    ctx.fillText(r, pad.left - 7, y + 4);
   });
 
   // Week labels
   WEEKS.forEach(w => {
     const x = xPos(w);
     ctx.fillStyle = labelColor;
-    ctx.font = '10px system-ui,sans-serif';
+    ctx.font = 'bold 12px system-ui,sans-serif';
     ctx.textAlign = 'center';
-    ctx.fillText('Wk ' + w, x, H - 6);
+    ctx.fillText('Wk ' + w, x, pad.top + ch + 18);
     // Tick
     ctx.strokeStyle = gridColor;
     ctx.lineWidth = 1;
     ctx.beginPath();
     ctx.moveTo(x, pad.top + ch);
-    ctx.lineTo(x, pad.top + ch + 4);
+    ctx.lineTo(x, pad.top + ch + 5);
     ctx.stroke();
   });
 
@@ -383,9 +425,9 @@ function drawChart() {
     // Label at last point
     const last = pts[pts.length - 1];
     ctx.fillStyle = color;
-    ctx.font = 'bold 11px system-ui,sans-serif';
+    ctx.font = 'bold 13px system-ui,sans-serif';
     ctx.textAlign = last.x > W * 0.8 ? 'right' : 'left';
-    ctx.fillText(abbr, last.x + (last.x > W * 0.8 ? -8 : 8), last.y + 4);
+    ctx.fillText(abbr, last.x + (last.x > W * 0.8 ? -10 : 10), last.y + 5);
   });
 
   ctx.shadowBlur = 0;
@@ -397,7 +439,7 @@ function setupTooltip() {
   const tip = document.getElementById('chartTooltip');
   if (!canvas || !tip) return;
 
-  const pad = { top: 16, right: 16, bottom: 32, left: 36 };
+  const pad = { top: 20, right: 24, bottom: 44, left: 48 };
 
   function getHit(mx, my) {
     const W = canvas.clientWidth;
@@ -515,14 +557,20 @@ async function initRankings() {
   const headerRange = hasRange ? '<th class="num range">Range</th>' : '';
 
   const rows = data.teams.map((t, i) => {
-    const moveVal = t.move > 0 ? '↑' : t.move < 0 ? '↓' : '—';
-    const moveColor = t.move > 0 ? '#1A6B3A' : t.move < 0 ? '#9B1C1C' : 'var(--slate)';
+    let moveBadge;
+    if (t.move > 0) {
+      moveBadge = `<span class="move-badge up">↑ ${t.move}</span>`;
+    } else if (t.move < 0) {
+      moveBadge = `<span class="move-badge dn">↓ ${Math.abs(t.move)}</span>`;
+    } else {
+      moveBadge = `<span class="move-badge flat">—</span>`;
+    }
     const avgCell = hasAvg ? `<td class="avg-col">${t.average !== undefined ? t.average.toFixed(1) : '—'}</td>` : '';
-    const rangeCell = hasRange ? `<td class="range-col">${t.range_best !== undefined ? t.range_best + '–' + t.range_worst : '—'}</td>` : '';
+    const rangeCell = hasRange ? `<td class="range-col">${t.range_best !== undefined ? t.range_best + ' to ' + t.range_worst : '—'}</td>` : '';
     return `<tr>
       <td class="rank-col">${String(i+1).padStart(2,'0')}</td>
+      <td class="move-col">${moveBadge}</td>
       <td class="team-col">${escHtml(t.name)}</td>
-      <td class="move-col" style="color:${moveColor};">${moveVal}</td>
       ${avgCell}
       ${rangeCell}
     </tr>`;
@@ -532,9 +580,9 @@ async function initRankings() {
     <table class="rankings-table">
       <thead>
         <tr>
-          <th class="num" style="width:44px;">#</th>
+          <th class="num" style="width:40px;">#</th>
+          <th style="width:64px;"></th>
           <th>Team</th>
-          <th style="width:28px;"></th>
           ${headerAvg}
           ${headerRange}
         </tr>
