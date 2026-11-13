@@ -6,8 +6,496 @@
   <title>Fodder Sports — Every Side of the Story</title>
   <meta name="description" content="NFL coverage from every market. See how each side's media feels — not just your team's take.">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── Sign-up Banner ── */
+    .signup-banner {
+      background: var(--orange);
+      padding: 10px var(--gutter);
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .signup-banner span {
+      font-family: var(--font-head);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: #fff;
+    }
+    .signup-banner .banner-cta {
+      font-family: var(--font-head);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: #fff;
+      color: var(--orange);
+      padding: 5px 14px;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: opacity 0.15s;
+      white-space: nowrap;
+      border: none;
+    }
+    .signup-banner .banner-cta:hover { opacity: 0.85; }
+    .signup-banner.hidden { display: none; }
+
+    /* ── Header Buttons ── */
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .btn-signin {
+      font-family: var(--font-head);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--slate-light);
+      padding: 6px 14px;
+      border: 1px solid #333;
+      border-radius: 3px;
+      cursor: pointer;
+      background: none;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .btn-signin:hover { color: var(--off-white); border-color: #666; }
+    .btn-signup {
+      font-family: var(--font-head);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #fff;
+      padding: 7px 16px;
+      background: var(--orange);
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    .btn-signup:hover { opacity: 0.85; }
+    .btn-account {
+      font-family: var(--font-head);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--off-white);
+      padding: 6px 14px;
+      border: 1px solid #444;
+      border-radius: 3px;
+      cursor: pointer;
+      background: none;
+      display: none;
+      align-items: center;
+      gap: 7px;
+      transition: border-color 0.15s;
+      white-space: nowrap;
+    }
+    .btn-account:hover { border-color: var(--orange); }
+    .btn-account .account-dot {
+      width: 7px; height: 7px;
+      background: var(--orange);
+      border-radius: 50%;
+      display: inline-block;
+    }
+    @media (max-width: 540px) {
+      .btn-signin { display: none; }
+    }
+
+    /* ── Primary Nav ── */
+    .primary-nav {
+      background: var(--off-white);
+      border-bottom: 1px solid var(--rule);
+      position: sticky;
+      top: 60px;
+      z-index: 90;
+    }
+    .primary-nav-inner {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .primary-nav-inner::-webkit-scrollbar { display: none; }
+    .nav-item {
+      position: relative;
+      flex-shrink: 0;
+    }
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-family: var(--font-head);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--slate);
+      padding: 14px 18px;
+      border-bottom: 3px solid transparent;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color 0.15s, border-color 0.15s;
+      text-decoration: none;
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      font-family: var(--font-head);
+    }
+    .nav-link:hover { color: var(--ink); }
+    .nav-link.active {
+      color: var(--ink);
+      border-bottom-color: var(--orange);
+    }
+    .nav-link .nav-badge {
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      color: var(--slate-light);
+      margin-left: 2px;
+    }
+    .nav-link .caret {
+      font-size: 8px;
+      color: var(--slate-light);
+      margin-left: 1px;
+      transition: transform 0.15s;
+    }
+    .nav-item:hover .caret { transform: rotate(180deg); }
+
+    /* Dropdown */
+    .nav-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-top: 2px solid var(--orange);
+      border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+      min-width: 190px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.12);
+      display: none;
+      z-index: 200;
+      flex-direction: column;
+      padding: 6px 0;
+    }
+    .nav-item:hover .nav-dropdown { display: flex; }
+    .nav-dropdown a {
+      display: block;
+      font-family: var(--font-head);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--slate);
+      padding: 10px 18px;
+      transition: background 0.1s, color 0.1s;
+    }
+    .nav-dropdown a:hover { background: var(--page-bg); color: var(--ink); }
+    .nav-dropdown .dropdown-divider {
+      height: 1px;
+      background: var(--rule);
+      margin: 4px 12px;
+    }
+
+    /* ── Trending Strip ── */
+    .trending-strip {
+      background: var(--ink);
+      padding: 0;
+      border-bottom: 1px solid #222;
+      overflow: hidden;
+    }
+    .trending-inner {
+      display: flex;
+      align-items: center;
+      overflow-x: auto;
+      scrollbar-width: none;
+      gap: 0;
+    }
+    .trending-inner::-webkit-scrollbar { display: none; }
+    .trending-label {
+      font-family: var(--font-head);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--orange);
+      padding: 10px 16px 10px var(--gutter);
+      white-space: nowrap;
+      flex-shrink: 0;
+      border-right: 1px solid #333;
+    }
+    .trending-items {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+      flex: 1;
+      animation: ticker 40s linear infinite;
+    }
+    .trending-items::-webkit-scrollbar { display: none; }
+    .trending-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
+      border-right: 1px solid #222;
+      transition: background 0.1s;
+    }
+    .trending-item:hover { background: #111; }
+    .trending-item-badge {
+      font-family: var(--font-head);
+      font-size: 8px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .badge-breaking { background: var(--orange); color: #fff; }
+    .badge-hot { background: #c0392b; color: #fff; }
+    .badge-rankings { background: var(--blue); color: #fff; }
+    .trending-item-text {
+      font-family: var(--font-head);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--off-white);
+      letter-spacing: 0.03em;
+    }
+
+    /* ── Homepage Layout ── */
+    .home-layout {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 40px;
+      align-items: start;
+      padding: 32px 0 64px;
+    }
+    @media (max-width: 900px) {
+      .home-layout { grid-template-columns: 1fr; }
+      .home-sidebar { order: -1; }
+    }
+
+    /* ── My Feed Banner (shown when logged in with team pref) ── */
+    .my-feed-banner {
+      background: #EBF0FF;
+      border: 1px solid #c5d3f5;
+      border-radius: var(--radius-lg);
+      padding: 14px 18px;
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .my-feed-banner.visible { display: flex; }
+    .my-feed-banner span {
+      font-family: var(--font-head);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--blue);
+    }
+    .my-feed-banner button {
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--slate);
+      background: none;
+      border: 1px solid #c5d3f5;
+      border-radius: 3px;
+      padding: 4px 10px;
+      cursor: pointer;
+    }
+
+    /* ── Sign-up Modal ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      max-width: 440px;
+      width: 100%;
+      padding: 36px 32px 32px;
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 14px; right: 16px;
+      background: none; border: none;
+      font-size: 20px; cursor: pointer;
+      color: var(--slate); line-height: 1;
+    }
+    .modal-eyebrow {
+      font-family: var(--font-head);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 8px;
+    }
+    .modal-title {
+      font-family: var(--font-display);
+      font-size: 26px;
+      color: var(--ink);
+      line-height: 1.15;
+      margin-bottom: 8px;
+    }
+    .modal-sub {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--slate);
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+    .modal-field {
+      margin-bottom: 16px;
+    }
+    .modal-field label {
+      display: block;
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-bottom: 6px;
+    }
+    .modal-field input, .modal-field select {
+      width: 100%;
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--ink);
+      background: var(--page-bg);
+      border: 2px solid var(--rule);
+      border-radius: var(--radius);
+      padding: 10px 14px;
+      transition: border-color 0.15s;
+      appearance: none;
+    }
+    .modal-field input:focus, .modal-field select:focus {
+      outline: none;
+      border-color: var(--blue);
+    }
+    .modal-submit {
+      width: 100%;
+      font-family: var(--font-head);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--orange);
+      border: none;
+      border-radius: var(--radius);
+      padding: 14px;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: opacity 0.15s;
+    }
+    .modal-submit:hover { opacity: 0.85; }
+    .modal-fine {
+      font-family: var(--font-body);
+      font-size: 11px;
+      color: var(--slate-light);
+      text-align: center;
+      margin-top: 12px;
+      line-height: 1.5;
+    }
+    .modal-signin-link {
+      text-align: center;
+      margin-top: 16px;
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--slate);
+    }
+    .modal-signin-link button {
+      background: none; border: none;
+      color: var(--blue); font-weight: 600;
+      cursor: pointer; font-size: 13px;
+      text-decoration: underline;
+    }
+
+    /* ── Account Dropdown ── */
+    .account-menu {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 8px 24px rgba(0,0,0,.12);
+      min-width: 200px;
+      display: none;
+      z-index: 300;
+      padding: 8px 0;
+    }
+    .account-menu.open { display: block; }
+    .account-menu-header {
+      padding: 12px 16px 10px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .account-menu-email {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--slate);
+    }
+    .account-menu-team {
+      font-family: var(--font-head);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-top: 2px;
+    }
+    .account-menu a, .account-menu button {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 10px 16px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--ink);
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.1s;
+    }
+    .account-menu a:hover, .account-menu button:hover { background: var(--page-bg); }
+    .account-menu .sign-out { color: #c0392b; }
+    .account-wrapper {
+      position: relative;
+    }
+  </style>
 </head>
 <body>
+
+<!-- ── Sign-up Banner ── -->
+<div class="signup-banner" id="signup-banner">
+  <span>See every side of every sports story — build your free feed.</span>
+  <button class="banner-cta" onclick="openModal('signup')">Get Started</button>
+</div>
 
 <!-- ── Header ── -->
 <header class="site-header">
@@ -17,65 +505,133 @@
         <span class="logo-word">FODDER<span>.</span></span>
         <span class="logo-sub">Sports</span>
       </a>
-      <span class="header-tagline">Every Side of the Story</span>
+      <div class="header-actions">
+        <button class="btn-signin" onclick="openModal('signin')">Sign In</button>
+        <button class="btn-signup" id="btn-signup-header" onclick="openModal('signup')">Sign Up Free</button>
+        <div class="account-wrapper">
+          <button class="btn-account" id="btn-account" onclick="toggleAccountMenu()">
+            <span class="account-dot"></span>
+            <span id="account-label">My Account</span>
+          </button>
+          <div class="account-menu" id="account-menu">
+            <div class="account-menu-header">
+              <div class="account-menu-email" id="account-email"></div>
+              <div class="account-menu-team" id="account-team-display"></div>
+            </div>
+            <a href="index.html?tab=myfeed">My Feed</a>
+            <button onclick="openModal('account')">Edit Preferences</button>
+            <button class="sign-out" onclick="signOut()">Sign Out</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </header>
 
-<!-- ── Sport Nav ── -->
-<nav class="sport-nav">
+<!-- ── Primary Nav ── -->
+<nav class="primary-nav">
   <div class="container">
-    <div class="sport-nav-inner">
-      <a href="nfl/index.html" class="sport-tab active">NFL</a>
-      <span class="sport-tab">NBA <span class="badge">SOON</span></span>
-      <span class="sport-tab">MLB <span class="badge">SOON</span></span>
-      <span class="sport-tab">NHL <span class="badge">SOON</span></span>
-      <span class="sport-tab">CFB <span class="badge">SOON</span></span>
+    <div class="primary-nav-inner">
+
+      <!-- Home -->
+      <div class="nav-item">
+        <a href="index.html" class="nav-link active">Home</a>
+      </div>
+
+      <!-- My Feed -->
+      <div class="nav-item">
+        <a href="index.html?tab=myfeed" class="nav-link" id="nav-myfeed">My Feed</a>
+      </div>
+
+      <!-- NFL -->
+      <div class="nav-item">
+        <a href="nfl/index.html" class="nav-link">NFL <span class="caret">▾</span></a>
+        <div class="nav-dropdown">
+          <a href="nfl/index.html">All NFL Stories</a>
+          <div class="dropdown-divider"></div>
+          <a href="nfl/power-rankings.html">Power Rankings</a>
+          <a href="nfl/index.html?tab=preview">Game Previews</a>
+          <a href="nfl/index.html?tab=recap">Game Recaps</a>
+          <a href="nfl/index.html?tab=trade">Trades</a>
+          <a href="nfl/index.html?tab=breaking">Breaking News</a>
+        </div>
+      </div>
+
+      <!-- NBA -->
+      <div class="nav-item">
+        <a href="#" class="nav-link">NBA <span class="nav-badge">SOON</span></a>
+      </div>
+
+      <!-- MLB -->
+      <div class="nav-item">
+        <a href="#" class="nav-link">MLB <span class="nav-badge">SOON</span></a>
+      </div>
+
+      <!-- NHL -->
+      <div class="nav-item">
+        <a href="#" class="nav-link">NHL <span class="nav-badge">SOON</span></a>
+      </div>
+
+      <!-- CFB -->
+      <div class="nav-item">
+        <a href="#" class="nav-link">CFB <span class="nav-badge">SOON</span></a>
+      </div>
+
     </div>
   </div>
 </nav>
 
-<!-- ── Hero ── -->
-<div style="background: var(--ink); border-bottom: 1px solid #222; padding: 40px 0 36px;">
+<!-- ── Trending Strip ── -->
+<div class="trending-strip">
   <div class="container">
-    <p style="font-family: var(--font-head); font-size: 11px; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px;">NFL · 2026 Season</p>
-    <h1 style="font-family: var(--font-display); font-size: clamp(32px, 6vw, 56px); color: var(--off-white); line-height: 1.1; max-width: 640px; margin-bottom: 14px;">Multiple Perspectives.<br>One Insight.</h1>
-    <p style="font-family: var(--font-body); font-size: 16px; color: var(--slate); max-width: 540px; line-height: 1.6;">We read coverage from every market — your team's, your opponent's, and the national press — and show you how each side actually feels.</p>
-    <a href="nfl/index.html" style="display: inline-flex; align-items: center; gap: 8px; margin-top: 20px; font-family: var(--font-head); font-size: 13px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; background: var(--orange); color: #fff; padding: 12px 24px; border-radius: 4px; transition: opacity 0.15s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">Go to NFL →</a>
+    <div class="trending-inner">
+      <div class="trending-label">Trending</div>
+      <div class="trending-items" id="trending-items">
+        <!-- Populated by JS -->
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- ── Latest Updates ── -->
+<!-- ── Main Content ── -->
 <div class="container">
-  <div class="layout-main">
+  <div class="home-layout">
+
     <main>
-      <div class="section-label">
-        Latest
-        <a href="nfl/index.html">All NFL →</a>
+      <!-- My Feed notice (shown when filtering by team) -->
+      <div class="my-feed-banner" id="my-feed-banner">
+        <span id="my-feed-label">Showing: All Teams</span>
+        <button onclick="clearFeedFilter()">Show all stories</button>
       </div>
 
-      <!-- Feed populated by JS from data/feed.json -->
+      <div class="section-label" id="feed-label">
+        On the Board
+        <span id="feed-note" style="font-family: var(--font-body); font-size: 11px; color: var(--slate-light); font-weight: 400; letter-spacing: 0;">All teams · all types</span>
+      </div>
       <div class="feed" id="homepage-feed">
         <div style="font-family: var(--font-body); font-size: 14px; color: var(--slate); padding: 20px 0;">Loading feed…</div>
       </div>
     </main>
 
-    <aside class="sidebar">
-      <!-- Power Rankings Widget -->
+    <aside class="home-sidebar">
+      <!-- NFL Power Rankings -->
       <div class="sidebar-widget">
         <div class="widget-header">
           <div>
-            <div class="widget-label">NFL / Top 10</div>
-            <div class="widget-title">Power Rankings</div>
+            <div class="widget-label">NFL · In Season</div>
+            <a href="nfl/power-rankings.html" class="widget-title" style="text-decoration:none;color:inherit;display:block;">Power Rankings</a>
           </div>
           <span class="widget-icon">🏆</span>
         </div>
         <div id="rankings-widget">
           <div style="font-family: var(--font-body); font-size: 13px; color: var(--slate); padding: 16px;">Loading…</div>
         </div>
+        <div style="padding: 12px 16px; border-top: 1px solid var(--rule);">
+          <a href="nfl/power-rankings.html" style="font-family: var(--font-head); font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange);">Full rankings →</a>
+        </div>
       </div>
 
-      <!-- Week at a Glance -->
+      <!-- Schedule -->
       <div class="sidebar-widget">
         <div class="widget-header">
           <div>
@@ -100,6 +656,297 @@
   </div>
 </footer>
 
+<!-- ── Sign-up / Sign-in Modal ── -->
+<div class="modal-overlay" id="modal-overlay" onclick="handleOverlayClick(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">×</button>
+
+    <!-- Sign Up Panel -->
+    <div id="panel-signup">
+      <div class="modal-eyebrow">Free Account</div>
+      <div class="modal-title">Build your feed.</div>
+      <div class="modal-sub">Pick your team, follow what matters. No spam — we just personalize what you see.</div>
+      <div class="modal-field">
+        <label>Email address</label>
+        <input type="email" id="signup-email" placeholder="you@example.com" autocomplete="email">
+      </div>
+      <div class="modal-field">
+        <label>Favorite team</label>
+        <select id="signup-team">
+          <option value="">Choose your team</option>
+          <option>Arizona Cardinals</option><option>Atlanta Falcons</option><option>Baltimore Ravens</option>
+          <option>Buffalo Bills</option><option>Carolina Panthers</option><option>Chicago Bears</option>
+          <option>Cincinnati Bengals</option><option>Cleveland Browns</option><option>Dallas Cowboys</option>
+          <option>Denver Broncos</option><option>Detroit Lions</option><option>Green Bay Packers</option>
+          <option>Houston Texans</option><option>Indianapolis Colts</option><option>Jacksonville Jaguars</option>
+          <option>Kansas City Chiefs</option><option>Las Vegas Raiders</option><option>Los Angeles Chargers</option>
+          <option>Los Angeles Rams</option><option>Miami Dolphins</option><option>Minnesota Vikings</option>
+          <option>New England Patriots</option><option>New Orleans Saints</option><option>New York Giants</option>
+          <option>New York Jets</option><option>Philadelphia Eagles</option><option>Pittsburgh Steelers</option>
+          <option>San Francisco 49ers</option><option>Seattle Seahawks</option><option>Tampa Bay Buccaneers</option>
+          <option>Tennessee Titans</option><option>Washington Commanders</option>
+        </select>
+      </div>
+      <button class="modal-submit" onclick="submitSignup()">Create Free Account →</button>
+      <p class="modal-fine">No credit card. No commitments. Cancel anytime.</p>
+      <div class="modal-signin-link">Already have an account? <button onclick="switchPanel('signin')">Sign in</button></div>
+    </div>
+
+    <!-- Sign In Panel -->
+    <div id="panel-signin" style="display:none;">
+      <div class="modal-eyebrow">Welcome Back</div>
+      <div class="modal-title">Sign in.</div>
+      <div class="modal-sub">Pick up where you left off.</div>
+      <div class="modal-field">
+        <label>Email address</label>
+        <input type="email" id="signin-email" placeholder="you@example.com" autocomplete="email">
+      </div>
+      <button class="modal-submit" onclick="submitSignin()">Sign In →</button>
+      <div class="modal-signin-link">New here? <button onclick="switchPanel('signup')">Create a free account</button></div>
+    </div>
+
+    <!-- Account / Edit Preferences Panel -->
+    <div id="panel-account" style="display:none;">
+      <div class="modal-eyebrow">Account</div>
+      <div class="modal-title">Your Preferences</div>
+      <div class="modal-sub">Update your favorite team to personalize your feed.</div>
+      <div class="modal-field">
+        <label>Favorite team</label>
+        <select id="account-team-select">
+          <option value="">No team preference</option>
+          <option>Arizona Cardinals</option><option>Atlanta Falcons</option><option>Baltimore Ravens</option>
+          <option>Buffalo Bills</option><option>Carolina Panthers</option><option>Chicago Bears</option>
+          <option>Cincinnati Bengals</option><option>Cleveland Browns</option><option>Dallas Cowboys</option>
+          <option>Denver Broncos</option><option>Detroit Lions</option><option>Green Bay Packers</option>
+          <option>Houston Texans</option><option>Indianapolis Colts</option><option>Jacksonville Jaguars</option>
+          <option>Kansas City Chiefs</option><option>Las Vegas Raiders</option><option>Los Angeles Chargers</option>
+          <option>Los Angeles Rams</option><option>Miami Dolphins</option><option>Minnesota Vikings</option>
+          <option>New England Patriots</option><option>New Orleans Saints</option><option>New York Giants</option>
+          <option>New York Jets</option><option>Philadelphia Eagles</option><option>Pittsburgh Steelers</option>
+          <option>San Francisco 49ers</option><option>Seattle Seahawks</option><option>Tampa Bay Buccaneers</option>
+          <option>Tennessee Titans</option><option>Washington Commanders</option>
+        </select>
+      </div>
+      <button class="modal-submit" onclick="savePreferences()">Save Preferences</button>
+    </div>
+
+  </div>
+</div>
+
 <script src="js/main.js"></script>
+<script>
+// ── Account State (localStorage) ────────────────────────────────
+
+function getAccount() {
+  try { return JSON.parse(localStorage.getItem('fs_account') || 'null'); } catch { return null; }
+}
+function saveAccount(data) {
+  try { localStorage.setItem('fs_account', JSON.stringify(data)); } catch {}
+}
+function clearAccount() {
+  try { localStorage.removeItem('fs_account'); } catch {}
+}
+
+function applyAccountState() {
+  const acc = getAccount();
+  const banner = document.getElementById('signup-banner');
+  const btnSignup = document.getElementById('btn-signup-header');
+  const btnSignin = document.querySelector('.btn-signin');
+  const btnAccount = document.getElementById('btn-account');
+
+  if (acc) {
+    if (banner) banner.classList.add('hidden');
+    if (btnSignup) btnSignup.style.display = 'none';
+    if (btnSignin) btnSignin.style.display = 'none';
+    if (btnAccount) {
+      btnAccount.style.display = 'flex';
+      document.getElementById('account-email').textContent = acc.email || '';
+      document.getElementById('account-team-display').textContent = acc.team ? '★ ' + acc.team : 'No team set';
+    }
+    // Nav My Feed label update
+    const navFeed = document.getElementById('nav-myfeed');
+    if (navFeed && acc.team) navFeed.textContent = 'My Feed (' + acc.team.split(' ').pop() + ')';
+  } else {
+    if (banner) banner.classList.remove('hidden');
+    if (btnSignup) btnSignup.style.display = '';
+    if (btnSignin) btnSignin.style.display = '';
+    if (btnAccount) btnAccount.style.display = 'none';
+  }
+}
+
+// ── Modal Controls ───────────────────────────────────────────────
+
+function openModal(panel) {
+  switchPanel(panel);
+  if (panel === 'account') {
+    const acc = getAccount();
+    if (acc && acc.team) {
+      const sel = document.getElementById('account-team-select');
+      if (sel) sel.value = acc.team;
+    }
+  }
+  document.getElementById('modal-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function handleOverlayClick(e) {
+  if (e.target === document.getElementById('modal-overlay')) closeModal();
+}
+function switchPanel(name) {
+  ['signup','signin','account'].forEach(p => {
+    const el = document.getElementById('panel-' + p);
+    if (el) el.style.display = p === name ? '' : 'none';
+  });
+}
+
+function submitSignup() {
+  const email = document.getElementById('signup-email').value.trim();
+  const team = document.getElementById('signup-team').value;
+  if (!email || !email.includes('@')) {
+    alert('Please enter a valid email address.');
+    return;
+  }
+  saveAccount({ email, team });
+  closeModal();
+  applyAccountState();
+  applyFeedFilter();
+}
+function submitSignin() {
+  const email = document.getElementById('signin-email').value.trim();
+  if (!email || !email.includes('@')) {
+    alert('Please enter a valid email address.');
+    return;
+  }
+  // For now: sign in = create account with this email (no backend)
+  const existing = getAccount();
+  saveAccount({ email, team: existing ? existing.team : '' });
+  closeModal();
+  applyAccountState();
+}
+function savePreferences() {
+  const acc = getAccount() || {};
+  acc.team = document.getElementById('account-team-select').value;
+  saveAccount(acc);
+  closeModal();
+  applyAccountState();
+  applyFeedFilter();
+}
+function signOut() {
+  clearAccount();
+  document.getElementById('account-menu').classList.remove('open');
+  applyAccountState();
+  applyFeedFilter();
+}
+
+function toggleAccountMenu() {
+  document.getElementById('account-menu').classList.toggle('open');
+}
+document.addEventListener('click', function(e) {
+  const wrapper = document.querySelector('.account-wrapper');
+  if (wrapper && !wrapper.contains(e.target)) {
+    const menu = document.getElementById('account-menu');
+    if (menu) menu.classList.remove('open');
+  }
+});
+
+// ── My Feed Filtering ────────────────────────────────────────────
+
+function applyFeedFilter() {
+  const params = new URLSearchParams(window.location.search);
+  const isMyFeed = params.get('tab') === 'myfeed';
+  const acc = getAccount();
+  const banner = document.getElementById('my-feed-banner');
+  const label = document.getElementById('my-feed-label');
+
+  if (isMyFeed && acc && acc.team) {
+    if (banner) banner.classList.add('visible');
+    if (label) label.textContent = '★ ' + acc.team + ' — Your Feed';
+  } else {
+    if (banner) banner.classList.remove('visible');
+  }
+}
+
+function clearFeedFilter() {
+  window.location.href = 'index.html';
+}
+
+// ── Trending Strip ───────────────────────────────────────────────
+
+function buildTrending(feedItems) {
+  const el = document.getElementById('trending-items');
+  if (!el || !feedItems || !feedItems.length) return;
+
+  const trending = feedItems.slice(0, 8);
+  el.innerHTML = trending.map(item => {
+    const badgeCls = item.type === 'breaking' ? 'badge-breaking' : item.type === 'rankings' ? 'badge-rankings' : 'badge-hot';
+    const badgeLabel = item.type === 'breaking' ? 'Breaking' : item.type === 'rankings' ? 'Rankings' : 'NFL';
+    return `<a href="${escHtml(item.url || '#')}" class="trending-item">
+      <span class="trending-item-badge ${badgeCls}">${badgeLabel}</span>
+      <span class="trending-item-text">${escHtml(item.title)}</span>
+    </a>`;
+  }).join('');
+}
+
+// ── Page Init ────────────────────────────────────────────────────
+
+async function homeInit() {
+  applyAccountState();
+  applyFeedFilter();
+
+  const params = new URLSearchParams(window.location.search);
+  const isMyFeed = params.get('tab') === 'myfeed';
+  const acc = getAccount();
+
+  // Update nav active state
+  if (isMyFeed) {
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+    const myFeedLink = document.getElementById('nav-myfeed');
+    if (myFeedLink) myFeedLink.classList.add('active');
+  }
+
+  // Load feed
+  const feedEl = document.getElementById('homepage-feed');
+  const feedNote = document.getElementById('feed-note');
+  if (feedEl) {
+    const feedData = await fetchJSON('data/nfl/feed.json');
+    if (feedData && feedData.items && feedData.items.length) {
+      let items = feedData.items;
+
+      // My Feed filter
+      if (isMyFeed && acc && acc.team) {
+        items = items.filter(i => i.teams_full && i.teams_full.includes(acc.team));
+        if (feedNote) feedNote.textContent = acc.team;
+      } else {
+        if (feedNote) feedNote.textContent = 'All teams · all types';
+      }
+
+      buildTrending(feedData.items);
+
+      feedEl.innerHTML = items.length
+        ? items.map(buildCard).join('')
+        : '<div style="font-family: var(--font-body); font-size: 14px; color: var(--slate); padding: 20px 0;">No stories for this team yet.</div>';
+    }
+  }
+
+  // Load rankings widget
+  const rankEl = document.getElementById('rankings-widget');
+  if (rankEl) {
+    const rankData = await fetchJSON('data/nfl/power-rankings.json');
+    rankEl.innerHTML = buildRankingsWidget(rankData);
+  }
+
+  // Load schedule widget
+  const schedEl = document.getElementById('schedule-widget');
+  if (schedEl) {
+    const schedData = await fetchJSON('data/nfl/schedule.json');
+    schedEl.innerHTML = buildScheduleWidget(schedData ? schedData.games : []);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', homeInit);
+</script>
 </body>
 </html>
