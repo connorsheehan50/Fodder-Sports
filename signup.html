@@ -1,0 +1,659 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Create Your Account — Fodder Sports</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body { background: var(--page-bg); }
+    .signup-wrap {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 40px 16px 60px;
+    }
+    .signup-logo {
+      font-family: var(--font-display);
+      font-size: 22px;
+      color: var(--ink);
+      text-decoration: none;
+      margin-bottom: 36px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .signup-logo span { color: var(--orange); }
+    .signup-card {
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 440px;
+      padding: 32px;
+    }
+    .step { display: none; }
+    .step.active { display: block; }
+    .step-heading {
+      font-family: var(--font-display);
+      font-size: 26px;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .step-sub {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--slate);
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+    .oauth-row {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .btn-oauth {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      background: var(--card-bg);
+      font-family: var(--font-head);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .04em;
+      color: var(--ink);
+      cursor: pointer;
+      transition: background 0.1s, border-color 0.1s;
+      text-align: center;
+    }
+    .btn-oauth:hover { background: rgba(0,0,0,.03); border-color: #aaa; }
+    .btn-oauth svg { flex-shrink: 0; }
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 16px 0;
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      color: var(--slate-light);
+      text-transform: uppercase;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+    .form-field { margin-bottom: 16px; }
+    .form-field label {
+      display: block;
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-bottom: 6px;
+    }
+    .form-field input {
+      display: block;
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      background: var(--page-bg);
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--ink);
+      box-sizing: border-box;
+      transition: border-color 0.15s;
+    }
+    .form-field input:focus { outline: none; border-color: var(--orange); }
+    .form-field input.error { border-color: #E53E3E; }
+    .field-error {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: #E53E3E;
+      margin-top: 4px;
+    }
+    .btn-primary {
+      display: block;
+      width: 100%;
+      padding: 13px 16px;
+      background: var(--orange);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-family: var(--font-head);
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: opacity 0.15s;
+      margin-top: 8px;
+    }
+    .btn-primary:hover { opacity: 0.88; }
+    .sign-in-link {
+      text-align: center;
+      margin-top: 20px;
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--slate);
+    }
+    .sign-in-link a, .sign-in-link button {
+      color: var(--orange);
+      text-decoration: none;
+      background: none;
+      border: none;
+      font: inherit;
+      cursor: pointer;
+      padding: 0;
+    }
+    /* ── Team Picker Step ── */
+    .sport-tabs {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .sport-tab {
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      border: 1px solid var(--rule);
+      border-radius: 20px;
+      background: transparent;
+      color: var(--slate);
+      cursor: pointer;
+      transition: all 0.1s;
+    }
+    .sport-tab.active {
+      background: var(--ink);
+      color: var(--off-white);
+      border-color: var(--ink);
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      max-height: 320px;
+      overflow-y: auto;
+      margin-bottom: 24px;
+    }
+    .team-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      background: var(--card-bg);
+      cursor: pointer;
+      transition: all 0.1s;
+      text-align: left;
+    }
+    .team-btn.selected {
+      border-color: var(--orange);
+      background: rgba(255,77,0,.06);
+    }
+    .team-btn img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+    .team-btn-name {
+      font-family: var(--font-head);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .02em;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+    .selected-count {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--slate);
+      margin-bottom: 16px;
+    }
+    .selected-count strong { color: var(--ink); }
+    .skip-link {
+      display: block;
+      text-align: center;
+      margin-top: 12px;
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--slate);
+      cursor: pointer;
+      background: none;
+      border: none;
+      text-decoration: underline;
+    }
+    /* Sign in panel */
+    #panel-signin { display: none; }
+    #panel-signin.active { display: block; }
+    #panel-signup { display: block; }
+    #panel-signup.hidden { display: none; }
+  </style>
+</head>
+<body>
+<div class="signup-wrap">
+  <a href="/" class="signup-logo">FODDER<span>SPORTS</span></a>
+
+  <div class="signup-card">
+
+    <!-- STEP 1: Create Account -->
+    <div class="step active" id="step-account">
+      <div id="panel-signup">
+        <div class="step-heading">Create your account</div>
+        <div class="step-sub">Follow the teams that matter to you, across every sport.</div>
+
+        <div class="oauth-row">
+          <button class="btn-oauth" id="btn-google" onclick="oauthSignup('google')">
+            <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.2l6.7-6.7C35.8 2.4 30.2 0 24 0 14.7 0 6.7 5.5 2.7 13.5l7.8 6C12.4 13.2 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4.1 7.1-10.2 7.1-17z"/><path fill="#FBBC05" d="M10.5 28.5c-.6-1.6-.9-3.3-.9-5s.3-3.4.9-5l-7.8-6C1 15.1 0 19.4 0 24s1 8.9 2.7 12.5l7.8-6z"/><path fill="#34A853" d="M24 48c6.2 0 11.4-2 15.2-5.5l-7.5-5.8c-2 1.4-4.6 2.3-7.7 2.3-6.3 0-11.6-3.7-13.5-9l-7.8 6C6.7 42.5 14.7 48 24 48z"/></svg>
+            Continue with Google
+          </button>
+          <button class="btn-oauth" id="btn-facebook" onclick="oauthSignup('facebook')">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.69.24 2.69.24v2.97h-1.51c-1.49 0-1.95.93-1.95 1.88v2.26h3.33l-.53 3.49h-2.8V24C19.62 23.1 24 18.1 24 12.07"/></svg>
+            Continue with Facebook
+          </button>
+        </div>
+
+        <div class="divider">or</div>
+
+        <div class="form-field">
+          <label>Email address</label>
+          <input type="email" id="signup-email" placeholder="you@example.com" autocomplete="email">
+          <div class="field-error" id="err-email"></div>
+        </div>
+        <div class="form-field">
+          <label>Password</label>
+          <input type="password" id="signup-password" placeholder="At least 8 characters" autocomplete="new-password">
+          <div class="field-error" id="err-password"></div>
+        </div>
+
+        <button class="btn-primary" onclick="submitSignup()">Create Account</button>
+
+        <div class="sign-in-link">Already have an account? <button onclick="showSignIn()">Sign in</button></div>
+      </div>
+
+      <div id="panel-signin">
+        <div class="step-heading">Welcome back</div>
+        <div class="step-sub">Sign in to your Fodder Sports account.</div>
+
+        <div class="form-field">
+          <label>Email address</label>
+          <input type="email" id="signin-email" placeholder="you@example.com" autocomplete="email">
+          <div class="field-error" id="err-signin-email"></div>
+        </div>
+        <div class="form-field">
+          <label>Password</label>
+          <input type="password" id="signin-password" placeholder="Your password" autocomplete="current-password">
+          <div class="field-error" id="err-signin-password"></div>
+        </div>
+
+        <button class="btn-primary" onclick="submitSignIn()">Sign In</button>
+        <div class="sign-in-link">New here? <button onclick="showSignup()">Create a free account</button></div>
+      </div>
+    </div>
+
+    <!-- STEP 2: Team Selection -->
+    <div class="step" id="step-teams">
+      <div class="step-heading">Pick your teams</div>
+      <div class="step-sub">Select as many as you like across any sport. Your feed will follow them all.</div>
+
+      <div class="sport-tabs" id="sport-tabs"></div>
+      <div class="selected-count" id="selected-count">0 teams selected</div>
+      <div class="team-grid" id="team-grid"></div>
+
+      <button class="btn-primary" onclick="finishSetup()">Save &amp; Go to My Feed</button>
+      <button class="skip-link" onclick="finishSetup()">Skip for now</button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ── Team data ─────────────────────────────────────────────────
+const SPORTS = {
+  NFL: {
+    logo: (abbr) => `https://a.espncdn.com/i/teamlogos/nfl/500/${abbr}.png`,
+    teams: [
+      {name:'Arizona Cardinals',abbr:'ari'},{name:'Atlanta Falcons',abbr:'atl'},
+      {name:'Baltimore Ravens',abbr:'bal'},{name:'Buffalo Bills',abbr:'buf'},
+      {name:'Carolina Panthers',abbr:'car'},{name:'Chicago Bears',abbr:'chi'},
+      {name:'Cincinnati Bengals',abbr:'cin'},{name:'Cleveland Browns',abbr:'cle'},
+      {name:'Dallas Cowboys',abbr:'dal'},{name:'Denver Broncos',abbr:'den'},
+      {name:'Detroit Lions',abbr:'det'},{name:'Green Bay Packers',abbr:'gb'},
+      {name:'Houston Texans',abbr:'hou'},{name:'Indianapolis Colts',abbr:'ind'},
+      {name:'Jacksonville Jaguars',abbr:'jax'},{name:'Kansas City Chiefs',abbr:'kc'},
+      {name:'Las Vegas Raiders',abbr:'lv'},{name:'Los Angeles Chargers',abbr:'lac'},
+      {name:'Los Angeles Rams',abbr:'lar'},{name:'Miami Dolphins',abbr:'mia'},
+      {name:'Minnesota Vikings',abbr:'min'},{name:'New England Patriots',abbr:'ne'},
+      {name:'New Orleans Saints',abbr:'no'},{name:'New York Giants',abbr:'nyg'},
+      {name:'New York Jets',abbr:'nyj'},{name:'Philadelphia Eagles',abbr:'phi'},
+      {name:'Pittsburgh Steelers',abbr:'pit'},{name:'San Francisco 49ers',abbr:'sf'},
+      {name:'Seattle Seahawks',abbr:'sea'},{name:'Tampa Bay Buccaneers',abbr:'tb'},
+      {name:'Tennessee Titans',abbr:'ten'},{name:'Washington Commanders',abbr:'wsh'}
+    ]
+  },
+  NBA: {
+    logo: (abbr) => `https://a.espncdn.com/i/teamlogos/nba/500/${abbr}.png`,
+    teams: [
+      {name:'Atlanta Hawks',abbr:'atl'},{name:'Boston Celtics',abbr:'bos'},
+      {name:'Brooklyn Nets',abbr:'bkn'},{name:'Charlotte Hornets',abbr:'cha'},
+      {name:'Chicago Bulls',abbr:'chi'},{name:'Cleveland Cavaliers',abbr:'cle'},
+      {name:'Dallas Mavericks',abbr:'dal'},{name:'Denver Nuggets',abbr:'den'},
+      {name:'Detroit Pistons',abbr:'det'},{name:'Golden State Warriors',abbr:'gs'},
+      {name:'Houston Rockets',abbr:'hou'},{name:'Indiana Pacers',abbr:'ind'},
+      {name:'LA Clippers',abbr:'lac'},{name:'Los Angeles Lakers',abbr:'lal'},
+      {name:'Memphis Grizzlies',abbr:'mem'},{name:'Miami Heat',abbr:'mia'},
+      {name:'Milwaukee Bucks',abbr:'mil'},{name:'Minnesota Timberwolves',abbr:'min'},
+      {name:'New Orleans Pelicans',abbr:'no'},{name:'New York Knicks',abbr:'ny'},
+      {name:'Oklahoma City Thunder',abbr:'okc'},{name:'Orlando Magic',abbr:'orl'},
+      {name:'Philadelphia 76ers',abbr:'phi'},{name:'Phoenix Suns',abbr:'phx'},
+      {name:'Portland Trail Blazers',abbr:'por'},{name:'Sacramento Kings',abbr:'sac'},
+      {name:'San Antonio Spurs',abbr:'sa'},{name:'Toronto Raptors',abbr:'tor'},
+      {name:'Utah Jazz',abbr:'utah'},{name:'Washington Wizards',abbr:'wsh'}
+    ]
+  },
+  MLB: {
+    logo: (abbr) => `https://a.espncdn.com/i/teamlogos/mlb/500/${abbr}.png`,
+    teams: [
+      {name:'Arizona Diamondbacks',abbr:'ari'},{name:'Atlanta Braves',abbr:'atl'},
+      {name:'Baltimore Orioles',abbr:'bal'},{name:'Boston Red Sox',abbr:'bos'},
+      {name:'Chicago Cubs',abbr:'chc'},{name:'Chicago White Sox',abbr:'chw'},
+      {name:'Cincinnati Reds',abbr:'cin'},{name:'Cleveland Guardians',abbr:'cle'},
+      {name:'Colorado Rockies',abbr:'col'},{name:'Detroit Tigers',abbr:'det'},
+      {name:'Houston Astros',abbr:'hou'},{name:'Kansas City Royals',abbr:'kc'},
+      {name:'Los Angeles Angels',abbr:'laa'},{name:'Los Angeles Dodgers',abbr:'lad'},
+      {name:'Miami Marlins',abbr:'mia'},{name:'Milwaukee Brewers',abbr:'mil'},
+      {name:'Minnesota Twins',abbr:'min'},{name:'New York Mets',abbr:'nym'},
+      {name:'New York Yankees',abbr:'nyy'},{name:'Oakland Athletics',abbr:'oak'},
+      {name:'Philadelphia Phillies',abbr:'phi'},{name:'Pittsburgh Pirates',abbr:'pit'},
+      {name:'San Diego Padres',abbr:'sd'},{name:'San Francisco Giants',abbr:'sf'},
+      {name:'Seattle Mariners',abbr:'sea'},{name:'St. Louis Cardinals',abbr:'stl'},
+      {name:'Tampa Bay Rays',abbr:'tb'},{name:'Texas Rangers',abbr:'tex'},
+      {name:'Toronto Blue Jays',abbr:'tor'},{name:'Washington Nationals',abbr:'wsh'}
+    ]
+  },
+  NHL: {
+    logo: (abbr) => `https://a.espncdn.com/i/teamlogos/nhl/500/${abbr}.png`,
+    teams: [
+      {name:'Anaheim Ducks',abbr:'ana'},{name:'Arizona Coyotes',abbr:'ari'},
+      {name:'Boston Bruins',abbr:'bos'},{name:'Buffalo Sabres',abbr:'buf'},
+      {name:'Calgary Flames',abbr:'cgy'},{name:'Carolina Hurricanes',abbr:'car'},
+      {name:'Chicago Blackhawks',abbr:'chi'},{name:'Colorado Avalanche',abbr:'col'},
+      {name:'Columbus Blue Jackets',abbr:'cbj'},{name:'Dallas Stars',abbr:'dal'},
+      {name:'Detroit Red Wings',abbr:'det'},{name:'Edmonton Oilers',abbr:'edm'},
+      {name:'Florida Panthers',abbr:'fla'},{name:'Los Angeles Kings',abbr:'la'},
+      {name:'Minnesota Wild',abbr:'min'},{name:'Montreal Canadiens',abbr:'mtl'},
+      {name:'Nashville Predators',abbr:'nsh'},{name:'New Jersey Devils',abbr:'nj'},
+      {name:'New York Islanders',abbr:'nyi'},{name:'New York Rangers',abbr:'nyr'},
+      {name:'Ottawa Senators',abbr:'ott'},{name:'Philadelphia Flyers',abbr:'phi'},
+      {name:'Pittsburgh Penguins',abbr:'pit'},{name:'San Jose Sharks',abbr:'sj'},
+      {name:'Seattle Kraken',abbr:'sea'},{name:'St. Louis Blues',abbr:'stl'},
+      {name:'Tampa Bay Lightning',abbr:'tb'},{name:'Toronto Maple Leafs',abbr:'tor'},
+      {name:'Utah Hockey Club',abbr:'utah'},{name:'Vancouver Canucks',abbr:'van'},
+      {name:'Vegas Golden Knights',abbr:'vgk'},{name:'Washington Capitals',abbr:'wsh'},
+      {name:'Winnipeg Jets',abbr:'wpg'}
+    ]
+  },
+  NCAAF: {
+    logo: (abbr) => `https://a.espncdn.com/i/teamlogos/ncaa/500/${abbr}.png`,
+    teams: [
+      {name:'Alabama',abbr:'333'},{name:'Arkansas',abbr:'8'},{name:'Auburn',abbr:'2'},{name:'Clemson',abbr:'228'},
+      {name:'Florida',abbr:'57'},{name:'Florida State',abbr:'52'},{name:'Georgia',abbr:'61'},
+      {name:'Iowa',abbr:'2294'},{name:'LSU',abbr:'99'},{name:'Michigan',abbr:'130'},
+      {name:'Michigan State',abbr:'127'},{name:'Mississippi State',abbr:'344'},
+      {name:'Nebraska',abbr:'158'},{name:'Notre Dame',abbr:'87'},{name:'Ohio State',abbr:'194'},
+      {name:'Oklahoma',abbr:'201'},{name:'Ole Miss',abbr:'145'},{name:'Oregon',abbr:'2483'},
+      {name:'Penn State',abbr:'213'},{name:'Texas',abbr:'251'},{name:'Texas A&M',abbr:'245'},
+      {name:'Tennessee',abbr:'2633'},{name:'USC',abbr:'30'},{name:'Utah',abbr:'254'},
+      {name:'Washington',abbr:'264'},{name:'Wisconsin',abbr:'275'}
+    ]
+  },
+  NCAAB: {
+    logo: (abbr) => `https://a.espncdn.com/i/teamlogos/ncaa/500/${abbr}.png`,
+    teams: [
+      {name:'Arizona',abbr:'12'},{name:'Arkansas',abbr:'8'},{name:'Auburn',abbr:'2'},
+      {name:'Baylor',abbr:'239'},{name:'Connecticut',abbr:'41'},{name:'Duke',abbr:'150'},
+      {name:'Gonzaga',abbr:'2250'},{name:'Houston',abbr:'248'},{name:'Illinois',abbr:'356'},
+      {name:'Indiana',abbr:'84'},{name:'Iowa',abbr:'2294'},{name:'Kansas',abbr:'2305'},
+      {name:'Kentucky',abbr:'96'},{name:'Louisville',abbr:'97'},{name:'Marquette',abbr:'269'},
+      {name:'Michigan',abbr:'130'},{name:'Michigan State',abbr:'127'},
+      {name:'North Carolina',abbr:'153'},{name:'Ohio State',abbr:'194'},
+      {name:'Purdue',abbr:'2509'},{name:'Tennessee',abbr:'2633'},
+      {name:'Texas',abbr:'251'},{name:'UCLA',abbr:'26'},{name:'Villanova',abbr:'222'},
+      {name:'Virginia',abbr:'258'}
+    ]
+  },
+  NCAAW: {
+    logo: (abbr) => `https://a.espncdn.com/i/teamlogos/ncaa/500/${abbr}.png`,
+    teams: [
+      {name:'Baylor',abbr:'239'},{name:'Connecticut',abbr:'41'},{name:'Duke',abbr:'150'},
+      {name:'Indiana',abbr:'84'},{name:'Iowa',abbr:'2294'},{name:'LSU',abbr:'99'},
+      {name:'Michigan',abbr:'130'},{name:'North Carolina',abbr:'153'},
+      {name:'Ohio State',abbr:'194'},{name:'Oregon',abbr:'2483'},
+      {name:'South Carolina',abbr:'2579'},{name:'Stanford',abbr:'24'},
+      {name:'Tennessee',abbr:'2633'},{name:'Texas',abbr:'251'},
+      {name:'UCLA',abbr:'26'},{name:'Virginia Tech',abbr:'259'}
+    ]
+  },
+  WNBA: {
+    logo: (abbr) => `https://a.espncdn.com/i/teamlogos/wnba/500/${abbr}.png`,
+    teams: [
+      {name:'Atlanta Dream',abbr:'atl'},{name:'Chicago Sky',abbr:'chi'},
+      {name:'Connecticut Sun',abbr:'conn'},{name:'Dallas Wings',abbr:'dal'},
+      {name:'Indiana Fever',abbr:'ind'},{name:'Las Vegas Aces',abbr:'lv'},
+      {name:'Los Angeles Sparks',abbr:'la'},{name:'Minnesota Lynx',abbr:'min'},
+      {name:'New York Liberty',abbr:'ny'},{name:'Phoenix Mercury',abbr:'phx'},
+      {name:'Seattle Storm',abbr:'sea'},{name:'Washington Mystics',abbr:'wsh'}
+    ]
+  },
+  Soccer: {
+    logo: (abbr) => `https://a.espncdn.com/i/teamlogos/soccer/500/${abbr}.png`,
+    teams: [
+      {name:'Arsenal',abbr:'359'},{name:'Aston Villa',abbr:'1138'},{name:'Barcelona',abbr:'83'},
+      {name:'Chelsea',abbr:'363'},{name:'Liverpool',abbr:'364'},{name:'Manchester City',abbr:'382'},
+      {name:'Manchester United',abbr:'360'},{name:'PSG',abbr:'160'},{name:'Real Madrid',abbr:'86'},
+      {name:'Tottenham',abbr:'367'},{name:'Atlanta United',abbr:'18594'},{name:'LAFC',abbr:'18924'},
+      {name:'Inter Miami',abbr:'32783'},{name:'LA Galaxy',abbr:'528'},{name:'Portland Timbers',abbr:'10740'},
+      {name:'Seattle Sounders',abbr:'9726'}
+    ]
+  }
+};
+
+// ── State ─────────────────────────────────────────────────────
+let selectedTeams = {}; // {sport: [team objects]}
+let activeSport = 'NFL';
+let currentEmail = '';
+
+// ── Load existing account ─────────────────────────────────────
+(function() {
+  try {
+    const acc = JSON.parse(localStorage.getItem('fs_account') || 'null');
+    if (acc && acc.email) {
+      // Already signed in; redirect to feed
+      const dest = getNextUrl();
+      window.location.replace(dest);
+    }
+  } catch(e) {}
+})();
+
+function getNextUrl() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('next') || '/nfl/?tab=myfeed';
+}
+
+// ── OAuth stubs ───────────────────────────────────────────────
+function oauthSignup(provider) {
+  // OAuth integration requires a backend for token exchange.
+  // For now, collect email via a prompt, skip password.
+  const email = window.prompt(`Enter your ${provider === 'google' ? 'Google' : 'Facebook'} email to continue:`);
+  if (!email || !email.includes('@')) return;
+  currentEmail = email.trim().toLowerCase();
+  createAccount(currentEmail, null, provider);
+}
+
+// ── Signup form ───────────────────────────────────────────────
+function submitSignup() {
+  const email = document.getElementById('signup-email').value.trim();
+  const pw = document.getElementById('signup-password').value;
+  let valid = true;
+  document.getElementById('err-email').textContent = '';
+  document.getElementById('err-password').textContent = '';
+  if (!email || !email.includes('@')) {
+    document.getElementById('err-email').textContent = 'Please enter a valid email address.';
+    document.getElementById('signup-email').classList.add('error');
+    valid = false;
+  } else {
+    document.getElementById('signup-email').classList.remove('error');
+  }
+  if (!pw || pw.length < 8) {
+    document.getElementById('err-password').textContent = 'Password must be at least 8 characters.';
+    document.getElementById('signup-password').classList.add('error');
+    valid = false;
+  } else {
+    document.getElementById('signup-password').classList.remove('error');
+  }
+  if (!valid) return;
+  currentEmail = email.toLowerCase();
+  createAccount(currentEmail, pw, 'email');
+}
+
+function submitSignIn() {
+  const email = document.getElementById('signin-email').value.trim();
+  const pw = document.getElementById('signin-password').value;
+  let valid = true;
+  document.getElementById('err-signin-email').textContent = '';
+  document.getElementById('err-signin-password').textContent = '';
+  if (!email || !email.includes('@')) {
+    document.getElementById('err-signin-email').textContent = 'Please enter a valid email address.';
+    valid = false;
+  }
+  if (!pw) {
+    document.getElementById('err-signin-password').textContent = 'Please enter your password.';
+    valid = false;
+  }
+  if (!valid) return;
+  try {
+    const acc = JSON.parse(localStorage.getItem('fs_account') || 'null');
+    if (acc && acc.email === email.toLowerCase() && acc.pw === btoa(pw)) {
+      window.location.replace(getNextUrl());
+    } else {
+      document.getElementById('err-signin-password').textContent = 'Email or password not recognized.';
+    }
+  } catch(e) {
+    document.getElementById('err-signin-password').textContent = 'Sign in failed. Try creating an account.';
+  }
+}
+
+function createAccount(email, pw, method) {
+  try {
+    const existing = JSON.parse(localStorage.getItem('fs_account') || 'null');
+    const acc = existing || {};
+    acc.email = email;
+    acc.method = method;
+    if (pw) acc.pw = btoa(pw); // minimal obfuscation; no backend = no real security
+    acc.teams = acc.teams || {};
+    localStorage.setItem('fs_account', JSON.stringify(acc));
+  } catch(e) {}
+  goToTeamStep();
+}
+
+function goToTeamStep() {
+  document.getElementById('step-account').classList.remove('active');
+  document.getElementById('step-teams').classList.add('active');
+  renderSportTabs();
+  renderTeamGrid('NFL');
+}
+
+function showSignIn() {
+  document.getElementById('panel-signup').classList.add('hidden');
+  document.getElementById('panel-signin').classList.add('active');
+}
+
+function showSignup() {
+  document.getElementById('panel-signup').classList.remove('hidden');
+  document.getElementById('panel-signin').classList.remove('active');
+}
+
+// ── Team picker ───────────────────────────────────────────────
+function renderSportTabs() {
+  const container = document.getElementById('sport-tabs');
+  container.innerHTML = Object.keys(SPORTS).map(sport => `
+    <button class="sport-tab ${sport === activeSport ? 'active' : ''}" onclick="switchSport('${sport}')">${sport}</button>
+  `).join('');
+}
+
+function switchSport(sport) {
+  activeSport = sport;
+  renderSportTabs();
+  renderTeamGrid(sport);
+}
+
+function renderTeamGrid(sport) {
+  const data = SPORTS[sport];
+  if (!data) return;
+  const sel = (selectedTeams[sport] || []).map(t => t.abbr);
+  const container = document.getElementById('team-grid');
+  container.innerHTML = data.teams.map(team => `
+    <button class="team-btn ${sel.includes(team.abbr) ? 'selected' : ''}"
+      onclick="toggleTeam('${sport}','${team.abbr}','${team.name.replace(/'/g,"\\'")}')">
+      <img src="${data.logo(team.abbr)}" alt="${team.name}" onerror="this.style.display='none'">
+      <span class="team-btn-name">${team.name}</span>
+    </button>
+  `).join('');
+  updateSelectedCount();
+}
+
+function toggleTeam(sport, abbr, name) {
+  if (!selectedTeams[sport]) selectedTeams[sport] = [];
+  const idx = selectedTeams[sport].findIndex(t => t.abbr === abbr);
+  if (idx >= 0) {
+    selectedTeams[sport].splice(idx, 1);
+  } else {
+    selectedTeams[sport].push({abbr, name, sport});
+  }
+  renderTeamGrid(sport);
+}
+
+function updateSelectedCount() {
+  const total = Object.values(selectedTeams).reduce((sum, arr) => sum + arr.length, 0);
+  const el = document.getElementById('selected-count');
+  if (total === 0) {
+    el.innerHTML = 'No teams selected yet.';
+  } else {
+    el.innerHTML = `<strong>${total}</strong> team${total !== 1 ? 's' : ''} selected`;
+  }
+}
+
+function finishSetup() {
+  try {
+    const acc = JSON.parse(localStorage.getItem('fs_account') || '{}');
+    acc.teams = selectedTeams;
+    // Flatten for quick lookup
+    acc.allTeams = Object.values(selectedTeams).flat();
+    localStorage.setItem('fs_account', JSON.stringify(acc));
+  } catch(e) {}
+  window.location.replace(getNextUrl());
+}
+</script>
+</body>
+</html>

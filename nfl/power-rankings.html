@@ -167,6 +167,14 @@
       font-weight: 800;
       color: var(--ink);
     }
+    .team-desc {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--slate);
+      line-height: 1.5;
+      margin-top: 3px;
+    }
     .rankings-table td.avg-col {
       text-align: right;
       font-size: 13px;
@@ -567,10 +575,11 @@ async function initRankings() {
     }
     const avgCell = hasAvg ? `<td class="avg-col">${t.average !== undefined ? t.average.toFixed(1) : '—'}</td>` : '';
     const rangeCell = hasRange ? `<td class="range-col">${t.range_best !== undefined ? t.range_best + ' to ' + t.range_worst : '—'}</td>` : '';
+    const descHtml = t.desc ? `<div class="team-desc">${escHtml(t.desc)}</div>` : '';
     return `<tr>
       <td class="rank-col">${String(i+1).padStart(2,'0')}</td>
       <td class="move-col">${moveBadge}</td>
-      <td class="team-col">${escHtml(t.name)}</td>
+      <td class="team-col">${escHtml(t.name)}${descHtml}</td>
       ${avgCell}
       ${rangeCell}
     </tr>`;

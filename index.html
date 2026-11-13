@@ -494,7 +494,7 @@
 <!-- ── Sign-up Banner ── -->
 <div class="signup-banner" id="signup-banner">
   <span>See every side of every sports story — build your free feed.</span>
-  <button class="banner-cta" onclick="openModal('signup')">Get Started</button>
+  <button class="banner-cta" onclick="window.location.href='/signup.html'">Get Started</button>
 </div>
 
 <!-- ── Header ── -->
@@ -506,8 +506,8 @@
         <span class="logo-sub">Sports</span>
       </a>
       <div class="header-actions">
-        <button class="btn-signin" onclick="openModal('signin')">Sign In</button>
-        <button class="btn-signup" id="btn-signup-header" onclick="openModal('signup')">Sign Up Free</button>
+        <button class="btn-signin" onclick="window.location.href='/signup.html'">Sign In</button>
+        <button class="btn-signup" id="btn-signup-header" onclick="window.location.href='/signup.html'">Sign Up Free</button>
         <div class="account-wrapper">
           <button class="btn-account" id="btn-account" onclick="toggleAccountMenu()">
             <span class="account-dot"></span>
@@ -518,7 +518,7 @@
               <div class="account-menu-email" id="account-email"></div>
               <div class="account-menu-team" id="account-team-display"></div>
             </div>
-            <a href="index.html?tab=myfeed">My Feed</a>
+            <a href="index.html?tab=myfeed" onclick="return handleMyFeedClick(event, '/?tab=myfeed')">My Feed</a>
             <button onclick="openModal('account')">Edit Preferences</button>
             <button class="sign-out" onclick="signOut()">Sign Out</button>
           </div>
@@ -540,7 +540,7 @@
 
       <!-- My Feed -->
       <div class="nav-item">
-        <a href="index.html?tab=myfeed" class="nav-link" id="nav-myfeed">My Feed</a>
+        <a href="index.html?tab=myfeed" class="nav-link" id="nav-myfeed" onclick="return handleMyFeedClick(event, '/?tab=myfeed')">My Feed</a>
       </div>
 
       <!-- NFL -->
@@ -739,6 +739,16 @@
 
 function getAccount() {
   try { return JSON.parse(localStorage.getItem('fs_account') || 'null'); } catch { return null; }
+}
+
+function handleMyFeedClick(e, nextUrl) {
+  const acc = getAccount();
+  if (!acc || !acc.email) {
+    e.preventDefault();
+    window.location.href = '/signup.html?next=' + encodeURIComponent(nextUrl);
+    return false;
+  }
+  return true;
 }
 function saveAccount(data) {
   try { localStorage.setItem('fs_account', JSON.stringify(data)); } catch {}

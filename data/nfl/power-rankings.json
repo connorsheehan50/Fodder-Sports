@@ -23,7 +23,8 @@
       "move": 0,
       "average": 1.8,
       "range_best": 1,
-      "range_worst": 3
+      "range_worst": 3,
+      "desc": "No outlet has them anywhere but first; a Hooker trade and a defense that's already elite have the consensus locked in. Josh Allen's MVP case is the story of the week, and no one is writing a reason to move off them."
     },
     {
       "name": "San Francisco 49ers",
@@ -32,7 +33,8 @@
       "move": 0,
       "average": 2.1,
       "range_best": 1,
-      "range_worst": 4
+      "range_worst": 4,
+      "desc": "The 49ers sit in a narrow band of near-consensus, with every outlet placing them between 1 and 4. The offense has stabilized after an uneven start, and their defense gives them a floor that most teams can't match."
     },
     {
       "name": "Jacksonville Jaguars",
@@ -41,7 +43,8 @@
       "move": 0,
       "average": 3.0,
       "range_best": 1,
-      "range_worst": 6
+      "range_worst": 6,
+      "desc": "Every outlet has them in a range of 1 to 6, an unusually tight cluster that reflects how consistently good they've been. The national consensus hasn't wavered: this is a top-five team until someone proves otherwise."
     },
     {
       "name": "Chicago Bears",
@@ -50,7 +53,8 @@
       "move": 0,
       "average": 4.2,
       "range_best": 2,
-      "range_worst": 7
+      "range_worst": 7,
+      "desc": "Four NFC North teams crack the top 10 this week, and the Bears are leading the division conversation. The national outlets reward their defensive identity and a backfield that grinds down opponents in the fourth quarter."
     },
     {
       "name": "Denver Broncos",
@@ -59,7 +63,8 @@
       "move": 0,
       "average": 5.7,
       "range_best": 2,
-      "range_worst": 12
+      "range_worst": 12,
+      "desc": "A wide 2-to-12 range tells you analysts aren't sure what to do with Denver, but the median keeps landing near 5. The Broncos are winning games no one expects them to win, and the consensus is adjusting in real time."
     },
     {
       "name": "Kansas City Chiefs",
@@ -68,7 +73,8 @@
       "move": 1,
       "average": 6.7,
       "range_best": 4,
-      "range_worst": 10
+      "range_worst": 10,
+      "desc": "Kansas City picked up one spot this week despite not playing in a marquee game, riding the residual fear factor that pushes them up whenever other teams stumble. Their range of 4 to 10 suggests some outlets are starting to fade them while others still won't."
     },
     {
       "name": "Cincinnati Bengals",
@@ -77,7 +83,8 @@
       "move": 2,
       "average": 7.3,
       "range_best": 4,
-      "range_worst": 14
+      "range_worst": 14,
+      "desc": "The Bengals jumped two spots this week, the biggest move in the top 10, as the offense showed the kind of consistency it hadn't earlier in the season. A 4-to-14 range reflects that some outlets haven't fully bought in, but the trajectory is upward."
     },
     {
       "name": "Detroit Lions",
@@ -86,7 +93,8 @@
       "move": 0,
       "average": 8.7,
       "range_best": 6,
-      "range_worst": 13
+      "range_worst": 13,
+      "desc": "Detroit holds steady at 8 with a tight range from 6 to 13, the picture of a team analysts feel they understand. The Lions are what they are: a top-10 side playing competent, physical football without spiking or dipping."
     },
     {
       "name": "Green Bay Packers",
@@ -95,7 +103,8 @@
       "move": 4,
       "average": 9.2,
       "range_best": 5,
-      "range_worst": 11
+      "range_worst": 11,
+      "desc": "The Packers gained four spots this week, the biggest leap in the rankings, after a performance that turned heads nationally. Their rise from 13 to 9 is the consensus acknowledging they've separated from the middle of the pack."
     },
     {
       "name": "Minnesota Vikings",
@@ -104,7 +113,8 @@
       "move": -4,
       "average": 9.7,
       "range_best": 6,
-      "range_worst": 13
+      "range_worst": 13,
+      "desc": "The Vikings fell four spots, the sharpest drop in this week's rankings, and the national outlets are questioning whether the early momentum was real. A range of 6 to 13 means no outlet has completely abandoned them, but confidence in their ceiling has softened."
     },
     {
       "name": "Seattle Seahawks",
@@ -113,7 +123,8 @@
       "move": -1,
       "average": 10.6,
       "range_best": 8,
-      "range_worst": 14
+      "range_worst": 14,
+      "desc": "Seattle drops a spot and settles into a band between 8 and 14, a reflection of a team that keeps winning but rarely impresses enough to move up. The outlets seem to view them as reliably mediocre at the top, and the rankings reflect that."
     },
     {
       "name": "Pittsburgh Steelers",
@@ -122,7 +133,8 @@
       "move": 0,
       "average": 10.8,
       "range_best": 7,
-      "range_worst": 14
+      "range_worst": 14,
+      "desc": "The Steelers hold at 12 with minimal variance, the consensus treating them as a fixed point in the middle of the standings. Their defense keeps them out of the bottom half while the offense limits how high they can go."
     },
     {
       "name": "Los Angeles Rams",
@@ -131,7 +143,8 @@
       "move": 1,
       "average": 13.6,
       "range_best": 10,
-      "range_worst": 17
+      "range_worst": 17,
+      "desc": "The Rams gain a spot and sit in a 10-to-17 range, a reasonable reflection of a team that remains competitive without being dominant. The consensus has settled on them as a fringe contender in an NFC that hasn't fully sorted itself."
     },
     {
       "name": "New England Patriots",
@@ -140,7 +153,8 @@
       "move": -2,
       "average": 13.6,
       "range_best": 10,
-      "range_worst": 16
+      "range_worst": 16,
+      "desc": "The Patriots fall two spots to tie for 13th, their range of 10 to 16 capturing genuine disagreement about what they are right now. Some outlets see a team rebuilding with a plan; others see a bottom-half roster masking its problems with a soft schedule."
     },
     {
       "name": "New York Giants",
@@ -149,7 +163,8 @@
       "move": 0,
       "average": 14.3,
       "range_best": 11,
-      "range_worst": 20
+      "range_worst": 20,
+      "desc": "New York stays at 15 with a range from 11 to 20, which is the consensus shrugging more than anything else. The Giants aren't bad enough to drop into the bottom tier and haven't done enough to move out of the middle."
     },
     {
       "name": "Tampa Bay Buccaneers",
@@ -158,7 +173,8 @@
       "move": 1,
       "average": 17.3,
       "range_best": 11,
-      "range_worst": 24
+      "range_worst": 24,
+      "desc": "Tampa Bay gains a spot on the strength of a performance that pushed a few outlets to revise upward, though a range of 11 to 24 remains extremely wide. The outlets that rank them low are waiting for a full healthy roster before committing."
     },
     {
       "name": "Cleveland Browns",
@@ -167,7 +183,8 @@
       "move": -1,
       "average": 17.5,
       "range_best": 15,
-      "range_worst": 20
+      "range_worst": 20,
+      "desc": "Cleveland falls a spot and sits in a narrow 15-to-20 band, a team the consensus has figured out and mostly agrees on. The Browns are a decent defense attached to an offense that rarely makes plays worth writing home about."
     },
     {
       "name": "Houston Texans",
@@ -176,7 +193,8 @@
       "move": 4,
       "average": 17.8,
       "range_best": 16,
-      "range_worst": 22
+      "range_worst": 22,
+      "desc": "The Texans jumped four spots this week, the biggest gain outside the top 10, as recent performances pushed the outlets that had been skeptical to move them up. A range of 16 to 22 still shows some disagreement, but momentum has shifted."
     },
     {
       "name": "Carolina Panthers",
@@ -185,7 +203,8 @@
       "move": 0,
       "average": 20.3,
       "range_best": 18,
-      "range_worst": 24
+      "range_worst": 24,
+      "desc": "Carolina holds at 19 with a narrow 18-to-24 range, a team that isn't surprising anyone in either direction. The consensus treats them as a roster still rebuilding its identity."
     },
     {
       "name": "Las Vegas Raiders",
@@ -194,7 +213,8 @@
       "move": -2,
       "average": 20.5,
       "range_best": 17,
-      "range_worst": 24
+      "range_worst": 24,
+      "desc": "The Raiders lose two spots as the league catches up to their early-season results, dropping into a 17-to-24 range. The outlets see a roster without a clear path to the postseason."
     },
     {
       "name": "Dallas Cowboys",
@@ -203,7 +223,8 @@
       "move": 2,
       "average": 20.9,
       "range_best": 18,
-      "range_worst": 27
+      "range_worst": 27,
+      "desc": "Dallas picks up two spots after a week that gave the outlets something to respond to, landing in an 18-to-27 range that shows real disagreement about their ceiling. The Cowboys still split analysts more than almost any team in the league."
     },
     {
       "name": "Atlanta Falcons",
@@ -212,7 +233,8 @@
       "move": -2,
       "average": 21.5,
       "range_best": 18,
-      "range_worst": 24
+      "range_worst": 24,
+      "desc": "Atlanta falls two spots and lands in an 18-to-24 band, the consensus reflecting a team that has underperformed preseason expectations without ever being truly bad. The outlets aren't writing them off, but optimism has cooled."
     },
     {
       "name": "Baltimore Ravens",
@@ -221,7 +243,8 @@
       "move": -2,
       "average": 22.2,
       "range_best": 18,
-      "range_worst": 28
+      "range_worst": 28,
+      "desc": "Baltimore loses two spots this week, one of the sharper drops in the bottom half, after a performance that left national writers questioning their identity. An 18-to-28 range shows some outlets are more patient than others."
     },
     {
       "name": "New Orleans Saints",
@@ -230,7 +253,8 @@
       "move": 2,
       "average": 22.9,
       "range_best": 19,
-      "range_worst": 27
+      "range_worst": 27,
+      "desc": "The Saints gain two spots as a few outlets respond to recent results, climbing to a 19-to-27 range. They remain a team the national consensus doesn't quite trust, but the direction this week is positive."
     },
     {
       "name": "Washington Commanders",
@@ -239,7 +263,8 @@
       "move": 0,
       "average": 25.5,
       "range_best": 24,
-      "range_worst": 28
+      "range_worst": 28,
+      "desc": "Washington holds at 25 with a narrow 24-to-28 band, a team the consensus has pigeonholed as a lower-tier roster. The lack of movement in either direction this week suggests the outlets see a stable but limited team."
     },
     {
       "name": "Arizona Cardinals",
@@ -248,7 +273,8 @@
       "move": -2,
       "average": 25.7,
       "range_best": 23,
-      "range_worst": 28
+      "range_worst": 28,
+      "desc": "Arizona loses two spots and sits in a 23-to-28 range, the consensus settling on them as a team rebuilding without a clear timeline. The outlets are watching the development process without expecting results this season."
     },
     {
       "name": "New York Jets",
@@ -257,7 +283,8 @@
       "move": 0,
       "average": 28.1,
       "range_best": 25,
-      "range_worst": 31
+      "range_worst": 31,
+      "desc": "The Jets hold at 27 with a 25-to-31 range, the consensus treating them as a team stuck in the bottom quartile. What little coverage they're getting is focused on what comes next rather than what's happening now."
     },
     {
       "name": "Indianapolis Colts",
@@ -266,7 +293,8 @@
       "move": 1,
       "average": 28.2,
       "range_best": 25,
-      "range_worst": 31
+      "range_worst": 31,
+      "desc": "Indianapolis gains a spot and climbs to 28, though a 25-to-31 range shows the outlets don't see much separation between them and the bottom of the league. The consensus is waiting for a reason to rank them higher."
     },
     {
       "name": "Miami Dolphins",
@@ -275,7 +303,8 @@
       "move": 2,
       "average": 28.2,
       "range_best": 17,
-      "range_worst": 31
+      "range_worst": 31,
+      "desc": "Miami gains two spots to tie for 28th, a wide 17-to-31 range reflecting that the outlets genuinely can't agree on what this team is. The gap between the highest and lowest placement is one of the widest in the rankings this week."
     },
     {
       "name": "Philadelphia Eagles",
@@ -284,7 +313,8 @@
       "move": -2,
       "average": 29.0,
       "range_best": 27,
-      "range_worst": 31
+      "range_worst": 31,
+      "desc": "The Eagles fall two spots to 30th, one of the more unexpected placements given where they started the season. A 27-to-31 range shows the outlets have largely given up on a turnaround in 2026."
     },
     {
       "name": "Tennessee Titans",
@@ -293,7 +323,8 @@
       "move": 0,
       "average": 29.1,
       "range_best": 24,
-      "range_worst": 31
+      "range_worst": 31,
+      "desc": "The Titans hold at 31 with a 24-to-31 range, one of the widest in the rankings for a team this low. Some outlets still see enough talent to avoid the bottom spot, but the consensus has them in the cellar."
     },
     {
       "name": "Los Angeles Chargers",
@@ -302,7 +333,8 @@
       "move": 0,
       "average": 32.0,
       "range_best": 32,
-      "range_worst": 32
+      "range_worst": 32,
+      "desc": "Every outlet has the Chargers at 32, an unusual moment of complete agreement at the bottom. The national consensus has settled, and no one is writing a case for them to move up."
     }
   ]
 }

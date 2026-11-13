@@ -153,7 +153,8 @@ function buildRankingsWidget(rankings) {
       <span class="rank-arrow ${arrowCls}">${arrowTxt}</span>
     </div>`;
   }).join('');
-  return note + rows;
+  const seeAllBtn = `<a href="/nfl/power-rankings.html" style="display:block;text-align:center;padding:10px 16px;margin:8px 12px;font-family:var(--font-head);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--orange);border:1px solid var(--rule);border-radius:4px;text-decoration:none;" onmouseover="this.style.background='rgba(255,77,0,.05)'" onmouseout="this.style.background=''">See Full Rankings →</a>`;
+  return note + rows + seeAllBtn;
 }
 
 // ── Schedule Widget ───────────────────────────────────────────
