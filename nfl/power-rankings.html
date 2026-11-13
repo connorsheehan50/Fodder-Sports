@@ -5,6 +5,80 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>NFL Power Rankings — Fodder Sports</title>
   <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .chart-container {
+      margin: 32px 0;
+      padding: 20px;
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-lg);
+    }
+    .chart-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .chart-title-block { flex: 1; min-width: 180px; }
+    .chart-title {
+      font-family: var(--font-head);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 3px;
+    }
+    .chart-subtitle {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--slate);
+    }
+    .team-selectors {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+    .team-slot {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .team-slot-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .team-slot select {
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 700;
+      background: var(--bg);
+      color: var(--ink);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      padding: 4px 6px;
+      cursor: pointer;
+    }
+    .chart-canvas-wrap {
+      width: 100%;
+      overflow-x: auto;
+    }
+    canvas#rankChart {
+      display: block;
+      width: 100%;
+      height: 300px;
+    }
+    .chart-note {
+      font-family: var(--font-body);
+      font-size: 11px;
+      color: var(--slate-light);
+      margin-top: 8px;
+    }
+  </style>
 </head>
 <body>
 
@@ -24,13 +98,29 @@
   <a href="index.html" class="back-link">← Back to NFL</a>
   <p style="font-family:var(--font-head);font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin-bottom:6px;">Fodder Sports · Power Rankings · Week 10</p>
   <h1 style="font-family:var(--font-display);font-size:clamp(28px,5vw,46px);line-height:1.1;margin-bottom:8px;">NFL Power Rankings, Week 10</h1>
-  <p class="article-lead">A consensus of the major national power rankings, updated every Tuesday.</p>
+  <p class="article-lead">A consensus of 10 major national power rankings, updated every Tuesday.</p>
 
+  <!-- Season chart -->
+  <div class="chart-container">
+    <div class="chart-header">
+      <div class="chart-title-block">
+        <div class="chart-title">Season Movement</div>
+        <div class="chart-subtitle">Consensus rank by week · lower is better</div>
+      </div>
+      <div class="team-selectors" id="team-selectors"></div>
+    </div>
+    <div class="chart-canvas-wrap">
+      <canvas id="rankChart"></canvas>
+    </div>
+    <p class="chart-note">Select up to 4 teams. Lower rank = better. Data from Week 1 through Week 10.</p>
+  </div>
+
+  <!-- Full rankings list -->
   <div id="rankings-full" style="margin-top:20px;">
     <div style="font-family:var(--font-body);font-size:13px;color:var(--slate);padding:16px 0;">Loading rankings...</div>
   </div>
 
-  <p style="font-family:var(--font-body);font-size:12px;color:var(--slate-light);margin-top:16px;padding-top:16px;border-top:1px solid var(--rule);">Fodder Sports · Pilot · Rankings are a consensus of published national rankings. Not affiliated with the NFL.</p>
+  <p style="font-family:var(--font-body);font-size:12px;color:var(--slate-light);margin-top:16px;padding-top:16px;border-top:1px solid var(--rule);">Fodder Sports · Pilot · Rankings are a consensus of published national rankings from NFL.com, CBS Sports, PFT, USA Today, Fox Sports, ESPN, Bleacher Report, Sports Illustrated, Pro Football Network, and Kalshi. Not affiliated with the NFL.</p>
 </div>
 
 <footer class="site-footer">
@@ -44,6 +134,182 @@
 
 <script src="../js/main.js"></script>
 <script>
+// ── Chart data ──────────────────────────────────────────────────
+const RANK_HISTORY = {"ARI": {"1": 30, "2": 23, "3": 28, "4": 28, "5": 27, "6": 29, "7": 25, "8": 29, "9": 24, "10": 26}, "ATL": {"1": 26, "2": 29, "3": 31, "4": 24, "5": 19, "6": 18, "7": 20, "8": 17, "9": 20, "10": 22}, "BAL": {"1": 6, "2": 3, "3": 10, "4": 9, "5": 10, "6": 7, "7": 10, "8": 16, "9": 21, "10": 23}, "BUF": {"1": 4, "2": 2, "3": 2, "4": 1, "5": 5, "6": 4, "7": 4, "8": 3, "9": 1, "10": 1}, "CAR": {"1": 22, "2": 26, "3": 19, "4": 22, "5": 13, "6": 14, "7": 13, "8": 19, "9": 19, "10": 19}, "CHI": {"1": 10, "2": 5, "3": 12, "4": 10, "5": 6, "6": 11, "7": 9, "8": 7, "9": 4, "10": 4}, "CIN": {"1": 8, "2": 10, "3": 6, "4": 11, "5": 14, "6": 12, "7": 11, "8": 9, "9": 9, "10": 7}, "CLE": {"1": 30, "2": 32, "3": 26, "4": 20, "5": 15, "6": 20, "7": 15, "8": 14, "9": 16, "10": 17}, "DAL": {"1": 12, "2": 18, "3": 17, "4": 16, "5": 15, "6": 21, "7": 22, "8": 20, "9": 23, "10": 21}, "DEN": {"1": 3, "2": 12, "3": 7, "4": 5, "5": 9, "6": 8, "7": 7, "8": 8, "9": 5, "10": 5}, "DET": {"1": 14, "2": 13, "3": 14, "4": 12, "5": 18, "6": 13, "7": 14, "8": 11, "9": 8, "10": 8}, "GB": {"1": 16, "2": 16, "3": 18, "4": 26, "5": 24, "6": 15, "7": 12, "8": 13, "9": 13, "10": 9}, "HOU": {"1": 5, "2": 10, "3": 15, "4": 23, "5": 25, "6": 24, "7": 17, "8": 23, "9": 22, "10": 18}, "IND": {"1": 21, "2": 25, "3": 22, "4": 19, "5": 22, "6": 23, "7": 27, "8": 27, "9": 29, "10": 28}, "JAX": {"1": 7, "2": 7, "3": 9, "4": 6, "5": 4, "6": 3, "7": 5, "8": 6, "9": 3, "10": 3}, "KC": {"1": 17, "2": 8, "3": 4, "4": 3, "5": 2, "6": 2, "7": 2, "8": 4, "9": 7, "10": 6}, "LAC": {"1": 15, "2": 19, "3": 25, "4": 29, "5": 29, "6": 30, "7": 31, "8": 32, "9": 32, "10": 32}, "LAR": {"1": 1, "2": 5, "3": 5, "4": 8, "5": 8, "6": 10, "7": 18, "8": 15, "9": 14, "10": 13}, "LV": {"1": 29, "2": 28, "3": 21, "4": 13, "5": 11, "6": 17, "7": 19, "8": 21, "9": 18, "10": 20}, "MIA": {"1": 32, "2": 31, "3": 32, "4": 32, "5": 32, "6": 31, "7": 32, "8": 30, "9": 30, "10": 28}, "MIN": {"1": 18, "2": 15, "3": 11, "4": 7, "5": 7, "6": 6, "7": 3, "8": 1, "9": 6, "10": 10}, "NE": {"1": 9, "2": 13, "3": 12, "4": 18, "5": 12, "6": 9, "7": 8, "8": 10, "9": 11, "10": 13}, "NO": {"1": 23, "2": 22, "3": 16, "4": 16, "5": 23, "6": 26, "7": 23, "8": 24, "9": 26, "10": 24}, "NYG": {"1": 24, "2": 17, "3": 20, "4": 21, "5": 20, "6": 19, "7": 21, "8": 18, "9": 15, "10": 15}, "NYJ": {"1": 28, "2": 27, "3": 27, "4": 27, "5": 28, "6": 25, "7": 25, "8": 28, "9": 27, "10": 27}, "PHI": {"1": 11, "2": 9, "3": 8, "4": 14, "5": 17, "6": 22, "7": 24, "8": 25, "9": 28, "10": 30}, "PIT": {"1": 20, "2": 21, "3": 23, "4": 15, "5": 21, "6": 16, "7": 16, "8": 12, "9": 12, "10": 12}, "SF": {"1": 12, "2": 4, "3": 3, "4": 2, "5": 1, "6": 1, "7": 1, "8": 2, "9": 2, "10": 2}, "SEA": {"1": 2, "2": 1, "3": 1, "4": 4, "5": 3, "6": 5, "7": 6, "8": 5, "9": 10, "10": 11}, "TB": {"1": 19, "2": 20, "3": 24, "4": 30, "5": 30, "6": 27, "7": 29, "8": 21, "9": 17, "10": 16}, "TEN": {"1": 27, "2": 30, "3": 30, "4": 31, "5": 31, "6": 31, "7": 30, "8": 31, "9": 31, "10": 31}, "WAS": {"1": 25, "2": 24, "3": 29, "4": 25, "5": 26, "6": 28, "7": 28, "8": 26, "9": 25, "10": 25}};
+
+const TEAM_ABBRS = ["ARI", "ATL", "BAL", "BUF", "CAR", "CHI", "CIN", "CLE", "DAL", "DEN", "DET", "GB", "HOU", "IND", "JAX", "KC", "LAC", "LAR", "LV", "MIA", "MIN", "NE", "NO", "NYG", "NYJ", "PHI", "PIT", "SEA", "SF", "TB", "TEN", "WAS"];
+const TEAM_NAMES_MAP = {"ARI": "Arizona Cardinals", "ATL": "Atlanta Falcons", "BAL": "Baltimore Ravens", "BUF": "Buffalo Bills", "CAR": "Carolina Panthers", "CHI": "Chicago Bears", "CIN": "Cincinnati Bengals", "CLE": "Cleveland Browns", "DAL": "Dallas Cowboys", "DEN": "Denver Broncos", "DET": "Detroit Lions", "GB": "Green Bay Packers", "HOU": "Houston Texans", "IND": "Indianapolis Colts", "JAX": "Jacksonville Jaguars", "KC": "Kansas City Chiefs", "LAC": "Los Angeles Chargers", "LAR": "Los Angeles Rams", "LV": "Las Vegas Raiders", "MIA": "Miami Dolphins", "MIN": "Minnesota Vikings", "NE": "New England Patriots", "NO": "New Orleans Saints", "NYG": "New York Giants", "NYJ": "New York Jets", "PHI": "Philadelphia Eagles", "PIT": "Pittsburgh Steelers", "SF": "San Francisco 49ers", "SEA": "Seattle Seahawks", "TB": "Tampa Bay Buccaneers", "TEN": "Tennessee Titans", "WAS": "Washington Commanders"};
+
+// Colors for up to 4 teams
+const SLOT_COLORS = ['#E84B2F','#1A6B3A','#2255CC','#C47000'];
+const MAX_TEAMS = 4;
+const WEEKS = [1,2,3,4,5,6,7,8,9,10];
+
+// Default teams: top 4 current
+const DEFAULT_TEAMS = ['BUF','SF','JAX','CHI'];
+
+let selectedTeams = [...DEFAULT_TEAMS];
+
+// ── Canvas chart ───────────────────────────────────────────────
+function drawChart() {
+  const canvas = document.getElementById('rankChart');
+  if (!canvas) return;
+  const dpr = window.devicePixelRatio || 1;
+  const W = canvas.clientWidth || canvas.parentElement.clientWidth;
+  const H = 300;
+  canvas.width = W * dpr;
+  canvas.height = H * dpr;
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+
+  // Layout
+  const pad = { top: 16, right: 16, bottom: 32, left: 36 };
+  const cw = W - pad.left - pad.right;
+  const ch = H - pad.top - pad.bottom;
+
+  // Dark mode detection
+  const isDark = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim().startsWith('#1') ||
+                 window.matchMedia('(prefers-color-scheme:dark)').matches;
+  const gridColor = isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.07)';
+  const labelColor = isDark ? 'rgba(255,255,255,0.45)' : 'rgba(0,0,0,0.4)';
+  const bgColor = isDark ? '#1a1a1a' : '#fff';
+
+  ctx.clearRect(0, 0, W, H);
+
+  // Y axis: rank 1-32, inverted so 1 is at top
+  const yMin = 1, yMax = 32;
+  function yPos(rank) {
+    return pad.top + (rank - yMin) / (yMax - yMin) * ch;
+  }
+  function xPos(week) {
+    return pad.left + (week - 1) / (WEEKS.length - 1) * cw;
+  }
+
+  // Grid lines at ranks 1,5,10,15,20,25,30,32
+  const gridRanks = [1,5,10,15,20,25,32];
+  ctx.strokeStyle = gridColor;
+  ctx.lineWidth = 1;
+  gridRanks.forEach(r => {
+    const y = yPos(r);
+    ctx.beginPath();
+    ctx.moveTo(pad.left, y);
+    ctx.lineTo(pad.left + cw, y);
+    ctx.stroke();
+    ctx.fillStyle = labelColor;
+    ctx.font = '10px system-ui,sans-serif';
+    ctx.textAlign = 'right';
+    ctx.fillText(r, pad.left - 5, y + 3);
+  });
+
+  // Week labels
+  WEEKS.forEach(w => {
+    const x = xPos(w);
+    ctx.fillStyle = labelColor;
+    ctx.font = '10px system-ui,sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('Wk ' + w, x, H - 6);
+    // Tick
+    ctx.strokeStyle = gridColor;
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(x, pad.top + ch);
+    ctx.lineTo(x, pad.top + ch + 4);
+    ctx.stroke();
+  });
+
+  // Draw lines
+  selectedTeams.forEach((abbr, si) => {
+    if (!abbr || !RANK_HISTORY[abbr]) return;
+    const color = SLOT_COLORS[si];
+    const teamData = RANK_HISTORY[abbr];
+
+    // Collect valid points
+    const pts = WEEKS.filter(w => teamData[w] !== undefined)
+                     .map(w => ({ x: xPos(w), y: yPos(teamData[w]) }));
+    if (pts.length < 2) return;
+
+    // Shadow
+    ctx.shadowColor = color;
+    ctx.shadowBlur = 4;
+
+    // Line
+    ctx.beginPath();
+    ctx.moveTo(pts[0].x, pts[0].y);
+    pts.slice(1).forEach(p => ctx.lineTo(p.x, p.y));
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 2.5;
+    ctx.lineJoin = 'round';
+    ctx.stroke();
+
+    // Dots
+    ctx.shadowBlur = 0;
+    pts.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
+      ctx.fillStyle = color;
+      ctx.fill();
+      ctx.strokeStyle = isDark ? '#1a1a1a' : '#fff';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+    });
+
+    // Label at last point
+    const last = pts[pts.length - 1];
+    ctx.fillStyle = color;
+    ctx.font = 'bold 11px system-ui,sans-serif';
+    ctx.textAlign = last.x > W * 0.8 ? 'right' : 'left';
+    ctx.fillText(abbr, last.x + (last.x > W * 0.8 ? -8 : 8), last.y + 4);
+  });
+
+  ctx.shadowBlur = 0;
+}
+
+// ── Selectors ──────────────────────────────────────────────────
+function buildSelectors() {
+  const container = document.getElementById('team-selectors');
+  if (!container) return;
+  container.innerHTML = '';
+  SLOT_COLORS.forEach((color, i) => {
+    const slot = document.createElement('div');
+    slot.className = 'team-slot';
+    const dot = document.createElement('div');
+    dot.className = 'team-slot-dot';
+    dot.style.background = color;
+    const sel = document.createElement('select');
+    sel.setAttribute('aria-label', 'Team ' + (i+1));
+
+    // Options
+    const noneOpt = document.createElement('option');
+    noneOpt.value = '';
+    noneOpt.textContent = i === 0 ? 'Team 1' : i === 1 ? 'Team 2' : i === 2 ? 'Team 3' : 'Team 4';
+    sel.appendChild(noneOpt);
+
+    // Sort by current rank
+    const sorted = [...TEAM_ABBRS].sort((a,b) => {
+      const ra = RANK_HISTORY[a][10] || 99;
+      const rb = RANK_HISTORY[b][10] || 99;
+      return ra - rb;
+    });
+    sorted.forEach(abbr => {
+      const opt = document.createElement('option');
+      opt.value = abbr;
+      opt.textContent = TEAM_NAMES_MAP[abbr];
+      if (abbr === selectedTeams[i]) opt.selected = true;
+      sel.appendChild(opt);
+    });
+
+    sel.addEventListener('change', () => {
+      selectedTeams[i] = sel.value;
+      drawChart();
+    });
+
+    slot.appendChild(dot);
+    slot.appendChild(sel);
+    container.appendChild(slot);
+  });
+}
+
+// ── Rankings list ──────────────────────────────────────────────
 async function initRankings() {
   const el = document.getElementById('rankings-full');
   const data = await fetchJSON('data/nfl/power-rankings.json');
@@ -62,7 +328,14 @@ async function initRankings() {
   }).join('');
   el.innerHTML = note + rows;
 }
-document.addEventListener('DOMContentLoaded', initRankings);
+
+// ── Init ──────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  buildSelectors();
+  drawChart();
+  initRankings();
+  window.addEventListener('resize', drawChart);
+});
 </script>
 </body>
 </html>

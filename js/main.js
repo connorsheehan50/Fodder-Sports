@@ -47,11 +47,27 @@ function buildCard(item) {
     preview: '#1a1a1a', recap: '#0D3B1E', trade: '#3D2F00',
     breaking: '#7A1E00', story: '#2D1050', rankings: '#0A2660'
   };
-  const bg = thumbColors[item.type] || '#1a1a1a';
+  // For trades with teams, vary background by team abbr for visual differentiation
+  let bg = thumbColors[item.type] || '#1a1a1a';
+  if (item.type === 'trade' && teamA) {
+    // Hash team abbr to pick from a palette of dark backgrounds
+    const tradePalette = ['#1A3A5C','#2E1A5C','#1A4A2E','#4A1A1A','#2A3A1A','#1A2A4A','#3A1A3A','#1A3A3A','#4A3A1A','#1A4A4A'];
+    let hash = 0; for (let c of teamA) hash = (hash * 31 + c.charCodeAt(0)) & 0xff;
+    bg = tradePalette[hash % tradePalette.length];
+  }
 
-  const thumbInner = teamA && teamB
-    ? `<div class="card-thumb-teams">${escHtml(teamA)}<span class="vs">vs</span>${escHtml(teamB)}</div>`
-    : `<div style="font-family:var(--font-head);font-size:12px;font-weight:800;color:var(--slate);text-align:center;text-transform:uppercase;letter-spacing:0.08em;">${escHtml(item.sport || 'NFL')}</div>`;
+  let thumbInner;
+  if (teamA && teamB) {
+    thumbInner = `<div class="card-thumb-teams">${escHtml(teamA)}<span class="vs">vs</span>${escHtml(teamB)}</div>`;
+  } else if (item.type === 'trade' && teamA) {
+    // Single-team trade: show team abbr + arrow icon for visual differentiation
+    thumbInner = `<div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+      <div style="font-family:var(--font-head);font-size:20px;font-weight:900;color:#fff;letter-spacing:0.04em;">${escHtml(teamA)}</div>
+      <div style="font-family:var(--font-head);font-size:9px;font-weight:800;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:0.1em;">TRADE</div>
+    </div>`;
+  } else {
+    thumbInner = `<div style="font-family:var(--font-head);font-size:12px;font-weight:800;color:var(--slate);text-align:center;text-transform:uppercase;letter-spacing:0.08em;">${escHtml(item.sport || 'NFL')}</div>`;
+  }
 
   return `
     <a href="${escHtml(item.url || '#')}" class="card">
