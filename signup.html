@@ -1,255 +1,281 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Create Your Account — Fodder Sports</title>
-  <link rel="stylesheet" href="css/style.css">
-  <style>
-    body { background: var(--page-bg); }
-    .signup-wrap {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 40px 16px 60px;
-    }
-    .signup-logo {
-      font-family: var(--font-display);
-      font-size: 22px;
-      color: var(--ink);
-      text-decoration: none;
-      margin-bottom: 36px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .signup-logo span { color: var(--orange); }
-    .signup-card {
-      background: var(--card-bg);
-      border: 1px solid var(--rule);
-      border-radius: var(--radius-lg);
-      width: 100%;
-      max-width: 440px;
-      padding: 32px;
-    }
-    .step { display: none; }
-    .step.active { display: block; }
-    .step-heading {
-      font-family: var(--font-display);
-      font-size: 26px;
-      line-height: 1.1;
-      color: var(--ink);
-      margin-bottom: 6px;
-    }
-    .step-sub {
-      font-family: var(--font-body);
-      font-size: 14px;
-      color: var(--slate);
-      margin-bottom: 24px;
-      line-height: 1.5;
-    }
-    .oauth-row {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-    .btn-oauth {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      width: 100%;
-      padding: 12px 16px;
-      border: 1px solid var(--rule);
-      border-radius: 6px;
-      background: var(--card-bg);
-      font-family: var(--font-head);
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: .04em;
-      color: var(--ink);
-      cursor: pointer;
-      transition: background 0.1s, border-color 0.1s;
-      text-align: center;
-    }
-    .btn-oauth:hover { background: rgba(0,0,0,.03); border-color: #aaa; }
-    .btn-oauth svg { flex-shrink: 0; }
-    .divider {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin: 16px 0;
-      font-family: var(--font-head);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .1em;
-      color: var(--slate-light);
-      text-transform: uppercase;
-    }
-    .divider::before, .divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--rule);
-    }
-    .form-field { margin-bottom: 16px; }
-    .form-field label {
-      display: block;
-      font-family: var(--font-head);
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--slate);
-      margin-bottom: 6px;
-    }
-    .form-field input {
-      display: block;
-      width: 100%;
-      padding: 10px 12px;
-      border: 1px solid var(--rule);
-      border-radius: 4px;
-      background: var(--page-bg);
-      font-family: var(--font-body);
-      font-size: 15px;
-      color: var(--ink);
-      box-sizing: border-box;
-      transition: border-color 0.15s;
-    }
-    .form-field input:focus { outline: none; border-color: var(--orange); }
-    .form-field input.error { border-color: #E53E3E; }
-    .field-error {
-      font-family: var(--font-body);
-      font-size: 12px;
-      color: #E53E3E;
-      margin-top: 4px;
-    }
-    .btn-primary {
-      display: block;
-      width: 100%;
-      padding: 13px 16px;
-      background: var(--orange);
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      font-family: var(--font-head);
-      font-size: 14px;
-      font-weight: 900;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: opacity 0.15s;
-      margin-top: 8px;
-    }
-    .btn-primary:hover { opacity: 0.88; }
-    .sign-in-link {
-      text-align: center;
-      margin-top: 20px;
-      font-family: var(--font-body);
-      font-size: 13px;
-      color: var(--slate);
-    }
-    .sign-in-link a, .sign-in-link button {
-      color: var(--orange);
-      text-decoration: none;
-      background: none;
-      border: none;
-      font: inherit;
-      cursor: pointer;
-      padding: 0;
-    }
-    /* ── Team Picker Step ── */
-    .sport-tabs {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-      margin-bottom: 20px;
-    }
-    .sport-tab {
-      font-family: var(--font-head);
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      padding: 6px 12px;
-      border: 1px solid var(--rule);
-      border-radius: 20px;
-      background: transparent;
-      color: var(--slate);
-      cursor: pointer;
-      transition: all 0.1s;
-    }
-    .sport-tab.active {
-      background: var(--ink);
-      color: var(--off-white);
-      border-color: var(--ink);
-    }
-    .team-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      max-height: 320px;
-      overflow-y: auto;
-      margin-bottom: 24px;
-    }
-    .team-btn {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 10px;
-      border: 1px solid var(--rule);
-      border-radius: 6px;
-      background: var(--card-bg);
-      cursor: pointer;
-      transition: all 0.1s;
-      text-align: left;
-    }
-    .team-btn.selected {
-      border-color: var(--orange);
-      background: rgba(255,77,0,.06);
-    }
-    .team-btn img {
-      width: 24px;
-      height: 24px;
-      object-fit: contain;
-      flex-shrink: 0;
-    }
-    .team-btn-name {
-      font-family: var(--font-head);
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: .02em;
-      color: var(--ink);
-      line-height: 1.3;
-    }
-    .selected-count {
-      font-family: var(--font-body);
-      font-size: 13px;
-      color: var(--slate);
-      margin-bottom: 16px;
-    }
-    .selected-count strong { color: var(--ink); }
-    .skip-link {
-      display: block;
-      text-align: center;
-      margin-top: 12px;
-      font-family: var(--font-body);
-      font-size: 13px;
-      color: var(--slate);
-      cursor: pointer;
-      background: none;
-      border: none;
-      text-decoration: underline;
-    }
-    /* Sign in panel */
-    #panel-signin { display: none; }
-    #panel-signin.active { display: block; }
-    #panel-signup { display: block; }
-    #panel-signup.hidden { display: none; }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Create Your Account — Fodder Sports</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+body { background: var(--page-bg); }
+.signup-wrap {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 40px 16px 60px;
+}
+.signup-logo {
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--ink);
+  text-decoration: none;
+  margin-bottom: 36px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.signup-logo span { color: var(--orange); }
+.signup-card {
+  background: var(--card-bg);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 440px;
+  padding: 32px;
+}
+.step { display: none; }
+.step.active { display: block; }
+.step-heading {
+  font-family: var(--font-display);
+  font-size: 26px;
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.step-sub {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--slate);
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+.oauth-row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.btn-oauth {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--card-bg);
+  font-family: var(--font-head);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .04em;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 0.1s, border-color 0.1s;
+  text-align: center;
+}
+.btn-oauth:hover { background: rgba(0,0,0,.03); border-color: #aaa; }
+.btn-oauth:disabled { opacity: 0.6; cursor: not-allowed; }
+.btn-oauth svg { flex-shrink: 0; }
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 16px 0;
+  font-family: var(--font-head);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  color: var(--slate-light);
+  text-transform: uppercase;
+}
+.divider::before, .divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+.form-field { margin-bottom: 16px; }
+.form-field label {
+  display: block;
+  font-family: var(--font-head);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin-bottom: 6px;
+}
+.form-field input {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--page-bg);
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--ink);
+  box-sizing: border-box;
+  transition: border-color 0.15s;
+}
+.form-field input:focus { outline: none; border-color: var(--orange); }
+.form-field input.error { border-color: #E53E3E; }
+.field-error {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: #E53E3E;
+  margin-top: 4px;
+}
+.btn-primary {
+  display: block;
+  width: 100%;
+  padding: 13px 16px;
+  background: var(--orange);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-family: var(--font-head);
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  margin-top: 8px;
+}
+.btn-primary:hover { opacity: 0.88; }
+.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+.sign-in-link {
+  text-align: center;
+  margin-top: 20px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--slate);
+}
+.sign-in-link a, .sign-in-link button {
+  color: var(--orange);
+  text-decoration: none;
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+}
+.alert {
+  padding: 12px 14px;
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+.alert-success {
+  background: rgba(56, 161, 105, 0.1);
+  border: 1px solid rgba(56, 161, 105, 0.3);
+  color: #276749;
+}
+.alert-error {
+  background: rgba(229, 62, 62, 0.08);
+  border: 1px solid rgba(229, 62, 62, 0.3);
+  color: #C53030;
+}
+/* ── Team Picker Step ── */
+.sport-tabs {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.sport-tab {
+  font-family: var(--font-head);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border: 1px solid var(--rule);
+  border-radius: 20px;
+  background: transparent;
+  color: var(--slate);
+  cursor: pointer;
+  transition: all 0.1s;
+}
+.sport-tab.active {
+  background: var(--ink);
+  color: var(--off-white);
+  border-color: var(--ink);
+}
+.team-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  max-height: 320px;
+  overflow-y: auto;
+  margin-bottom: 24px;
+}
+.team-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--card-bg);
+  cursor: pointer;
+  transition: all 0.1s;
+  text-align: left;
+}
+.team-btn.selected {
+  border-color: var(--orange);
+  background: rgba(255,77,0,.06);
+}
+.team-btn img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.team-btn-name {
+  font-family: var(--font-head);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .02em;
+  color: var(--ink);
+  line-height: 1.3;
+}
+.selected-count {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--slate);
+  margin-bottom: 16px;
+}
+.selected-count strong { color: var(--ink); }
+.skip-link {
+  display: block;
+  text-align: center;
+  margin-top: 12px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--slate);
+  cursor: pointer;
+  background: none;
+  border: none;
+  text-decoration: underline;
+}
+/* Sign in panel */
+#panel-signin { display: none; }
+#panel-signin.active { display: block; }
+#panel-signup { display: block; }
+#panel-signup.hidden { display: none; }
+/* Confirmation screen */
+#step-confirm .confirm-icon {
+  font-size: 48px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+</style>
 </head>
 <body>
 <div class="signup-wrap">
@@ -257,20 +283,24 @@
 
   <div class="signup-card">
 
-    <!-- STEP 1: Create Account -->
+    <!-- STEP 1: Create Account / Sign In -->
     <div class="step active" id="step-account">
+
       <div id="panel-signup">
         <div class="step-heading">Create your account</div>
         <div class="step-sub">Follow the teams that matter to you, across every sport.</div>
 
+        <div id="alert-signup"></div>
+
         <div class="oauth-row">
-          <button class="btn-oauth" id="btn-google" onclick="oauthSignup('google')">
-            <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.2l6.7-6.7C35.8 2.4 30.2 0 24 0 14.7 0 6.7 5.5 2.7 13.5l7.8 6C12.4 13.2 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4.1 7.1-10.2 7.1-17z"/><path fill="#FBBC05" d="M10.5 28.5c-.6-1.6-.9-3.3-.9-5s.3-3.4.9-5l-7.8-6C1 15.1 0 19.4 0 24s1 8.9 2.7 12.5l7.8-6z"/><path fill="#34A853" d="M24 48c6.2 0 11.4-2 15.2-5.5l-7.5-5.8c-2 1.4-4.6 2.3-7.7 2.3-6.3 0-11.6-3.7-13.5-9l-7.8 6C6.7 42.5 14.7 48 24 48z"/></svg>
+          <button class="btn-oauth" id="btn-google" onclick="oauthSignup()">
+            <svg width="18" height="18" viewBox="0 0 48 48">
+              <path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.2l6.7-6.7C35.8 2.4 30.2 0 24 0 14.7 0 6.7 5.5 2.7 13.5l7.8 6C12.4 13.2 17.7 9.5 24 9.5z"/>
+              <path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4.1 7.1-10.2 7.1-17z"/>
+              <path fill="#FBBC05" d="M10.5 28.5c-.6-1.6-.9-3.3-.9-5s.3-3.4.9-5l-7.8-6C1 15.1 0 19.4 0 24s1 8.9 2.7 12.5l7.8-6z"/>
+              <path fill="#34A853" d="M24 48c6.2 0 11.4-2 15.2-5.5l-7.5-5.8c-2 1.4-4.6 2.3-7.7 2.3-6.3 0-11.6-3.7-13.5-9l-7.8 6C6.7 42.5 14.7 48 24 48z"/>
+            </svg>
             Continue with Google
-          </button>
-          <button class="btn-oauth" id="btn-facebook" onclick="oauthSignup('facebook')">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.69.24 2.69.24v2.97h-1.51c-1.49 0-1.95.93-1.95 1.88v2.26h3.33l-.53 3.49h-2.8V24C19.62 23.1 24 18.1 24 12.07"/></svg>
-            Continue with Facebook
           </button>
         </div>
 
@@ -287,7 +317,7 @@
           <div class="field-error" id="err-password"></div>
         </div>
 
-        <button class="btn-primary" onclick="submitSignup()">Create Account</button>
+        <button class="btn-primary" id="btn-signup" onclick="submitSignup()">Create Account</button>
 
         <div class="sign-in-link">Already have an account? <button onclick="showSignIn()">Sign in</button></div>
       </div>
@@ -295,6 +325,22 @@
       <div id="panel-signin">
         <div class="step-heading">Welcome back</div>
         <div class="step-sub">Sign in to your Fodder Sports account.</div>
+
+        <div id="alert-signin"></div>
+
+        <div class="oauth-row">
+          <button class="btn-oauth" id="btn-google-signin" onclick="oauthSignup()">
+            <svg width="18" height="18" viewBox="0 0 48 48">
+              <path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.2l6.7-6.7C35.8 2.4 30.2 0 24 0 14.7 0 6.7 5.5 2.7 13.5l7.8 6C12.4 13.2 17.7 9.5 24 9.5z"/>
+              <path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4.1 7.1-10.2 7.1-17z"/>
+              <path fill="#FBBC05" d="M10.5 28.5c-.6-1.6-.9-3.3-.9-5l-7.8-6C1 15.1 0 19.4 0 24s1 8.9 2.7 12.5l7.8-6z"/>
+              <path fill="#34A853" d="M24 48c6.2 0 11.4-2 15.2-5.5l-7.5-5.8c-2 1.4-4.6 2.3-7.7 2.3-6.3 0-11.6-3.7-13.5-9l-7.8 6C6.7 42.5 14.7 48 24 48z"/>
+            </svg>
+            Continue with Google
+          </button>
+        </div>
+
+        <div class="divider">or</div>
 
         <div class="form-field">
           <label>Email address</label>
@@ -307,8 +353,18 @@
           <div class="field-error" id="err-signin-password"></div>
         </div>
 
-        <button class="btn-primary" onclick="submitSignIn()">Sign In</button>
+        <button class="btn-primary" id="btn-signin" onclick="submitSignIn()">Sign In</button>
         <div class="sign-in-link">New here? <button onclick="showSignup()">Create a free account</button></div>
+      </div>
+    </div>
+
+    <!-- STEP 1b: Email confirmation sent -->
+    <div class="step" id="step-confirm">
+      <div class="confirm-icon">📬</div>
+      <div class="step-heading">Check your email</div>
+      <div class="step-sub">We sent a confirmation link to <strong id="confirm-email-display"></strong>. Click it to activate your account, then come back and sign in.</div>
+      <div class="sign-in-link" style="margin-top:24px;">
+        <button onclick="showSignIn()">Back to sign in</button>
       </div>
     </div>
 
@@ -328,7 +384,15 @@
   </div>
 </div>
 
+<!-- Supabase JS -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
+// ── Supabase config ───────────────────────────────────────────
+const SUPABASE_URL = 'https://sqxwiiqfnmdwuknbsskr.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_Dz3z6XgHueHoemn4XP4T3Q_tqzGvwfr';
+const { createClient } = supabase;
+const sb = createClient(SUPABASE_URL, SUPABASE_KEY);
+
 // ── Team data ─────────────────────────────────────────────────
 const SPORTS = {
   NFL: {
@@ -417,11 +481,12 @@ const SPORTS = {
   NCAAF: {
     logo: (abbr) => `https://a.espncdn.com/i/teamlogos/ncaa/500/${abbr}.png`,
     teams: [
-      {name:'Alabama',abbr:'333'},{name:'Arkansas',abbr:'8'},{name:'Auburn',abbr:'2'},{name:'Clemson',abbr:'228'},
-      {name:'Florida',abbr:'57'},{name:'Florida State',abbr:'52'},{name:'Georgia',abbr:'61'},
-      {name:'Iowa',abbr:'2294'},{name:'LSU',abbr:'99'},{name:'Michigan',abbr:'130'},
-      {name:'Michigan State',abbr:'127'},{name:'Mississippi State',abbr:'344'},
-      {name:'Nebraska',abbr:'158'},{name:'Notre Dame',abbr:'87'},{name:'Ohio State',abbr:'194'},
+      {name:'Alabama',abbr:'333'},{name:'Arkansas',abbr:'8'},{name:'Auburn',abbr:'2'},
+      {name:'Clemson',abbr:'228'},{name:'Florida',abbr:'57'},{name:'Florida State',abbr:'52'},
+      {name:'Georgia',abbr:'61'},{name:'Iowa',abbr:'2294'},{name:'LSU',abbr:'99'},
+      {name:'Michigan',abbr:'130'},{name:'Michigan State',abbr:'127'},
+      {name:'Mississippi State',abbr:'344'},{name:'Nebraska',abbr:'158'},
+      {name:'Notre Dame',abbr:'87'},{name:'Ohio State',abbr:'194'},
       {name:'Oklahoma',abbr:'201'},{name:'Ole Miss',abbr:'145'},{name:'Oregon',abbr:'2483'},
       {name:'Penn State',abbr:'213'},{name:'Texas',abbr:'251'},{name:'Texas A&M',abbr:'245'},
       {name:'Tennessee',abbr:'2633'},{name:'USC',abbr:'30'},{name:'Utah',abbr:'254'},
@@ -473,27 +538,24 @@ const SPORTS = {
       {name:'Chelsea',abbr:'363'},{name:'Liverpool',abbr:'364'},{name:'Manchester City',abbr:'382'},
       {name:'Manchester United',abbr:'360'},{name:'PSG',abbr:'160'},{name:'Real Madrid',abbr:'86'},
       {name:'Tottenham',abbr:'367'},{name:'Atlanta United',abbr:'18594'},{name:'LAFC',abbr:'18924'},
-      {name:'Inter Miami',abbr:'32783'},{name:'LA Galaxy',abbr:'528'},{name:'Portland Timbers',abbr:'10740'},
-      {name:'Seattle Sounders',abbr:'9726'}
+      {name:'Inter Miami',abbr:'32783'},{name:'LA Galaxy',abbr:'528'},
+      {name:'Portland Timbers',abbr:'10740'},{name:'Seattle Sounders',abbr:'9726'}
     ]
   }
 };
 
 // ── State ─────────────────────────────────────────────────────
-let selectedTeams = {}; // {sport: [team objects]}
+let selectedTeams = {};
 let activeSport = 'NFL';
-let currentEmail = '';
 
-// ── Load existing account ─────────────────────────────────────
-(function() {
-  try {
-    const acc = JSON.parse(localStorage.getItem('fs_account') || 'null');
-    if (acc && acc.email) {
-      // Already signed in; redirect to feed
-      const dest = getNextUrl();
-      window.location.replace(dest);
-    }
-  } catch(e) {}
+// ── On load: check for OAuth callback or existing session ──────
+(async function init() {
+  // Handle OAuth redirect (Supabase puts session in URL hash)
+  const { data: { session } } = await sb.auth.getSession();
+  if (session) {
+    goToTeamStep();
+    return;
+  }
 })();
 
 function getNextUrl() {
@@ -501,48 +563,91 @@ function getNextUrl() {
   return params.get('next') || '/nfl/?tab=myfeed';
 }
 
-// ── OAuth stubs ───────────────────────────────────────────────
-function oauthSignup(provider) {
-  // OAuth integration requires a backend for token exchange.
-  // For now, collect email via a prompt, skip password.
-  const email = window.prompt(`Enter your ${provider === 'google' ? 'Google' : 'Facebook'} email to continue:`);
-  if (!email || !email.includes('@')) return;
-  currentEmail = email.trim().toLowerCase();
-  createAccount(currentEmail, null, provider);
+function showAlert(containerId, message, type) {
+  const el = document.getElementById(containerId);
+  el.innerHTML = `<div class="alert alert-${type}">${message}</div>`;
 }
 
-// ── Signup form ───────────────────────────────────────────────
-function submitSignup() {
+function clearAlert(containerId) {
+  document.getElementById(containerId).innerHTML = '';
+}
+
+// ── Google OAuth ───────────────────────────────────────────────
+async function oauthSignup() {
+  const btn = document.getElementById('btn-google') || document.getElementById('btn-google-signin');
+  if (btn) { btn.disabled = true; btn.textContent = 'Redirecting…'; }
+  const { error } = await sb.auth.signInWithOAuth({
+    provider: 'google',
+    options: {
+      redirectTo: window.location.href
+    }
+  });
+  if (error) {
+    if (btn) { btn.disabled = false; btn.textContent = 'Continue with Google'; }
+    showAlert('alert-signup', 'Google sign-in failed. Please try again.', 'error');
+  }
+}
+
+// ── Email/password signup ──────────────────────────────────────
+async function submitSignup() {
+  clearAlert('alert-signup');
   const email = document.getElementById('signup-email').value.trim();
   const pw = document.getElementById('signup-password').value;
   let valid = true;
+
   document.getElementById('err-email').textContent = '';
   document.getElementById('err-password').textContent = '';
+  document.getElementById('signup-email').classList.remove('error');
+  document.getElementById('signup-password').classList.remove('error');
+
   if (!email || !email.includes('@')) {
     document.getElementById('err-email').textContent = 'Please enter a valid email address.';
     document.getElementById('signup-email').classList.add('error');
     valid = false;
-  } else {
-    document.getElementById('signup-email').classList.remove('error');
   }
   if (!pw || pw.length < 8) {
     document.getElementById('err-password').textContent = 'Password must be at least 8 characters.';
     document.getElementById('signup-password').classList.add('error');
     valid = false;
-  } else {
-    document.getElementById('signup-password').classList.remove('error');
   }
   if (!valid) return;
-  currentEmail = email.toLowerCase();
-  createAccount(currentEmail, pw, 'email');
+
+  const btn = document.getElementById('btn-signup');
+  btn.disabled = true;
+  btn.textContent = 'Creating account…';
+
+  const { error } = await sb.auth.signUp({
+    email,
+    password: pw,
+    options: {
+      emailRedirectTo: window.location.origin + '/signup.html'
+    }
+  });
+
+  btn.disabled = false;
+  btn.textContent = 'Create Account';
+
+  if (error) {
+    showAlert('alert-signup', error.message, 'error');
+    return;
+  }
+
+  // Show confirmation screen
+  document.getElementById('confirm-email-display').textContent = email;
+  document.getElementById('step-account').classList.remove('active');
+  document.getElementById('step-confirm').classList.add('active');
 }
 
-function submitSignIn() {
+// ── Email/password sign in ────────────────────────────────────
+async function submitSignIn() {
+  clearAlert('alert-signin');
   const email = document.getElementById('signin-email').value.trim();
   const pw = document.getElementById('signin-password').value;
   let valid = true;
+
   document.getElementById('err-signin-email').textContent = '';
   document.getElementById('err-signin-password').textContent = '';
+
   if (!email || !email.includes('@')) {
     document.getElementById('err-signin-email').textContent = 'Please enter a valid email address.';
     valid = false;
@@ -552,39 +657,27 @@ function submitSignIn() {
     valid = false;
   }
   if (!valid) return;
-  try {
-    const acc = JSON.parse(localStorage.getItem('fs_account') || 'null');
-    if (acc && acc.email === email.toLowerCase() && acc.pw === btoa(pw)) {
-      window.location.replace(getNextUrl());
-    } else {
-      document.getElementById('err-signin-password').textContent = 'Email or password not recognized.';
-    }
-  } catch(e) {
-    document.getElementById('err-signin-password').textContent = 'Sign in failed. Try creating an account.';
-  }
-}
 
-function createAccount(email, pw, method) {
-  try {
-    const existing = JSON.parse(localStorage.getItem('fs_account') || 'null');
-    const acc = existing || {};
-    acc.email = email;
-    acc.method = method;
-    if (pw) acc.pw = btoa(pw); // minimal obfuscation; no backend = no real security
-    acc.teams = acc.teams || {};
-    localStorage.setItem('fs_account', JSON.stringify(acc));
-  } catch(e) {}
+  const btn = document.getElementById('btn-signin');
+  btn.disabled = true;
+  btn.textContent = 'Signing in…';
+
+  const { error } = await sb.auth.signInWithPassword({ email, password: pw });
+
+  btn.disabled = false;
+  btn.textContent = 'Sign In';
+
+  if (error) {
+    showAlert('alert-signin', error.message, 'error');
+    return;
+  }
+
   goToTeamStep();
 }
 
-function goToTeamStep() {
-  document.getElementById('step-account').classList.remove('active');
-  document.getElementById('step-teams').classList.add('active');
-  renderSportTabs();
-  renderTeamGrid('NFL');
-}
-
 function showSignIn() {
+  document.getElementById('step-account').classList.add('active');
+  document.getElementById('step-confirm').classList.remove('active');
   document.getElementById('panel-signup').classList.add('hidden');
   document.getElementById('panel-signin').classList.add('active');
 }
@@ -595,6 +688,19 @@ function showSignup() {
 }
 
 // ── Team picker ───────────────────────────────────────────────
+function goToTeamStep() {
+  // Load any previously saved teams from localStorage
+  try {
+    const saved = JSON.parse(localStorage.getItem('fs_teams') || 'null');
+    if (saved) selectedTeams = saved;
+  } catch(e) {}
+
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  document.getElementById('step-teams').classList.add('active');
+  renderSportTabs();
+  renderTeamGrid('NFL');
+}
+
 function renderSportTabs() {
   const container = document.getElementById('sport-tabs');
   container.innerHTML = Object.keys(SPORTS).map(sport => `
@@ -637,20 +743,23 @@ function toggleTeam(sport, abbr, name) {
 function updateSelectedCount() {
   const total = Object.values(selectedTeams).reduce((sum, arr) => sum + arr.length, 0);
   const el = document.getElementById('selected-count');
-  if (total === 0) {
-    el.innerHTML = 'No teams selected yet.';
-  } else {
-    el.innerHTML = `<strong>${total}</strong> team${total !== 1 ? 's' : ''} selected`;
-  }
+  el.innerHTML = total === 0
+    ? 'No teams selected yet.'
+    : `<strong>${total}</strong> team${total !== 1 ? 's' : ''} selected`;
 }
 
-function finishSetup() {
+async function finishSetup() {
+  // Save teams to localStorage (and optionally to Supabase user metadata later)
   try {
-    const acc = JSON.parse(localStorage.getItem('fs_account') || '{}');
-    acc.teams = selectedTeams;
-    // Flatten for quick lookup
-    acc.allTeams = Object.values(selectedTeams).flat();
-    localStorage.setItem('fs_account', JSON.stringify(acc));
+    localStorage.setItem('fs_teams', JSON.stringify(selectedTeams));
+    const allTeams = Object.values(selectedTeams).flat();
+    localStorage.setItem('fs_allTeams', JSON.stringify(allTeams));
+
+    // Also persist to Supabase user metadata
+    const { data: { user } } = await sb.auth.getUser();
+    if (user) {
+      await sb.auth.updateUser({ data: { teams: selectedTeams } });
+    }
   } catch(e) {}
   window.location.replace(getNextUrl());
 }
