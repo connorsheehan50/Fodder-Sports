@@ -549,12 +549,28 @@ let selectedTeams = {};
 let activeSport = 'NFL';
 
 // ── On load: check for OAuth callback or existing session ──────
+function saveLocalAccount(user) {
+  const meta = user.user_metadata || {};
+  const teams = meta.teams || {};
+  const nfl = (teams.NFL && teams.NFL[0]) ? teams.NFL[0].name : '';
+  localStorage.setItem('fs_account', JSON.stringify({
+    id: user.id, email: user.email, name: meta.full_name || meta.name || '',
+    method: 'supabase', teams, allTeams: Object.values(teams).flat(),
+    team: nfl, nfl_team: nfl
+  }));
+}
+
 (async function init() {
-  // Handle OAuth redirect (Supabase puts session in URL hash)
   const { data: { session } } = await sb.auth.getSession();
-  if (session) {
+  if (!session) return;
+  saveLocalAccount(session.user);
+  const teams = (session.user.user_metadata || {}).teams;
+  const hasTeams = teams && Object.values(teams).some(a => a && a.length);
+  if (hasTeams) {
+    window.location.replace(getNextUrl());   // returning user: skip the picker
+  } else {
+    if (teams) selectedTeams = teams;
     goToTeamStep();
-    return;
   }
 })();
 
@@ -579,7 +595,7 @@ async function oauthSignup() {
   const { error } = await sb.auth.signInWithOAuth({
     provider: 'google',
     options: {
-      redirectTo: window.location.href
+      redirectTo: window.location.origin + '/signup' + window.location.search
     }
   });
   if (error) {
@@ -620,7 +636,7 @@ async function submitSignup() {
     email,
     password: pw,
     options: {
-      emailRedirectTo: window.location.origin + '/signup.html'
+      emailRedirectTo: window.location.origin + '/signup' + window.location.search
     }
   });
 
@@ -690,10 +706,6 @@ function showSignup() {
 // ── Team picker ───────────────────────────────────────────────
 function goToTeamStep() {
   // Load any previously saved teams from localStorage
-  try {
-    const saved = JSON.parse(localStorage.getItem('fs_teams') || 'null');
-    if (saved) selectedTeams = saved;
-  } catch(e) {}
 
   document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
   document.getElementById('step-teams').classList.add('active');
@@ -749,17 +761,9 @@ function updateSelectedCount() {
 }
 
 async function finishSetup() {
-  // Save teams to localStorage (and optionally to Supabase user metadata later)
   try {
-    localStorage.setItem('fs_teams', JSON.stringify(selectedTeams));
-    const allTeams = Object.values(selectedTeams).flat();
-    localStorage.setItem('fs_allTeams', JSON.stringify(allTeams));
-
-    // Also persist to Supabase user metadata
-    const { data: { user } } = await sb.auth.getUser();
-    if (user) {
-      await sb.auth.updateUser({ data: { teams: selectedTeams } });
-    }
+    const { data } = await sb.auth.updateUser({ data: { teams: selectedTeams } });
+    if (data && data.user) saveLocalAccount(data.user);
   } catch(e) {}
   window.location.replace(getNextUrl());
 }
