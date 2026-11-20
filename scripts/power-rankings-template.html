@@ -1,0 +1,773 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{TITLE_TAG}}</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .chart-container {
+      margin: 32px 0;
+      padding: 20px;
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-lg);
+    }
+    .chart-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .chart-title-block { flex: 1; min-width: 180px; }
+    .chart-title {
+      font-family: var(--font-head);
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .chart-subtitle {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--slate);
+    }
+    .team-selectors {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+    .select-label {
+      font-family: var(--font-head);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--slate);
+      white-space: nowrap;
+      margin-right: 4px;
+    }
+    .team-slot {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .team-slot-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .team-slot select {
+      font-family: var(--font-head);
+      font-size: 14px;
+      font-weight: 700;
+      background: var(--bg);
+      color: var(--ink);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      padding: 4px 6px;
+      cursor: pointer;
+    }
+    .chart-canvas-wrap {
+      width: 100%;
+      overflow-x: auto;
+    }
+    canvas#rankChart {
+      display: block;
+      width: 100%;
+      height: 300px;
+    }
+    .chart-tooltip {
+      position: absolute;
+      pointer-events: none;
+      background: var(--ink);
+      color: var(--off-white);
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity .1s;
+      z-index: 10;
+    }
+    .chart-canvas-wrap { position: relative; }
+
+    /* ── Rankings table ── */
+    .rankings-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+    }
+    .rankings-table {
+      position: relative;
+    }
+    .rankings-table thead {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      background: var(--card-bg);
+    }
+    .rankings-table th {
+      font-family: var(--font-head);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--slate);
+      padding: 10px 16px;
+      text-align: left;
+      border-bottom: 2px solid var(--rule);
+      white-space: nowrap;
+    }
+    .rankings-table th.num { text-align: right; }
+    .rankings-table th.avg { text-align: right; width: 70px; }
+    .rankings-table th.range { text-align: right; width: 100px; }
+    .rankings-table td {
+      font-family: var(--font-head);
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .rankings-table tr.team-row {
+      cursor: pointer;
+    }
+    .rankings-table tr.team-row:hover td {
+      background: var(--page-bg);
+    }
+    .rankings-table tr:last-child td { border-bottom: none; }
+    .rankings-table td.rank-col {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--slate);
+      text-align: right;
+      width: 48px;
+      padding-right: 4px;
+      white-space: nowrap;
+    }
+    .rankings-table td.move-col {
+      width: 56px;
+      text-align: left;
+      padding-left: 6px;
+      padding-right: 4px;
+      white-space: nowrap;
+    }
+    .move-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      font-family: var(--font-head);
+      font-size: 13px;
+      font-weight: 900;
+      border-radius: 4px;
+      padding: 2px 6px;
+    }
+    .move-badge.up { color: #0D5C2F; background: #D1FAE5; }
+    .move-badge.dn { color: #7F1D1D; background: #FEE2E2; }
+    .move-badge.flat { color: var(--slate); background: transparent; font-size: 11px; }
+    @media (prefers-color-scheme: dark) {
+      .move-badge.up { color: #6EE7B7; background: rgba(16,185,129,.15); }
+      .move-badge.dn { color: #FCA5A5; background: rgba(239,68,68,.15); }
+    }
+    .rankings-table td.team-col {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--ink);
+    }
+    .team-cell {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .team-row-logo {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+    .row-arrow {
+      font-size: 10px;
+      color: var(--slate-light);
+      transition: transform .2s;
+      flex-shrink: 0;
+      display: inline-block;
+    }
+    tr.row-expanded .row-arrow {
+      transform: rotate(90deg);
+    }
+    .rankings-table td.avg-col {
+      text-align: right;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--ink);
+      width: 70px;
+    }
+    .rankings-table td.range-col {
+      text-align: right;
+      font-size: 14px;
+      color: var(--slate);
+      width: 100px;
+      white-space: nowrap;
+    }
+
+    /* ── Expandable detail row ── */
+    .detail-row td {
+      padding: 0;
+      border-bottom: 2px solid var(--orange);
+    }
+    .detail-row.hidden { display: none; }
+    .team-detail {
+      padding: 16px 20px 20px;
+      background: var(--page-bg);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .team-detail-logo {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+    .team-detail-body {
+      flex: 1;
+      min-width: 200px;
+    }
+    .team-desc-text {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--slate);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+    .outlet-section-label {
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--slate-light);
+      margin-bottom: 8px;
+    }
+    .outlet-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .outlet-pill {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 8px 12px;
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      text-decoration: none;
+      min-width: 72px;
+      transition: border-color .15s, box-shadow .15s;
+    }
+    .outlet-pill:hover {
+      border-color: var(--orange);
+      box-shadow: 0 2px 6px rgba(0,0,0,.08);
+    }
+    .outlet-pill-rank {
+      font-family: var(--font-head);
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--orange);
+      line-height: 1;
+    }
+    .outlet-pill-name {
+      font-family: var(--font-head);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-top: 3px;
+      text-align: center;
+    }
+    .outlet-pill-prev {
+      font-family: var(--font-body);
+      font-size: 11px;
+      color: var(--slate-light);
+      margin-top: 2px;
+    }
+
+    /* ── Week nav ── */
+    .week-nav {
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid var(--rule);
+    }
+    .week-nav-label {
+      font-family: var(--font-head);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-bottom: 10px;
+    }
+    .week-nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .week-nav-links a {
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--orange);
+      text-decoration: none;
+      padding: 4px 10px;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+    }
+    .week-nav-links a:hover { background: var(--card-bg); }
+    .week-nav-links a.current {
+      background: var(--orange);
+      color: #fff;
+      border-color: var(--orange);
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-word">FODDER<span>.</span></span>
+        <span class="logo-sub">Sports</span>
+      </a>
+      <span class="header-tagline">Every Side of the Story</span>
+    </div>
+  </div>
+</header>
+
+<div class="container" style="padding-top:28px;">
+  <a href="index.html" class="back-link">← Back to NFL</a>
+  <p style="font-family:var(--font-head);font-size:17px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin-bottom:6px;">Fodder Sports · NFL Power Rankings · Week {{WEEK}}</p>
+  <h1 style="font-family:var(--font-head);font-size:clamp(24px,4vw,36px);font-weight:700;line-height:1.2;margin-bottom:8px;color:var(--ink);">{{H1}}</h1>
+  <p class="article-lead">One ranking from the whole national conversation: the consensus of major national power rankings.</p>
+
+  <!-- Season chart -->
+  <div class="chart-container">
+    <div class="chart-header">
+      <div class="chart-title-block">
+        <div class="chart-title">Season Movement</div>
+        <div class="chart-subtitle">Consensus rank by week</div>
+      </div>
+      <div class="team-selectors" id="team-selectors"></div>
+    </div>
+    <div class="chart-canvas-wrap">
+      <canvas id="rankChart"></canvas>
+      <div id="chartTooltip" class="chart-tooltip"></div>
+    </div>
+  </div>
+
+  <!-- Full rankings list -->
+  <div id="rankings-full" style="margin-top:20px;">
+    <div style="font-family:var(--font-body);font-size:13px;color:var(--slate);padding:16px 0;">Loading rankings...</div>
+  </div>
+
+  <!-- Week navigation -->
+  <div class="week-nav">
+    <div class="week-nav-label">Previous weeks</div>
+    <div class="week-nav-links">
+{{WEEK_NAV}}
+    </div>
+  </div>
+
+  <p style="font-family:var(--font-body);font-size:12px;color:var(--slate-light);margin-top:16px;padding-top:16px;border-top:1px solid var(--rule);">Fodder Sports · Pilot · Rankings are a consensus of published national rankings from NFL.com, CBS Sports, PFT, USA Today, Fox Sports, ESPN, Bleacher Report, Sports Illustrated, Pro Football Network, and Kalshi. Not affiliated with the NFL.</p>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <span class="footer-label">Fodder Sports · Pilot</span>
+      <p class="footer-note">Summaries written from published coverage. Not affiliated with the NFL or any team.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script>
+// ── Chart data ──────────────────────────────────────────────────
+const RANK_HISTORY = {{RANK_HISTORY}};
+
+const TEAM_ABBRS = ["ARI", "ATL", "BAL", "BUF", "CAR", "CHI", "CIN", "CLE", "DAL", "DEN", "DET", "GB", "HOU", "IND", "JAX", "KC", "LAC", "LAR", "LV", "MIA", "MIN", "NE", "NO", "NYG", "NYJ", "PHI", "PIT", "SEA", "SF", "TB", "TEN", "WAS"];
+const TEAM_NAMES_MAP = {"ARI": "Arizona Cardinals", "ATL": "Atlanta Falcons", "BAL": "Baltimore Ravens", "BUF": "Buffalo Bills", "CAR": "Carolina Panthers", "CHI": "Chicago Bears", "CIN": "Cincinnati Bengals", "CLE": "Cleveland Browns", "DAL": "Dallas Cowboys", "DEN": "Denver Broncos", "DET": "Detroit Lions", "GB": "Green Bay Packers", "HOU": "Houston Texans", "IND": "Indianapolis Colts", "JAX": "Jacksonville Jaguars", "KC": "Kansas City Chiefs", "LAC": "Los Angeles Chargers", "LAR": "Los Angeles Rams", "LV": "Las Vegas Raiders", "MIA": "Miami Dolphins", "MIN": "Minnesota Vikings", "NE": "New England Patriots", "NO": "New Orleans Saints", "NYG": "New York Giants", "NYJ": "New York Jets", "PHI": "Philadelphia Eagles", "PIT": "Pittsburgh Steelers", "SF": "San Francisco 49ers", "SEA": "Seattle Seahawks", "TB": "Tampa Bay Buccaneers", "TEN": "Tennessee Titans", "WAS": "Washington Commanders"};
+
+// Colors for up to 4 teams
+const SLOT_COLORS = ['#E84B2F','#1A6B3A','#2255CC','#C47000'];
+const MAX_TEAMS = 4;
+const WEEKS = {{WEEKS}};
+
+// Default teams: top 4 current
+const DEFAULT_TEAMS = {{DEFAULT_TEAMS}};
+
+// This week's rankings, stored in the page so past weeks never change.
+const WEEK_DATA = {{WEEK_DATA}};
+
+let selectedTeams = [...DEFAULT_TEAMS];
+
+// ── Logo helper ─────────────────────────────────────────────────
+function getLogoAbbr(abbr) {
+  if (abbr === 'WAS') return 'wsh';
+  return abbr.toLowerCase();
+}
+
+// ── Canvas chart ───────────────────────────────────────────────
+function drawChart() {
+  const canvas = document.getElementById('rankChart');
+  if (!canvas) return;
+  const dpr = window.devicePixelRatio || 1;
+  const W = canvas.clientWidth || canvas.parentElement.clientWidth;
+  const H = 300;
+  canvas.width = W * dpr;
+  canvas.height = H * dpr;
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+
+  // Layout
+  const pad = { top: 20, right: 24, bottom: 44, left: 48 };
+  const cw = W - pad.left - pad.right;
+  const ch = H - pad.top - pad.bottom;
+
+  // Dark mode detection
+  const isDark = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim().startsWith('#1') ||
+                 window.matchMedia('(prefers-color-scheme:dark)').matches;
+  const gridColor = isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.08)';
+  const labelColor = isDark ? 'rgba(255,255,255,0.6)' : 'rgba(0,0,0,0.55)';
+  const axisLabelColor = isDark ? 'rgba(255,255,255,0.4)' : 'rgba(0,0,0,0.38)';
+
+  ctx.clearRect(0, 0, W, H);
+
+  // Y axis: rank 1-32, inverted so 1 is at top
+  const yMin = 1, yMax = 32;
+  function yPos(rank) {
+    return pad.top + (rank - yMin) / (yMax - yMin) * ch;
+  }
+  function xPos(week) {
+    return pad.left + (week - 1) / Math.max(WEEKS.length - 1, 1) * cw;
+  }
+
+  // Axis labels
+  ctx.save();
+  ctx.font = 'bold 11px system-ui,sans-serif';
+  ctx.fillStyle = axisLabelColor;
+  ctx.textAlign = 'center';
+  ctx.fillText('Week', pad.left + cw / 2, H - 2);
+  ctx.translate(13, pad.top + ch / 2);
+  ctx.rotate(-Math.PI / 2);
+  ctx.fillText('Rank', 0, 0);
+  ctx.restore();
+
+  // Grid lines at ranks 1,5,10,15,20,25,32
+  const gridRanks = [1,5,10,15,20,25,32];
+  ctx.strokeStyle = gridColor;
+  ctx.lineWidth = 1;
+  gridRanks.forEach(r => {
+    const y = yPos(r);
+    ctx.beginPath();
+    ctx.moveTo(pad.left, y);
+    ctx.lineTo(pad.left + cw, y);
+    ctx.stroke();
+    ctx.fillStyle = labelColor;
+    ctx.font = 'bold 12px system-ui,sans-serif';
+    ctx.textAlign = 'right';
+    ctx.fillText(r, pad.left - 7, y + 4);
+  });
+
+  // Week labels
+  WEEKS.forEach(w => {
+    const x = xPos(w);
+    ctx.fillStyle = labelColor;
+    ctx.font = 'bold 12px system-ui,sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('Wk ' + w, x, pad.top + ch + 18);
+    ctx.strokeStyle = gridColor;
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(x, pad.top + ch);
+    ctx.lineTo(x, pad.top + ch + 5);
+    ctx.stroke();
+  });
+
+  // Draw lines
+  selectedTeams.forEach((abbr, si) => {
+    if (!abbr || !RANK_HISTORY[abbr]) return;
+    const color = SLOT_COLORS[si];
+    const teamData = RANK_HISTORY[abbr];
+
+    const pts = WEEKS.filter(w => teamData[w] !== undefined)
+                     .map(w => ({ x: xPos(w), y: yPos(teamData[w]) }));
+    if (pts.length < 2) return;
+
+    ctx.shadowColor = color;
+    ctx.shadowBlur = 4;
+
+    ctx.beginPath();
+    ctx.moveTo(pts[0].x, pts[0].y);
+    pts.slice(1).forEach(p => ctx.lineTo(p.x, p.y));
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 2.5;
+    ctx.lineJoin = 'round';
+    ctx.stroke();
+
+    ctx.shadowBlur = 0;
+    pts.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
+      ctx.fillStyle = color;
+      ctx.fill();
+      ctx.strokeStyle = isDark ? '#1a1a1a' : '#fff';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+    });
+
+    const last = pts[pts.length - 1];
+    ctx.fillStyle = color;
+    ctx.font = 'bold 13px system-ui,sans-serif';
+    ctx.textAlign = last.x > W * 0.8 ? 'right' : 'left';
+    ctx.fillText(abbr, last.x + (last.x > W * 0.8 ? -10 : 10), last.y + 5);
+  });
+
+  ctx.shadowBlur = 0;
+}
+
+// ── Tooltip ───────────────────────────────────────────────────
+function setupTooltip() {
+  const canvas = document.getElementById('rankChart');
+  const tip = document.getElementById('chartTooltip');
+  if (!canvas || !tip) return;
+
+  const pad = { top: 20, right: 24, bottom: 44, left: 48 };
+
+  function getHit(mx, my) {
+    const W = canvas.clientWidth;
+    const H = 300;
+    const cw = W - pad.left - pad.right;
+    const ch = H - pad.top - pad.bottom;
+    const yMin = 1, yMax = 32;
+
+    function xPos(w) { return pad.left + (w - 1) / Math.max(WEEKS.length - 1, 1) * cw; }
+    function yPos(r) { return pad.top + (r - yMin) / (yMax - yMin) * ch; }
+
+    const SNAP = 14;
+    let best = null, bestDist = SNAP;
+
+    selectedTeams.forEach((abbr, si) => {
+      if (!abbr || !RANK_HISTORY[abbr]) return;
+      WEEKS.forEach(w => {
+        const rank = RANK_HISTORY[abbr][w];
+        if (rank === undefined) return;
+        const px = xPos(w), py = yPos(rank);
+        const d = Math.sqrt((mx - px) ** 2 + (my - py) ** 2);
+        if (d < bestDist) { bestDist = d; best = { abbr, w, rank, color: SLOT_COLORS[si] }; }
+      });
+    });
+    return best;
+  }
+
+  function onMove(e) {
+    const rect = canvas.getBoundingClientRect();
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    const mx = clientX - rect.left;
+    const my = clientY - rect.top;
+    const hit = getHit(mx, my);
+    if (hit) {
+      tip.textContent = `Week ${hit.w} · Rank ${hit.rank}`;
+      tip.style.opacity = '1';
+      tip.style.left = (mx + 12) + 'px';
+      tip.style.top = (my - 24) + 'px';
+      tip.style.background = hit.color;
+    } else {
+      tip.style.opacity = '0';
+    }
+  }
+
+  canvas.addEventListener('mousemove', onMove);
+  canvas.addEventListener('touchmove', onMove, { passive: true });
+  canvas.addEventListener('mouseleave', () => { tip.style.opacity = '0'; });
+}
+
+// ── Selectors ──────────────────────────────────────────────────
+const SORTED_ABBRS = [...TEAM_ABBRS].sort((a,b) => TEAM_NAMES_MAP[a].localeCompare(TEAM_NAMES_MAP[b]));
+
+function buildSelectors() {
+  const container = document.getElementById('team-selectors');
+  if (!container) return;
+  container.innerHTML = '';
+
+  // Prepend label
+  const label = document.createElement('span');
+  label.className = 'select-label';
+  label.textContent = 'Select up to 4 teams.';
+  container.appendChild(label);
+
+  SLOT_COLORS.forEach((color, i) => {
+    const slot = document.createElement('div');
+    slot.className = 'team-slot';
+    const dot = document.createElement('div');
+    dot.className = 'team-slot-dot';
+    dot.style.background = color;
+    const sel = document.createElement('select');
+    sel.setAttribute('aria-label', 'Team ' + (i+1));
+    sel.dataset.slot = i;
+
+    const noneOpt = document.createElement('option');
+    noneOpt.value = '';
+    noneOpt.textContent = 'Team ' + (i+1);
+    sel.appendChild(noneOpt);
+
+    SORTED_ABBRS.forEach(abbr => {
+      const opt = document.createElement('option');
+      opt.value = abbr;
+      opt.textContent = TEAM_NAMES_MAP[abbr];
+      if (abbr === selectedTeams[i]) opt.selected = true;
+      const otherSlots = selectedTeams.filter((_, j) => j !== i);
+      if (otherSlots.includes(abbr)) opt.disabled = true;
+      sel.appendChild(opt);
+    });
+
+    sel.addEventListener('change', () => {
+      selectedTeams[i] = sel.value;
+      buildSelectors();
+      drawChart();
+    });
+
+    slot.appendChild(dot);
+    slot.appendChild(sel);
+    container.appendChild(slot);
+  });
+}
+
+// ── Toggle expandable row ─────────────────────────────────────
+function toggleRow(mainRow) {
+  const detailRow = mainRow.nextElementSibling;
+  if (!detailRow || !detailRow.classList.contains('detail-row')) return;
+  const isExpanded = !detailRow.classList.contains('hidden');
+  if (isExpanded) {
+    detailRow.classList.add('hidden');
+    mainRow.classList.remove('row-expanded');
+  } else {
+    detailRow.classList.remove('hidden');
+    mainRow.classList.add('row-expanded');
+  }
+}
+
+// ── Rankings list ──────────────────────────────────────────────
+async function initRankings() {
+  const el = document.getElementById('rankings-full');
+  const data = WEEK_DATA;
+  if (!data || !data.teams) {
+    el.innerHTML = '<div style="color:var(--slate);font-family:var(--font-body);font-size:13px;">Rankings not yet available. Check back Tuesday.</div>';
+    return;
+  }
+
+  const updatedStr = data.updated ? new Date(data.updated).toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'}) : '';
+  const updatedLine = updatedStr
+    ? `<p style="font-family:var(--font-body);font-size:12px;color:var(--slate);margin-bottom:16px;">Updated ${updatedStr} &nbsp;·&nbsp; <span style="color:var(--orange);font-style:italic;">Click any row for a full breakdown</span></p>`
+    : '';
+
+  const hasAvg = data.teams.some(t => t.average !== undefined);
+  const hasRange = data.teams.some(t => t.range_best !== undefined || t.range_worst !== undefined);
+
+  const headerAvg = hasAvg ? '<th class="num avg">Avg</th>' : '';
+  const headerRange = hasRange ? '<th class="num range">Range</th>' : '';
+
+  const rows = data.teams.map((t, i) => {
+    let moveBadge;
+    if (t.move > 0) {
+      moveBadge = `<span class="move-badge up">↑ ${t.move}</span>`;
+    } else if (t.move < 0) {
+      moveBadge = `<span class="move-badge dn">↓ ${Math.abs(t.move)}</span>`;
+    } else {
+      moveBadge = `<span class="move-badge flat">—</span>`;
+    }
+
+    const avgCell = hasAvg ? `<td class="avg-col">${t.average !== undefined ? t.average.toFixed(1) : '—'}</td>` : '';
+    const rangeCell = hasRange ? `<td class="range-col">${t.range_best !== undefined ? t.range_best + ' to ' + t.range_worst : '—'}</td>` : '';
+
+    // Outlet pills for expanded row
+    let outletPills = '';
+    if (t.outlets && t.outlets.length) {
+      outletPills = t.outlets.map(o => {
+        const prevText = o.prev ? `prev #${o.prev}` : '';
+        return `<a href="${escHtml(o.url)}" class="outlet-pill" target="_blank" rel="noopener">
+          <span class="outlet-pill-rank">#${o.rank}</span>
+          <span class="outlet-pill-name">${escHtml(o.name)}</span>
+          ${prevText ? `<span class="outlet-pill-prev">${prevText}</span>` : ''}
+        </a>`;
+      }).join('');
+    }
+
+    const logoAbbr = getLogoAbbr(t.abbr || t.name);
+    const logoUrl = `https://a.espncdn.com/i/teamlogos/nfl/500/${logoAbbr}.png`;
+
+    const descText = (t.desc && t.desc !== 'To be filled in later.') ? escHtml(t.desc) : '';
+
+    const mainRow = `<tr class="team-row" onclick="toggleRow(this)">
+      <td class="rank-col">${String(i+1).padStart(2,'0')}</td>
+      <td class="move-col">${moveBadge}</td>
+      <td class="team-col">
+        <div class="team-cell">
+          <span class="row-arrow">▶</span>
+          <img class="team-row-logo" src="${logoUrl}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+          ${escHtml(t.name)}
+        </div>
+      </td>
+      ${avgCell}
+      ${rangeCell}
+    </tr>`;
+
+    const detailRow = `<tr class="detail-row hidden">
+      <td colspan="5">
+        <div class="team-detail">
+          <img class="team-detail-logo" src="${logoUrl}" alt="${escHtml(t.name)} logo" onerror="this.style.display='none'">
+          <div class="team-detail-body">
+            ${descText ? `<p class="team-desc-text">${descText}</p>` : ''}
+            ${outletPills ? `<div class="outlet-section-label">Rankings by outlet</div><div class="outlet-grid">${outletPills}</div>` : ''}
+          </div>
+        </div>
+      </td>
+    </tr>`;
+
+    return mainRow + detailRow;
+  }).join('');
+
+  el.innerHTML = updatedLine + `
+    <table class="rankings-table">
+      <thead>
+        <tr>
+          <th class="num" style="width:48px;">#</th>
+          <th style="width:64px;"></th>
+          <th>Team</th>
+          ${headerAvg}
+          ${headerRange}
+        </tr>
+      </thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+}
+
+// ── Init ──────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  buildSelectors();
+  drawChart();
+  setupTooltip();
+  initRankings();
+  window.addEventListener('resize', () => { drawChart(); setupTooltip(); });
+});
+</script>
+<script src="/js/auth.js"></script>
+</body>
+</html>

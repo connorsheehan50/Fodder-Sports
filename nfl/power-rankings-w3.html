@@ -3,40 +3,337 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Week 3 Power Rankings — Fodder Sports</title>
-  <meta name="description" content="NFL Week 3 consensus power rankings from major national outlets.">
+  <title>Week 3 Power Rankings — NFL Power Rankings, Week 3 — Fodder Sports</title>
   <link rel="stylesheet" href="../css/style.css">
   <style>
-    .rankings-header { margin-bottom: 32px; }
-    .rankings-subtitle { font-family: var(--font-body); font-size: 14px; color: var(--slate); line-height: 1.6; margin-top: 8px; max-width: 640px; }
-    .rankings-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
-    .rankings-table th { font-family: var(--font-head); font-size: 10px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; color: var(--slate); padding: 6px 10px; border-bottom: 2px solid var(--rule); text-align: left; }
-    .rankings-table td { font-family: var(--font-body); font-size: 13px; padding: 9px 10px; border-bottom: 1px solid var(--rule); vertical-align: middle; }
-    .rank-col { font-family: var(--font-head); font-size: 15px; font-weight: 900; color: var(--ink); width: 36px; text-align: right; }
-    .team-col { font-weight: 500; }
-    .team-pill { font-family: var(--font-head); font-size: 10px; font-weight: 900; letter-spacing: .08em; padding: 2px 6px; border-radius: 3px; margin-right: 6px; display: inline-block; }
-    .move-col { width: 32px; text-align: center; font-family: var(--font-head); font-weight: 800; }
-    .avg-col { width: 56px; text-align: right; font-family: var(--font-head); font-size: 13px; font-weight: 700; color: var(--ink); }
-    .range-col { width: 72px; text-align: right; font-family: var(--font-body); font-size: 12px; color: var(--slate); }
-    .chart-section { margin-top: 40px; border-top: 1px solid var(--rule); padding-top: 24px; }
-    .chart-section-label { font-family: var(--font-head); font-size: 10px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; color: var(--slate); margin-bottom: 16px; }
-    .chart-selectors { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
-    .chart-selectors select { font-family: var(--font-head); font-size: 11px; font-weight: 700; padding: 4px 8px; background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; color: var(--ink); }
-    .chart-note { font-family: var(--font-body); font-size: 11px; color: var(--slate-light); margin-top: 8px; }
-    .week-nav { margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--rule); }
-    .week-nav-label { font-family: var(--font-head); font-size: 10px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; color: var(--slate); margin-bottom: 10px; }
-    .week-nav-links { display: flex; flex-wrap: wrap; gap: 8px; }
-    .week-nav-links a { font-family: var(--font-head); font-size: 11px; font-weight: 700; color: var(--orange); text-decoration: none; padding: 4px 8px; border: 1px solid var(--orange); border-radius: 4px; }
-    .week-nav-links a.current { background: var(--orange); color: #fff; }
-    .week-nav-links a:hover { background: var(--orange); color: #fff; }
+    .chart-container {
+      margin: 32px 0;
+      padding: 20px;
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-lg);
+    }
+    .chart-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .chart-title-block { flex: 1; min-width: 180px; }
+    .chart-title {
+      font-family: var(--font-head);
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .chart-subtitle {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--slate);
+    }
+    .team-selectors {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+    .select-label {
+      font-family: var(--font-head);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--slate);
+      white-space: nowrap;
+      margin-right: 4px;
+    }
+    .team-slot {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .team-slot-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .team-slot select {
+      font-family: var(--font-head);
+      font-size: 14px;
+      font-weight: 700;
+      background: var(--bg);
+      color: var(--ink);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      padding: 4px 6px;
+      cursor: pointer;
+    }
+    .chart-canvas-wrap {
+      width: 100%;
+      overflow-x: auto;
+    }
+    canvas#rankChart {
+      display: block;
+      width: 100%;
+      height: 300px;
+    }
     .chart-tooltip {
-      position: absolute; pointer-events: none;
-      background: var(--ink); color: var(--off-white);
-      font-family: var(--font-head); font-size: 11px; font-weight: 700;
-      padding: 4px 8px; border-radius: 4px; white-space: nowrap;
-      opacity: 0; transition: opacity .1s; z-index: 10;
+      position: absolute;
+      pointer-events: none;
+      background: var(--ink);
+      color: var(--off-white);
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity .1s;
+      z-index: 10;
     }
     .chart-canvas-wrap { position: relative; }
+
+    /* ── Rankings table ── */
+    .rankings-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+    }
+    .rankings-table {
+      position: relative;
+    }
+    .rankings-table thead {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      background: var(--card-bg);
+    }
+    .rankings-table th {
+      font-family: var(--font-head);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--slate);
+      padding: 10px 16px;
+      text-align: left;
+      border-bottom: 2px solid var(--rule);
+      white-space: nowrap;
+    }
+    .rankings-table th.num { text-align: right; }
+    .rankings-table th.avg { text-align: right; width: 70px; }
+    .rankings-table th.range { text-align: right; width: 100px; }
+    .rankings-table td {
+      font-family: var(--font-head);
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .rankings-table tr.team-row {
+      cursor: pointer;
+    }
+    .rankings-table tr.team-row:hover td {
+      background: var(--page-bg);
+    }
+    .rankings-table tr:last-child td { border-bottom: none; }
+    .rankings-table td.rank-col {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--slate);
+      text-align: right;
+      width: 48px;
+      padding-right: 4px;
+      white-space: nowrap;
+    }
+    .rankings-table td.move-col {
+      width: 56px;
+      text-align: left;
+      padding-left: 6px;
+      padding-right: 4px;
+      white-space: nowrap;
+    }
+    .move-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      font-family: var(--font-head);
+      font-size: 13px;
+      font-weight: 900;
+      border-radius: 4px;
+      padding: 2px 6px;
+    }
+    .move-badge.up { color: #0D5C2F; background: #D1FAE5; }
+    .move-badge.dn { color: #7F1D1D; background: #FEE2E2; }
+    .move-badge.flat { color: var(--slate); background: transparent; font-size: 11px; }
+    @media (prefers-color-scheme: dark) {
+      .move-badge.up { color: #6EE7B7; background: rgba(16,185,129,.15); }
+      .move-badge.dn { color: #FCA5A5; background: rgba(239,68,68,.15); }
+    }
+    .rankings-table td.team-col {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--ink);
+    }
+    .team-cell {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .team-row-logo {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+    .row-arrow {
+      font-size: 10px;
+      color: var(--slate-light);
+      transition: transform .2s;
+      flex-shrink: 0;
+      display: inline-block;
+    }
+    tr.row-expanded .row-arrow {
+      transform: rotate(90deg);
+    }
+    .rankings-table td.avg-col {
+      text-align: right;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--ink);
+      width: 70px;
+    }
+    .rankings-table td.range-col {
+      text-align: right;
+      font-size: 14px;
+      color: var(--slate);
+      width: 100px;
+      white-space: nowrap;
+    }
+
+    /* ── Expandable detail row ── */
+    .detail-row td {
+      padding: 0;
+      border-bottom: 2px solid var(--orange);
+    }
+    .detail-row.hidden { display: none; }
+    .team-detail {
+      padding: 16px 20px 20px;
+      background: var(--page-bg);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .team-detail-logo {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+    .team-detail-body {
+      flex: 1;
+      min-width: 200px;
+    }
+    .team-desc-text {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--slate);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+    .outlet-section-label {
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--slate-light);
+      margin-bottom: 8px;
+    }
+    .outlet-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .outlet-pill {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 8px 12px;
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      text-decoration: none;
+      min-width: 72px;
+      transition: border-color .15s, box-shadow .15s;
+    }
+    .outlet-pill:hover {
+      border-color: var(--orange);
+      box-shadow: 0 2px 6px rgba(0,0,0,.08);
+    }
+    .outlet-pill-rank {
+      font-family: var(--font-head);
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--orange);
+      line-height: 1;
+    }
+    .outlet-pill-name {
+      font-family: var(--font-head);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-top: 3px;
+      text-align: center;
+    }
+    .outlet-pill-prev {
+      font-family: var(--font-body);
+      font-size: 11px;
+      color: var(--slate-light);
+      margin-top: 2px;
+    }
+
+    /* ── Week nav ── */
+    .week-nav {
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid var(--rule);
+    }
+    .week-nav-label {
+      font-family: var(--font-head);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-bottom: 10px;
+    }
+    .week-nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .week-nav-links a {
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--orange);
+      text-decoration: none;
+      padding: 4px 10px;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+    }
+    .week-nav-links a:hover { background: var(--card-bg); }
+    .week-nav-links a.current {
+      background: var(--orange);
+      color: #fff;
+      border-color: var(--orange);
+    }
   </style>
 </head>
 <body>
@@ -53,373 +350,51 @@
   </div>
 </header>
 
-<nav class="sport-nav">
-  <div class="container">
-    <div class="sport-nav-inner">
-      <a href="index.html" class="sport-tab active">NFL</a>
-      <span class="sport-tab">NBA <span class="badge">SOON</span></span>
-      <span class="sport-tab">MLB <span class="badge">SOON</span></span>
+<div class="container" style="padding-top:28px;">
+  <a href="index.html" class="back-link">← Back to NFL</a>
+  <p style="font-family:var(--font-head);font-size:17px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin-bottom:6px;">Fodder Sports · NFL Power Rankings · Week 3</p>
+  <h1 style="font-family:var(--font-head);font-size:clamp(24px,4vw,36px);font-weight:700;line-height:1.2;margin-bottom:8px;color:var(--ink);">Week 3 Power Rankings</h1>
+  <p class="article-lead">One ranking from the whole national conversation: the consensus of major national power rankings.</p>
+
+  <!-- Season chart -->
+  <div class="chart-container">
+    <div class="chart-header">
+      <div class="chart-title-block">
+        <div class="chart-title">Season Movement</div>
+        <div class="chart-subtitle">Consensus rank by week</div>
+      </div>
+      <div class="team-selectors" id="team-selectors"></div>
     </div>
-  </div>
-</nav>
-
-<div class="container">
-  <div class="page-header rankings-header">
-    <p class="breadcrumb"><a href="../index.html">Fodder Sports</a> / <a href="index.html">NFL</a> / <a href="power-rankings.html">Power Rankings</a></p>
-    <h1 class="page-title">Week 3 Power Rankings</h1>
-    <p class="rankings-subtitle">One ranking from the whole national conversation: the consensus of major national power rankings. Arrows show movement from last week's consensus.</p>
-    <div style="font-family:var(--font-body);font-size:12px;color:var(--slate);margin-top:8px;">Updated Sept. 22, 2026</div>
-  </div>
-
-  <table class="rankings-table">
-    <thead>
-      <tr>
-        <th class="rank-col">#</th>
-        <th class="team-col">Team</th>
-        <th class="move-col"></th>
-        <th class="avg-col">Avg</th>
-        <th class="range-col">Range</th>
-      </tr>
-    </thead>
-    <tbody id="rankings-body">
-
-      <tr>
-        <td class="rank-col">1</td>
-        <td class="team-col">
-          <span class="team-pill" style="background:#00224420;color:#002244;border:1px solid #00224440;">SEA</span>
-          Seattle Seahawks
-        </td>
-        <td class="move-col" style="color:var(--slate);">—</td>
-        <td class="avg-col">1.2</td>
-        <td class="range-col">1–2</td>
-      </tr>
-      <tr>
-        <td class="rank-col">2</td>
-        <td class="team-col">
-          <span class="team-pill" style="background:#00338D20;color:#00338D;border:1px solid #00338D40;">BUF</span>
-          Buffalo Bills
-        </td>
-        <td class="move-col" style="color:var(--slate);">—</td>
-        <td class="avg-col">2.0</td>
-        <td class="range-col">1–4</td>
-      </tr>
-      <tr>
-        <td class="rank-col">3</td>
-        <td class="team-col">
-          <span class="team-pill" style="background:#AA000020;color:#AA0000;border:1px solid #AA000040;">SF</span>
-          San Francisco 49ers
-        </td>
-        <td class="move-col" style="color:var(--slate);">—</td>
-        <td class="avg-col">3.7</td>
-        <td class="range-col">2–7</td>
-      </tr>
-      <tr>
-        <td class="rank-col">4</td>
-        <td class="team-col">
-          <span class="team-pill" style="background:#E3183720;color:#E31837;border:1px solid #E3183740;">KC</span>
-          Kansas City Chiefs
-        </td>
-        <td class="move-col" style="color:var(--slate);">—</td>
-        <td class="avg-col">4.9</td>
-        <td class="range-col">3–8</td>
-      </tr>
-      <tr>
-        <td class="rank-col">5</td>
-        <td class="team-col">
-          <span class="team-pill" style="background:#00359420;color:#003594;border:1px solid #00359440;">LAR</span>
-          Los Angeles Rams
-        </td>
-        <td class="move-col" style="color:var(--slate);">—</td>
-        <td class="avg-col">5.9</td>
-        <td class="range-col">3–9</td>
-      </tr>
-      <tr>
-        <td class="rank-col">6</td>
-        <td class="team-col">
-          <span class="team-pill" style="background:#FB4F1420;color:#FB4F14;border:1px solid #FB4F1440;">CIN</span>
-          Cincinnati Bengals
-        </td>
-        <td class="move-col" style="color:var(--slate);">—</td>
-        <td class="avg-col">6.6</td>
-        <td class="range-col">3–16</td>
-      </tr>
-      <tr>
-        <td class="rank-col">7</td>
-        <td class="team-col">
-          <span class="team-pill" style="background:#FB4F1420;color:#FB4F14;border:1px solid #FB4F1440;">DEN</span>
-          Denver Broncos
-        </td>
-        <td class="move-col" style="color:var(--slate);">—</td>
-        <td class="avg-col">7.7</td>
-        <td class="range-col">6–12</td>
-      </tr>
-      <tr>
-        <td class="rank-col">8</td>
-        <td class="team-col">
-          <span class="team-pill" style="background:#004C5420;color:#004C54;border:1px solid #004C5440;">PHI</span>
-          Philadelphia Eagles
-        </td>
-        <td class="move-col" style="color:var(--slate);">—</td>
-        <td class="avg-col">8.4</td>
-        <td class="range-col">5–16</td>
-      </tr>
-      <tr>
-        <td class="rank-col">9</td>
-        <td class="team-col">
-          <span class="team-pill" style="background:#00677820;color:#006778;border:1px solid #00677840;">JAX</span>
-          Jacksonville Jaguars
-        </td>
-        <td class="move-col" style="color:var(--slate);">—</td>
-        <td class="avg-col">9.8</td>
-        <td class="range-col">5–13</td>
-      </tr>
-      <tr>
-        <td class="rank-col">10</td>
-        <td class="team-col">
-          <span class="team-pill" style="background:#24177320;color:#241773;border:1px solid #24177340;">BAL</span>
-          Baltimore Ravens
-        </td>
-        <td class="move-col" style="color:var(--slate);">—</td>
-        <td class="avg-col">10.0</td>
-        <td class="range-col">5–15</td>
-      </tr>
-      <tr>
-        <td class="rank-col">11</td>
-        <td class="team-col">
-          <span class="team-pill" style="background:#4F268320;color:#4F2683;border:1px solid #4F268340;">MIN</span>
-          Minnesota Vikings
-        </td>
-        <td class="move-col" style="color:var(--slate);">—</td>
-        <td class="avg-col">11.0</td>
-        <td class="range-col">6–15</td>
-      </tr>
-      <tr>
-        <td class="rank-col">12</td>
-        <td class="team-col">
-          <span class="team-pill" style="background:#0B162A20;color:#0B162A;border:1px solid #0B162A40;">CHI</span>
-          Chicago Bears
-        </td>
-        <td class="move-col" style="color:var(--slate);">—</td>
-        <td class="avg-col">12.2</td>
-        <td class="range-col">10–16</td>
-      </tr>
-      <tr>
-        <td class="rank-col">13</td>
-        <td class="team-col">
-          <span class="team-pill" style="background:#00224420;color:#002244;border:1px solid #00224440;">NE</span>
-          New England Patriots
-        </td>
-        <td class="move-col" style="color:var(--slate);">—</td>
-        <td class="avg-col">12.2</td>
-        <td class="range-col">7–18</td>
-      </tr>
-      <tr>
-        <td class="rank-col">14</td>
-        <td class="team-col">
-          <span class="team-pill" style="background:#0076B620;color:#0076B6;border:1px solid #0076B640;">DET</span>
-          Detroit Lions
-        </td>
-        <td class="move-col" style="color:var(--slate);">—</td>
-        <td class="avg-col">14.2</td>
-        <td class="range-col">10–18</td>
-      </tr>
-      <tr>
-        <td class="rank-col">15</td>
-        <td class="team-col">
-          <span class="team-pill" style="background:#03202F20;color:#03202F;border:1px solid #03202F40;">HOU</span>
-          Houston Texans
-        </td>
-        <td class="move-col" style="color:var(--slate);">—</td>
-        <td class="avg-col">14.6</td>
-        <td class="range-col">6–24</td>
-      </tr>
-      <tr>
-        <td class="rank-col">16</td>
-        <td class="team-col">
-          <span class="team-pill" style="background:#D3BC8D20;color:#D3BC8D;border:1px solid #D3BC8D40;">NO</span>
-          New Orleans Saints
-        </td>
-        <td class="move-col" style="color:var(--slate);">—</td>
-        <td class="avg-col">16.4</td>
-        <td class="range-col">13–26</td>
-      </tr>
-      <tr>
-        <td class="rank-col">17</td>
-        <td class="team-col">
-          <span class="team-pill" style="background:#00359420;color:#003594;border:1px solid #00359440;">DAL</span>
-          Dallas Cowboys
-        </td>
-        <td class="move-col" style="color:var(--slate);">—</td>
-        <td class="avg-col">16.7</td>
-        <td class="range-col">12–20</td>
-      </tr>
-      <tr>
-        <td class="rank-col">18</td>
-        <td class="team-col">
-          <span class="team-pill" style="background:#20373120;color:#203731;border:1px solid #20373140;">GB</span>
-          Green Bay Packers
-        </td>
-        <td class="move-col" style="color:var(--slate);">—</td>
-        <td class="avg-col">17.7</td>
-        <td class="range-col">13–20</td>
-      </tr>
-      <tr>
-        <td class="rank-col">19</td>
-        <td class="team-col">
-          <span class="team-pill" style="background:#0085CA20;color:#0085CA;border:1px solid #0085CA40;">CAR</span>
-          Carolina Panthers
-        </td>
-        <td class="move-col" style="color:var(--slate);">—</td>
-        <td class="avg-col">19.7</td>
-        <td class="range-col">16–22</td>
-      </tr>
-      <tr>
-        <td class="rank-col">20</td>
-        <td class="team-col">
-          <span class="team-pill" style="background:#0B226520;color:#0B2265;border:1px solid #0B226540;">NYG</span>
-          New York Giants
-        </td>
-        <td class="move-col" style="color:var(--slate);">—</td>
-        <td class="avg-col">20.0</td>
-        <td class="range-col">17–25</td>
-      </tr>
-      <tr>
-        <td class="rank-col">21</td>
-        <td class="team-col">
-          <span class="team-pill" style="background:#00000020;color:#000000;border:1px solid #00000040;">LV</span>
-          Las Vegas Raiders
-        </td>
-        <td class="move-col" style="color:var(--slate);">—</td>
-        <td class="avg-col">20.8</td>
-        <td class="range-col">16–23</td>
-      </tr>
-      <tr>
-        <td class="rank-col">22</td>
-        <td class="team-col">
-          <span class="team-pill" style="background:#002C5F20;color:#002C5F;border:1px solid #002C5F40;">IND</span>
-          Indianapolis Colts
-        </td>
-        <td class="move-col" style="color:var(--slate);">—</td>
-        <td class="avg-col">22.1</td>
-        <td class="range-col">16–27</td>
-      </tr>
-      <tr>
-        <td class="rank-col">23</td>
-        <td class="team-col">
-          <span class="team-pill" style="background:#FFB61220;color:#FFB612;border:1px solid #FFB61240;">PIT</span>
-          Pittsburgh Steelers
-        </td>
-        <td class="move-col" style="color:var(--slate);">—</td>
-        <td class="avg-col">23.0</td>
-        <td class="range-col">18–30</td>
-      </tr>
-      <tr>
-        <td class="rank-col">24</td>
-        <td class="team-col">
-          <span class="team-pill" style="background:#D50A0A20;color:#D50A0A;border:1px solid #D50A0A40;">TB</span>
-          Tampa Bay Buccaneers
-        </td>
-        <td class="move-col" style="color:var(--slate);">—</td>
-        <td class="avg-col">23.4</td>
-        <td class="range-col">18–27</td>
-      </tr>
-      <tr>
-        <td class="rank-col">25</td>
-        <td class="team-col">
-          <span class="team-pill" style="background:#0073CF20;color:#0073CF;border:1px solid #0073CF40;">LAC</span>
-          Los Angeles Chargers
-        </td>
-        <td class="move-col" style="color:var(--slate);">—</td>
-        <td class="avg-col">25.0</td>
-        <td class="range-col">22–29</td>
-      </tr>
-      <tr>
-        <td class="rank-col">26</td>
-        <td class="team-col">
-          <span class="team-pill" style="background:#311D0020;color:#311D00;border:1px solid #311D0040;">CLE</span>
-          Cleveland Browns
-        </td>
-        <td class="move-col" style="color:var(--slate);">—</td>
-        <td class="avg-col">25.9</td>
-        <td class="range-col">22–29</td>
-      </tr>
-      <tr>
-        <td class="rank-col">27</td>
-        <td class="team-col">
-          <span class="team-pill" style="background:#12574020;color:#125740;border:1px solid #12574040;">NYJ</span>
-          New York Jets
-        </td>
-        <td class="move-col" style="color:var(--slate);">—</td>
-        <td class="avg-col">26.0</td>
-        <td class="range-col">23–28</td>
-      </tr>
-      <tr>
-        <td class="rank-col">28</td>
-        <td class="team-col">
-          <span class="team-pill" style="background:#97233F20;color:#97233F;border:1px solid #97233F40;">ARI</span>
-          Arizona Cardinals
-        </td>
-        <td class="move-col" style="color:var(--slate);">—</td>
-        <td class="avg-col">26.8</td>
-        <td class="range-col">24–30</td>
-      </tr>
-      <tr>
-        <td class="rank-col">29</td>
-        <td class="team-col">
-          <span class="team-pill" style="background:#77314120;color:#773141;border:1px solid #77314140;">WAS</span>
-          Washington Commanders
-        </td>
-        <td class="move-col" style="color:var(--slate);">—</td>
-        <td class="avg-col">28.0</td>
-        <td class="range-col">21–30</td>
-      </tr>
-      <tr>
-        <td class="rank-col">30</td>
-        <td class="team-col">
-          <span class="team-pill" style="background:#0C234020;color:#0C2340;border:1px solid #0C234040;">TEN</span>
-          Tennessee Titans
-        </td>
-        <td class="move-col" style="color:var(--slate);">—</td>
-        <td class="avg-col">29.8</td>
-        <td class="range-col">27–31</td>
-      </tr>
-      <tr>
-        <td class="rank-col">31</td>
-        <td class="team-col">
-          <span class="team-pill" style="background:#A7193020;color:#A71930;border:1px solid #A7193040;">ATL</span>
-          Atlanta Falcons
-        </td>
-        <td class="move-col" style="color:var(--slate);">—</td>
-        <td class="avg-col">30.6</td>
-        <td class="range-col">29–32</td>
-      </tr>
-      <tr>
-        <td class="rank-col">32</td>
-        <td class="team-col">
-          <span class="team-pill" style="background:#008E9720;color:#008E97;border:1px solid #008E9740;">MIA</span>
-          Miami Dolphins
-        </td>
-        <td class="move-col" style="color:var(--slate);">—</td>
-        <td class="avg-col">31.9</td>
-        <td class="range-col">31–32</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="chart-section">
-    <div class="chart-section-label">Track a team's season</div>
-    <div class="chart-selectors" id="team-selectors"></div>
     <div class="chart-canvas-wrap">
       <canvas id="rankChart"></canvas>
       <div id="chartTooltip" class="chart-tooltip"></div>
     </div>
-    <p class="chart-note">Lower rank = better. Select up to 4 teams to compare.</p>
   </div>
 
+  <!-- Full rankings list -->
+  <div id="rankings-full" style="margin-top:20px;">
+    <div style="font-family:var(--font-body);font-size:13px;color:var(--slate);padding:16px 0;">Loading rankings...</div>
+  </div>
+
+  <!-- Week navigation -->
   <div class="week-nav">
     <div class="week-nav-label">Previous weeks</div>
-    <div class="week-nav-links"><a href="power-rankings-w1.html">Week 1</a><a href="power-rankings-w2.html">Week 2</a><a href="power-rankings-w3.html" class="current">Week 3</a><a href="power-rankings-w4.html">Week 4</a><a href="power-rankings-w5.html">Week 5</a><a href="power-rankings-w6.html">Week 6</a><a href="power-rankings-w7.html">Week 7</a><a href="power-rankings-w8.html">Week 8</a><a href="power-rankings-w9.html">Week 9</a><a href="power-rankings.html">Week 10</a></div>
+    <div class="week-nav-links">
+      <a href="power-rankings-w1.html">Week 1</a>
+      <a href="power-rankings-w2.html">Week 2</a>
+      <a href="power-rankings-w3.html" class="current">Week 3</a>
+      <a href="power-rankings-w4.html">Week 4</a>
+      <a href="power-rankings-w5.html">Week 5</a>
+      <a href="power-rankings-w6.html">Week 6</a>
+      <a href="power-rankings-w7.html">Week 7</a>
+      <a href="power-rankings-w8.html">Week 8</a>
+      <a href="power-rankings-w9.html">Week 9</a>
+      <a href="power-rankings-w10.html">Week 10</a>
+      <a href="power-rankings.html">Week 11</a>
+    </div>
   </div>
+
+  <p style="font-family:var(--font-body);font-size:12px;color:var(--slate-light);margin-top:16px;padding-top:16px;border-top:1px solid var(--rule);">Fodder Sports · Pilot · Rankings are a consensus of published national rankings from NFL.com, CBS Sports, PFT, USA Today, Fox Sports, ESPN, Bleacher Report, Sports Illustrated, Pro Football Network, and Kalshi. Not affiliated with the NFL.</p>
 </div>
 
 <footer class="site-footer">
@@ -431,97 +406,376 @@
   </div>
 </footer>
 
+<script src="../js/main.js"></script>
 <script>
-// ── Chart data for week 3 ──────────────────────────────
-// This is a snapshot archive — chart shows single week bar only
+// ── Chart data ──────────────────────────────────────────────────
+const RANK_HISTORY = {"ARI": {"1": 30, "2": 23, "3": 28}, "ATL": {"1": 26, "2": 29, "3": 31}, "BAL": {"1": 6, "2": 3, "3": 10}, "BUF": {"1": 4, "2": 2, "3": 2}, "CAR": {"1": 22, "2": 26, "3": 19}, "CHI": {"1": 10, "2": 5, "3": 12}, "CIN": {"1": 8, "2": 10, "3": 6}, "CLE": {"1": 30, "2": 32, "3": 26}, "DAL": {"1": 12, "2": 18, "3": 17}, "DEN": {"1": 3, "2": 12, "3": 7}, "DET": {"1": 14, "2": 13, "3": 14}, "GB": {"1": 16, "2": 16, "3": 18}, "HOU": {"1": 5, "2": 10, "3": 15}, "IND": {"1": 21, "2": 25, "3": 22}, "JAX": {"1": 7, "2": 7, "3": 9}, "KC": {"1": 17, "2": 8, "3": 4}, "LAC": {"1": 15, "2": 19, "3": 25}, "LAR": {"1": 1, "2": 5, "3": 5}, "LV": {"1": 29, "2": 28, "3": 21}, "MIA": {"1": 32, "2": 31, "3": 32}, "MIN": {"1": 18, "2": 15, "3": 11}, "NE": {"1": 9, "2": 13, "3": 12}, "NO": {"1": 23, "2": 22, "3": 16}, "NYG": {"1": 24, "2": 17, "3": 20}, "NYJ": {"1": 28, "2": 27, "3": 27}, "PHI": {"1": 11, "2": 9, "3": 8}, "PIT": {"1": 20, "2": 21, "3": 23}, "SEA": {"1": 2, "2": 1, "3": 1}, "SF": {"1": 12, "2": 4, "3": 3}, "TB": {"1": 19, "2": 20, "3": 24}, "TEN": {"1": 27, "2": 30, "3": 30}, "WAS": {"1": 25, "2": 24, "3": 29}};
 
-const WEEK = 3;
-const COLORS = ['#E84B2F','#1A6B3A','#2255CC','#C47000'];
-const TEAM_ABBRS = ["SEA", "BUF", "SF", "KC", "LAR", "CIN", "DEN", "PHI", "JAX", "BAL", "MIN", "CHI", "NE", "DET", "HOU", "NO", "DAL", "GB", "CAR", "NYG", "LV", "IND", "PIT", "TB", "LAC", "CLE", "NYJ", "ARI", "WAS", "TEN", "ATL", "MIA"];
-const TEAM_NAMES_MAP = {"SEA": "Seattle Seahawks", "BUF": "Buffalo Bills", "SF": "San Francisco 49ers", "KC": "Kansas City Chiefs", "LAR": "Los Angeles Rams", "CIN": "Cincinnati Bengals", "DEN": "Denver Broncos", "PHI": "Philadelphia Eagles", "JAX": "Jacksonville Jaguars", "BAL": "Baltimore Ravens", "MIN": "Minnesota Vikings", "CHI": "Chicago Bears", "NE": "New England Patriots", "DET": "Detroit Lions", "HOU": "Houston Texans", "NO": "New Orleans Saints", "DAL": "Dallas Cowboys", "GB": "Green Bay Packers", "CAR": "Carolina Panthers", "NYG": "New York Giants", "LV": "Las Vegas Raiders", "IND": "Indianapolis Colts", "PIT": "Pittsburgh Steelers", "TB": "Tampa Bay Buccaneers", "LAC": "Los Angeles Chargers", "CLE": "Cleveland Browns", "NYJ": "New York Jets", "ARI": "Arizona Cardinals", "WAS": "Washington Commanders", "TEN": "Tennessee Titans", "ATL": "Atlanta Falcons", "MIA": "Miami Dolphins"};
-const SORTED_ABBRS = [...TEAM_ABBRS].sort((a,b) => TEAM_NAMES_MAP[a].localeCompare(TEAM_NAMES_MAP[b]));
-const WEEK_AVGS = {"SEA": 1.22, "BUF": 2.0, "SF": 3.67, "KC": 4.89, "LAR": 5.89, "CIN": 6.56, "DEN": 7.67, "PHI": 8.44, "JAX": 9.78, "BAL": 10.0, "MIN": 11.0, "CHI": 12.22, "NE": 12.22, "DET": 14.22, "HOU": 14.56, "NO": 16.44, "DAL": 16.67, "GB": 17.67, "CAR": 19.67, "NYG": 20.0, "LV": 20.78, "IND": 22.11, "PIT": 23.0, "TB": 23.44, "LAC": 25.0, "CLE": 25.89, "NYJ": 26.0, "ARI": 26.78, "WAS": 28.0, "TEN": 29.78, "ATL": 30.56, "MIA": 31.89};
+const TEAM_ABBRS = ["ARI", "ATL", "BAL", "BUF", "CAR", "CHI", "CIN", "CLE", "DAL", "DEN", "DET", "GB", "HOU", "IND", "JAX", "KC", "LAC", "LAR", "LV", "MIA", "MIN", "NE", "NO", "NYG", "NYJ", "PHI", "PIT", "SEA", "SF", "TB", "TEN", "WAS"];
+const TEAM_NAMES_MAP = {"ARI": "Arizona Cardinals", "ATL": "Atlanta Falcons", "BAL": "Baltimore Ravens", "BUF": "Buffalo Bills", "CAR": "Carolina Panthers", "CHI": "Chicago Bears", "CIN": "Cincinnati Bengals", "CLE": "Cleveland Browns", "DAL": "Dallas Cowboys", "DEN": "Denver Broncos", "DET": "Detroit Lions", "GB": "Green Bay Packers", "HOU": "Houston Texans", "IND": "Indianapolis Colts", "JAX": "Jacksonville Jaguars", "KC": "Kansas City Chiefs", "LAC": "Los Angeles Chargers", "LAR": "Los Angeles Rams", "LV": "Las Vegas Raiders", "MIA": "Miami Dolphins", "MIN": "Minnesota Vikings", "NE": "New England Patriots", "NO": "New Orleans Saints", "NYG": "New York Giants", "NYJ": "New York Jets", "PHI": "Philadelphia Eagles", "PIT": "Pittsburgh Steelers", "SF": "San Francisco 49ers", "SEA": "Seattle Seahawks", "TB": "Tampa Bay Buccaneers", "TEN": "Tennessee Titans", "WAS": "Washington Commanders"};
 
-let selectedTeams = ["SEA", "BUF", "SF", "KC"];
+// Colors for up to 4 teams
+const SLOT_COLORS = ['#E84B2F','#1A6B3A','#2255CC','#C47000'];
+const MAX_TEAMS = 4;
+const WEEKS = [1, 2, 3];
 
-function buildSelectors() {
-  const container = document.getElementById('team-selectors');
-  container.innerHTML = '';
-  selectedTeams.forEach((abbr, i) => {
-    const sel = document.createElement('select');
-    SORTED_ABBRS.forEach(a => {
-      const opt = document.createElement('option');
-      opt.value = a;
-      opt.textContent = TEAM_NAMES_MAP[a];
-      opt.selected = (a === abbr);
-      if (selectedTeams.filter((_,j)=>j!==i).includes(a)) opt.disabled = true;
-      sel.appendChild(opt);
-    });
-    sel.style.borderLeftColor = COLORS[i];
-    sel.style.borderLeftWidth = '3px';
-    sel.addEventListener('change', () => { selectedTeams[i] = sel.value; buildSelectors(); drawChart(); });
-    container.appendChild(sel);
-  });
+// Default teams: top 4 current
+const DEFAULT_TEAMS = ["SEA", "BUF", "SF", "KC"];
+
+// This week's rankings, stored in the page so past weeks never change.
+const WEEK_DATA = {"updated": "2026-09-22T12:00:00Z", "week": 3, "teams": [{"abbr": "SEA", "name": "Seattle Seahawks", "rank": 1, "prev": 1, "move": 0, "average": 1.22, "range_best": 1, "range_worst": 2, "desc": "", "outlets": [{"name": "NFL.com", "rank": 1, "prev": 1}, {"name": "CBS Sports", "rank": 1, "prev": 1}, {"name": "ProFootballTalk", "rank": 1, "prev": 1}, {"name": "USA Today", "rank": 1, "prev": 1}, {"name": "Fox Sports", "rank": 2, "prev": 3}, {"name": "ESPN", "rank": 2, "prev": 2}, {"name": "Bleacher Report", "rank": 1, "prev": 1}, {"name": "Sports Illustrated", "rank": 1, "prev": 1}, {"name": "Pro Football Network", "rank": 1, "prev": 3}]}, {"abbr": "BUF", "name": "Buffalo Bills", "rank": 2, "prev": 2, "move": 0, "average": 2.0, "range_best": 1, "range_worst": 4, "desc": "", "outlets": [{"name": "NFL.com", "rank": 2, "prev": 2}, {"name": "CBS Sports", "rank": 2, "prev": 3}, {"name": "ProFootballTalk", "rank": 2, "prev": 2}, {"name": "USA Today", "rank": 2, "prev": 3}, {"name": "Fox Sports", "rank": 1, "prev": 4}, {"name": "ESPN", "rank": 1, "prev": 1}, {"name": "Bleacher Report", "rank": 2, "prev": 2}, {"name": "Sports Illustrated", "rank": 2, "prev": 2}, {"name": "Pro Football Network", "rank": 4, "prev": 4}]}, {"abbr": "SF", "name": "San Francisco 49ers", "rank": 3, "prev": 4, "move": 1, "average": 3.67, "range_best": 2, "range_worst": 7, "desc": "", "outlets": [{"name": "NFL.com", "rank": 7, "prev": 9}, {"name": "CBS Sports", "rank": 3, "prev": 4}, {"name": "ProFootballTalk", "rank": 5, "prev": 10}, {"name": "USA Today", "rank": 3, "prev": 2}, {"name": "Fox Sports", "rank": 3, "prev": 7}, {"name": "ESPN", "rank": 3, "prev": 5}, {"name": "Bleacher Report", "rank": 3, "prev": 3}, {"name": "Sports Illustrated", "rank": 4, "prev": 6}, {"name": "Pro Football Network", "rank": 2, "prev": 2}]}, {"abbr": "KC", "name": "Kansas City Chiefs", "rank": 4, "prev": 8, "move": 4, "average": 4.89, "range_best": 3, "range_worst": 8, "desc": "", "outlets": [{"name": "NFL.com", "rank": 4, "prev": 10}, {"name": "CBS Sports", "rank": 5, "prev": 10}, {"name": "ProFootballTalk", "rank": 4, "prev": 8}, {"name": "USA Today", "rank": 5, "prev": 6}, {"name": "Fox Sports", "rank": 8, "prev": 12}, {"name": "ESPN", "rank": 4, "prev": 8}, {"name": "Bleacher Report", "rank": 4, "prev": 10}, {"name": "Sports Illustrated", "rank": 3, "prev": 5}, {"name": "Pro Football Network", "rank": 7, "prev": 13}]}, {"abbr": "LAR", "name": "Los Angeles Rams", "rank": 5, "prev": 5, "move": 0, "average": 5.89, "range_best": 3, "range_worst": 9, "desc": "", "outlets": [{"name": "NFL.com", "rank": 8, "prev": 7}, {"name": "CBS Sports", "rank": 8, "prev": 5}, {"name": "ProFootballTalk", "rank": 9, "prev": 11}, {"name": "USA Today", "rank": 4, "prev": 5}, {"name": "Fox Sports", "rank": 5, "prev": 5}, {"name": "ESPN", "rank": 5, "prev": 4}, {"name": "Bleacher Report", "rank": 6, "prev": 6}, {"name": "Sports Illustrated", "rank": 5, "prev": 7}, {"name": "Pro Football Network", "rank": 3, "prev": 1}]}, {"abbr": "CIN", "name": "Cincinnati Bengals", "rank": 6, "prev": 10, "move": 4, "average": 6.56, "range_best": 3, "range_worst": 16, "desc": "", "outlets": [{"name": "NFL.com", "rank": 3, "prev": 4}, {"name": "CBS Sports", "rank": 4, "prev": 8}, {"name": "ProFootballTalk", "rank": 3, "prev": 7}, {"name": "USA Today", "rank": 6, "prev": 9}, {"name": "Fox Sports", "rank": 4, "prev": 6}, {"name": "ESPN", "rank": 9, "prev": 15}, {"name": "Bleacher Report", "rank": 8, "prev": 14}, {"name": "Sports Illustrated", "rank": 6, "prev": 13}, {"name": "Pro Football Network", "rank": 16, "prev": 15}]}, {"abbr": "DEN", "name": "Denver Broncos", "rank": 7, "prev": 12, "move": 5, "average": 7.67, "range_best": 6, "range_worst": 12, "desc": "", "outlets": [{"name": "NFL.com", "rank": 6, "prev": 6}, {"name": "CBS Sports", "rank": 9, "prev": 11}, {"name": "ProFootballTalk", "rank": 6, "prev": 12}, {"name": "USA Today", "rank": 8, "prev": 13}, {"name": "Fox Sports", "rank": 6, "prev": 8}, {"name": "ESPN", "rank": 8, "prev": 9}, {"name": "Bleacher Report", "rank": 7, "prev": 8}, {"name": "Sports Illustrated", "rank": 7, "prev": 14}, {"name": "Pro Football Network", "rank": 12, "prev": 14}]}, {"abbr": "PHI", "name": "Philadelphia Eagles", "rank": 8, "prev": 9, "move": 1, "average": 8.44, "range_best": 5, "range_worst": 16, "desc": "", "outlets": [{"name": "NFL.com", "rank": 10, "prev": 11}, {"name": "CBS Sports", "rank": 7, "prev": 7}, {"name": "ProFootballTalk", "rank": 8, "prev": 9}, {"name": "USA Today", "rank": 16, "prev": 18}, {"name": "Fox Sports", "rank": 7, "prev": 9}, {"name": "ESPN", "rank": 6, "prev": 6}, {"name": "Bleacher Report", "rank": 5, "prev": 7}, {"name": "Sports Illustrated", "rank": 9, "prev": 12}, {"name": "Pro Football Network", "rank": 8, "prev": 6}]}, {"abbr": "JAX", "name": "Jacksonville Jaguars", "rank": 9, "prev": 7, "move": -2, "average": 9.78, "range_best": 5, "range_worst": 13, "desc": "", "outlets": [{"name": "NFL.com", "rank": 9, "prev": 5}, {"name": "CBS Sports", "rank": 10, "prev": 2}, {"name": "ProFootballTalk", "rank": 7, "prev": 5}, {"name": "USA Today", "rank": 11, "prev": 8}, {"name": "Fox Sports", "rank": 12, "prev": 11}, {"name": "ESPN", "rank": 13, "prev": 13}, {"name": "Bleacher Report", "rank": 10, "prev": 5}, {"name": "Sports Illustrated", "rank": 11, "prev": 9}, {"name": "Pro Football Network", "rank": 5, "prev": 9}]}, {"abbr": "BAL", "name": "Baltimore Ravens", "rank": 10, "prev": 3, "move": -7, "average": 10.0, "range_best": 5, "range_worst": 15, "desc": "", "outlets": [{"name": "NFL.com", "rank": 5, "prev": 3}, {"name": "CBS Sports", "rank": 11, "prev": 6}, {"name": "ProFootballTalk", "rank": 13, "prev": 6}, {"name": "USA Today", "rank": 15, "prev": 7}, {"name": "Fox Sports", "rank": 9, "prev": 1}, {"name": "ESPN", "rank": 7, "prev": 3}, {"name": "Bleacher Report", "rank": 9, "prev": 4}, {"name": "Sports Illustrated", "rank": 10, "prev": 3}, {"name": "Pro Football Network", "rank": 11, "prev": 7}]}, {"abbr": "MIN", "name": "Minnesota Vikings", "rank": 11, "prev": 15, "move": 4, "average": 11.0, "range_best": 6, "range_worst": 15, "desc": "", "outlets": [{"name": "NFL.com", "rank": 15, "prev": 22}, {"name": "CBS Sports", "rank": 6, "prev": 13}, {"name": "ProFootballTalk", "rank": 11, "prev": 15}, {"name": "USA Today", "rank": 9, "prev": 16}, {"name": "Fox Sports", "rank": 13, "prev": 15}, {"name": "ESPN", "rank": 12, "prev": 17}, {"name": "Bleacher Report", "rank": 11, "prev": 15}, {"name": "Sports Illustrated", "rank": 8, "prev": 15}, {"name": "Pro Football Network", "rank": 14, "prev": 20}]}, {"abbr": "CHI", "name": "Chicago Bears", "rank": 12, "prev": 5, "move": -7, "average": 12.22, "range_best": 10, "range_worst": 16, "desc": "", "outlets": [{"name": "NFL.com", "rank": 16, "prev": 8}, {"name": "CBS Sports", "rank": 12, "prev": 9}, {"name": "ProFootballTalk", "rank": 12, "prev": 3}, {"name": "USA Today", "rank": 13, "prev": 4}, {"name": "Fox Sports", "rank": 10, "prev": 2}, {"name": "ESPN", "rank": 11, "prev": 7}, {"name": "Bleacher Report", "rank": 14, "prev": 9}, {"name": "Sports Illustrated", "rank": 12, "prev": 4}, {"name": "Pro Football Network", "rank": 10, "prev": 5}]}, {"abbr": "NE", "name": "New England Patriots", "rank": 12, "prev": 13, "move": 1, "average": 12.22, "range_best": 7, "range_worst": 18, "desc": "", "outlets": [{"name": "NFL.com", "rank": 18, "prev": 18}, {"name": "CBS Sports", "rank": 14, "prev": 19}, {"name": "ProFootballTalk", "rank": 14, "prev": 13}, {"name": "USA Today", "rank": 7, "prev": 10}, {"name": "Fox Sports", "rank": 11, "prev": 10}, {"name": "ESPN", "rank": 10, "prev": 10}, {"name": "Bleacher Report", "rank": 12, "prev": 12}, {"name": "Sports Illustrated", "rank": 15, "prev": 11}, {"name": "Pro Football Network", "rank": 9, "prev": 10}]}, {"abbr": "DET", "name": "Detroit Lions", "rank": 14, "prev": 13, "move": -1, "average": 14.22, "range_best": 10, "range_worst": 18, "desc": "", "outlets": [{"name": "NFL.com", "rank": 13, "prev": 13}, {"name": "CBS Sports", "rank": 15, "prev": 15}, {"name": "ProFootballTalk", "rank": 16, "prev": 14}, {"name": "USA Today", "rank": 10, "prev": 12}, {"name": "Fox Sports", "rank": 14, "prev": 13}, {"name": "ESPN", "rank": 14, "prev": 12}, {"name": "Bleacher Report", "rank": 15, "prev": 13}, {"name": "Sports Illustrated", "rank": 18, "prev": 10}, {"name": "Pro Football Network", "rank": 13, "prev": 11}]}, {"abbr": "HOU", "name": "Houston Texans", "rank": 15, "prev": 10, "move": -5, "average": 14.56, "range_best": 6, "range_worst": 24, "desc": "", "outlets": [{"name": "NFL.com", "rank": 11, "prev": 12}, {"name": "CBS Sports", "rank": 24, "prev": 12}, {"name": "ProFootballTalk", "rank": 10, "prev": 4}, {"name": "USA Today", "rank": 18, "prev": 11}, {"name": "Fox Sports", "rank": 18, "prev": 14}, {"name": "ESPN", "rank": 15, "prev": 11}, {"name": "Bleacher Report", "rank": 16, "prev": 11}, {"name": "Sports Illustrated", "rank": 13, "prev": 8}, {"name": "Pro Football Network", "rank": 6, "prev": 8}]}, {"abbr": "NO", "name": "New Orleans Saints", "rank": 16, "prev": 22, "move": 6, "average": 16.44, "range_best": 13, "range_worst": 26, "desc": "", "outlets": [{"name": "NFL.com", "rank": 14, "prev": 21}, {"name": "CBS Sports", "rank": 18, "prev": 23}, {"name": "ProFootballTalk", "rank": 15, "prev": 21}, {"name": "USA Today", "rank": 14, "prev": 17}, {"name": "Fox Sports", "rank": 15, "prev": 19}, {"name": "ESPN", "rank": 19, "prev": 25}, {"name": "Bleacher Report", "rank": 13, "prev": 22}, {"name": "Sports Illustrated", "rank": 14, "prev": 20}, {"name": "Pro Football Network", "rank": 26, "prev": 22}]}, {"abbr": "DAL", "name": "Dallas Cowboys", "rank": 17, "prev": 18, "move": 1, "average": 16.67, "range_best": 12, "range_worst": 20, "desc": "", "outlets": [{"name": "NFL.com", "rank": 12, "prev": 17}, {"name": "CBS Sports", "rank": 17, "prev": 17}, {"name": "ProFootballTalk", "rank": 20, "prev": 22}, {"name": "USA Today", "rank": 12, "prev": 15}, {"name": "Fox Sports", "rank": 17, "prev": 22}, {"name": "ESPN", "rank": 16, "prev": 16}, {"name": "Bleacher Report", "rank": 17, "prev": 18}, {"name": "Sports Illustrated", "rank": 19, "prev": 19}, {"name": "Pro Football Network", "rank": 20, "prev": 17}]}, {"abbr": "GB", "name": "Green Bay Packers", "rank": 18, "prev": 16, "move": -2, "average": 17.67, "range_best": 13, "range_worst": 20, "desc": "", "outlets": [{"name": "NFL.com", "rank": 20, "prev": 16}, {"name": "CBS Sports", "rank": 13, "prev": 14}, {"name": "ProFootballTalk", "rank": 19, "prev": 20}, {"name": "USA Today", "rank": 20, "prev": 22}, {"name": "Fox Sports", "rank": 20, "prev": 18}, {"name": "ESPN", "rank": 17, "prev": 14}, {"name": "Bleacher Report", "rank": 18, "prev": 17}, {"name": "Sports Illustrated", "rank": 17, "prev": 16}, {"name": "Pro Football Network", "rank": 15, "prev": 12}]}, {"abbr": "CAR", "name": "Carolina Panthers", "rank": 19, "prev": 26, "move": 7, "average": 19.67, "range_best": 16, "range_worst": 22, "desc": "", "outlets": [{"name": "NFL.com", "rank": 17, "prev": 27}, {"name": "CBS Sports", "rank": 20, "prev": 25}, {"name": "ProFootballTalk", "rank": 21, "prev": 23}, {"name": "USA Today", "rank": 19, "prev": 23}, {"name": "Fox Sports", "rank": 16, "prev": 23}, {"name": "ESPN", "rank": 21, "prev": 26}, {"name": "Bleacher Report", "rank": 21, "prev": 23}, {"name": "Sports Illustrated", "rank": 20, "prev": 22}, {"name": "Pro Football Network", "rank": 22, "prev": 26}]}, {"abbr": "NYG", "name": "New York Giants", "rank": 20, "prev": 17, "move": -3, "average": 20.0, "range_best": 17, "range_worst": 25, "desc": "", "outlets": [{"name": "NFL.com", "rank": 21, "prev": 15}, {"name": "CBS Sports", "rank": 19, "prev": 16}, {"name": "ProFootballTalk", "rank": 17, "prev": 16}, {"name": "USA Today", "rank": 17, "prev": 14}, {"name": "Fox Sports", "rank": 19, "prev": 17}, {"name": "ESPN", "rank": 18, "prev": 18}, {"name": "Bleacher Report", "rank": 22, "prev": 21}, {"name": "Sports Illustrated", "rank": 22, "prev": 18}, {"name": "Pro Football Network", "rank": 25, "prev": 23}]}, {"abbr": "LV", "name": "Las Vegas Raiders", "rank": 21, "prev": 28, "move": 7, "average": 20.78, "range_best": 16, "range_worst": 23, "desc": "", "outlets": [{"name": "NFL.com", "rank": 22, "prev": 29}, {"name": "CBS Sports", "rank": 16, "prev": 28}, {"name": "ProFootballTalk", "rank": 22, "prev": 27}, {"name": "USA Today", "rank": 21, "prev": 29}, {"name": "Fox Sports", "rank": 22, "prev": 29}, {"name": "ESPN", "rank": 20, "prev": 28}, {"name": "Bleacher Report", "rank": 20, "prev": 24}, {"name": "Sports Illustrated", "rank": 21, "prev": 28}, {"name": "Pro Football Network", "rank": 23, "prev": 27}]}, {"abbr": "IND", "name": "Indianapolis Colts", "rank": 22, "prev": 25, "move": 3, "average": 22.11, "range_best": 16, "range_worst": 27, "desc": "", "outlets": [{"name": "NFL.com", "rank": 19, "prev": 26}, {"name": "CBS Sports", "rank": 25, "prev": 22}, {"name": "ProFootballTalk", "rank": 27, "prev": 25}, {"name": "USA Today", "rank": 25, "prev": 26}, {"name": "Fox Sports", "rank": 23, "prev": 21}, {"name": "ESPN", "rank": 24, "prev": 22}, {"name": "Bleacher Report", "rank": 23, "prev": 28}, {"name": "Sports Illustrated", "rank": 16, "prev": 23}, {"name": "Pro Football Network", "rank": 17, "prev": 24}]}, {"abbr": "PIT", "name": "Pittsburgh Steelers", "rank": 23, "prev": 21, "move": -2, "average": 23.0, "range_best": 18, "range_worst": 30, "desc": "", "outlets": [{"name": "NFL.com", "rank": 26, "prev": 23}, {"name": "CBS Sports", "rank": 22, "prev": 20}, {"name": "ProFootballTalk", "rank": 18, "prev": 17}, {"name": "USA Today", "rank": 27, "prev": 20}, {"name": "Fox Sports", "rank": 21, "prev": 16}, {"name": "ESPN", "rank": 25, "prev": 21}, {"name": "Bleacher Report", "rank": 19, "prev": 16}, {"name": "Sports Illustrated", "rank": 30, "prev": 27}, {"name": "Pro Football Network", "rank": 19, "prev": 21}]}, {"abbr": "TB", "name": "Tampa Bay Buccaneers", "rank": 24, "prev": 20, "move": -4, "average": 23.44, "range_best": 18, "range_worst": 27, "desc": "", "outlets": [{"name": "NFL.com", "rank": 24, "prev": 14}, {"name": "CBS Sports", "rank": 21, "prev": 18}, {"name": "ProFootballTalk", "rank": 26, "prev": 24}, {"name": "USA Today", "rank": 24, "prev": 19}, {"name": "Fox Sports", "rank": 24, "prev": 24}, {"name": "ESPN", "rank": 23, "prev": 20}, {"name": "Bleacher Report", "rank": 24, "prev": 20}, {"name": "Sports Illustrated", "rank": 27, "prev": 21}, {"name": "Pro Football Network", "rank": 18, "prev": 19}]}, {"abbr": "LAC", "name": "Los Angeles Chargers", "rank": 25, "prev": 19, "move": -6, "average": 25.0, "range_best": 22, "range_worst": 29, "desc": "", "outlets": [{"name": "NFL.com", "rank": 29, "prev": 20}, {"name": "CBS Sports", "rank": 23, "prev": 21}, {"name": "ProFootballTalk", "rank": 25, "prev": 19}, {"name": "USA Today", "rank": 28, "prev": 25}, {"name": "Fox Sports", "rank": 25, "prev": 20}, {"name": "ESPN", "rank": 22, "prev": 19}, {"name": "Bleacher Report", "rank": 25, "prev": 19}, {"name": "Sports Illustrated", "rank": 24, "prev": 17}, {"name": "Pro Football Network", "rank": 24, "prev": 18}]}, {"abbr": "CLE", "name": "Cleveland Browns", "rank": 26, "prev": 32, "move": 6, "average": 25.89, "range_best": 22, "range_worst": 29, "desc": "", "outlets": [{"name": "NFL.com", "rank": 23, "prev": 32}, {"name": "CBS Sports", "rank": 28, "prev": 31}, {"name": "ProFootballTalk", "rank": 23, "prev": 32}, {"name": "USA Today", "rank": 22, "prev": 31}, {"name": "Fox Sports", "rank": 26, "prev": 31}, {"name": "ESPN", "rank": 29, "prev": 32}, {"name": "Bleacher Report", "rank": 28, "prev": 32}, {"name": "Sports Illustrated", "rank": 26, "prev": 31}, {"name": "Pro Football Network", "rank": 28, "prev": 32}]}, {"abbr": "NYJ", "name": "New York Jets", "rank": 27, "prev": 27, "move": 0, "average": 26.0, "range_best": 23, "range_worst": 28, "desc": "", "outlets": [{"name": "NFL.com", "rank": 25, "prev": 24}, {"name": "CBS Sports", "rank": 27, "prev": 27}, {"name": "ProFootballTalk", "rank": 28, "prev": 26}, {"name": "USA Today", "rank": 23, "prev": 27}, {"name": "Fox Sports", "rank": 28, "prev": 27}, {"name": "ESPN", "rank": 27, "prev": 27}, {"name": "Bleacher Report", "rank": 26, "prev": 26}, {"name": "Sports Illustrated", "rank": 23, "prev": 25}, {"name": "Pro Football Network", "rank": 27, "prev": 29}]}, {"abbr": "ARI", "name": "Arizona Cardinals", "rank": 28, "prev": 23, "move": -5, "average": 26.78, "range_best": 24, "range_worst": 30, "desc": "", "outlets": [{"name": "NFL.com", "rank": 30, "prev": 19}, {"name": "CBS Sports", "rank": 26, "prev": 24}, {"name": "ProFootballTalk", "rank": 24, "prev": 18}, {"name": "USA Today", "rank": 26, "prev": 24}, {"name": "Fox Sports", "rank": 27, "prev": 25}, {"name": "ESPN", "rank": 26, "prev": 24}, {"name": "Bleacher Report", "rank": 27, "prev": 25}, {"name": "Sports Illustrated", "rank": 25, "prev": 26}, {"name": "Pro Football Network", "rank": 30, "prev": 28}]}, {"abbr": "WAS", "name": "Washington Commanders", "rank": 29, "prev": 24, "move": -5, "average": 28.0, "range_best": 21, "range_worst": 30, "desc": "", "outlets": [{"name": "NFL.com", "rank": 28, "prev": 25}, {"name": "CBS Sports", "rank": 29, "prev": 26}, {"name": "ProFootballTalk", "rank": 30, "prev": 28}, {"name": "USA Today", "rank": 30, "prev": 21}, {"name": "Fox Sports", "rank": 29, "prev": 26}, {"name": "ESPN", "rank": 28, "prev": 23}, {"name": "Bleacher Report", "rank": 29, "prev": 27}, {"name": "Sports Illustrated", "rank": 28, "prev": 24}, {"name": "Pro Football Network", "rank": 21, "prev": 16}]}, {"abbr": "TEN", "name": "Tennessee Titans", "rank": 30, "prev": 30, "move": 0, "average": 29.78, "range_best": 27, "range_worst": 31, "desc": "", "outlets": [{"name": "NFL.com", "rank": 27, "prev": 31}, {"name": "CBS Sports", "rank": 31, "prev": 30}, {"name": "ProFootballTalk", "rank": 29, "prev": 30}, {"name": "USA Today", "rank": 31, "prev": 30}, {"name": "Fox Sports", "rank": 30, "prev": 30}, {"name": "ESPN", "rank": 30, "prev": 30}, {"name": "Bleacher Report", "rank": 30, "prev": 30}, {"name": "Sports Illustrated", "rank": 29, "prev": 30}, {"name": "Pro Football Network", "rank": 31, "prev": 30}]}, {"abbr": "ATL", "name": "Atlanta Falcons", "rank": 31, "prev": 29, "move": -2, "average": 30.56, "range_best": 29, "range_worst": 32, "desc": "", "outlets": [{"name": "NFL.com", "rank": 31, "prev": 28}, {"name": "CBS Sports", "rank": 30, "prev": 29}, {"name": "ProFootballTalk", "rank": 32, "prev": 29}, {"name": "USA Today", "rank": 29, "prev": 28}, {"name": "Fox Sports", "rank": 31, "prev": 28}, {"name": "ESPN", "rank": 31, "prev": 29}, {"name": "Bleacher Report", "rank": 31, "prev": 29}, {"name": "Sports Illustrated", "rank": 31, "prev": 29}, {"name": "Pro Football Network", "rank": 29, "prev": 25}]}, {"abbr": "MIA", "name": "Miami Dolphins", "rank": 32, "prev": 31, "move": -1, "average": 31.89, "range_best": 31, "range_worst": 32, "desc": "", "outlets": [{"name": "NFL.com", "rank": 32, "prev": 30}, {"name": "CBS Sports", "rank": 32, "prev": 32}, {"name": "ProFootballTalk", "rank": 31, "prev": 31}, {"name": "USA Today", "rank": 32, "prev": 32}, {"name": "Fox Sports", "rank": 32, "prev": 32}, {"name": "ESPN", "rank": 32, "prev": 31}, {"name": "Bleacher Report", "rank": 32, "prev": 31}, {"name": "Sports Illustrated", "rank": 32, "prev": 32}, {"name": "Pro Football Network", "rank": 32, "prev": 31}]}]};
+
+let selectedTeams = [...DEFAULT_TEAMS];
+
+// ── Logo helper ─────────────────────────────────────────────────
+function getLogoAbbr(abbr) {
+  if (abbr === 'WAS') return 'wsh';
+  return abbr.toLowerCase();
 }
 
+// ── Canvas chart ───────────────────────────────────────────────
 function drawChart() {
   const canvas = document.getElementById('rankChart');
+  if (!canvas) return;
   const dpr = window.devicePixelRatio || 1;
-  const W = canvas.parentElement.clientWidth;
-  const H = Math.max(200, Math.min(320, W * 0.4));
-  canvas.style.width = W + 'px';
-  canvas.style.height = H + 'px';
+  const W = canvas.clientWidth || canvas.parentElement.clientWidth;
+  const H = 300;
   canvas.width = W * dpr;
   canvas.height = H * dpr;
   const ctx = canvas.getContext('2d');
   ctx.scale(dpr, dpr);
 
-  const PAD = {top:20, right:16, bottom:40, left:36};
-  const plotW = W - PAD.left - PAD.right;
-  const plotH = H - PAD.top - PAD.bottom;
+  // Layout
+  const pad = { top: 20, right: 24, bottom: 44, left: 48 };
+  const cw = W - pad.left - pad.right;
+  const ch = H - pad.top - pad.bottom;
 
-  ctx.clearRect(0,0,W,H);
+  // Dark mode detection
+  const isDark = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim().startsWith('#1') ||
+                 window.matchMedia('(prefers-color-scheme:dark)').matches;
+  const gridColor = isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.08)';
+  const labelColor = isDark ? 'rgba(255,255,255,0.6)' : 'rgba(0,0,0,0.55)';
+  const axisLabelColor = isDark ? 'rgba(255,255,255,0.4)' : 'rgba(0,0,0,0.38)';
 
-  const barW = plotW / (selectedTeams.length + 1);
-  const maxRank = 32;
+  ctx.clearRect(0, 0, W, H);
 
-  // Grid lines
-  ctx.strokeStyle = 'rgba(128,128,128,.12)';
+  // Y axis: rank 1-32, inverted so 1 is at top
+  const yMin = 1, yMax = 32;
+  function yPos(rank) {
+    return pad.top + (rank - yMin) / (yMax - yMin) * ch;
+  }
+  function xPos(week) {
+    return pad.left + (week - 1) / Math.max(WEEKS.length - 1, 1) * cw;
+  }
+
+  // Axis labels
+  ctx.save();
+  ctx.font = 'bold 11px system-ui,sans-serif';
+  ctx.fillStyle = axisLabelColor;
+  ctx.textAlign = 'center';
+  ctx.fillText('Week', pad.left + cw / 2, H - 2);
+  ctx.translate(13, pad.top + ch / 2);
+  ctx.rotate(-Math.PI / 2);
+  ctx.fillText('Rank', 0, 0);
+  ctx.restore();
+
+  // Grid lines at ranks 1,5,10,15,20,25,32
+  const gridRanks = [1,5,10,15,20,25,32];
+  ctx.strokeStyle = gridColor;
   ctx.lineWidth = 1;
-  [8,16,24,32].forEach(r => {
-    const y = PAD.top + (r/maxRank)*plotH;
-    ctx.beginPath(); ctx.moveTo(PAD.left, y); ctx.lineTo(PAD.left+plotW, y); ctx.stroke();
-    ctx.fillStyle = 'rgba(128,128,128,.5)';
-    ctx.font = '10px monospace';
+  gridRanks.forEach(r => {
+    const y = yPos(r);
+    ctx.beginPath();
+    ctx.moveTo(pad.left, y);
+    ctx.lineTo(pad.left + cw, y);
+    ctx.stroke();
+    ctx.fillStyle = labelColor;
+    ctx.font = 'bold 12px system-ui,sans-serif';
     ctx.textAlign = 'right';
-    ctx.fillText(r, PAD.left-4, y+4);
+    ctx.fillText(r, pad.left - 7, y + 4);
   });
 
-  // Bars for each team
-  selectedTeams.forEach((abbr, i) => {
-    const rank = WEEK_AVGS[abbr] || 32;
-    const x = PAD.left + (i+0.5)*barW + barW*0.5;
-    const barHeight = (rank/maxRank)*plotH;
-    const y = PAD.top + barHeight;
-
-    ctx.fillStyle = COLORS[i] + '44';
-    ctx.fillRect(x - barW*0.3, PAD.top, barW*0.6, barHeight);
-
-    ctx.fillStyle = COLORS[i];
-    ctx.font = 'bold 11px monospace';
+  // Week labels
+  WEEKS.forEach(w => {
+    const x = xPos(w);
+    ctx.fillStyle = labelColor;
+    ctx.font = 'bold 12px system-ui,sans-serif';
     ctx.textAlign = 'center';
-    ctx.fillText(rank.toFixed(1), x, y - 6);
+    ctx.fillText('Wk ' + w, x, pad.top + ch + 18);
+    ctx.strokeStyle = gridColor;
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(x, pad.top + ch);
+    ctx.lineTo(x, pad.top + ch + 5);
+    ctx.stroke();
+  });
 
-    ctx.fillStyle = COLORS[i];
-    ctx.font = 'bold 10px sans-serif';
-    ctx.fillText(abbr, x, H - PAD.bottom + 14);
+  // Draw lines
+  selectedTeams.forEach((abbr, si) => {
+    if (!abbr || !RANK_HISTORY[abbr]) return;
+    const color = SLOT_COLORS[si];
+    const teamData = RANK_HISTORY[abbr];
+
+    const pts = WEEKS.filter(w => teamData[w] !== undefined)
+                     .map(w => ({ x: xPos(w), y: yPos(teamData[w]) }));
+    if (pts.length < 2) return;
+
+    ctx.shadowColor = color;
+    ctx.shadowBlur = 4;
+
+    ctx.beginPath();
+    ctx.moveTo(pts[0].x, pts[0].y);
+    pts.slice(1).forEach(p => ctx.lineTo(p.x, p.y));
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 2.5;
+    ctx.lineJoin = 'round';
+    ctx.stroke();
+
+    ctx.shadowBlur = 0;
+    pts.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
+      ctx.fillStyle = color;
+      ctx.fill();
+      ctx.strokeStyle = isDark ? '#1a1a1a' : '#fff';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+    });
+
+    const last = pts[pts.length - 1];
+    ctx.fillStyle = color;
+    ctx.font = 'bold 13px system-ui,sans-serif';
+    ctx.textAlign = last.x > W * 0.8 ? 'right' : 'left';
+    ctx.fillText(abbr, last.x + (last.x > W * 0.8 ? -10 : 10), last.y + 5);
+  });
+
+  ctx.shadowBlur = 0;
+}
+
+// ── Tooltip ───────────────────────────────────────────────────
+function setupTooltip() {
+  const canvas = document.getElementById('rankChart');
+  const tip = document.getElementById('chartTooltip');
+  if (!canvas || !tip) return;
+
+  const pad = { top: 20, right: 24, bottom: 44, left: 48 };
+
+  function getHit(mx, my) {
+    const W = canvas.clientWidth;
+    const H = 300;
+    const cw = W - pad.left - pad.right;
+    const ch = H - pad.top - pad.bottom;
+    const yMin = 1, yMax = 32;
+
+    function xPos(w) { return pad.left + (w - 1) / Math.max(WEEKS.length - 1, 1) * cw; }
+    function yPos(r) { return pad.top + (r - yMin) / (yMax - yMin) * ch; }
+
+    const SNAP = 14;
+    let best = null, bestDist = SNAP;
+
+    selectedTeams.forEach((abbr, si) => {
+      if (!abbr || !RANK_HISTORY[abbr]) return;
+      WEEKS.forEach(w => {
+        const rank = RANK_HISTORY[abbr][w];
+        if (rank === undefined) return;
+        const px = xPos(w), py = yPos(rank);
+        const d = Math.sqrt((mx - px) ** 2 + (my - py) ** 2);
+        if (d < bestDist) { bestDist = d; best = { abbr, w, rank, color: SLOT_COLORS[si] }; }
+      });
+    });
+    return best;
+  }
+
+  function onMove(e) {
+    const rect = canvas.getBoundingClientRect();
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    const mx = clientX - rect.left;
+    const my = clientY - rect.top;
+    const hit = getHit(mx, my);
+    if (hit) {
+      tip.textContent = `Week ${hit.w} · Rank ${hit.rank}`;
+      tip.style.opacity = '1';
+      tip.style.left = (mx + 12) + 'px';
+      tip.style.top = (my - 24) + 'px';
+      tip.style.background = hit.color;
+    } else {
+      tip.style.opacity = '0';
+    }
+  }
+
+  canvas.addEventListener('mousemove', onMove);
+  canvas.addEventListener('touchmove', onMove, { passive: true });
+  canvas.addEventListener('mouseleave', () => { tip.style.opacity = '0'; });
+}
+
+// ── Selectors ──────────────────────────────────────────────────
+const SORTED_ABBRS = [...TEAM_ABBRS].sort((a,b) => TEAM_NAMES_MAP[a].localeCompare(TEAM_NAMES_MAP[b]));
+
+function buildSelectors() {
+  const container = document.getElementById('team-selectors');
+  if (!container) return;
+  container.innerHTML = '';
+
+  // Prepend label
+  const label = document.createElement('span');
+  label.className = 'select-label';
+  label.textContent = 'Select up to 4 teams.';
+  container.appendChild(label);
+
+  SLOT_COLORS.forEach((color, i) => {
+    const slot = document.createElement('div');
+    slot.className = 'team-slot';
+    const dot = document.createElement('div');
+    dot.className = 'team-slot-dot';
+    dot.style.background = color;
+    const sel = document.createElement('select');
+    sel.setAttribute('aria-label', 'Team ' + (i+1));
+    sel.dataset.slot = i;
+
+    const noneOpt = document.createElement('option');
+    noneOpt.value = '';
+    noneOpt.textContent = 'Team ' + (i+1);
+    sel.appendChild(noneOpt);
+
+    SORTED_ABBRS.forEach(abbr => {
+      const opt = document.createElement('option');
+      opt.value = abbr;
+      opt.textContent = TEAM_NAMES_MAP[abbr];
+      if (abbr === selectedTeams[i]) opt.selected = true;
+      const otherSlots = selectedTeams.filter((_, j) => j !== i);
+      if (otherSlots.includes(abbr)) opt.disabled = true;
+      sel.appendChild(opt);
+    });
+
+    sel.addEventListener('change', () => {
+      selectedTeams[i] = sel.value;
+      buildSelectors();
+      drawChart();
+    });
+
+    slot.appendChild(dot);
+    slot.appendChild(sel);
+    container.appendChild(slot);
   });
 }
 
+// ── Toggle expandable row ─────────────────────────────────────
+function toggleRow(mainRow) {
+  const detailRow = mainRow.nextElementSibling;
+  if (!detailRow || !detailRow.classList.contains('detail-row')) return;
+  const isExpanded = !detailRow.classList.contains('hidden');
+  if (isExpanded) {
+    detailRow.classList.add('hidden');
+    mainRow.classList.remove('row-expanded');
+  } else {
+    detailRow.classList.remove('hidden');
+    mainRow.classList.add('row-expanded');
+  }
+}
+
+// ── Rankings list ──────────────────────────────────────────────
+async function initRankings() {
+  const el = document.getElementById('rankings-full');
+  const data = WEEK_DATA;
+  if (!data || !data.teams) {
+    el.innerHTML = '<div style="color:var(--slate);font-family:var(--font-body);font-size:13px;">Rankings not yet available. Check back Tuesday.</div>';
+    return;
+  }
+
+  const updatedStr = data.updated ? new Date(data.updated).toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'}) : '';
+  const updatedLine = updatedStr
+    ? `<p style="font-family:var(--font-body);font-size:12px;color:var(--slate);margin-bottom:16px;">Updated ${updatedStr} &nbsp;·&nbsp; <span style="color:var(--orange);font-style:italic;">Click any row for a full breakdown</span></p>`
+    : '';
+
+  const hasAvg = data.teams.some(t => t.average !== undefined);
+  const hasRange = data.teams.some(t => t.range_best !== undefined || t.range_worst !== undefined);
+
+  const headerAvg = hasAvg ? '<th class="num avg">Avg</th>' : '';
+  const headerRange = hasRange ? '<th class="num range">Range</th>' : '';
+
+  const rows = data.teams.map((t, i) => {
+    let moveBadge;
+    if (t.move > 0) {
+      moveBadge = `<span class="move-badge up">↑ ${t.move}</span>`;
+    } else if (t.move < 0) {
+      moveBadge = `<span class="move-badge dn">↓ ${Math.abs(t.move)}</span>`;
+    } else {
+      moveBadge = `<span class="move-badge flat">—</span>`;
+    }
+
+    const avgCell = hasAvg ? `<td class="avg-col">${t.average !== undefined ? t.average.toFixed(1) : '—'}</td>` : '';
+    const rangeCell = hasRange ? `<td class="range-col">${t.range_best !== undefined ? t.range_best + ' to ' + t.range_worst : '—'}</td>` : '';
+
+    // Outlet pills for expanded row
+    let outletPills = '';
+    if (t.outlets && t.outlets.length) {
+      outletPills = t.outlets.map(o => {
+        const prevText = o.prev ? `prev #${o.prev}` : '';
+        return `<a href="${escHtml(o.url)}" class="outlet-pill" target="_blank" rel="noopener">
+          <span class="outlet-pill-rank">#${o.rank}</span>
+          <span class="outlet-pill-name">${escHtml(o.name)}</span>
+          ${prevText ? `<span class="outlet-pill-prev">${prevText}</span>` : ''}
+        </a>`;
+      }).join('');
+    }
+
+    const logoAbbr = getLogoAbbr(t.abbr || t.name);
+    const logoUrl = `https://a.espncdn.com/i/teamlogos/nfl/500/${logoAbbr}.png`;
+
+    const descText = (t.desc && t.desc !== 'To be filled in later.') ? escHtml(t.desc) : '';
+
+    const mainRow = `<tr class="team-row" onclick="toggleRow(this)">
+      <td class="rank-col">${String(i+1).padStart(2,'0')}</td>
+      <td class="move-col">${moveBadge}</td>
+      <td class="team-col">
+        <div class="team-cell">
+          <span class="row-arrow">▶</span>
+          <img class="team-row-logo" src="${logoUrl}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+          ${escHtml(t.name)}
+        </div>
+      </td>
+      ${avgCell}
+      ${rangeCell}
+    </tr>`;
+
+    const detailRow = `<tr class="detail-row hidden">
+      <td colspan="5">
+        <div class="team-detail">
+          <img class="team-detail-logo" src="${logoUrl}" alt="${escHtml(t.name)} logo" onerror="this.style.display='none'">
+          <div class="team-detail-body">
+            ${descText ? `<p class="team-desc-text">${descText}</p>` : ''}
+            ${outletPills ? `<div class="outlet-section-label">Rankings by outlet</div><div class="outlet-grid">${outletPills}</div>` : ''}
+          </div>
+        </div>
+      </td>
+    </tr>`;
+
+    return mainRow + detailRow;
+  }).join('');
+
+  el.innerHTML = updatedLine + `
+    <table class="rankings-table">
+      <thead>
+        <tr>
+          <th class="num" style="width:48px;">#</th>
+          <th style="width:64px;"></th>
+          <th>Team</th>
+          ${headerAvg}
+          ${headerRange}
+        </tr>
+      </thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+}
+
+// ── Init ──────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   buildSelectors();
   drawChart();
-  window.addEventListener('resize', drawChart);
+  setupTooltip();
+  initRankings();
+  window.addEventListener('resize', () => { drawChart(); setupTooltip(); });
 });
 </script>
 <script src="/js/auth.js"></script>

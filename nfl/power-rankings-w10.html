@@ -1,0 +1,783 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Four NFC North Teams in the Top 10 — NFL Power Rankings, Week 10 — Fodder Sports</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .chart-container {
+      margin: 32px 0;
+      padding: 20px;
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-lg);
+    }
+    .chart-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .chart-title-block { flex: 1; min-width: 180px; }
+    .chart-title {
+      font-family: var(--font-head);
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .chart-subtitle {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--slate);
+    }
+    .team-selectors {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+    .select-label {
+      font-family: var(--font-head);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--slate);
+      white-space: nowrap;
+      margin-right: 4px;
+    }
+    .team-slot {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .team-slot-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .team-slot select {
+      font-family: var(--font-head);
+      font-size: 14px;
+      font-weight: 700;
+      background: var(--bg);
+      color: var(--ink);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      padding: 4px 6px;
+      cursor: pointer;
+    }
+    .chart-canvas-wrap {
+      width: 100%;
+      overflow-x: auto;
+    }
+    canvas#rankChart {
+      display: block;
+      width: 100%;
+      height: 300px;
+    }
+    .chart-tooltip {
+      position: absolute;
+      pointer-events: none;
+      background: var(--ink);
+      color: var(--off-white);
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity .1s;
+      z-index: 10;
+    }
+    .chart-canvas-wrap { position: relative; }
+
+    /* ── Rankings table ── */
+    .rankings-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+    }
+    .rankings-table {
+      position: relative;
+    }
+    .rankings-table thead {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      background: var(--card-bg);
+    }
+    .rankings-table th {
+      font-family: var(--font-head);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--slate);
+      padding: 10px 16px;
+      text-align: left;
+      border-bottom: 2px solid var(--rule);
+      white-space: nowrap;
+    }
+    .rankings-table th.num { text-align: right; }
+    .rankings-table th.avg { text-align: right; width: 70px; }
+    .rankings-table th.range { text-align: right; width: 100px; }
+    .rankings-table td {
+      font-family: var(--font-head);
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .rankings-table tr.team-row {
+      cursor: pointer;
+    }
+    .rankings-table tr.team-row:hover td {
+      background: var(--page-bg);
+    }
+    .rankings-table tr:last-child td { border-bottom: none; }
+    .rankings-table td.rank-col {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--slate);
+      text-align: right;
+      width: 48px;
+      padding-right: 4px;
+      white-space: nowrap;
+    }
+    .rankings-table td.move-col {
+      width: 56px;
+      text-align: left;
+      padding-left: 6px;
+      padding-right: 4px;
+      white-space: nowrap;
+    }
+    .move-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      font-family: var(--font-head);
+      font-size: 13px;
+      font-weight: 900;
+      border-radius: 4px;
+      padding: 2px 6px;
+    }
+    .move-badge.up { color: #0D5C2F; background: #D1FAE5; }
+    .move-badge.dn { color: #7F1D1D; background: #FEE2E2; }
+    .move-badge.flat { color: var(--slate); background: transparent; font-size: 11px; }
+    @media (prefers-color-scheme: dark) {
+      .move-badge.up { color: #6EE7B7; background: rgba(16,185,129,.15); }
+      .move-badge.dn { color: #FCA5A5; background: rgba(239,68,68,.15); }
+    }
+    .rankings-table td.team-col {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--ink);
+    }
+    .team-cell {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .team-row-logo {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+    .row-arrow {
+      font-size: 10px;
+      color: var(--slate-light);
+      transition: transform .2s;
+      flex-shrink: 0;
+      display: inline-block;
+    }
+    tr.row-expanded .row-arrow {
+      transform: rotate(90deg);
+    }
+    .rankings-table td.avg-col {
+      text-align: right;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--ink);
+      width: 70px;
+    }
+    .rankings-table td.range-col {
+      text-align: right;
+      font-size: 14px;
+      color: var(--slate);
+      width: 100px;
+      white-space: nowrap;
+    }
+
+    /* ── Expandable detail row ── */
+    .detail-row td {
+      padding: 0;
+      border-bottom: 2px solid var(--orange);
+    }
+    .detail-row.hidden { display: none; }
+    .team-detail {
+      padding: 16px 20px 20px;
+      background: var(--page-bg);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .team-detail-logo {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+    .team-detail-body {
+      flex: 1;
+      min-width: 200px;
+    }
+    .team-desc-text {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--slate);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+    .outlet-section-label {
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--slate-light);
+      margin-bottom: 8px;
+    }
+    .outlet-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .outlet-pill {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 8px 12px;
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      text-decoration: none;
+      min-width: 72px;
+      transition: border-color .15s, box-shadow .15s;
+    }
+    .outlet-pill:hover {
+      border-color: var(--orange);
+      box-shadow: 0 2px 6px rgba(0,0,0,.08);
+    }
+    .outlet-pill-rank {
+      font-family: var(--font-head);
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--orange);
+      line-height: 1;
+    }
+    .outlet-pill-name {
+      font-family: var(--font-head);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-top: 3px;
+      text-align: center;
+    }
+    .outlet-pill-prev {
+      font-family: var(--font-body);
+      font-size: 11px;
+      color: var(--slate-light);
+      margin-top: 2px;
+    }
+
+    /* ── Week nav ── */
+    .week-nav {
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid var(--rule);
+    }
+    .week-nav-label {
+      font-family: var(--font-head);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-bottom: 10px;
+    }
+    .week-nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .week-nav-links a {
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--orange);
+      text-decoration: none;
+      padding: 4px 10px;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+    }
+    .week-nav-links a:hover { background: var(--card-bg); }
+    .week-nav-links a.current {
+      background: var(--orange);
+      color: #fff;
+      border-color: var(--orange);
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-word">FODDER<span>.</span></span>
+        <span class="logo-sub">Sports</span>
+      </a>
+      <span class="header-tagline">Every Side of the Story</span>
+    </div>
+  </div>
+</header>
+
+<div class="container" style="padding-top:28px;">
+  <a href="index.html" class="back-link">← Back to NFL</a>
+  <p style="font-family:var(--font-head);font-size:17px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin-bottom:6px;">Fodder Sports · NFL Power Rankings · Week 10</p>
+  <h1 style="font-family:var(--font-head);font-size:clamp(24px,4vw,36px);font-weight:700;line-height:1.2;margin-bottom:8px;color:var(--ink);">Four NFC North Teams in the Top 10</h1>
+  <p class="article-lead">One ranking from the whole national conversation: the consensus of major national power rankings.</p>
+
+  <!-- Season chart -->
+  <div class="chart-container">
+    <div class="chart-header">
+      <div class="chart-title-block">
+        <div class="chart-title">Season Movement</div>
+        <div class="chart-subtitle">Consensus rank by week</div>
+      </div>
+      <div class="team-selectors" id="team-selectors"></div>
+    </div>
+    <div class="chart-canvas-wrap">
+      <canvas id="rankChart"></canvas>
+      <div id="chartTooltip" class="chart-tooltip"></div>
+    </div>
+  </div>
+
+  <!-- Full rankings list -->
+  <div id="rankings-full" style="margin-top:20px;">
+    <div style="font-family:var(--font-body);font-size:13px;color:var(--slate);padding:16px 0;">Loading rankings...</div>
+  </div>
+
+  <!-- Week navigation -->
+  <div class="week-nav">
+    <div class="week-nav-label">Previous weeks</div>
+    <div class="week-nav-links">
+      <a href="power-rankings-w1.html">Week 1</a>
+      <a href="power-rankings-w2.html">Week 2</a>
+      <a href="power-rankings-w3.html">Week 3</a>
+      <a href="power-rankings-w4.html">Week 4</a>
+      <a href="power-rankings-w5.html">Week 5</a>
+      <a href="power-rankings-w6.html">Week 6</a>
+      <a href="power-rankings-w7.html">Week 7</a>
+      <a href="power-rankings-w8.html">Week 8</a>
+      <a href="power-rankings-w9.html">Week 9</a>
+      <a href="power-rankings-w10.html" class="current">Week 10</a>
+      <a href="power-rankings.html">Week 11</a>
+    </div>
+  </div>
+
+  <p style="font-family:var(--font-body);font-size:12px;color:var(--slate-light);margin-top:16px;padding-top:16px;border-top:1px solid var(--rule);">Fodder Sports · Pilot · Rankings are a consensus of published national rankings from NFL.com, CBS Sports, PFT, USA Today, Fox Sports, ESPN, Bleacher Report, Sports Illustrated, Pro Football Network, and Kalshi. Not affiliated with the NFL.</p>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <span class="footer-label">Fodder Sports · Pilot</span>
+      <p class="footer-note">Summaries written from published coverage. Not affiliated with the NFL or any team.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script>
+// ── Chart data ──────────────────────────────────────────────────
+const RANK_HISTORY = {"ARI": {"1": 30, "2": 23, "3": 28, "4": 28, "5": 27, "6": 29, "7": 25, "8": 29, "9": 24, "10": 26}, "ATL": {"1": 26, "2": 29, "3": 31, "4": 24, "5": 19, "6": 18, "7": 20, "8": 17, "9": 20, "10": 22}, "BAL": {"1": 6, "2": 3, "3": 10, "4": 9, "5": 10, "6": 7, "7": 10, "8": 16, "9": 21, "10": 23}, "BUF": {"1": 4, "2": 2, "3": 2, "4": 1, "5": 5, "6": 4, "7": 4, "8": 3, "9": 1, "10": 1}, "CAR": {"1": 22, "2": 26, "3": 19, "4": 22, "5": 13, "6": 14, "7": 13, "8": 19, "9": 19, "10": 19}, "CHI": {"1": 10, "2": 5, "3": 12, "4": 10, "5": 6, "6": 11, "7": 9, "8": 7, "9": 4, "10": 4}, "CIN": {"1": 8, "2": 10, "3": 6, "4": 11, "5": 14, "6": 12, "7": 11, "8": 9, "9": 9, "10": 7}, "CLE": {"1": 30, "2": 32, "3": 26, "4": 20, "5": 15, "6": 20, "7": 15, "8": 14, "9": 16, "10": 17}, "DAL": {"1": 12, "2": 18, "3": 17, "4": 16, "5": 15, "6": 21, "7": 22, "8": 20, "9": 23, "10": 21}, "DEN": {"1": 3, "2": 12, "3": 7, "4": 5, "5": 9, "6": 8, "7": 7, "8": 8, "9": 5, "10": 5}, "DET": {"1": 14, "2": 13, "3": 14, "4": 12, "5": 18, "6": 13, "7": 14, "8": 11, "9": 8, "10": 8}, "GB": {"1": 16, "2": 16, "3": 18, "4": 26, "5": 24, "6": 15, "7": 12, "8": 13, "9": 13, "10": 9}, "HOU": {"1": 5, "2": 10, "3": 15, "4": 23, "5": 25, "6": 24, "7": 17, "8": 23, "9": 22, "10": 18}, "IND": {"1": 21, "2": 25, "3": 22, "4": 19, "5": 22, "6": 23, "7": 27, "8": 27, "9": 29, "10": 28}, "JAX": {"1": 7, "2": 7, "3": 9, "4": 6, "5": 4, "6": 3, "7": 5, "8": 6, "9": 3, "10": 3}, "KC": {"1": 17, "2": 8, "3": 4, "4": 3, "5": 2, "6": 2, "7": 2, "8": 4, "9": 7, "10": 6}, "LAC": {"1": 15, "2": 19, "3": 25, "4": 29, "5": 29, "6": 30, "7": 31, "8": 32, "9": 32, "10": 32}, "LAR": {"1": 1, "2": 5, "3": 5, "4": 8, "5": 8, "6": 10, "7": 18, "8": 15, "9": 14, "10": 13}, "LV": {"1": 29, "2": 28, "3": 21, "4": 13, "5": 11, "6": 17, "7": 19, "8": 21, "9": 18, "10": 20}, "MIA": {"1": 32, "2": 31, "3": 32, "4": 32, "5": 32, "6": 31, "7": 32, "8": 30, "9": 30, "10": 28}, "MIN": {"1": 18, "2": 15, "3": 11, "4": 7, "5": 7, "6": 6, "7": 3, "8": 1, "9": 6, "10": 10}, "NE": {"1": 9, "2": 13, "3": 12, "4": 18, "5": 12, "6": 9, "7": 8, "8": 10, "9": 11, "10": 13}, "NO": {"1": 23, "2": 22, "3": 16, "4": 16, "5": 23, "6": 26, "7": 23, "8": 24, "9": 26, "10": 24}, "NYG": {"1": 24, "2": 17, "3": 20, "4": 21, "5": 20, "6": 19, "7": 21, "8": 18, "9": 15, "10": 15}, "NYJ": {"1": 28, "2": 27, "3": 27, "4": 27, "5": 28, "6": 25, "7": 25, "8": 28, "9": 27, "10": 27}, "PHI": {"1": 11, "2": 9, "3": 8, "4": 14, "5": 17, "6": 22, "7": 24, "8": 25, "9": 28, "10": 30}, "PIT": {"1": 20, "2": 21, "3": 23, "4": 15, "5": 21, "6": 16, "7": 16, "8": 12, "9": 12, "10": 12}, "SEA": {"1": 2, "2": 1, "3": 1, "4": 4, "5": 3, "6": 5, "7": 6, "8": 5, "9": 10, "10": 11}, "SF": {"1": 12, "2": 4, "3": 3, "4": 2, "5": 1, "6": 1, "7": 1, "8": 2, "9": 2, "10": 2}, "TB": {"1": 19, "2": 20, "3": 24, "4": 30, "5": 30, "6": 27, "7": 29, "8": 21, "9": 17, "10": 16}, "TEN": {"1": 27, "2": 30, "3": 30, "4": 31, "5": 31, "6": 31, "7": 30, "8": 31, "9": 31, "10": 31}, "WAS": {"1": 25, "2": 24, "3": 29, "4": 25, "5": 26, "6": 28, "7": 28, "8": 26, "9": 25, "10": 25}};
+
+const TEAM_ABBRS = ["ARI", "ATL", "BAL", "BUF", "CAR", "CHI", "CIN", "CLE", "DAL", "DEN", "DET", "GB", "HOU", "IND", "JAX", "KC", "LAC", "LAR", "LV", "MIA", "MIN", "NE", "NO", "NYG", "NYJ", "PHI", "PIT", "SEA", "SF", "TB", "TEN", "WAS"];
+const TEAM_NAMES_MAP = {"ARI": "Arizona Cardinals", "ATL": "Atlanta Falcons", "BAL": "Baltimore Ravens", "BUF": "Buffalo Bills", "CAR": "Carolina Panthers", "CHI": "Chicago Bears", "CIN": "Cincinnati Bengals", "CLE": "Cleveland Browns", "DAL": "Dallas Cowboys", "DEN": "Denver Broncos", "DET": "Detroit Lions", "GB": "Green Bay Packers", "HOU": "Houston Texans", "IND": "Indianapolis Colts", "JAX": "Jacksonville Jaguars", "KC": "Kansas City Chiefs", "LAC": "Los Angeles Chargers", "LAR": "Los Angeles Rams", "LV": "Las Vegas Raiders", "MIA": "Miami Dolphins", "MIN": "Minnesota Vikings", "NE": "New England Patriots", "NO": "New Orleans Saints", "NYG": "New York Giants", "NYJ": "New York Jets", "PHI": "Philadelphia Eagles", "PIT": "Pittsburgh Steelers", "SF": "San Francisco 49ers", "SEA": "Seattle Seahawks", "TB": "Tampa Bay Buccaneers", "TEN": "Tennessee Titans", "WAS": "Washington Commanders"};
+
+// Colors for up to 4 teams
+const SLOT_COLORS = ['#E84B2F','#1A6B3A','#2255CC','#C47000'];
+const MAX_TEAMS = 4;
+const WEEKS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// Default teams: top 4 current
+const DEFAULT_TEAMS = ["BUF", "SF", "JAX", "CHI"];
+
+// This week's rankings, stored in the page so past weeks never change.
+const WEEK_DATA = {"updated": "2026-11-13T12:00:00Z", "week": 10, "teams": [{"abbr": "BUF", "name": "Buffalo Bills", "rank": 1, "prev": 1, "move": 0, "average": 1.8, "range_best": 1, "range_worst": 3, "desc": "The Bills won a physical road game at Minnesota and sit at 7-1, with writers pointing to their ability to grind out wins as a sign they can go deep in January. A Christmas rematch with Denver could decide AFC home-field advantage, making their remaining schedule critical.", "outlets": [{"name": "NFL.com", "rank": 2, "prev": 1}, {"name": "CBS Sports", "rank": 1, "prev": 1}, {"name": "ProFootballTalk", "rank": 1, "prev": 1}, {"name": "USA Today", "rank": 3, "prev": 6}, {"name": "Fox Sports", "rank": 1, "prev": 1}, {"name": "ESPN", "rank": 1, "prev": 1}, {"name": "Bleacher Report", "rank": 1, "prev": 1}, {"name": "Sports Illustrated", "rank": 3, "prev": 1}, {"name": "Pro Football Network", "rank": 3, "prev": 4}, {"name": "Kalshi", "rank": 2, "prev": 2}]}, {"abbr": "SF", "name": "San Francisco 49ers", "rank": 2, "prev": 2, "move": 0, "average": 2.1, "range_best": 1, "range_worst": 4, "desc": "San Francisco dominated the Raiders without Mike Evans and Deebo Samuel and sits at 7-1, though writers note those absences will matter more against playoff-caliber competition. A Week 12 home game against Seattle is a chance to effectively claim the NFC West early, given the 49ers' 3-0 division record.", "outlets": [{"name": "NFL.com", "rank": 1, "prev": 2}, {"name": "CBS Sports", "rank": 2, "prev": 2}, {"name": "ProFootballTalk", "rank": 3, "prev": 3}, {"name": "USA Today", "rank": 1, "prev": 1}, {"name": "Fox Sports", "rank": 3, "prev": 3}, {"name": "ESPN", "rank": 2, "prev": 2}, {"name": "Bleacher Report", "rank": 2, "prev": 2}, {"name": "Sports Illustrated", "rank": 4, "prev": 5}, {"name": "Pro Football Network", "rank": 2, "prev": 2}, {"name": "Kalshi", "rank": 1, "prev": 1}]}, {"abbr": "JAX", "name": "Jacksonville Jaguars", "rank": 3, "prev": 3, "move": 0, "average": 3.0, "range_best": 1, "range_worst": 6, "desc": "Jacksonville has blown out most opponents under Liam Coen and is pulling away in the AFC South at 6-2, though Bleacher Report notes the Jaguars remain underrated nationally. A Week 14 game against Pittsburgh matters for AFC seeding and could complete a season sweep of the AFC North.", "outlets": [{"name": "NFL.com", "rank": 3, "prev": 4}, {"name": "CBS Sports", "rank": 3, "prev": 3}, {"name": "ProFootballTalk", "rank": 2, "prev": 2}, {"name": "USA Today", "rank": 4, "prev": 4}, {"name": "Fox Sports", "rank": 6, "prev": 7}, {"name": "ESPN", "rank": 3, "prev": 3}, {"name": "Bleacher Report", "rank": 4, "prev": 5}, {"name": "Sports Illustrated", "rank": 1, "prev": 3}, {"name": "Pro Football Network", "rank": 1, "prev": 1}, {"name": "Kalshi", "rank": 3, "prev": 3}]}, {"abbr": "CHI", "name": "Chicago Bears", "rank": 4, "prev": 4, "move": 0, "average": 4.2, "range_best": 2, "range_worst": 7, "desc": "The Bears overcame five turnovers to beat Tampa Bay, which Bleacher Report sees as a hallmark of a team capable of a title run. At 7-2 Chicago leads the NFC, with a Christmas game against Green Bay carrying major tiebreaker weight in the NFC North.", "outlets": [{"name": "NFL.com", "rank": 4, "prev": 3}, {"name": "CBS Sports", "rank": 4, "prev": 4}, {"name": "ProFootballTalk", "rank": 5, "prev": 5}, {"name": "USA Today", "rank": 2, "prev": 2}, {"name": "Fox Sports", "rank": 5, "prev": 4}, {"name": "ESPN", "rank": 4, "prev": 5}, {"name": "Bleacher Report", "rank": 5, "prev": 4}, {"name": "Sports Illustrated", "rank": 2, "prev": 2}, {"name": "Pro Football Network", "rank": 7, "prev": 5}, {"name": "Kalshi", "rank": 4, "prev": 4}]}, {"abbr": "DEN", "name": "Denver Broncos", "rank": 5, "prev": 5, "move": 0, "average": 5.7, "range_best": 2, "range_worst": 12, "desc": "Denver has won 17 consecutive one-score games and Bo Nix is playing closer to his 2025 form, though injuries to Jaylen Waddle and Riley Moss are concerns. At 7-2 the Broncos are firmly in the AFC playoff picture, with a Week 16 rematch against Buffalo that could decide home-field advantage.", "outlets": [{"name": "NFL.com", "rank": 6, "prev": 6}, {"name": "CBS Sports", "rank": 5, "prev": 5}, {"name": "ProFootballTalk", "rank": 4, "prev": 4}, {"name": "USA Today", "rank": 5, "prev": 3}, {"name": "Fox Sports", "rank": 2, "prev": 2}, {"name": "ESPN", "rank": 5, "prev": 4}, {"name": "Bleacher Report", "rank": 3, "prev": 3}, {"name": "Sports Illustrated", "rank": 8, "prev": 7}, {"name": "Pro Football Network", "rank": 12, "prev": 10}, {"name": "Kalshi", "rank": 7, "prev": 6}]}, {"abbr": "KC", "name": "Kansas City Chiefs", "rank": 6, "prev": 7, "move": 1, "average": 6.7, "range_best": 4, "range_worst": 10, "desc": "Kansas City beat the Jets despite a scare for Patrick Mahomes' elbow, and the defense kept them at 6-2 even as the receiving corps remains a weakness. A Week 12 win at Buffalo would put the Chiefs in strong position to chase the AFC's top seed and the AFC West title.", "outlets": [{"name": "NFL.com", "rank": 10, "prev": 10}, {"name": "CBS Sports", "rank": 6, "prev": 7}, {"name": "ProFootballTalk", "rank": 6, "prev": 7}, {"name": "USA Today", "rank": 9, "prev": 10}, {"name": "Fox Sports", "rank": 4, "prev": 5}, {"name": "ESPN", "rank": 6, "prev": 6}, {"name": "Bleacher Report", "rank": 6, "prev": 7}, {"name": "Sports Illustrated", "rank": 9, "prev": 12}, {"name": "Pro Football Network", "rank": 5, "prev": 8}, {"name": "Kalshi", "rank": 6, "prev": 5}]}, {"abbr": "CIN", "name": "Cincinnati Bengals", "rank": 7, "prev": 9, "move": 2, "average": 7.3, "range_best": 4, "range_worst": 14, "desc": "The Bengals have won four straight with Joe Burrow playing at an MVP level, and ESPN's FPI favors them in every remaining game. A Week 14 showdown with Kansas City could be the moment Cincinnati locks in its Super Bowl belief.", "outlets": [{"name": "NFL.com", "rank": 5, "prev": 8}, {"name": "CBS Sports", "rank": 7, "prev": 8}, {"name": "ProFootballTalk", "rank": 8, "prev": 11}, {"name": "USA Today", "rank": 14, "prev": 14}, {"name": "Fox Sports", "rank": 8, "prev": 8}, {"name": "ESPN", "rank": 7, "prev": 10}, {"name": "Bleacher Report", "rank": 8, "prev": 10}, {"name": "Sports Illustrated", "rank": 7, "prev": 10}, {"name": "Pro Football Network", "rank": 4, "prev": 6}, {"name": "Kalshi", "rank": 5, "prev": 7}]}, {"abbr": "DET", "name": "Detroit Lions", "rank": 8, "prev": 8, "move": 0, "average": 8.7, "range_best": 6, "range_worst": 13, "desc": "Detroit has won four straight and improved its defense, allowing 17 or fewer points in three games, with their first game in Germany adding another layer to an already-important week. The Lions sit at 6-2 with a strong two-way profile, though the defense's sustainability against elite postseason competition remains the key question.", "outlets": [{"name": "NFL.com", "rank": 7, "prev": 5}, {"name": "CBS Sports", "rank": 8, "prev": 9}, {"name": "ProFootballTalk", "rank": 10, "prev": 12}, {"name": "USA Today", "rank": 6, "prev": 7}, {"name": "Fox Sports", "rank": 10, "prev": 9}, {"name": "ESPN", "rank": 10, "prev": 9}, {"name": "Bleacher Report", "rank": 9, "prev": 8}, {"name": "Sports Illustrated", "rank": 6, "prev": 4}, {"name": "Pro Football Network", "rank": 13, "prev": 14}, {"name": "Kalshi", "rank": 8, "prev": 9}]}, {"abbr": "GB", "name": "Green Bay Packers", "rank": 9, "prev": 13, "move": 4, "average": 9.2, "range_best": 5, "range_worst": 11, "desc": "Jordan Love and a dangerous receiver duo of Christian Watson and Matthew Golden torched New England, and Green Bay's defense has looked stout. At 6-3 the Packers remain in the NFC wild-card mix, but losing NFC North tiebreakers to other conference opponents could become an issue down the stretch.", "outlets": [{"name": "NFL.com", "rank": 8, "prev": 13}, {"name": "CBS Sports", "rank": 10, "prev": 12}, {"name": "ProFootballTalk", "rank": 11, "prev": 14}, {"name": "USA Today", "rank": 7, "prev": 11}, {"name": "Fox Sports", "rank": 9, "prev": 15}, {"name": "ESPN", "rank": 11, "prev": 14}, {"name": "Bleacher Report", "rank": 11, "prev": 12}, {"name": "Sports Illustrated", "rank": 5, "prev": 8}, {"name": "Pro Football Network", "rank": 10, "prev": 13}, {"name": "Kalshi", "rank": 10, "prev": 14}]}, {"abbr": "MIN", "name": "Minnesota Vikings", "rank": 10, "prev": 6, "move": -4, "average": 9.7, "range_best": 6, "range_worst": 13, "desc": "Minnesota has a championship-caliber defense but inconsistent quarterback play, and Kevin Seifert says every NFC North game is now critical starting with next week's trip to Green Bay. The Vikings sit at 6-2, and writers agree the offense needs trade-deadline help to match the defense's ceiling.", "outlets": [{"name": "NFL.com", "rank": 11, "prev": 9}, {"name": "CBS Sports", "rank": 11, "prev": 6}, {"name": "ProFootballTalk", "rank": 12, "prev": 6}, {"name": "USA Today", "rank": 11, "prev": 8}, {"name": "Fox Sports", "rank": 7, "prev": 6}, {"name": "ESPN", "rank": 8, "prev": 7}, {"name": "Bleacher Report", "rank": 7, "prev": 6}, {"name": "Sports Illustrated", "rank": 13, "prev": 9}, {"name": "Pro Football Network", "rank": 6, "prev": 3}, {"name": "Kalshi", "rank": 11, "prev": 8}]}, {"abbr": "SEA", "name": "Seattle Seahawks", "rank": 11, "prev": 10, "move": -1, "average": 10.6, "range_best": 8, "range_worst": 14, "desc": "Seattle is efficient on offense but lacks a true punch in the passing game, and the quarterback situation around Drew Lock and an injured Sam Darnold creates uncertainty. The Seahawks sit at 5-4, with ESPN noting a Week 12 loss at San Francisco would hand the 49ers the head-to-head tiebreaker in the NFC West.", "outlets": [{"name": "NFL.com", "rank": 9, "prev": 7}, {"name": "CBS Sports", "rank": 14, "prev": 14}, {"name": "ProFootballTalk", "rank": 9, "prev": 9}, {"name": "USA Today", "rank": 8, "prev": 9}, {"name": "Fox Sports", "rank": 11, "prev": 11}, {"name": "ESPN", "rank": 9, "prev": 8}, {"name": "Bleacher Report", "rank": 12, "prev": 13}, {"name": "Sports Illustrated", "rank": 12, "prev": 6}, {"name": "Pro Football Network", "rank": 8, "prev": 7}, {"name": "Kalshi", "rank": 14, "prev": 13}]}, {"abbr": "PIT", "name": "Pittsburgh Steelers", "rank": 12, "prev": 12, "move": 0, "average": 10.8, "range_best": 7, "range_worst": 14, "desc": "Pittsburgh has a strong run game, stout defense, and Aaron Rodgers playing well at 6-2, with Bleacher Report noting they need to end a long playoff-win drought. A Week 10 win at Cincinnati would help the Steelers win the AFC North and earn a top-four seed.", "outlets": [{"name": "NFL.com", "rank": 12, "prev": 12}, {"name": "CBS Sports", "rank": 9, "prev": 10}, {"name": "ProFootballTalk", "rank": 7, "prev": 8}, {"name": "USA Today", "rank": 13, "prev": 13}, {"name": "Fox Sports", "rank": 12, "prev": 13}, {"name": "ESPN", "rank": 13, "prev": 13}, {"name": "Bleacher Report", "rank": 10, "prev": 9}, {"name": "Sports Illustrated", "rank": 14, "prev": 13}, {"name": "Pro Football Network", "rank": 9, "prev": 9}, {"name": "Kalshi", "rank": 9, "prev": 11}]}, {"abbr": "LAR", "name": "Los Angeles Rams", "rank": 13, "prev": 14, "move": 1, "average": 13.6, "range_best": 10, "range_worst": 17, "desc": "The Rams are on a three-game win streak with Myles Garrett providing a pass-rush boost, but injuries to Puka Nacua and Davante Adams could force a grinding, low-scoring style. At 5-4 Los Angeles is firmly in the NFC wild-card picture, and a Week 12 game against Green Bay could determine a tiebreaker.", "outlets": [{"name": "NFL.com", "rank": 17, "prev": 18}, {"name": "CBS Sports", "rank": 13, "prev": 13}, {"name": "ProFootballTalk", "rank": 15, "prev": 15}, {"name": "USA Today", "rank": 12, "prev": 12}, {"name": "Fox Sports", "rank": 13, "prev": 12}, {"name": "ESPN", "rank": 12, "prev": 12}, {"name": "Bleacher Report", "rank": 15, "prev": 14}, {"name": "Sports Illustrated", "rank": 10, "prev": 11}, {"name": "Pro Football Network", "rank": 14, "prev": 15}, {"name": "Kalshi", "rank": 15, "prev": 12}]}, {"abbr": "NE", "name": "New England Patriots", "rank": 13, "prev": 11, "move": -2, "average": 13.6, "range_best": 10, "range_worst": 16, "desc": "Drake Maye has been inconsistent and New England's defense struggled in a home loss to Green Bay, but the Patriots are still at 5-4. Writers point to a Week 13 game against Buffalo as a potential AFC East decision point.", "outlets": [{"name": "NFL.com", "rank": 15, "prev": 11}, {"name": "CBS Sports", "rank": 12, "prev": 11}, {"name": "ProFootballTalk", "rank": 14, "prev": 10}, {"name": "USA Today", "rank": 10, "prev": 5}, {"name": "Fox Sports", "rank": 15, "prev": 10}, {"name": "ESPN", "rank": 14, "prev": 11}, {"name": "Bleacher Report", "rank": 13, "prev": 11}, {"name": "Sports Illustrated", "rank": 15, "prev": 14}, {"name": "Pro Football Network", "rank": 16, "prev": 12}, {"name": "Kalshi", "rank": 12, "prev": 10}]}, {"abbr": "NYG", "name": "New York Giants", "rank": 15, "prev": 15, "move": 0, "average": 14.3, "range_best": 11, "range_worst": 20, "desc": "The Giants keep winning despite injuries, sitting at 5-2-1 and leading the NFC East, and writers note John Harbaugh is focused on how the team handles success. A Week 17 game against Dallas could decide the NFC East or playoff seeding.", "outlets": [{"name": "NFL.com", "rank": 13, "prev": 14}, {"name": "CBS Sports", "rank": 15, "prev": 15}, {"name": "ProFootballTalk", "rank": 13, "prev": 16}, {"name": "USA Today", "rank": 20, "prev": 20}, {"name": "Fox Sports", "rank": 14, "prev": 14}, {"name": "ESPN", "rank": 15, "prev": 15}, {"name": "Bleacher Report", "rank": 14, "prev": 15}, {"name": "Sports Illustrated", "rank": 11, "prev": 15}, {"name": "Pro Football Network", "rank": 15, "prev": 18}, {"name": "Kalshi", "rank": 13, "prev": 15}]}, {"abbr": "TB", "name": "Tampa Bay Buccaneers", "rank": 16, "prev": 17, "move": 1, "average": 17.3, "range_best": 11, "range_worst": 24, "desc": "Tampa Bay has built a strong run-first identity and leads the league in forced turnovers, but Baker Mayfield and the passing offense have been a drag. At 3-6 the Buccaneers face a Week 11 road game at Detroit coming out of the bye, and a 3-7 start would be a very deep hole.", "outlets": [{"name": "NFL.com", "rank": 14, "prev": 16}, {"name": "CBS Sports", "rank": 16, "prev": 16}, {"name": "ProFootballTalk", "rank": 18, "prev": 18}, {"name": "USA Today", "rank": 16, "prev": 17}, {"name": "Fox Sports", "rank": 18, "prev": 24}, {"name": "ESPN", "rank": 18, "prev": 18}, {"name": "Bleacher Report", "rank": 24, "prev": 21}, {"name": "Sports Illustrated", "rank": 21, "prev": 16}, {"name": "Pro Football Network", "rank": 11, "prev": 11}, {"name": "Kalshi", "rank": 17, "prev": 16}]}, {"abbr": "CLE", "name": "Cleveland Browns", "rank": 17, "prev": 16, "move": -1, "average": 17.5, "range_best": 15, "range_worst": 20, "desc": "Cleveland has dropped two straight and faces a potential quarterback controversy between Deshaun Watson and Shedeur Sanders. The Browns sit at 5-4 with a Week 18 finale at Cincinnati that could carry AFC North and playoff implications.", "outlets": [{"name": "NFL.com", "rank": 19, "prev": 15}, {"name": "CBS Sports", "rank": 17, "prev": 17}, {"name": "ProFootballTalk", "rank": 16, "prev": 13}, {"name": "USA Today", "rank": 15, "prev": 16}, {"name": "Fox Sports", "rank": 17, "prev": 16}, {"name": "ESPN", "rank": 16, "prev": 16}, {"name": "Bleacher Report", "rank": 16, "prev": 16}, {"name": "Sports Illustrated", "rank": 19, "prev": 18}, {"name": "Pro Football Network", "rank": 20, "prev": 19}, {"name": "Kalshi", "rank": 20, "prev": 17}]}, {"abbr": "HOU", "name": "Houston Texans", "rank": 18, "prev": 22, "move": 4, "average": 17.8, "range_best": 16, "range_worst": 22, "desc": "Houston has looked dominant at times but remains inconsistent at 3-5, and ESPN says a Week 10 loss to Cleveland would effectively end their season. Writers acknowledge the Texans' potential but are waiting on a string of quality performances before fully believing in them.", "outlets": [{"name": "NFL.com", "rank": 16, "prev": 19}, {"name": "CBS Sports", "rank": 19, "prev": 23}, {"name": "ProFootballTalk", "rank": 20, "prev": 23}, {"name": "USA Today", "rank": 22, "prev": 26}, {"name": "Fox Sports", "rank": 16, "prev": 19}, {"name": "ESPN", "rank": 17, "prev": 22}, {"name": "Bleacher Report", "rank": 19, "prev": 20}, {"name": "Sports Illustrated", "rank": 16, "prev": 25}, {"name": "Pro Football Network", "rank": 17, "prev": 21}, {"name": "Kalshi", "rank": 16, "prev": 19}]}, {"abbr": "CAR", "name": "Carolina Panthers", "rank": 19, "prev": 19, "move": 0, "average": 20.3, "range_best": 18, "range_worst": 24, "desc": "Carolina fired defensive coordinator Ejiro Evero, but writers note the pass rush and effort issues go beyond coaching. At 3-5 the Panthers have three winnable NFC South games ahead and are still alive in the playoff race, though the offense has been inconsistent.", "outlets": [{"name": "NFL.com", "rank": 20, "prev": 21}, {"name": "CBS Sports", "rank": 20, "prev": 18}, {"name": "ProFootballTalk", "rank": 22, "prev": 22}, {"name": "USA Today", "rank": 23, "prev": 22}, {"name": "Fox Sports", "rank": 19, "prev": 18}, {"name": "ESPN", "rank": 19, "prev": 17}, {"name": "Bleacher Report", "rank": 18, "prev": 18}, {"name": "Sports Illustrated", "rank": 24, "prev": 20}, {"name": "Pro Football Network", "rank": 19, "prev": 17}, {"name": "Kalshi", "rank": 19, "prev": 18}]}, {"abbr": "LV", "name": "Las Vegas Raiders", "rank": 20, "prev": 18, "move": -2, "average": 20.5, "range_best": 17, "range_worst": 24, "desc": "Kirk Cousins has the Raiders at 4-5 as a bridge quarterback, and writers see the team as still a year away from deep playoff runs. A Week 12 game at Cleveland, before their bye, could determine whether the Raiders stick with Cousins or begin auditions for Fernando Mendoza.", "outlets": [{"name": "NFL.com", "rank": 21, "prev": 20}, {"name": "CBS Sports", "rank": 24, "prev": 24}, {"name": "ProFootballTalk", "rank": 17, "prev": 17}, {"name": "USA Today", "rank": 17, "prev": 15}, {"name": "Fox Sports", "rank": 21, "prev": 17}, {"name": "ESPN", "rank": 21, "prev": 20}, {"name": "Bleacher Report", "rank": 17, "prev": 17}, {"name": "Sports Illustrated", "rank": 20, "prev": 17}, {"name": "Pro Football Network", "rank": 23, "prev": 20}, {"name": "Kalshi", "rank": 24, "prev": 22}]}, {"abbr": "DAL", "name": "Dallas Cowboys", "rank": 21, "prev": 23, "move": 2, "average": 20.9, "range_best": 18, "range_worst": 27, "desc": "Dallas got a needed win over Indianapolis despite 14 penalties and a shaky defense, keeping the Cowboys at 4-5 and still technically in the NFC East hunt. Writers are skeptical a deep postseason run is realistic, but every game is must-win with the Week 17 clash against the Giants potentially deciding the division.", "outlets": [{"name": "NFL.com", "rank": 22, "prev": 24}, {"name": "CBS Sports", "rank": 18, "prev": 22}, {"name": "ProFootballTalk", "rank": 25, "prev": 26}, {"name": "USA Today", "rank": 21, "prev": 25}, {"name": "Fox Sports", "rank": 20, "prev": 23}, {"name": "ESPN", "rank": 20, "prev": 23}, {"name": "Bleacher Report", "rank": 20, "prev": 22}, {"name": "Sports Illustrated", "rank": 27, "prev": 21}, {"name": "Pro Football Network", "rank": 18, "prev": 23}, {"name": "Kalshi", "rank": 18, "prev": 20}]}, {"abbr": "ATL", "name": "Atlanta Falcons", "rank": 22, "prev": 20, "move": -2, "average": 21.5, "range_best": 18, "range_worst": 24, "desc": "Michael Penix Jr. has struggled badly against pressure, stalling an offense that has real talent around it. At 3-5-1, the Falcons have dropped four of five and face a tough schedule, with their playoff window closing fast.", "outlets": [{"name": "NFL.com", "rank": 18, "prev": 17}, {"name": "CBS Sports", "rank": 21, "prev": 19}, {"name": "ProFootballTalk", "rank": 24, "prev": 21}, {"name": "USA Today", "rank": 18, "prev": 18}, {"name": "Fox Sports", "rank": 24, "prev": 22}, {"name": "ESPN", "rank": 23, "prev": 21}, {"name": "Bleacher Report", "rank": 22, "prev": 23}, {"name": "Sports Illustrated", "rank": 22, "prev": 19}, {"name": "Pro Football Network", "rank": 21, "prev": 16}, {"name": "Kalshi", "rank": 22, "prev": 21}]}, {"abbr": "BAL", "name": "Baltimore Ravens", "rank": 23, "prev": 21, "move": -2, "average": 22.2, "range_best": 18, "range_worst": 28, "desc": "Lamar Jackson is working back from a thumb injury, and the Ravens traded for Jacoby Brissett to stabilize things in the meantime. At 4-5 with only a 2.7% playoff probability per ESPN, Baltimore faces a potential new low with the winless Chargers on Monday Night Football.", "outlets": [{"name": "NFL.com", "rank": 28, "prev": 22}, {"name": "CBS Sports", "rank": 22, "prev": 20}, {"name": "ProFootballTalk", "rank": 19, "prev": 19}, {"name": "USA Today", "rank": 25, "prev": 24}, {"name": "Fox Sports", "rank": 22, "prev": 20}, {"name": "ESPN", "rank": 22, "prev": 19}, {"name": "Bleacher Report", "rank": 21, "prev": 19}, {"name": "Sports Illustrated", "rank": 18, "prev": 24}, {"name": "Pro Football Network", "rank": 22, "prev": 22}, {"name": "Kalshi", "rank": 23, "prev": 24}]}, {"abbr": "NO", "name": "New Orleans Saints", "rank": 24, "prev": 26, "move": 2, "average": 22.9, "range_best": 19, "range_worst": 27, "desc": "New Orleans has become more aggressive on defense after the bye but has lost three one-score games and needs to close out tight contests. At 3-5 the Saints are still in the NFC South race, with both a Week 17 game at Atlanta and Week 18 at home against Tampa Bay as potential playoff tiebreakers.", "outlets": [{"name": "NFL.com", "rank": 23, "prev": 28}, {"name": "CBS Sports", "rank": 23, "prev": 26}, {"name": "ProFootballTalk", "rank": 21, "prev": 25}, {"name": "USA Today", "rank": 19, "prev": 19}, {"name": "Fox Sports", "rank": 23, "prev": 26}, {"name": "ESPN", "rank": 26, "prev": 26}, {"name": "Bleacher Report", "rank": 23, "prev": 28}, {"name": "Sports Illustrated", "rank": 23, "prev": 26}, {"name": "Pro Football Network", "rank": 27, "prev": 28}, {"name": "Kalshi", "rank": 21, "prev": 25}]}, {"abbr": "WAS", "name": "Washington Commanders", "rank": 25, "prev": 25, "move": 0, "average": 25.5, "range_best": 24, "range_worst": 28, "desc": "Washington's playoff hopes are fading amid injuries, defensive holes, and poor decision-making, and the Commanders sit at 2-5-1 with Dan Quinn's job under pressure. A Week 10 win at the Giants would provide a tiebreaker, but writers see the team as struggling in the short term.", "outlets": [{"name": "NFL.com", "rank": 26, "prev": 26}, {"name": "CBS Sports", "rank": 27, "prev": 27}, {"name": "ProFootballTalk", "rank": 26, "prev": 24}, {"name": "USA Today", "rank": 24, "prev": 21}, {"name": "Fox Sports", "rank": 26, "prev": 25}, {"name": "ESPN", "rank": 24, "prev": 25}, {"name": "Bleacher Report", "rank": 25, "prev": 25}, {"name": "Sports Illustrated", "rank": 28, "prev": 22}, {"name": "Pro Football Network", "rank": 24, "prev": 25}, {"name": "Kalshi", "rank": 25, "prev": 23}]}, {"abbr": "ARI", "name": "Arizona Cardinals", "rank": 26, "prev": 24, "move": -2, "average": 25.7, "range_best": 23, "range_worst": 28, "desc": "The Cardinals lost Jeremiyah Love to injured reserve and failed to score a touchdown against Seattle, leaving their offense dangerously thin at skill positions. With rookie Carson Beck likely making his debut after Gardner Minshew II's season-ending injury, Arizona is in full rebuild mode at 3-6.", "outlets": [{"name": "NFL.com", "rank": 27, "prev": 23}, {"name": "CBS Sports", "rank": 25, "prev": 21}, {"name": "ProFootballTalk", "rank": 23, "prev": 20}, {"name": "USA Today", "rank": 26, "prev": 23}, {"name": "Fox Sports", "rank": 25, "prev": 21}, {"name": "ESPN", "rank": 25, "prev": 24}, {"name": "Bleacher Report", "rank": 27, "prev": 24}, {"name": "Sports Illustrated", "rank": 25, "prev": 23}, {"name": "Pro Football Network", "rank": 28, "prev": 27}, {"name": "Kalshi", "rank": 26, "prev": 26}]}, {"abbr": "NYJ", "name": "New York Jets", "rank": 27, "prev": 27, "move": 0, "average": 28.1, "range_best": 25, "range_worst": 31, "desc": "New York has lost four straight and writers say a coaching change may be needed to unlock the roster's clear talent. The Jets sit at 2-7, with draft position increasingly the focal point and two top-five picks potentially on the table.", "outlets": [{"name": "NFL.com", "rank": 30, "prev": 31}, {"name": "CBS Sports", "rank": 26, "prev": 25}, {"name": "ProFootballTalk", "rank": 31, "prev": 31}, {"name": "USA Today", "rank": 28, "prev": 28}, {"name": "Fox Sports", "rank": 31, "prev": 31}, {"name": "ESPN", "rank": 27, "prev": 28}, {"name": "Bleacher Report", "rank": 26, "prev": 27}, {"name": "Sports Illustrated", "rank": 30, "prev": 28}, {"name": "Pro Football Network", "rank": 25, "prev": 24}, {"name": "Kalshi", "rank": 27, "prev": 27}]}, {"abbr": "IND", "name": "Indianapolis Colts", "rank": 28, "prev": 29, "move": 1, "average": 28.2, "range_best": 25, "range_worst": 31, "desc": "The Colts are in disarray after firing GM Chris Ballard, and Daniel Jones may be on his way out of the starting lineup. At 2-7, Indianapolis belongs near the bottom of every ranking, and writers see little path to relevance before year's end.", "outlets": [{"name": "NFL.com", "rank": 25, "prev": 29}, {"name": "CBS Sports", "rank": 30, "prev": 30}, {"name": "ProFootballTalk", "rank": 29, "prev": 29}, {"name": "USA Today", "rank": 31, "prev": 31}, {"name": "Fox Sports", "rank": 27, "prev": 28}, {"name": "ESPN", "rank": 29, "prev": 29}, {"name": "Bleacher Report", "rank": 31, "prev": 30}, {"name": "Sports Illustrated", "rank": 26, "prev": 29}, {"name": "Pro Football Network", "rank": 26, "prev": 26}, {"name": "Kalshi", "rank": 28, "prev": 28}]}, {"abbr": "MIA", "name": "Miami Dolphins", "rank": 28, "prev": 30, "move": 2, "average": 28.2, "range_best": 17, "range_worst": 31, "desc": "Miami is 1-7 and writers are pointing toward the future, with Malik Willis looking like a long-term non-answer at quarterback. The Dolphins likely hold a top-three 2027 draft pick, and a Week 16 game against the Chargers could affect their shot at the No. 1 overall selection.", "outlets": [{"name": "NFL.com", "rank": 29, "prev": 27}, {"name": "CBS Sports", "rank": 29, "prev": 29}, {"name": "ProFootballTalk", "rank": 30, "prev": 30}, {"name": "USA Today", "rank": 27, "prev": 27}, {"name": "Fox Sports", "rank": 30, "prev": 30}, {"name": "ESPN", "rank": 30, "prev": 31}, {"name": "Bleacher Report", "rank": 30, "prev": 29}, {"name": "Sports Illustrated", "rank": 17, "prev": 31}, {"name": "Pro Football Network", "rank": 31, "prev": 29}, {"name": "Kalshi", "rank": 29, "prev": 30}]}, {"abbr": "PHI", "name": "Philadelphia Eagles", "rank": 30, "prev": 28, "move": -2, "average": 29.0, "range_best": 27, "range_worst": 31, "desc": "Philadelphia has lost seven straight, is on its third starting quarterback, and ESPN projects them picking fifth in the 2027 draft. Writers and the team have shifted focus to building toward next season, with head coach Nick Sirianni's future under scrutiny after the bye.", "outlets": [{"name": "NFL.com", "rank": 31, "prev": 32}, {"name": "CBS Sports", "rank": 28, "prev": 28}, {"name": "ProFootballTalk", "rank": 27, "prev": 27}, {"name": "USA Today", "rank": 30, "prev": 30}, {"name": "Fox Sports", "rank": 28, "prev": 27}, {"name": "ESPN", "rank": 28, "prev": 27}, {"name": "Bleacher Report", "rank": 28, "prev": 26}, {"name": "Sports Illustrated", "rank": 31, "prev": 27}, {"name": "Pro Football Network", "rank": 29, "prev": 30}, {"name": "Kalshi", "rank": 30, "prev": 29}]}, {"abbr": "TEN", "name": "Tennessee Titans", "rank": 31, "prev": 31, "move": 0, "average": 29.1, "range_best": 24, "range_worst": 31, "desc": "Tennessee is headed for a fifth consecutive losing season at 1-7, though Cam Ward is showing real development and the offense has quietly improved. A Week 14 win over Indianapolis would complete a sweep, though writers note it could also cost the Titans a top draft position.", "outlets": [{"name": "NFL.com", "rank": 24, "prev": 25}, {"name": "CBS Sports", "rank": 31, "prev": 31}, {"name": "ProFootballTalk", "rank": 28, "prev": 28}, {"name": "USA Today", "rank": 29, "prev": 29}, {"name": "Fox Sports", "rank": 29, "prev": 29}, {"name": "ESPN", "rank": 31, "prev": 30}, {"name": "Bleacher Report", "rank": 29, "prev": 31}, {"name": "Sports Illustrated", "rank": 29, "prev": 30}, {"name": "Pro Football Network", "rank": 30, "prev": 32}, {"name": "Kalshi", "rank": 31, "prev": 31}]}, {"abbr": "LAC", "name": "Los Angeles Chargers", "rank": 32, "prev": 32, "move": 0, "average": 32.0, "range_best": 32, "range_worst": 32, "desc": "Los Angeles is winless at 0-8, with offensive struggles under Mike McDaniel and injuries to Ladd McConkey and Justin Herbert piling up. Writers agree the Chargers look like the league's worst team, and their Week 16 game at Miami carries major implications for the No. 1 overall draft pick.", "outlets": [{"name": "NFL.com", "rank": 32, "prev": 30}, {"name": "CBS Sports", "rank": 32, "prev": 32}, {"name": "ProFootballTalk", "rank": 32, "prev": 32}, {"name": "USA Today", "rank": 32, "prev": 32}, {"name": "Fox Sports", "rank": 32, "prev": 32}, {"name": "ESPN", "rank": 32, "prev": 32}, {"name": "Bleacher Report", "rank": 32, "prev": 32}, {"name": "Sports Illustrated", "rank": 32, "prev": 32}, {"name": "Pro Football Network", "rank": 32, "prev": 31}, {"name": "Kalshi", "rank": 32, "prev": 32}]}]};
+
+let selectedTeams = [...DEFAULT_TEAMS];
+
+// ── Logo helper ─────────────────────────────────────────────────
+function getLogoAbbr(abbr) {
+  if (abbr === 'WAS') return 'wsh';
+  return abbr.toLowerCase();
+}
+
+// ── Canvas chart ───────────────────────────────────────────────
+function drawChart() {
+  const canvas = document.getElementById('rankChart');
+  if (!canvas) return;
+  const dpr = window.devicePixelRatio || 1;
+  const W = canvas.clientWidth || canvas.parentElement.clientWidth;
+  const H = 300;
+  canvas.width = W * dpr;
+  canvas.height = H * dpr;
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+
+  // Layout
+  const pad = { top: 20, right: 24, bottom: 44, left: 48 };
+  const cw = W - pad.left - pad.right;
+  const ch = H - pad.top - pad.bottom;
+
+  // Dark mode detection
+  const isDark = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim().startsWith('#1') ||
+                 window.matchMedia('(prefers-color-scheme:dark)').matches;
+  const gridColor = isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.08)';
+  const labelColor = isDark ? 'rgba(255,255,255,0.6)' : 'rgba(0,0,0,0.55)';
+  const axisLabelColor = isDark ? 'rgba(255,255,255,0.4)' : 'rgba(0,0,0,0.38)';
+
+  ctx.clearRect(0, 0, W, H);
+
+  // Y axis: rank 1-32, inverted so 1 is at top
+  const yMin = 1, yMax = 32;
+  function yPos(rank) {
+    return pad.top + (rank - yMin) / (yMax - yMin) * ch;
+  }
+  function xPos(week) {
+    return pad.left + (week - 1) / Math.max(WEEKS.length - 1, 1) * cw;
+  }
+
+  // Axis labels
+  ctx.save();
+  ctx.font = 'bold 11px system-ui,sans-serif';
+  ctx.fillStyle = axisLabelColor;
+  ctx.textAlign = 'center';
+  ctx.fillText('Week', pad.left + cw / 2, H - 2);
+  ctx.translate(13, pad.top + ch / 2);
+  ctx.rotate(-Math.PI / 2);
+  ctx.fillText('Rank', 0, 0);
+  ctx.restore();
+
+  // Grid lines at ranks 1,5,10,15,20,25,32
+  const gridRanks = [1,5,10,15,20,25,32];
+  ctx.strokeStyle = gridColor;
+  ctx.lineWidth = 1;
+  gridRanks.forEach(r => {
+    const y = yPos(r);
+    ctx.beginPath();
+    ctx.moveTo(pad.left, y);
+    ctx.lineTo(pad.left + cw, y);
+    ctx.stroke();
+    ctx.fillStyle = labelColor;
+    ctx.font = 'bold 12px system-ui,sans-serif';
+    ctx.textAlign = 'right';
+    ctx.fillText(r, pad.left - 7, y + 4);
+  });
+
+  // Week labels
+  WEEKS.forEach(w => {
+    const x = xPos(w);
+    ctx.fillStyle = labelColor;
+    ctx.font = 'bold 12px system-ui,sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('Wk ' + w, x, pad.top + ch + 18);
+    ctx.strokeStyle = gridColor;
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(x, pad.top + ch);
+    ctx.lineTo(x, pad.top + ch + 5);
+    ctx.stroke();
+  });
+
+  // Draw lines
+  selectedTeams.forEach((abbr, si) => {
+    if (!abbr || !RANK_HISTORY[abbr]) return;
+    const color = SLOT_COLORS[si];
+    const teamData = RANK_HISTORY[abbr];
+
+    const pts = WEEKS.filter(w => teamData[w] !== undefined)
+                     .map(w => ({ x: xPos(w), y: yPos(teamData[w]) }));
+    if (pts.length < 2) return;
+
+    ctx.shadowColor = color;
+    ctx.shadowBlur = 4;
+
+    ctx.beginPath();
+    ctx.moveTo(pts[0].x, pts[0].y);
+    pts.slice(1).forEach(p => ctx.lineTo(p.x, p.y));
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 2.5;
+    ctx.lineJoin = 'round';
+    ctx.stroke();
+
+    ctx.shadowBlur = 0;
+    pts.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
+      ctx.fillStyle = color;
+      ctx.fill();
+      ctx.strokeStyle = isDark ? '#1a1a1a' : '#fff';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+    });
+
+    const last = pts[pts.length - 1];
+    ctx.fillStyle = color;
+    ctx.font = 'bold 13px system-ui,sans-serif';
+    ctx.textAlign = last.x > W * 0.8 ? 'right' : 'left';
+    ctx.fillText(abbr, last.x + (last.x > W * 0.8 ? -10 : 10), last.y + 5);
+  });
+
+  ctx.shadowBlur = 0;
+}
+
+// ── Tooltip ───────────────────────────────────────────────────
+function setupTooltip() {
+  const canvas = document.getElementById('rankChart');
+  const tip = document.getElementById('chartTooltip');
+  if (!canvas || !tip) return;
+
+  const pad = { top: 20, right: 24, bottom: 44, left: 48 };
+
+  function getHit(mx, my) {
+    const W = canvas.clientWidth;
+    const H = 300;
+    const cw = W - pad.left - pad.right;
+    const ch = H - pad.top - pad.bottom;
+    const yMin = 1, yMax = 32;
+
+    function xPos(w) { return pad.left + (w - 1) / Math.max(WEEKS.length - 1, 1) * cw; }
+    function yPos(r) { return pad.top + (r - yMin) / (yMax - yMin) * ch; }
+
+    const SNAP = 14;
+    let best = null, bestDist = SNAP;
+
+    selectedTeams.forEach((abbr, si) => {
+      if (!abbr || !RANK_HISTORY[abbr]) return;
+      WEEKS.forEach(w => {
+        const rank = RANK_HISTORY[abbr][w];
+        if (rank === undefined) return;
+        const px = xPos(w), py = yPos(rank);
+        const d = Math.sqrt((mx - px) ** 2 + (my - py) ** 2);
+        if (d < bestDist) { bestDist = d; best = { abbr, w, rank, color: SLOT_COLORS[si] }; }
+      });
+    });
+    return best;
+  }
+
+  function onMove(e) {
+    const rect = canvas.getBoundingClientRect();
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    const mx = clientX - rect.left;
+    const my = clientY - rect.top;
+    const hit = getHit(mx, my);
+    if (hit) {
+      tip.textContent = `Week ${hit.w} · Rank ${hit.rank}`;
+      tip.style.opacity = '1';
+      tip.style.left = (mx + 12) + 'px';
+      tip.style.top = (my - 24) + 'px';
+      tip.style.background = hit.color;
+    } else {
+      tip.style.opacity = '0';
+    }
+  }
+
+  canvas.addEventListener('mousemove', onMove);
+  canvas.addEventListener('touchmove', onMove, { passive: true });
+  canvas.addEventListener('mouseleave', () => { tip.style.opacity = '0'; });
+}
+
+// ── Selectors ──────────────────────────────────────────────────
+const SORTED_ABBRS = [...TEAM_ABBRS].sort((a,b) => TEAM_NAMES_MAP[a].localeCompare(TEAM_NAMES_MAP[b]));
+
+function buildSelectors() {
+  const container = document.getElementById('team-selectors');
+  if (!container) return;
+  container.innerHTML = '';
+
+  // Prepend label
+  const label = document.createElement('span');
+  label.className = 'select-label';
+  label.textContent = 'Select up to 4 teams.';
+  container.appendChild(label);
+
+  SLOT_COLORS.forEach((color, i) => {
+    const slot = document.createElement('div');
+    slot.className = 'team-slot';
+    const dot = document.createElement('div');
+    dot.className = 'team-slot-dot';
+    dot.style.background = color;
+    const sel = document.createElement('select');
+    sel.setAttribute('aria-label', 'Team ' + (i+1));
+    sel.dataset.slot = i;
+
+    const noneOpt = document.createElement('option');
+    noneOpt.value = '';
+    noneOpt.textContent = 'Team ' + (i+1);
+    sel.appendChild(noneOpt);
+
+    SORTED_ABBRS.forEach(abbr => {
+      const opt = document.createElement('option');
+      opt.value = abbr;
+      opt.textContent = TEAM_NAMES_MAP[abbr];
+      if (abbr === selectedTeams[i]) opt.selected = true;
+      const otherSlots = selectedTeams.filter((_, j) => j !== i);
+      if (otherSlots.includes(abbr)) opt.disabled = true;
+      sel.appendChild(opt);
+    });
+
+    sel.addEventListener('change', () => {
+      selectedTeams[i] = sel.value;
+      buildSelectors();
+      drawChart();
+    });
+
+    slot.appendChild(dot);
+    slot.appendChild(sel);
+    container.appendChild(slot);
+  });
+}
+
+// ── Toggle expandable row ─────────────────────────────────────
+function toggleRow(mainRow) {
+  const detailRow = mainRow.nextElementSibling;
+  if (!detailRow || !detailRow.classList.contains('detail-row')) return;
+  const isExpanded = !detailRow.classList.contains('hidden');
+  if (isExpanded) {
+    detailRow.classList.add('hidden');
+    mainRow.classList.remove('row-expanded');
+  } else {
+    detailRow.classList.remove('hidden');
+    mainRow.classList.add('row-expanded');
+  }
+}
+
+// ── Rankings list ──────────────────────────────────────────────
+async function initRankings() {
+  const el = document.getElementById('rankings-full');
+  const data = WEEK_DATA;
+  if (!data || !data.teams) {
+    el.innerHTML = '<div style="color:var(--slate);font-family:var(--font-body);font-size:13px;">Rankings not yet available. Check back Tuesday.</div>';
+    return;
+  }
+
+  const updatedStr = data.updated ? new Date(data.updated).toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'}) : '';
+  const updatedLine = updatedStr
+    ? `<p style="font-family:var(--font-body);font-size:12px;color:var(--slate);margin-bottom:16px;">Updated ${updatedStr} &nbsp;·&nbsp; <span style="color:var(--orange);font-style:italic;">Click any row for a full breakdown</span></p>`
+    : '';
+
+  const hasAvg = data.teams.some(t => t.average !== undefined);
+  const hasRange = data.teams.some(t => t.range_best !== undefined || t.range_worst !== undefined);
+
+  const headerAvg = hasAvg ? '<th class="num avg">Avg</th>' : '';
+  const headerRange = hasRange ? '<th class="num range">Range</th>' : '';
+
+  const rows = data.teams.map((t, i) => {
+    let moveBadge;
+    if (t.move > 0) {
+      moveBadge = `<span class="move-badge up">↑ ${t.move}</span>`;
+    } else if (t.move < 0) {
+      moveBadge = `<span class="move-badge dn">↓ ${Math.abs(t.move)}</span>`;
+    } else {
+      moveBadge = `<span class="move-badge flat">—</span>`;
+    }
+
+    const avgCell = hasAvg ? `<td class="avg-col">${t.average !== undefined ? t.average.toFixed(1) : '—'}</td>` : '';
+    const rangeCell = hasRange ? `<td class="range-col">${t.range_best !== undefined ? t.range_best + ' to ' + t.range_worst : '—'}</td>` : '';
+
+    // Outlet pills for expanded row
+    let outletPills = '';
+    if (t.outlets && t.outlets.length) {
+      outletPills = t.outlets.map(o => {
+        const prevText = o.prev ? `prev #${o.prev}` : '';
+        return `<a href="${escHtml(o.url)}" class="outlet-pill" target="_blank" rel="noopener">
+          <span class="outlet-pill-rank">#${o.rank}</span>
+          <span class="outlet-pill-name">${escHtml(o.name)}</span>
+          ${prevText ? `<span class="outlet-pill-prev">${prevText}</span>` : ''}
+        </a>`;
+      }).join('');
+    }
+
+    const logoAbbr = getLogoAbbr(t.abbr || t.name);
+    const logoUrl = `https://a.espncdn.com/i/teamlogos/nfl/500/${logoAbbr}.png`;
+
+    const descText = (t.desc && t.desc !== 'To be filled in later.') ? escHtml(t.desc) : '';
+
+    const mainRow = `<tr class="team-row" onclick="toggleRow(this)">
+      <td class="rank-col">${String(i+1).padStart(2,'0')}</td>
+      <td class="move-col">${moveBadge}</td>
+      <td class="team-col">
+        <div class="team-cell">
+          <span class="row-arrow">▶</span>
+          <img class="team-row-logo" src="${logoUrl}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+          ${escHtml(t.name)}
+        </div>
+      </td>
+      ${avgCell}
+      ${rangeCell}
+    </tr>`;
+
+    const detailRow = `<tr class="detail-row hidden">
+      <td colspan="5">
+        <div class="team-detail">
+          <img class="team-detail-logo" src="${logoUrl}" alt="${escHtml(t.name)} logo" onerror="this.style.display='none'">
+          <div class="team-detail-body">
+            ${descText ? `<p class="team-desc-text">${descText}</p>` : ''}
+            ${outletPills ? `<div class="outlet-section-label">Rankings by outlet</div><div class="outlet-grid">${outletPills}</div>` : ''}
+          </div>
+        </div>
+      </td>
+    </tr>`;
+
+    return mainRow + detailRow;
+  }).join('');
+
+  el.innerHTML = updatedLine + `
+    <table class="rankings-table">
+      <thead>
+        <tr>
+          <th class="num" style="width:48px;">#</th>
+          <th style="width:64px;"></th>
+          <th>Team</th>
+          ${headerAvg}
+          ${headerRange}
+        </tr>
+      </thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+}
+
+// ── Init ──────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  buildSelectors();
+  drawChart();
+  setupTooltip();
+  initRankings();
+  window.addEventListener('resize', () => { drawChart(); setupTooltip(); });
+});
+</script>
+<script src="/js/auth.js"></script>
+</body>
+</html>
