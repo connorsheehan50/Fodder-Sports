@@ -732,7 +732,9 @@
   // The teams an article is about, from the feed entry for this page.
   function registerPageTeams() {
     loadFeed().then(function (d) {
-      var item = ((d && d.items) || []).find(function (i) { return i.url === location.pathname; });
+      var clean = function (u) { return String(u || '').replace(/\.html$/, '').replace(/\/index$/, '/'); };
+      var here = clean(location.pathname);
+      var item = ((d && d.items) || []).find(function (i) { return clean(i.url) === here; });
       if (item && phReady) window.posthog.register({ page_teams: item.teams_full || [], content_type: item.type });
     });
   }
