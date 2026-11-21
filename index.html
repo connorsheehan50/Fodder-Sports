@@ -308,6 +308,20 @@
       font-weight: 700;
       color: var(--blue);
     }
+    .my-feed-banner .feed-teams-wrap { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+    .my-feed-banner .feed-teams-head {
+      font-family: var(--font-head); font-size: 11px; font-weight: 800; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--slate);
+    }
+    .my-feed-banner .feed-teams-head a { color: var(--blue); text-transform: none; letter-spacing: 0; font-weight: 700; margin-left: 6px; text-decoration: underline; }
+    .my-feed-banner .feed-teams { font-family: var(--font-head); font-size: 15px; font-weight: 700; color: var(--ink); line-height: 1.4; }
+    .my-feed-banner .feed-more {
+      font: inherit; color: var(--blue); background: none; border: none; padding: 0; cursor: pointer; text-decoration: underline;
+    }
+    .my-feed-banner .feed-home-btn {
+      flex-shrink: 0; white-space: nowrap; font-size: 12px; padding: 7px 12px; color: var(--ink);
+    }
+    @media (max-width: 600px) { .my-feed-banner.visible { flex-direction: column; align-items: flex-start; } }
     .my-feed-banner button {
       font-family: var(--font-head);
       font-size: 11px;
@@ -600,8 +614,11 @@
     <main>
       <!-- My Feed notice (shown when filtering by team) -->
       <div class="my-feed-banner" id="my-feed-banner">
-        <span id="my-feed-label">Showing: All Teams</span>
-        <button onclick="clearFeedFilter()">Show all stories</button>
+        <div class="feed-teams-wrap">
+          <div class="feed-teams-head"><span id="my-feed-count" style="color:inherit;font-size:inherit;">Your feed follows</span><a href="#" onclick="fsEditPreferences();return false;">Edit teams</a></div>
+          <div class="feed-teams" id="my-feed-label"></div>
+        </div>
+        <button class="feed-home-btn" onclick="clearFeedFilter()">Go to the front page →</button>
       </div>
 
       <div class="section-label" id="feed-label">
@@ -871,10 +888,22 @@ function applyFeedFilter() {
   const banner = document.getElementById('my-feed-banner');
   const label = document.getElementById('my-feed-label');
 
-  const summary = window.fsTeamSummary ? window.fsTeamSummary(3) : '';
-  if (isMyFeed && acc && summary) {
+  const favs = window.fsFavorites ? window.fsFavorites() : [];
+  if (isMyFeed && acc && favs.length) {
     if (banner) banner.classList.add('visible');
-    if (label) label.textContent = '★ Your Feed: ' + summary;
+    const count = document.getElementById('my-feed-count');
+    if (count) count.textContent = '★ Your feed follows ' + favs.length + ' team' + (favs.length === 1 ? '' : 's');
+    if (label) {
+      const names = favs.map(f => escHtml(f.name));
+      const SHOW = 3;
+      if (names.length <= SHOW) {
+        label.innerHTML = names.join(', ');
+      } else {
+        label.innerHTML = names.slice(0, SHOW).join(', ') +
+          ' <button class="feed-more" onclick="this.parentNode.innerHTML=this.dataset.all">+' + (names.length - SHOW) + ' more</button>';
+        label.querySelector('.feed-more').dataset.all = names.join(', ');
+      }
+    }
   } else {
     if (banner) banner.classList.remove('visible');
   }

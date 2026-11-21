@@ -16,6 +16,43 @@
     '.site-top .site-header,.site-top .primary-nav{position:static !important;top:auto !important;}',
     '.site-top .primary-nav{z-index:auto;}',
     '.site-top .trending-items{animation:none;}',
+    // one light bar: logo, sections, account
+    '.site-top .fs-bar{background:var(--card-bg,#fff);border-bottom:3px solid var(--orange);}',
+    '.site-top .fs-bar-inner{height:72px;gap:28px;justify-content:flex-start;}',
+    '.fs-logo{display:flex;align-items:center;flex-shrink:0;}',
+    '.fs-logo img{height:56px;width:auto;display:block;}',
+    '.fs-nav{display:flex;align-items:stretch;align-self:stretch;flex:1;min-width:0;}',
+    '.fs-nav .nav-item{display:flex;}',
+    '.fs-nav .nav-link{padding:0 14px;font-size:14px;border-bottom:3px solid transparent;margin-bottom:-3px;height:auto;color:var(--slate);}',
+    '.fs-nav .nav-link:hover,.fs-nav .nav-link.active{color:var(--ink);}',
+    '.fs-nav .nav-link.active{border-bottom-color:var(--ink);}',
+    '.fs-nav .nav-soon{cursor:default;opacity:.7;}',
+    '.fs-nav .nav-soon:hover{color:var(--slate);}',
+    '.fs-nav .nav-dropdown{top:100%;margin-top:3px;}',
+    '.fs-nav .nav-item:hover .nav-dropdown,.fs-nav .nav-item:focus-within .nav-dropdown{display:flex;}',
+    '.site-top .header-actions{margin-left:auto;}',
+    '.site-top .btn-signin{color:var(--ink);border-color:var(--rule);}',
+    '.site-top .btn-signin:hover{color:var(--ink);border-color:var(--ink);}',
+    '.site-top .btn-account{color:var(--ink);border-color:var(--rule);}',
+    '@media (max-width:900px){' +
+      '.site-top .fs-bar-inner{height:auto;flex-wrap:wrap;row-gap:0;padding-top:8px;}' +
+      '.fs-logo img{height:44px;}' +
+      '.fs-nav{order:3;flex-basis:100%;overflow-x:auto;scrollbar-width:none;margin:0 -4px;}' +
+      '.fs-nav::-webkit-scrollbar{display:none;}' +
+      '.fs-nav .nav-link{padding:12px 12px;white-space:nowrap;}' +
+      '.fs-nav .nav-dropdown{display:none !important;}' +
+    '}',
+    // sign-up prompt
+    '.fs-pop{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(10,10,10,.55);opacity:0;transition:opacity .25s;}',
+    '.fs-pop.show{opacity:1;}',
+    '.fs-pop-card{position:relative;background:var(--card-bg,#fff);border-radius:10px;border-top:4px solid var(--orange);max-width:440px;width:100%;padding:28px 28px 22px;box-shadow:0 20px 60px rgba(0,0,0,.3);text-align:center;}',
+    '.fs-pop-card img{height:64px;width:auto;margin:0 auto 14px;display:block;}',
+    '.fs-pop-title{font-family:var(--font-head);font-size:26px;font-weight:900;line-height:1.15;color:var(--ink);margin-bottom:8px;}',
+    '.fs-pop-sub{font-family:var(--font-body);font-size:15px;line-height:1.5;color:var(--slate);margin-bottom:20px;}',
+    '.fs-pop-cta{display:block;width:100%;font-family:var(--font-head);font-size:15px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--orange);border:none;border-radius:4px;padding:13px 16px;cursor:pointer;}',
+    '.fs-pop-cta:hover{opacity:.9;}',
+    '.fs-pop-later{margin-top:10px;background:none;border:none;font-family:var(--font-body);font-size:13px;color:var(--slate);cursor:pointer;text-decoration:underline;}',
+    '.fs-pop-x{position:absolute;top:8px;right:10px;background:none;border:none;font-size:26px;line-height:1;color:var(--slate);cursor:pointer;padding:4px 8px;}',
     '.fs-sched-row{display:block;padding:12px 16px;border-bottom:1px solid var(--rule);color:inherit;text-decoration:none;}',
     'a.fs-sched-row:hover{background:rgba(0,0,0,.02);}',
     '.fs-sched-meta{display:flex;gap:8px;align-items:center;font-family:var(--font-head);font-size:11px;font-weight:700;color:var(--slate);letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px;}',
@@ -102,8 +139,25 @@
     var s = section();
     function act(k) { return s === k ? ' active' : ''; }
     return '' +
-      '<header class="site-header"><div class="container"><div class="header-inner">' +
-        '<a href="/" class="logo"><span class="logo-word">FODDER<span>.</span></span><span class="logo-sub">Sports</span></a>' +
+      '<header class="site-header fs-bar"><div class="container"><div class="header-inner fs-bar-inner">' +
+        '<a href="/" class="fs-logo" aria-label="Fodder Sports home"><img src="/img/fodder-logo-header.png" alt="Fodder Sports" width="113" height="56"></a>' +
+        '<nav class="fs-nav" aria-label="Sections">' +
+          '<div class="nav-item"><a href="/" class="nav-link' + act('home') + '">Home</a></div>' +
+          '<div class="nav-item"><a href="/?tab=myfeed" class="nav-link' + act('myfeed') + '" id="nav-myfeed" onclick="return fsMyFeedClick(event)">My Feed</a></div>' +
+          '<div class="nav-item"><a href="/nfl/index.html" class="nav-link' + act('nfl') + '" aria-haspopup="true">NFL <span class="caret">▾</span></a>' +
+            '<div class="nav-dropdown">' +
+              '<a href="/nfl/index.html">All NFL Stories</a><div class="dropdown-divider"></div>' +
+              '<a href="/nfl/power-rankings.html">Power Rankings</a>' +
+              '<a href="/nfl/index.html?tab=preview">Game Previews</a>' +
+              '<a href="/nfl/index.html?tab=recap">Game Recaps</a>' +
+              '<a href="/nfl/index.html?tab=trade">Trades</a>' +
+              '<a href="/nfl/index.html?tab=breaking">Breaking News</a>' +
+            '</div></div>' +
+          '<div class="nav-item"><span class="nav-link nav-soon">NBA <span class="nav-badge">SOON</span></span></div>' +
+          '<div class="nav-item"><span class="nav-link nav-soon">MLB <span class="nav-badge">SOON</span></span></div>' +
+          '<div class="nav-item"><span class="nav-link nav-soon">NHL <span class="nav-badge">SOON</span></span></div>' +
+          '<div class="nav-item"><span class="nav-link nav-soon">CFB <span class="nav-badge">SOON</span></span></div>' +
+        '</nav>' +
         '<div class="header-actions">' +
           '<button class="btn-signin" onclick="fsGoSignup()">Sign In</button>' +
           '<button class="btn-signup" id="btn-signup-header" onclick="fsGoSignup()">Sign Up Free</button>' +
@@ -118,23 +172,6 @@
           '</div>' +
         '</div>' +
       '</div></div></header>' +
-      '<nav class="primary-nav"><div class="container"><div class="primary-nav-inner">' +
-        '<div class="nav-item"><a href="/" class="nav-link' + act('home') + '">Home</a></div>' +
-        '<div class="nav-item"><a href="/?tab=myfeed" class="nav-link' + act('myfeed') + '" id="nav-myfeed" onclick="return fsMyFeedClick(event)">My Feed</a></div>' +
-        '<div class="nav-item"><a href="/nfl/index.html" class="nav-link' + act('nfl') + '">NFL <span class="caret">▾</span></a>' +
-          '<div class="nav-dropdown">' +
-            '<a href="/nfl/index.html">All NFL Stories</a><div class="dropdown-divider"></div>' +
-            '<a href="/nfl/power-rankings.html">Power Rankings</a>' +
-            '<a href="/nfl/index.html?tab=preview">Game Previews</a>' +
-            '<a href="/nfl/index.html?tab=recap">Game Recaps</a>' +
-            '<a href="/nfl/index.html?tab=trade">Trades</a>' +
-            '<a href="/nfl/index.html?tab=breaking">Breaking News</a>' +
-          '</div></div>' +
-        '<div class="nav-item"><a href="#" class="nav-link">NBA <span class="nav-badge">SOON</span></a></div>' +
-        '<div class="nav-item"><a href="#" class="nav-link">MLB <span class="nav-badge">SOON</span></a></div>' +
-        '<div class="nav-item"><a href="#" class="nav-link">NHL <span class="nav-badge">SOON</span></a></div>' +
-        '<div class="nav-item"><a href="#" class="nav-link">CFB <span class="nav-badge">SOON</span></a></div>' +
-      '</div></div></nav>' +
       '<div class="trending-strip"><div class="container"><div class="trending-inner">' +
         '<div class="trending-label">Trending</div>' +
         '<div class="trending-items" id="trending-items"></div>' +
@@ -142,7 +179,7 @@
   }
 
   function mountTop() {
-    var old = document.querySelectorAll('.site-header, .primary-nav, .trending-strip');
+    var old = document.querySelectorAll('.site-header, .primary-nav, .trending-strip, .sport-nav');
     var top = document.createElement('div');
     top.className = 'site-top';
     top.id = 'site-top';
@@ -263,6 +300,7 @@
           id: fav.sport + ':' + e.id,
           sport: fav.sport,
           time: Date.parse(e.date),
+          tbd: !!c.timeValid === false && c.timeValid !== undefined,
           state: st,
           home: (home.team || {}).shortDisplayName || (home.team || {}).displayName || '',
           away: (away.team || {}).shortDisplayName || (away.team || {}).displayName || '',
@@ -351,6 +389,50 @@
       return true;
     });
   };
+
+  // ── Sign-up prompt (home page only) ────────────────────────────
+  var POP_KEY = 'fs_signup_prompt_dismissed';
+  function popDismissedRecently() {
+    try {
+      var t = Number(localStorage.getItem(POP_KEY) || 0);
+      return t && (Date.now() - t) < 3 * 24 * 3600 * 1000;   // ask again after 3 days
+    } catch (e) { return false; }
+  }
+  function closePop() {
+    var el = document.getElementById('fs-pop');
+    if (!el) return;
+    try { localStorage.setItem(POP_KEY, String(Date.now())); } catch (e) {}
+    el.classList.remove('show');
+    document.removeEventListener('keydown', popKeys);
+    setTimeout(function () { el.remove(); }, 250);
+  }
+  function popKeys(e) { if (e.key === 'Escape') closePop(); }
+  window.fsClosePop = closePop;
+  function showPop() {
+    var acc = getAcc();
+    if ((acc && acc.email) || popDismissedRecently() || document.getElementById('fs-pop')) return;
+    var el = document.createElement('div');
+    el.className = 'fs-pop';
+    el.id = 'fs-pop';
+    el.setAttribute('role', 'dialog');
+    el.setAttribute('aria-modal', 'true');
+    el.setAttribute('aria-labelledby', 'fs-pop-title');
+    el.innerHTML = '<div class="fs-pop-card">' +
+      '<button class="fs-pop-x" aria-label="Close" onclick="fsClosePop()">×</button>' +
+      '<img src="/img/fodder-logo-header.png" alt="Fodder Sports">' +
+      '<div class="fs-pop-title" id="fs-pop-title">Your teams. Every market\u2019s take.</div>' +
+      '<div class="fs-pop-sub">Build a free feed for every team you follow, across every sport. See how their local writers and the national media are covering them, all in one place.</div>' +
+      '<button class="fs-pop-cta" onclick="fsGoSignup()">Build My Free Feed</button>' +
+      '<button class="fs-pop-later" onclick="fsClosePop()">Maybe later</button>' +
+      '</div>';
+    el.addEventListener('click', function (e) { if (e.target === el) closePop(); });
+    document.body.appendChild(el);
+    document.addEventListener('keydown', popKeys);
+    requestAnimationFrame(function () { el.classList.add('show'); });
+    var cta = el.querySelector('.fs-pop-cta');
+    if (cta) cta.focus();
+  }
+  if (section() === 'home') setTimeout(showPop, 10000);
 
   // ── Boot ───────────────────────────────────────────────────────
   mountTop();
