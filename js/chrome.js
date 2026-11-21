@@ -730,13 +730,21 @@
   }
 
   // The teams an article is about, from the feed entry for this page.
+  // Page details are registered fresh on every page (PostHog keeps registered values
+  // between pages), then the pageview is sent with them.
   function registerPageTeams() {
+    window.posthog.unregister('page_teams');
+    window.posthog.unregister('content_type');
+    var sent = false;
+    function sendPageview() { if (!sent) { sent = true; window.posthog.capture('$pageview'); } }
+    setTimeout(sendPageview, 1500);   // don't hold the pageview hostage to the feed
     loadFeed().then(function (d) {
       var clean = function (u) { return String(u || '').replace(/\.html$/, '').replace(/\/index$/, '/'); };
       var here = clean(location.pathname);
       var item = ((d && d.items) || []).find(function (i) { return clean(i.url) === here; });
       if (item && phReady) window.posthog.register({ page_teams: item.teams_full || [], content_type: item.type });
-    });
+      sendPageview();
+    }, sendPageview);
   }
 
   function cardInfo(a) {
@@ -813,7 +821,7 @@
       api_host: local ? PH_HOST : location.origin + '/ingest',
       ui_host: 'https://us.posthog.com',
       person_profiles: 'identified_only',
-      capture_pageview: true,
+      capture_pageview: false,       // sent by registerPageTeams once page details are set
       capture_pageleave: true,     // time on page and exit pages
       capture_performance: true,   // page speed
       autocapture: true
