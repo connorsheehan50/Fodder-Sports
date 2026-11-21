@@ -4,6 +4,34 @@
   "season": 2026,
   "items": [
     {
+      "id": "preview-no-chi-w11",
+      "type": "preview",
+      "date": "Sun, Nov. 22 · 1:00 PM ET",
+      "teams": [
+        "NO",
+        "CHI"
+      ],
+      "teams_full": [
+        "New Orleans Saints",
+        "Chicago Bears"
+      ],
+      "title": "#25 New Orleans at #4 Chicago",
+      "desc": "Rested Bears Return From the Bye as Big Favorites Over a Depleted Saints Team",
+      "url": "/nfl/pages/saints-at-bears.html",
+      "because": null
+    },
+    {
+      "id": "rankings-w11",
+      "type": "rankings",
+      "date": "Nov. 18",
+      "teams": [],
+      "teams_full": [],
+      "title": "Week 11 Power Rankings: Bengals and Rams on the Rise",
+      "desc": "Buffalo holds the top spot for a second straight week. Cincinnati and the Rams climb, while New England takes the biggest drop after losing Drake Maye.",
+      "url": "/nfl/power-rankings.html",
+      "because": null
+    },
+    {
       "id": "rankings-w10",
       "type": "rankings",
       "date": "Nov. 10",
@@ -169,7 +197,7 @@
     {
       "id": "preview-tb-chi-w9",
       "type": "preview",
-      "date": "Sun, Nov. 8 \u00b7 SNF",
+      "date": "Sun, Nov. 8 · SNF",
       "teams": [
         "TB",
         "CHI"
@@ -619,7 +647,7 @@
     {
       "id": "preview-chi-sea-w8",
       "type": "preview",
-      "date": "Mon, Nov. 2 \u00b7 MNF",
+      "date": "Mon, Nov. 2 · MNF",
       "teams": [
         "CHI",
         "SEA"
