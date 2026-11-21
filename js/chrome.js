@@ -707,7 +707,7 @@
   // ── Analytics (PostHog) ────────────────────────────────────────
   // Paste the PostHog project API key (starts with phc_) to switch tracking on.
   // It is a public key, meant to live in the page.
-  var PH_KEY = '';
+  var PH_KEY = 'phc_rwTfRCGjX9tHw8pP9acmqbrxHd8K3JtoDXmsYQ9L3QXC';
   var PH_HOST = 'https://us.i.posthog.com';
   var phReady = false;
   function track(event, props) {
