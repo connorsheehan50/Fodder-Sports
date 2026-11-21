@@ -775,7 +775,7 @@ function applyAccountState() {
     }
     // Nav My Feed label update
     const navFeed = document.getElementById('nav-myfeed');
-    if (navFeed && acc.team) navFeed.textContent = 'My Feed (' + acc.team.split(' ').pop() + ')';
+    if (navFeed) navFeed.textContent = 'My Feed';
   } else {
     if (banner) banner.classList.remove('hidden');
     if (btnSignup) btnSignup.style.display = '';
@@ -871,9 +871,10 @@ function applyFeedFilter() {
   const banner = document.getElementById('my-feed-banner');
   const label = document.getElementById('my-feed-label');
 
-  if (isMyFeed && acc && acc.team) {
+  const summary = window.fsTeamSummary ? window.fsTeamSummary(3) : '';
+  if (isMyFeed && acc && summary) {
     if (banner) banner.classList.add('visible');
-    if (label) label.textContent = '★ ' + acc.team + ' — Your Feed';
+    if (label) label.textContent = '★ Your Feed: ' + summary;
   } else {
     if (banner) banner.classList.remove('visible');
   }
@@ -926,9 +927,9 @@ async function homeInit() {
       let items = feedData.items;
 
       // My Feed filter
-      if (isMyFeed && acc && acc.team) {
-        items = items.filter(i => i.teams_full && i.teams_full.includes(acc.team));
-        if (feedNote) feedNote.textContent = acc.team;
+      if (isMyFeed && acc && window.fsFilterMyFeed) {
+        items = window.fsFilterMyFeed(items);
+        if (feedNote) feedNote.textContent = 'Your teams · every sport';
       } else {
         if (feedNote) feedNote.textContent = 'All teams · all types';
       }
@@ -937,7 +938,7 @@ async function homeInit() {
 
       feedEl.innerHTML = items.length
         ? items.map(buildCard).join('')
-        : '<div style="font-family: var(--font-body); font-size: 14px; color: var(--slate); padding: 20px 0;">No stories for this team yet.</div>';
+        : '<div style="font-family: var(--font-body); font-size: 14px; color: var(--slate); padding: 20px 0;">No stories for your teams yet.</div>';
     }
   }
 
@@ -951,13 +952,17 @@ async function homeInit() {
   // Load schedule widget
   const schedEl = document.getElementById('schedule-widget');
   if (schedEl) {
-    const schedData = await fetchJSON('data/nfl/schedule.json');
-    schedEl.innerHTML = buildScheduleWidget(schedData ? schedData.games : []);
+    const personal = isMyFeed && acc && window.fsRenderMySchedule && await window.fsRenderMySchedule(schedEl);
+    if (!personal) {
+      const schedData = await fetchJSON('data/nfl/schedule.json');
+      schedEl.innerHTML = buildScheduleWidget(schedData ? schedData.games : []);
+    }
   }
 }
 
 document.addEventListener('DOMContentLoaded', homeInit);
 </script>
+<script src="/js/chrome.js"></script>
 <script src="/js/auth.js"></script>
 </body>
 </html>

@@ -415,7 +415,36 @@ const DEFAULT_TEAMS = {{DEFAULT_TEAMS}};
 // This week's rankings, stored in the page so past weeks never change.
 const WEEK_DATA = {{WEEK_DATA}};
 
-let selectedTeams = [...DEFAULT_TEAMS];
+// Signed-in readers see their own NFL team(s) first, then the top of the rankings.
+function favoriteNflAbbrs() {
+  try {
+    const acc = JSON.parse(localStorage.getItem('fs_account') || 'null');
+    const nfl = (acc && acc.teams && acc.teams.NFL) || [];
+    return nfl.map(t => {
+      const a = String(t.abbr || '').toUpperCase();
+      return a === 'WSH' ? 'WAS' : a;
+    }).filter(a => RANK_HISTORY[a]);
+  } catch (e) { return []; }
+}
+function startingTeams() {
+  const picks = favoriteNflAbbrs().slice(0, MAX_TEAMS);
+  const byRank = WEEK_DATA.teams.map(t => t.abbr);
+  for (const a of DEFAULT_TEAMS.concat(byRank)) {
+    if (picks.length >= MAX_TEAMS) break;
+    if (!picks.includes(a)) picks.push(a);
+  }
+  return picks;
+}
+
+let selectedTeams = startingTeams();
+let teamsTouched = false;
+// Account details can arrive a moment after the page loads.
+window.addEventListener('fs-account', () => {
+  if (teamsTouched) return;
+  selectedTeams = startingTeams();
+  buildSelectors();
+  drawChart();
+});
 
 // ── Logo helper ─────────────────────────────────────────────────
 function getLogoAbbr(abbr) {
@@ -639,6 +668,7 @@ function buildSelectors() {
     });
 
     sel.addEventListener('change', () => {
+      teamsTouched = true;
       selectedTeams[i] = sel.value;
       buildSelectors();
       drawChart();
@@ -768,6 +798,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('resize', () => { drawChart(); setupTooltip(); });
 });
 </script>
+<script src="/js/chrome.js"></script>
 <script src="/js/auth.js"></script>
 </body>
 </html>

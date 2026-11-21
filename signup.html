@@ -370,15 +370,16 @@ body { background: var(--page-bg); }
 
     <!-- STEP 2: Team Selection -->
     <div class="step" id="step-teams">
-      <div class="step-heading">Pick your teams</div>
-      <div class="step-sub">Select as many as you like across any sport. Your feed will follow them all.</div>
+      <div class="step-heading" id="teams-heading">Pick your teams</div>
+      <div class="step-sub" id="teams-sub">Select as many as you like across any sport. Your feed will follow them all.</div>
+      <div id="alert-teams"></div>
 
       <div class="sport-tabs" id="sport-tabs"></div>
       <div class="selected-count" id="selected-count">0 teams selected</div>
       <div class="team-grid" id="team-grid"></div>
 
-      <button class="btn-primary" onclick="finishSetup()">Save &amp; Go to My Feed</button>
-      <button class="skip-link" onclick="finishSetup()">Skip for now</button>
+      <button class="btn-primary" id="btn-save-teams" onclick="finishSetup()">Save &amp; Go to My Feed</button>
+      <button class="skip-link" id="btn-skip-teams" onclick="skipSetup()">Skip for now</button>
     </div>
 
   </div>
@@ -560,13 +561,23 @@ function saveLocalAccount(user) {
   }));
 }
 
+const EDIT_MODE = new URLSearchParams(window.location.search).get('edit') === '1';
+
+function savedTeams(user) {
+  const teams = (user && user.user_metadata && user.user_metadata.teams) || {};
+  return JSON.parse(JSON.stringify(teams));   // copy, so cancelling never changes the saved set
+}
+
 (async function init() {
   const { data: { session } } = await sb.auth.getSession();
   if (!session) return;
   saveLocalAccount(session.user);
   const teams = (session.user.user_metadata || {}).teams;
   const hasTeams = teams && Object.values(teams).some(a => a && a.length);
-  if (hasTeams) {
+  if (EDIT_MODE) {
+    selectedTeams = savedTeams(session.user);
+    goToTeamStep();
+  } else if (hasTeams) {
     window.location.replace(getNextUrl());   // returning user: skip the picker
   } else {
     if (teams) selectedTeams = teams;
@@ -576,7 +587,9 @@ function saveLocalAccount(user) {
 
 function getNextUrl() {
   const params = new URLSearchParams(window.location.search);
-  return params.get('next') || '/nfl/?tab=myfeed';
+  const next = params.get('next') || '';
+  // only same-site paths
+  return /^\/(?!\/)/.test(next) ? next : '/?tab=myfeed';
 }
 
 function showAlert(containerId, message, type) {
@@ -678,7 +691,7 @@ async function submitSignIn() {
   btn.disabled = true;
   btn.textContent = 'Signing in…';
 
-  const { error } = await sb.auth.signInWithPassword({ email, password: pw });
+  const { data: signin, error } = await sb.auth.signInWithPassword({ email, password: pw });
 
   btn.disabled = false;
   btn.textContent = 'Sign In';
@@ -688,6 +701,11 @@ async function submitSignIn() {
     return;
   }
 
+  const user = signin && signin.user;
+  if (user) saveLocalAccount(user);
+  selectedTeams = savedTeams(user);
+  const hasTeams = Object.values(selectedTeams).some(a => a && a.length);
+  if (hasTeams && !EDIT_MODE) { window.location.replace(getNextUrl()); return; }
   goToTeamStep();
 }
 
@@ -705,7 +723,12 @@ function showSignup() {
 
 // ── Team picker ───────────────────────────────────────────────
 function goToTeamStep() {
-  // Load any previously saved teams from localStorage
+  if (EDIT_MODE) {
+    document.getElementById('teams-heading').textContent = 'Edit your teams';
+    document.getElementById('teams-sub').textContent = 'Every sport you follow is listed below. Tap a team to add or remove it, then save.';
+    document.getElementById('btn-save-teams').textContent = 'Save Preferences';
+    document.getElementById('btn-skip-teams').textContent = 'Cancel';
+  }
 
   document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
   document.getElementById('step-teams').classList.add('active');
@@ -716,7 +739,7 @@ function goToTeamStep() {
 function renderSportTabs() {
   const container = document.getElementById('sport-tabs');
   container.innerHTML = Object.keys(SPORTS).map(sport => `
-    <button class="sport-tab ${sport === activeSport ? 'active' : ''}" onclick="switchSport('${sport}')">${sport}</button>
+    <button class="sport-tab ${sport === activeSport ? 'active' : ''}" onclick="switchSport('${sport}')">${sport === 'NCAAB' ? 'NCAAM' : sport}${(selectedTeams[sport] || []).length ? ' (' + selectedTeams[sport].length + ')' : ''}</button>
   `).join('');
 }
 
@@ -750,6 +773,7 @@ function toggleTeam(sport, abbr, name) {
     selectedTeams[sport].push({abbr, name, sport});
   }
   renderTeamGrid(sport);
+  renderSportTabs();
 }
 
 function updateSelectedCount() {
@@ -761,10 +785,28 @@ function updateSelectedCount() {
 }
 
 async function finishSetup() {
+  const btn = document.getElementById('btn-save-teams');
+  const label = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = 'Saving…';
+  // drop empty sports so the saved set stays clean
+  const teams = {};
+  Object.keys(selectedTeams).forEach(k => { if (selectedTeams[k] && selectedTeams[k].length) teams[k] = selectedTeams[k]; });
   try {
-    const { data } = await sb.auth.updateUser({ data: { teams: selectedTeams } });
+    const { data, error } = await sb.auth.updateUser({ data: { teams } });
+    if (error) throw error;
     if (data && data.user) saveLocalAccount(data.user);
-  } catch(e) {}
+  } catch (e) {
+    btn.disabled = false;
+    btn.textContent = label;
+    showAlert('alert-teams', 'We couldn\u2019t save your teams. Check your connection and try again.', 'error');
+    return;
+  }
+  window.location.replace(getNextUrl());
+}
+
+function skipSetup() {
+  // Cancel / skip never overwrites teams that are already saved
   window.location.replace(getNextUrl());
 }
 </script>

@@ -263,7 +263,7 @@ function applyAccountState() {
       document.getElementById('account-team-display').textContent = acc.team ? '★ ' + acc.team : 'No team set';
     }
     const navFeed = document.getElementById('nav-myfeed');
-    if (navFeed && acc.team) navFeed.textContent = 'My Feed (' + acc.team.split(' ').pop() + ')';
+    if (navFeed) navFeed.textContent = 'My Feed';
   } else {
     if (btnSignup) btnSignup.style.display = '';
     if (btnSignin) btnSignin.style.display = '';
@@ -293,6 +293,7 @@ document.addEventListener('DOMContentLoaded', function() {
   init();
 });
 </script>
+<script src="/js/chrome.js"></script>
 <script src="/js/auth.js"></script>
 </body>
 </html>

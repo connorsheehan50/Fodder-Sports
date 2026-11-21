@@ -218,7 +218,8 @@ async function init() {
     if (feedData && feedData.items && feedData.items.length) {
       let items = feedData.items;
       if (teamFilter) items = items.filter(i => i.teams_full && i.teams_full.includes(teamFilter));
-      if (tabFilter && tabFilter !== 'all') items = items.filter(i => i.type === tabFilter);
+      if (tabFilter === 'myfeed' && window.fsFilterMyFeed) items = window.fsFilterMyFeed(items);
+      else if (tabFilter && tabFilter !== 'all') items = items.filter(i => i.type === tabFilter);
       feedEl.innerHTML = items.length
         ? items.map(buildCard).join('')
         : '<div style="font-family:var(--font-body);font-size:14px;color:var(--slate);padding:20px 0;">No stories yet. Check back after the next skill run.</div>';
@@ -237,8 +238,11 @@ async function init() {
   // Load schedule widget
   const schedEl = document.getElementById('schedule-widget');
   if (schedEl) {
-    const schedData = await fetchJSON('data/nfl/schedule.json');
-    schedEl.innerHTML = buildScheduleWidget(schedData ? schedData.games : []);
+    const personal = tabFilter === 'myfeed' && window.fsRenderMySchedule && await window.fsRenderMySchedule(schedEl);
+    if (!personal) {
+      const schedData = await fetchJSON('data/nfl/schedule.json');
+      schedEl.innerHTML = buildScheduleWidget(schedData ? schedData.games : []);
+    }
   }
 
   // Team selector

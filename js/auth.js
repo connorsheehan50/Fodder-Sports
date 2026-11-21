@@ -64,6 +64,9 @@
     }
     var after = localStorage.getItem('fs_account');
     refreshHeader(acc);
+    if (before !== after) {
+      try { window.dispatchEvent(new CustomEvent('fs-account', { detail: acc })); } catch (e) {}
+    }
     // If the signed-in state changed after the page already rendered the
     // feed, re-run the page so My Feed filtering picks it up.
     if (before !== after && /tab=myfeed/.test(location.search) && !window.__fsReloaded) {
