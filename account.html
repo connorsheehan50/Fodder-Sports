@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Account Settings — Fodder Sports</title>
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    [hidden] { display: none !important; }
+    .acct { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 40px; padding: 36px 0 72px; align-items: start; }
+    .acct-side { position: sticky; top: 140px; }
+    .acct-hello { font-family: var(--font-head); font-size: 13px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--orange); margin-bottom: 4px; }
+    .acct-name { font-family: var(--font-head); font-size: 24px; font-weight: 900; color: var(--ink); line-height: 1.15; margin-bottom: 18px; overflow-wrap: anywhere; }
+    .acct-nav { display: flex; flex-direction: column; border-top: 1px solid var(--rule); }
+    .acct-nav a {
+      font-family: var(--font-head); font-size: 16px; font-weight: 700; color: var(--slate); text-decoration: none;
+      padding: 13px 4px; border-bottom: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: center;
+    }
+    .acct-nav a::after { content: '›'; font-size: 20px; color: var(--slate-light); }
+    .acct-nav a:hover { color: var(--ink); }
+    .acct-nav a.active { color: var(--ink); }
+    .acct-nav a.active::after { color: var(--orange); }
+    .acct-nav a.danger { color: #b3261e; }
+    .acct-back { display: inline-block; margin-top: 18px; font-family: var(--font-head); font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--orange); text-decoration: none; }
+
+    .panel { display: none; }
+    .panel.active { display: block; }
+    .panel h1 { font-family: var(--font-head); font-size: clamp(26px, 3.5vw, 34px); font-weight: 900; color: var(--ink); line-height: 1.1; margin-bottom: 6px; }
+    .panel-lead { font-family: var(--font-body); font-size: 15px; line-height: 1.55; color: var(--slate); margin-bottom: 26px; max-width: 62ch; }
+    .card-box { background: var(--card-bg); border: 1px solid var(--rule); border-radius: 8px; padding: 22px 24px; margin-bottom: 18px; }
+    .card-box h2 { font-family: var(--font-head); font-size: 14px; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); margin-bottom: 14px; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 18px; }
+    .field label { display: block; font-family: var(--font-head); font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--slate); margin-bottom: 5px; }
+    .field input, .field select {
+      width: 100%; font-family: var(--font-body); font-size: 15px; color: var(--ink); background: var(--page-bg);
+      border: 1px solid var(--rule); border-radius: 4px; padding: 10px 12px;
+    }
+    .field input:focus, .field select:focus { outline: none; border-color: var(--ink); background: var(--card-bg); }
+    .field input[readonly] { color: var(--slate); }
+    .field .hint { font-family: var(--font-body); font-size: 12px; color: var(--slate); margin-top: 4px; }
+    .row-between { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .btn {
+      font-family: var(--font-head); font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+      border-radius: 4px; padding: 11px 20px; cursor: pointer; border: 1px solid transparent;
+    }
+    .btn-primary { background: var(--orange); color: #fff; }
+    .btn-primary:disabled { opacity: .55; cursor: default; }
+    .btn-ghost { background: none; color: var(--ink); border-color: var(--rule); }
+    .btn-ghost:hover { border-color: var(--ink); }
+    .btn-danger { background: #b3261e; color: #fff; }
+    .actions { display: flex; gap: 10px; align-items: center; margin-top: 18px; flex-wrap: wrap; }
+    .msg { font-family: var(--font-body); font-size: 14px; }
+    .msg.ok { color: #13703a; }
+    .msg.err { color: #b3261e; }
+
+    /* teams */
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip {
+      display: inline-flex; align-items: center; gap: 7px; font-family: var(--font-head); font-size: 13px; font-weight: 700;
+      background: var(--page-bg); border: 1px solid var(--rule); border-radius: 999px; padding: 4px 6px 4px 6px; color: var(--ink);
+    }
+    .chip img { width: 20px; height: 20px; object-fit: contain; }
+    .chip small { font-size: 10px; font-weight: 900; letter-spacing: .08em; color: var(--slate); }
+    .chip button { background: none; border: none; font-size: 16px; line-height: 1; color: var(--slate); cursor: pointer; padding: 0 4px; }
+    .chip button:hover { color: #b3261e; }
+    .chips-empty { font-family: var(--font-body); font-size: 14px; color: var(--slate); }
+    .sport-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+    .sport-tab {
+      font-family: var(--font-head); font-size: 13px; font-weight: 800; letter-spacing: .06em; color: var(--slate);
+      background: var(--page-bg); border: 1px solid var(--rule); border-radius: 4px; padding: 6px 11px; cursor: pointer;
+    }
+    .sport-tab.active { background: var(--ink); border-color: var(--ink); color: #fff; }
+    .team-filter { margin-bottom: 12px; }
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
+    .team-btn {
+      display: flex; align-items: center; gap: 8px; text-align: left; background: var(--card-bg); border: 1px solid var(--rule);
+      border-radius: 6px; padding: 8px 10px; cursor: pointer; font-family: var(--font-head); font-size: 13px; font-weight: 700; color: var(--ink);
+    }
+    .team-btn img { width: 26px; height: 26px; object-fit: contain; flex-shrink: 0; }
+    .team-btn:hover { border-color: var(--slate); }
+    .team-btn.selected { border-color: var(--orange); background: rgba(255,77,0,.07); box-shadow: inset 0 0 0 1px var(--orange); }
+
+    /* toggles */
+    .opt { display: flex; gap: 14px; align-items: flex-start; padding: 14px 0; border-bottom: 1px solid var(--rule); }
+    .opt:last-child { border-bottom: none; padding-bottom: 0; }
+    .opt:first-child { padding-top: 0; }
+    .opt input { width: 20px; height: 20px; accent-color: var(--orange); margin-top: 2px; flex-shrink: 0; }
+    .opt-title { font-family: var(--font-head); font-size: 16px; font-weight: 800; color: var(--ink); }
+    .opt-desc { font-family: var(--font-body); font-size: 13px; color: var(--slate); margin-top: 2px; line-height: 1.45; }
+
+    .loading { font-family: var(--font-body); color: var(--slate); padding: 40px 0; }
+    @media (max-width: 820px) {
+      .acct { grid-template-columns: 1fr; gap: 20px; padding-top: 24px; }
+      .acct-side { position: static; }
+      .acct-nav { flex-direction: row; overflow-x: auto; border-top: none; border-bottom: 1px solid var(--rule); scrollbar-width: none; }
+      .acct-nav a { border-bottom: 3px solid transparent; padding: 10px 12px; white-space: nowrap; font-size: 14px; }
+      .acct-nav a::after { display: none; }
+      .acct-nav a.active { border-bottom-color: var(--orange); }
+      .acct-name { margin-bottom: 10px; }
+      .grid2 { grid-template-columns: 1fr; }
+      .card-box { padding: 18px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header"></header>
+
+<div class="container">
+  <div class="loading" id="acct-loading">Loading your account…</div>
+  <div class="acct" id="acct" hidden>
+    <aside class="acct-side">
+      <div class="acct-hello">My Account</div>
+      <div class="acct-name" id="acct-name"></div>
+      <nav class="acct-nav" aria-label="Account sections">
+        <a href="#profile" data-panel="profile">Account Information</a>
+        <a href="#teams" data-panel="teams">My Teams</a>
+        <a href="#feed" data-panel="feed">Feed Preferences</a>
+        <a href="#email" data-panel="email">Email Preferences</a>
+        <a href="#security" data-panel="security">Password &amp; Security</a>
+        <a href="#delete" data-panel="delete" class="danger">Delete Account</a>
+      </nav>
+      <a class="acct-back" href="/?tab=myfeed">← Back to My Feed</a>
+    </aside>
+
+    <main>
+      <!-- Account information -->
+      <section class="panel" id="panel-profile">
+        <h1>Account Information</h1>
+        <p class="panel-lead">Your name and where you are. Your display name is what shows in the top corner of the site.</p>
+        <div class="card-box">
+          <h2>Personal information</h2>
+          <div class="grid2">
+            <div class="field"><label for="f-first">First name</label><input id="f-first" autocomplete="given-name"></div>
+            <div class="field"><label for="f-last">Last name</label><input id="f-last" autocomplete="family-name"></div>
+            <div class="field"><label for="f-display">Display name</label><input id="f-display" maxlength="30"><div class="hint">Shown in the header when you're signed in.</div></div>
+            <div class="field"><label for="f-country">Country</label>
+              <select id="f-country">
+                <option value="">Choose…</option><option>United States</option><option>Canada</option><option>Mexico</option>
+                <option>United Kingdom</option><option>Ireland</option><option>Germany</option><option>Norway</option>
+                <option>Sweden</option><option>Denmark</option><option>Australia</option><option>Other</option>
+              </select>
+            </div>
+            <div class="field" id="state-field"><label for="f-state">State</label><select id="f-state"><option value="">Choose…</option></select></div>
+          </div>
+          <div class="actions"><button class="btn btn-primary" onclick="saveProfile(this)">Save changes</button><span class="msg" id="msg-profile"></span></div>
+        </div>
+        <div class="card-box">
+          <h2>Email address</h2>
+          <div class="field"><label for="f-email">Current email</label><input id="f-email" readonly></div>
+          <div id="email-change" hidden style="margin-top:14px;">
+            <div class="field"><label for="f-newemail">New email</label><input id="f-newemail" type="email" autocomplete="email"><div class="hint">We'll send a confirmation link. The change takes effect once you click it.</div></div>
+          </div>
+          <div class="actions">
+            <button class="btn btn-ghost" id="btn-email-toggle" onclick="toggleEmailChange()">Change email</button>
+            <button class="btn btn-primary" id="btn-email-save" hidden onclick="saveEmail(this)">Send confirmation</button>
+            <span class="msg" id="msg-email"></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Teams -->
+      <section class="panel" id="panel-teams">
+        <h1>My Teams</h1>
+        <p class="panel-lead">Every team you follow, across every sport. Your feed, schedule, search results, and the power rankings chart all start with these teams.</p>
+        <div class="card-box">
+          <div class="row-between" style="margin-bottom:12px;"><h2 style="margin:0;" id="teams-count">Following</h2></div>
+          <div class="chips" id="team-chips"></div>
+        </div>
+        <div class="card-box">
+          <h2>Add or remove teams</h2>
+          <div class="sport-tabs" id="sport-tabs"></div>
+          <div class="field team-filter"><input id="team-filter" type="search" placeholder="Filter teams…" aria-label="Filter teams"></div>
+          <div class="team-grid" id="team-grid"></div>
+        </div>
+        <div class="actions"><button class="btn btn-primary" onclick="saveTeams(this)">Save my teams</button><span class="msg" id="msg-teams"></span></div>
+      </section>
+
+      <!-- Feed -->
+      <section class="panel" id="panel-feed">
+        <h1>Feed Preferences</h1>
+        <p class="panel-lead">Choose what shows up in My Feed. Everything is on by default.</p>
+        <div class="card-box" id="feed-opts"></div>
+        <div class="actions"><button class="btn btn-primary" onclick="saveFeed(this)">Save feed preferences</button><span class="msg" id="msg-feed"></span></div>
+      </section>
+
+      <!-- Email -->
+      <section class="panel" id="panel-email">
+        <h1>Email Preferences</h1>
+        <p class="panel-lead">Pick the emails you want. We only send what you turn on here, and every email has a one-click unsubscribe.</p>
+        <div class="card-box" id="email-opts"></div>
+        <div class="actions">
+          <button class="btn btn-primary" onclick="saveEmailPrefs(this)">Save email preferences</button>
+          <button class="btn btn-ghost" onclick="unsubscribeAll(this)">Unsubscribe from all</button>
+          <span class="msg" id="msg-emailprefs"></span>
+        </div>
+      </section>
+
+      <!-- Security -->
+      <section class="panel" id="panel-security">
+        <h1>Password &amp; Security</h1>
+        <p class="panel-lead" id="signin-method"></p>
+        <div class="card-box">
+          <h2>Change password</h2>
+          <div class="grid2">
+            <div class="field"><label for="f-pw">New password</label><input id="f-pw" type="password" autocomplete="new-password"><div class="hint">At least 8 characters.</div></div>
+            <div class="field"><label for="f-pw2">Confirm new password</label><input id="f-pw2" type="password" autocomplete="new-password"></div>
+          </div>
+          <div class="actions"><button class="btn btn-primary" onclick="savePassword(this)">Update password</button><span class="msg" id="msg-pw"></span></div>
+        </div>
+        <div class="card-box">
+          <h2>Signed-in devices</h2>
+          <p class="panel-lead" style="margin-bottom:0;">Sign out everywhere you're signed in, including this browser.</p>
+          <div class="actions"><button class="btn btn-ghost" onclick="signOutEverywhere(this)">Sign out of all devices</button><span class="msg" id="msg-devices"></span></div>
+        </div>
+      </section>
+
+      <!-- Delete -->
+      <section class="panel" id="panel-delete">
+        <h1>Delete Account</h1>
+        <p class="panel-lead">This permanently deletes your Fodder Sports account, your saved teams, and your preferences. It can't be undone.</p>
+        <div class="card-box">
+          <div class="field"><label for="f-del">Type DELETE to confirm</label><input id="f-del" autocomplete="off"></div>
+          <div class="actions"><button class="btn btn-danger" onclick="deleteAccount(this)">Delete my account</button><span class="msg" id="msg-delete"></span></div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <span class="footer-label">Fodder Sports · Pilot</span>
+      <p class="footer-note">Summaries written from published coverage. Not affiliated with the NFL or any team.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/teams-data.js"></script>
+<script>
+const US_STATES = ['Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','District of Columbia','Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin','Wyoming'];
+const SPORT_LABEL = { NCAAB: 'NCAAM' };
+const FEED_TYPES = [
+  ['preview', 'Game previews', 'Before kickoff: what both markets and the national media are saying.'],
+  ['recap', 'Game recaps', 'After the final whistle: how the coverage felt on each side.'],
+  ['trade', 'Trades', 'Every deal involving your teams, with the grades and reactions.'],
+  ['rankings', 'Power rankings', 'The weekly consensus NFL rankings.'],
+  ['breaking', 'Breaking news', 'Major news involving your teams.'],
+  ['story', 'Stories', 'Other storylines around your teams.']
+];
+const EMAIL_TYPES = [
+  ['weekly_digest', 'Weekly roundup', 'One email a week covering your teams across every sport.'],
+  ['game_previews', 'Game previews for my teams', 'A preview in your inbox before your teams play.'],
+  ['breaking', 'Breaking news and trades', 'When something big happens with one of your teams.'],
+  ['power_rankings', 'NFL power rankings', 'The consensus rankings when they publish each week.'],
+  ['product', 'Fodder Sports updates', 'New sports, new features, and the occasional note from us.']
+];
+
+let sb = null, user = null, picked = {}, activeSport = 'NFL';
+
+function $(id) { return document.getElementById(id); }
+function esc(s) { return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function meta() { return (user && user.user_metadata) || {}; }
+function say(id, text, ok) { const m = $(id); m.textContent = text; m.className = 'msg ' + (ok ? 'ok' : 'err'); if (ok) setTimeout(() => { if (m.textContent === text) m.textContent = ''; }, 4000); }
+async function busy(btn, fn) {
+  const label = btn.textContent; btn.disabled = true; btn.textContent = 'Saving…';
+  try { await fn(); } finally { btn.disabled = false; btn.textContent = label; }
+}
+async function updateMeta(data) {
+  const { data: res, error } = await sb.auth.updateUser({ data });
+  if (error) throw error;
+  user = res.user;
+  renderName();
+}
+
+// ── Sections ────────────────────────────────────────────────
+function showPanel() {
+  const name = (location.hash || '#profile').slice(1);
+  const valid = document.getElementById('panel-' + name) ? name : 'profile';
+  document.querySelectorAll('.panel').forEach(p => p.classList.toggle('active', p.id === 'panel-' + valid));
+  document.querySelectorAll('.acct-nav a').forEach(a => a.classList.toggle('active', a.dataset.panel === valid));
+  if (window.fsTrack) window.fsTrack('account_section_viewed', { section: valid });
+}
+window.addEventListener('hashchange', showPanel);
+
+function renderName() {
+  const m = meta();
+  $('acct-name').textContent = m.display_name || m.full_name || [m.first_name, m.last_name].filter(Boolean).join(' ') || user.email;
+}
+
+// ── Profile ─────────────────────────────────────────────────
+function fillProfile() {
+  const m = meta();
+  const parts = (m.full_name || m.name || '').split(' ');
+  $('f-first').value = m.first_name || parts[0] || '';
+  $('f-last').value = m.last_name || parts.slice(1).join(' ') || '';
+  $('f-display').value = m.display_name || '';
+  $('f-country').value = m.country || '';
+  $('f-state').innerHTML = '<option value="">Choose…</option>' + US_STATES.map(s => `<option>${s}</option>`).join('');
+  $('f-state').value = m.state || '';
+  $('f-email').value = user.email;
+  syncState();
+}
+function syncState() { $('state-field').hidden = $('f-country').value !== 'United States'; }
+$('f-country').addEventListener('change', syncState);
+
+function saveProfile(btn) {
+  return busy(btn, async () => {
+    const first = $('f-first').value.trim(), last = $('f-last').value.trim();
+    try {
+      await updateMeta({
+        first_name: first, last_name: last, full_name: [first, last].filter(Boolean).join(' '),
+        display_name: $('f-display').value.trim(), country: $('f-country').value,
+        state: $('f-country').value === 'United States' ? $('f-state').value : ''
+      });
+      say('msg-profile', 'Saved.', true);
+    } catch (e) { say('msg-profile', e.message || 'Could not save. Try again.'); }
+  });
+}
+function toggleEmailChange() {
+  const open = $('email-change').hidden;
+  $('email-change').hidden = !open; $('btn-email-save').hidden = !open;
+  $('btn-email-toggle').textContent = open ? 'Cancel' : 'Change email';
+  if (open) $('f-newemail').focus();
+}
+function saveEmail(btn) {
+  const email = $('f-newemail').value.trim();
+  if (!email.includes('@')) return say('msg-email', 'Enter a valid email address.');
+  return busy(btn, async () => {
+    const { error } = await sb.auth.updateUser({ email }, { emailRedirectTo: location.origin + '/account.html#profile' });
+    if (error) return say('msg-email', error.message);
+    say('msg-email', 'Check ' + email + ' for a confirmation link.', true);
+  });
+}
+
+// ── Teams ───────────────────────────────────────────────────
+function sportOf(key) { return window.FS_SPORTS[key]; }
+function renderChips() {
+  const all = [];
+  Object.keys(window.FS_SPORTS).forEach(sp => (picked[sp] || []).forEach(t => all.push({ sp, t })));
+  $('teams-count').textContent = all.length ? `Following ${all.length} team${all.length === 1 ? '' : 's'}` : 'Following';
+  $('team-chips').innerHTML = all.length ? all.map(({ sp, t }) =>
+    `<span class="chip"><img src="${esc(sportOf(sp).logo(t.abbr))}" alt="" onerror="this.style.display='none'">${esc(t.name)} <small>${esc(SPORT_LABEL[sp] || sp)}</small>` +
+    `<button aria-label="Remove ${esc(t.name)}" onclick="toggleTeam('${sp}','${esc(t.abbr)}')">×</button></span>`).join('')
+    : '<span class="chips-empty">No teams yet. Pick some below.</span>';
+}
+function renderTabs() {
+  $('sport-tabs').innerHTML = Object.keys(window.FS_SPORTS).map(sp => {
+    const n = (picked[sp] || []).length;
+    return `<button class="sport-tab ${sp === activeSport ? 'active' : ''}" onclick="switchSport('${sp}')">${SPORT_LABEL[sp] || sp}${n ? ' (' + n + ')' : ''}</button>`;
+  }).join('');
+}
+function renderGrid() {
+  const data = sportOf(activeSport), f = $('team-filter').value.trim().toLowerCase();
+  const sel = (picked[activeSport] || []).map(t => t.abbr);
+  $('team-grid').innerHTML = data.teams.filter(t => !f || t.name.toLowerCase().includes(f)).map(t =>
+    `<button class="team-btn ${sel.includes(t.abbr) ? 'selected' : ''}" aria-pressed="${sel.includes(t.abbr)}" onclick="toggleTeam('${activeSport}','${t.abbr}')">` +
+    `<img src="${esc(data.logo(t.abbr))}" alt="" onerror="this.style.visibility='hidden'">${esc(t.name)}</button>`).join('');
+}
+function switchSport(sp) { activeSport = sp; $('team-filter').value = ''; renderTabs(); renderGrid(); }
+function toggleTeam(sp, abbr) {
+  const team = sportOf(sp).teams.find(t => t.abbr === abbr);
+  picked[sp] = picked[sp] || [];
+  const i = picked[sp].findIndex(t => t.abbr === abbr);
+  if (i >= 0) picked[sp].splice(i, 1); else if (team) picked[sp].push({ abbr, name: team.name, sport: sp });
+  renderChips(); renderTabs(); renderGrid();
+}
+$('team-filter').addEventListener('input', renderGrid);
+function saveTeams(btn) {
+  return busy(btn, async () => {
+    const teams = {};
+    Object.keys(picked).forEach(k => { if (picked[k] && picked[k].length) teams[k] = picked[k]; });
+    try {
+      await updateMeta({ teams });
+      if (window.fsTrack) window.fsTrack('teams_updated', { team_count: Object.values(teams).flat().length, sports: Object.keys(teams) });
+      say('msg-teams', 'Saved. Your feed is updated.', true);
+    } catch (e) { say('msg-teams', e.message || 'Could not save. Try again.'); }
+  });
+}
+
+// ── Feed & email preferences ────────────────────────────────
+function optRows(list, on, prefix) {
+  return list.map(([k, title, desc]) =>
+    `<label class="opt"><input type="checkbox" id="${prefix}-${k}" ${on(k) ? 'checked' : ''}><span><span class="opt-title">${title}</span><div class="opt-desc">${desc}</div></span></label>`).join('');
+}
+function fillPrefs() {
+  const types = meta().feed_types;
+  $('feed-opts').innerHTML = optRows(FEED_TYPES, k => !types || !types.length || types.includes(k), 'ft');
+  const ep = meta().email_prefs || {};
+  $('email-opts').innerHTML = optRows(EMAIL_TYPES, k => !!ep[k], 'ep');
+}
+function saveFeed(btn) {
+  const on = FEED_TYPES.map(f => f[0]).filter(k => $('ft-' + k).checked);
+  if (!on.length) return say('msg-feed', 'Keep at least one type on, or your feed will be empty.');
+  return busy(btn, async () => {
+    try { await updateMeta({ feed_types: on.length === FEED_TYPES.length ? null : on }); say('msg-feed', 'Saved.', true); }
+    catch (e) { say('msg-feed', e.message || 'Could not save. Try again.'); }
+  });
+}
+function saveEmailPrefs(btn) {
+  const prefs = {}; EMAIL_TYPES.forEach(([k]) => { prefs[k] = $('ep-' + k).checked; });
+  prefs.updated_at = new Date().toISOString();
+  return busy(btn, async () => {
+    try { await updateMeta({ email_prefs: prefs }); say('msg-emailprefs', 'Saved.', true); }
+    catch (e) { say('msg-emailprefs', e.message || 'Could not save. Try again.'); }
+  });
+}
+function unsubscribeAll(btn) {
+  EMAIL_TYPES.forEach(([k]) => { $('ep-' + k).checked = false; });
+  return saveEmailPrefs(btn);
+}
+
+// ── Security ────────────────────────────────────────────────
+function fillSecurity() {
+  const prov = (user.app_metadata && user.app_metadata.provider) || 'email';
+  $('signin-method').textContent = prov === 'google'
+    ? 'You sign in with Google. You can also set a password below to sign in with your email and password.'
+    : 'You sign in with your email and password.';
+}
+function savePassword(btn) {
+  const a = $('f-pw').value, b = $('f-pw2').value;
+  if (a.length < 8) return say('msg-pw', 'Use at least 8 characters.');
+  if (a !== b) return say('msg-pw', 'The two passwords don’t match.');
+  return busy(btn, async () => {
+    const { error } = await sb.auth.updateUser({ password: a });
+    if (error) return say('msg-pw', error.message);
+    $('f-pw').value = $('f-pw2').value = '';
+    say('msg-pw', 'Password updated.', true);
+  });
+}
+async function signOutEverywhere(btn) {
+  btn.disabled = true;
+  await sb.auth.signOut({ scope: 'global' });
+  localStorage.removeItem('fs_account');
+  location.href = '/';
+}
+
+// ── Delete ──────────────────────────────────────────────────
+async function deleteAccount(btn) {
+  if ($('f-del').value.trim() !== 'DELETE') return say('msg-delete', 'Type DELETE in capital letters to confirm.');
+  btn.disabled = true; btn.textContent = 'Deleting…';
+  const { error } = await sb.rpc('delete_own_account');
+  if (error) {
+    // The database function isn't set up: record the request so it can be handled by hand.
+    await sb.auth.updateUser({ data: { deletion_requested_at: new Date().toISOString() } });
+    btn.disabled = false; btn.textContent = 'Delete my account';
+    return say('msg-delete', 'We couldn’t delete it automatically, so we’ve recorded your request and will delete the account for you.');
+  }
+  await sb.auth.signOut();
+  localStorage.removeItem('fs_account');
+  location.href = '/';
+}
+
+// ── Start ───────────────────────────────────────────────────
+async function start() {
+  sb = window.fsSupabase;
+  const { data: { session } } = await sb.auth.getSession();
+  if (!session) { location.replace('/signup.html?next=' + encodeURIComponent('/account.html' + location.hash)); return; }
+  user = session.user;
+  picked = JSON.parse(JSON.stringify(meta().teams || {}));
+  activeSport = Object.keys(window.FS_SPORTS).find(k => (picked[k] || []).length) || 'NFL';
+  renderName(); fillProfile(); renderChips(); renderTabs(); renderGrid(); fillPrefs(); fillSecurity();
+  $('acct-loading').hidden = true; $('acct').hidden = false;
+  showPanel();
+}
+if (window.fsSupabase) start();
+else window.addEventListener('fs-supabase-ready', start, { once: true });
+</script>
+<script src="/js/chrome.js"></script>
+<script src="/js/auth.js"></script>
+</body>
+</html>

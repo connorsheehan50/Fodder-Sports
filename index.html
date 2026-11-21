@@ -963,7 +963,7 @@ async function homeInit() {
         if (feedNote) feedNote.textContent = 'All teams · all types';
       }
 
-      buildTrending(feedData.items);
+      // Trending is drawn by the shared header script (current items only)
 
       feedEl.innerHTML = items.length
         ? items.map(buildCard).join('')

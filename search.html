@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Search — Fodder Sports</title>
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .search-wrap { max-width: 860px; margin: 0 auto; padding: 32px 0 64px; }
+    .search-eyebrow {
+      font-family: var(--font-head); font-size: 12px; font-weight: 800; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--orange); margin-bottom: 6px;
+    }
+    .search-title { font-family: var(--font-head); font-size: clamp(26px, 4vw, 36px); font-weight: 900; line-height: 1.15; color: var(--ink); margin-bottom: 18px; text-wrap: balance; }
+    .search-form { display: flex; gap: 8px; margin-bottom: 10px; }
+    .search-form input {
+      flex: 1; min-width: 0; font-family: var(--font-body); font-size: 17px; padding: 12px 14px;
+      border: 1px solid var(--rule); border-radius: 4px; background: var(--card-bg); color: var(--ink);
+    }
+    .search-form input:focus { outline: none; border-color: var(--ink); }
+    .search-form button {
+      font-family: var(--font-head); font-size: 14px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+      color: #fff; background: var(--orange); border: none; border-radius: 4px; padding: 0 22px; cursor: pointer;
+    }
+    .search-summary { font-family: var(--font-body); font-size: 14px; color: var(--slate); margin-bottom: 26px; }
+    .search-group { margin-top: 26px; }
+    .search-group:first-of-type { margin-top: 0; }
+    .search-empty { font-family: var(--font-body); font-size: 15px; line-height: 1.6; color: var(--slate); padding: 20px 0; }
+    .search-empty b { color: var(--ink); }
+    .search-tips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .search-tips a {
+      font-family: var(--font-head); font-size: 13px; font-weight: 700; color: var(--ink); text-decoration: none;
+      border: 1px solid var(--rule); border-radius: 999px; padding: 5px 12px; background: var(--card-bg);
+    }
+    .search-tips a:hover { border-color: var(--orange); }
+  </style>
+</head>
+<body>
+
+<header class="site-header"></header>
+
+<div class="container">
+  <div class="search-wrap">
+    <div class="search-eyebrow">Search</div>
+    <h1 class="search-title" id="search-title">Find a team, trade, or ranking</h1>
+    <form class="search-form" onsubmit="return runPageSearch(event)">
+      <input type="search" id="page-q" placeholder="Try “Bears”, “trade deadline”, or “Week 11 rankings”" aria-label="Search">
+      <button type="submit">Search</button>
+    </form>
+    <div class="search-summary" id="search-summary"></div>
+    <div id="search-results"></div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <span class="footer-label">Fodder Sports · Pilot</span>
+      <p class="footer-note">Summaries written from published coverage. Not affiliated with the NFL or any team.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/main.js"></script>
+<script>
+function runPageSearch(e) {
+  if (e) e.preventDefault();
+  const q = document.getElementById('page-q').value.trim();
+  if (q) location.href = '/search.html?q=' + encodeURIComponent(q);
+  return false;
+}
+
+const TIPS = ['Trade deadline', 'Power rankings', 'Bears', 'Jaguars', 'Game previews'];
+function tipsHtml() {
+  return '<div class="search-tips">' + TIPS.map(t => `<a href="/search.html?q=${encodeURIComponent(t)}">${escHtml(t)}</a>`).join('') + '</div>';
+}
+
+async function showResults() {
+  const q = (new URLSearchParams(location.search).get('q') || '').trim();
+  const input = document.getElementById('page-q');
+  const out = document.getElementById('search-results');
+  const summary = document.getElementById('search-summary');
+  input.value = q;
+  if (!q) {
+    summary.textContent = '';
+    out.innerHTML = '<div class="search-empty">Search every story, trade, preview, and power ranking we’ve published.' + tipsHtml() + '</div>';
+    input.focus();
+    return;
+  }
+  document.title = q + ' — Search — Fodder Sports';
+  document.getElementById('search-title').textContent = 'Results for “' + q + '”';
+  const res = await window.fsSearch(q);
+  if (!res.results.length) {
+    summary.textContent = '';
+    out.innerHTML = `<div class="search-empty">Nothing matched <b>“${escHtml(q)}”</b> yet. Try a team name, a player, or one of these:${tipsHtml()}</div>`;
+    return;
+  }
+  const mine = res.results.filter(r => r.fav);
+  const rest = res.results.filter(r => !r.fav);
+  const n = res.results.length;
+  summary.textContent = `${n} result${n === 1 ? '' : 's'}` + (res.partial ? ' · nothing matched every word, so these are the closest matches' : '') +
+    (mine.length ? ` · ${mine.length} from your teams` : '');
+  const group = (label, list) => list.length
+    ? `<div class="search-group"><div class="section-label">${label}</div><div class="feed">${list.map(r => buildCard(r.item)).join('')}</div></div>`
+    : '';
+  out.innerHTML = group('From your teams', mine) + group(mine.length ? 'Everything else' : 'All results', rest);
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  // fsSearch comes from the shared header script, which loads after this one
+  const go = () => window.fsSearch ? showResults() : setTimeout(go, 50);
+  go();
+});
+</script>
+<script src="/js/chrome.js"></script>
+<script src="/js/auth.js"></script>
+</body>
+</html>

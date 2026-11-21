@@ -35,7 +35,12 @@
       teams: teams,
       allTeams: Object.keys(teams).reduce(function (a, k) { return a.concat(teams[k] || []); }, []),
       team: nflTeam,       // used by index.html / nfl/index.html
-      nfl_team: nflTeam    // used by article pages
+      nfl_team: nflTeam,   // used by article pages
+      display_name: meta.display_name || '',
+      first_name: meta.first_name || '',
+      last_name: meta.last_name || '',
+      feed_types: meta.feed_types || null,
+      email_prefs: meta.email_prefs || null
     };
   }
 
@@ -79,6 +84,7 @@
     loadSupabase(function () {
       var sb = window.fsSupabase || window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
       window.fsSupabase = sb;
+      try { window.dispatchEvent(new CustomEvent('fs-supabase-ready')); } catch (e) {}
 
       sb.auth.getSession().then(function (res) { sync(res.data.session); });
       sb.auth.onAuthStateChange(function (_evt, session) { sync(session); });
