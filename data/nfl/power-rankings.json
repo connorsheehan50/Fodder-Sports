@@ -27,16 +27,16 @@
       "range_worst": 2,
       "desc": "Buffalo stays on top after handling the Jets, and the theme is a team that starts slow and still wins easily. Josh Allen's MVP case keeps building, and Greg Rousseau's pass rush gives the defense a real edge. The only quibble is those sluggish starts, with Miami coming to town next.",
       "outlets": [
-        { "name": "NFL.com", "rank": 2, "prev": 2, "url": "https://www.nfl.com/news/power-rankings" },
-        { "name": "CBS Sports", "rank": 1, "prev": 1, "url": "https://www.cbssports.com/nfl/news/nfl-power-rankings/" },
-        { "name": "Pro Football Talk", "rank": 1, "prev": 1, "url": "https://profootballtalk.nbcsports.com/power-rankings/" },
-        { "name": "USA Today", "rank": 2, "prev": 3, "url": "https://ftw.usatoday.com/nfl-power-rankings" },
-        { "name": "Fox Sports", "rank": 1, "prev": 1, "url": "https://www.foxsports.com/nfl/power-rankings" },
-        { "name": "ESPN", "rank": 2, "prev": 1, "url": "https://www.espn.com/nfl/story/_/page/rankingsweek11" },
-        { "name": "Bleacher Report", "rank": 1, "prev": 1, "url": "https://bleacherreport.com/nfl#tab-power-rankings" },
-        { "name": "Sports Illustrated", "rank": 2, "prev": 3, "url": "https://www.si.com/nfl/power-rankings" },
-        { "name": "Pro Football Network", "rank": 2, "prev": 3, "url": "https://www.profootballnetwork.com/nfl-power-rankings/" },
-        { "name": "Kalshi", "rank": 2, "prev": 2, "url": "https://kalshi.com/markets/nfl" }
+        { "name": "NFL.com", "rank": 2, "prev": 2, "url": "https://www.nfl.com/news/nfl-power-rankings-week-11-2026-nfl-season" },
+        { "name": "CBS Sports", "rank": 1, "prev": 1, "url": "https://www.cbssports.com/nfl/news/priscos-nfl-week-11-power-rankings-patrick-mahomes-chiefs/" },
+        { "name": "Pro Football Talk", "rank": 1, "prev": 1, "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-11-2026-nfl-power-rankings" },
+        { "name": "USA Today", "rank": 2, "prev": 3, "url": "https://sports.yahoo.com/articles/nfl-power-rankings-week-11-105531497.html" },
+        { "name": "Fox Sports", "rank": 1, "prev": 1, "url": "https://www.foxsports.com/stories/nfl/2026-nfl-power-rankings-week-11" },
+        { "name": "ESPN", "rank": 2, "prev": 1, "url": "https://www.espn.com/nfl/story/_/id/50503226/nfl-power-rankings-week-11-non-quarterback-mvps-midseason" },
+        { "name": "Bleacher Report", "rank": 1, "prev": 1, "url": "https://bleacherreport.com/articles/25534198-br-experts-week-11-nfl-power-rankings" },
+        { "name": "Sports Illustrated", "rank": 2, "prev": 3, "url": "https://www.si.com/nfl/conor-orr-week-11-nfl-power-rankings-vikings-kirk-cousins" },
+        { "name": "Pro Football Network", "rank": 2, "prev": 3, "url": "https://www.profootballnetwork.com/week-11-nfl-power-rankings-2026/" },
+        { "name": "Kalshi", "rank": 2, "prev": 2, "url": "https://kalshi.com/nfl/power-rankings" }
       ]
     },
     {
@@ -50,16 +50,16 @@
       "range_worst": 3,
       "desc": "The 49ers hung 46 on Dallas, and writers came away convinced Kyle Shanahan runs the best offense in football, with Brock Purdy and Christian McCaffrey both dominant. The worry is a defense that gave up 40 to a struggling team. Minnesota's defense in Mexico City is the test that matters next.",
       "outlets": [
-        { "name": "NFL.com", "rank": 1, "prev": 1, "url": "https://www.nfl.com/news/power-rankings" },
-        { "name": "CBS Sports", "rank": 2, "prev": 2, "url": "https://www.cbssports.com/nfl/news/nfl-power-rankings/" },
-        { "name": "Pro Football Talk", "rank": 3, "prev": 3, "url": "https://profootballtalk.nbcsports.com/power-rankings/" },
-        { "name": "USA Today", "rank": 1, "prev": 1, "url": "https://ftw.usatoday.com/nfl-power-rankings" },
-        { "name": "Fox Sports", "rank": 3, "prev": 3, "url": "https://www.foxsports.com/nfl/power-rankings" },
-        { "name": "ESPN", "rank": 1, "prev": 2, "url": "https://www.espn.com/nfl/story/_/page/rankingsweek11" },
-        { "name": "Bleacher Report", "rank": 2, "prev": 2, "url": "https://bleacherreport.com/nfl#tab-power-rankings" },
-        { "name": "Sports Illustrated", "rank": 3, "prev": 4, "url": "https://www.si.com/nfl/power-rankings" },
-        { "name": "Pro Football Network", "rank": 3, "prev": 2, "url": "https://www.profootballnetwork.com/nfl-power-rankings/" },
-        { "name": "Kalshi", "rank": 1, "prev": 1, "url": "https://kalshi.com/markets/nfl" }
+        { "name": "NFL.com", "rank": 1, "prev": 1, "url": "https://www.nfl.com/news/nfl-power-rankings-week-11-2026-nfl-season" },
+        { "name": "CBS Sports", "rank": 2, "prev": 2, "url": "https://www.cbssports.com/nfl/news/priscos-nfl-week-11-power-rankings-patrick-mahomes-chiefs/" },
+        { "name": "Pro Football Talk", "rank": 3, "prev": 3, "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-11-2026-nfl-power-rankings" },
+        { "name": "USA Today", "rank": 1, "prev": 1, "url": "https://sports.yahoo.com/articles/nfl-power-rankings-week-11-105531497.html" },
+        { "name": "Fox Sports", "rank": 3, "prev": 3, "url": "https://www.foxsports.com/stories/nfl/2026-nfl-power-rankings-week-11" },
+        { "name": "ESPN", "rank": 1, "prev": 2, "url": "https://www.espn.com/nfl/story/_/id/50503226/nfl-power-rankings-week-11-non-quarterback-mvps-midseason" },
+        { "name": "Bleacher Report", "rank": 2, "prev": 2, "url": "https://bleacherreport.com/articles/25534198-br-experts-week-11-nfl-power-rankings" },
+        { "name": "Sports Illustrated", "rank": 3, "prev": 4, "url": "https://www.si.com/nfl/conor-orr-week-11-nfl-power-rankings-vikings-kirk-cousins" },
+        { "name": "Pro Football Network", "rank": 3, "prev": 2, "url": "https://www.profootballnetwork.com/week-11-nfl-power-rankings-2026/" },
+        { "name": "Kalshi", "rank": 1, "prev": 1, "url": "https://kalshi.com/nfl/power-rankings" }
       ]
     },
     {
@@ -73,16 +73,16 @@
       "range_worst": 6,
       "desc": "Jacksonville throttled Tennessee without its two new acquisitions, and the tone is that this is a special season. Parker Washington and Bhayshul Tuten are the breakout stories, and Travis Hunter is making plays everywhere. Some rankings still slot them just behind Buffalo and San Francisco, and a trip to the Giants is next.",
       "outlets": [
-        { "name": "NFL.com", "rank": 3, "prev": 3, "url": "https://www.nfl.com/news/power-rankings" },
-        { "name": "CBS Sports", "rank": 3, "prev": 3, "url": "https://www.cbssports.com/nfl/news/nfl-power-rankings/" },
-        { "name": "Pro Football Talk", "rank": 2, "prev": 2, "url": "https://profootballtalk.nbcsports.com/power-rankings/" },
-        { "name": "USA Today", "rank": 4, "prev": 4, "url": "https://ftw.usatoday.com/nfl-power-rankings" },
-        { "name": "Fox Sports", "rank": 6, "prev": 6, "url": "https://www.foxsports.com/nfl/power-rankings" },
-        { "name": "ESPN", "rank": 3, "prev": 3, "url": "https://www.espn.com/nfl/story/_/page/rankingsweek11" },
-        { "name": "Bleacher Report", "rank": 3, "prev": 4, "url": "https://bleacherreport.com/nfl#tab-power-rankings" },
-        { "name": "Sports Illustrated", "rank": 1, "prev": 1, "url": "https://www.si.com/nfl/power-rankings" },
-        { "name": "Pro Football Network", "rank": 1, "prev": 1, "url": "https://www.profootballnetwork.com/nfl-power-rankings/" },
-        { "name": "Kalshi", "rank": 3, "prev": 3, "url": "https://kalshi.com/markets/nfl" }
+        { "name": "NFL.com", "rank": 3, "prev": 3, "url": "https://www.nfl.com/news/nfl-power-rankings-week-11-2026-nfl-season" },
+        { "name": "CBS Sports", "rank": 3, "prev": 3, "url": "https://www.cbssports.com/nfl/news/priscos-nfl-week-11-power-rankings-patrick-mahomes-chiefs/" },
+        { "name": "Pro Football Talk", "rank": 2, "prev": 2, "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-11-2026-nfl-power-rankings" },
+        { "name": "USA Today", "rank": 4, "prev": 4, "url": "https://sports.yahoo.com/articles/nfl-power-rankings-week-11-105531497.html" },
+        { "name": "Fox Sports", "rank": 6, "prev": 6, "url": "https://www.foxsports.com/stories/nfl/2026-nfl-power-rankings-week-11" },
+        { "name": "ESPN", "rank": 3, "prev": 3, "url": "https://www.espn.com/nfl/story/_/id/50503226/nfl-power-rankings-week-11-non-quarterback-mvps-midseason" },
+        { "name": "Bleacher Report", "rank": 3, "prev": 4, "url": "https://bleacherreport.com/articles/25534198-br-experts-week-11-nfl-power-rankings" },
+        { "name": "Sports Illustrated", "rank": 1, "prev": 1, "url": "https://www.si.com/nfl/conor-orr-week-11-nfl-power-rankings-vikings-kirk-cousins" },
+        { "name": "Pro Football Network", "rank": 1, "prev": 1, "url": "https://www.profootballnetwork.com/week-11-nfl-power-rankings-2026/" },
+        { "name": "Kalshi", "rank": 3, "prev": 3, "url": "https://kalshi.com/nfl/power-rankings" }
       ]
     },
     {
@@ -96,16 +96,16 @@
       "range_worst": 9,
       "desc": "Coming off the bye, Chicago holds steady among the NFC's best, with Luther Burden emerging as a breakout receiver and Jeffery Simmons anchoring the defense. The caution is the division, not the roster, since the NFC North is shaping up as the league's toughest. The Saints visit four days before a showdown with Detroit, and nobody wants a letdown.",
       "outlets": [
-        { "name": "NFL.com", "rank": 6, "prev": 4, "url": "https://www.nfl.com/news/power-rankings" },
-        { "name": "CBS Sports", "rank": 4, "prev": 4, "url": "https://www.cbssports.com/nfl/news/nfl-power-rankings/" },
-        { "name": "Pro Football Talk", "rank": 5, "prev": 5, "url": "https://profootballtalk.nbcsports.com/power-rankings/" },
-        { "name": "USA Today", "rank": 3, "prev": 2, "url": "https://ftw.usatoday.com/nfl-power-rankings" },
-        { "name": "Fox Sports", "rank": 5, "prev": 5, "url": "https://www.foxsports.com/nfl/power-rankings" },
-        { "name": "ESPN", "rank": 4, "prev": 4, "url": "https://www.espn.com/nfl/story/_/page/rankingsweek11" },
-        { "name": "Bleacher Report", "rank": 4, "prev": 5, "url": "https://bleacherreport.com/nfl#tab-power-rankings" },
-        { "name": "Sports Illustrated", "rank": 5, "prev": 2, "url": "https://www.si.com/nfl/power-rankings" },
-        { "name": "Pro Football Network", "rank": 9, "prev": 7, "url": "https://www.profootballnetwork.com/nfl-power-rankings/" },
-        { "name": "Kalshi", "rank": 7, "prev": 4, "url": "https://kalshi.com/markets/nfl" }
+        { "name": "NFL.com", "rank": 6, "prev": 4, "url": "https://www.nfl.com/news/nfl-power-rankings-week-11-2026-nfl-season" },
+        { "name": "CBS Sports", "rank": 4, "prev": 4, "url": "https://www.cbssports.com/nfl/news/priscos-nfl-week-11-power-rankings-patrick-mahomes-chiefs/" },
+        { "name": "Pro Football Talk", "rank": 5, "prev": 5, "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-11-2026-nfl-power-rankings" },
+        { "name": "USA Today", "rank": 3, "prev": 2, "url": "https://sports.yahoo.com/articles/nfl-power-rankings-week-11-105531497.html" },
+        { "name": "Fox Sports", "rank": 5, "prev": 5, "url": "https://www.foxsports.com/stories/nfl/2026-nfl-power-rankings-week-11" },
+        { "name": "ESPN", "rank": 4, "prev": 4, "url": "https://www.espn.com/nfl/story/_/id/50503226/nfl-power-rankings-week-11-non-quarterback-mvps-midseason" },
+        { "name": "Bleacher Report", "rank": 4, "prev": 5, "url": "https://bleacherreport.com/articles/25534198-br-experts-week-11-nfl-power-rankings" },
+        { "name": "Sports Illustrated", "rank": 5, "prev": 2, "url": "https://www.si.com/nfl/conor-orr-week-11-nfl-power-rankings-vikings-kirk-cousins" },
+        { "name": "Pro Football Network", "rank": 9, "prev": 7, "url": "https://www.profootballnetwork.com/week-11-nfl-power-rankings-2026/" },
+        { "name": "Kalshi", "rank": 7, "prev": 4, "url": "https://kalshi.com/nfl/power-rankings" }
       ]
     },
     {
@@ -119,16 +119,16 @@
       "range_worst": 8,
       "desc": "Joe Burrow's 409-yard night in a rout of Pittsburgh has him atop the MVP conversation and Cincinnati atop the AFC North. Boye Mafe's pass rush is quietly backing it up. The open question is whether the offense can evolve when Burrow is not throwing four touchdowns, starting Monday night in Washington.",
       "outlets": [
-        { "name": "NFL.com", "rank": 4, "prev": 5, "url": "https://www.nfl.com/news/power-rankings" },
-        { "name": "CBS Sports", "rank": 7, "prev": 7, "url": "https://www.cbssports.com/nfl/news/nfl-power-rankings/" },
-        { "name": "Pro Football Talk", "rank": 7, "prev": 8, "url": "https://profootballtalk.nbcsports.com/power-rankings/" },
-        { "name": "USA Today", "rank": 5, "prev": 14, "url": "https://ftw.usatoday.com/nfl-power-rankings" },
-        { "name": "Fox Sports", "rank": 8, "prev": 8, "url": "https://www.foxsports.com/nfl/power-rankings" },
-        { "name": "ESPN", "rank": 6, "prev": 7, "url": "https://www.espn.com/nfl/story/_/page/rankingsweek11" },
-        { "name": "Bleacher Report", "rank": 7, "prev": 8, "url": "https://bleacherreport.com/nfl#tab-power-rankings" },
-        { "name": "Sports Illustrated", "rank": 6, "prev": 7, "url": "https://www.si.com/nfl/power-rankings" },
-        { "name": "Pro Football Network", "rank": 4, "prev": 4, "url": "https://www.profootballnetwork.com/nfl-power-rankings/" },
-        { "name": "Kalshi", "rank": 4, "prev": 5, "url": "https://kalshi.com/markets/nfl" }
+        { "name": "NFL.com", "rank": 4, "prev": 5, "url": "https://www.nfl.com/news/nfl-power-rankings-week-11-2026-nfl-season" },
+        { "name": "CBS Sports", "rank": 7, "prev": 7, "url": "https://www.cbssports.com/nfl/news/priscos-nfl-week-11-power-rankings-patrick-mahomes-chiefs/" },
+        { "name": "Pro Football Talk", "rank": 7, "prev": 8, "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-11-2026-nfl-power-rankings" },
+        { "name": "USA Today", "rank": 5, "prev": 14, "url": "https://sports.yahoo.com/articles/nfl-power-rankings-week-11-105531497.html" },
+        { "name": "Fox Sports", "rank": 8, "prev": 8, "url": "https://www.foxsports.com/stories/nfl/2026-nfl-power-rankings-week-11" },
+        { "name": "ESPN", "rank": 6, "prev": 7, "url": "https://www.espn.com/nfl/story/_/id/50503226/nfl-power-rankings-week-11-non-quarterback-mvps-midseason" },
+        { "name": "Bleacher Report", "rank": 7, "prev": 8, "url": "https://bleacherreport.com/articles/25534198-br-experts-week-11-nfl-power-rankings" },
+        { "name": "Sports Illustrated", "rank": 6, "prev": 7, "url": "https://www.si.com/nfl/conor-orr-week-11-nfl-power-rankings-vikings-kirk-cousins" },
+        { "name": "Pro Football Network", "rank": 4, "prev": 4, "url": "https://www.profootballnetwork.com/week-11-nfl-power-rankings-2026/" },
+        { "name": "Kalshi", "rank": 4, "prev": 5, "url": "https://kalshi.com/nfl/power-rankings" }
       ]
     },
     {
@@ -142,16 +142,16 @@
       "range_worst": 9,
       "desc": "Kansas City is inching back toward the top, and the mood centers on Patrick Mahomes looking like himself again. Rookie Emmett Johnson ran for 101 yards with Kenneth Walker out, and new receiver Josh Downs scored in his debut. Walker's injury is reportedly minor, and Arizona visits next.",
       "outlets": [
-        { "name": "NFL.com", "rank": 9, "prev": 10, "url": "https://www.nfl.com/news/power-rankings" },
-        { "name": "CBS Sports", "rank": 6, "prev": 6, "url": "https://www.cbssports.com/nfl/news/nfl-power-rankings/" },
-        { "name": "Pro Football Talk", "rank": 6, "prev": 6, "url": "https://profootballtalk.nbcsports.com/power-rankings/" },
-        { "name": "USA Today", "rank": 9, "prev": 9, "url": "https://ftw.usatoday.com/nfl-power-rankings" },
-        { "name": "Fox Sports", "rank": 4, "prev": 4, "url": "https://www.foxsports.com/nfl/power-rankings" },
-        { "name": "ESPN", "rank": 5, "prev": 6, "url": "https://www.espn.com/nfl/story/_/page/rankingsweek11" },
-        { "name": "Bleacher Report", "rank": 8, "prev": 6, "url": "https://bleacherreport.com/nfl#tab-power-rankings" },
-        { "name": "Sports Illustrated", "rank": 7, "prev": 9, "url": "https://www.si.com/nfl/power-rankings" },
-        { "name": "Pro Football Network", "rank": 5, "prev": 5, "url": "https://www.profootballnetwork.com/nfl-power-rankings/" },
-        { "name": "Kalshi", "rank": 5, "prev": 6, "url": "https://kalshi.com/markets/nfl" }
+        { "name": "NFL.com", "rank": 9, "prev": 10, "url": "https://www.nfl.com/news/nfl-power-rankings-week-11-2026-nfl-season" },
+        { "name": "CBS Sports", "rank": 6, "prev": 6, "url": "https://www.cbssports.com/nfl/news/priscos-nfl-week-11-power-rankings-patrick-mahomes-chiefs/" },
+        { "name": "Pro Football Talk", "rank": 6, "prev": 6, "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-11-2026-nfl-power-rankings" },
+        { "name": "USA Today", "rank": 9, "prev": 9, "url": "https://sports.yahoo.com/articles/nfl-power-rankings-week-11-105531497.html" },
+        { "name": "Fox Sports", "rank": 4, "prev": 4, "url": "https://www.foxsports.com/stories/nfl/2026-nfl-power-rankings-week-11" },
+        { "name": "ESPN", "rank": 5, "prev": 6, "url": "https://www.espn.com/nfl/story/_/id/50503226/nfl-power-rankings-week-11-non-quarterback-mvps-midseason" },
+        { "name": "Bleacher Report", "rank": 8, "prev": 6, "url": "https://bleacherreport.com/articles/25534198-br-experts-week-11-nfl-power-rankings" },
+        { "name": "Sports Illustrated", "rank": 7, "prev": 9, "url": "https://www.si.com/nfl/conor-orr-week-11-nfl-power-rankings-vikings-kirk-cousins" },
+        { "name": "Pro Football Network", "rank": 5, "prev": 5, "url": "https://www.profootballnetwork.com/week-11-nfl-power-rankings-2026/" },
+        { "name": "Kalshi", "rank": 5, "prev": 6, "url": "https://kalshi.com/nfl/power-rankings" }
       ]
     },
     {
@@ -165,16 +165,16 @@
       "range_worst": 11,
       "desc": "Denver rested on its bye and stays firmly in a loaded AFC race, with rookie Jonah Coleman taking over the backfield. Opinions on the Broncos vary more than on most contenders, with rankings from #2 to #11. Fernando Mendoza and the Raiders come to town before a closing stretch full of big games.",
       "outlets": [
-        { "name": "NFL.com", "rank": 7, "prev": 6, "url": "https://www.nfl.com/news/power-rankings" },
-        { "name": "CBS Sports", "rank": 5, "prev": 5, "url": "https://www.cbssports.com/nfl/news/nfl-power-rankings/" },
-        { "name": "Pro Football Talk", "rank": 4, "prev": 4, "url": "https://profootballtalk.nbcsports.com/power-rankings/" },
-        { "name": "USA Today", "rank": 6, "prev": 5, "url": "https://ftw.usatoday.com/nfl-power-rankings" },
-        { "name": "Fox Sports", "rank": 2, "prev": 2, "url": "https://www.foxsports.com/nfl/power-rankings" },
-        { "name": "ESPN", "rank": 7, "prev": 5, "url": "https://www.espn.com/nfl/story/_/page/rankingsweek11" },
-        { "name": "Bleacher Report", "rank": 5, "prev": 3, "url": "https://bleacherreport.com/nfl#tab-power-rankings" },
-        { "name": "Sports Illustrated", "rank": 11, "prev": 8, "url": "https://www.si.com/nfl/power-rankings" },
-        { "name": "Pro Football Network", "rank": 11, "prev": 12, "url": "https://www.profootballnetwork.com/nfl-power-rankings/" },
-        { "name": "Kalshi", "rank": 8, "prev": 7, "url": "https://kalshi.com/markets/nfl" }
+        { "name": "NFL.com", "rank": 7, "prev": 6, "url": "https://www.nfl.com/news/nfl-power-rankings-week-11-2026-nfl-season" },
+        { "name": "CBS Sports", "rank": 5, "prev": 5, "url": "https://www.cbssports.com/nfl/news/priscos-nfl-week-11-power-rankings-patrick-mahomes-chiefs/" },
+        { "name": "Pro Football Talk", "rank": 4, "prev": 4, "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-11-2026-nfl-power-rankings" },
+        { "name": "USA Today", "rank": 6, "prev": 5, "url": "https://sports.yahoo.com/articles/nfl-power-rankings-week-11-105531497.html" },
+        { "name": "Fox Sports", "rank": 2, "prev": 2, "url": "https://www.foxsports.com/stories/nfl/2026-nfl-power-rankings-week-11" },
+        { "name": "ESPN", "rank": 7, "prev": 5, "url": "https://www.espn.com/nfl/story/_/id/50503226/nfl-power-rankings-week-11-non-quarterback-mvps-midseason" },
+        { "name": "Bleacher Report", "rank": 5, "prev": 3, "url": "https://bleacherreport.com/articles/25534198-br-experts-week-11-nfl-power-rankings" },
+        { "name": "Sports Illustrated", "rank": 11, "prev": 8, "url": "https://www.si.com/nfl/conor-orr-week-11-nfl-power-rankings-vikings-kirk-cousins" },
+        { "name": "Pro Football Network", "rank": 11, "prev": 12, "url": "https://www.profootballnetwork.com/week-11-nfl-power-rankings-2026/" },
+        { "name": "Kalshi", "rank": 8, "prev": 7, "url": "https://kalshi.com/nfl/power-rankings" }
       ]
     },
     {
@@ -188,16 +188,16 @@
       "range_worst": 10,
       "desc": "Kirk Cousins' return ignited Minnesota, and a 30-10 win at Lambeau with eight sacks of Jordan Love has writers talking about a real title shot. The idea is simple: a better offense lets Brian Flores' elite defense play with a lead. A Mexico City date with San Francisco is the first real proof.",
       "outlets": [
-        { "name": "NFL.com", "rank": 5, "prev": 11, "url": "https://www.nfl.com/news/power-rankings" },
-        { "name": "CBS Sports", "rank": 9, "prev": 11, "url": "https://www.cbssports.com/nfl/news/nfl-power-rankings/" },
-        { "name": "Pro Football Talk", "rank": 10, "prev": 12, "url": "https://profootballtalk.nbcsports.com/power-rankings/" },
-        { "name": "USA Today", "rank": 7, "prev": 11, "url": "https://ftw.usatoday.com/nfl-power-rankings" },
-        { "name": "Fox Sports", "rank": 7, "prev": 7, "url": "https://www.foxsports.com/nfl/power-rankings" },
-        { "name": "ESPN", "rank": 8, "prev": 8, "url": "https://www.espn.com/nfl/story/_/page/rankingsweek11" },
-        { "name": "Bleacher Report", "rank": 6, "prev": 7, "url": "https://bleacherreport.com/nfl#tab-power-rankings" },
-        { "name": "Sports Illustrated", "rank": 4, "prev": 13, "url": "https://www.si.com/nfl/power-rankings" },
-        { "name": "Pro Football Network", "rank": 6, "prev": 6, "url": "https://www.profootballnetwork.com/nfl-power-rankings/" },
-        { "name": "Kalshi", "rank": 6, "prev": 11, "url": "https://kalshi.com/markets/nfl" }
+        { "name": "NFL.com", "rank": 5, "prev": 11, "url": "https://www.nfl.com/news/nfl-power-rankings-week-11-2026-nfl-season" },
+        { "name": "CBS Sports", "rank": 9, "prev": 11, "url": "https://www.cbssports.com/nfl/news/priscos-nfl-week-11-power-rankings-patrick-mahomes-chiefs/" },
+        { "name": "Pro Football Talk", "rank": 10, "prev": 12, "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-11-2026-nfl-power-rankings" },
+        { "name": "USA Today", "rank": 7, "prev": 11, "url": "https://sports.yahoo.com/articles/nfl-power-rankings-week-11-105531497.html" },
+        { "name": "Fox Sports", "rank": 7, "prev": 7, "url": "https://www.foxsports.com/stories/nfl/2026-nfl-power-rankings-week-11" },
+        { "name": "ESPN", "rank": 8, "prev": 8, "url": "https://www.espn.com/nfl/story/_/id/50503226/nfl-power-rankings-week-11-non-quarterback-mvps-midseason" },
+        { "name": "Bleacher Report", "rank": 6, "prev": 7, "url": "https://bleacherreport.com/articles/25534198-br-experts-week-11-nfl-power-rankings" },
+        { "name": "Sports Illustrated", "rank": 4, "prev": 13, "url": "https://www.si.com/nfl/conor-orr-week-11-nfl-power-rankings-vikings-kirk-cousins" },
+        { "name": "Pro Football Network", "rank": 6, "prev": 6, "url": "https://www.profootballnetwork.com/week-11-nfl-power-rankings-2026/" },
+        { "name": "Kalshi", "rank": 6, "prev": 11, "url": "https://kalshi.com/nfl/power-rankings" }
       ]
     },
     {
@@ -211,16 +211,16 @@
       "range_worst": 10,
       "desc": "Detroit routed New England in Munich, but the mood soured with Aidan Hutchinson's torn ACL and Jack Campbell also hurt. The offense still looks Super Bowl caliber, while a defense already near the bottom by efficiency is the worry. Tampa Bay visits Sunday, and Kerby Joseph is set to return.",
       "outlets": [
-        { "name": "NFL.com", "rank": 8, "prev": 7, "url": "https://www.nfl.com/news/power-rankings" },
-        { "name": "CBS Sports", "rank": 8, "prev": 8, "url": "https://www.cbssports.com/nfl/news/nfl-power-rankings/" },
-        { "name": "Pro Football Talk", "rank": 9, "prev": 10, "url": "https://profootballtalk.nbcsports.com/power-rankings/" },
-        { "name": "USA Today", "rank": 10, "prev": 6, "url": "https://ftw.usatoday.com/nfl-power-rankings" },
-        { "name": "Fox Sports", "rank": 9, "prev": 10, "url": "https://www.foxsports.com/nfl/power-rankings" },
-        { "name": "ESPN", "rank": 10, "prev": 10, "url": "https://www.espn.com/nfl/story/_/page/rankingsweek11" },
-        { "name": "Bleacher Report", "rank": 9, "prev": 9, "url": "https://bleacherreport.com/nfl#tab-power-rankings" },
-        { "name": "Sports Illustrated", "rank": 9, "prev": 6, "url": "https://www.si.com/nfl/power-rankings" },
-        { "name": "Pro Football Network", "rank": 8, "prev": 13, "url": "https://www.profootballnetwork.com/nfl-power-rankings/" },
-        { "name": "Kalshi", "rank": 9, "prev": 8, "url": "https://kalshi.com/markets/nfl" }
+        { "name": "NFL.com", "rank": 8, "prev": 7, "url": "https://www.nfl.com/news/nfl-power-rankings-week-11-2026-nfl-season" },
+        { "name": "CBS Sports", "rank": 8, "prev": 8, "url": "https://www.cbssports.com/nfl/news/priscos-nfl-week-11-power-rankings-patrick-mahomes-chiefs/" },
+        { "name": "Pro Football Talk", "rank": 9, "prev": 10, "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-11-2026-nfl-power-rankings" },
+        { "name": "USA Today", "rank": 10, "prev": 6, "url": "https://sports.yahoo.com/articles/nfl-power-rankings-week-11-105531497.html" },
+        { "name": "Fox Sports", "rank": 9, "prev": 10, "url": "https://www.foxsports.com/stories/nfl/2026-nfl-power-rankings-week-11" },
+        { "name": "ESPN", "rank": 10, "prev": 10, "url": "https://www.espn.com/nfl/story/_/id/50503226/nfl-power-rankings-week-11-non-quarterback-mvps-midseason" },
+        { "name": "Bleacher Report", "rank": 9, "prev": 9, "url": "https://bleacherreport.com/articles/25534198-br-experts-week-11-nfl-power-rankings" },
+        { "name": "Sports Illustrated", "rank": 9, "prev": 6, "url": "https://www.si.com/nfl/conor-orr-week-11-nfl-power-rankings-vikings-kirk-cousins" },
+        { "name": "Pro Football Network", "rank": 8, "prev": 13, "url": "https://www.profootballnetwork.com/week-11-nfl-power-rankings-2026/" },
+        { "name": "Kalshi", "rank": 9, "prev": 8, "url": "https://kalshi.com/nfl/power-rankings" }
       ]
     },
     {
@@ -234,16 +234,16 @@
       "range_worst": 12,
       "desc": "Seattle keeps winning with Drew Lock, who is unbeaten in three starts without an interception, and the defense remains one of the stingiest anywhere. That has started a real debate about whether Sam Darnold should get his job back. The bye comes at a good time, with Seattle still three games behind San Francisco.",
       "outlets": [
-        { "name": "NFL.com", "rank": 11, "prev": 9, "url": "https://www.nfl.com/news/power-rankings" },
-        { "name": "CBS Sports", "rank": 12, "prev": 14, "url": "https://www.cbssports.com/nfl/news/nfl-power-rankings/" },
-        { "name": "Pro Football Talk", "rank": 8, "prev": 9, "url": "https://profootballtalk.nbcsports.com/power-rankings/" },
-        { "name": "USA Today", "rank": 8, "prev": 8, "url": "https://ftw.usatoday.com/nfl-power-rankings" },
-        { "name": "Fox Sports", "rank": 10, "prev": 11, "url": "https://www.foxsports.com/nfl/power-rankings" },
-        { "name": "ESPN", "rank": 9, "prev": 9, "url": "https://www.espn.com/nfl/story/_/page/rankingsweek11" },
-        { "name": "Bleacher Report", "rank": 10, "prev": 12, "url": "https://bleacherreport.com/nfl#tab-power-rankings" },
-        { "name": "Sports Illustrated", "rank": 8, "prev": 12, "url": "https://www.si.com/nfl/power-rankings" },
-        { "name": "Pro Football Network", "rank": 7, "prev": 8, "url": "https://www.profootballnetwork.com/nfl-power-rankings/" },
-        { "name": "Kalshi", "rank": 11, "prev": 14, "url": "https://kalshi.com/markets/nfl" }
+        { "name": "NFL.com", "rank": 11, "prev": 9, "url": "https://www.nfl.com/news/nfl-power-rankings-week-11-2026-nfl-season" },
+        { "name": "CBS Sports", "rank": 12, "prev": 14, "url": "https://www.cbssports.com/nfl/news/priscos-nfl-week-11-power-rankings-patrick-mahomes-chiefs/" },
+        { "name": "Pro Football Talk", "rank": 8, "prev": 9, "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-11-2026-nfl-power-rankings" },
+        { "name": "USA Today", "rank": 8, "prev": 8, "url": "https://sports.yahoo.com/articles/nfl-power-rankings-week-11-105531497.html" },
+        { "name": "Fox Sports", "rank": 10, "prev": 11, "url": "https://www.foxsports.com/stories/nfl/2026-nfl-power-rankings-week-11" },
+        { "name": "ESPN", "rank": 9, "prev": 9, "url": "https://www.espn.com/nfl/story/_/id/50503226/nfl-power-rankings-week-11-non-quarterback-mvps-midseason" },
+        { "name": "Bleacher Report", "rank": 10, "prev": 12, "url": "https://bleacherreport.com/articles/25534198-br-experts-week-11-nfl-power-rankings" },
+        { "name": "Sports Illustrated", "rank": 8, "prev": 12, "url": "https://www.si.com/nfl/conor-orr-week-11-nfl-power-rankings-vikings-kirk-cousins" },
+        { "name": "Pro Football Network", "rank": 7, "prev": 8, "url": "https://www.profootballnetwork.com/week-11-nfl-power-rankings-2026/" },
+        { "name": "Kalshi", "rank": 11, "prev": 14, "url": "https://kalshi.com/nfl/power-rankings" }
       ]
     },
     {
@@ -257,16 +257,16 @@
       "range_worst": 15,
       "desc": "The Rams have won four straight by turning into a run-first team, with Blake Corum and Kyren Williams carrying the load. The doubt is how long that holds with Puka Nacua and Davante Adams both on injured reserve. A defense led by breakout cornerback Quentin Lake gives them a floor heading into the bye.",
       "outlets": [
-        { "name": "NFL.com", "rank": 15, "prev": 17, "url": "https://www.nfl.com/news/power-rankings" },
-        { "name": "CBS Sports", "rank": 11, "prev": 13, "url": "https://www.cbssports.com/nfl/news/nfl-power-rankings/" },
-        { "name": "Pro Football Talk", "rank": 12, "prev": 15, "url": "https://profootballtalk.nbcsports.com/power-rankings/" },
-        { "name": "USA Today", "rank": 11, "prev": 12, "url": "https://ftw.usatoday.com/nfl-power-rankings" },
-        { "name": "Fox Sports", "rank": 12, "prev": 13, "url": "https://www.foxsports.com/nfl/power-rankings" },
-        { "name": "ESPN", "rank": 11, "prev": 12, "url": "https://www.espn.com/nfl/story/_/page/rankingsweek11" },
-        { "name": "Bleacher Report", "rank": 11, "prev": 15, "url": "https://bleacherreport.com/nfl#tab-power-rankings" },
-        { "name": "Sports Illustrated", "rank": 10, "prev": 10, "url": "https://www.si.com/nfl/power-rankings" },
-        { "name": "Pro Football Network", "rank": 10, "prev": 14, "url": "https://www.profootballnetwork.com/nfl-power-rankings/" },
-        { "name": "Kalshi", "rank": 12, "prev": 15, "url": "https://kalshi.com/markets/nfl" }
+        { "name": "NFL.com", "rank": 15, "prev": 17, "url": "https://www.nfl.com/news/nfl-power-rankings-week-11-2026-nfl-season" },
+        { "name": "CBS Sports", "rank": 11, "prev": 13, "url": "https://www.cbssports.com/nfl/news/priscos-nfl-week-11-power-rankings-patrick-mahomes-chiefs/" },
+        { "name": "Pro Football Talk", "rank": 12, "prev": 15, "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-11-2026-nfl-power-rankings" },
+        { "name": "USA Today", "rank": 11, "prev": 12, "url": "https://sports.yahoo.com/articles/nfl-power-rankings-week-11-105531497.html" },
+        { "name": "Fox Sports", "rank": 12, "prev": 13, "url": "https://www.foxsports.com/stories/nfl/2026-nfl-power-rankings-week-11" },
+        { "name": "ESPN", "rank": 11, "prev": 12, "url": "https://www.espn.com/nfl/story/_/id/50503226/nfl-power-rankings-week-11-non-quarterback-mvps-midseason" },
+        { "name": "Bleacher Report", "rank": 11, "prev": 15, "url": "https://bleacherreport.com/articles/25534198-br-experts-week-11-nfl-power-rankings" },
+        { "name": "Sports Illustrated", "rank": 10, "prev": 10, "url": "https://www.si.com/nfl/conor-orr-week-11-nfl-power-rankings-vikings-kirk-cousins" },
+        { "name": "Pro Football Network", "rank": 10, "prev": 14, "url": "https://www.profootballnetwork.com/week-11-nfl-power-rankings-2026/" },
+        { "name": "Kalshi", "rank": 12, "prev": 15, "url": "https://kalshi.com/nfl/power-rankings" }
       ]
     },
     {
@@ -280,16 +280,16 @@
       "range_worst": 14,
       "desc": "Green Bay fell hard after Minnesota sacked Jordan Love eight times in a 30-10 loss at home. The read is blunt: the offensive line cannot handle elite fronts, and the run game needs fixing. Christian Watson's career year is the bright spot, and the bye gives them time to regroup.",
       "outlets": [
-        { "name": "NFL.com", "rank": 10, "prev": 8, "url": "https://www.nfl.com/news/power-rankings" },
-        { "name": "CBS Sports", "rank": 13, "prev": 10, "url": "https://www.cbssports.com/nfl/news/nfl-power-rankings/" },
-        { "name": "Pro Football Talk", "rank": 13, "prev": 11, "url": "https://profootballtalk.nbcsports.com/power-rankings/" },
-        { "name": "USA Today", "rank": 12, "prev": 7, "url": "https://ftw.usatoday.com/nfl-power-rankings" },
-        { "name": "Fox Sports", "rank": 11, "prev": 9, "url": "https://www.foxsports.com/nfl/power-rankings" },
-        { "name": "ESPN", "rank": 12, "prev": 11, "url": "https://www.espn.com/nfl/story/_/page/rankingsweek11" },
-        { "name": "Bleacher Report", "rank": 12, "prev": 11, "url": "https://bleacherreport.com/nfl#tab-power-rankings" },
-        { "name": "Sports Illustrated", "rank": 12, "prev": 5, "url": "https://www.si.com/nfl/power-rankings" },
-        { "name": "Pro Football Network", "rank": 13, "prev": 10, "url": "https://www.profootballnetwork.com/nfl-power-rankings/" },
-        { "name": "Kalshi", "rank": 14, "prev": 10, "url": "https://kalshi.com/markets/nfl" }
+        { "name": "NFL.com", "rank": 10, "prev": 8, "url": "https://www.nfl.com/news/nfl-power-rankings-week-11-2026-nfl-season" },
+        { "name": "CBS Sports", "rank": 13, "prev": 10, "url": "https://www.cbssports.com/nfl/news/priscos-nfl-week-11-power-rankings-patrick-mahomes-chiefs/" },
+        { "name": "Pro Football Talk", "rank": 13, "prev": 11, "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-11-2026-nfl-power-rankings" },
+        { "name": "USA Today", "rank": 12, "prev": 7, "url": "https://sports.yahoo.com/articles/nfl-power-rankings-week-11-105531497.html" },
+        { "name": "Fox Sports", "rank": 11, "prev": 9, "url": "https://www.foxsports.com/stories/nfl/2026-nfl-power-rankings-week-11" },
+        { "name": "ESPN", "rank": 12, "prev": 11, "url": "https://www.espn.com/nfl/story/_/id/50503226/nfl-power-rankings-week-11-non-quarterback-mvps-midseason" },
+        { "name": "Bleacher Report", "rank": 12, "prev": 11, "url": "https://bleacherreport.com/articles/25534198-br-experts-week-11-nfl-power-rankings" },
+        { "name": "Sports Illustrated", "rank": 12, "prev": 5, "url": "https://www.si.com/nfl/conor-orr-week-11-nfl-power-rankings-vikings-kirk-cousins" },
+        { "name": "Pro Football Network", "rank": 13, "prev": 10, "url": "https://www.profootballnetwork.com/week-11-nfl-power-rankings-2026/" },
+        { "name": "Kalshi", "rank": 14, "prev": 10, "url": "https://kalshi.com/nfl/power-rankings" }
       ]
     },
     {
@@ -303,16 +303,16 @@
       "range_worst": 15,
       "desc": "Pittsburgh slid after a 38-18 blowout in Cincinnati, and the critique is that the Steelers cannot win a shootout. Aaron Rodgers' offense works when the defense grinds games down, and that never happened. Jaylen Warren's efficiency is a real asset, and a trip to Philadelphia is a chance to steady things.",
       "outlets": [
-        { "name": "NFL.com", "rank": 13, "prev": 12, "url": "https://www.nfl.com/news/power-rankings" },
-        { "name": "CBS Sports", "rank": 10, "prev": 9, "url": "https://www.cbssports.com/nfl/news/nfl-power-rankings/" },
-        { "name": "Pro Football Talk", "rank": 11, "prev": 7, "url": "https://profootballtalk.nbcsports.com/power-rankings/" },
-        { "name": "USA Today", "rank": 13, "prev": 13, "url": "https://ftw.usatoday.com/nfl-power-rankings" },
-        { "name": "Fox Sports", "rank": 15, "prev": 12, "url": "https://www.foxsports.com/nfl/power-rankings" },
-        { "name": "ESPN", "rank": 13, "prev": 13, "url": "https://www.espn.com/nfl/story/_/page/rankingsweek11" },
-        { "name": "Bleacher Report", "rank": 13, "prev": 10, "url": "https://bleacherreport.com/nfl#tab-power-rankings" },
-        { "name": "Sports Illustrated", "rank": 14, "prev": 14, "url": "https://www.si.com/nfl/power-rankings" },
-        { "name": "Pro Football Network", "rank": 14, "prev": 9, "url": "https://www.profootballnetwork.com/nfl-power-rankings/" },
-        { "name": "Kalshi", "rank": 10, "prev": 9, "url": "https://kalshi.com/markets/nfl" }
+        { "name": "NFL.com", "rank": 13, "prev": 12, "url": "https://www.nfl.com/news/nfl-power-rankings-week-11-2026-nfl-season" },
+        { "name": "CBS Sports", "rank": 10, "prev": 9, "url": "https://www.cbssports.com/nfl/news/priscos-nfl-week-11-power-rankings-patrick-mahomes-chiefs/" },
+        { "name": "Pro Football Talk", "rank": 11, "prev": 7, "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-11-2026-nfl-power-rankings" },
+        { "name": "USA Today", "rank": 13, "prev": 13, "url": "https://sports.yahoo.com/articles/nfl-power-rankings-week-11-105531497.html" },
+        { "name": "Fox Sports", "rank": 15, "prev": 12, "url": "https://www.foxsports.com/stories/nfl/2026-nfl-power-rankings-week-11" },
+        { "name": "ESPN", "rank": 13, "prev": 13, "url": "https://www.espn.com/nfl/story/_/id/50503226/nfl-power-rankings-week-11-non-quarterback-mvps-midseason" },
+        { "name": "Bleacher Report", "rank": 13, "prev": 10, "url": "https://bleacherreport.com/articles/25534198-br-experts-week-11-nfl-power-rankings" },
+        { "name": "Sports Illustrated", "rank": 14, "prev": 14, "url": "https://www.si.com/nfl/conor-orr-week-11-nfl-power-rankings-vikings-kirk-cousins" },
+        { "name": "Pro Football Network", "rank": 14, "prev": 9, "url": "https://www.profootballnetwork.com/week-11-nfl-power-rankings-2026/" },
+        { "name": "Kalshi", "rank": 10, "prev": 9, "url": "https://kalshi.com/nfl/power-rankings" }
       ]
     },
     {
@@ -326,16 +326,16 @@
       "range_worst": 19,
       "desc": "Cleveland's win over Houston put the Browns firmly in the AFC playoff picture, and Todd Monken is drawing Coach of the Year talk. Harold Fannin Jr. keeps producing, and Quinshon Judkins scored the winner late. Some rankings still have them in the high teens, but the bye arrives with momentum.",
       "outlets": [
-        { "name": "NFL.com", "rank": 12, "prev": 19, "url": "https://www.nfl.com/news/power-rankings" },
-        { "name": "CBS Sports", "rank": 14, "prev": 17, "url": "https://www.cbssports.com/nfl/news/nfl-power-rankings/" },
-        { "name": "Pro Football Talk", "rank": 14, "prev": 16, "url": "https://profootballtalk.nbcsports.com/power-rankings/" },
-        { "name": "USA Today", "rank": 14, "prev": 15, "url": "https://ftw.usatoday.com/nfl-power-rankings" },
-        { "name": "Fox Sports", "rank": 13, "prev": 17, "url": "https://www.foxsports.com/nfl/power-rankings" },
-        { "name": "ESPN", "rank": 14, "prev": 16, "url": "https://www.espn.com/nfl/story/_/page/rankingsweek11" },
-        { "name": "Bleacher Report", "rank": 14, "prev": 16, "url": "https://bleacherreport.com/nfl#tab-power-rankings" },
-        { "name": "Sports Illustrated", "rank": 13, "prev": 19, "url": "https://www.si.com/nfl/power-rankings" },
-        { "name": "Pro Football Network", "rank": 19, "prev": 20, "url": "https://www.profootballnetwork.com/nfl-power-rankings/" },
-        { "name": "Kalshi", "rank": 15, "prev": 20, "url": "https://kalshi.com/markets/nfl" }
+        { "name": "NFL.com", "rank": 12, "prev": 19, "url": "https://www.nfl.com/news/nfl-power-rankings-week-11-2026-nfl-season" },
+        { "name": "CBS Sports", "rank": 14, "prev": 17, "url": "https://www.cbssports.com/nfl/news/priscos-nfl-week-11-power-rankings-patrick-mahomes-chiefs/" },
+        { "name": "Pro Football Talk", "rank": 14, "prev": 16, "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-11-2026-nfl-power-rankings" },
+        { "name": "USA Today", "rank": 14, "prev": 15, "url": "https://sports.yahoo.com/articles/nfl-power-rankings-week-11-105531497.html" },
+        { "name": "Fox Sports", "rank": 13, "prev": 17, "url": "https://www.foxsports.com/stories/nfl/2026-nfl-power-rankings-week-11" },
+        { "name": "ESPN", "rank": 14, "prev": 16, "url": "https://www.espn.com/nfl/story/_/id/50503226/nfl-power-rankings-week-11-non-quarterback-mvps-midseason" },
+        { "name": "Bleacher Report", "rank": 14, "prev": 16, "url": "https://bleacherreport.com/articles/25534198-br-experts-week-11-nfl-power-rankings" },
+        { "name": "Sports Illustrated", "rank": 13, "prev": 19, "url": "https://www.si.com/nfl/conor-orr-week-11-nfl-power-rankings-vikings-kirk-cousins" },
+        { "name": "Pro Football Network", "rank": 19, "prev": 20, "url": "https://www.profootballnetwork.com/week-11-nfl-power-rankings-2026/" },
+        { "name": "Kalshi", "rank": 15, "prev": 20, "url": "https://kalshi.com/nfl/power-rankings" }
       ]
     },
     {
@@ -349,16 +349,16 @@
       "range_worst": 21,
       "desc": "The Giants lost a close one to Washington on Thursday night, which put a damper on an otherwise positive season. Isaiah Likely has become one of the league's most productive tight ends, and the NFC East is still theirs to control. Jacksonville visits next, after extra days to prepare.",
       "outlets": [
-        { "name": "NFL.com", "rank": 16, "prev": 13, "url": "https://www.nfl.com/news/power-rankings" },
-        { "name": "CBS Sports", "rank": 15, "prev": 15, "url": "https://www.cbssports.com/nfl/news/nfl-power-rankings/" },
-        { "name": "Pro Football Talk", "rank": 15, "prev": 13, "url": "https://profootballtalk.nbcsports.com/power-rankings/" },
-        { "name": "USA Today", "rank": 21, "prev": 20, "url": "https://ftw.usatoday.com/nfl-power-rankings" },
-        { "name": "Fox Sports", "rank": 14, "prev": 14, "url": "https://www.foxsports.com/nfl/power-rankings" },
-        { "name": "ESPN", "rank": 15, "prev": 15, "url": "https://www.espn.com/nfl/story/_/page/rankingsweek11" },
-        { "name": "Bleacher Report", "rank": 15, "prev": 14, "url": "https://bleacherreport.com/nfl#tab-power-rankings" },
-        { "name": "Sports Illustrated", "rank": 15, "prev": 11, "url": "https://www.si.com/nfl/power-rankings" },
-        { "name": "Pro Football Network", "rank": 15, "prev": 15, "url": "https://www.profootballnetwork.com/nfl-power-rankings/" },
-        { "name": "Kalshi", "rank": 13, "prev": 13, "url": "https://kalshi.com/markets/nfl" }
+        { "name": "NFL.com", "rank": 16, "prev": 13, "url": "https://www.nfl.com/news/nfl-power-rankings-week-11-2026-nfl-season" },
+        { "name": "CBS Sports", "rank": 15, "prev": 15, "url": "https://www.cbssports.com/nfl/news/priscos-nfl-week-11-power-rankings-patrick-mahomes-chiefs/" },
+        { "name": "Pro Football Talk", "rank": 15, "prev": 13, "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-11-2026-nfl-power-rankings" },
+        { "name": "USA Today", "rank": 21, "prev": 20, "url": "https://sports.yahoo.com/articles/nfl-power-rankings-week-11-105531497.html" },
+        { "name": "Fox Sports", "rank": 14, "prev": 14, "url": "https://www.foxsports.com/stories/nfl/2026-nfl-power-rankings-week-11" },
+        { "name": "ESPN", "rank": 15, "prev": 15, "url": "https://www.espn.com/nfl/story/_/id/50503226/nfl-power-rankings-week-11-non-quarterback-mvps-midseason" },
+        { "name": "Bleacher Report", "rank": 15, "prev": 14, "url": "https://bleacherreport.com/articles/25534198-br-experts-week-11-nfl-power-rankings" },
+        { "name": "Sports Illustrated", "rank": 15, "prev": 11, "url": "https://www.si.com/nfl/conor-orr-week-11-nfl-power-rankings-vikings-kirk-cousins" },
+        { "name": "Pro Football Network", "rank": 15, "prev": 15, "url": "https://www.profootballnetwork.com/week-11-nfl-power-rankings-2026/" },
+        { "name": "Kalshi", "rank": 13, "prev": 13, "url": "https://kalshi.com/nfl/power-rankings" }
       ]
     },
     {
@@ -372,16 +372,16 @@
       "range_worst": 23,
       "desc": "Tampa Bay is 3-6 yet still viewed as the NFC South favorite, thanks to a defense that has led the league in efficiency over the last five weeks. Todd Bowles' unit carries a team whose offense leans on Bucky Irving. Baker Mayfield's foot strain is the worry heading into a trip to Detroit.",
       "outlets": [
-        { "name": "NFL.com", "rank": 14, "prev": 14, "url": "https://www.nfl.com/news/power-rankings" },
-        { "name": "CBS Sports", "rank": 17, "prev": 16, "url": "https://www.cbssports.com/nfl/news/nfl-power-rankings/" },
-        { "name": "Pro Football Talk", "rank": 19, "prev": 18, "url": "https://profootballtalk.nbcsports.com/power-rankings/" },
-        { "name": "USA Today", "rank": 15, "prev": 16, "url": "https://ftw.usatoday.com/nfl-power-rankings" },
-        { "name": "Fox Sports", "rank": 16, "prev": 18, "url": "https://www.foxsports.com/nfl/power-rankings" },
-        { "name": "ESPN", "rank": 18, "prev": 18, "url": "https://www.espn.com/nfl/story/_/page/rankingsweek11" },
-        { "name": "Bleacher Report", "rank": 23, "prev": 24, "url": "https://bleacherreport.com/nfl#tab-power-rankings" },
-        { "name": "Sports Illustrated", "rank": 18, "prev": 21, "url": "https://www.si.com/nfl/power-rankings" },
-        { "name": "Pro Football Network", "rank": 12, "prev": 11, "url": "https://www.profootballnetwork.com/nfl-power-rankings/" },
-        { "name": "Kalshi", "rank": 16, "prev": 17, "url": "https://kalshi.com/markets/nfl" }
+        { "name": "NFL.com", "rank": 14, "prev": 14, "url": "https://www.nfl.com/news/nfl-power-rankings-week-11-2026-nfl-season" },
+        { "name": "CBS Sports", "rank": 17, "prev": 16, "url": "https://www.cbssports.com/nfl/news/priscos-nfl-week-11-power-rankings-patrick-mahomes-chiefs/" },
+        { "name": "Pro Football Talk", "rank": 19, "prev": 18, "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-11-2026-nfl-power-rankings" },
+        { "name": "USA Today", "rank": 15, "prev": 16, "url": "https://sports.yahoo.com/articles/nfl-power-rankings-week-11-105531497.html" },
+        { "name": "Fox Sports", "rank": 16, "prev": 18, "url": "https://www.foxsports.com/stories/nfl/2026-nfl-power-rankings-week-11" },
+        { "name": "ESPN", "rank": 18, "prev": 18, "url": "https://www.espn.com/nfl/story/_/id/50503226/nfl-power-rankings-week-11-non-quarterback-mvps-midseason" },
+        { "name": "Bleacher Report", "rank": 23, "prev": 24, "url": "https://bleacherreport.com/articles/25534198-br-experts-week-11-nfl-power-rankings" },
+        { "name": "Sports Illustrated", "rank": 18, "prev": 21, "url": "https://www.si.com/nfl/conor-orr-week-11-nfl-power-rankings-vikings-kirk-cousins" },
+        { "name": "Pro Football Network", "rank": 12, "prev": 11, "url": "https://www.profootballnetwork.com/week-11-nfl-power-rankings-2026/" },
+        { "name": "Kalshi", "rank": 16, "prev": 17, "url": "https://kalshi.com/nfl/power-rankings" }
       ]
     },
     {
@@ -395,16 +395,16 @@
       "range_worst": 19,
       "desc": "Carolina's win over New Orleans was ugly, but it kept the Panthers in the NFC South race, and Chuba Hubbard is the reason. He ran for two scores and caught five passes for 80 yards, and the takeaway is simple: feed him. Baltimore visits next.",
       "outlets": [
-        { "name": "NFL.com", "rank": 19, "prev": 20, "url": "https://www.nfl.com/news/power-rankings" },
-        { "name": "CBS Sports", "rank": 16, "prev": 20, "url": "https://www.cbssports.com/nfl/news/nfl-power-rankings/" },
-        { "name": "Pro Football Talk", "rank": 17, "prev": 22, "url": "https://profootballtalk.nbcsports.com/power-rankings/" },
-        { "name": "USA Today", "rank": 16, "prev": 23, "url": "https://ftw.usatoday.com/nfl-power-rankings" },
-        { "name": "Fox Sports", "rank": 17, "prev": 19, "url": "https://www.foxsports.com/nfl/power-rankings" },
-        { "name": "ESPN", "rank": 19, "prev": 19, "url": "https://www.espn.com/nfl/story/_/page/rankingsweek11" },
-        { "name": "Bleacher Report", "rank": 16, "prev": 18, "url": "https://bleacherreport.com/nfl#tab-power-rankings" },
-        { "name": "Sports Illustrated", "rank": 17, "prev": 24, "url": "https://www.si.com/nfl/power-rankings" },
-        { "name": "Pro Football Network", "rank": 17, "prev": 19, "url": "https://www.profootballnetwork.com/nfl-power-rankings/" },
-        { "name": "Kalshi", "rank": 17, "prev": 19, "url": "https://kalshi.com/markets/nfl" }
+        { "name": "NFL.com", "rank": 19, "prev": 20, "url": "https://www.nfl.com/news/nfl-power-rankings-week-11-2026-nfl-season" },
+        { "name": "CBS Sports", "rank": 16, "prev": 20, "url": "https://www.cbssports.com/nfl/news/priscos-nfl-week-11-power-rankings-patrick-mahomes-chiefs/" },
+        { "name": "Pro Football Talk", "rank": 17, "prev": 22, "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-11-2026-nfl-power-rankings" },
+        { "name": "USA Today", "rank": 16, "prev": 23, "url": "https://sports.yahoo.com/articles/nfl-power-rankings-week-11-105531497.html" },
+        { "name": "Fox Sports", "rank": 17, "prev": 19, "url": "https://www.foxsports.com/stories/nfl/2026-nfl-power-rankings-week-11" },
+        { "name": "ESPN", "rank": 19, "prev": 19, "url": "https://www.espn.com/nfl/story/_/id/50503226/nfl-power-rankings-week-11-non-quarterback-mvps-midseason" },
+        { "name": "Bleacher Report", "rank": 16, "prev": 18, "url": "https://bleacherreport.com/articles/25534198-br-experts-week-11-nfl-power-rankings" },
+        { "name": "Sports Illustrated", "rank": 17, "prev": 24, "url": "https://www.si.com/nfl/conor-orr-week-11-nfl-power-rankings-vikings-kirk-cousins" },
+        { "name": "Pro Football Network", "rank": 17, "prev": 19, "url": "https://www.profootballnetwork.com/week-11-nfl-power-rankings-2026/" },
+        { "name": "Kalshi", "rank": 17, "prev": 19, "url": "https://kalshi.com/nfl/power-rankings" }
       ]
     },
     {
@@ -418,16 +418,16 @@
       "range_worst": 23,
       "desc": "Houston's loss to Cleveland may have closed the door on a second-half turnaround. The defense that won games on its own last year is now losing them, and Azeez Al-Shaair went to injured reserve. C.J. Stroud has been sharp, and a Thursday night game with the Colts is next.",
       "outlets": [
-        { "name": "NFL.com", "rank": 17, "prev": 16, "url": "https://www.nfl.com/news/power-rankings" },
-        { "name": "CBS Sports", "rank": 19, "prev": 19, "url": "https://www.cbssports.com/nfl/news/nfl-power-rankings/" },
-        { "name": "Pro Football Talk", "rank": 22, "prev": 20, "url": "https://profootballtalk.nbcsports.com/power-rankings/" },
-        { "name": "USA Today", "rank": 23, "prev": 22, "url": "https://ftw.usatoday.com/nfl-power-rankings" },
-        { "name": "Fox Sports", "rank": 18, "prev": 16, "url": "https://www.foxsports.com/nfl/power-rankings" },
-        { "name": "ESPN", "rank": 16, "prev": 17, "url": "https://www.espn.com/nfl/story/_/page/rankingsweek11" },
-        { "name": "Bleacher Report", "rank": 22, "prev": 19, "url": "https://bleacherreport.com/nfl#tab-power-rankings" },
-        { "name": "Sports Illustrated", "rank": 20, "prev": 16, "url": "https://www.si.com/nfl/power-rankings" },
-        { "name": "Pro Football Network", "rank": 16, "prev": 17, "url": "https://www.profootballnetwork.com/nfl-power-rankings/" },
-        { "name": "Kalshi", "rank": 18, "prev": 16, "url": "https://kalshi.com/markets/nfl" }
+        { "name": "NFL.com", "rank": 17, "prev": 16, "url": "https://www.nfl.com/news/nfl-power-rankings-week-11-2026-nfl-season" },
+        { "name": "CBS Sports", "rank": 19, "prev": 19, "url": "https://www.cbssports.com/nfl/news/priscos-nfl-week-11-power-rankings-patrick-mahomes-chiefs/" },
+        { "name": "Pro Football Talk", "rank": 22, "prev": 20, "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-11-2026-nfl-power-rankings" },
+        { "name": "USA Today", "rank": 23, "prev": 22, "url": "https://sports.yahoo.com/articles/nfl-power-rankings-week-11-105531497.html" },
+        { "name": "Fox Sports", "rank": 18, "prev": 16, "url": "https://www.foxsports.com/stories/nfl/2026-nfl-power-rankings-week-11" },
+        { "name": "ESPN", "rank": 16, "prev": 17, "url": "https://www.espn.com/nfl/story/_/id/50503226/nfl-power-rankings-week-11-non-quarterback-mvps-midseason" },
+        { "name": "Bleacher Report", "rank": 22, "prev": 19, "url": "https://bleacherreport.com/articles/25534198-br-experts-week-11-nfl-power-rankings" },
+        { "name": "Sports Illustrated", "rank": 20, "prev": 16, "url": "https://www.si.com/nfl/conor-orr-week-11-nfl-power-rankings-vikings-kirk-cousins" },
+        { "name": "Pro Football Network", "rank": 16, "prev": 17, "url": "https://www.profootballnetwork.com/week-11-nfl-power-rankings-2026/" },
+        { "name": "Kalshi", "rank": 18, "prev": 16, "url": "https://kalshi.com/nfl/power-rankings" }
       ]
     },
     {
@@ -441,16 +441,16 @@
       "range_worst": 24,
       "desc": "New England took the biggest drop of the week after a 35-10 loss to Detroit, with Drake Maye likely done for the year. A.J. Brown is hurt again, and questions about cohesion and Mike Vrabel's footing are getting louder. The bye arrives with the playoff picture slipping away.",
       "outlets": [
-        { "name": "NFL.com", "rank": 23, "prev": 15, "url": "https://www.nfl.com/news/power-rankings" },
-        { "name": "CBS Sports", "rank": 20, "prev": 12, "url": "https://www.cbssports.com/nfl/news/nfl-power-rankings/" },
-        { "name": "Pro Football Talk", "rank": 16, "prev": 14, "url": "https://profootballtalk.nbcsports.com/power-rankings/" },
-        { "name": "USA Today", "rank": 24, "prev": 10, "url": "https://ftw.usatoday.com/nfl-power-rankings" },
-        { "name": "Fox Sports", "rank": 19, "prev": 15, "url": "https://www.foxsports.com/nfl/power-rankings" },
-        { "name": "ESPN", "rank": 17, "prev": 14, "url": "https://www.espn.com/nfl/story/_/page/rankingsweek11" },
-        { "name": "Bleacher Report", "rank": 17, "prev": 13, "url": "https://bleacherreport.com/nfl#tab-power-rankings" },
-        { "name": "Sports Illustrated", "rank": 23, "prev": 15, "url": "https://www.si.com/nfl/power-rankings" },
-        { "name": "Pro Football Network", "rank": 18, "prev": 16, "url": "https://www.profootballnetwork.com/nfl-power-rankings/" },
-        { "name": "Kalshi", "rank": 20, "prev": 12, "url": "https://kalshi.com/markets/nfl" }
+        { "name": "NFL.com", "rank": 23, "prev": 15, "url": "https://www.nfl.com/news/nfl-power-rankings-week-11-2026-nfl-season" },
+        { "name": "CBS Sports", "rank": 20, "prev": 12, "url": "https://www.cbssports.com/nfl/news/priscos-nfl-week-11-power-rankings-patrick-mahomes-chiefs/" },
+        { "name": "Pro Football Talk", "rank": 16, "prev": 14, "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-11-2026-nfl-power-rankings" },
+        { "name": "USA Today", "rank": 24, "prev": 10, "url": "https://sports.yahoo.com/articles/nfl-power-rankings-week-11-105531497.html" },
+        { "name": "Fox Sports", "rank": 19, "prev": 15, "url": "https://www.foxsports.com/stories/nfl/2026-nfl-power-rankings-week-11" },
+        { "name": "ESPN", "rank": 17, "prev": 14, "url": "https://www.espn.com/nfl/story/_/id/50503226/nfl-power-rankings-week-11-non-quarterback-mvps-midseason" },
+        { "name": "Bleacher Report", "rank": 17, "prev": 13, "url": "https://bleacherreport.com/articles/25534198-br-experts-week-11-nfl-power-rankings" },
+        { "name": "Sports Illustrated", "rank": 23, "prev": 15, "url": "https://www.si.com/nfl/conor-orr-week-11-nfl-power-rankings-vikings-kirk-cousins" },
+        { "name": "Pro Football Network", "rank": 18, "prev": 16, "url": "https://www.profootballnetwork.com/week-11-nfl-power-rankings-2026/" },
+        { "name": "Kalshi", "rank": 20, "prev": 12, "url": "https://kalshi.com/nfl/power-rankings" }
       ]
     },
     {
@@ -464,16 +464,16 @@
       "range_worst": 26,
       "desc": "Dallas scored 40 points and still lost to San Francisco, which says everything about this defense. The pressure on coordinator Christian Parker is intense, and Brian Schottenheimer would not commit to him. George Pickens' three touchdowns were the bright spot, and Tennessee visits next.",
       "outlets": [
-        { "name": "NFL.com", "rank": 18, "prev": 22, "url": "https://www.nfl.com/news/power-rankings" },
-        { "name": "CBS Sports", "rank": 18, "prev": 18, "url": "https://www.cbssports.com/nfl/news/nfl-power-rankings/" },
-        { "name": "Pro Football Talk", "rank": 24, "prev": 25, "url": "https://profootballtalk.nbcsports.com/power-rankings/" },
-        { "name": "USA Today", "rank": 22, "prev": 21, "url": "https://ftw.usatoday.com/nfl-power-rankings" },
-        { "name": "Fox Sports", "rank": 20, "prev": 20, "url": "https://www.foxsports.com/nfl/power-rankings" },
-        { "name": "ESPN", "rank": 20, "prev": 20, "url": "https://www.espn.com/nfl/story/_/page/rankingsweek11" },
-        { "name": "Bleacher Report", "rank": 19, "prev": 20, "url": "https://bleacherreport.com/nfl#tab-power-rankings" },
-        { "name": "Sports Illustrated", "rank": 26, "prev": 27, "url": "https://www.si.com/nfl/power-rankings" },
-        { "name": "Pro Football Network", "rank": 20, "prev": 18, "url": "https://www.profootballnetwork.com/nfl-power-rankings/" },
-        { "name": "Kalshi", "rank": 19, "prev": 18, "url": "https://kalshi.com/markets/nfl" }
+        { "name": "NFL.com", "rank": 18, "prev": 22, "url": "https://www.nfl.com/news/nfl-power-rankings-week-11-2026-nfl-season" },
+        { "name": "CBS Sports", "rank": 18, "prev": 18, "url": "https://www.cbssports.com/nfl/news/priscos-nfl-week-11-power-rankings-patrick-mahomes-chiefs/" },
+        { "name": "Pro Football Talk", "rank": 24, "prev": 25, "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-11-2026-nfl-power-rankings" },
+        { "name": "USA Today", "rank": 22, "prev": 21, "url": "https://sports.yahoo.com/articles/nfl-power-rankings-week-11-105531497.html" },
+        { "name": "Fox Sports", "rank": 20, "prev": 20, "url": "https://www.foxsports.com/stories/nfl/2026-nfl-power-rankings-week-11" },
+        { "name": "ESPN", "rank": 20, "prev": 20, "url": "https://www.espn.com/nfl/story/_/id/50503226/nfl-power-rankings-week-11-non-quarterback-mvps-midseason" },
+        { "name": "Bleacher Report", "rank": 19, "prev": 20, "url": "https://bleacherreport.com/articles/25534198-br-experts-week-11-nfl-power-rankings" },
+        { "name": "Sports Illustrated", "rank": 26, "prev": 27, "url": "https://www.si.com/nfl/conor-orr-week-11-nfl-power-rankings-vikings-kirk-cousins" },
+        { "name": "Pro Football Network", "rank": 20, "prev": 18, "url": "https://www.profootballnetwork.com/week-11-nfl-power-rankings-2026/" },
+        { "name": "Kalshi", "rank": 19, "prev": 18, "url": "https://kalshi.com/nfl/power-rankings" }
       ]
     },
     {
@@ -487,16 +487,16 @@
       "range_worst": 23,
       "desc": "Washington's win over the Giants, sealed by Stefon Diggs' late touchdown, produced the biggest climb of the week. Diggs and Jayden Daniels are clicking, and a weak division keeps an NFC East title in play. Dan Quinn's job is still in question, and Cincinnati visits Monday night.",
       "outlets": [
-        { "name": "NFL.com", "rank": 20, "prev": 26, "url": "https://www.nfl.com/news/power-rankings" },
-        { "name": "CBS Sports", "rank": 23, "prev": 27, "url": "https://www.cbssports.com/nfl/news/nfl-power-rankings/" },
-        { "name": "Pro Football Talk", "rank": 21, "prev": 26, "url": "https://profootballtalk.nbcsports.com/power-rankings/" },
-        { "name": "USA Today", "rank": 20, "prev": 24, "url": "https://ftw.usatoday.com/nfl-power-rankings" },
-        { "name": "Fox Sports", "rank": 22, "prev": 26, "url": "https://www.foxsports.com/nfl/power-rankings" },
-        { "name": "ESPN", "rank": 21, "prev": 24, "url": "https://www.espn.com/nfl/story/_/page/rankingsweek11" },
-        { "name": "Bleacher Report", "rank": 21, "prev": 25, "url": "https://bleacherreport.com/nfl#tab-power-rankings" },
-        { "name": "Sports Illustrated", "rank": 16, "prev": 28, "url": "https://www.si.com/nfl/power-rankings" },
-        { "name": "Pro Football Network", "rank": 21, "prev": 24, "url": "https://www.profootballnetwork.com/nfl-power-rankings/" },
-        { "name": "Kalshi", "rank": 22, "prev": 25, "url": "https://kalshi.com/markets/nfl" }
+        { "name": "NFL.com", "rank": 20, "prev": 26, "url": "https://www.nfl.com/news/nfl-power-rankings-week-11-2026-nfl-season" },
+        { "name": "CBS Sports", "rank": 23, "prev": 27, "url": "https://www.cbssports.com/nfl/news/priscos-nfl-week-11-power-rankings-patrick-mahomes-chiefs/" },
+        { "name": "Pro Football Talk", "rank": 21, "prev": 26, "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-11-2026-nfl-power-rankings" },
+        { "name": "USA Today", "rank": 20, "prev": 24, "url": "https://sports.yahoo.com/articles/nfl-power-rankings-week-11-105531497.html" },
+        { "name": "Fox Sports", "rank": 22, "prev": 26, "url": "https://www.foxsports.com/stories/nfl/2026-nfl-power-rankings-week-11" },
+        { "name": "ESPN", "rank": 21, "prev": 24, "url": "https://www.espn.com/nfl/story/_/id/50503226/nfl-power-rankings-week-11-non-quarterback-mvps-midseason" },
+        { "name": "Bleacher Report", "rank": 21, "prev": 25, "url": "https://bleacherreport.com/articles/25534198-br-experts-week-11-nfl-power-rankings" },
+        { "name": "Sports Illustrated", "rank": 16, "prev": 28, "url": "https://www.si.com/nfl/conor-orr-week-11-nfl-power-rankings-vikings-kirk-cousins" },
+        { "name": "Pro Football Network", "rank": 21, "prev": 24, "url": "https://www.profootballnetwork.com/week-11-nfl-power-rankings-2026/" },
+        { "name": "Kalshi", "rank": 22, "prev": 25, "url": "https://kalshi.com/nfl/power-rankings" }
       ]
     },
     {
@@ -510,16 +510,16 @@
       "range_worst": 25,
       "desc": "Fernando Mendoza's first start, a 21-13 loss to Seattle, drew a mixed review: poised in the pocket, but limited to short throws for 143 yards. Some questioned the timing of the switch, and Brock Bowers hurt his ankle again. A trip to Denver comes next.",
       "outlets": [
-        { "name": "NFL.com", "rank": 21, "prev": 21, "url": "https://www.nfl.com/news/power-rankings" },
-        { "name": "CBS Sports", "rank": 25, "prev": 24, "url": "https://www.cbssports.com/nfl/news/nfl-power-rankings/" },
-        { "name": "Pro Football Talk", "rank": 18, "prev": 17, "url": "https://profootballtalk.nbcsports.com/power-rankings/" },
-        { "name": "USA Today", "rank": 17, "prev": 17, "url": "https://ftw.usatoday.com/nfl-power-rankings" },
-        { "name": "Fox Sports", "rank": 21, "prev": 21, "url": "https://www.foxsports.com/nfl/power-rankings" },
-        { "name": "ESPN", "rank": 22, "prev": 21, "url": "https://www.espn.com/nfl/story/_/page/rankingsweek11" },
-        { "name": "Bleacher Report", "rank": 20, "prev": 17, "url": "https://bleacherreport.com/nfl#tab-power-rankings" },
-        { "name": "Sports Illustrated", "rank": 19, "prev": 20, "url": "https://www.si.com/nfl/power-rankings" },
-        { "name": "Pro Football Network", "rank": 22, "prev": 23, "url": "https://www.profootballnetwork.com/nfl-power-rankings/" },
-        { "name": "Kalshi", "rank": 25, "prev": 24, "url": "https://kalshi.com/markets/nfl" }
+        { "name": "NFL.com", "rank": 21, "prev": 21, "url": "https://www.nfl.com/news/nfl-power-rankings-week-11-2026-nfl-season" },
+        { "name": "CBS Sports", "rank": 25, "prev": 24, "url": "https://www.cbssports.com/nfl/news/priscos-nfl-week-11-power-rankings-patrick-mahomes-chiefs/" },
+        { "name": "Pro Football Talk", "rank": 18, "prev": 17, "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-11-2026-nfl-power-rankings" },
+        { "name": "USA Today", "rank": 17, "prev": 17, "url": "https://sports.yahoo.com/articles/nfl-power-rankings-week-11-105531497.html" },
+        { "name": "Fox Sports", "rank": 21, "prev": 21, "url": "https://www.foxsports.com/stories/nfl/2026-nfl-power-rankings-week-11" },
+        { "name": "ESPN", "rank": 22, "prev": 21, "url": "https://www.espn.com/nfl/story/_/id/50503226/nfl-power-rankings-week-11-non-quarterback-mvps-midseason" },
+        { "name": "Bleacher Report", "rank": 20, "prev": 17, "url": "https://bleacherreport.com/articles/25534198-br-experts-week-11-nfl-power-rankings" },
+        { "name": "Sports Illustrated", "rank": 19, "prev": 20, "url": "https://www.si.com/nfl/conor-orr-week-11-nfl-power-rankings-vikings-kirk-cousins" },
+        { "name": "Pro Football Network", "rank": 22, "prev": 23, "url": "https://www.profootballnetwork.com/week-11-nfl-power-rankings-2026/" },
+        { "name": "Kalshi", "rank": 25, "prev": 24, "url": "https://kalshi.com/nfl/power-rankings" }
       ]
     },
     {
@@ -533,16 +533,16 @@
       "range_worst": 26,
       "desc": "Atlanta's 35-13 home loss to Kansas City left writers struck by how little fight the Falcons showed after the trade deadline. Losing Jessie Bates III stung the locker room, and this team swings between beating good teams and getting blown out. The bye arrives with questions about whether Andy Dalton gets a look.",
       "outlets": [
-        { "name": "NFL.com", "rank": 22, "prev": 18, "url": "https://www.nfl.com/news/power-rankings" },
-        { "name": "CBS Sports", "rank": 21, "prev": 21, "url": "https://www.cbssports.com/nfl/news/nfl-power-rankings/" },
-        { "name": "Pro Football Talk", "rank": 26, "prev": 24, "url": "https://profootballtalk.nbcsports.com/power-rankings/" },
-        { "name": "USA Today", "rank": 18, "prev": 18, "url": "https://ftw.usatoday.com/nfl-power-rankings" },
-        { "name": "Fox Sports", "rank": 25, "prev": 24, "url": "https://www.foxsports.com/nfl/power-rankings" },
-        { "name": "ESPN", "rank": 23, "prev": 23, "url": "https://www.espn.com/nfl/story/_/page/rankingsweek11" },
-        { "name": "Bleacher Report", "rank": 24, "prev": 22, "url": "https://bleacherreport.com/nfl#tab-power-rankings" },
-        { "name": "Sports Illustrated", "rank": 22, "prev": 22, "url": "https://www.si.com/nfl/power-rankings" },
-        { "name": "Pro Football Network", "rank": 24, "prev": 21, "url": "https://www.profootballnetwork.com/nfl-power-rankings/" },
-        { "name": "Kalshi", "rank": 24, "prev": 22, "url": "https://kalshi.com/markets/nfl" }
+        { "name": "NFL.com", "rank": 22, "prev": 18, "url": "https://www.nfl.com/news/nfl-power-rankings-week-11-2026-nfl-season" },
+        { "name": "CBS Sports", "rank": 21, "prev": 21, "url": "https://www.cbssports.com/nfl/news/priscos-nfl-week-11-power-rankings-patrick-mahomes-chiefs/" },
+        { "name": "Pro Football Talk", "rank": 26, "prev": 24, "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-11-2026-nfl-power-rankings" },
+        { "name": "USA Today", "rank": 18, "prev": 18, "url": "https://sports.yahoo.com/articles/nfl-power-rankings-week-11-105531497.html" },
+        { "name": "Fox Sports", "rank": 25, "prev": 24, "url": "https://www.foxsports.com/stories/nfl/2026-nfl-power-rankings-week-11" },
+        { "name": "ESPN", "rank": 23, "prev": 23, "url": "https://www.espn.com/nfl/story/_/id/50503226/nfl-power-rankings-week-11-non-quarterback-mvps-midseason" },
+        { "name": "Bleacher Report", "rank": 24, "prev": 22, "url": "https://bleacherreport.com/articles/25534198-br-experts-week-11-nfl-power-rankings" },
+        { "name": "Sports Illustrated", "rank": 22, "prev": 22, "url": "https://www.si.com/nfl/conor-orr-week-11-nfl-power-rankings-vikings-kirk-cousins" },
+        { "name": "Pro Football Network", "rank": 24, "prev": 21, "url": "https://www.profootballnetwork.com/week-11-nfl-power-rankings-2026/" },
+        { "name": "Kalshi", "rank": 24, "prev": 22, "url": "https://kalshi.com/nfl/power-rankings" }
       ]
     },
     {
@@ -556,16 +556,16 @@
       "range_worst": 28,
       "desc": "Baltimore's home loss to the previously winless Chargers was a low point, and Jacoby Brissett's debut did little to move the offense. Derrick Henry managed 10 yards on 10 carries, and Jesse Minter's defense is under scrutiny too. A trip to Carolina is next, with the season on the line.",
       "outlets": [
-        { "name": "NFL.com", "rank": 28, "prev": 28, "url": "https://www.nfl.com/news/power-rankings" },
-        { "name": "CBS Sports", "rank": 22, "prev": 22, "url": "https://www.cbssports.com/nfl/news/nfl-power-rankings/" },
-        { "name": "Pro Football Talk", "rank": 20, "prev": 19, "url": "https://profootballtalk.nbcsports.com/power-rankings/" },
-        { "name": "USA Today", "rank": 25, "prev": 25, "url": "https://ftw.usatoday.com/nfl-power-rankings" },
-        { "name": "Fox Sports", "rank": 26, "prev": 22, "url": "https://www.foxsports.com/nfl/power-rankings" },
-        { "name": "ESPN", "rank": 25, "prev": 22, "url": "https://www.espn.com/nfl/story/_/page/rankingsweek11" },
-        { "name": "Bleacher Report", "rank": 18, "prev": 21, "url": "https://bleacherreport.com/nfl#tab-power-rankings" },
-        { "name": "Sports Illustrated", "rank": 24, "prev": 18, "url": "https://www.si.com/nfl/power-rankings" },
-        { "name": "Pro Football Network", "rank": 23, "prev": 22, "url": "https://www.profootballnetwork.com/nfl-power-rankings/" },
-        { "name": "Kalshi", "rank": 21, "prev": 23, "url": "https://kalshi.com/markets/nfl" }
+        { "name": "NFL.com", "rank": 28, "prev": 28, "url": "https://www.nfl.com/news/nfl-power-rankings-week-11-2026-nfl-season" },
+        { "name": "CBS Sports", "rank": 22, "prev": 22, "url": "https://www.cbssports.com/nfl/news/priscos-nfl-week-11-power-rankings-patrick-mahomes-chiefs/" },
+        { "name": "Pro Football Talk", "rank": 20, "prev": 19, "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-11-2026-nfl-power-rankings" },
+        { "name": "USA Today", "rank": 25, "prev": 25, "url": "https://sports.yahoo.com/articles/nfl-power-rankings-week-11-105531497.html" },
+        { "name": "Fox Sports", "rank": 26, "prev": 22, "url": "https://www.foxsports.com/stories/nfl/2026-nfl-power-rankings-week-11" },
+        { "name": "ESPN", "rank": 25, "prev": 22, "url": "https://www.espn.com/nfl/story/_/id/50503226/nfl-power-rankings-week-11-non-quarterback-mvps-midseason" },
+        { "name": "Bleacher Report", "rank": 18, "prev": 21, "url": "https://bleacherreport.com/articles/25534198-br-experts-week-11-nfl-power-rankings" },
+        { "name": "Sports Illustrated", "rank": 24, "prev": 18, "url": "https://www.si.com/nfl/conor-orr-week-11-nfl-power-rankings-vikings-kirk-cousins" },
+        { "name": "Pro Football Network", "rank": 23, "prev": 22, "url": "https://www.profootballnetwork.com/week-11-nfl-power-rankings-2026/" },
+        { "name": "Kalshi", "rank": 21, "prev": 23, "url": "https://kalshi.com/nfl/power-rankings" }
       ]
     },
     {
@@ -579,16 +579,16 @@
       "range_worst": 27,
       "desc": "New Orleans fell 20-17 in Carolina, following a familiar script of sleepwalking through the first half. Tyler Shough has regressed after a strong start, and the Kellen Moore era is under the microscope. Rookie Jordyn Tyson is the bright spot after an 11-catch game, with a trip to Chicago next.",
       "outlets": [
-        { "name": "NFL.com", "rank": 25, "prev": 23, "url": "https://www.nfl.com/news/power-rankings" },
-        { "name": "CBS Sports", "rank": 24, "prev": 23, "url": "https://www.cbssports.com/nfl/news/nfl-power-rankings/" },
-        { "name": "Pro Football Talk", "rank": 23, "prev": 21, "url": "https://profootballtalk.nbcsports.com/power-rankings/" },
-        { "name": "USA Today", "rank": 19, "prev": 19, "url": "https://ftw.usatoday.com/nfl-power-rankings" },
-        { "name": "Fox Sports", "rank": 23, "prev": 23, "url": "https://www.foxsports.com/nfl/power-rankings" },
-        { "name": "ESPN", "rank": 24, "prev": 26, "url": "https://www.espn.com/nfl/story/_/page/rankingsweek11" },
-        { "name": "Bleacher Report", "rank": 25, "prev": 23, "url": "https://bleacherreport.com/nfl#tab-power-rankings" },
-        { "name": "Sports Illustrated", "rank": 21, "prev": 23, "url": "https://www.si.com/nfl/power-rankings" },
-        { "name": "Pro Football Network", "rank": 27, "prev": 27, "url": "https://www.profootballnetwork.com/nfl-power-rankings/" },
-        { "name": "Kalshi", "rank": 23, "prev": 21, "url": "https://kalshi.com/markets/nfl" }
+        { "name": "NFL.com", "rank": 25, "prev": 23, "url": "https://www.nfl.com/news/nfl-power-rankings-week-11-2026-nfl-season" },
+        { "name": "CBS Sports", "rank": 24, "prev": 23, "url": "https://www.cbssports.com/nfl/news/priscos-nfl-week-11-power-rankings-patrick-mahomes-chiefs/" },
+        { "name": "Pro Football Talk", "rank": 23, "prev": 21, "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-11-2026-nfl-power-rankings" },
+        { "name": "USA Today", "rank": 19, "prev": 19, "url": "https://sports.yahoo.com/articles/nfl-power-rankings-week-11-105531497.html" },
+        { "name": "Fox Sports", "rank": 23, "prev": 23, "url": "https://www.foxsports.com/stories/nfl/2026-nfl-power-rankings-week-11" },
+        { "name": "ESPN", "rank": 24, "prev": 26, "url": "https://www.espn.com/nfl/story/_/id/50503226/nfl-power-rankings-week-11-non-quarterback-mvps-midseason" },
+        { "name": "Bleacher Report", "rank": 25, "prev": 23, "url": "https://bleacherreport.com/articles/25534198-br-experts-week-11-nfl-power-rankings" },
+        { "name": "Sports Illustrated", "rank": 21, "prev": 23, "url": "https://www.si.com/nfl/conor-orr-week-11-nfl-power-rankings-vikings-kirk-cousins" },
+        { "name": "Pro Football Network", "rank": 27, "prev": 27, "url": "https://www.profootballnetwork.com/week-11-nfl-power-rankings-2026/" },
+        { "name": "Kalshi", "rank": 23, "prev": 21, "url": "https://kalshi.com/nfl/power-rankings" }
       ]
     },
     {
@@ -602,16 +602,16 @@
       "range_worst": 31,
       "desc": "Carson Beck's first start went about as expected against the Rams, with two interceptions and five sacks in a 34-6 loss. Some saw a better game than the box score, and he is now the starter after Gardner Minshew's elbow injury. Arizona heads to Kansas City next.",
       "outlets": [
-        { "name": "NFL.com", "rank": 31, "prev": 27, "url": "https://www.nfl.com/news/power-rankings" },
-        { "name": "CBS Sports", "rank": 26, "prev": 25, "url": "https://www.cbssports.com/nfl/news/nfl-power-rankings/" },
-        { "name": "Pro Football Talk", "rank": 25, "prev": 23, "url": "https://profootballtalk.nbcsports.com/power-rankings/" },
-        { "name": "USA Today", "rank": 28, "prev": 26, "url": "https://ftw.usatoday.com/nfl-power-rankings" },
-        { "name": "Fox Sports", "rank": 27, "prev": 25, "url": "https://www.foxsports.com/nfl/power-rankings" },
-        { "name": "ESPN", "rank": 26, "prev": 25, "url": "https://www.espn.com/nfl/story/_/page/rankingsweek11" },
-        { "name": "Bleacher Report", "rank": 28, "prev": 27, "url": "https://bleacherreport.com/nfl#tab-power-rankings" },
-        { "name": "Sports Illustrated", "rank": 25, "prev": 25, "url": "https://www.si.com/nfl/power-rankings" },
-        { "name": "Pro Football Network", "rank": 28, "prev": 28, "url": "https://www.profootballnetwork.com/nfl-power-rankings/" },
-        { "name": "Kalshi", "rank": 26, "prev": 26, "url": "https://kalshi.com/markets/nfl" }
+        { "name": "NFL.com", "rank": 31, "prev": 27, "url": "https://www.nfl.com/news/nfl-power-rankings-week-11-2026-nfl-season" },
+        { "name": "CBS Sports", "rank": 26, "prev": 25, "url": "https://www.cbssports.com/nfl/news/priscos-nfl-week-11-power-rankings-patrick-mahomes-chiefs/" },
+        { "name": "Pro Football Talk", "rank": 25, "prev": 23, "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-11-2026-nfl-power-rankings" },
+        { "name": "USA Today", "rank": 28, "prev": 26, "url": "https://sports.yahoo.com/articles/nfl-power-rankings-week-11-105531497.html" },
+        { "name": "Fox Sports", "rank": 27, "prev": 25, "url": "https://www.foxsports.com/stories/nfl/2026-nfl-power-rankings-week-11" },
+        { "name": "ESPN", "rank": 26, "prev": 25, "url": "https://www.espn.com/nfl/story/_/id/50503226/nfl-power-rankings-week-11-non-quarterback-mvps-midseason" },
+        { "name": "Bleacher Report", "rank": 28, "prev": 27, "url": "https://bleacherreport.com/articles/25534198-br-experts-week-11-nfl-power-rankings" },
+        { "name": "Sports Illustrated", "rank": 25, "prev": 25, "url": "https://www.si.com/nfl/conor-orr-week-11-nfl-power-rankings-vikings-kirk-cousins" },
+        { "name": "Pro Football Network", "rank": 28, "prev": 28, "url": "https://www.profootballnetwork.com/week-11-nfl-power-rankings-2026/" },
+        { "name": "Kalshi", "rank": 26, "prev": 26, "url": "https://kalshi.com/nfl/power-rankings" }
       ]
     },
     {
@@ -625,16 +625,16 @@
       "range_worst": 31,
       "desc": "Indianapolis beat Miami, but the win did little to change the mood around a lost season. Daniel Jones takes most of the blame, and some want a look at Anthony Richardson. The Colts visit Houston on Thursday night.",
       "outlets": [
-        { "name": "NFL.com", "rank": 29, "prev": 25, "url": "https://www.nfl.com/news/power-rankings" },
-        { "name": "CBS Sports", "rank": 29, "prev": 30, "url": "https://www.cbssports.com/nfl/news/nfl-power-rankings/" },
-        { "name": "Pro Football Talk", "rank": 27, "prev": 29, "url": "https://profootballtalk.nbcsports.com/power-rankings/" },
-        { "name": "USA Today", "rank": 31, "prev": 31, "url": "https://ftw.usatoday.com/nfl-power-rankings" },
-        { "name": "Fox Sports", "rank": 24, "prev": 27, "url": "https://www.foxsports.com/nfl/power-rankings" },
-        { "name": "ESPN", "rank": 29, "prev": 29, "url": "https://www.espn.com/nfl/story/_/page/rankingsweek11" },
-        { "name": "Bleacher Report", "rank": 29, "prev": 31, "url": "https://bleacherreport.com/nfl#tab-power-rankings" },
-        { "name": "Sports Illustrated", "rank": 27, "prev": 26, "url": "https://www.si.com/nfl/power-rankings" },
-        { "name": "Pro Football Network", "rank": 25, "prev": 26, "url": "https://www.profootballnetwork.com/nfl-power-rankings/" },
-        { "name": "Kalshi", "rank": 27, "prev": 28, "url": "https://kalshi.com/markets/nfl" }
+        { "name": "NFL.com", "rank": 29, "prev": 25, "url": "https://www.nfl.com/news/nfl-power-rankings-week-11-2026-nfl-season" },
+        { "name": "CBS Sports", "rank": 29, "prev": 30, "url": "https://www.cbssports.com/nfl/news/priscos-nfl-week-11-power-rankings-patrick-mahomes-chiefs/" },
+        { "name": "Pro Football Talk", "rank": 27, "prev": 29, "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-11-2026-nfl-power-rankings" },
+        { "name": "USA Today", "rank": 31, "prev": 31, "url": "https://sports.yahoo.com/articles/nfl-power-rankings-week-11-105531497.html" },
+        { "name": "Fox Sports", "rank": 24, "prev": 27, "url": "https://www.foxsports.com/stories/nfl/2026-nfl-power-rankings-week-11" },
+        { "name": "ESPN", "rank": 29, "prev": 29, "url": "https://www.espn.com/nfl/story/_/id/50503226/nfl-power-rankings-week-11-non-quarterback-mvps-midseason" },
+        { "name": "Bleacher Report", "rank": 29, "prev": 31, "url": "https://bleacherreport.com/articles/25534198-br-experts-week-11-nfl-power-rankings" },
+        { "name": "Sports Illustrated", "rank": 27, "prev": 26, "url": "https://www.si.com/nfl/conor-orr-week-11-nfl-power-rankings-vikings-kirk-cousins" },
+        { "name": "Pro Football Network", "rank": 25, "prev": 26, "url": "https://www.profootballnetwork.com/week-11-nfl-power-rankings-2026/" },
+        { "name": "Kalshi", "rank": 27, "prev": 28, "url": "https://kalshi.com/nfl/power-rankings" }
       ]
     },
     {
@@ -648,16 +648,16 @@
       "range_worst": 32,
       "desc": "The Jets dropped a fifth straight game, 31-12 to Buffalo, and Geno Smith left hurt before rookie Cade Klubnik got his first snaps. The frustration is aimed at Aaron Glenn, now seen as the coach most likely to be fired next. Smith is expected to stay the starter for a trip to the Chargers.",
       "outlets": [
-        { "name": "NFL.com", "rank": 26, "prev": 30, "url": "https://www.nfl.com/news/power-rankings" },
-        { "name": "CBS Sports", "rank": 27, "prev": 26, "url": "https://www.cbssports.com/nfl/news/nfl-power-rankings/" },
-        { "name": "Pro Football Talk", "rank": 32, "prev": 31, "url": "https://profootballtalk.nbcsports.com/power-rankings/" },
-        { "name": "USA Today", "rank": 26, "prev": 28, "url": "https://ftw.usatoday.com/nfl-power-rankings" },
-        { "name": "Fox Sports", "rank": 31, "prev": 31, "url": "https://www.foxsports.com/nfl/power-rankings" },
-        { "name": "ESPN", "rank": 27, "prev": 27, "url": "https://www.espn.com/nfl/story/_/page/rankingsweek11" },
-        { "name": "Bleacher Report", "rank": 27, "prev": 26, "url": "https://bleacherreport.com/nfl#tab-power-rankings" },
-        { "name": "Sports Illustrated", "rank": 31, "prev": 30, "url": "https://www.si.com/nfl/power-rankings" },
-        { "name": "Pro Football Network", "rank": 26, "prev": 25, "url": "https://www.profootballnetwork.com/nfl-power-rankings/" },
-        { "name": "Kalshi", "rank": 28, "prev": 27, "url": "https://kalshi.com/markets/nfl" }
+        { "name": "NFL.com", "rank": 26, "prev": 30, "url": "https://www.nfl.com/news/nfl-power-rankings-week-11-2026-nfl-season" },
+        { "name": "CBS Sports", "rank": 27, "prev": 26, "url": "https://www.cbssports.com/nfl/news/priscos-nfl-week-11-power-rankings-patrick-mahomes-chiefs/" },
+        { "name": "Pro Football Talk", "rank": 32, "prev": 31, "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-11-2026-nfl-power-rankings" },
+        { "name": "USA Today", "rank": 26, "prev": 28, "url": "https://sports.yahoo.com/articles/nfl-power-rankings-week-11-105531497.html" },
+        { "name": "Fox Sports", "rank": 31, "prev": 31, "url": "https://www.foxsports.com/stories/nfl/2026-nfl-power-rankings-week-11" },
+        { "name": "ESPN", "rank": 27, "prev": 27, "url": "https://www.espn.com/nfl/story/_/id/50503226/nfl-power-rankings-week-11-non-quarterback-mvps-midseason" },
+        { "name": "Bleacher Report", "rank": 27, "prev": 26, "url": "https://bleacherreport.com/articles/25534198-br-experts-week-11-nfl-power-rankings" },
+        { "name": "Sports Illustrated", "rank": 31, "prev": 30, "url": "https://www.si.com/nfl/conor-orr-week-11-nfl-power-rankings-vikings-kirk-cousins" },
+        { "name": "Pro Football Network", "rank": 26, "prev": 25, "url": "https://www.profootballnetwork.com/week-11-nfl-power-rankings-2026/" },
+        { "name": "Kalshi", "rank": 28, "prev": 27, "url": "https://kalshi.com/nfl/power-rankings" }
       ]
     },
     {
@@ -671,16 +671,16 @@
       "range_worst": 32,
       "desc": "Philadelphia sat on its bye with Joe Milton at quarterback and the season largely gone. Moro Ojomo's growth made the Jordan Davis trade possible, and talk has turned to Nick Sirianni's future. Pittsburgh comes to town next.",
       "outlets": [
-        { "name": "NFL.com", "rank": 32, "prev": 31, "url": "https://www.nfl.com/news/power-rankings" },
-        { "name": "CBS Sports", "rank": 28, "prev": 28, "url": "https://www.cbssports.com/nfl/news/nfl-power-rankings/" },
-        { "name": "Pro Football Talk", "rank": 28, "prev": 27, "url": "https://profootballtalk.nbcsports.com/power-rankings/" },
-        { "name": "USA Today", "rank": 27, "prev": 30, "url": "https://ftw.usatoday.com/nfl-power-rankings" },
-        { "name": "Fox Sports", "rank": 28, "prev": 28, "url": "https://www.foxsports.com/nfl/power-rankings" },
-        { "name": "ESPN", "rank": 28, "prev": 28, "url": "https://www.espn.com/nfl/story/_/page/rankingsweek11" },
-        { "name": "Bleacher Report", "rank": 26, "prev": 28, "url": "https://bleacherreport.com/nfl#tab-power-rankings" },
-        { "name": "Sports Illustrated", "rank": 30, "prev": 31, "url": "https://www.si.com/nfl/power-rankings" },
-        { "name": "Pro Football Network", "rank": 30, "prev": 29, "url": "https://www.profootballnetwork.com/nfl-power-rankings/" },
-        { "name": "Kalshi", "rank": 30, "prev": 30, "url": "https://kalshi.com/markets/nfl" }
+        { "name": "NFL.com", "rank": 32, "prev": 31, "url": "https://www.nfl.com/news/nfl-power-rankings-week-11-2026-nfl-season" },
+        { "name": "CBS Sports", "rank": 28, "prev": 28, "url": "https://www.cbssports.com/nfl/news/priscos-nfl-week-11-power-rankings-patrick-mahomes-chiefs/" },
+        { "name": "Pro Football Talk", "rank": 28, "prev": 27, "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-11-2026-nfl-power-rankings" },
+        { "name": "USA Today", "rank": 27, "prev": 30, "url": "https://sports.yahoo.com/articles/nfl-power-rankings-week-11-105531497.html" },
+        { "name": "Fox Sports", "rank": 28, "prev": 28, "url": "https://www.foxsports.com/stories/nfl/2026-nfl-power-rankings-week-11" },
+        { "name": "ESPN", "rank": 28, "prev": 28, "url": "https://www.espn.com/nfl/story/_/id/50503226/nfl-power-rankings-week-11-non-quarterback-mvps-midseason" },
+        { "name": "Bleacher Report", "rank": 26, "prev": 28, "url": "https://bleacherreport.com/articles/25534198-br-experts-week-11-nfl-power-rankings" },
+        { "name": "Sports Illustrated", "rank": 30, "prev": 31, "url": "https://www.si.com/nfl/conor-orr-week-11-nfl-power-rankings-vikings-kirk-cousins" },
+        { "name": "Pro Football Network", "rank": 30, "prev": 29, "url": "https://www.profootballnetwork.com/week-11-nfl-power-rankings-2026/" },
+        { "name": "Kalshi", "rank": 30, "prev": 30, "url": "https://kalshi.com/nfl/power-rankings" }
       ]
     },
     {
@@ -694,16 +694,16 @@
       "range_worst": 32,
       "desc": "Tennessee lost again, 40-23 to Jacksonville, but Cam Ward's efficient two-touchdown game is giving fans reason for hope in 2027. The Titans are now in line for the first pick after the Chargers won. A trip to Dallas and its struggling defense is next.",
       "outlets": [
-        { "name": "NFL.com", "rank": 24, "prev": 24, "url": "https://www.nfl.com/news/power-rankings" },
-        { "name": "CBS Sports", "rank": 32, "prev": 31, "url": "https://www.cbssports.com/nfl/news/nfl-power-rankings/" },
-        { "name": "Pro Football Talk", "rank": 30, "prev": 28, "url": "https://profootballtalk.nbcsports.com/power-rankings/" },
-        { "name": "USA Today", "rank": 30, "prev": 29, "url": "https://ftw.usatoday.com/nfl-power-rankings" },
-        { "name": "Fox Sports", "rank": 29, "prev": 29, "url": "https://www.foxsports.com/nfl/power-rankings" },
-        { "name": "ESPN", "rank": 32, "prev": 31, "url": "https://www.espn.com/nfl/story/_/page/rankingsweek11" },
-        { "name": "Bleacher Report", "rank": 31, "prev": 29, "url": "https://bleacherreport.com/nfl#tab-power-rankings" },
-        { "name": "Sports Illustrated", "rank": 28, "prev": 29, "url": "https://www.si.com/nfl/power-rankings" },
-        { "name": "Pro Football Network", "rank": 32, "prev": 30, "url": "https://www.profootballnetwork.com/nfl-power-rankings/" },
-        { "name": "Kalshi", "rank": 31, "prev": 31, "url": "https://kalshi.com/markets/nfl" }
+        { "name": "NFL.com", "rank": 24, "prev": 24, "url": "https://www.nfl.com/news/nfl-power-rankings-week-11-2026-nfl-season" },
+        { "name": "CBS Sports", "rank": 32, "prev": 31, "url": "https://www.cbssports.com/nfl/news/priscos-nfl-week-11-power-rankings-patrick-mahomes-chiefs/" },
+        { "name": "Pro Football Talk", "rank": 30, "prev": 28, "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-11-2026-nfl-power-rankings" },
+        { "name": "USA Today", "rank": 30, "prev": 29, "url": "https://sports.yahoo.com/articles/nfl-power-rankings-week-11-105531497.html" },
+        { "name": "Fox Sports", "rank": 29, "prev": 29, "url": "https://www.foxsports.com/stories/nfl/2026-nfl-power-rankings-week-11" },
+        { "name": "ESPN", "rank": 32, "prev": 31, "url": "https://www.espn.com/nfl/story/_/id/50503226/nfl-power-rankings-week-11-non-quarterback-mvps-midseason" },
+        { "name": "Bleacher Report", "rank": 31, "prev": 29, "url": "https://bleacherreport.com/articles/25534198-br-experts-week-11-nfl-power-rankings" },
+        { "name": "Sports Illustrated", "rank": 28, "prev": 29, "url": "https://www.si.com/nfl/conor-orr-week-11-nfl-power-rankings-vikings-kirk-cousins" },
+        { "name": "Pro Football Network", "rank": 32, "prev": 30, "url": "https://www.profootballnetwork.com/week-11-nfl-power-rankings-2026/" },
+        { "name": "Kalshi", "rank": 31, "prev": 31, "url": "https://kalshi.com/nfl/power-rankings" }
       ]
     },
     {
@@ -717,16 +717,16 @@
       "range_worst": 32,
       "desc": "The Chargers finally won, beating Baltimore 23-20 on Monday night behind a revived run game led by Omarion Hampton. Jim Harbaugh's relief was obvious, though questions about Justin Herbert's mood linger. The Jets visit next, a real chance to stack wins.",
       "outlets": [
-        { "name": "NFL.com", "rank": 27, "prev": 32, "url": "https://www.nfl.com/news/power-rankings" },
-        { "name": "CBS Sports", "rank": 31, "prev": 32, "url": "https://www.cbssports.com/nfl/news/nfl-power-rankings/" },
-        { "name": "Pro Football Talk", "rank": 29, "prev": 32, "url": "https://profootballtalk.nbcsports.com/power-rankings/" },
-        { "name": "USA Today", "rank": 29, "prev": 32, "url": "https://ftw.usatoday.com/nfl-power-rankings" },
-        { "name": "Fox Sports", "rank": 30, "prev": 32, "url": "https://www.foxsports.com/nfl/power-rankings" },
-        { "name": "ESPN", "rank": 31, "prev": 32, "url": "https://www.espn.com/nfl/story/_/page/rankingsweek11" },
-        { "name": "Bleacher Report", "rank": 32, "prev": 32, "url": "https://bleacherreport.com/nfl#tab-power-rankings" },
-        { "name": "Sports Illustrated", "rank": 32, "prev": 32, "url": "https://www.si.com/nfl/power-rankings" },
-        { "name": "Pro Football Network", "rank": 29, "prev": 32, "url": "https://www.profootballnetwork.com/nfl-power-rankings/" },
-        { "name": "Kalshi", "rank": 32, "prev": 32, "url": "https://kalshi.com/markets/nfl" }
+        { "name": "NFL.com", "rank": 27, "prev": 32, "url": "https://www.nfl.com/news/nfl-power-rankings-week-11-2026-nfl-season" },
+        { "name": "CBS Sports", "rank": 31, "prev": 32, "url": "https://www.cbssports.com/nfl/news/priscos-nfl-week-11-power-rankings-patrick-mahomes-chiefs/" },
+        { "name": "Pro Football Talk", "rank": 29, "prev": 32, "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-11-2026-nfl-power-rankings" },
+        { "name": "USA Today", "rank": 29, "prev": 32, "url": "https://sports.yahoo.com/articles/nfl-power-rankings-week-11-105531497.html" },
+        { "name": "Fox Sports", "rank": 30, "prev": 32, "url": "https://www.foxsports.com/stories/nfl/2026-nfl-power-rankings-week-11" },
+        { "name": "ESPN", "rank": 31, "prev": 32, "url": "https://www.espn.com/nfl/story/_/id/50503226/nfl-power-rankings-week-11-non-quarterback-mvps-midseason" },
+        { "name": "Bleacher Report", "rank": 32, "prev": 32, "url": "https://bleacherreport.com/articles/25534198-br-experts-week-11-nfl-power-rankings" },
+        { "name": "Sports Illustrated", "rank": 32, "prev": 32, "url": "https://www.si.com/nfl/conor-orr-week-11-nfl-power-rankings-vikings-kirk-cousins" },
+        { "name": "Pro Football Network", "rank": 29, "prev": 32, "url": "https://www.profootballnetwork.com/week-11-nfl-power-rankings-2026/" },
+        { "name": "Kalshi", "rank": 32, "prev": 32, "url": "https://kalshi.com/nfl/power-rankings" }
       ]
     },
     {
@@ -740,16 +740,16 @@
       "range_worst": 32,
       "desc": "Miami lost to Indianapolis by two and cut its kicker afterward, sliding to the bottom of the consensus. Kyle McCord showed something in relief of the injured Malik Willis, including a rushing touchdown. A trip to Buffalo is next.",
       "outlets": [
-        { "name": "NFL.com", "rank": 30, "prev": 29, "url": "https://www.nfl.com/news/power-rankings" },
-        { "name": "CBS Sports", "rank": 30, "prev": 29, "url": "https://www.cbssports.com/nfl/news/nfl-power-rankings/" },
-        { "name": "Pro Football Talk", "rank": 31, "prev": 30, "url": "https://profootballtalk.nbcsports.com/power-rankings/" },
-        { "name": "USA Today", "rank": 32, "prev": 27, "url": "https://ftw.usatoday.com/nfl-power-rankings" },
-        { "name": "Fox Sports", "rank": 32, "prev": 30, "url": "https://www.foxsports.com/nfl/power-rankings" },
-        { "name": "ESPN", "rank": 30, "prev": 30, "url": "https://www.espn.com/nfl/story/_/page/rankingsweek11" },
-        { "name": "Bleacher Report", "rank": 30, "prev": 30, "url": "https://bleacherreport.com/nfl#tab-power-rankings" },
-        { "name": "Sports Illustrated", "rank": 29, "prev": 17, "url": "https://www.si.com/nfl/power-rankings" },
-        { "name": "Pro Football Network", "rank": 31, "prev": 31, "url": "https://www.profootballnetwork.com/nfl-power-rankings/" },
-        { "name": "Kalshi", "rank": 29, "prev": 29, "url": "https://kalshi.com/markets/nfl" }
+        { "name": "NFL.com", "rank": 30, "prev": 29, "url": "https://www.nfl.com/news/nfl-power-rankings-week-11-2026-nfl-season" },
+        { "name": "CBS Sports", "rank": 30, "prev": 29, "url": "https://www.cbssports.com/nfl/news/priscos-nfl-week-11-power-rankings-patrick-mahomes-chiefs/" },
+        { "name": "Pro Football Talk", "rank": 31, "prev": 30, "url": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-11-2026-nfl-power-rankings" },
+        { "name": "USA Today", "rank": 32, "prev": 27, "url": "https://sports.yahoo.com/articles/nfl-power-rankings-week-11-105531497.html" },
+        { "name": "Fox Sports", "rank": 32, "prev": 30, "url": "https://www.foxsports.com/stories/nfl/2026-nfl-power-rankings-week-11" },
+        { "name": "ESPN", "rank": 30, "prev": 30, "url": "https://www.espn.com/nfl/story/_/id/50503226/nfl-power-rankings-week-11-non-quarterback-mvps-midseason" },
+        { "name": "Bleacher Report", "rank": 30, "prev": 30, "url": "https://bleacherreport.com/articles/25534198-br-experts-week-11-nfl-power-rankings" },
+        { "name": "Sports Illustrated", "rank": 29, "prev": 17, "url": "https://www.si.com/nfl/conor-orr-week-11-nfl-power-rankings-vikings-kirk-cousins" },
+        { "name": "Pro Football Network", "rank": 31, "prev": 31, "url": "https://www.profootballnetwork.com/week-11-nfl-power-rankings-2026/" },
+        { "name": "Kalshi", "rank": 29, "prev": 29, "url": "https://kalshi.com/nfl/power-rankings" }
       ]
     }
   ]

@@ -732,11 +732,12 @@ async function initRankings() {
     if (t.outlets && t.outlets.length) {
       outletPills = t.outlets.map(o => {
         const prevText = o.prev ? `prev #${o.prev}` : '';
-        return `<a href="${escHtml(o.url)}" class="outlet-pill" target="_blank" rel="noopener">
-          <span class="outlet-pill-rank">#${o.rank}</span>
+        const inner = `<span class="outlet-pill-rank">#${o.rank}</span>
           <span class="outlet-pill-name">${escHtml(o.name)}</span>
-          ${prevText ? `<span class="outlet-pill-prev">${prevText}</span>` : ''}
-        </a>`;
+          ${prevText ? `<span class="outlet-pill-prev">${prevText}</span>` : ''}`;
+        return o.url
+          ? `<a href="${escHtml(o.url)}" class="outlet-pill" target="_blank" rel="noopener" title="Read the ${escHtml(o.name)} rankings">${inner}</a>`
+          : `<span class="outlet-pill">${inner}</span>`;
       }).join('');
     }
 
