@@ -1,8 +1,19 @@
 {
-  "updated": "2026-11-13T12:00:00Z",
+  "updated": "2026-11-24T12:00:00Z",
   "week": 10,
   "season": 2026,
   "items": [
+    {
+      "id": "rankings-w12",
+      "type": "rankings",
+      "date": "Nov. 24",
+      "teams": [],
+      "teams_full": [],
+      "title": "Week 12 Power Rankings: 49ers Reclaim No. 1, Jaguars and Bengals Slide",
+      "desc": "San Francisco returns to the top of our consensus after routing Minnesota in Mexico City. Jacksonville and Cincinnati each fall three spots after losses to the Giants and Commanders, and Kansas City climbs to third.",
+      "url": "/nfl/power-rankings.html",
+      "because": null
+    },
     {
       "id": "preview-no-chi-w11",
       "type": "preview",
@@ -28,7 +39,7 @@
       "teams_full": [],
       "title": "Week 11 Power Rankings: Bengals and Rams on the Rise",
       "desc": "Buffalo holds the top spot for a second straight week. Cincinnati and the Rams climb, while New England takes the biggest drop after losing Drake Maye.",
-      "url": "/nfl/power-rankings.html",
+      "url": "/nfl/power-rankings-w11.html",
       "because": null
     },
     {
