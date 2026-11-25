@@ -4,6 +4,21 @@
   "season": 2026,
   "items": [
     {
+      "id": "breaking-rodgers-steelers-20261125",
+      "type": "breaking",
+      "date": "Nov. 25",
+      "teams": [
+        "PIT"
+      ],
+      "teams_full": [
+        "Pittsburgh Steelers"
+      ],
+      "title": "Steelers Release Aaron Rodgers After He Rips Mike McCarthy",
+      "desc": "A day after Pittsburgh benched him, Rodgers said he was done with the Steelers and accused his coach of sleeping through meetings. The team cut him within the hour.",
+      "url": "/nfl/pages/breaking-rodgers-steelers-20261125.html",
+      "because": null
+    },
+    {
       "id": "rankings-w12",
       "type": "rankings",
       "date": "Nov. 24",
