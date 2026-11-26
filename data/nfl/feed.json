@@ -4,6 +4,23 @@
   "season": 2026,
   "items": [
     {
+      "id": "recap-gb-lar-w12",
+      "type": "recap",
+      "date": "Wed, Nov. 25 · Final",
+      "teams": [
+        "GB",
+        "LAR"
+      ],
+      "teams_full": [
+        "Green Bay Packers",
+        "Los Angeles Rams"
+      ],
+      "title": "Rams 26, Packers 13: Corum Runs Over Green Bay on Thanksgiving Eve",
+      "desc": "Blake Corum ran for 184 yards as the Rams held the ball for more than 40 minutes and shut out the Packers in the second half.",
+      "url": "/nfl/pages/packers-at-rams-recap-w12.html",
+      "because": null
+    },
+    {
       "id": "preview-den-pit-w12",
       "type": "preview",
       "date": "Fri, Nov. 27 · 3:00 PM ET",
