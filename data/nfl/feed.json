@@ -1,8 +1,93 @@
 {
   "updated": "2026-11-24T12:00:00Z",
-  "week": 10,
+  "week": 12,
   "season": 2026,
   "items": [
+    {
+      "id": "preview-den-pit-w12",
+      "type": "preview",
+      "date": "Fri, Nov. 27 · 3:00 PM ET",
+      "teams": [
+        "DEN",
+        "PIT"
+      ],
+      "teams_full": [
+        "Denver Broncos",
+        "Pittsburgh Steelers"
+      ],
+      "title": "#5 Denver at #15 Pittsburgh",
+      "desc": "Mason Rudolph Starts for a Steelers Team in Turmoil as Denver Comes to Town Chasing the AFC's Top Seed",
+      "url": "/nfl/pages/broncos-at-steelers-w12.html",
+      "because": null
+    },
+    {
+      "id": "preview-kc-buf-w12",
+      "type": "preview",
+      "date": "Thu, Nov. 26 · 8:20 PM ET",
+      "teams": [
+        "KC",
+        "BUF"
+      ],
+      "teams_full": [
+        "Kansas City Chiefs",
+        "Buffalo Bills"
+      ],
+      "title": "#3 Kansas City at #2 Buffalo",
+      "desc": "The AFC's Top Two Meet on Thanksgiving Night, With Buffalo Chasing a Sixth Straight Regular-Season Win Over Kansas City",
+      "url": "/nfl/pages/chiefs-at-bills-w12.html",
+      "because": null
+    },
+    {
+      "id": "preview-phi-dal-w12",
+      "type": "preview",
+      "date": "Thu, Nov. 26 · 4:30 PM ET",
+      "teams": [
+        "PHI",
+        "DAL"
+      ],
+      "teams_full": [
+        "Philadelphia Eagles",
+        "Dallas Cowboys"
+      ],
+      "title": "#26 Philadelphia at #18 Dallas",
+      "desc": "A Month After Routing the Eagles in Philadelphia, Dallas Hosts a Team That Just Snapped a Seven-Game Losing Streak",
+      "url": "/nfl/pages/eagles-at-cowboys-w12.html",
+      "because": null
+    },
+    {
+      "id": "preview-chi-det-w12",
+      "type": "preview",
+      "date": "Thu, Nov. 26 · 1:00 PM ET",
+      "teams": [
+        "CHI",
+        "DET"
+      ],
+      "teams_full": [
+        "Chicago Bears",
+        "Detroit Lions"
+      ],
+      "title": "#4 Chicago at #7 Detroit",
+      "desc": "Two 8-2 Teams With the NFC's Longest Winning Streaks Meet at Ford Field, and the Winner Leaves Alone in First Place in the NFC North",
+      "url": "/nfl/pages/bears-at-lions-w12.html",
+      "because": null
+    },
+    {
+      "id": "preview-gb-lar-w12",
+      "type": "preview",
+      "date": "Wed, Nov. 25 · 8:00 PM ET",
+      "teams": [
+        "GB",
+        "LAR"
+      ],
+      "teams_full": [
+        "Green Bay Packers",
+        "Los Angeles Rams"
+      ],
+      "title": "#12 Green Bay at #11 Los Angeles",
+      "desc": "Micah Parsons Makes His Packers Debut in the First Thanksgiving Eve Game, Against a Rams Team on a Four-Game Win Streak",
+      "url": "/nfl/pages/packers-at-rams-w12.html",
+      "because": null
+    },
     {
       "id": "breaking-rodgers-steelers-20261125",
       "type": "breaking",
