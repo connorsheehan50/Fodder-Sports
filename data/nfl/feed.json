@@ -4,9 +4,196 @@
   "season": 2026,
   "items": [
     {
+      "id": "preview-car-tb-w12",
+      "type": "preview",
+      "date": "Mon, Nov. 30 · 8:15 PM ET",
+      "teams": [
+        "CAR",
+        "TB"
+      ],
+      "teams_full": [
+        "Carolina Panthers",
+        "Tampa Bay Buccaneers"
+      ],
+      "title": "#15 Carolina at #20 Tampa Bay",
+      "desc": "The NFC South-Leading Panthers Visit Tampa Bay on Monday Night, a Month After the Buccaneers Beat Them by 30",
+      "url": "/nfl/pages/panthers-at-buccaneers-w12.html",
+      "because": null
+    },
+    {
+      "id": "preview-ne-lac-w12",
+      "type": "preview",
+      "date": "Sun, Nov. 29 · 4:05 PM ET",
+      "teams": [
+        "NE",
+        "LAC"
+      ],
+      "teams_full": [
+        "New England Patriots",
+        "Los Angeles Chargers"
+      ],
+      "title": "#21 New England at #32 L.A. Chargers",
+      "desc": "With Drake Maye Out, Tommy DeVito Leads the Patriots Against a One-Win Chargers Team That May Be Without Justin Herbert",
+      "url": "/nfl/pages/patriots-at-chargers-w12.html",
+      "because": null
+    },
+    {
+      "id": "preview-was-ari-w12",
+      "type": "preview",
+      "date": "Sun, Nov. 29 · 4:25 PM ET",
+      "teams": [
+        "WAS",
+        "ARI"
+      ],
+      "teams_full": [
+        "Washington Commanders",
+        "Arizona Cardinals"
+      ],
+      "title": "#19 Washington at #29 Arizona",
+      "desc": "Jayden Daniels and a Surging Commanders Team Visit a Cardinals Team Trying to End an 11-Game Home Losing Streak",
+      "url": "/nfl/pages/commanders-at-cardinals-w12.html",
+      "because": null
+    },
+    {
+      "id": "preview-sea-sf-w12",
+      "type": "preview",
+      "date": "Sun, Nov. 29 · 4:25 PM ET",
+      "teams": [
+        "SEA",
+        "SF"
+      ],
+      "teams_full": [
+        "Seattle Seahawks",
+        "San Francisco 49ers"
+      ],
+      "title": "#10 Seattle at #1 San Francisco",
+      "desc": "The Defending Champion Seahawks, Outside the Playoff Field Today, Visit the 9-1 49ers With Brock Purdy Nursing an Ankle Injury",
+      "url": "/nfl/pages/seahawks-at-49ers-w12.html",
+      "because": null
+    },
+    {
+      "id": "preview-ten-jax-w12",
+      "type": "preview",
+      "date": "Sun, Nov. 29 · 4:05 PM ET",
+      "teams": [
+        "TEN",
+        "JAX"
+      ],
+      "teams_full": [
+        "Tennessee Titans",
+        "Jacksonville Jaguars"
+      ],
+      "title": "#30 Tennessee at #6 Jacksonville",
+      "desc": "The AFC South-Leading Jaguars Return Home After a Loss in New York to Face a One-Win Titans Team They Beat by 17 Two Weeks Ago",
+      "url": "/nfl/pages/titans-at-jaguars-w12.html",
+      "because": null
+    },
+    {
+      "id": "preview-lv-cle-w12",
+      "type": "preview",
+      "date": "Sun, Nov. 29 · 8:20 PM ET",
+      "teams": [
+        "LV",
+        "CLE"
+      ],
+      "teams_full": [
+        "Las Vegas Raiders",
+        "Cleveland Browns"
+      ],
+      "title": "#21 Las Vegas at #14 Cleveland",
+      "desc": "The Surprising Browns, Flexed Into Prime Time, Host Fernando Mendoza and a Raiders Team That Has Lost Seven of Eight",
+      "url": "/nfl/pages/raiders-at-browns-w12.html",
+      "because": null
+    },
+    {
+      "id": "preview-nyg-ind-w12",
+      "type": "preview",
+      "date": "Sun, Nov. 29 · 1:00 PM ET",
+      "teams": [
+        "NYG",
+        "IND"
+      ],
+      "teams_full": [
+        "New York Giants",
+        "Indianapolis Colts"
+      ],
+      "title": "#13 N.Y. Giants at #28 Indianapolis",
+      "desc": "The NFC East-Leading Giants Visit a Colts Team Starting Anthony Richardson Sr. for the First Time Since 2024",
+      "url": "/nfl/pages/giants-at-colts-w12.html",
+      "because": null
+    },
+    {
+      "id": "preview-nyj-mia-w12",
+      "type": "preview",
+      "date": "Sun, Nov. 29 · 1:00 PM ET",
+      "teams": [
+        "NYJ",
+        "MIA"
+      ],
+      "teams_full": [
+        "New York Jets",
+        "Miami Dolphins"
+      ],
+      "title": "#26 N.Y. Jets at #31 Miami",
+      "desc": "The Jets, Fresh Off Snapping a Five-Game Skid, Try to Avenge an October Loss to a One-Win Dolphins Team",
+      "url": "/nfl/pages/jets-at-dolphins-w12.html",
+      "because": null
+    },
+    {
+      "id": "preview-bal-hou-w12",
+      "type": "preview",
+      "date": "Sun, Nov. 29 · 1:00 PM ET",
+      "teams": [
+        "BAL",
+        "HOU"
+      ],
+      "teams_full": [
+        "Baltimore Ravens",
+        "Houston Texans"
+      ],
+      "title": "#23 Baltimore at #17 Houston",
+      "desc": "A Ravens Team on a Six-Game Losing Streak Visits a Texans Team Coming Off Its First Home Win in Nearly 11 Months",
+      "url": "/nfl/pages/ravens-at-texans-w12.html",
+      "because": null
+    },
+    {
+      "id": "preview-no-cin-w12",
+      "type": "preview",
+      "date": "Sun, Nov. 29 · 1:00 PM ET",
+      "teams": [
+        "NO",
+        "CIN"
+      ],
+      "teams_full": [
+        "New Orleans Saints",
+        "Cincinnati Bengals"
+      ],
+      "title": "#25 New Orleans at #8 Cincinnati",
+      "desc": "Cincinnati Tries to Bounce Back From a Last-Second Loss in Washington Against a Saints Team Stuck on Three Wins",
+      "url": "/nfl/pages/saints-at-bengals-w12.html",
+      "because": null
+    },
+    {
+      "id": "preview-atl-min-w12",
+      "type": "preview",
+      "date": "Sun, Nov. 29 · 1:00 PM ET",
+      "teams": [
+        "ATL",
+        "MIN"
+      ],
+      "teams_full": [
+        "Atlanta Falcons",
+        "Minnesota Vikings"
+      ],
+      "title": "#24 Atlanta at #9 Minnesota",
+      "desc": "Kirk Cousins Makes His First Home Start Back in Minnesota, Against the Falcons Team That Moved On From Him",
+      "url": "/nfl/pages/falcons-at-vikings-w12.html",
+      "because": null
+    },
+    {
       "id": "recap-gb-lar-w12",
       "type": "recap",
-      "date": "Wed, Nov. 25 · Final",
+      "date": "Nov. 25",
       "teams": [
         "GB",
         "LAR"
