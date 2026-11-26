@@ -68,12 +68,17 @@ function buildCard(item) {
     thumbInner = `<div style="font-family:var(--font-head);font-size:11px;font-weight:800;color:rgba(255,255,255,.3);text-align:center;letter-spacing:.06em;">NFL</div>`;
   }
 
-  return `
-    <a href="${escHtml(item.url || '#')}" class="card">
-      <div class="card-thumb" style="background:${thumbBg};padding:14px 8px 10px;position:relative;">
+  const rkWeek = item.type === 'rankings' ? rkWeekFromItem(item) : 0;
+  const thumbHtml = rkWeek
+    ? `<div class="card-thumb fs-rk-thumb" data-week="${rkWeek}" style="background:#0A0A0A;padding:0;position:relative;">${rkFrame(rkWeek, '')}</div>`
+    : `<div class="card-thumb" style="background:${thumbBg};padding:14px 8px 10px;position:relative;">
         ${bannerHtml}
         ${thumbInner}
-      </div>
+      </div>`;
+
+  return `
+    <a href="${escHtml(item.url || '#')}" class="card">
+      ${thumbHtml}
       <div class="card-body">
         <div class="card-meta">
           <span class="card-type ${t.cls}">${t.label}</span>
@@ -86,6 +91,111 @@ function buildCard(item) {
       </div>
     </a>`;
 }
+
+// ── Power rankings thumbnails ────────────────────────────────
+// Two designs that alternate by week: even weeks show the biggest risers and
+// fallers (logos only, no numbers), odd weeks show the top-three podium.
+// Built from data/nfl/power-rankings-history.json, so a new week needs no extra work.
+// Other sports: pass a different league logo and team-logo function.
+
+const RK_LEAGUE_LOGO = '/img/leagues/nfl.png';
+function rkTeamLogo(abbr) {
+  const a = ({ WAS: 'wsh' }[abbr] || abbr).toLowerCase();
+  return `https://a.espncdn.com/combiner/i?img=/i/teamlogos/nfl/500/${a}.png&h=96&w=96`;
+}
+
+function rkWeekFromItem(item) {
+  const m = String(item.id || '').match(/rankings-w(\d+)/) || String(item.url || '').match(/-w(\d+)(\.html)?$/);
+  return m ? Number(m[1]) : 0;
+}
+
+function rkFrame(week, inner) {
+  return `<div style="position:relative;width:120px;height:110px;font-family:var(--font-head);">
+    <div style="position:absolute;top:0;left:0;background:#FF4D00;color:#fff;font-size:7.5px;font-weight:900;letter-spacing:.12em;padding:3px 6px;z-index:2;">RANKINGS</div>
+    <div style="position:absolute;top:3px;right:5px;display:flex;align-items:center;gap:4px;z-index:2;">
+      <span style="color:#F5F2EB;opacity:.75;font-size:8.5px;font-weight:800;letter-spacing:.14em;">WK ${week}</span>
+      <img src="${RK_LEAGUE_LOGO}" alt="" style="width:13px;height:13px;object-fit:contain;">
+    </div>
+    ${inner}
+  </div>`;
+}
+
+function rkLogo(abbr, size, extra) {
+  return `<img src="${rkTeamLogo(abbr)}" alt="" loading="lazy" style="width:${size}px;height:${size}px;object-fit:contain;filter:drop-shadow(0 1px 3px rgba(0,0,0,.6));${extra || ''}" onerror="this.style.visibility='hidden'">`;
+}
+
+function rkPodium(week, teams) {
+  const top = teams.slice().sort((a, b) => a.rank - b.rank).slice(0, 3);
+  if (top.length < 3) return rkFrame(week, '');
+  const step = (t, logo, h, bg, fg, fs) => `
+    <div style="width:${t.rank === 1 ? 34 : 32}px;display:flex;flex-direction:column;align-items:center;gap:3px;">
+      ${rkLogo(t.abbr, logo)}
+      <div style="width:100%;height:${h}px;background:${bg};color:${fg};font-size:${fs}px;font-weight:900;display:flex;justify-content:center;padding-top:2px;box-sizing:border-box;line-height:1;">${t.rank}</div>
+    </div>`;
+  return rkFrame(week, `
+    <div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 72%,#1d1f24 0%,#0A0A0A 70%);"></div>
+    <div style="position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:center;align-items:flex-end;gap:3px;">
+      ${step(top[1], 26, 24, '#2B2E34', '#F5F2EB', 13)}
+      ${step(top[0], 32, 36, '#FF4D00', '#fff', 15)}
+      ${step(top[2], 24, 16, '#2B2E34', '#F5F2EB', 12)}
+    </div>`);
+}
+
+function rkPickMovers(teams, dir) {
+  const moved = teams.filter(t => dir * (t.move || 0) > 0)
+    .sort((a, b) => (dir * b.move - dir * a.move) || (a.rank - b.rank));
+  const big = moved.filter(t => Math.abs(t.move) >= 2).slice(0, 2);
+  return big.length ? big : moved.slice(0, 1);
+}
+
+function rkMovers(week, teams) {
+  const ups = rkPickMovers(teams, 1), downs = rkPickMovers(teams, -1);
+  if (!ups.length && !downs.length) return null;
+  const col = (label, color, list, border) => `
+    <div style="display:flex;flex-direction:column;align-items:center;gap:2px;${border ? 'border-right:1px solid #262930;' : ''}">
+      <div style="color:${color};font-size:9px;font-weight:900;letter-spacing:.14em;">${label}</div>
+      ${list.map(t => `<div style="height:33px;display:flex;align-items:center;justify-content:center;">${rkLogo(t.abbr, 31)}</div>`).join('')}
+    </div>`;
+  return rkFrame(week, `
+    <div style="position:absolute;inset:0;background:#0A0A0A;"></div>
+    <div style="position:absolute;left:0;right:0;top:21px;bottom:2px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));">
+      ${col('▲ UP', '#6EE7B7', ups, true)}
+      ${col('▼ DOWN', '#FCA5A5', downs, false)}
+    </div>`);
+}
+
+function rkThumbHtml(week, teams) {
+  if (week % 2 === 0) {
+    const m = rkMovers(week, teams);
+    if (m) return m;               // a week with no movement (Week 1) falls back to the podium
+  }
+  return rkPodium(week, teams);
+}
+
+let rkHistoryPromise = null;
+function rkHistory() {
+  if (!rkHistoryPromise) rkHistoryPromise = fetchJSON('data/nfl/power-rankings-history.json');
+  return rkHistoryPromise;
+}
+
+function fillRankingThumbs() {
+  const els = document.querySelectorAll('.fs-rk-thumb:not([data-filled])');
+  if (!els.length) return;
+  els.forEach(el => el.setAttribute('data-filled', '1'));
+  rkHistory().then(hist => {
+    els.forEach(el => {
+      const week = Number(el.dataset.week);
+      const wk = hist && hist.weeks && hist.weeks[String(week)];
+      if (wk && wk.teams && wk.teams.length) el.innerHTML = rkThumbHtml(week, wk.teams);
+    });
+  });
+}
+window.fillRankingThumbs = fillRankingThumbs;
+
+document.addEventListener('DOMContentLoaded', () => {
+  fillRankingThumbs();
+  new MutationObserver(fillRankingThumbs).observe(document.body, { childList: true, subtree: true });
+});
 
 // ── Sentiment Bar ────────────────────────────────────────────
 
