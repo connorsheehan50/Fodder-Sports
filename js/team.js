@@ -23,16 +23,84 @@
     var rgb = [0, 2, 4].map(function (i) { return parseInt(color.substr(i, 2), 16); });
     var light = (0.299 * rgb[0] + 0.587 * rgb[1] + 0.114 * rgb[2]) / 255 > 0.6;
     var rec = t && t.record && t.record.items && t.record.items[0] ? t.record.items[0].summary : '';
-    var mine = F.myTeams()[SPORT + ':' + team.abbr];
     $('tm-hero').innerHTML = '<div class="tm-hero" style="--tc:#' + E(color) + ';--tt:' + (light ? '#0A0A0A' : '#fff') + '">' +
       '<img src="' + E(logo) + '" alt="" onerror="this.style.visibility=\'hidden\'">' +
       '<div><div class="kicker">' + E(F.label(SPORT)) + ' · ' + E(group) + '</div><h1>' + E(team.name) + '</h1>' +
       (rec ? '<div class="rec">' + E(rec) + (t.standingSummary ? ' · ' + E(t.standingSummary) : '') + '</div>' : '') +
       '<div class="tm-links"><a href="/standings?' + sportQ + '">Standings</a><a href="/stats?' + sportQ + '">Stats</a>' +
       '<a href="/teams?' + sportQ + '">All ' + E(F.label(SPORT)) + ' teams</a>' +
-      (mine ? '' : '<a href="/account#teams" onclick="if(!localStorage.getItem(\'fs_account\')){location.href=\'/signup\';return false;}">Follow this team</a>') +
+      followButton() +
       '</div></div></div>';
   }
+  // ── Follow / unfollow, saved to the reader's account right away ──
+  var busy = false;
+  function following() { return !!F.myTeams()[SPORT + ':' + team.abbr]; }
+  function followButton() {
+    var on = following();
+    return '<button type="button" class="tm-follow' + (on ? ' on' : '') + '" id="tm-follow" aria-pressed="' + on + '"' + (busy ? ' disabled' : '') + '>' +
+      (busy ? 'Saving…' : on ? '<span class="is">✓ Following</span><span class="un">Unfollow</span>' : '+ Follow') + '</button>';
+  }
+  function redrawButton() { var b = $('tm-follow'); if (b) b.outerHTML = followButton(); }
+  function withClient() {
+    return new Promise(function (res, rej) {
+      if (window.fsSupabase) return res(window.fsSupabase);
+      var t = setTimeout(function () { rej(new Error('Sign-in did not load')); }, 10000);
+      window.addEventListener('fs-supabase-ready', function () { clearTimeout(t); res(window.fsSupabase); }, { once: true });
+    });
+  }
+  function setFollow(want) {
+    busy = true; redrawButton();
+    return withClient().then(function (sb) {
+      return sb.auth.getUser().then(function (r) {
+        var user = r.data && r.data.user;
+        if (!user) throw new Error('signed out');
+        var teams = window.fsNormalizeTeams((user.user_metadata || {}).teams || {});
+        var list = (teams[SPORT] || []).filter(function (t) { return t.abbr !== team.abbr; });
+        if (want) list.push({ abbr: team.abbr, name: team.name, sport: SPORT });
+        if (list.length) teams[SPORT] = list; else delete teams[SPORT];
+        return sb.auth.updateUser({ data: { teams: teams } }).then(function (u) {
+          if (u.error) throw u.error;
+          // keep the copy every page reads in step right away
+          try {
+            var acc = JSON.parse(localStorage.getItem('fs_account') || '{}');
+            acc.teams = teams;
+            acc.allTeams = Object.keys(teams).reduce(function (a, k) { return a.concat(teams[k]); }, []);
+            localStorage.setItem('fs_account', JSON.stringify(acc));
+            window.dispatchEvent(new CustomEvent('fs-account', { detail: acc }));
+          } catch (e) {}
+          if (window.fsTrack) window.fsTrack(want ? 'team_followed' : 'team_unfollowed', { sport: SPORT, team: team.name, team_key: SPORT + ':' + team.name });
+        });
+      });
+    }).catch(function (e) {
+      if (e && e.message === 'signed out') { goSignup(); return; }
+      alertMsg('Could not save. Check your connection and try again.');
+    }).then(function () { busy = false; redrawButton(); });
+  }
+  function goSignup() {
+    var back = location.pathname + '?' + sportQ + '&t=' + encodeURIComponent(team.abbr) + '&follow=1';
+    location.href = '/signup?next=' + encodeURIComponent(back);
+  }
+  function alertMsg(m) {
+    var b = $('tm-follow'); if (!b) return;
+    var n = document.createElement('div'); n.className = 'tm-follow-msg'; n.textContent = m;
+    b.parentNode.appendChild(n); setTimeout(function () { n.remove(); }, 5000);
+  }
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('#tm-follow') || busy) return;
+    if (!localStorage.getItem('fs_account')) { goSignup(); return; }
+    setFollow(!following());
+  });
+  // back from sign-up with ?follow=1: finish the follow once the account is known
+  if (qs.get('follow') === '1') {
+    history.replaceState(null, '', location.pathname + '?' + sportQ + '&t=' + encodeURIComponent(team.abbr));
+    var tries = 0;
+    (function wait() {
+      if (localStorage.getItem('fs_account')) { if (!following()) setFollow(true); return; }
+      if (++tries < 20) setTimeout(wait, 500);
+    })();
+  }
+  window.addEventListener('fs-account', function () { if (!busy) redrawButton(); });
+
   hero(null);
   F.json(F.API + 'site/v2/sports/' + path + '/teams/' + espnId).then(function (d) { if (d && d.team) hero(d.team); }).catch(function () {});
 

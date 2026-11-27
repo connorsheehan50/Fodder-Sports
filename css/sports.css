@@ -135,6 +135,14 @@
 .tm-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
 .tm-links a { font-family: var(--font-head); font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: inherit; border: 1px solid currentColor; border-radius: 999px; padding: 4px 11px; text-decoration: none; opacity: .9; }
 .tm-links a:hover { opacity: 1; }
+.tm-follow { font-family: var(--font-head); font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; cursor: pointer;
+  color: var(--tc, var(--ink)); background: var(--tt, #fff); border: 1px solid var(--tt, #fff); border-radius: 999px; padding: 4px 13px; }
+.tm-follow:disabled { opacity: .7; cursor: wait; }
+.tm-follow.on { color: inherit; background: transparent; border-color: currentColor; }
+.tm-follow .un { display: none; }
+.tm-follow.on:hover .is { display: none; }
+.tm-follow.on:hover .un { display: inline; }
+.tm-follow-msg { flex-basis: 100%; font-family: var(--font-body); font-size: 13px; margin-top: 4px; }
 .tm-layout { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 24px; align-items: start; }
 .tm-h2 { font-family: var(--font-head); font-size: 15px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); border-bottom: 2px solid var(--ink); padding-bottom: 6px; margin-bottom: 12px; }
 .tm-box { background: var(--card-bg); border: 1px solid var(--rule); border-radius: var(--radius-lg); padding: 14px 16px; margin-bottom: 18px; }

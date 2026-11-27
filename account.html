@@ -163,9 +163,9 @@
       <!-- Teams -->
       <section class="panel" id="panel-teams">
         <h1>My Teams</h1>
-        <p class="panel-lead">Every team you follow, across every sport. Your feed, schedule, search results, and the power rankings chart all start with these teams.</p>
+        <p class="panel-lead">Every team you follow, across every sport. Your feed, schedule, search results, and the power rankings chart all start with these teams. Click a team to follow or unfollow it; changes save right away.</p>
         <div class="card-box">
-          <div class="row-between" style="margin-bottom:12px;"><h2 style="margin:0;" id="teams-count">Following</h2></div>
+          <div class="row-between" style="margin-bottom:12px;"><h2 style="margin:0;" id="teams-count">Following</h2><span class="msg" id="msg-teams"></span></div>
           <div class="chips" id="team-chips"></div>
         </div>
         <div class="card-box">
@@ -175,7 +175,6 @@
           <div class="field team-filter"><input id="team-filter" type="search" placeholder="Search every team in this sport" aria-label="Search teams"></div>
           <div class="team-grid" id="team-grid"></div>
         </div>
-        <div class="actions"><button class="btn btn-primary" onclick="saveTeams(this)">Save my teams</button><span class="msg" id="msg-teams"></span></div>
       </section>
 
       <!-- Feed -->
@@ -368,17 +367,27 @@ function toggleTeam(sp, abbr) {
   const i = picked[sp].findIndex(t => t.abbr === abbr);
   if (i >= 0) picked[sp].splice(i, 1); else if (team) picked[sp].push({ abbr, name: team.name, sport: sp });
   renderChips(); renderTabs(); renderGrid();
+  saveTeams();
 }
 $('team-filter').addEventListener('input', renderGrid);
-function saveTeams(btn) {
-  return busy(btn, async () => {
+// Every click saves. Saves run one at a time and each sends the current list, so fast clicking ends in the right state.
+let saveChain = Promise.resolve(), saving = 0;
+function saveTeams() {
+  saving++;
+  say('msg-teams', 'Saving…', true);
+  saveChain = saveChain.then(async () => {
     const teams = {};
     Object.keys(picked).forEach(k => { if (picked[k] && picked[k].length) teams[k] = picked[k]; });
     try {
       await updateMeta({ teams });
-      if (window.fsTrack) window.fsTrack('teams_updated', { team_count: Object.values(teams).flat().length, sports: Object.keys(teams) });
-      say('msg-teams', 'Saved. Your feed is updated.', true);
-    } catch (e) { say('msg-teams', e.message || 'Could not save. Try again.'); }
+      if (--saving === 0) {
+        say('msg-teams', 'Saved', true);
+        if (window.fsTrack) window.fsTrack('teams_updated', { team_count: Object.values(teams).flat().length, sports: Object.keys(teams) });
+      }
+    } catch (e) {
+      saving--;
+      say('msg-teams', 'Could not save. Check your connection and click the team again.');
+    }
   });
 }
 

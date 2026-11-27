@@ -1073,6 +1073,31 @@
     });
   }
 
+  // ── Article sources: publication names only ───────────────────
+  // The page renderer labels some sources with the feed address ("jaguars.com (RSS-Bridge)").
+  // Readers see the publication's name instead; the list lives in data/publications.json.
+  function cleanSources() {
+    var spans = document.querySelectorAll('span.src-out');
+    if (!spans.length) return;
+    var FEEDS = /^(feeds\.feedburner\.com|feedproxy\.google\.com|rss\.app)$/;
+    function strip(t) { return t.replace(/^-\s*/, '').replace(/\s*\((rss[\s-]*bridge|rss|feed|feedburner)\)\s*/ig, '').trim(); }
+    // plumbing notes go right away, names follow once the list loads
+    spans.forEach(function (sp) { var t = strip(sp.textContent); if (('- ' + t) !== sp.textContent) sp.textContent = '- ' + t; });
+    fetch('/data/publications.json').then(function (r) { return r.ok ? r.json() : {}; }).then(function (N) {
+      spans.forEach(function (sp) {
+        var t = strip(sp.textContent), k = t.toLowerCase().replace(/^www\./, '');
+        var name = N[k];
+        if (!name && / /.test(k) === false && k.indexOf('.') > 0) {
+          var a = sp.previousElementSibling, host = '';
+          try { host = a && a.href ? new URL(a.href).hostname.replace(/^www\./, '') : ''; } catch (e) {}
+          if (FEEDS.test(k) || N[k.split('/')[0]]) name = N[host] || N[k.split('/')[0]];
+        }
+        if (name && name !== t) sp.textContent = '- ' + name;
+      });
+    }).catch(function () {});
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', cleanSources); else cleanSources();
+
   // ── Boot ───────────────────────────────────────────────────────
   mountTop();
   wireNav();
