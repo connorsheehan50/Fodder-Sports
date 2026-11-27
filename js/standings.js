@@ -119,7 +119,7 @@
     var groups = leaves(d, [], []);
     if (!groups.length) return '<div class="sp-msg">No standings for this season yet.</div>';
     var all = [];
-    groups.forEach(function (g) { g.rows = g.entries.map(F.parseEntry); all = all.concat(g.rows); });
+    groups.forEach(function (g) { g.rows = F.orderEntries(SPORT, state.view, g.entries).map(F.parseEntry); all = all.concat(g.rows); });
     var cols = usedCols(all);
     state.cols = cols;
     var h = '', lastTop = null, zones = {};

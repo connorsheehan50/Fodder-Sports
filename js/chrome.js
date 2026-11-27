@@ -42,7 +42,12 @@
     '.fs-nav .nav-teams-panel a:hover{color:var(--orange);background:none;}',
     '.fs-nav .nav-teams-panel img{width:18px;height:18px;object-fit:contain;flex-shrink:0;}',
     '.fs-nav .nav-tp-all{grid-column:1/-1;font-weight:800 !important;color:var(--orange) !important;text-transform:uppercase !important;font-size:11px !important;letter-spacing:.08em !important;padding-top:8px !important;}',
-    '.fs-nav .nav-dd-more .nav-dd-links{padding:8px 0;min-width:240px;}',
+    '.fs-nav .nav-dd-more .nav-dd-links{min-width:170px;}',
+    '.fs-nav .nav-dropdown a.nav-sub{display:flex;justify-content:space-between;align-items:center;}',
+    '.fs-nav .nav-dropdown a.nav-sub.on{background:var(--page-bg);color:var(--ink);}',
+    '.fs-nav .nav-teams-panel .nav-sub-menu{display:flex;flex-direction:column;margin:-12px -16px -14px;padding:6px 0;min-width:190px;}',
+    '.fs-nav .nav-teams-panel .nav-sub-menu a{display:block;padding:10px 18px;font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--slate);}',
+    '.fs-nav .nav-teams-panel .nav-sub-menu a:hover{background:var(--page-bg);color:var(--ink);}',
     '.fs-nav .nav-dd-head{font-family:var(--font-head);font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);padding:8px 18px 2px;}',
     '.fs-nav .nav-dd-row{display:flex;padding:0 8px 4px;}',
     '.fs-nav .nav-dd-row a{padding:6px 10px !important;font-size:12px;}',
@@ -181,6 +186,8 @@
     var p = location.pathname;
     if (isMyFeed()) return 'myfeed';
     if (/^\/nfl(\/|$)/.test(p)) return 'nfl';
+    var hub = /^\/(nba|mlb|nhl|cfb|ncaam|ncaaw|wnba|soccer)(\/|$)/.exec(p);
+    if (hub) return /^(nba|mlb|nhl|cfb)$/.test(hub[1]) ? hub[1] : 'more';
     if (/^\/(standings|stats|teams|team)(\.html)?$/.test(p)) {
       var sp = (new URLSearchParams(location.search).get('sport') || 'nfl').toLowerCase();
       return { nfl: 'nfl', nba: 'nba', mlb: 'mlb', nhl: 'nhl', ncaaf: 'cfb', cfb: 'cfb' }[sp] || 'more';
@@ -191,17 +198,39 @@
 
   var SEARCH_ICON = '<svg class="fs-search-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M20 20l-4.2-4.2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>';
 
-  function sportLinks(key, panel) {
-    var q = 'sport=' + key.toLowerCase();
-    return '<a href="/standings?' + q + '">Standings</a><a href="/stats?' + q + '">Stats</a>' +
+  // Every sport gets the same menu as the NFL. Sections other than the NFL live at /<slug>/.
+  var SPORT_NAV = {
+    NFL: { slug: 'nfl', label: 'NFL', home: '/nfl/index.html', rankings: '/nfl/power-rankings.html', panel: true },
+    NBA: { slug: 'nba', label: 'NBA', panel: true },
+    MLB: { slug: 'mlb', label: 'MLB', panel: true },
+    NHL: { slug: 'nhl', label: 'NHL', panel: true },
+    NCAAF: { slug: 'cfb', label: 'CFB' },
+    NCAAB: { slug: 'ncaam', label: 'NCAAM' },
+    NCAAW: { slug: 'ncaaw', label: 'NCAAW' },
+    WNBA: { slug: 'wnba', label: 'WNBA', panel: true },
+    Soccer: { slug: 'soccer', label: 'Soccer' }
+  };
+  function sportHome(key) { var n = SPORT_NAV[key]; return n.home || '/' + n.slug + '/'; }
+  function sportMenu(key, allowPanel) {
+    var n = SPORT_NAV[key], home = sportHome(key), q = 'sport=' + n.slug;
+    var tab = function (t) { return home + '?tab=' + t; };
+    var panel = allowPanel && n.panel;
+    return '<a href="' + home + '">All ' + n.label + ' Stories</a><div class="dropdown-divider"></div>' +
+      '<a href="' + (n.rankings || tab('rankings')) + '">Power Rankings</a>' +
+      '<a href="' + tab('preview') + '">Game Previews</a>' +
+      '<a href="' + tab('recap') + '">Game Recaps</a>' +
+      '<a href="' + tab('trade') + '">Trades</a>' +
+      '<a href="' + tab('breaking') + '">Breaking News</a><div class="dropdown-divider"></div>' +
+      '<a href="/standings?' + q + '">Standings</a><a href="/stats?' + q + '">Stats</a>' +
       (panel ? '<a href="/teams?' + q + '" class="nav-teams" data-sport="' + key + '">Teams <span class="nav-arrow">▸</span></a>'
              : '<a href="/teams?' + q + '">Teams</a>');
   }
-  function sportItem(key, label, sec, panel) {
-    var s = section();
-    return '<div class="nav-item"><a href="/standings?sport=' + key.toLowerCase() + '" class="nav-link' + (s === sec ? ' active' : '') + '" aria-haspopup="true">' + label + ' <span class="caret">▾</span></a>' +
-      '<div class="nav-dropdown"><div class="nav-dd-links">' + sportLinks(key, panel) + '</div>' + (panel ? '<div class="nav-teams-panel"></div>' : '') + '</div></div>';
+  function sportItem(key) {
+    var n = SPORT_NAV[key], on = section() === n.slug;
+    return '<div class="nav-item"><a href="' + sportHome(key) + '" class="nav-link' + (on ? ' active' : '') + '" aria-haspopup="true">' + n.label + ' <span class="caret">▾</span></a>' +
+      '<div class="nav-dropdown"><div class="nav-dd-links">' + sportMenu(key, true) + '</div>' + (n.panel ? '<div class="nav-teams-panel"></div>' : '') + '</div></div>';
   }
+  window.fsSportMenu = sportMenu;
 
   function topHtml() {
     var s = section();
@@ -212,27 +241,13 @@
         '<nav class="fs-nav" aria-label="Sections">' +
           '<div class="nav-item"><a href="/" class="nav-link' + act('home') + '">Home</a></div>' +
           '<div class="nav-item"><a href="/?tab=myfeed" class="nav-link' + act('myfeed') + '" id="nav-myfeed" onclick="return fsMyFeedClick(event)">My Feed</a></div>' +
-          '<div class="nav-item"><a href="/nfl/index.html" class="nav-link' + act('nfl') + '" aria-haspopup="true">NFL <span class="caret">▾</span></a>' +
-            '<div class="nav-dropdown"><div class="nav-dd-links">' +
-              '<a href="/nfl/index.html">All NFL Stories</a><div class="dropdown-divider"></div>' +
-              '<a href="/nfl/power-rankings.html">Power Rankings</a>' +
-              '<a href="/nfl/index.html?tab=preview">Game Previews</a>' +
-              '<a href="/nfl/index.html?tab=recap">Game Recaps</a>' +
-              '<a href="/nfl/index.html?tab=trade">Trades</a>' +
-              '<a href="/nfl/index.html?tab=breaking">Breaking News</a><div class="dropdown-divider"></div>' +
-              sportLinks('NFL', true) +
-            '</div><div class="nav-teams-panel"></div></div></div>' +
-          sportItem('NBA', 'NBA', 'nba', true) +
-          sportItem('MLB', 'MLB', 'mlb', true) +
-          sportItem('NHL', 'NHL', 'nhl', true) +
-          sportItem('NCAAF', 'CFB', 'cfb', false) +
-          '<div class="nav-item"><a href="/standings?sport=ncaam" class="nav-link' + act('more') + '" aria-haspopup="true">More <span class="caret">▾</span></a>' +
+          sportItem('NFL') + sportItem('NBA') + sportItem('MLB') + sportItem('NHL') + sportItem('NCAAF') +
+          '<div class="nav-item"><a href="/ncaam/" class="nav-link' + act('more') + '" aria-haspopup="true">More <span class="caret">▾</span></a>' +
             '<div class="nav-dropdown nav-dd-more"><div class="nav-dd-links">' +
-              [['NCAAB', 'NCAAM'], ['NCAAW', 'NCAAW'], ['WNBA', 'WNBA'], ['Soccer', 'Soccer']].map(function (x) {
-                var q = 'sport=' + (x[0] === 'NCAAB' ? 'ncaam' : x[0].toLowerCase());
-                return '<div class="nav-dd-head">' + x[1] + '</div><div class="nav-dd-row"><a href="/standings?' + q + '">Standings</a><a href="/stats?' + q + '">Stats</a><a href="/teams?' + q + '">Teams</a></div>';
+              ['NCAAB', 'NCAAW', 'WNBA', 'Soccer'].map(function (k) {
+                return '<a href="' + sportHome(k) + '" class="nav-sub" data-sport="' + k + '">' + SPORT_NAV[k].label + ' <span class="nav-arrow">▸</span></a>';
               }).join('') +
-            '</div></div></div>' +
+            '</div><div class="nav-teams-panel"></div></div></div>' +
         '</nav>' +
         '<form class="fs-search" id="fs-search" role="search" action="/search.html" onsubmit="return fsSearchSubmit(event)">' +
           '<button type="button" class="fs-search-toggle" aria-label="Search" onclick="fsSearchOpen()">' + SEARCH_ICON + '</button>' +
@@ -776,6 +791,10 @@
     else if (/^\/account/.test(p)) ctx.page_type = 'account';
     else if (/^\/nfl\/power-rankings/.test(p)) { ctx.page_type = 'rankings'; ctx.sport = 'NFL'; }
     else if (/^\/nfl\/?(index(\.html)?)?$/.test(p)) { ctx.page_type = 'section'; ctx.sport = 'NFL'; }
+    else if (/^\/(nba|mlb|nhl|cfb|ncaam|ncaaw|wnba|soccer)\/?(index(\.html)?)?$/.test(p)) {
+      ctx.page_type = 'section';
+      ctx.sport = { nba: 'NBA', mlb: 'MLB', nhl: 'NHL', cfb: 'NCAAF', ncaam: 'NCAAB', ncaaw: 'NCAAW', wnba: 'WNBA', soccer: 'Soccer' }[p.split('/')[1]];
+    }
     else if (/^\/nfl\/pages\//.test(p)) {
       ctx.sport = 'NFL';
       ctx.page_type = /trade/.test(p) ? 'trade' : /recap/.test(p) ? 'recap' : 'preview';
@@ -1017,9 +1036,23 @@
       fillPanel(panel, a.dataset.sport);
       keepOnScreen(dd);
     }
+    function openSub(a) {
+      var dd = a.closest('.nav-dropdown'), panel = dd && dd.querySelector('.nav-teams-panel');
+      if (!panel || panel.dataset.sub === a.dataset.sport) { if (dd) dd.classList.add('show-teams'); return; }
+      panel.dataset.sub = a.dataset.sport;
+      panel.removeAttribute('data-filled');
+      panel.style.gridTemplateColumns = 'max-content';
+      panel.innerHTML = '<div class="nav-sub-menu">' + sportMenu(a.dataset.sport, false) + '</div>';
+      dd.querySelectorAll('a.nav-sub').forEach(function (x) { x.classList.toggle('on', x === a); });
+      dd.classList.add('show-teams');
+      keepOnScreen(dd);
+    }
     nav.addEventListener('mouseover', function (e) {
       var a = e.target.closest('a.nav-teams');
       if (a) { openTeams(a); return; }
+      var sub = e.target.closest('a.nav-sub');
+      if (sub) { openSub(sub); return; }
+      if (e.target.closest('.nav-dd-more')) return;
       var link = e.target.closest('.nav-dd-links a');
       if (link) { var dd = link.closest('.nav-dropdown'); if (dd && !dd.querySelector('.nav-teams-panel:hover')) dd.classList.remove('show-teams'); }
       var item = e.target.closest('.nav-item');
@@ -1028,6 +1061,8 @@
     nav.addEventListener('focusin', function (e) {
       var a = e.target.closest('a.nav-teams');
       if (a) openTeams(a);
+      var sub = e.target.closest('a.nav-sub');
+      if (sub) openSub(sub);
     });
     nav.addEventListener('mouseout', function (e) {
       var item = e.target.closest('.nav-item');

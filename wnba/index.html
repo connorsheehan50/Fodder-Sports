@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WNBA | Fodder Sports</title>
+  <meta name="description" content="WNBA coverage from every market. Follow your team and see what the other side is saying.">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/sports.css">
+  <style>
+    .hub-links { display: flex; flex-wrap: wrap; gap: 4px 16px; padding: 12px 16px; border-top: 1px solid var(--rule); }
+    .hub-links a { font-family: var(--font-head); font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--orange); text-decoration: none; }
+    #feed a { color: var(--blue); }
+  </style>
+</head>
+<body>
+
+<header class="site-header"></header>
+
+<div class="container">
+  <div class="page-header">
+    <p class="breadcrumb" id="crumb">Fodder Sports / WNBA</p>
+    <h1 class="page-title" id="page-title">WNBA</h1>
+    <div class="team-selector">
+      <label for="hub-team-select">Your Team</label>
+      <select id="hub-team-select"><option value="">All Teams</option></select>
+    </div>
+    <div class="content-tabs" id="tabs"></div>
+  </div>
+  <div class="layout-main">
+    <main>
+      <div class="section-label">
+        On the Board
+        <span id="feed-note" style="font-family: var(--font-body); font-size: 11px; color: var(--slate-light); font-weight: 400; letter-spacing: 0;">All teams · all types</span>
+      </div>
+      <div class="feed" id="feed"></div>
+    </main>
+    <aside class="sidebar">
+      <div class="sidebar-widget">
+        <div class="widget-header">
+          <div>
+            <div class="widget-label" id="rk-label">WNBA / Standings</div>
+            <a href="/standings?sport=wnba" class="widget-title" style="text-decoration:none;color:inherit;display:block;">Standings</a>
+          </div>
+        </div>
+        <div id="standings-widget"></div>
+        <div class="hub-links" id="widget-links"></div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <span class="footer-label">Fodder Sports · Pilot</span>
+      <p class="footer-note" id="footer-note">Summaries written from published coverage. Not affiliated with any league or team.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/teams-data.js"></script>
+<script src="/js/fs-sports.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/sport-hub.js"></script>
+<script src="/js/chrome.js"></script>
+<script src="/js/auth.js"></script>
+</body>
+</html>

@@ -180,6 +180,24 @@
     return { team: e.team, m: m, r: rec, note: e.note || null };
   }
 
+  // ESPN lists NBA standings worst-first and MLB divisions slightly off, so those two are put in order here:
+  // whole league by win percentage; conference/league/division by playoff seed (ESPN's tiebreaks), then win percentage.
+  // Every other sport comes back from ESPN already in standings order.
+  var REORDER = { NBA: 1, MLB: 1 };
+  function statVal(e, name) {
+    var st = (e.stats || []).filter(function (x) { return x.name === name && !('summary' in x); })[0];
+    return st && typeof st.value === 'number' ? st.value : null;
+  }
+  function orderEntries(sport, level, entries) {
+    if (!REORDER[sport]) return entries;
+    return entries.slice().sort(function (a, b) {
+      var pa = statVal(a, 'winPercent') || 0, pb = statVal(b, 'winPercent') || 0;
+      var sa = statVal(a, 'playoffSeed') || 99, sb = statVal(b, 'playoffSeed') || 99;
+      if (level === 1) return (pb - pa) || (sa - sb);
+      return (sa - sb) || (pb - pa);
+    });
+  }
+
   function teamAbbr(sport, team) {
     var cfg = window.FS_SPORTS && window.FS_SPORTS[sport];
     var pro = !(SPORTS[sport].college || SPORTS[sport].soccer);
@@ -224,7 +242,8 @@
   }
 
   function sportFromUrl() {
-    var q = new URLSearchParams(location.search).get('sport') || 'nfl';
+    // ?sport=nba, or the section folder (/nba/, /cfb/...)
+    var q = new URLSearchParams(location.search).get('sport') || location.pathname.split('/').filter(Boolean)[0] || 'nfl';
     return URL_KEYS[q.toLowerCase()] || 'NFL';
   }
 
@@ -241,7 +260,7 @@
   window.FS = {
     subnav: subnav,
     API: API, WEB: WEB, sports: SPORTS, label: function (k) { return LABEL[k] || k; },
-    json: json, esc: esc, num: num, parseEntry: parseEntry, teamAbbr: teamAbbr, teamUrl: teamUrl, logoOf: logoOf,
+    json: json, esc: esc, orderEntries: orderEntries, num: num, parseEntry: parseEntry, teamAbbr: teamAbbr, teamUrl: teamUrl, logoOf: logoOf,
     seasonLabel: seasonLabel, myTeams: myTeams, sortRows: sortRows, sportFromUrl: sportFromUrl, urlKeys: URL_KEYS
   };
 })();

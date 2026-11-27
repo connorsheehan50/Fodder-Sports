@@ -99,7 +99,7 @@
       var found = null;
       (function walk(n) {
         var en = (n.standings && n.standings.entries) || [];
-        if (en.some(function (e) { return String(e.team.id) === String(espnId); })) found = { name: n.name, entries: en };
+        if (en.some(function (e) { return String(e.team.id) === String(espnId); })) found = { name: n.name, entries: F.orderEntries(SPORT, 3, en) };
         (n.children || []).forEach(walk);
       })(d);
       if (!found) { el.innerHTML = '<p class="tm-empty">Not in this season\'s standings yet.</p>'; return; }
