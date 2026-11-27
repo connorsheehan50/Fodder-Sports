@@ -757,14 +757,14 @@ async function initRankings() {
 
     const descText = (t.desc && t.desc !== 'To be filled in later.') ? escHtml(t.desc) : '';
 
-    const mainRow = `<tr class="team-row" onclick="toggleRow(this)">
+    const mainRow = `<tr class="team-row" data-team="${escHtml(t.abbr || '')}" onclick="toggleRow(this)">
       <td class="rank-col">${String(i+1).padStart(2,'0')}</td>
       <td class="move-col">${moveBadge}</td>
       <td class="team-col">
         <div class="team-cell">
           <span class="row-arrow">▶</span>
           <img class="team-row-logo" src="${logoUrl}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
-          ${escHtml(t.name)}
+          ${escHtml(t.name)}<span data-fav-tag></span>
         </div>
       </td>
       ${avgCell}

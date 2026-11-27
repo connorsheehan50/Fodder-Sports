@@ -247,7 +247,7 @@ function buildRankingsWidget(rankings) {
     return '<div style="padding:16px;font-family:var(--font-body);font-size:13px;color:var(--slate);">No rankings yet.</div>';
   }
   const note = rankings.note ? `<div style="padding:8px 16px 0;font-family:var(--font-body);font-size:11px;color:var(--slate-light);">${escHtml(rankings.note)}</div>` : '';
-  const rows = rankings.teams.slice(0, 10).map((t, i) => {
+  const rows = rankings.teams.map((t, i) => {
     let arrowCls, arrowTxt;
     if (t.move > 0) {
       arrowCls = 'up'; arrowTxt = `▲${t.move}`;
@@ -257,9 +257,9 @@ function buildRankingsWidget(rankings) {
       arrowCls = 'flat'; arrowTxt = '–';
     }
     return `
-    <div class="ranking-row">
+    <div class="ranking-row${i >= 10 ? ' rank-extra' : ''}" data-team="${escHtml(t.abbr || '')}">
       <span class="rank-num">${String(i + 1).padStart(2, '0')}</span>
-      <span class="rank-team">${escHtml(t.name)}</span>
+      <span class="rank-team">${escHtml(t.name)}<span data-fav-tag></span></span>
       <span class="rank-arrow ${arrowCls}">${arrowTxt}</span>
     </div>`;
   }).join('');

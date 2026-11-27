@@ -839,6 +839,81 @@
     wireTracking();
   }
 
+  // ── Your teams, highlighted in rankings ────────────────────────
+  // Each team's most vibrant color. Edit freely: hex values only.
+  var NFL_COLORS = {
+    ARI: '#97233F', ATL: '#A71930', BAL: '#241773', BUF: '#00338D', CAR: '#0085CA', CHI: '#C83803',
+    CIN: '#FB4F14', CLE: '#FF3C00', DAL: '#003594', DEN: '#FB4F14', DET: '#0076B6', GB: '#FFB612',
+    HOU: '#A71930', IND: '#002C5F', JAX: '#006778', KC: '#E31837', LV: '#A5ACAF', LAC: '#0080C6',
+    LAR: '#003594', MIA: '#008E97', MIN: '#4F2683', NE: '#C60C30', NO: '#D3BC8D', NYG: '#0B2265',
+    NYJ: '#125740', PHI: '#004C54', PIT: '#FFB612', SF: '#AA0000', SEA: '#69BE28', TB: '#D50A0A',
+    TEN: '#4B92DB', WAS: '#773141'
+  };
+  window.FS_NFL_COLORS = NFL_COLORS;
+
+  function favNfl() {
+    var set = {};
+    favorites().forEach(function (f) {
+      if (f.sport !== 'NFL') return;
+      var a = String(f.abbr || '').toUpperCase();
+      set[a === 'WSH' ? 'WAS' : a] = 1;
+    });
+    return set;
+  }
+  function hexRgb(h) {
+    var m = String(h).replace('#', '').match(/^([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i);
+    return m ? [parseInt(m[1], 16), parseInt(m[2], 16), parseInt(m[3], 16)] : [255, 77, 0];
+  }
+  function tagText(rgb) {   // dark text on light team colors (gold, powder blue), white otherwise
+    var l = (0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2]) / 255;
+    return l > 0.55 ? '#0A0A0A' : '#FFFFFF';
+  }
+
+  function applyFavHighlights() {
+    var favs = favNfl();
+    document.querySelectorAll('[data-team]').forEach(function (el) {
+      var abbr = String(el.getAttribute('data-team')).toUpperCase();
+      if (abbr === 'WSH') abbr = 'WAS';
+      var on = !!favs[abbr];
+      if (on === el.classList.contains('fs-fav')) return;
+      el.classList.toggle('fs-fav', on);
+      var slot = el.querySelector('[data-fav-tag]');
+      if (on) {
+        var rgb = hexRgb(NFL_COLORS[abbr] || '#FF4D00');
+        el.style.setProperty('--fav', 'rgb(' + rgb.join(',') + ')');
+        el.style.setProperty('--fav-tint', 'rgba(' + rgb.join(',') + ',.12)');
+        el.style.setProperty('--fav-text', tagText(rgb));
+        if (slot) slot.innerHTML = '<span class="fs-fav-tag">Your team</span>';
+      } else if (slot) {
+        slot.innerHTML = '';
+      }
+    });
+  }
+  window.fsApplyFavHighlights = applyFavHighlights;
+
+  var favCss = document.createElement('style');
+  favCss.textContent = [
+    'tr.fs-fav > td{background:var(--fav-tint) !important;border-top:2px solid var(--fav) !important;border-bottom:2px solid var(--fav) !important;}',
+    'tr.fs-fav > td:first-child{border-left:2px solid var(--fav) !important;}',
+    'tr.fs-fav > td:last-child{border-right:2px solid var(--fav) !important;}',
+    '.ranking-row.fs-fav{background:var(--fav-tint);box-shadow:inset 0 0 0 2px var(--fav);border-radius:4px;}',
+    '.ranking-row.rank-extra:not(.fs-fav){display:none !important;}',
+    '.ranking-row.rank-extra.fs-fav{margin-top:6px;}',
+    '.fs-fav-tag{display:inline-block;font-family:var(--font-head);font-size:10px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;line-height:1;color:var(--fav-text);background:var(--fav);padding:3px 6px;border-radius:2px;margin-left:8px;vertical-align:middle;white-space:nowrap;}'
+  ].join('\n');
+  document.head.appendChild(favCss);
+
+  var favTimer = null;
+  new MutationObserver(function () {
+    clearTimeout(favTimer);
+    favTimer = setTimeout(applyFavHighlights, 30);
+  }).observe(document.documentElement, { childList: true, subtree: true });
+  window.addEventListener('fs-account', function () {
+    document.querySelectorAll('.fs-fav').forEach(function (el) { el.classList.remove('fs-fav'); });
+    applyFavHighlights();
+  });
+  document.addEventListener('DOMContentLoaded', applyFavHighlights);
+
   // ── Boot ───────────────────────────────────────────────────────
   mountTop();
   wrapPageFunctions();
