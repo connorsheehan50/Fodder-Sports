@@ -72,7 +72,7 @@
     }
     .sport-tab.active { background: var(--ink); border-color: var(--ink); color: #fff; }
     .team-filter { margin-bottom: 12px; }
-    .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; max-height: 560px; overflow-y: auto; align-content: start; }
     .team-btn {
       display: flex; align-items: center; gap: 8px; text-align: left; background: var(--card-bg); border: 1px solid var(--rule);
       border-radius: 6px; padding: 8px 10px; cursor: pointer; font-family: var(--font-head); font-size: 13px; font-weight: 700; color: var(--ink);
@@ -171,7 +171,8 @@
         <div class="card-box">
           <h2>Add or remove teams</h2>
           <div class="sport-tabs" id="sport-tabs"></div>
-          <div class="field team-filter"><input id="team-filter" type="search" placeholder="Filter teams…" aria-label="Filter teams"></div>
+          <div class="tp-levels" id="team-levels"></div>
+          <div class="field team-filter"><input id="team-filter" type="search" placeholder="Search every team in this sport" aria-label="Search teams"></div>
           <div class="team-grid" id="team-grid"></div>
         </div>
         <div class="actions"><button class="btn btn-primary" onclick="saveTeams(this)">Save my teams</button><span class="msg" id="msg-teams"></span></div>
@@ -239,6 +240,7 @@
 </footer>
 
 <script src="/js/teams-data.js"></script>
+<script src="/js/team-picker.js"></script>
 <script>
 const US_STATES = ['Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','District of Columbia','Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin','Wyoming'];
 const SPORT_LABEL = { NCAAB: 'NCAAM' };
@@ -353,12 +355,12 @@ function renderTabs() {
   }).join('');
 }
 function renderGrid() {
-  const data = sportOf(activeSport), f = $('team-filter').value.trim().toLowerCase();
+  const f = $('team-filter').value;
   const sel = (picked[activeSport] || []).map(t => t.abbr);
-  $('team-grid').innerHTML = data.teams.filter(t => !f || t.name.toLowerCase().includes(f)).map(t =>
-    `<button class="team-btn ${sel.includes(t.abbr) ? 'selected' : ''}" aria-pressed="${sel.includes(t.abbr)}" onclick="toggleTeam('${activeSport}','${t.abbr}')">` +
-    `<img src="${esc(data.logo(t.abbr))}" alt="" onerror="this.style.visibility='hidden'">${esc(t.name)}</button>`).join('');
+  $('team-levels').innerHTML = fsPicker.levelsHtml(activeSport, 'pickLevel', f);
+  $('team-grid').innerHTML = fsPicker.gridHtml(activeSport, sel, f, t => `toggleTeam('${activeSport}','${fsPicker.jsq(t.abbr)}')`);
 }
+function pickLevel(sp, lv) { fsPicker.setLevel(sp, lv); renderGrid(); }
 function switchSport(sp) { activeSport = sp; $('team-filter').value = ''; renderTabs(); renderGrid(); }
 function toggleTeam(sp, abbr) {
   const team = sportOf(sp).teams.find(t => t.abbr === abbr);
@@ -459,7 +461,7 @@ async function start() {
   const { data: { session } } = await sb.auth.getSession();
   if (!session) { location.replace('/signup.html?next=' + encodeURIComponent('/account.html' + location.hash)); return; }
   user = session.user;
-  picked = JSON.parse(JSON.stringify(meta().teams || {}));
+  picked = window.fsNormalizeTeams(JSON.parse(JSON.stringify(meta().teams || {})));
   activeSport = Object.keys(window.FS_SPORTS).find(k => (picked[k] || []).length) || 'NFL';
   renderName(); fillProfile(); renderChips(); renderTabs(); renderGrid(); fillPrefs(); fillSecurity();
   $('acct-loading').hidden = true; $('acct').hidden = false;

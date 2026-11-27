@@ -211,7 +211,7 @@ body { background: var(--page-bg); }
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
-  max-height: 320px;
+  max-height: 380px;
   overflow-y: auto;
   margin-bottom: 24px;
 }
@@ -376,6 +376,8 @@ body { background: var(--page-bg); }
 
       <div class="sport-tabs" id="sport-tabs"></div>
       <div class="selected-count" id="selected-count">0 teams selected</div>
+      <div class="tp-levels" id="team-levels"></div>
+      <input type="search" class="tp-search" id="team-filter" placeholder="Search every team in this sport" aria-label="Search teams" oninput="renderTeamGrid(activeSport)">
       <div class="team-grid" id="team-grid"></div>
 
       <button class="btn-primary" id="btn-save-teams" onclick="finishSetup()">Save &amp; Go to My Feed</button>
@@ -388,6 +390,7 @@ body { background: var(--page-bg); }
 <!-- Supabase JS -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="/js/teams-data.js"></script>
+<script src="/js/team-picker.js"></script>
 <script>
 // ── Supabase config ───────────────────────────────────────────
 const SUPABASE_URL = 'https://sqxwiiqfnmdwuknbsskr.supabase.co';
@@ -418,7 +421,7 @@ const EDIT_MODE = new URLSearchParams(window.location.search).get('edit') === '1
 
 function savedTeams(user) {
   const teams = (user && user.user_metadata && user.user_metadata.teams) || {};
-  return JSON.parse(JSON.stringify(teams));   // copy, so cancelling never changes the saved set
+  return window.fsNormalizeTeams(JSON.parse(JSON.stringify(teams)));   // copy, so cancelling never changes the saved set; old ids mapped forward
 }
 
 (async function init() {
@@ -433,7 +436,7 @@ function savedTeams(user) {
   } else if (hasTeams) {
     window.location.replace(getNextUrl());   // returning user: skip the picker
   } else {
-    if (teams) selectedTeams = teams;
+    if (teams) selectedTeams = window.fsNormalizeTeams(teams);
     goToTeamStep();
   }
 })();
@@ -666,6 +669,7 @@ function renderSportTabs() {
 
 function switchSport(sport) {
   activeSport = sport;
+  document.getElementById('team-filter').value = '';
   renderSportTabs();
   renderTeamGrid(sport);
 }
@@ -674,15 +678,17 @@ function renderTeamGrid(sport) {
   const data = SPORTS[sport];
   if (!data) return;
   const sel = (selectedTeams[sport] || []).map(t => t.abbr);
-  const container = document.getElementById('team-grid');
-  container.innerHTML = data.teams.map(team => `
-    <button class="team-btn ${sel.includes(team.abbr) ? 'selected' : ''}"
-      onclick="toggleTeam('${sport}','${team.abbr}','${team.name.replace(/'/g,"\\'")}')">
-      <img src="${data.logo(team.abbr)}" alt="${team.name}" onerror="this.style.display='none'">
-      <span class="team-btn-name">${team.name}</span>
-    </button>
-  `).join('');
+  const filter = document.getElementById('team-filter').value;
+  document.getElementById('team-levels').innerHTML = fsPicker.levelsHtml(sport, 'pickLevel', filter);
+  document.getElementById('team-grid').innerHTML = fsPicker.gridHtml(sport, sel, filter,
+    t => `toggleTeam('${sport}','${fsPicker.jsq(t.abbr)}','${fsPicker.jsq(t.name)}')`);
   updateSelectedCount();
+}
+
+function pickLevel(sport, lv) {
+  fsPicker.setLevel(sport, lv);
+  renderTeamGrid(sport);
+  document.getElementById('team-grid').scrollTop = 0;
 }
 
 function toggleTeam(sport, abbr, name) {

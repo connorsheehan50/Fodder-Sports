@@ -23,17 +23,35 @@
     '.fs-logo img{height:56px;width:auto;display:block;}',
     '.fs-nav{display:flex;align-items:stretch;align-self:stretch;flex:1;min-width:0;}',
     '.fs-nav .nav-item{display:flex;}',
-    '.fs-nav .nav-link{padding:0 14px;font-size:14px;border-bottom:3px solid transparent;margin-bottom:-3px;height:auto;color:var(--slate);}',
+    '.fs-nav .nav-link{padding:0 11px;font-size:14px;border-bottom:3px solid transparent;margin-bottom:-3px;height:auto;color:var(--slate);}',
     '.fs-nav .nav-link:hover,.fs-nav .nav-link.active{color:var(--ink);}',
     '.fs-nav .nav-link.active{border-bottom-color:var(--ink);}',
     '.fs-nav .nav-soon{cursor:default;opacity:.7;}',
     '.fs-nav .nav-soon:hover{color:var(--slate);}',
-    '.fs-nav .nav-dropdown{top:100%;margin-top:3px;}',
+    '.fs-nav .nav-dropdown{top:100%;margin-top:3px;padding:0;}',
+    '.fs-nav .nav-dd-links{display:flex;flex-direction:column;padding:6px 0;min-width:190px;}',
+    '.fs-nav .nav-dropdown a.nav-teams{display:flex;justify-content:space-between;align-items:center;}',
+    '.fs-nav .nav-arrow{font-size:10px;color:var(--slate-light);}',
+    '.fs-nav .nav-dropdown.show-teams a.nav-teams{background:var(--page-bg);color:var(--ink);}',
+    '.fs-nav .nav-teams-panel{display:none;border-left:1px solid var(--rule);padding:12px 16px 14px;gap:6px 22px;align-content:start;}',
+    '.fs-nav .nav-dropdown.show-teams{flex-direction:row;align-items:stretch;}',
+    '.fs-nav .nav-dropdown.show-teams .nav-teams-panel{display:grid;}',
+    '.fs-nav .nav-tp-group{min-width:0;}',
+    '.fs-nav .nav-tp-head{font-family:var(--font-head);font-size:11px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);border-bottom:2px solid var(--ink);padding:2px 0 4px;margin-bottom:2px;}',
+    '.fs-nav .nav-teams-panel a{display:flex;align-items:center;gap:8px;padding:5px 2px;font-size:13px;letter-spacing:.02em;text-transform:none;white-space:nowrap;color:var(--ink);}',
+    '.fs-nav .nav-teams-panel a:hover{color:var(--orange);background:none;}',
+    '.fs-nav .nav-teams-panel img{width:18px;height:18px;object-fit:contain;flex-shrink:0;}',
+    '.fs-nav .nav-tp-all{grid-column:1/-1;font-weight:800 !important;color:var(--orange) !important;text-transform:uppercase !important;font-size:11px !important;letter-spacing:.08em !important;padding-top:8px !important;}',
+    '.fs-nav .nav-dd-more .nav-dd-links{padding:8px 0;min-width:240px;}',
+    '.fs-nav .nav-dd-head{font-family:var(--font-head);font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);padding:8px 18px 2px;}',
+    '.fs-nav .nav-dd-row{display:flex;padding:0 8px 4px;}',
+    '.fs-nav .nav-dd-row a{padding:6px 10px !important;font-size:12px;}',
     '.fs-nav .nav-item:hover .nav-dropdown,.fs-nav .nav-item:focus-within .nav-dropdown{display:flex;}',
     '.site-top .header-actions{margin-left:0;}',
-    '.fs-search{position:relative;margin-left:auto;flex-shrink:0;}',
+    '.fs-search{position:relative;margin-left:auto;flex-shrink:0;width:180px;height:38px;}',
     '.fs-search-box{display:flex;align-items:center;gap:8px;border:1px solid var(--rule);border-radius:4px;background:var(--page-bg);padding:0 10px;height:38px;width:240px;transition:width .2s,border-color .2s;color:var(--slate);}',
-    '.fs-search-box:focus-within{width:300px;border-color:var(--ink);background:var(--card-bg);}',
+    '.fs-search-box{width:100%;}',
+    '.fs-search-box:focus-within{position:absolute;right:0;top:0;width:320px;z-index:401;border-color:var(--ink);background:var(--card-bg);}',
     '.fs-search-box input{border:none;background:none;outline:none;font-family:var(--font-body);font-size:14px;color:var(--ink);width:100%;min-width:0;}',
     '.fs-search-toggle{display:none;background:none;border:1px solid var(--rule);border-radius:4px;width:38px;height:38px;align-items:center;justify-content:center;color:var(--ink);cursor:pointer;}',
     '.fs-search-results{display:none;position:absolute;top:calc(100% + 8px);right:0;width:420px;max-width:calc(100vw - 32px);background:var(--card-bg);border:1px solid var(--rule);border-top:2px solid var(--orange);border-radius:0 0 8px 8px;box-shadow:0 10px 30px rgba(0,0,0,.14);z-index:400;max-height:70vh;overflow-y:auto;}',
@@ -49,6 +67,14 @@
     '.site-top .btn-signin{color:var(--ink);border-color:var(--rule);}',
     '.site-top .btn-signin:hover{color:var(--ink);border-color:var(--ink);}',
     '.site-top .btn-account{color:var(--ink);border-color:var(--rule);}',
+    '@media (max-width:1260px) and (min-width:901px){' +
+      '.site-top .fs-bar-inner{gap:18px;position:relative;}' +
+      '.fs-nav .nav-link{padding:0 9px;}' +
+      '.fs-search{width:38px;}' +
+      '.fs-search-toggle{display:flex;}' +
+      '.fs-search .fs-search-box{display:none;}' +
+      '.fs-search.open .fs-search-box{display:flex;position:absolute;right:0;top:-1px;width:320px;z-index:401;background:var(--card-bg);}' +
+    '}' +
     '@media (max-width:900px){' +
       '.site-top .fs-bar-inner{height:auto;flex-wrap:wrap;row-gap:0;padding-top:8px;}' +
       '.fs-logo img{height:44px;}' +
@@ -56,7 +82,7 @@
       '.fs-nav::-webkit-scrollbar{display:none;}' +
       '.fs-nav .nav-link{padding:12px 12px;white-space:nowrap;}' +
       '.fs-nav .nav-dropdown{display:none !important;}' +
-      '.fs-search{margin-left:auto;position:static;}' +
+      '.fs-search{margin-left:auto;position:static;width:auto;height:auto;}' +
       '.fs-search-toggle{display:flex;}' +
       '.fs-search .fs-search-box{display:none;}' +
       '.fs-search.open .fs-search-box{display:flex;position:absolute;left:16px;right:16px;top:8px;width:auto;z-index:401;background:var(--card-bg);height:44px;}' +
@@ -155,11 +181,27 @@
     var p = location.pathname;
     if (isMyFeed()) return 'myfeed';
     if (/^\/nfl(\/|$)/.test(p)) return 'nfl';
+    if (/^\/(standings|stats|teams|team)(\.html)?$/.test(p)) {
+      var sp = (new URLSearchParams(location.search).get('sport') || 'nfl').toLowerCase();
+      return { nfl: 'nfl', nba: 'nba', mlb: 'mlb', nhl: 'nhl', ncaaf: 'cfb', cfb: 'cfb' }[sp] || 'more';
+    }
     if (p === '/' || /^\/index(\.html)?$/.test(p)) return 'home';
     return '';
   }
 
   var SEARCH_ICON = '<svg class="fs-search-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M20 20l-4.2-4.2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>';
+
+  function sportLinks(key, panel) {
+    var q = 'sport=' + key.toLowerCase();
+    return '<a href="/standings?' + q + '">Standings</a><a href="/stats?' + q + '">Stats</a>' +
+      (panel ? '<a href="/teams?' + q + '" class="nav-teams" data-sport="' + key + '">Teams <span class="nav-arrow">▸</span></a>'
+             : '<a href="/teams?' + q + '">Teams</a>');
+  }
+  function sportItem(key, label, sec, panel) {
+    var s = section();
+    return '<div class="nav-item"><a href="/standings?sport=' + key.toLowerCase() + '" class="nav-link' + (s === sec ? ' active' : '') + '" aria-haspopup="true">' + label + ' <span class="caret">▾</span></a>' +
+      '<div class="nav-dropdown"><div class="nav-dd-links">' + sportLinks(key, panel) + '</div>' + (panel ? '<div class="nav-teams-panel"></div>' : '') + '</div></div>';
+  }
 
   function topHtml() {
     var s = section();
@@ -171,18 +213,26 @@
           '<div class="nav-item"><a href="/" class="nav-link' + act('home') + '">Home</a></div>' +
           '<div class="nav-item"><a href="/?tab=myfeed" class="nav-link' + act('myfeed') + '" id="nav-myfeed" onclick="return fsMyFeedClick(event)">My Feed</a></div>' +
           '<div class="nav-item"><a href="/nfl/index.html" class="nav-link' + act('nfl') + '" aria-haspopup="true">NFL <span class="caret">▾</span></a>' +
-            '<div class="nav-dropdown">' +
+            '<div class="nav-dropdown"><div class="nav-dd-links">' +
               '<a href="/nfl/index.html">All NFL Stories</a><div class="dropdown-divider"></div>' +
               '<a href="/nfl/power-rankings.html">Power Rankings</a>' +
               '<a href="/nfl/index.html?tab=preview">Game Previews</a>' +
               '<a href="/nfl/index.html?tab=recap">Game Recaps</a>' +
               '<a href="/nfl/index.html?tab=trade">Trades</a>' +
-              '<a href="/nfl/index.html?tab=breaking">Breaking News</a>' +
-            '</div></div>' +
-          '<div class="nav-item"><span class="nav-link nav-soon">NBA <span class="nav-badge">SOON</span></span></div>' +
-          '<div class="nav-item"><span class="nav-link nav-soon">MLB <span class="nav-badge">SOON</span></span></div>' +
-          '<div class="nav-item"><span class="nav-link nav-soon">NHL <span class="nav-badge">SOON</span></span></div>' +
-          '<div class="nav-item"><span class="nav-link nav-soon">CFB <span class="nav-badge">SOON</span></span></div>' +
+              '<a href="/nfl/index.html?tab=breaking">Breaking News</a><div class="dropdown-divider"></div>' +
+              sportLinks('NFL', true) +
+            '</div><div class="nav-teams-panel"></div></div></div>' +
+          sportItem('NBA', 'NBA', 'nba', true) +
+          sportItem('MLB', 'MLB', 'mlb', true) +
+          sportItem('NHL', 'NHL', 'nhl', true) +
+          sportItem('NCAAF', 'CFB', 'cfb', false) +
+          '<div class="nav-item"><a href="/standings?sport=ncaam" class="nav-link' + act('more') + '" aria-haspopup="true">More <span class="caret">▾</span></a>' +
+            '<div class="nav-dropdown nav-dd-more"><div class="nav-dd-links">' +
+              [['NCAAB', 'NCAAM'], ['NCAAW', 'NCAAW'], ['WNBA', 'WNBA'], ['Soccer', 'Soccer']].map(function (x) {
+                var q = 'sport=' + (x[0] === 'NCAAB' ? 'ncaam' : x[0].toLowerCase());
+                return '<div class="nav-dd-head">' + x[1] + '</div><div class="nav-dd-row"><a href="/standings?' + q + '">Standings</a><a href="/stats?' + q + '">Stats</a><a href="/teams?' + q + '">Teams</a></div>';
+              }).join('') +
+            '</div></div></div>' +
         '</nav>' +
         '<form class="fs-search" id="fs-search" role="search" action="/search.html" onsubmit="return fsSearchSubmit(event)">' +
           '<button type="button" class="fs-search-toggle" aria-label="Search" onclick="fsSearchOpen()">' + SEARCH_ICON + '</button>' +
@@ -549,7 +599,11 @@
   function teamGames(fav) {
     var path = SPORT_PATH[fav.sport];
     if (!path || !fav.abbr) return Promise.resolve([]);
-    var url = ESPN + path + '/teams/' + encodeURIComponent(fav.abbr) + '/schedule' + (fav.sport === 'Soccer' ? '?fixture=true' : '');
+    // ids saved before a team moved or the team list was rebuilt (same table as js/teams-data.js)
+    var AL = window.FS_TEAM_ALIASES || { MLB: { oak: 'ath' }, NHL: { utah: 'uta' }, WNBA: { conn: 'con' },
+      Soccer: { '1138': '362', '18594': '18418', '18924': '18966', '32783': '20232', '528': '187', '10740': '9723' } };
+    var abbr = ((AL[fav.sport] || {})[String(fav.abbr).toLowerCase()]) || fav.abbr;
+    var url = ESPN + path + '/teams/' + encodeURIComponent(abbr) + '/schedule' + (fav.sport === 'Soccer' ? '?fixture=true' : '');
     var cutoff = Date.now() - 4 * 3600 * 1000;
     return fetch(url).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
       if (!d || !d.events) return [];
@@ -914,8 +968,79 @@
   });
   document.addEventListener('DOMContentLoaded', applyFavHighlights);
 
+  // ── Nav: teams panel inside each sport's dropdown ─────────────
+  var teamsData = null;
+  function loadTeams() {
+    if (window.FS_SPORTS) return Promise.resolve(window.FS_SPORTS);
+    if (!teamsData) teamsData = new Promise(function (res, rej) {
+      var sc = document.createElement('script');
+      sc.src = '/js/teams-data.js';
+      sc.onload = function () { res(window.FS_SPORTS); };
+      sc.onerror = rej;
+      document.head.appendChild(sc);
+    });
+    return teamsData;
+  }
+  function esc(x) { return String(x == null ? '' : x).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); }
+  function fillPanel(panel, key) {
+    if (panel.dataset.filled) return;
+    loadTeams().then(function (S) {
+      var sp = S && S[key]; if (!sp) return;
+      var groups = [], by = {};
+      sp.teams.forEach(function (t) { if (!by[t.g]) { by[t.g] = []; groups.push(t.g); } by[t.g].push(t); });
+      var cols = groups.length % 4 === 0 ? 4 : groups.length % 3 === 0 ? 3 : Math.min(groups.length, 4);
+      panel.style.gridTemplateColumns = 'repeat(' + cols + ', max-content)';
+      var q = 'sport=' + key.toLowerCase();
+      panel.innerHTML = groups.map(function (g) {
+        var short = g.replace(/^(American League|National League)\s/, function (m, x) { return x === 'American League' ? 'AL ' : 'NL '; }).replace(/ Division$/, '').replace(/ Conference$/, '');
+        return '<div class="nav-tp-group"><div class="nav-tp-head">' + esc(short) + '</div>' + by[g].map(function (t) {
+          return '<a href="/team?' + q + '&t=' + encodeURIComponent(t.abbr) + '"><img src="' + esc(sp.logo(t.abbr)) + '" alt="" loading="lazy">' + esc(t.name) + '</a>';
+        }).join('') + '</div>';
+      }).join('') + '<a class="nav-tp-all" href="/teams?' + q + '">All ' + esc(sp.label || key) + ' teams</a>';
+      panel.dataset.filled = '1';
+      keepOnScreen(panel.closest('.nav-dropdown'));
+    });
+  }
+  function keepOnScreen(dd) {
+    if (!dd) return;
+    dd.style.left = '';
+    var r = dd.getBoundingClientRect(), over = r.right - (window.innerWidth - 12);
+    if (over > 0) dd.style.left = (-Math.min(over, r.left - 12)) + 'px';
+  }
+  function wireNav() {
+    var nav = document.querySelector('.fs-nav');
+    if (!nav) return;
+    function openTeams(a) {
+      var dd = a.closest('.nav-dropdown'), panel = dd && dd.querySelector('.nav-teams-panel');
+      if (!panel) return;
+      dd.classList.add('show-teams');
+      fillPanel(panel, a.dataset.sport);
+      keepOnScreen(dd);
+    }
+    nav.addEventListener('mouseover', function (e) {
+      var a = e.target.closest('a.nav-teams');
+      if (a) { openTeams(a); return; }
+      var link = e.target.closest('.nav-dd-links a');
+      if (link) { var dd = link.closest('.nav-dropdown'); if (dd && !dd.querySelector('.nav-teams-panel:hover')) dd.classList.remove('show-teams'); }
+      var item = e.target.closest('.nav-item');
+      if (item) { loadTeams(); keepOnScreen(item.querySelector('.nav-dropdown')); }
+    });
+    nav.addEventListener('focusin', function (e) {
+      var a = e.target.closest('a.nav-teams');
+      if (a) openTeams(a);
+    });
+    nav.addEventListener('mouseout', function (e) {
+      var item = e.target.closest('.nav-item');
+      if (item && !item.contains(e.relatedTarget)) {
+        var dd = item.querySelector('.nav-dropdown');
+        if (dd) dd.classList.remove('show-teams');
+      }
+    });
+  }
+
   // ── Boot ───────────────────────────────────────────────────────
   mountTop();
+  wireNav();
   wrapPageFunctions();
   renderAccount();
   fillTrending();
