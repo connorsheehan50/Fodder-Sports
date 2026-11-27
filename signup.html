@@ -477,7 +477,7 @@ async function oauthSignup() {
 // https://www.foddersports.com are Authorized JavaScript origins on this client
 // in Google Cloud Console; until then the redirect sign-in above is used.
 const GOOGLE_CLIENT_ID = '1095856994429-tvh059ji0qc3qf21tbu1ip00dihdqho9.apps.googleusercontent.com';
-const USE_GOOGLE_BUTTON = false;
+const USE_GOOGLE_BUTTON = true;
 
 function afterSignIn(user) {
   if (user) saveLocalAccount(user);
