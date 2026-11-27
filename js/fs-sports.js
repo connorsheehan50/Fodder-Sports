@@ -133,11 +133,23 @@
   var LABEL = { NCAAB: 'NCAAM' };
 
   var cache = {};
+  function get(u) {
+    return fetch(u).then(function (res) {
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      return res.json();
+    });
+  }
+  // ESPN lets browsers read most of its feed directly. When it refuses one (some team requests),
+  // the same request goes through the site's own worker at /espn/.
+  function viaSite(u) {
+    return u.replace('https://site.api.espn.com/', '/espn/site/').replace('https://site.web.api.espn.com/', '/espn/web/');
+  }
   function json(url) {
     if (!cache[url]) {
-      cache[url] = fetch(url).then(function (res) {
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        return res.json();
+      cache[url] = get(url).catch(function () {
+        var alt = viaSite(url);
+        if (alt === url) throw new Error('failed');
+        return get(alt);
       }).catch(function (e) { delete cache[url]; throw e; });
     }
     return cache[url];

@@ -1,10 +1,26 @@
-// Forwards /ingest/* to PostHog (US). Everything else is served from the static files.
+// Forwards /ingest/* to PostHog (US) and /espn/* to ESPN's public data feed. Everything else is served from the static files.
 const API_HOST = 'us.i.posthog.com';
 const ASSET_HOST = 'us-assets.i.posthog.com';
+// Standings/stats pages read ESPN directly; when ESPN refuses a browser request they retry here.
+const ESPN_HOSTS = { site: 'site.api.espn.com', web: 'site.web.api.espn.com' };
+
+async function espn(request, url, ctx) {
+  const m = /^\/espn\/(site|web)(\/apis\/.*)$/.exec(url.pathname);
+  if (!m || request.method !== 'GET') return new Response('Not found', { status: 404 });
+  const cache = caches.default;
+  const key = new Request(url.toString(), { method: 'GET' });
+  let res = await cache.match(key);
+  if (res) return res;
+  const upstream = await fetch('https://' + ESPN_HOSTS[m[1]] + m[2] + url.search, { headers: { 'User-Agent': 'FodderSports/1.0', 'Accept': 'application/json' } });
+  res = new Response(upstream.body, { status: upstream.status, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'public, max-age=120' } });
+  if (upstream.ok) ctx.waitUntil(cache.put(key, res.clone()));
+  return res;
+}
 
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
+    if (url.pathname.startsWith('/espn/')) return espn(request, url, ctx);
     if (!url.pathname.startsWith('/ingest')) return env.ASSETS.fetch(request);
 
     const path = url.pathname.replace(/^\/ingest/, '') || '/';
